@@ -65,8 +65,6 @@ public class FrameExtract {
 	// TODO: Should this be 1, 16, 32?
 	private static final int SIMD_ALIGN_BYTES = 1;
 
-	record Exit(String message, int exitCode) {}
-
 	public static void main(final String[] args) {
 		if (args.length != 1) {
 			System.err.println("mp4 file is required");
