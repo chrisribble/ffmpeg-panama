@@ -1,0 +1,13 @@
+dependencies {
+	implementation project(':ffmpeg5')
+	implementation libs.slf4j.api
+
+	runtimeOnly libs.slf4j.simple
+
+	testImplementation libs.testng
+}
+
+tasks.named('test') {
+	useTestNG()
+	jvmArgs(['--enable-preview'])
+}
