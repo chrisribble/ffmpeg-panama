@@ -12,6 +12,6 @@ public class FrameExtractTest {
 	public void testFrameExtract() {
 		FrameExtract fe = new FrameExtract();
 
-		assertThrows(IllegalArgumentException.class, () -> fe.nonConcurrentFrameExtract(null, 1));
+		assertThrows(IllegalArgumentException.class, () -> fe.nonConcurrentFrameExtract(null, 1, 1));
 	}
 }
