@@ -21,7 +21,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class drand48_data {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$103.const$2;
+        return constants$102.const$0;
     }
     public static MemorySegment __x$slice(MemorySegment seg) {
         return seg.asSlice(0, 6);
@@ -30,7 +30,7 @@ public class drand48_data {
         return seg.asSlice(6, 6);
     }
     public static VarHandle __c$VH() {
-        return constants$103.const$3;
+        return constants$102.const$1;
     }
     /**
      * Getter for field:
@@ -39,7 +39,7 @@ public class drand48_data {
      * }
      */
     public static short __c$get(MemorySegment seg) {
-        return (short)constants$103.const$3.get(seg);
+        return (short)constants$102.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -48,16 +48,16 @@ public class drand48_data {
      * }
      */
     public static void __c$set(MemorySegment seg, short x) {
-        constants$103.const$3.set(seg, x);
+        constants$102.const$1.set(seg, x);
     }
     public static short __c$get(MemorySegment seg, long index) {
-        return (short)constants$103.const$3.get(seg.asSlice(index*sizeof()));
+        return (short)constants$102.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __c$set(MemorySegment seg, long index, short x) {
-        constants$103.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$102.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __init$VH() {
-        return constants$103.const$4;
+        return constants$102.const$2;
     }
     /**
      * Getter for field:
@@ -66,7 +66,7 @@ public class drand48_data {
      * }
      */
     public static short __init$get(MemorySegment seg) {
-        return (short)constants$103.const$4.get(seg);
+        return (short)constants$102.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -75,16 +75,16 @@ public class drand48_data {
      * }
      */
     public static void __init$set(MemorySegment seg, short x) {
-        constants$103.const$4.set(seg, x);
+        constants$102.const$2.set(seg, x);
     }
     public static short __init$get(MemorySegment seg, long index) {
-        return (short)constants$103.const$4.get(seg.asSlice(index*sizeof()));
+        return (short)constants$102.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void __init$set(MemorySegment seg, long index, short x) {
-        constants$103.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$102.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __a$VH() {
-        return constants$103.const$5;
+        return constants$102.const$3;
     }
     /**
      * Getter for field:
@@ -93,7 +93,7 @@ public class drand48_data {
      * }
      */
     public static long __a$get(MemorySegment seg) {
-        return (long)constants$103.const$5.get(seg);
+        return (long)constants$102.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -102,20 +102,20 @@ public class drand48_data {
      * }
      */
     public static void __a$set(MemorySegment seg, long x) {
-        constants$103.const$5.set(seg, x);
+        constants$102.const$3.set(seg, x);
     }
     public static long __a$get(MemorySegment seg, long index) {
-        return (long)constants$103.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$102.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __a$set(MemorySegment seg, long index, long x) {
-        constants$103.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$102.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -11,29 +11,39 @@ final class constants$356 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$356() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_scale_frame",
-        constants$71.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_frame_start",
-        constants$71.const$1
+        "sws_getColorspaceDetails",
+        constants$356.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_frame_end",
-        constants$70.const$2
+        "sws_allocVec",
+        constants$0.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_send_slice",
-        constants$338.const$3
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_DOUBLE,
+        JAVA_DOUBLE
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_receive_slice",
-        constants$338.const$3
+        "sws_getGaussianVec",
+        constants$356.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_receive_slice_alignment",
-        constants$0.const$3
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_DOUBLE
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "sws_scaleVec",
+        constants$356.const$5
     );
 }
 

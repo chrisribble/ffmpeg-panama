@@ -11,27 +11,39 @@ final class constants$145 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$145() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_default_item_name",
+        constants$67.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_default_get_category",
+        constants$0.const$3
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER,
         JAVA_INT,
         RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_vlog",
-        constants$145.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_log_get_level",
-        constants$3.const$4
-    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_log_set_level",
-        constants$98.const$2
+        "av_log_format_line",
+        constants$145.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(av_log_set_callback$callback.class, "apply", constants$145.const$0);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$145.const$0
+        "av_log_format_line2",
+        constants$145.const$4
     );
 }
 

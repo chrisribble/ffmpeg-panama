@@ -11,6 +11,14 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
 
     /**
      * {@snippet :
+     * #define INTPTR_MIN -9223372036854775808
+     * }
+     */
+    public static long INTPTR_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
      * #define INTPTR_MAX 9223372036854775807
      * }
      */
@@ -183,7 +191,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment __PRI64_PREFIX() {
-        return constants$360.const$0;
+        return constants$358.const$3;
     }
     /**
      * {@snippet :
@@ -191,7 +199,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment __PRIPTR_PREFIX() {
-        return constants$360.const$0;
+        return constants$358.const$3;
     }
     /**
      * {@snippet :
@@ -199,7 +207,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRId8() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -207,7 +215,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRId16() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -215,7 +223,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRId32() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -223,7 +231,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRId64() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -231,7 +239,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdLEAST8() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -239,7 +247,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdLEAST16() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -247,7 +255,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdLEAST32() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -255,7 +263,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdLEAST64() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -263,7 +271,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdFAST8() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -271,7 +279,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdFAST16() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -279,7 +287,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdFAST32() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -287,7 +295,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdFAST64() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -295,7 +303,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIi8() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -303,7 +311,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIi16() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -311,7 +319,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIi32() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -319,7 +327,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIi64() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -327,7 +335,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiLEAST8() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -335,7 +343,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiLEAST16() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -343,7 +351,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiLEAST32() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -351,7 +359,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiLEAST64() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -359,7 +367,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiFAST8() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -367,7 +375,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiFAST16() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -375,7 +383,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiFAST32() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -383,7 +391,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiFAST64() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -391,7 +399,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIo8() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -399,7 +407,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIo16() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -407,7 +415,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIo32() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -415,7 +423,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIo64() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -423,7 +431,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoLEAST8() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -431,7 +439,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoLEAST16() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -439,7 +447,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoLEAST32() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -447,7 +455,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoLEAST64() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -455,7 +463,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoFAST8() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -463,7 +471,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoFAST16() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -471,7 +479,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoFAST32() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -479,7 +487,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoFAST64() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -487,7 +495,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIu8() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -495,7 +503,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIu16() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -503,7 +511,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIu32() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -511,7 +519,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIu64() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -519,7 +527,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuLEAST8() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -527,7 +535,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuLEAST16() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -535,7 +543,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuLEAST32() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -543,7 +551,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuLEAST64() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -551,7 +559,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuFAST8() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -559,7 +567,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuFAST16() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -567,7 +575,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuFAST32() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -575,7 +583,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuFAST64() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -583,7 +591,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIx8() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -591,7 +599,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIx16() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -599,7 +607,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIx32() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -607,7 +615,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIx64() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -615,7 +623,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxLEAST8() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -623,7 +631,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxLEAST16() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -631,7 +639,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxLEAST32() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -639,7 +647,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxLEAST64() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -647,7 +655,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxFAST8() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -655,7 +663,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxFAST16() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -663,7 +671,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxFAST32() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -671,7 +679,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxFAST64() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -679,7 +687,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIX8() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -687,7 +695,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIX16() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -695,7 +703,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIX32() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -703,7 +711,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIX64() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -711,7 +719,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXLEAST8() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -719,7 +727,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXLEAST16() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -727,7 +735,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXLEAST32() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -735,7 +743,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXLEAST64() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -743,7 +751,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXFAST8() {
-        return constants$361.const$5;
+        return constants$360.const$2;
     }
     /**
      * {@snippet :
@@ -751,7 +759,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXFAST16() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -759,7 +767,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXFAST32() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -767,7 +775,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXFAST64() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -775,7 +783,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdMAX() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -783,7 +791,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiMAX() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -791,7 +799,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoMAX() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -799,7 +807,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuMAX() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -807,7 +815,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxMAX() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -815,7 +823,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXMAX() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -823,7 +831,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIdPTR() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -831,7 +839,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIiPTR() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -839,7 +847,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIoPTR() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -847,7 +855,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIuPTR() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -855,7 +863,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIxPTR() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -863,7 +871,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment PRIXPTR() {
-        return constants$362.const$0;
+        return constants$360.const$3;
     }
     /**
      * {@snippet :
@@ -871,7 +879,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNd8() {
-        return constants$362.const$1;
+        return constants$360.const$4;
     }
     /**
      * {@snippet :
@@ -879,7 +887,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNd16() {
-        return constants$362.const$2;
+        return constants$360.const$5;
     }
     /**
      * {@snippet :
@@ -887,7 +895,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNd32() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -895,7 +903,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNd64() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -903,7 +911,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdLEAST8() {
-        return constants$362.const$1;
+        return constants$360.const$4;
     }
     /**
      * {@snippet :
@@ -911,7 +919,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdLEAST16() {
-        return constants$362.const$2;
+        return constants$360.const$5;
     }
     /**
      * {@snippet :
@@ -919,7 +927,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdLEAST32() {
-        return constants$360.const$1;
+        return constants$358.const$4;
     }
     /**
      * {@snippet :
@@ -927,7 +935,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdLEAST64() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -935,7 +943,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdFAST8() {
-        return constants$362.const$1;
+        return constants$360.const$4;
     }
     /**
      * {@snippet :
@@ -943,7 +951,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdFAST16() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -951,7 +959,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdFAST32() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -959,7 +967,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdFAST64() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -967,7 +975,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNi8() {
-        return constants$362.const$3;
+        return constants$361.const$0;
     }
     /**
      * {@snippet :
@@ -975,7 +983,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNi16() {
-        return constants$362.const$4;
+        return constants$361.const$1;
     }
     /**
      * {@snippet :
@@ -983,7 +991,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNi32() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -991,7 +999,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNi64() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -999,7 +1007,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiLEAST8() {
-        return constants$362.const$3;
+        return constants$361.const$0;
     }
     /**
      * {@snippet :
@@ -1007,7 +1015,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiLEAST16() {
-        return constants$362.const$4;
+        return constants$361.const$1;
     }
     /**
      * {@snippet :
@@ -1015,7 +1023,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiLEAST32() {
-        return constants$360.const$3;
+        return constants$359.const$0;
     }
     /**
      * {@snippet :
@@ -1023,7 +1031,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiLEAST64() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -1031,7 +1039,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiFAST8() {
-        return constants$362.const$3;
+        return constants$361.const$0;
     }
     /**
      * {@snippet :
@@ -1039,7 +1047,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiFAST16() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -1047,7 +1055,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiFAST32() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -1055,7 +1063,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiFAST64() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -1063,7 +1071,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNu8() {
-        return constants$362.const$5;
+        return constants$361.const$2;
     }
     /**
      * {@snippet :
@@ -1071,7 +1079,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNu16() {
-        return constants$363.const$0;
+        return constants$361.const$3;
     }
     /**
      * {@snippet :
@@ -1079,7 +1087,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNu32() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -1087,7 +1095,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNu64() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1095,7 +1103,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuLEAST8() {
-        return constants$362.const$5;
+        return constants$361.const$2;
     }
     /**
      * {@snippet :
@@ -1103,7 +1111,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuLEAST16() {
-        return constants$363.const$0;
+        return constants$361.const$3;
     }
     /**
      * {@snippet :
@@ -1111,7 +1119,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuLEAST32() {
-        return constants$361.const$1;
+        return constants$359.const$4;
     }
     /**
      * {@snippet :
@@ -1119,7 +1127,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuLEAST64() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1127,7 +1135,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuFAST8() {
-        return constants$362.const$5;
+        return constants$361.const$2;
     }
     /**
      * {@snippet :
@@ -1135,7 +1143,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuFAST16() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1143,7 +1151,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuFAST32() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1151,7 +1159,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuFAST64() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1159,7 +1167,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNo8() {
-        return constants$363.const$1;
+        return constants$361.const$4;
     }
     /**
      * {@snippet :
@@ -1167,7 +1175,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNo16() {
-        return constants$363.const$2;
+        return constants$361.const$5;
     }
     /**
      * {@snippet :
@@ -1175,7 +1183,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNo32() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -1183,7 +1191,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNo64() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1191,7 +1199,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoLEAST8() {
-        return constants$363.const$1;
+        return constants$361.const$4;
     }
     /**
      * {@snippet :
@@ -1199,7 +1207,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoLEAST16() {
-        return constants$363.const$2;
+        return constants$361.const$5;
     }
     /**
      * {@snippet :
@@ -1207,7 +1215,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoLEAST32() {
-        return constants$360.const$5;
+        return constants$359.const$2;
     }
     /**
      * {@snippet :
@@ -1215,7 +1223,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoLEAST64() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1223,7 +1231,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoFAST8() {
-        return constants$363.const$1;
+        return constants$361.const$4;
     }
     /**
      * {@snippet :
@@ -1231,7 +1239,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoFAST16() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1239,7 +1247,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoFAST32() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1247,7 +1255,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoFAST64() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1255,7 +1263,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNx8() {
-        return constants$363.const$3;
+        return constants$362.const$0;
     }
     /**
      * {@snippet :
@@ -1263,7 +1271,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNx16() {
-        return constants$363.const$4;
+        return constants$362.const$1;
     }
     /**
      * {@snippet :
@@ -1271,7 +1279,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNx32() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -1279,7 +1287,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNx64() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1287,7 +1295,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxLEAST8() {
-        return constants$363.const$3;
+        return constants$362.const$0;
     }
     /**
      * {@snippet :
@@ -1295,7 +1303,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxLEAST16() {
-        return constants$363.const$4;
+        return constants$362.const$1;
     }
     /**
      * {@snippet :
@@ -1303,7 +1311,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxLEAST32() {
-        return constants$361.const$3;
+        return constants$360.const$0;
     }
     /**
      * {@snippet :
@@ -1311,7 +1319,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxLEAST64() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1319,7 +1327,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxFAST8() {
-        return constants$363.const$3;
+        return constants$362.const$0;
     }
     /**
      * {@snippet :
@@ -1327,7 +1335,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxFAST16() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1335,7 +1343,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxFAST32() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1343,7 +1351,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxFAST64() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1351,7 +1359,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdMAX() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -1359,7 +1367,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiMAX() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -1367,7 +1375,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoMAX() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1375,7 +1383,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuMAX() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1383,7 +1391,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxMAX() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1391,7 +1399,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNdPTR() {
-        return constants$360.const$2;
+        return constants$358.const$5;
     }
     /**
      * {@snippet :
@@ -1399,7 +1407,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNiPTR() {
-        return constants$360.const$4;
+        return constants$359.const$1;
     }
     /**
      * {@snippet :
@@ -1407,7 +1415,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNoPTR() {
-        return constants$361.const$0;
+        return constants$359.const$3;
     }
     /**
      * {@snippet :
@@ -1415,7 +1423,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNuPTR() {
-        return constants$361.const$2;
+        return constants$359.const$5;
     }
     /**
      * {@snippet :
@@ -1423,7 +1431,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment SCNxPTR() {
-        return constants$361.const$4;
+        return constants$360.const$1;
     }
     /**
      * {@snippet :
@@ -1847,7 +1855,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment NULL() {
-        return constants$363.const$5;
+        return constants$362.const$2;
     }
     /**
      * {@snippet :
@@ -1863,7 +1871,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment P_tmpdir() {
-        return constants$364.const$0;
+        return constants$362.const$3;
     }
     /**
      * {@snippet :
@@ -1983,7 +1991,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment LIBAVUTIL_IDENT() {
-        return constants$364.const$1;
+        return constants$362.const$4;
     }
     /**
      * {@snippet :
@@ -3791,7 +3799,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment LIBAVCODEC_IDENT() {
-        return constants$364.const$2;
+        return constants$362.const$5;
     }
     /**
      * {@snippet :
@@ -4359,7 +4367,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment LIBAVFORMAT_IDENT() {
-        return constants$364.const$3;
+        return constants$363.const$0;
     }
     /**
      * {@snippet :
@@ -4639,7 +4647,7 @@ public class FFmpeg5_3 extends FFmpeg5_2 {
      * }
      */
     public static MemorySegment LIBSWSCALE_IDENT() {
-        return constants$364.const$4;
+        return constants$363.const$1;
     }
     /**
      * {@snippet :

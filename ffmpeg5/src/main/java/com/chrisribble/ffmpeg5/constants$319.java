@@ -11,12 +11,12 @@ final class constants$319 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$319() {}
-    static final VarHandle const$0 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_ts_probe"));
-    static final VarHandle const$1 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("avoid_negative_ts"));
-    static final VarHandle const$2 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("ts_id"));
-    static final VarHandle const$3 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("audio_preload"));
-    static final VarHandle const$4 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_chunk_duration"));
-    static final VarHandle const$5 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_chunk_size"));
+    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("use_wallclock_as_timestamps"));
+    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("avio_flags"));
+    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("duration_estimation_method"));
+    static final VarHandle const$3 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("skip_initial_bytes"));
+    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("correct_ts_overflow"));
+    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("seek2any"));
 }
 
 

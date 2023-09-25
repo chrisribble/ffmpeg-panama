@@ -12,28 +12,34 @@ final class constants$130 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$130() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_reallocp",
-        constants$116.const$1
+        "av_strdup",
+        constants$67.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_realloc_f",
-        constants$107.const$1
+        "av_strndup",
+        constants$105.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_realloc_array",
-        constants$107.const$1
+        "av_memdup",
+        constants$105.const$3
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_reallocp_array",
-        constants$107.const$5
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_fast_realloc",
-        constants$118.const$0
+        "av_memcpy_backptr",
+        constants$130.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_fast_malloc",
-        constants$70.const$0
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_dynarray_add",
+        constants$130.const$5
     );
 }
 

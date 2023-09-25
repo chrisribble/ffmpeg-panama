@@ -14,15 +14,16 @@ final class constants$83 {
     static final StructLayout const$0 = MemoryLayout.structLayout(
         JAVA_INT.withName("quot"),
         JAVA_INT.withName("rem")
-    ).withName("div_t");
+    ).withName("");
     static final VarHandle const$1 = constants$83.const$0.varHandle(MemoryLayout.PathElement.groupElement("quot"));
     static final VarHandle const$2 = constants$83.const$0.varHandle(MemoryLayout.PathElement.groupElement("rem"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ).withName("ldiv_t");
-    static final VarHandle const$4 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("quot"));
-    static final VarHandle const$5 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("rem"));
+    static final VarHandle const$3 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("quot"));
+    static final VarHandle const$4 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("rem"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "__ctype_get_mb_cur_max",
+        constants$83.const$5
+    );
 }
 
 

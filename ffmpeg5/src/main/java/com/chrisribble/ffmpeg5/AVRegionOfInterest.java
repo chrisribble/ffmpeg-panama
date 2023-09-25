@@ -10,49 +10,49 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct AVRegionOfInterest {
- *     unsigned int self_size;
+ *     uint32_t self_size;
  *     int top;
  *     int bottom;
  *     int left;
  *     int right;
- *     struct AVRational qoffset;
+ *     AVRational qoffset;
  * };
  * }
  */
 public class AVRegionOfInterest {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$164.const$4;
+        return constants$163.const$4;
     }
     public static VarHandle self_size$VH() {
-        return constants$164.const$5;
+        return constants$163.const$5;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * unsigned int self_size;
+     * uint32_t self_size;
      * }
      */
     public static int self_size$get(MemorySegment seg) {
-        return (int)constants$164.const$5.get(seg);
+        return (int)constants$163.const$5.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * unsigned int self_size;
+     * uint32_t self_size;
      * }
      */
     public static void self_size$set(MemorySegment seg, int x) {
-        constants$164.const$5.set(seg, x);
+        constants$163.const$5.set(seg, x);
     }
     public static int self_size$get(MemorySegment seg, long index) {
-        return (int)constants$164.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$163.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void self_size$set(MemorySegment seg, long index, int x) {
-        constants$164.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$163.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle top$VH() {
-        return constants$165.const$0;
+        return constants$164.const$0;
     }
     /**
      * Getter for field:
@@ -61,7 +61,7 @@ public class AVRegionOfInterest {
      * }
      */
     public static int top$get(MemorySegment seg) {
-        return (int)constants$165.const$0.get(seg);
+        return (int)constants$164.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -70,16 +70,16 @@ public class AVRegionOfInterest {
      * }
      */
     public static void top$set(MemorySegment seg, int x) {
-        constants$165.const$0.set(seg, x);
+        constants$164.const$0.set(seg, x);
     }
     public static int top$get(MemorySegment seg, long index) {
-        return (int)constants$165.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$164.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void top$set(MemorySegment seg, long index, int x) {
-        constants$165.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$164.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle bottom$VH() {
-        return constants$165.const$1;
+        return constants$164.const$1;
     }
     /**
      * Getter for field:
@@ -88,7 +88,7 @@ public class AVRegionOfInterest {
      * }
      */
     public static int bottom$get(MemorySegment seg) {
-        return (int)constants$165.const$1.get(seg);
+        return (int)constants$164.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -97,16 +97,16 @@ public class AVRegionOfInterest {
      * }
      */
     public static void bottom$set(MemorySegment seg, int x) {
-        constants$165.const$1.set(seg, x);
+        constants$164.const$1.set(seg, x);
     }
     public static int bottom$get(MemorySegment seg, long index) {
-        return (int)constants$165.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$164.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void bottom$set(MemorySegment seg, long index, int x) {
-        constants$165.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$164.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle left$VH() {
-        return constants$165.const$2;
+        return constants$164.const$2;
     }
     /**
      * Getter for field:
@@ -115,7 +115,7 @@ public class AVRegionOfInterest {
      * }
      */
     public static int left$get(MemorySegment seg) {
-        return (int)constants$165.const$2.get(seg);
+        return (int)constants$164.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -124,16 +124,16 @@ public class AVRegionOfInterest {
      * }
      */
     public static void left$set(MemorySegment seg, int x) {
-        constants$165.const$2.set(seg, x);
+        constants$164.const$2.set(seg, x);
     }
     public static int left$get(MemorySegment seg, long index) {
-        return (int)constants$165.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$164.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void left$set(MemorySegment seg, long index, int x) {
-        constants$165.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$164.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle right$VH() {
-        return constants$165.const$3;
+        return constants$164.const$3;
     }
     /**
      * Getter for field:
@@ -142,7 +142,7 @@ public class AVRegionOfInterest {
      * }
      */
     public static int right$get(MemorySegment seg) {
-        return (int)constants$165.const$3.get(seg);
+        return (int)constants$164.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -151,13 +151,13 @@ public class AVRegionOfInterest {
      * }
      */
     public static void right$set(MemorySegment seg, int x) {
-        constants$165.const$3.set(seg, x);
+        constants$164.const$3.set(seg, x);
     }
     public static int right$get(MemorySegment seg, long index) {
-        return (int)constants$165.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$164.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void right$set(MemorySegment seg, long index, int x) {
-        constants$165.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$164.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment qoffset$slice(MemorySegment seg) {
         return seg.asSlice(20, 8);
@@ -167,7 +167,7 @@ public class AVRegionOfInterest {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

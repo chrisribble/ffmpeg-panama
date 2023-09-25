@@ -11,34 +11,17 @@ final class constants$352 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$352() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_image_check_sar",
-        constants$352.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_image_fill_black",
-        constants$2.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "swscale_version",
-        constants$3.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "swscale_configuration",
-        constants$4.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "swscale_license",
-        constants$4.const$0
-    );
+    static final VarHandle const$0 = constants$351.const$5.varHandle(MemoryLayout.PathElement.groupElement("coeff"));
+    static final VarHandle const$1 = constants$351.const$5.varHandle(MemoryLayout.PathElement.groupElement("length"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("lumH"),
+        RuntimeHelper.POINTER.withName("lumV"),
+        RuntimeHelper.POINTER.withName("chrH"),
+        RuntimeHelper.POINTER.withName("chrV")
+    ).withName("SwsFilter");
+    static final VarHandle const$3 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("lumH"));
+    static final VarHandle const$4 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("lumV"));
+    static final VarHandle const$5 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("chrH"));
 }
 
 

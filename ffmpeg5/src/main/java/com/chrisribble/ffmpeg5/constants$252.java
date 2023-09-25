@@ -11,12 +11,12 @@ final class constants$252 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$252() {}
-    static final VarHandle const$0 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("dts_ref_dts_delta"));
-    static final VarHandle const$1 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts_dts_delta"));
-    static final VarHandle const$2 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("pos"));
-    static final VarHandle const$3 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("last_pos"));
-    static final VarHandle const$4 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final VarHandle const$5 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$0 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("picture_structure"));
+    static final VarHandle const$1 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("output_picture_number"));
+    static final VarHandle const$2 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$3 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("height"));
+    static final VarHandle const$4 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("coded_width"));
+    static final VarHandle const$5 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("coded_height"));
 }
 
 

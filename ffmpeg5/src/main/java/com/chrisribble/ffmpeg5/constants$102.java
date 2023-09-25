@@ -11,32 +11,23 @@ final class constants$102 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$102() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "erand48",
-        constants$21.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "lrand48",
-        constants$84.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nrand48",
-        constants$79.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "mrand48",
-        constants$84.const$3
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(3, JAVA_SHORT).withName("__x"),
+        MemoryLayout.sequenceLayout(3, JAVA_SHORT).withName("__old_x"),
+        JAVA_SHORT.withName("__c"),
+        JAVA_SHORT.withName("__init"),
+        JAVA_LONG.withName("__a")
+    ).withName("drand48_data");
+    static final VarHandle const$1 = constants$102.const$0.varHandle(MemoryLayout.PathElement.groupElement("__c"));
+    static final VarHandle const$2 = constants$102.const$0.varHandle(MemoryLayout.PathElement.groupElement("__init"));
+    static final VarHandle const$3 = constants$102.const$0.varHandle(MemoryLayout.PathElement.groupElement("__a"));
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "jrand48",
-        constants$79.const$0
+        "drand48_r",
+        constants$66.const$1
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        JAVA_LONG
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "srand48",
-        constants$102.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "erand48_r",
+        constants$71.const$1
     );
 }
 

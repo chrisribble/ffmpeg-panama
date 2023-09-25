@@ -11,21 +11,106 @@ final class constants$311 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$311() {}
-    static final VarHandle const$0 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_reference"));
-    static final VarHandle const$1 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_behavior"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("id"),
+    static final VarHandle const$0 = constants$310.const$2.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(av_format_control_message.class, "apply", constants$204.const$5);
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVOpenCallback.class, "apply", constants$311.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$311.const$2
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("av_class"),
+        RuntimeHelper.POINTER.withName("iformat"),
+        RuntimeHelper.POINTER.withName("oformat"),
+        RuntimeHelper.POINTER.withName("priv_data"),
+        RuntimeHelper.POINTER.withName("pb"),
+        JAVA_INT.withName("ctx_flags"),
+        JAVA_INT.withName("nb_streams"),
+        RuntimeHelper.POINTER.withName("streams"),
+        RuntimeHelper.POINTER.withName("url"),
+        JAVA_LONG.withName("start_time"),
+        JAVA_LONG.withName("duration"),
+        JAVA_LONG.withName("bit_rate"),
+        JAVA_INT.withName("packet_size"),
+        JAVA_INT.withName("max_delay"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("probesize"),
+        JAVA_LONG.withName("max_analyze_duration"),
+        RuntimeHelper.POINTER.withName("key"),
+        JAVA_INT.withName("keylen"),
+        JAVA_INT.withName("nb_programs"),
+        RuntimeHelper.POINTER.withName("programs"),
+        JAVA_INT.withName("video_codec_id"),
+        JAVA_INT.withName("audio_codec_id"),
+        JAVA_INT.withName("subtitle_codec_id"),
+        JAVA_INT.withName("max_index_size"),
+        JAVA_INT.withName("max_picture_buffer"),
+        JAVA_INT.withName("nb_chapters"),
+        RuntimeHelper.POINTER.withName("chapters"),
+        RuntimeHelper.POINTER.withName("metadata"),
+        JAVA_LONG.withName("start_time_realtime"),
+        JAVA_INT.withName("fps_probe_size"),
+        JAVA_INT.withName("error_recognition"),
         MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("time_base"),
-        JAVA_LONG.withName("start"),
-        JAVA_LONG.withName("end"),
-        RuntimeHelper.POINTER.withName("metadata")
-    ).withName("AVChapter");
-    static final VarHandle const$3 = constants$311.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$4 = constants$311.const$2.varHandle(MemoryLayout.PathElement.groupElement("start"));
-    static final VarHandle const$5 = constants$311.const$2.varHandle(MemoryLayout.PathElement.groupElement("end"));
+            RuntimeHelper.POINTER.withName("callback"),
+            RuntimeHelper.POINTER.withName("opaque")
+        ).withName("interrupt_callback"),
+        JAVA_INT.withName("debug"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("max_interleave_delta"),
+        JAVA_INT.withName("strict_std_compliance"),
+        JAVA_INT.withName("event_flags"),
+        JAVA_INT.withName("max_ts_probe"),
+        JAVA_INT.withName("avoid_negative_ts"),
+        JAVA_INT.withName("ts_id"),
+        JAVA_INT.withName("audio_preload"),
+        JAVA_INT.withName("max_chunk_duration"),
+        JAVA_INT.withName("max_chunk_size"),
+        JAVA_INT.withName("use_wallclock_as_timestamps"),
+        JAVA_INT.withName("avio_flags"),
+        JAVA_INT.withName("duration_estimation_method"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("skip_initial_bytes"),
+        JAVA_INT.withName("correct_ts_overflow"),
+        JAVA_INT.withName("seek2any"),
+        JAVA_INT.withName("flush_packets"),
+        JAVA_INT.withName("probe_score"),
+        JAVA_INT.withName("format_probesize"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("codec_whitelist"),
+        RuntimeHelper.POINTER.withName("format_whitelist"),
+        JAVA_INT.withName("io_repositioned"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("video_codec"),
+        RuntimeHelper.POINTER.withName("audio_codec"),
+        RuntimeHelper.POINTER.withName("subtitle_codec"),
+        RuntimeHelper.POINTER.withName("data_codec"),
+        JAVA_INT.withName("metadata_header_padding"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("opaque"),
+        RuntimeHelper.POINTER.withName("control_message_cb"),
+        JAVA_LONG.withName("output_ts_offset"),
+        RuntimeHelper.POINTER.withName("dump_separator"),
+        JAVA_INT.withName("data_codec_id"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("protocol_whitelist"),
+        RuntimeHelper.POINTER.withName("io_open"),
+        RuntimeHelper.POINTER.withName("io_close"),
+        RuntimeHelper.POINTER.withName("protocol_blacklist"),
+        JAVA_INT.withName("max_streams"),
+        JAVA_INT.withName("skip_estimate_duration_from_pts"),
+        JAVA_INT.withName("max_probe_packets"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("io_close2")
+    ).withName("AVFormatContext");
 }
 
 

@@ -11,14 +11,12 @@ final class constants$223 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$223() {}
-    static final VarHandle const$0 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
-    static final VarHandle const$1 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("request_channel_layout"));
-    static final VarHandle const$2 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("audio_service_type"));
-    static final VarHandle const$3 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("request_sample_fmt"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVCodecContext.get_buffer2.class, "apply", constants$110.const$5);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$110.const$5
-    );
+    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("get_buffer2"));
+    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("qcompress"));
+    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("qblur"));
+    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("qmin"));
+    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("qmax"));
+    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_qdiff"));
 }
 
 

@@ -11,28 +11,24 @@ final class constants$280 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$280() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_find_protocol_name",
-        constants$67.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avio_check",
-        constants$82.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_open_dir",
-        constants$71.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avio_read_dir",
-        constants$66.const$1
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(avio_alloc_context$read_packet.class, "apply", constants$109.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(avio_alloc_context$write_packet.class, "apply", constants$109.const$5);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(avio_alloc_context$seek.class, "apply", constants$273.const$0);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_close_dir",
-        constants$0.const$3
+        "avio_alloc_context",
+        constants$280.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avio_free_directory_entry",
+        "avio_context_free",
         constants$70.const$2
     );
 }

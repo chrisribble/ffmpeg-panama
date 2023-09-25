@@ -12,28 +12,28 @@ final class constants$344 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$344() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_count_planes",
-        constants$1.const$0
+        "av_color_space_from_name",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_color_range_name",
+        "av_chroma_location_name",
         constants$0.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_color_range_from_name",
+        "av_chroma_location_from_name",
         constants$0.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_color_primaries_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_color_primaries_from_name",
+        "av_get_pix_fmt",
         constants$0.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_color_transfer_name",
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_get_pix_fmt_name",
         constants$0.const$1
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_get_pix_fmt_string",
+        constants$1.const$3
     );
 }
 

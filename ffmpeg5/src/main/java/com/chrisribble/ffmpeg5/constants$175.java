@@ -12,29 +12,25 @@ final class constants$175 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$175() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_frame_copy_props",
-        constants$66.const$1
+        "av_frame_apply_cropping",
+        constants$82.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_frame_get_plane_buffer",
-        constants$122.const$2
+        "av_frame_side_data_name",
+        constants$0.const$1
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_frame_new_side_data",
-        constants$118.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_frame_new_side_data_from_buf",
-        constants$76.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_frame_get_side_data",
-        constants$122.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_frame_remove_side_data",
-        constants$160.const$2
-    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("av_class"),
+        RuntimeHelper.POINTER.withName("internal"),
+        JAVA_INT.withName("type"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("hwctx"),
+        RuntimeHelper.POINTER.withName("free"),
+        RuntimeHelper.POINTER.withName("user_opaque")
+    ).withName("AVHWDeviceContext");
+    static final VarHandle const$3 = constants$175.const$2.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
+    static final VarHandle const$4 = constants$175.const$2.varHandle(MemoryLayout.PathElement.groupElement("internal"));
+    static final VarHandle const$5 = constants$175.const$2.varHandle(MemoryLayout.PathElement.groupElement("type"));
 }
 
 

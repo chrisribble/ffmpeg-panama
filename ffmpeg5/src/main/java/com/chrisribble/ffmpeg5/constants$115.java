@@ -11,40 +11,30 @@ final class constants$115 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$115() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "wctomb",
+        constants$82.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "ecvt",
-        constants$115.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "fcvt",
-        constants$115.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "gcvt",
-        constants$115.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "ecvt_r",
-        constants$115.const$5
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "mbstowcs",
+        constants$115.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "wcstombs",
+        constants$115.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "rpmatch",
+        constants$0.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getsubopt",
+        constants$71.const$1
     );
 }
 

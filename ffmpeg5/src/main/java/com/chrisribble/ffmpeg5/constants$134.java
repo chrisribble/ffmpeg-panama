@@ -11,27 +11,26 @@ final class constants$134 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$134() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational");
-    static final VarHandle const$1 = constants$134.const$0.varHandle(MemoryLayout.PathElement.groupElement("num"));
-    static final VarHandle const$2 = constants$134.const$0.varHandle(MemoryLayout.PathElement.groupElement("den"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_sub_q",
+        constants$133.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_reduce",
-        constants$134.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(MemoryLayout.structLayout(
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
         JAVA_INT.withName("num"),
         JAVA_INT.withName("den")
     ).withName("AVRational"),
+        JAVA_DOUBLE,
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_d2q",
+        constants$134.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
@@ -41,8 +40,19 @@ final class constants$134 {
             JAVA_INT.withName("den")
         ).withName("AVRational")
     );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_nearer_q",
+        constants$134.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        RuntimeHelper.POINTER
+    );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_mul_q",
+        "av_find_nearest_q_idx",
         constants$134.const$5
     );
 }

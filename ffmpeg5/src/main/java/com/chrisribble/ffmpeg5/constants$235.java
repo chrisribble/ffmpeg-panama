@@ -11,12 +11,12 @@ final class constants$235 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$235() {}
-    static final VarHandle const$0 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("nb_coded_side_data"));
-    static final VarHandle const$1 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("hw_frames_ctx"));
-    static final VarHandle const$2 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("sub_text_format"));
-    static final VarHandle const$3 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
-    static final VarHandle const$4 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_pixels"));
-    static final VarHandle const$5 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("hw_device_ctx"));
+    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_flags"));
+    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("apply_cropping"));
+    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("extra_hw_frames"));
+    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("discard_damaged_percentage"));
+    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_samples"));
+    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("export_side_data"));
 }
 
 

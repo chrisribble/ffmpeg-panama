@@ -11,20 +11,35 @@ final class constants$157 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$157() {}
-    static final UnionLayout const$0 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("mask"),
-        RuntimeHelper.POINTER.withName("map")
-    ).withName("");
-    static final VarHandle const$1 = constants$157.const$0.varHandle(MemoryLayout.PathElement.groupElement("mask"));
-    static final VarHandle const$2 = constants$157.const$0.varHandle(MemoryLayout.PathElement.groupElement("map"));
-    static final VarHandle const$3 = constants$156.const$3.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_get_channel_layout",
-        constants$79.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_get_extended_channel_layout",
-        constants$71.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_get_channel_layout_string",
+        constants$157.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_bprint_channel_layout",
+        constants$157.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_get_channel_layout_nb_channels",
+        constants$124.const$4
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_get_default_channel_layout",
+        constants$157.const$5
     );
 }
 

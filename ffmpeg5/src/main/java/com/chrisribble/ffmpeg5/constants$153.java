@@ -11,24 +11,34 @@ final class constants$153 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$153() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_buffer_pool_uninit",
-        constants$70.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_buffer_pool_get",
-        constants$67.const$1
+        "av_dict_get",
+        constants$153.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_buffer_pool_buffer_get_opaque",
-        constants$67.const$1
+        "av_dict_count",
+        constants$0.const$3
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("key"),
-        RuntimeHelper.POINTER.withName("value")
-    ).withName("AVDictionaryEntry");
-    static final VarHandle const$4 = constants$153.const$3.varHandle(MemoryLayout.PathElement.groupElement("key"));
-    static final VarHandle const$5 = constants$153.const$3.varHandle(MemoryLayout.PathElement.groupElement("value"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_dict_set",
+        constants$141.const$3
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_dict_set_int",
+        constants$153.const$4
+    );
 }
 
 

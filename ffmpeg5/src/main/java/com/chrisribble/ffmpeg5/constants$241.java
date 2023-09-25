@@ -11,27 +11,12 @@ final class constants$241 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$241() {}
-    static final VarHandle const$0 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final VarHandle const$1 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("caps_internal"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.frame_params.class, "apply", constants$66.const$1);
-    static final VarHandle const$3 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("frame_params"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("x"),
-        JAVA_INT.withName("y"),
-        JAVA_INT.withName("w"),
-        JAVA_INT.withName("h"),
-        JAVA_INT.withName("nb_colors"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(4, RuntimeHelper.POINTER).withName("data"),
-        MemoryLayout.sequenceLayout(4, JAVA_INT).withName("linesize"),
-        JAVA_INT.withName("type"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("text"),
-        RuntimeHelper.POINTER.withName("ass"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVSubtitleRect");
-    static final VarHandle const$5 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("x"));
+    static final VarHandle const$0 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("y"));
+    static final VarHandle const$1 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("w"));
+    static final VarHandle const$2 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("h"));
+    static final VarHandle const$3 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_colors"));
+    static final VarHandle const$4 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$5 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("text"));
 }
 
 

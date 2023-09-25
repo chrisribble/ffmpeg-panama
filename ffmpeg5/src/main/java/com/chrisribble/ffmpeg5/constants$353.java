@@ -11,24 +11,27 @@ final class constants$353 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$353() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_getCoefficients",
-        constants$0.const$1
+    static final VarHandle const$0 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("chrV"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "sws_isSupportedInput",
+        constants$1.const$0
     );
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("coeff"),
-        JAVA_INT.withName("length"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("SwsVector");
-    static final VarHandle const$2 = constants$353.const$1.varHandle(MemoryLayout.PathElement.groupElement("coeff"));
-    static final VarHandle const$3 = constants$353.const$1.varHandle(MemoryLayout.PathElement.groupElement("length"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("lumH"),
-        RuntimeHelper.POINTER.withName("lumV"),
-        RuntimeHelper.POINTER.withName("chrH"),
-        RuntimeHelper.POINTER.withName("chrV")
-    ).withName("SwsFilter");
-    static final VarHandle const$5 = constants$353.const$4.varHandle(MemoryLayout.PathElement.groupElement("lumH"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sws_isSupportedOutput",
+        constants$1.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_isSupportedEndiannessConversion",
+        constants$1.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "sws_alloc_context",
+        constants$4.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_init_context",
+        constants$71.const$1
+    );
 }
 
 

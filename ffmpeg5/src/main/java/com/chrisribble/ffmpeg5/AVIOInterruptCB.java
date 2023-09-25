@@ -18,7 +18,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVIOInterruptCB {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$269.const$2;
+        return constants$268.const$2;
     }
     /**
      * {@snippet :
@@ -29,13 +29,13 @@ public class AVIOInterruptCB {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(callback fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$269.const$3, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$268.const$3, fi, constants$0.const$3, scope);
         }
         static callback ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$142.const$4.invokeExact(symbol, __x0);
+                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -44,7 +44,7 @@ public class AVIOInterruptCB {
     }
 
     public static VarHandle callback$VH() {
-        return constants$269.const$4;
+        return constants$268.const$4;
     }
     /**
      * Getter for field:
@@ -53,7 +53,7 @@ public class AVIOInterruptCB {
      * }
      */
     public static MemorySegment callback$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$269.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$268.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -62,19 +62,19 @@ public class AVIOInterruptCB {
      * }
      */
     public static void callback$set(MemorySegment seg, MemorySegment x) {
-        constants$269.const$4.set(seg, x);
+        constants$268.const$4.set(seg, x);
     }
     public static MemorySegment callback$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$269.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$268.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void callback$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$269.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$268.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static callback callback(MemorySegment segment, Arena scope) {
         return callback.ofAddress(callback$get(segment), scope);
     }
     public static VarHandle opaque$VH() {
-        return constants$269.const$5;
+        return constants$268.const$5;
     }
     /**
      * Getter for field:
@@ -83,7 +83,7 @@ public class AVIOInterruptCB {
      * }
      */
     public static MemorySegment opaque$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$269.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$268.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -92,20 +92,20 @@ public class AVIOInterruptCB {
      * }
      */
     public static void opaque$set(MemorySegment seg, MemorySegment x) {
-        constants$269.const$5.set(seg, x);
+        constants$268.const$5.set(seg, x);
     }
     public static MemorySegment opaque$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$269.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$268.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void opaque$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$269.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$268.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

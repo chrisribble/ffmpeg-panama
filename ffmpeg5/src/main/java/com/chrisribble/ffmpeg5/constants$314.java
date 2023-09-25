@@ -11,12 +11,12 @@ final class constants$314 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$314() {}
-    static final VarHandle const$0 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("nb_streams"));
-    static final VarHandle const$1 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("streams"));
-    static final VarHandle const$2 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("url"));
-    static final VarHandle const$3 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
-    static final VarHandle const$4 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final VarHandle const$5 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
+    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("packet_size"));
+    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_delay"));
+    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$3 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("probesize"));
+    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_analyze_duration"));
+    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("key"));
 }
 
 

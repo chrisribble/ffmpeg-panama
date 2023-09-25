@@ -11,38 +11,38 @@ final class constants$114 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$114() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("quot"),
-        JAVA_INT.withName("rem")
-    ).withName("div_t"),
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_DOUBLE,
         JAVA_INT,
-        JAVA_INT
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "div",
+        "ecvt_r",
         constants$114.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ).withName("ldiv_t"),
-        JAVA_LONG,
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fcvt_r",
+        constants$114.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "ldiv",
-        constants$114.const$2
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "mblen",
+        constants$114.const$3
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ).withName("lldiv_t"),
-        JAVA_LONG,
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "lldiv",
-        constants$114.const$4
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "mbtowc",
+        constants$114.const$5
     );
 }
 

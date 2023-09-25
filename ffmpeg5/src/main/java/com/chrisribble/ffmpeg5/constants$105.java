@@ -11,33 +11,29 @@ final class constants$105 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$105() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "malloc",
+        constants$86.const$2
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "srand48_r",
-        constants$105.const$0
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "seed48_r",
-        constants$66.const$1
+        "calloc",
+        constants$105.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "lcong48_r",
-        constants$66.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "arc4random",
-        constants$3.const$4
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "arc4random_buf",
-        constants$105.const$5
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "realloc",
+        constants$105.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "free",
+        constants$70.const$2
     );
 }
 

@@ -9,7 +9,7 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * struct __sigset_t {
+ * struct {
  *     unsigned long __val[16];
  * };
  * }
@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class __sigset_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$87.const$3;
+        return constants$86.const$5;
     }
     public static MemorySegment __val$slice(MemorySegment seg) {
         return seg.asSlice(0, 128);
@@ -27,7 +27,7 @@ public class __sigset_t {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

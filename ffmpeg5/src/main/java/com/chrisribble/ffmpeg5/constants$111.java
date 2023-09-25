@@ -12,28 +12,27 @@ final class constants$111 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$111() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "unsetenv",
+        "system",
         constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "clearenv",
-        constants$3.const$4
+        "realpath",
+        constants$67.const$4
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "mktemp",
-        constants$67.const$1
-    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(__compar_fn_t.class, "apply", constants$66.const$1);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "mkstemp",
-        constants$0.const$3
+        constants$66.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "mkstemps",
-        constants$82.const$5
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "mkdtemp",
-        constants$67.const$1
+        "bsearch",
+        constants$111.const$4
     );
 }
 

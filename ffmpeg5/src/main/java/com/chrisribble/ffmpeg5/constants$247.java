@@ -12,36 +12,30 @@ final class constants$247 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$247() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_align_dimensions",
-        constants$132.const$2
+        "avcodec_send_packet",
+        constants$66.const$1
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avcodec_receive_frame",
+        constants$66.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_align_dimensions2",
-        constants$247.const$1
+        "avcodec_send_frame",
+        constants$66.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_enum_to_chroma_pos",
-        constants$110.const$5
+        "avcodec_receive_packet",
+        constants$66.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_chroma_pos_to_enum",
-        constants$0.const$5
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "avcodec_decode_subtitle2",
-        constants$247.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_get_hw_frames_parameters",
+        constants$247.const$4
     );
 }
 

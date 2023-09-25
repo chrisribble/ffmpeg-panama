@@ -11,35 +11,31 @@ final class constants$181 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$181() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_hwframe_ctx_init",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_create",
-        constants$181.const$0
+        "av_hwframe_get_buffer",
+        constants$109.const$5
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_hwframe_transfer_data",
+        constants$109.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_create_derived",
-        constants$181.const$2
+        "av_hwframe_transfer_get_formats",
+        constants$180.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_create_derived_opts",
-        constants$181.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_hwframe_ctx_alloc",
-        constants$67.const$1
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("valid_hw_formats"),
+        RuntimeHelper.POINTER.withName("valid_sw_formats"),
+        JAVA_INT.withName("min_width"),
+        JAVA_INT.withName("min_height"),
+        JAVA_INT.withName("max_width"),
+        JAVA_INT.withName("max_height")
+    ).withName("AVHWFramesConstraints");
+    static final VarHandle const$5 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("valid_hw_formats"));
 }
 
 

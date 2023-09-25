@@ -11,35 +11,27 @@ final class constants$340 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$340() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_match_stream_specifier",
-        constants$71.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_queue_attached_pictures",
-        constants$0.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_transfer_internal_stream_timing_info",
-        constants$143.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_stream_get_codec_timebase",
-        constants$340.const$3
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_INT.withName("plane"),
-        JAVA_INT.withName("step"),
-        JAVA_INT.withName("offset"),
-        JAVA_INT.withName("shift"),
-        JAVA_INT.withName("depth")
-    ).withName("AVComponentDescriptor");
+    static final VarHandle const$0 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("offset"));
+    static final VarHandle const$1 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("shift"));
+    static final VarHandle const$2 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("depth"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_BYTE.withName("nb_components"),
+        JAVA_BYTE.withName("log2_chroma_w"),
+        JAVA_BYTE.withName("log2_chroma_h"),
+        MemoryLayout.paddingLayout(5),
+        JAVA_LONG.withName("flags"),
+        MemoryLayout.sequenceLayout(4, MemoryLayout.structLayout(
+            JAVA_INT.withName("plane"),
+            JAVA_INT.withName("step"),
+            JAVA_INT.withName("offset"),
+            JAVA_INT.withName("shift"),
+            JAVA_INT.withName("depth")
+        ).withName("AVComponentDescriptor")).withName("comp"),
+        RuntimeHelper.POINTER.withName("alias")
+    ).withName("AVPixFmtDescriptor");
+    static final VarHandle const$4 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$5 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("nb_components"));
 }
 
 

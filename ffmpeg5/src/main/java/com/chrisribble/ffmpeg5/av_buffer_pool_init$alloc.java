@@ -9,20 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * struct AVBufferRef* (*av_buffer_pool_init$alloc)(unsigned long);
+ * AVBufferRef* (*av_buffer_pool_init$alloc)(size_t);
  * }
  */
 public interface av_buffer_pool_init$alloc {
 
     java.lang.foreign.MemorySegment apply(long _x0);
     static MemorySegment allocate(av_buffer_pool_init$alloc fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$151.const$3, fi, constants$87.const$0, scope);
+        return RuntimeHelper.upcallStub(constants$150.const$2, fi, constants$86.const$2, scope);
     }
     static av_buffer_pool_init$alloc ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (long __x0) -> {
             try {
-                return (java.lang.foreign.MemorySegment)constants$151.const$4.invokeExact(symbol, __x0);
+                return (java.lang.foreign.MemorySegment)constants$150.const$3.invokeExact(symbol, __x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

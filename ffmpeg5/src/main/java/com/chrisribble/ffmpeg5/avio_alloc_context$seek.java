@@ -9,20 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * long (*avio_alloc_context$seek)(void*,long,int);
+ * int64_t (*avio_alloc_context$seek)(void*,int64_t,int);
  * }
  */
 public interface avio_alloc_context$seek {
 
     long apply(java.lang.foreign.MemorySegment _x0, long _x1, int _x2);
     static MemorySegment allocate(avio_alloc_context$seek fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$281.const$2, fi, constants$274.const$0, scope);
+        return RuntimeHelper.upcallStub(constants$280.const$2, fi, constants$273.const$0, scope);
     }
     static avio_alloc_context$seek ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment __x0, long __x1, int __x2) -> {
             try {
-                return (long)constants$274.const$2.invokeExact(symbol, __x0, __x1, __x2);
+                return (long)constants$273.const$2.invokeExact(symbol, __x0, __x1, __x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -11,35 +11,21 @@ final class constants$358 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$358() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_DOUBLE
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "sws_convertPalette8ToPacked32",
+        constants$333.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_scaleVec",
-        constants$358.const$0
+        "sws_convertPalette8ToPacked24",
+        constants$333.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_normalizeVec",
-        constants$358.const$0
+        "sws_get_class",
+        constants$4.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_freeVec",
-        constants$70.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_INT
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_getDefaultFilter",
-        constants$358.const$4
-    );
+    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
+    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
 }
 
 

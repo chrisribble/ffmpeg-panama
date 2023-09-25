@@ -12,29 +12,32 @@ final class constants$338 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$338() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_filename_number_test",
-        constants$0.const$3
+        "avformat_get_mov_audio_tags",
+        constants$4.const$0
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_sdp_create",
-        constants$181.const$2
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"),
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_match_ext",
-        constants$66.const$1
+        "av_guess_sample_aspect_ratio",
+        constants$338.const$1
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_guess_frame_rate",
+        constants$338.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avformat_query_codec",
-        constants$338.const$3
+        "avformat_match_stream_specifier",
+        constants$71.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_get_riff_video_tags",
-        constants$4.const$0
+        "avformat_queue_attached_pictures",
+        constants$0.const$3
     );
 }
 

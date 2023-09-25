@@ -12,34 +12,21 @@ final class constants$107 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$107() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "free",
-        constants$70.const$2
+        "aligned_alloc",
+        constants$105.const$1
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid();
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "reallocarray",
+        "abort",
         constants$107.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "alloca",
-        constants$87.const$0
-    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(atexit$__func.class, "apply", constants$107.const$1);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "valloc",
-        constants$87.const$0
+        constants$107.const$1
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "posix_memalign",
-        constants$107.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "atexit",
+        constants$0.const$3
     );
 }
 

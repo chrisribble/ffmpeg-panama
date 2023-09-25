@@ -11,12 +11,14 @@ final class constants$294 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$294() {}
-    static final VarHandle const$0 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags_internal"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVOutputFormat.write_header.class, "apply", constants$0.const$3);
-    static final VarHandle const$2 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("write_header"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVOutputFormat.write_packet.class, "apply", constants$66.const$1);
-    static final VarHandle const$4 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("write_packet"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVOutputFormat.write_trailer.class, "apply", constants$0.const$3);
+    static final VarHandle const$0 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("write_trailer"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVOutputFormat.interleave_packet.class, "apply", constants$257.const$2);
+    static final VarHandle const$2 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("interleave_packet"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVOutputFormat.query_codec.class, "apply", constants$0.const$5);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$0.const$5
+    );
+    static final VarHandle const$5 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("query_codec"));
 }
 
 

@@ -11,26 +11,34 @@ final class constants$180 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$180() {}
-    static final VarHandle const$0 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_find_type_by_name",
-        constants$0.const$3
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_get_type_name",
-        constants$0.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_hwdevice_ctx_create",
+        constants$180.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_iterate_types",
-        constants$1.const$0
+        "av_hwdevice_ctx_create_derived",
+        constants$180.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_alloc",
-        constants$0.const$1
+        "av_hwdevice_ctx_create_derived_opts",
+        constants$180.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_init",
-        constants$0.const$3
+        "av_hwframe_ctx_alloc",
+        constants$67.const$1
     );
 }
 

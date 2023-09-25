@@ -11,12 +11,12 @@ final class constants$170 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$170() {}
-    static final VarHandle const$0 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
-    static final VarHandle const$1 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
-    static final VarHandle const$2 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
-    static final VarHandle const$3 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("colorspace"));
-    static final VarHandle const$4 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("chroma_location"));
-    static final VarHandle const$5 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("best_effort_timestamp"));
+    static final VarHandle const$0 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("pkt_pos"));
+    static final VarHandle const$1 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("pkt_duration"));
+    static final VarHandle const$2 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$3 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("decode_error_flags"));
+    static final VarHandle const$4 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("channels"));
+    static final VarHandle const$5 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("pkt_size"));
 }
 
 

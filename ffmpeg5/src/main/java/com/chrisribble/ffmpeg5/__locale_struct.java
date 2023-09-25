@@ -21,13 +21,13 @@ import static java.lang.foreign.ValueLayout.*;
 public class __locale_struct {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$120.const$5;
+        return constants$119.const$1;
     }
     public static MemorySegment __locales$slice(MemorySegment seg) {
         return seg.asSlice(0, 104);
     }
     public static VarHandle __ctype_b$VH() {
-        return constants$121.const$0;
+        return constants$119.const$2;
     }
     /**
      * Getter for field:
@@ -36,7 +36,7 @@ public class __locale_struct {
      * }
      */
     public static MemorySegment __ctype_b$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$121.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$119.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -45,16 +45,16 @@ public class __locale_struct {
      * }
      */
     public static void __ctype_b$set(MemorySegment seg, MemorySegment x) {
-        constants$121.const$0.set(seg, x);
+        constants$119.const$2.set(seg, x);
     }
     public static MemorySegment __ctype_b$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$121.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$119.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void __ctype_b$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$121.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$119.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __ctype_tolower$VH() {
-        return constants$121.const$1;
+        return constants$119.const$3;
     }
     /**
      * Getter for field:
@@ -63,7 +63,7 @@ public class __locale_struct {
      * }
      */
     public static MemorySegment __ctype_tolower$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$121.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$119.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -72,16 +72,16 @@ public class __locale_struct {
      * }
      */
     public static void __ctype_tolower$set(MemorySegment seg, MemorySegment x) {
-        constants$121.const$1.set(seg, x);
+        constants$119.const$3.set(seg, x);
     }
     public static MemorySegment __ctype_tolower$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$121.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$119.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __ctype_tolower$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$121.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$119.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __ctype_toupper$VH() {
-        return constants$121.const$2;
+        return constants$119.const$4;
     }
     /**
      * Getter for field:
@@ -90,7 +90,7 @@ public class __locale_struct {
      * }
      */
     public static MemorySegment __ctype_toupper$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$121.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$119.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -99,13 +99,13 @@ public class __locale_struct {
      * }
      */
     public static void __ctype_toupper$set(MemorySegment seg, MemorySegment x) {
-        constants$121.const$2.set(seg, x);
+        constants$119.const$4.set(seg, x);
     }
     public static MemorySegment __ctype_toupper$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$121.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$119.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void __ctype_toupper$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$121.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$119.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment __names$slice(MemorySegment seg) {
         return seg.asSlice(128, 104);
@@ -115,7 +115,7 @@ public class __locale_struct {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

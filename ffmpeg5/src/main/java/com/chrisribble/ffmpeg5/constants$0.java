@@ -13,7 +13,7 @@ final class constants$0 {
     private constants$0() {}
     static final StructLayout const$0 = MemoryLayout.structLayout(
         MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__val")
-    ).withName("__fsid_t");
+    ).withName("");
     static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         JAVA_INT
     );

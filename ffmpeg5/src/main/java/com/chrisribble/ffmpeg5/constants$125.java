@@ -12,28 +12,30 @@ final class constants$125 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$125() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "strerror_l",
-        constants$68.const$5
+        "ffsll",
+        constants$124.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "bcmp",
-        constants$116.const$3
+        "strcasecmp",
+        constants$66.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "bcopy",
-        constants$70.const$0
+        "strncasecmp",
+        constants$114.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "bzero",
-        constants$105.const$5
+        "strcasecmp_l",
+        constants$71.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "index",
-        constants$122.const$2
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "rindex",
-        constants$122.const$2
+        "strncasecmp_l",
+        constants$125.const$4
     );
 }
 

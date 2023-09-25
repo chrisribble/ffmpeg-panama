@@ -12,28 +12,28 @@ final class constants$174 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$174() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_frame_unref",
-        constants$70.const$2
+        "av_frame_copy_props",
+        constants$66.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_frame_move_ref",
-        constants$69.const$3
+        "av_frame_get_plane_buffer",
+        constants$120.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_frame_get_buffer",
-        constants$82.const$5
+        "av_frame_new_side_data",
+        constants$117.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_frame_is_writable",
-        constants$0.const$3
+        "av_frame_new_side_data_from_buf",
+        constants$76.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_frame_make_writable",
-        constants$0.const$3
+        "av_frame_get_side_data",
+        constants$120.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_frame_copy",
-        constants$66.const$1
+        "av_frame_remove_side_data",
+        constants$159.const$2
     );
 }
 

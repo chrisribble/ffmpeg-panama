@@ -1,5 +1,5 @@
 dependencies {
-	implementation project(':ffmpeg5')
+	implementation project(':ffmpeg6')
 	implementation libs.slf4j.api
 
 	runtimeOnly libs.slf4j.simple

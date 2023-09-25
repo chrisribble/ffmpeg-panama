@@ -19,10 +19,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVChannelCustom {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$156.const$0;
+        return constants$155.const$0;
     }
     public static VarHandle id$VH() {
-        return constants$156.const$1;
+        return constants$155.const$1;
     }
     /**
      * Getter for field:
@@ -31,7 +31,7 @@ public class AVChannelCustom {
      * }
      */
     public static int id$get(MemorySegment seg) {
-        return (int)constants$156.const$1.get(seg);
+        return (int)constants$155.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -40,19 +40,19 @@ public class AVChannelCustom {
      * }
      */
     public static void id$set(MemorySegment seg, int x) {
-        constants$156.const$1.set(seg, x);
+        constants$155.const$1.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
-        return (int)constants$156.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$155.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void id$set(MemorySegment seg, long index, int x) {
-        constants$156.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$155.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment name$slice(MemorySegment seg) {
         return seg.asSlice(4, 16);
     }
     public static VarHandle opaque$VH() {
-        return constants$156.const$2;
+        return constants$155.const$2;
     }
     /**
      * Getter for field:
@@ -61,7 +61,7 @@ public class AVChannelCustom {
      * }
      */
     public static MemorySegment opaque$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$156.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$155.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -70,20 +70,20 @@ public class AVChannelCustom {
      * }
      */
     public static void opaque$set(MemorySegment seg, MemorySegment x) {
-        constants$156.const$2.set(seg, x);
+        constants$155.const$2.set(seg, x);
     }
     public static MemorySegment opaque$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$156.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$155.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void opaque$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$156.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$155.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

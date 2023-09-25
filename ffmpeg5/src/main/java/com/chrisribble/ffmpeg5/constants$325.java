@@ -11,12 +11,30 @@ final class constants$325 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$325() {}
-    static final VarHandle const$0 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
-    static final VarHandle const$1 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_streams"));
-    static final VarHandle const$2 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("skip_estimate_duration_from_pts"));
-    static final VarHandle const$3 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_probe_packets"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVFormatContext.io_close2.class, "apply", constants$66.const$1);
-    static final VarHandle const$5 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_close2"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_fmt_ctx_get_duration_estimation_method",
+        constants$0.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avformat_version",
+        constants$3.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avformat_configuration",
+        constants$4.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avformat_license",
+        constants$4.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avformat_network_init",
+        constants$3.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avformat_network_deinit",
+        constants$3.const$4
+    );
 }
 
 

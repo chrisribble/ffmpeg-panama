@@ -11,15 +11,26 @@ final class constants$197 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$197() {}
-    static final VarHandle const$0 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("block_align"));
-    static final VarHandle const$1 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
-    static final VarHandle const$2 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("initial_padding"));
-    static final VarHandle const$3 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
-    static final VarHandle const$4 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("seek_preroll"));
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_alloc",
-        constants$4.const$0
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_free",
+        constants$70.const$2
     );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_copy",
+        constants$66.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_get_audio_frame_duration2",
+        constants$82.const$5
+    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("width"),
+        JAVA_INT.withName("height"),
+        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(2, JAVA_SHORT)).withName("position")
+    ).withName("AVPanScan");
+    static final VarHandle const$4 = constants$197.const$3.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$5 = constants$197.const$3.varHandle(MemoryLayout.PathElement.groupElement("width"));
 }
 
 

@@ -21,10 +21,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVComponentDescriptor {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$340.const$5;
+        return constants$339.const$3;
     }
     public static VarHandle plane$VH() {
-        return constants$341.const$0;
+        return constants$339.const$4;
     }
     /**
      * Getter for field:
@@ -33,7 +33,7 @@ public class AVComponentDescriptor {
      * }
      */
     public static int plane$get(MemorySegment seg) {
-        return (int)constants$341.const$0.get(seg);
+        return (int)constants$339.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -42,16 +42,16 @@ public class AVComponentDescriptor {
      * }
      */
     public static void plane$set(MemorySegment seg, int x) {
-        constants$341.const$0.set(seg, x);
+        constants$339.const$4.set(seg, x);
     }
     public static int plane$get(MemorySegment seg, long index) {
-        return (int)constants$341.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$339.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void plane$set(MemorySegment seg, long index, int x) {
-        constants$341.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$339.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle step$VH() {
-        return constants$341.const$1;
+        return constants$339.const$5;
     }
     /**
      * Getter for field:
@@ -60,7 +60,7 @@ public class AVComponentDescriptor {
      * }
      */
     public static int step$get(MemorySegment seg) {
-        return (int)constants$341.const$1.get(seg);
+        return (int)constants$339.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -69,16 +69,16 @@ public class AVComponentDescriptor {
      * }
      */
     public static void step$set(MemorySegment seg, int x) {
-        constants$341.const$1.set(seg, x);
+        constants$339.const$5.set(seg, x);
     }
     public static int step$get(MemorySegment seg, long index) {
-        return (int)constants$341.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$339.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void step$set(MemorySegment seg, long index, int x) {
-        constants$341.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$339.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle offset$VH() {
-        return constants$341.const$2;
+        return constants$340.const$0;
     }
     /**
      * Getter for field:
@@ -87,7 +87,7 @@ public class AVComponentDescriptor {
      * }
      */
     public static int offset$get(MemorySegment seg) {
-        return (int)constants$341.const$2.get(seg);
+        return (int)constants$340.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -96,16 +96,16 @@ public class AVComponentDescriptor {
      * }
      */
     public static void offset$set(MemorySegment seg, int x) {
-        constants$341.const$2.set(seg, x);
+        constants$340.const$0.set(seg, x);
     }
     public static int offset$get(MemorySegment seg, long index) {
-        return (int)constants$341.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$340.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void offset$set(MemorySegment seg, long index, int x) {
-        constants$341.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$340.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle shift$VH() {
-        return constants$341.const$3;
+        return constants$340.const$1;
     }
     /**
      * Getter for field:
@@ -114,7 +114,7 @@ public class AVComponentDescriptor {
      * }
      */
     public static int shift$get(MemorySegment seg) {
-        return (int)constants$341.const$3.get(seg);
+        return (int)constants$340.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -123,16 +123,16 @@ public class AVComponentDescriptor {
      * }
      */
     public static void shift$set(MemorySegment seg, int x) {
-        constants$341.const$3.set(seg, x);
+        constants$340.const$1.set(seg, x);
     }
     public static int shift$get(MemorySegment seg, long index) {
-        return (int)constants$341.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$340.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void shift$set(MemorySegment seg, long index, int x) {
-        constants$341.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$340.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle depth$VH() {
-        return constants$341.const$4;
+        return constants$340.const$2;
     }
     /**
      * Getter for field:
@@ -141,7 +141,7 @@ public class AVComponentDescriptor {
      * }
      */
     public static int depth$get(MemorySegment seg) {
-        return (int)constants$341.const$4.get(seg);
+        return (int)constants$340.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -150,20 +150,20 @@ public class AVComponentDescriptor {
      * }
      */
     public static void depth$set(MemorySegment seg, int x) {
-        constants$341.const$4.set(seg, x);
+        constants$340.const$2.set(seg, x);
     }
     public static int depth$get(MemorySegment seg, long index) {
-        return (int)constants$341.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$340.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void depth$set(MemorySegment seg, long index, int x) {
-        constants$341.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$340.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

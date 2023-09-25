@@ -9,7 +9,7 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * struct max_align_t {
+ * struct {
  *     long long __clang_max_align_nonce1;
  *     long double __clang_max_align_nonce2;
  * };
@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class max_align_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$133.const$3;
+        return constants$132.const$0;
     }
     public static VarHandle __clang_max_align_nonce1$VH() {
-        return constants$133.const$4;
+        return constants$132.const$1;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class max_align_t {
      * }
      */
     public static long __clang_max_align_nonce1$get(MemorySegment seg) {
-        return (long)constants$133.const$4.get(seg);
+        return (long)constants$132.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -39,20 +39,20 @@ public class max_align_t {
      * }
      */
     public static void __clang_max_align_nonce1$set(MemorySegment seg, long x) {
-        constants$133.const$4.set(seg, x);
+        constants$132.const$1.set(seg, x);
     }
     public static long __clang_max_align_nonce1$get(MemorySegment seg, long index) {
-        return (long)constants$133.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$132.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __clang_max_align_nonce1$set(MemorySegment seg, long index, long x) {
-        constants$133.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$132.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

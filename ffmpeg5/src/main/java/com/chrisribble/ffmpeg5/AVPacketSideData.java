@@ -10,8 +10,8 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct AVPacketSideData {
- *     unsigned char* data;
- *     unsigned long size;
+ *     uint8_t* data;
+ *     size_t size;
  *     enum AVPacketSideDataType type;
  * };
  * }
@@ -19,64 +19,64 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVPacketSideData {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$201.const$0;
+        return constants$200.const$0;
     }
     public static VarHandle data$VH() {
-        return constants$201.const$1;
+        return constants$200.const$1;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * unsigned char* data;
+     * uint8_t* data;
      * }
      */
     public static MemorySegment data$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$201.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$200.const$1.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * unsigned char* data;
+     * uint8_t* data;
      * }
      */
     public static void data$set(MemorySegment seg, MemorySegment x) {
-        constants$201.const$1.set(seg, x);
+        constants$200.const$1.set(seg, x);
     }
     public static MemorySegment data$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$201.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$200.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void data$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$201.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle size$VH() {
-        return constants$201.const$2;
+        return constants$200.const$2;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * unsigned long size;
+     * size_t size;
      * }
      */
     public static long size$get(MemorySegment seg) {
-        return (long)constants$201.const$2.get(seg);
+        return (long)constants$200.const$2.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * unsigned long size;
+     * size_t size;
      * }
      */
     public static void size$set(MemorySegment seg, long x) {
-        constants$201.const$2.set(seg, x);
+        constants$200.const$2.set(seg, x);
     }
     public static long size$get(MemorySegment seg, long index) {
-        return (long)constants$201.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$200.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void size$set(MemorySegment seg, long index, long x) {
-        constants$201.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle type$VH() {
-        return constants$201.const$3;
+        return constants$200.const$3;
     }
     /**
      * Getter for field:
@@ -85,7 +85,7 @@ public class AVPacketSideData {
      * }
      */
     public static int type$get(MemorySegment seg) {
-        return (int)constants$201.const$3.get(seg);
+        return (int)constants$200.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -94,20 +94,20 @@ public class AVPacketSideData {
      * }
      */
     public static void type$set(MemorySegment seg, int x) {
-        constants$201.const$3.set(seg, x);
+        constants$200.const$3.set(seg, x);
     }
     public static int type$get(MemorySegment seg, long index) {
-        return (int)constants$201.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$200.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void type$set(MemorySegment seg, long index, int x) {
-        constants$201.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

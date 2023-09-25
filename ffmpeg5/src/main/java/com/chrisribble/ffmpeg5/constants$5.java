@@ -18,7 +18,7 @@ final class constants$5 {
     static final StructLayout const$1 = MemoryLayout.structLayout(
         JAVA_LONG.withName("quot"),
         JAVA_LONG.withName("rem")
-    ).withName("imaxdiv_t");
+    ).withName("");
     static final VarHandle const$2 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("quot"));
     static final VarHandle const$3 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("rem"));
     static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,

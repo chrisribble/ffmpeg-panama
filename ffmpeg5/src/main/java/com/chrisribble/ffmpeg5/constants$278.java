@@ -11,20 +11,12 @@ final class constants$278 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$278() {}
-    static final VarHandle const$0 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("direct"));
-    static final VarHandle const$1 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
-    static final VarHandle const$2 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVIOContext.write_data_type.class, "apply", constants$278.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$278.const$3
-    );
+    static final VarHandle const$0 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("write_data_type"));
+    static final VarHandle const$1 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("ignore_boundary_point"));
+    static final VarHandle const$2 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("written"));
+    static final VarHandle const$3 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_ptr_max"));
+    static final VarHandle const$4 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("bytes_read"));
+    static final VarHandle const$5 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("bytes_written"));
 }
 
 

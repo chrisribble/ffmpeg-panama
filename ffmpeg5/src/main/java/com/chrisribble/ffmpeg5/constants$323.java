@@ -11,12 +11,14 @@ final class constants$323 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$323() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVFormatContext.control_message_cb.class, "apply", constants$205.const$5);
-    static final VarHandle const$1 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("control_message_cb"));
-    static final VarHandle const$2 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("output_ts_offset"));
-    static final VarHandle const$3 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("dump_separator"));
-    static final VarHandle const$4 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("data_codec_id"));
-    static final VarHandle const$5 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$322.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$322.const$5
+    );
+    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVFormatContext.io_close.class, "apply", constants$69.const$3);
+    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_close"));
+    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
 }
 
 

@@ -14,7 +14,7 @@ final class constants$6 {
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
         JAVA_LONG.withName("quot"),
         JAVA_LONG.withName("rem")
-    ).withName("imaxdiv_t"),
+    ).withName(""),
         JAVA_LONG,
         JAVA_LONG
     );

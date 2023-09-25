@@ -11,28 +11,36 @@ final class constants$113 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$113() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(qsort$__compar.class, "apply", constants$66.const$1);
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ldiv",
+        constants$6.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "lldiv",
+        constants$6.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_DOUBLE,
+        JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "qsort",
-        constants$113.const$1
-    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "abs",
-        constants$1.const$0
+        "ecvt",
+        constants$113.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "labs",
-        constants$5.const$4
+        "fcvt",
+        constants$113.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "llabs",
-        constants$5.const$4
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_DOUBLE,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "gcvt",
+        constants$113.const$5
     );
 }
 

@@ -12,28 +12,28 @@ final class constants$129 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$129() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_malloc",
-        constants$87.const$0
+        "av_reallocp_array",
+        constants$106.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_mallocz",
-        constants$87.const$0
+        "av_fast_realloc",
+        constants$116.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_malloc_array",
-        constants$106.const$2
+        "av_fast_malloc",
+        constants$70.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_calloc",
-        constants$106.const$2
+        "av_fast_mallocz",
+        constants$70.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_mallocz_array",
-        constants$106.const$2
+        "av_free",
+        constants$70.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_realloc",
-        constants$106.const$4
+        "av_freep",
+        constants$70.const$2
     );
 }
 

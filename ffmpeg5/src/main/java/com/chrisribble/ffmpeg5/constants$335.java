@@ -11,32 +11,46 @@ final class constants$335 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$335() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avformat_index_get_entry",
+        constants$120.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avformat_index_get_entry_from_timestamp",
+        constants$335.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_add_index_entry",
+        constants$335.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER,
         JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_pkt_dump_log2",
-        constants$335.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_codec_get_id",
-        constants$82.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_codec_get_tag",
-        constants$82.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_codec_get_tag2",
-        constants$333.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_find_default_stream_index",
-        constants$0.const$3
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_url_split",
+        constants$335.const$5
     );
 }
 

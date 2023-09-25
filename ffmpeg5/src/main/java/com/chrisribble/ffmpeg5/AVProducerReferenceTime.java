@@ -10,7 +10,7 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct AVProducerReferenceTime {
- *     long wallclock;
+ *     int64_t wallclock;
  *     int flags;
  * };
  * }
@@ -18,37 +18,37 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVProducerReferenceTime {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$200.const$2;
+        return constants$199.const$2;
     }
     public static VarHandle wallclock$VH() {
-        return constants$200.const$3;
+        return constants$199.const$3;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * long wallclock;
+     * int64_t wallclock;
      * }
      */
     public static long wallclock$get(MemorySegment seg) {
-        return (long)constants$200.const$3.get(seg);
+        return (long)constants$199.const$3.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * long wallclock;
+     * int64_t wallclock;
      * }
      */
     public static void wallclock$set(MemorySegment seg, long x) {
-        constants$200.const$3.set(seg, x);
+        constants$199.const$3.set(seg, x);
     }
     public static long wallclock$get(MemorySegment seg, long index) {
-        return (long)constants$200.const$3.get(seg.asSlice(index*sizeof()));
+        return (long)constants$199.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void wallclock$set(MemorySegment seg, long index, long x) {
-        constants$200.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$199.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flags$VH() {
-        return constants$200.const$4;
+        return constants$199.const$4;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class AVProducerReferenceTime {
      * }
      */
     public static int flags$get(MemorySegment seg) {
-        return (int)constants$200.const$4.get(seg);
+        return (int)constants$199.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -66,20 +66,20 @@ public class AVProducerReferenceTime {
      * }
      */
     public static void flags$set(MemorySegment seg, int x) {
-        constants$200.const$4.set(seg, x);
+        constants$199.const$4.set(seg, x);
     }
     public static int flags$get(MemorySegment seg, long index) {
-        return (int)constants$200.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$199.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void flags$set(MemorySegment seg, long index, int x) {
-        constants$200.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$199.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -12,28 +12,28 @@ final class constants$161 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$161() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_channel_from_string",
-        constants$0.const$3
+        "av_channel_layout_copy",
+        constants$66.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_from_mask",
-        constants$116.const$1
+        "av_channel_layout_describe",
+        constants$114.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_from_string",
+        "av_channel_layout_describe_bprint",
         constants$66.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_default",
-        constants$160.const$2
+        "av_channel_layout_channel_from_index",
+        constants$82.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_standard",
-        constants$67.const$1
+        "av_channel_layout_index_from_channel",
+        constants$82.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_uninit",
-        constants$70.const$2
+        "av_channel_layout_index_from_string",
+        constants$66.const$1
     );
 }
 

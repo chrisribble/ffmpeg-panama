@@ -19,30 +19,6 @@ public class FFmpeg5 extends FFmpeg5_3 {
     public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
     /**
      * {@snippet :
-     * #define _STDC_PREDEF_H 1
-     * }
-     */
-    public static int _STDC_PREDEF_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __STDC_IEC_559__ 1
-     * }
-     */
-    public static int __STDC_IEC_559__() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __STDC_IEC_559_COMPLEX__ 1
-     * }
-     */
-    public static int __STDC_IEC_559_COMPLEX__() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
      * #define _STDINT_H 1
      * }
      */
@@ -232,6 +208,30 @@ public class FFmpeg5 extends FFmpeg5_3 {
      */
     public static int __GLIBC_USE_DEPRECATED_SCANF() {
         return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define _STDC_PREDEF_H 1
+     * }
+     */
+    public static int _STDC_PREDEF_H() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define __STDC_IEC_559__ 1
+     * }
+     */
+    public static int __STDC_IEC_559__() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define __STDC_IEC_559_COMPLEX__ 1
+     * }
+     */
+    public static int __STDC_IEC_559_COMPLEX__() {
+        return (int)1L;
     }
     /**
      * {@snippet :
@@ -2327,6 +2327,14 @@ public class FFmpeg5 extends FFmpeg5_3 {
      * }
      */
     public static int _STDIO_H() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define __GNUC_VA_LIST 1
+     * }
+     */
+    public static int __GNUC_VA_LIST() {
         return (int)1L;
     }
     /**
@@ -6586,7 +6594,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * int av_samples_fill_arrays(unsigned char** audio_data, int* linesize, unsigned char* buf, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
+     * int av_samples_fill_arrays(uint8_t** audio_data, int* linesize, const uint8_t* buf, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
      * }
      */
     public static int av_samples_fill_arrays(MemorySegment audio_data, MemorySegment linesize, MemorySegment buf, int nb_channels, int nb_samples, int sample_fmt, int align) {
@@ -6602,7 +6610,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * int av_samples_alloc(unsigned char** audio_data, int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
+     * int av_samples_alloc(uint8_t** audio_data, int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
      * }
      */
     public static int av_samples_alloc(MemorySegment audio_data, MemorySegment linesize, int nb_channels, int nb_samples, int sample_fmt, int align) {
@@ -6618,7 +6626,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * int av_samples_alloc_array_and_samples(unsigned char*** audio_data, int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
+     * int av_samples_alloc_array_and_samples(uint8_t*** audio_data, int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
      * }
      */
     public static int av_samples_alloc_array_and_samples(MemorySegment audio_data, MemorySegment linesize, int nb_channels, int nb_samples, int sample_fmt, int align) {
@@ -6634,7 +6642,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * int av_samples_copy(unsigned char** dst, unsigned char** src, int dst_offset, int src_offset, int nb_samples, int nb_channels, enum AVSampleFormat sample_fmt);
+     * int av_samples_copy(uint8_t** dst, uint8_t** src, int dst_offset, int src_offset, int nb_samples, int nb_channels, enum AVSampleFormat sample_fmt);
      * }
      */
     public static int av_samples_copy(MemorySegment dst, MemorySegment src, int dst_offset, int src_offset, int nb_samples, int nb_channels, int sample_fmt) {
@@ -6650,7 +6658,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * int av_samples_set_silence(unsigned char** audio_data, int offset, int nb_samples, int nb_channels, enum AVSampleFormat sample_fmt);
+     * int av_samples_set_silence(uint8_t** audio_data, int offset, int nb_samples, int nb_channels, enum AVSampleFormat sample_fmt);
      * }
      */
     public static int av_samples_set_silence(MemorySegment audio_data, int offset, int nb_samples, int nb_channels, int sample_fmt) {
@@ -6904,7 +6912,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * long imaxabs(long __n);
+     * intmax_t imaxabs(intmax_t __n);
      * }
      */
     public static long imaxabs(long __n) {
@@ -6920,7 +6928,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * struct imaxdiv_t imaxdiv(long __numer, long __denom);
+     * imaxdiv_t imaxdiv(intmax_t __numer, intmax_t __denom);
      * }
      */
     public static MemorySegment imaxdiv(SegmentAllocator allocator, long __numer, long __denom) {
@@ -6936,7 +6944,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * long strtoimax(char* __nptr, char** __endptr, int __base);
+     * intmax_t strtoimax(char* __nptr, char** __endptr, int __base);
      * }
      */
     public static long strtoimax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
@@ -6952,7 +6960,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * unsigned long strtoumax(char* __nptr, char** __endptr, int __base);
+     * uintmax_t strtoumax(char* __nptr, char** __endptr, int __base);
      * }
      */
     public static long strtoumax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
@@ -6968,7 +6976,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * long wcstoimax(int* __nptr, int** __endptr, int __base);
+     * intmax_t wcstoimax(const __gwchar_t* __nptr, __gwchar_t** __endptr, int __base);
      * }
      */
     public static long wcstoimax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
@@ -6984,7 +6992,7 @@ public class FFmpeg5 extends FFmpeg5_3 {
     }
     /**
      * {@snippet :
-     * unsigned long wcstoumax(int* __nptr, int** __endptr, int __base);
+     * uintmax_t wcstoumax(const __gwchar_t* __nptr, __gwchar_t** __endptr, int __base);
      * }
      */
     public static long wcstoumax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
@@ -9019,22 +9027,6 @@ public class FFmpeg5 extends FFmpeg5_3 {
      */
     public static double remquo(double __x, double __y, MemorySegment __quo) {
         var mh$ = remquo$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y, __quo);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __remquo$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$3,"__remquo");
-    }
-    /**
-     * {@snippet :
-     * double __remquo(double __x, double __y, int* __quo);
-     * }
-     */
-    public static double __remquo(double __x, double __y, MemorySegment __quo) {
-        var mh$ = __remquo$MH();
         try {
             return (double)mh$.invokeExact(__x, __y, __quo);
         } catch (Throwable ex$) {

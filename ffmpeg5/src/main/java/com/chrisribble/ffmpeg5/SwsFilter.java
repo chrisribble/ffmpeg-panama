@@ -10,132 +10,132 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct SwsFilter {
- *     struct SwsVector* lumH;
- *     struct SwsVector* lumV;
- *     struct SwsVector* chrH;
- *     struct SwsVector* chrV;
+ *     SwsVector* lumH;
+ *     SwsVector* lumV;
+ *     SwsVector* chrH;
+ *     SwsVector* chrV;
  * };
  * }
  */
 public class SwsFilter {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$353.const$4;
+        return constants$352.const$2;
     }
     public static VarHandle lumH$VH() {
-        return constants$353.const$5;
+        return constants$352.const$3;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * struct SwsVector* lumH;
+     * SwsVector* lumH;
      * }
      */
     public static MemorySegment lumH$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$353.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$352.const$3.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * struct SwsVector* lumH;
+     * SwsVector* lumH;
      * }
      */
     public static void lumH$set(MemorySegment seg, MemorySegment x) {
-        constants$353.const$5.set(seg, x);
+        constants$352.const$3.set(seg, x);
     }
     public static MemorySegment lumH$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$353.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$352.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void lumH$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$353.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$352.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle lumV$VH() {
-        return constants$354.const$0;
+        return constants$352.const$4;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * struct SwsVector* lumV;
+     * SwsVector* lumV;
      * }
      */
     public static MemorySegment lumV$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$354.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$352.const$4.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * struct SwsVector* lumV;
+     * SwsVector* lumV;
      * }
      */
     public static void lumV$set(MemorySegment seg, MemorySegment x) {
-        constants$354.const$0.set(seg, x);
+        constants$352.const$4.set(seg, x);
     }
     public static MemorySegment lumV$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$354.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$352.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void lumV$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$354.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$352.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle chrH$VH() {
-        return constants$354.const$1;
+        return constants$352.const$5;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * struct SwsVector* chrH;
+     * SwsVector* chrH;
      * }
      */
     public static MemorySegment chrH$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$354.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$352.const$5.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * struct SwsVector* chrH;
+     * SwsVector* chrH;
      * }
      */
     public static void chrH$set(MemorySegment seg, MemorySegment x) {
-        constants$354.const$1.set(seg, x);
+        constants$352.const$5.set(seg, x);
     }
     public static MemorySegment chrH$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$354.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$352.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void chrH$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$354.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$352.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle chrV$VH() {
-        return constants$354.const$2;
+        return constants$353.const$0;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * struct SwsVector* chrV;
+     * SwsVector* chrV;
      * }
      */
     public static MemorySegment chrV$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$354.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$353.const$0.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * struct SwsVector* chrV;
+     * SwsVector* chrV;
      * }
      */
     public static void chrV$set(MemorySegment seg, MemorySegment x) {
-        constants$354.const$2.set(seg, x);
+        constants$353.const$0.set(seg, x);
     }
     public static MemorySegment chrV$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$354.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$353.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void chrV$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$354.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$353.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

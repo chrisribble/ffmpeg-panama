@@ -16,13 +16,13 @@ public interface on_exit$__func {
 
     void apply(int _x0, java.lang.foreign.MemorySegment _x1);
     static MemorySegment allocate(on_exit$__func fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$109.const$3, fi, constants$109.const$2, scope);
+        return RuntimeHelper.upcallStub(constants$108.const$3, fi, constants$108.const$2, scope);
     }
     static on_exit$__func ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (int __x0, java.lang.foreign.MemorySegment __x1) -> {
             try {
-                constants$109.const$4.invokeExact(symbol, __x0, __x1);
+                constants$108.const$4.invokeExact(symbol, __x0, __x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

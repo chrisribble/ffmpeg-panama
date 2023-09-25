@@ -12,37 +12,31 @@ final class constants$336 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$336() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_index_search_timestamp",
-        constants$78.const$5
+        "av_dump_format",
+        constants$256.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_index_get_entries_count",
-        constants$0.const$3
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_index_get_entry",
-        constants$122.const$2
+        "av_get_frame_filename2",
+        constants$336.const$1
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_get_frame_filename",
+        constants$180.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avformat_index_get_entry_from_timestamp",
-        constants$336.const$3
+        "av_filename_number_test",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_add_index_entry",
-        constants$336.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_sdp_create",
+        constants$180.const$2
     );
 }
 

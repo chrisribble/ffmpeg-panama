@@ -11,32 +11,34 @@ final class constants$262 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$262() {}
-    static final VarHandle const$0 = constants$260.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_zone"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("tv_sec"),
-            JAVA_LONG.withName("tv_nsec")
-        ).withName("it_interval"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("tv_sec"),
-            JAVA_LONG.withName("tv_nsec")
-        ).withName("it_value")
-    ).withName("itimerspec");
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clock",
-        constants$84.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "time",
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "mktime",
         constants$79.const$0
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_DOUBLE,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
-        JAVA_LONG
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "strftime",
+        constants$262.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strftime_l",
+        constants$262.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "difftime",
-        constants$262.const$4
+        "gmtime",
+        constants$67.const$1
     );
 }
 

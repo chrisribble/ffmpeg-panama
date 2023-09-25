@@ -11,12 +11,12 @@ final class constants$187 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$187() {}
-    static final VarHandle const$0 = constants$186.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$1 = constants$186.const$2.varHandle(MemoryLayout.PathElement.groupElement("capabilities"));
-    static final VarHandle const$2 = constants$186.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_lowres"));
-    static final VarHandle const$3 = constants$186.const$2.varHandle(MemoryLayout.PathElement.groupElement("supported_framerates"));
-    static final VarHandle const$4 = constants$186.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmts"));
-    static final VarHandle const$5 = constants$186.const$2.varHandle(MemoryLayout.PathElement.groupElement("supported_samplerates"));
+    static final VarHandle const$0 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("sample_fmts"));
+    static final VarHandle const$1 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("channel_layouts"));
+    static final VarHandle const$2 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("priv_class"));
+    static final VarHandle const$3 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("profiles"));
+    static final VarHandle const$4 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("wrapper_name"));
+    static final VarHandle const$5 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("ch_layouts"));
 }
 
 

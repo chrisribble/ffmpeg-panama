@@ -26,17 +26,17 @@ import static java.lang.foreign.ValueLayout.*;
  *     struct _IO_FILE* _chain;
  *     int _fileno;
  *     int _flags2;
- *     long _old_offset;
+ *     __off_t _old_offset;
  *     unsigned short _cur_column;
  *     signed char _vtable_offset;
  *     char _shortbuf[1];
- *     void* _lock;
- *     long _offset;
+ *     _IO_lock_t* _lock;
+ *     __off64_t _offset;
  *     struct _IO_codecvt* _codecvt;
  *     struct _IO_wide_data* _wide_data;
  *     struct _IO_FILE* _freeres_list;
  *     void* _freeres_buf;
- *     unsigned long __pad5;
+ *     size_t __pad5;
  *     int _mode;
  *     char _unused2[20];
  * };
@@ -485,7 +485,7 @@ public class _IO_FILE {
     /**
      * Getter for field:
      * {@snippet :
-     * long _old_offset;
+     * __off_t _old_offset;
      * }
      */
     public static long _old_offset$get(MemorySegment seg) {
@@ -494,7 +494,7 @@ public class _IO_FILE {
     /**
      * Setter for field:
      * {@snippet :
-     * long _old_offset;
+     * __off_t _old_offset;
      * }
      */
     public static void _old_offset$set(MemorySegment seg, long x) {
@@ -569,7 +569,7 @@ public class _IO_FILE {
     /**
      * Getter for field:
      * {@snippet :
-     * void* _lock;
+     * _IO_lock_t* _lock;
      * }
      */
     public static MemorySegment _lock$get(MemorySegment seg) {
@@ -578,7 +578,7 @@ public class _IO_FILE {
     /**
      * Setter for field:
      * {@snippet :
-     * void* _lock;
+     * _IO_lock_t* _lock;
      * }
      */
     public static void _lock$set(MemorySegment seg, MemorySegment x) {
@@ -596,7 +596,7 @@ public class _IO_FILE {
     /**
      * Getter for field:
      * {@snippet :
-     * long _offset;
+     * __off64_t _offset;
      * }
      */
     public static long _offset$get(MemorySegment seg) {
@@ -605,7 +605,7 @@ public class _IO_FILE {
     /**
      * Setter for field:
      * {@snippet :
-     * long _offset;
+     * __off64_t _offset;
      * }
      */
     public static void _offset$set(MemorySegment seg, long x) {
@@ -731,7 +731,7 @@ public class _IO_FILE {
     /**
      * Getter for field:
      * {@snippet :
-     * unsigned long __pad5;
+     * size_t __pad5;
      * }
      */
     public static long __pad5$get(MemorySegment seg) {
@@ -740,7 +740,7 @@ public class _IO_FILE {
     /**
      * Setter for field:
      * {@snippet :
-     * unsigned long __pad5;
+     * size_t __pad5;
      * }
      */
     public static void __pad5$set(MemorySegment seg, long x) {
@@ -787,7 +787,7 @@ public class _IO_FILE {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

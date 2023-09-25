@@ -11,26 +11,12 @@ final class constants$92 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$92() {}
-    static final VarHandle const$0 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__spins"));
-    static final VarHandle const$1 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__elision"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__readers"),
-        JAVA_INT.withName("__writers"),
-        JAVA_INT.withName("__wrphase_futex"),
-        JAVA_INT.withName("__writers_futex"),
-        JAVA_INT.withName("__pad3"),
-        JAVA_INT.withName("__pad4"),
-        JAVA_INT.withName("__cur_writer"),
-        JAVA_INT.withName("__shared"),
-        JAVA_BYTE.withName("__rwelision"),
-        MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
-        JAVA_LONG.withName("__pad2"),
-        JAVA_INT.withName("__flags"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("__pthread_rwlock_arch_t");
-    static final VarHandle const$3 = constants$92.const$2.varHandle(MemoryLayout.PathElement.groupElement("__readers"));
-    static final VarHandle const$4 = constants$92.const$2.varHandle(MemoryLayout.PathElement.groupElement("__writers"));
-    static final VarHandle const$5 = constants$92.const$2.varHandle(MemoryLayout.PathElement.groupElement("__wrphase_futex"));
+    static final VarHandle const$0 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__readers"));
+    static final VarHandle const$1 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__writers"));
+    static final VarHandle const$2 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__wrphase_futex"));
+    static final VarHandle const$3 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__writers_futex"));
+    static final VarHandle const$4 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad3"));
+    static final VarHandle const$5 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad4"));
 }
 
 

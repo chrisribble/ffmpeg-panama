@@ -12,21 +12,23 @@ final class constants$190 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$190() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_codec_is_decoder",
-        constants$0.const$3
+        "avcodec_get_hw_config",
+        constants$120.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_profile_name",
-        constants$122.const$2
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("pix_fmt"),
-        JAVA_INT.withName("methods"),
-        JAVA_INT.withName("device_type")
-    ).withName("AVCodecHWConfig");
-    static final VarHandle const$3 = constants$190.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
-    static final VarHandle const$4 = constants$190.const$2.varHandle(MemoryLayout.PathElement.groupElement("methods"));
-    static final VarHandle const$5 = constants$190.const$2.varHandle(MemoryLayout.PathElement.groupElement("device_type"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("type"),
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        JAVA_INT.withName("props"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("mime_types"),
+        RuntimeHelper.POINTER.withName("profiles")
+    ).withName("AVCodecDescriptor");
+    static final VarHandle const$2 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$3 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$5 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
 }
 
 

@@ -11,14 +11,14 @@ final class constants$142 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$142() {}
-    static final VarHandle const$0 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("log_level_offset_offset"));
-    static final VarHandle const$1 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("parent_log_context_offset"));
-    static final VarHandle const$2 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("category"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVClass.get_category.class, "apply", constants$0.const$3);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$0.const$3
+    static final VarHandle const$0 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("query_ranges"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVClass.child_next.class, "apply", constants$67.const$4);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$67.const$4
     );
-    static final VarHandle const$5 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("get_category"));
+    static final VarHandle const$3 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("child_next"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVClass.child_class_iterate.class, "apply", constants$67.const$1);
+    static final VarHandle const$5 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("child_class_iterate"));
 }
 
 

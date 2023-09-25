@@ -11,12 +11,14 @@ final class constants$222 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$222() {}
-    static final VarHandle const$0 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("channels"));
-    static final VarHandle const$1 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("sample_fmt"));
-    static final VarHandle const$2 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
-    static final VarHandle const$3 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("frame_number"));
-    static final VarHandle const$4 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("block_align"));
-    static final VarHandle const$5 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("cutoff"));
+    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
+    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("request_channel_layout"));
+    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("audio_service_type"));
+    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("request_sample_fmt"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVCodecContext.get_buffer2.class, "apply", constants$109.const$5);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$109.const$5
+    );
 }
 
 

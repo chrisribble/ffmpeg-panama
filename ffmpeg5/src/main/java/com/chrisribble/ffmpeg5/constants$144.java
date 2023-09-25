@@ -11,28 +11,25 @@ final class constants$144 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$144() {}
-    static final VarHandle const$0 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("child_next"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVClass.child_class_iterate.class, "apply", constants$67.const$1);
-    static final VarHandle const$2 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("child_class_iterate"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_log_get_level",
+        constants$3.const$4
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
-        "av_log",
-        constants$144.const$3
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_log_set_level",
+        constants$96.const$5
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(av_log_set_callback$callback.class, "apply", constants$143.const$4);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$143.const$4
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandleVariadic(
-        "av_log_once",
-        constants$144.const$5
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_log_set_callback",
+        constants$70.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_log_default_callback",
+        constants$143.const$4
     );
 }
 

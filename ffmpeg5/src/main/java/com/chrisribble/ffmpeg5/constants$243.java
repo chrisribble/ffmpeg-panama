@@ -11,20 +11,21 @@ final class constants$243 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$243() {}
-    static final VarHandle const$0 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("ass"));
-    static final VarHandle const$1 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("flags"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_SHORT.withName("format"),
-        MemoryLayout.paddingLayout(2),
-        JAVA_INT.withName("start_display_time"),
-        JAVA_INT.withName("end_display_time"),
-        JAVA_INT.withName("num_rects"),
-        RuntimeHelper.POINTER.withName("rects"),
-        JAVA_LONG.withName("pts")
-    ).withName("AVSubtitle");
-    static final VarHandle const$3 = constants$243.const$2.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$4 = constants$243.const$2.varHandle(MemoryLayout.PathElement.groupElement("start_display_time"));
-    static final VarHandle const$5 = constants$243.const$2.varHandle(MemoryLayout.PathElement.groupElement("end_display_time"));
+    static final VarHandle const$0 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("num_rects"));
+    static final VarHandle const$1 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("rects"));
+    static final VarHandle const$2 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avcodec_version",
+        constants$3.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_configuration",
+        constants$4.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_license",
+        constants$4.const$0
+    );
 }
 
 

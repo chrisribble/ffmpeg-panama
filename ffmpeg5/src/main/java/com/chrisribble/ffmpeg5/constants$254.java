@@ -11,26 +11,14 @@ final class constants$254 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$254() {}
-    static final VarHandle const$0 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(7, JAVA_INT).withName("codec_ids"),
-        JAVA_INT.withName("priv_data_size"),
-        RuntimeHelper.POINTER.withName("parser_init"),
-        RuntimeHelper.POINTER.withName("parser_parse"),
-        RuntimeHelper.POINTER.withName("parser_close"),
-        RuntimeHelper.POINTER.withName("split")
-    ).withName("AVCodecParser");
-    static final VarHandle const$2 = constants$254.const$1.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecParser.parser_init.class, "apply", constants$0.const$3);
-    static final VarHandle const$4 = constants$254.const$1.varHandle(MemoryLayout.PathElement.groupElement("parser_init"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVCodecParser.parser_parse.class, "apply", constants$253.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$253.const$5
     );
+    static final VarHandle const$2 = constants$253.const$1.varHandle(MemoryLayout.PathElement.groupElement("parser_parse"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecParser.parser_close.class, "apply", constants$70.const$2);
+    static final VarHandle const$4 = constants$253.const$1.varHandle(MemoryLayout.PathElement.groupElement("parser_close"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVCodecParser.split.class, "apply", constants$109.const$5);
 }
 
 

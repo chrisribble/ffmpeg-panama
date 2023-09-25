@@ -11,12 +11,12 @@ final class constants$250 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$250() {}
-    static final VarHandle const$0 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("pict_type"));
-    static final VarHandle const$1 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("repeat_pict"));
-    static final VarHandle const$2 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts"));
-    static final VarHandle const$3 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("dts"));
-    static final VarHandle const$4 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("last_pts"));
-    static final VarHandle const$5 = constants$249.const$0.varHandle(MemoryLayout.PathElement.groupElement("last_dts"));
+    static final VarHandle const$0 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("fetch_timestamp"));
+    static final VarHandle const$1 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("cur_frame_start_index"));
+    static final VarHandle const$2 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$3 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("offset"));
+    static final VarHandle const$4 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("key_frame"));
+    static final VarHandle const$5 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("dts_sync_point"));
 }
 
 

@@ -11,22 +11,22 @@ final class constants$108 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$108() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "aligned_alloc",
-        constants$106.const$2
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(at_quick_exit$__func.class, "apply", constants$107.const$1);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "at_quick_exit",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid();
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "abort",
-        constants$108.const$1
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(atexit$__func.class, "apply", constants$108.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(on_exit$__func.class, "apply", constants$108.const$2);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$108.const$1
+        constants$108.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "atexit",
-        constants$0.const$3
+        "on_exit",
+        constants$66.const$1
     );
 }
 

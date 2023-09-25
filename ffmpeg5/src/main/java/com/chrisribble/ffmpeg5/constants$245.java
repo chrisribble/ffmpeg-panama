@@ -12,28 +12,28 @@ final class constants$245 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$245() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_alloc_context3",
-        constants$67.const$1
+        "avcodec_parameters_to_context",
+        constants$66.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_free_context",
-        constants$70.const$2
+        "avcodec_open2",
+        constants$71.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_get_class",
-        constants$4.const$0
+        "avcodec_close",
+        constants$0.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_get_frame_class",
-        constants$4.const$0
+        "avsubtitle_free",
+        constants$70.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_get_subtitle_rect_class",
-        constants$4.const$0
+        "avcodec_default_get_buffer2",
+        constants$109.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_from_context",
-        constants$66.const$1
+        "avcodec_default_get_encode_buffer",
+        constants$109.const$5
     );
 }
 

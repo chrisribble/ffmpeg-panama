@@ -12,29 +12,20 @@ final class constants$290 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$290() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_pause",
-        constants$82.const$5
+        "av_append_packet",
+        constants$109.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avio_seek_time",
-        constants$277.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_read_to_bprint",
-        constants$116.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avio_accept",
-        constants$66.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_handshake",
-        constants$0.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_get_packet",
-        constants$110.const$5
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("filename"),
+        RuntimeHelper.POINTER.withName("buf"),
+        JAVA_INT.withName("buf_size"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("mime_type")
+    ).withName("AVProbeData");
+    static final VarHandle const$2 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("filename"));
+    static final VarHandle const$3 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final VarHandle const$4 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
+    static final VarHandle const$5 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
 }
 
 

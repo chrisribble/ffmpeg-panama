@@ -11,18 +11,22 @@ final class constants$199 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$199() {}
-    static final VarHandle const$0 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("max_bitrate"),
-        JAVA_LONG.withName("min_bitrate"),
-        JAVA_LONG.withName("avg_bitrate"),
-        JAVA_LONG.withName("buffer_size"),
-        JAVA_LONG.withName("vbv_delay")
-    ).withName("AVCPBProperties");
-    static final VarHandle const$2 = constants$199.const$1.varHandle(MemoryLayout.PathElement.groupElement("max_bitrate"));
-    static final VarHandle const$3 = constants$199.const$1.varHandle(MemoryLayout.PathElement.groupElement("min_bitrate"));
-    static final VarHandle const$4 = constants$199.const$1.varHandle(MemoryLayout.PathElement.groupElement("avg_bitrate"));
-    static final VarHandle const$5 = constants$199.const$1.varHandle(MemoryLayout.PathElement.groupElement("buffer_size"));
+    static final VarHandle const$0 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("vbv_delay"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_cpb_properties_alloc",
+        constants$67.const$1
+    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("wallclock"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("AVProducerReferenceTime");
+    static final VarHandle const$3 = constants$199.const$2.varHandle(MemoryLayout.PathElement.groupElement("wallclock"));
+    static final VarHandle const$4 = constants$199.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_xiphlacing",
+        constants$82.const$5
+    );
 }
 
 

@@ -11,28 +11,12 @@ final class constants$260 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$260() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_is_open",
-        constants$0.const$3
-    );
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_INT.withName("tm_sec"),
-        JAVA_INT.withName("tm_min"),
-        JAVA_INT.withName("tm_hour"),
-        JAVA_INT.withName("tm_mday"),
-        JAVA_INT.withName("tm_mon"),
-        JAVA_INT.withName("tm_year"),
-        JAVA_INT.withName("tm_wday"),
-        JAVA_INT.withName("tm_yday"),
-        JAVA_INT.withName("tm_isdst"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("tm_gmtoff"),
-        RuntimeHelper.POINTER.withName("tm_zone")
-    ).withName("tm");
-    static final VarHandle const$2 = constants$260.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_sec"));
-    static final VarHandle const$3 = constants$260.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_min"));
-    static final VarHandle const$4 = constants$260.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_hour"));
-    static final VarHandle const$5 = constants$260.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_mday"));
+    static final VarHandle const$0 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_mon"));
+    static final VarHandle const$1 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_year"));
+    static final VarHandle const$2 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_wday"));
+    static final VarHandle const$3 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_yday"));
+    static final VarHandle const$4 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_isdst"));
+    static final VarHandle const$5 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_gmtoff"));
 }
 
 

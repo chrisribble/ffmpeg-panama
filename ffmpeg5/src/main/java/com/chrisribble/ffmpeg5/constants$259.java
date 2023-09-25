@@ -11,34 +11,28 @@ final class constants$259 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$259() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avcodec_is_open",
+        constants$0.const$3
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_fill_audio_frame",
-        constants$259.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_flush_buffers",
-        constants$70.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_get_audio_frame_duration",
-        constants$82.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_fast_padded_malloc",
-        constants$70.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_fast_padded_mallocz",
-        constants$70.const$0
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("tm_sec"),
+        JAVA_INT.withName("tm_min"),
+        JAVA_INT.withName("tm_hour"),
+        JAVA_INT.withName("tm_mday"),
+        JAVA_INT.withName("tm_mon"),
+        JAVA_INT.withName("tm_year"),
+        JAVA_INT.withName("tm_wday"),
+        JAVA_INT.withName("tm_yday"),
+        JAVA_INT.withName("tm_isdst"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("tm_gmtoff"),
+        RuntimeHelper.POINTER.withName("tm_zone")
+    ).withName("tm");
+    static final VarHandle const$2 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_sec"));
+    static final VarHandle const$3 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_min"));
+    static final VarHandle const$4 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_hour"));
+    static final VarHandle const$5 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_mday"));
 }
 
 

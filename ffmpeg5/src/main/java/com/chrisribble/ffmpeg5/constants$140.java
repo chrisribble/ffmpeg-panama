@@ -11,60 +11,12 @@ final class constants$140 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$140() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_compare_mod",
-        constants$138.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_rescale_delta",
-        constants$140.const$1
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_add_stable",
-        constants$140.const$3
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("class_name"),
-        RuntimeHelper.POINTER.withName("item_name"),
-        RuntimeHelper.POINTER.withName("option"),
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("log_level_offset_offset"),
-        JAVA_INT.withName("parent_log_context_offset"),
-        JAVA_INT.withName("category"),
-        RuntimeHelper.POINTER.withName("get_category"),
-        RuntimeHelper.POINTER.withName("query_ranges"),
-        RuntimeHelper.POINTER.withName("child_next"),
-        RuntimeHelper.POINTER.withName("child_class_iterate")
-    ).withName("AVClass");
+    static final VarHandle const$0 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("item_name"));
+    static final VarHandle const$1 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("option"));
+    static final VarHandle const$2 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$3 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("log_level_offset_offset"));
+    static final VarHandle const$4 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("parent_log_context_offset"));
+    static final VarHandle const$5 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("category"));
 }
 
 

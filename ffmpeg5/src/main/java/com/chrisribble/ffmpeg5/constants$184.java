@@ -12,29 +12,30 @@ final class constants$184 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$184() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_get_hwframe_constraints",
-        constants$67.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwframe_constraints_free",
-        constants$70.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_hwframe_map",
-        constants$110.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwframe_ctx_create_derived",
-        constants$181.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_get_type",
+        "av_get_bits_per_sample",
         constants$1.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_get_name",
-        constants$0.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_get_exact_bits_per_sample",
+        constants$1.const$0
     );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avcodec_profile_name",
+        constants$184.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_get_pcm_codec",
+        constants$0.const$5
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("profile"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("name")
+    ).withName("AVProfile");
 }
 
 

@@ -11,18 +11,40 @@ final class constants$137 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$137() {}
-    static final UnionLayout const$0 = MemoryLayout.unionLayout(
-        JAVA_INT.withName("i"),
-        JAVA_FLOAT.withName("f")
-    ).withName("av_intfloat32");
-    static final VarHandle const$1 = constants$137.const$0.varHandle(MemoryLayout.PathElement.groupElement("i"));
-    static final VarHandle const$2 = constants$137.const$0.varHandle(MemoryLayout.PathElement.groupElement("f"));
-    static final UnionLayout const$3 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("i"),
-        JAVA_DOUBLE.withName("f")
-    ).withName("av_intfloat64");
-    static final VarHandle const$4 = constants$137.const$3.varHandle(MemoryLayout.PathElement.groupElement("i"));
-    static final VarHandle const$5 = constants$137.const$3.varHandle(MemoryLayout.PathElement.groupElement("f"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_rescale",
+        constants$137.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_rescale_rnd",
+        constants$137.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_rescale_q",
+        constants$137.const$4
+    );
 }
 
 

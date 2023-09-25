@@ -11,26 +11,26 @@ final class constants$100 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$100() {}
-    static final VarHandle const$0 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("rand_deg"));
-    static final VarHandle const$1 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("rand_sep"));
-    static final VarHandle const$2 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("end_ptr"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "rand_r",
+        constants$0.const$3
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_DOUBLE);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "drand48",
+        constants$100.const$1
+    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "random_r",
-        constants$66.const$1
+        "erand48",
+        constants$21.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "srandom_r",
-        constants$72.const$4
+        "lrand48",
+        constants$83.const$5
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "initstate_r",
-        constants$100.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nrand48",
+        constants$79.const$0
     );
 }
 

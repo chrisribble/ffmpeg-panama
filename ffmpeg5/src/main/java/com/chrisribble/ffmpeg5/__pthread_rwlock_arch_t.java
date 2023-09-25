@@ -28,10 +28,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class __pthread_rwlock_arch_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$92.const$2;
+        return constants$91.const$5;
     }
     public static VarHandle __readers$VH() {
-        return constants$92.const$3;
+        return constants$92.const$0;
     }
     /**
      * Getter for field:
@@ -40,7 +40,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __readers$get(MemorySegment seg) {
-        return (int)constants$92.const$3.get(seg);
+        return (int)constants$92.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -49,16 +49,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __readers$set(MemorySegment seg, int x) {
-        constants$92.const$3.set(seg, x);
+        constants$92.const$0.set(seg, x);
     }
     public static int __readers$get(MemorySegment seg, long index) {
-        return (int)constants$92.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void __readers$set(MemorySegment seg, long index, int x) {
-        constants$92.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __writers$VH() {
-        return constants$92.const$4;
+        return constants$92.const$1;
     }
     /**
      * Getter for field:
@@ -67,7 +67,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __writers$get(MemorySegment seg) {
-        return (int)constants$92.const$4.get(seg);
+        return (int)constants$92.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -76,16 +76,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __writers$set(MemorySegment seg, int x) {
-        constants$92.const$4.set(seg, x);
+        constants$92.const$1.set(seg, x);
     }
     public static int __writers$get(MemorySegment seg, long index) {
-        return (int)constants$92.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __writers$set(MemorySegment seg, long index, int x) {
-        constants$92.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __wrphase_futex$VH() {
-        return constants$92.const$5;
+        return constants$92.const$2;
     }
     /**
      * Getter for field:
@@ -94,7 +94,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __wrphase_futex$get(MemorySegment seg) {
-        return (int)constants$92.const$5.get(seg);
+        return (int)constants$92.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -103,16 +103,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __wrphase_futex$set(MemorySegment seg, int x) {
-        constants$92.const$5.set(seg, x);
+        constants$92.const$2.set(seg, x);
     }
     public static int __wrphase_futex$get(MemorySegment seg, long index) {
-        return (int)constants$92.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void __wrphase_futex$set(MemorySegment seg, long index, int x) {
-        constants$92.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __writers_futex$VH() {
-        return constants$93.const$0;
+        return constants$92.const$3;
     }
     /**
      * Getter for field:
@@ -121,7 +121,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __writers_futex$get(MemorySegment seg) {
-        return (int)constants$93.const$0.get(seg);
+        return (int)constants$92.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -130,16 +130,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __writers_futex$set(MemorySegment seg, int x) {
-        constants$93.const$0.set(seg, x);
+        constants$92.const$3.set(seg, x);
     }
     public static int __writers_futex$get(MemorySegment seg, long index) {
-        return (int)constants$93.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __writers_futex$set(MemorySegment seg, long index, int x) {
-        constants$93.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __pad3$VH() {
-        return constants$93.const$1;
+        return constants$92.const$4;
     }
     /**
      * Getter for field:
@@ -148,7 +148,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __pad3$get(MemorySegment seg) {
-        return (int)constants$93.const$1.get(seg);
+        return (int)constants$92.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -157,16 +157,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __pad3$set(MemorySegment seg, int x) {
-        constants$93.const$1.set(seg, x);
+        constants$92.const$4.set(seg, x);
     }
     public static int __pad3$get(MemorySegment seg, long index) {
-        return (int)constants$93.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void __pad3$set(MemorySegment seg, long index, int x) {
-        constants$93.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __pad4$VH() {
-        return constants$93.const$2;
+        return constants$92.const$5;
     }
     /**
      * Getter for field:
@@ -175,7 +175,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __pad4$get(MemorySegment seg) {
-        return (int)constants$93.const$2.get(seg);
+        return (int)constants$92.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -184,16 +184,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __pad4$set(MemorySegment seg, int x) {
-        constants$93.const$2.set(seg, x);
+        constants$92.const$5.set(seg, x);
     }
     public static int __pad4$get(MemorySegment seg, long index) {
-        return (int)constants$93.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void __pad4$set(MemorySegment seg, long index, int x) {
-        constants$93.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __cur_writer$VH() {
-        return constants$93.const$3;
+        return constants$93.const$0;
     }
     /**
      * Getter for field:
@@ -202,7 +202,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __cur_writer$get(MemorySegment seg) {
-        return (int)constants$93.const$3.get(seg);
+        return (int)constants$93.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -211,16 +211,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __cur_writer$set(MemorySegment seg, int x) {
-        constants$93.const$3.set(seg, x);
+        constants$93.const$0.set(seg, x);
     }
     public static int __cur_writer$get(MemorySegment seg, long index) {
-        return (int)constants$93.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$93.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void __cur_writer$set(MemorySegment seg, long index, int x) {
-        constants$93.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __shared$VH() {
-        return constants$93.const$4;
+        return constants$93.const$1;
     }
     /**
      * Getter for field:
@@ -229,7 +229,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __shared$get(MemorySegment seg) {
-        return (int)constants$93.const$4.get(seg);
+        return (int)constants$93.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -238,16 +238,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __shared$set(MemorySegment seg, int x) {
-        constants$93.const$4.set(seg, x);
+        constants$93.const$1.set(seg, x);
     }
     public static int __shared$get(MemorySegment seg, long index) {
-        return (int)constants$93.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$93.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __shared$set(MemorySegment seg, long index, int x) {
-        constants$93.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __rwelision$VH() {
-        return constants$93.const$5;
+        return constants$93.const$2;
     }
     /**
      * Getter for field:
@@ -256,7 +256,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static byte __rwelision$get(MemorySegment seg) {
-        return (byte)constants$93.const$5.get(seg);
+        return (byte)constants$93.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -265,19 +265,19 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __rwelision$set(MemorySegment seg, byte x) {
-        constants$93.const$5.set(seg, x);
+        constants$93.const$2.set(seg, x);
     }
     public static byte __rwelision$get(MemorySegment seg, long index) {
-        return (byte)constants$93.const$5.get(seg.asSlice(index*sizeof()));
+        return (byte)constants$93.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void __rwelision$set(MemorySegment seg, long index, byte x) {
-        constants$93.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment __pad1$slice(MemorySegment seg) {
         return seg.asSlice(33, 7);
     }
     public static VarHandle __pad2$VH() {
-        return constants$94.const$0;
+        return constants$93.const$3;
     }
     /**
      * Getter for field:
@@ -286,7 +286,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static long __pad2$get(MemorySegment seg) {
-        return (long)constants$94.const$0.get(seg);
+        return (long)constants$93.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -295,16 +295,16 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __pad2$set(MemorySegment seg, long x) {
-        constants$94.const$0.set(seg, x);
+        constants$93.const$3.set(seg, x);
     }
     public static long __pad2$get(MemorySegment seg, long index) {
-        return (long)constants$94.const$0.get(seg.asSlice(index*sizeof()));
+        return (long)constants$93.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __pad2$set(MemorySegment seg, long index, long x) {
-        constants$94.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __flags$VH() {
-        return constants$94.const$1;
+        return constants$93.const$4;
     }
     /**
      * Getter for field:
@@ -313,7 +313,7 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static int __flags$get(MemorySegment seg) {
-        return (int)constants$94.const$1.get(seg);
+        return (int)constants$93.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -322,20 +322,20 @@ public class __pthread_rwlock_arch_t {
      * }
      */
     public static void __flags$set(MemorySegment seg, int x) {
-        constants$94.const$1.set(seg, x);
+        constants$93.const$4.set(seg, x);
     }
     public static int __flags$get(MemorySegment seg, long index) {
-        return (int)constants$94.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$93.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void __flags$set(MemorySegment seg, long index, int x) {
-        constants$94.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -11,12 +11,12 @@ final class constants$309 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$309() {}
-    static final VarHandle const$0 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$1 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags"));
-    static final VarHandle const$2 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("discard"));
-    static final VarHandle const$3 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("stream_index"));
-    static final VarHandle const$4 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("nb_stream_indexes"));
-    static final VarHandle const$5 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$0 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("program_num"));
+    static final VarHandle const$1 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("pmt_pid"));
+    static final VarHandle const$2 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("pcr_pid"));
+    static final VarHandle const$3 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("pmt_version"));
+    static final VarHandle const$4 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
+    static final VarHandle const$5 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("end_time"));
 }
 
 

@@ -11,27 +11,18 @@ final class constants$341 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$341() {}
-    static final VarHandle const$0 = constants$340.const$5.varHandle(MemoryLayout.PathElement.groupElement("plane"));
-    static final VarHandle const$1 = constants$340.const$5.varHandle(MemoryLayout.PathElement.groupElement("step"));
-    static final VarHandle const$2 = constants$340.const$5.varHandle(MemoryLayout.PathElement.groupElement("offset"));
-    static final VarHandle const$3 = constants$340.const$5.varHandle(MemoryLayout.PathElement.groupElement("shift"));
-    static final VarHandle const$4 = constants$340.const$5.varHandle(MemoryLayout.PathElement.groupElement("depth"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("name"),
-        JAVA_BYTE.withName("nb_components"),
-        JAVA_BYTE.withName("log2_chroma_w"),
-        JAVA_BYTE.withName("log2_chroma_h"),
-        MemoryLayout.paddingLayout(5),
-        JAVA_LONG.withName("flags"),
-        MemoryLayout.sequenceLayout(4, MemoryLayout.structLayout(
-            JAVA_INT.withName("plane"),
-            JAVA_INT.withName("step"),
-            JAVA_INT.withName("offset"),
-            JAVA_INT.withName("shift"),
-            JAVA_INT.withName("depth")
-        ).withName("AVComponentDescriptor")).withName("comp"),
-        RuntimeHelper.POINTER.withName("alias")
-    ).withName("AVPixFmtDescriptor");
+    static final VarHandle const$0 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("log2_chroma_w"));
+    static final VarHandle const$1 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("log2_chroma_h"));
+    static final VarHandle const$2 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$3 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("alias"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_get_bits_per_pixel",
+        constants$0.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_get_padded_bits_per_pixel",
+        constants$0.const$3
+    );
 }
 
 

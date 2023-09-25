@@ -12,28 +12,28 @@ final class constants$328 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$328() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_stream_get_class",
-        constants$4.const$0
+        "av_find_input_format",
+        constants$67.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_new_stream",
-        constants$67.const$4
+        "av_probe_input_format",
+        constants$120.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_stream_add_side_data",
-        constants$205.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_stream_new_side_data",
-        constants$118.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_stream_get_side_data",
+        "av_probe_input_format2",
         constants$76.const$2
     );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_probe_input_format3",
+        constants$76.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_probe_input_buffer2",
+        constants$228.const$4
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_new_program",
-        constants$122.const$2
+        "av_probe_input_buffer",
+        constants$228.const$4
     );
 }
 

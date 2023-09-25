@@ -11,12 +11,12 @@ final class constants$168 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$168() {}
-    static final VarHandle const$0 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("repeat_pict"));
-    static final VarHandle const$1 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("interlaced_frame"));
-    static final VarHandle const$2 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("top_field_first"));
-    static final VarHandle const$3 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("palette_has_changed"));
-    static final VarHandle const$4 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("reordered_opaque"));
-    static final VarHandle const$5 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("sample_rate"));
+    static final VarHandle const$0 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
+    static final VarHandle const$1 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("extended_buf"));
+    static final VarHandle const$2 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_extended_buf"));
+    static final VarHandle const$3 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
+    static final VarHandle const$4 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_side_data"));
+    static final VarHandle const$5 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("flags"));
 }
 
 

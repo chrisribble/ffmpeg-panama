@@ -11,32 +11,42 @@ final class constants$348 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$348() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+        JAVA_INT
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_find_best_pix_fmt_of_2",
+        "av_image_copy_plane",
         constants$348.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_image_fill_max_pixsteps",
-        constants$132.const$2
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_image_get_linesize",
-        constants$347.const$4
+        "av_image_copy_plane_uc_from",
+        constants$348.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_image_fill_linesizes",
-        constants$338.const$3
+    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_image_fill_plane_sizes",
-        constants$257.const$2
+        "av_image_copy",
+        constants$348.const$4
     );
 }
 

@@ -11,12 +11,20 @@ final class constants$242 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$242() {}
-    static final VarHandle const$0 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("y"));
-    static final VarHandle const$1 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("w"));
-    static final VarHandle const$2 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("h"));
-    static final VarHandle const$3 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_colors"));
-    static final VarHandle const$4 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$5 = constants$241.const$4.varHandle(MemoryLayout.PathElement.groupElement("text"));
+    static final VarHandle const$0 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("ass"));
+    static final VarHandle const$1 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_SHORT.withName("format"),
+        MemoryLayout.paddingLayout(2),
+        JAVA_INT.withName("start_display_time"),
+        JAVA_INT.withName("end_display_time"),
+        JAVA_INT.withName("num_rects"),
+        RuntimeHelper.POINTER.withName("rects"),
+        JAVA_LONG.withName("pts")
+    ).withName("AVSubtitle");
+    static final VarHandle const$3 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("format"));
+    static final VarHandle const$4 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("start_display_time"));
+    static final VarHandle const$5 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("end_display_time"));
 }
 
 

@@ -11,26 +11,29 @@ final class constants$173 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$173() {}
-    static final VarHandle const$0 = constants$165.const$4.varHandle(MemoryLayout.PathElement.groupElement("private_ref"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_colorspace_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_frame_alloc",
-        constants$4.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_frame_free",
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_frame_unref",
         constants$70.const$2
     );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_frame_move_ref",
+        constants$69.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_frame_get_buffer",
+        constants$82.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_frame_is_writable",
+        constants$0.const$3
+    );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_frame_ref",
-        constants$66.const$1
+        "av_frame_make_writable",
+        constants$0.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_frame_clone",
-        constants$67.const$1
+        "av_frame_copy",
+        constants$66.const$1
     );
 }
 

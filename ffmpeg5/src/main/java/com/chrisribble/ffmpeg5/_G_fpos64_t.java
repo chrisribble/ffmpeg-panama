@@ -10,8 +10,8 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct _G_fpos64_t {
- *     long __pos;
- *     struct __mbstate_t __state;
+ *     __off64_t __pos;
+ *     __mbstate_t __state;
  * };
  * }
  */
@@ -26,7 +26,7 @@ public class _G_fpos64_t {
     /**
      * Getter for field:
      * {@snippet :
-     * long __pos;
+     * __off64_t __pos;
      * }
      */
     public static long __pos$get(MemorySegment seg) {
@@ -35,7 +35,7 @@ public class _G_fpos64_t {
     /**
      * Setter for field:
      * {@snippet :
-     * long __pos;
+     * __off64_t __pos;
      * }
      */
     public static void __pos$set(MemorySegment seg, long x) {
@@ -55,7 +55,7 @@ public class _G_fpos64_t {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -18,7 +18,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class itimerspec {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$262.const$1;
+        return constants$261.const$1;
     }
     public static MemorySegment it_interval$slice(MemorySegment seg) {
         return seg.asSlice(0, 16);
@@ -31,7 +31,7 @@ public class itimerspec {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

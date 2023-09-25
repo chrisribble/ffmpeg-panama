@@ -11,47 +11,19 @@ final class constants$136 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$136() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_find_nearest_q_idx",
-        constants$136.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_q2intfloat",
-        constants$136.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+    static final VarHandle const$0 = constants$135.const$4.varHandle(MemoryLayout.PathElement.groupElement("f"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("i"),
+        JAVA_DOUBLE.withName("f")
+    ).withName("av_intfloat64");
+    static final VarHandle const$2 = constants$136.const$1.varHandle(MemoryLayout.PathElement.groupElement("i"));
+    static final VarHandle const$3 = constants$136.const$1.varHandle(MemoryLayout.PathElement.groupElement("f"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_gcd_q",
+        "av_gcd",
         constants$136.const$4
     );
 }

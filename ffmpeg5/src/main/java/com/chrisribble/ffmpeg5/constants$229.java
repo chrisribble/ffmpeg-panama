@@ -11,19 +11,16 @@ final class constants$229 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$229() {}
-    static final VarHandle const$0 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("thread_count"));
-    static final VarHandle const$1 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("thread_type"));
-    static final VarHandle const$2 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("active_thread_type"));
-    static final VarHandle const$3 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("thread_safe_callbacks"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$228.const$4
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVCodecContext.execute.class, "apply", constants$229.const$4);
+    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("execute"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVCodecContext.execute2.class, "apply", constants$154.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$154.const$0
+    );
+    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("execute2"));
+    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("nsse_weight"));
 }
 
 

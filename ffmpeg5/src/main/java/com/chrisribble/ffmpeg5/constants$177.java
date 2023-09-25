@@ -11,27 +11,12 @@ final class constants$177 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$177() {}
-    static final VarHandle const$0 = constants$176.const$2.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVHWDeviceContext.free.class, "apply", constants$70.const$2);
-    static final VarHandle const$2 = constants$176.const$2.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final VarHandle const$3 = constants$176.const$2.varHandle(MemoryLayout.PathElement.groupElement("user_opaque"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("av_class"),
-        RuntimeHelper.POINTER.withName("internal"),
-        RuntimeHelper.POINTER.withName("device_ref"),
-        RuntimeHelper.POINTER.withName("device_ctx"),
-        RuntimeHelper.POINTER.withName("hwctx"),
-        RuntimeHelper.POINTER.withName("free"),
-        RuntimeHelper.POINTER.withName("user_opaque"),
-        RuntimeHelper.POINTER.withName("pool"),
-        JAVA_INT.withName("initial_pool_size"),
-        JAVA_INT.withName("format"),
-        JAVA_INT.withName("sw_format"),
-        JAVA_INT.withName("width"),
-        JAVA_INT.withName("height"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVHWFramesContext");
-    static final VarHandle const$5 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
+    static final VarHandle const$0 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("internal"));
+    static final VarHandle const$1 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("device_ref"));
+    static final VarHandle const$2 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("device_ctx"));
+    static final VarHandle const$3 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWFramesContext.free.class, "apply", constants$70.const$2);
+    static final VarHandle const$5 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("free"));
 }
 
 

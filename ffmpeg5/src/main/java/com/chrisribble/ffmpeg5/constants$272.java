@@ -11,46 +11,12 @@ final class constants$272 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$272() {}
-    static final VarHandle const$0 = constants$271.const$5.varHandle(MemoryLayout.PathElement.groupElement("url_context"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("av_class"),
-        RuntimeHelper.POINTER.withName("buffer"),
-        JAVA_INT.withName("buffer_size"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("buf_ptr"),
-        RuntimeHelper.POINTER.withName("buf_end"),
-        RuntimeHelper.POINTER.withName("opaque"),
-        RuntimeHelper.POINTER.withName("read_packet"),
-        RuntimeHelper.POINTER.withName("write_packet"),
-        RuntimeHelper.POINTER.withName("seek"),
-        JAVA_LONG.withName("pos"),
-        JAVA_INT.withName("eof_reached"),
-        JAVA_INT.withName("error"),
-        JAVA_INT.withName("write_flag"),
-        JAVA_INT.withName("max_packet_size"),
-        JAVA_INT.withName("min_packet_size"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("checksum"),
-        RuntimeHelper.POINTER.withName("checksum_ptr"),
-        RuntimeHelper.POINTER.withName("update_checksum"),
-        RuntimeHelper.POINTER.withName("read_pause"),
-        RuntimeHelper.POINTER.withName("read_seek"),
-        JAVA_INT.withName("seekable"),
-        JAVA_INT.withName("direct"),
-        RuntimeHelper.POINTER.withName("protocol_whitelist"),
-        RuntimeHelper.POINTER.withName("protocol_blacklist"),
-        RuntimeHelper.POINTER.withName("write_data_type"),
-        JAVA_INT.withName("ignore_boundary_point"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("written"),
-        RuntimeHelper.POINTER.withName("buf_ptr_max"),
-        JAVA_LONG.withName("bytes_read"),
-        JAVA_LONG.withName("bytes_written")
-    ).withName("AVIOContext");
-    static final VarHandle const$2 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
-    static final VarHandle const$3 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("buffer"));
-    static final VarHandle const$4 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("buffer_size"));
-    static final VarHandle const$5 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_ptr"));
+    static final VarHandle const$0 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_end"));
+    static final VarHandle const$1 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVIOContext.read_packet.class, "apply", constants$109.const$5);
+    static final VarHandle const$3 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("read_packet"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVIOContext.write_packet.class, "apply", constants$109.const$5);
+    static final VarHandle const$5 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("write_packet"));
 }
 
 

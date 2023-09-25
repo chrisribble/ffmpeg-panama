@@ -11,31 +11,22 @@ final class constants$163 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$163() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_channel_from_string",
-        constants$66.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_subset",
-        constants$124.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_check",
-        constants$0.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_compare",
-        constants$66.const$1
-    );
+    static final VarHandle const$0 = constants$162.const$4.varHandle(MemoryLayout.PathElement.groupElement("data"));
+    static final VarHandle const$1 = constants$162.const$4.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final VarHandle const$2 = constants$162.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$3 = constants$162.const$4.varHandle(MemoryLayout.PathElement.groupElement("buf"));
     static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("type"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("data"),
-        JAVA_LONG.withName("size"),
-        RuntimeHelper.POINTER.withName("metadata"),
-        RuntimeHelper.POINTER.withName("buf")
-    ).withName("AVFrameSideData");
-    static final VarHandle const$5 = constants$163.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
+        JAVA_INT.withName("self_size"),
+        JAVA_INT.withName("top"),
+        JAVA_INT.withName("bottom"),
+        JAVA_INT.withName("left"),
+        JAVA_INT.withName("right"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("qoffset")
+    ).withName("AVRegionOfInterest");
+    static final VarHandle const$5 = constants$163.const$4.varHandle(MemoryLayout.PathElement.groupElement("self_size"));
 }
 
 

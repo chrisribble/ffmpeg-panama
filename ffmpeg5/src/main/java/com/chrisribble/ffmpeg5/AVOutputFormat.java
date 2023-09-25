@@ -19,32 +19,32 @@ import static java.lang.foreign.ValueLayout.*;
  *     enum AVCodecID subtitle_codec;
  *     int flags;
  *     struct AVCodecTag** codec_tag;
- *     struct AVClass* priv_class;
+ *     const AVClass* priv_class;
  *     int priv_data_size;
  *     int flags_internal;
  *     int (*write_header)(struct AVFormatContext*);
- *     int (*write_packet)(struct AVFormatContext*,struct AVPacket*);
+ *     int (*write_packet)(struct AVFormatContext*,AVPacket*);
  *     int (*write_trailer)(struct AVFormatContext*);
- *     int (*interleave_packet)(struct AVFormatContext*,struct AVPacket*,int,int);
+ *     int (*interleave_packet)(struct AVFormatContext*,AVPacket*,int,int);
  *     int (*query_codec)(enum AVCodecID,int);
- *     void (*get_output_timestamp)(struct AVFormatContext*,int,long*,long*);
- *     int (*control_message)(struct AVFormatContext*,int,void*,unsigned long);
- *     int (*write_uncoded_frame)(struct AVFormatContext*,int,struct AVFrame**,unsigned int);
+ *     void (*get_output_timestamp)(struct AVFormatContext*,int,int64_t*,int64_t*);
+ *     int (*control_message)(struct AVFormatContext*,int,void*,size_t);
+ *     int (*write_uncoded_frame)(struct AVFormatContext*,int,AVFrame**,unsigned int);
  *     int (*get_device_list)(struct AVFormatContext*,struct AVDeviceInfoList*);
  *     enum AVCodecID data_codec;
  *     int (*init)(struct AVFormatContext*);
  *     void (*deinit)(struct AVFormatContext*);
- *     int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,struct AVPacket*);
+ *     int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,const AVPacket*);
  * };
  * }
  */
 public class AVOutputFormat {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$292.const$0;
+        return constants$291.const$0;
     }
     public static VarHandle name$VH() {
-        return constants$292.const$1;
+        return constants$291.const$1;
     }
     /**
      * Getter for field:
@@ -53,7 +53,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$291.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -62,16 +62,16 @@ public class AVOutputFormat {
      * }
      */
     public static void name$set(MemorySegment seg, MemorySegment x) {
-        constants$292.const$1.set(seg, x);
+        constants$291.const$1.set(seg, x);
     }
     public static MemorySegment name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$291.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$292.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$291.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle long_name$VH() {
-        return constants$292.const$2;
+        return constants$291.const$2;
     }
     /**
      * Getter for field:
@@ -80,7 +80,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment long_name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$291.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -89,16 +89,16 @@ public class AVOutputFormat {
      * }
      */
     public static void long_name$set(MemorySegment seg, MemorySegment x) {
-        constants$292.const$2.set(seg, x);
+        constants$291.const$2.set(seg, x);
     }
     public static MemorySegment long_name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$291.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void long_name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$292.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$291.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle mime_type$VH() {
-        return constants$292.const$3;
+        return constants$291.const$3;
     }
     /**
      * Getter for field:
@@ -107,7 +107,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment mime_type$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$291.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -116,16 +116,16 @@ public class AVOutputFormat {
      * }
      */
     public static void mime_type$set(MemorySegment seg, MemorySegment x) {
-        constants$292.const$3.set(seg, x);
+        constants$291.const$3.set(seg, x);
     }
     public static MemorySegment mime_type$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$291.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void mime_type$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$292.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$291.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle extensions$VH() {
-        return constants$292.const$4;
+        return constants$291.const$4;
     }
     /**
      * Getter for field:
@@ -134,7 +134,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment extensions$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$291.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -143,16 +143,16 @@ public class AVOutputFormat {
      * }
      */
     public static void extensions$set(MemorySegment seg, MemorySegment x) {
-        constants$292.const$4.set(seg, x);
+        constants$291.const$4.set(seg, x);
     }
     public static MemorySegment extensions$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$292.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$291.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void extensions$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$292.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$291.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle audio_codec$VH() {
-        return constants$292.const$5;
+        return constants$291.const$5;
     }
     /**
      * Getter for field:
@@ -161,7 +161,7 @@ public class AVOutputFormat {
      * }
      */
     public static int audio_codec$get(MemorySegment seg) {
-        return (int)constants$292.const$5.get(seg);
+        return (int)constants$291.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -170,16 +170,16 @@ public class AVOutputFormat {
      * }
      */
     public static void audio_codec$set(MemorySegment seg, int x) {
-        constants$292.const$5.set(seg, x);
+        constants$291.const$5.set(seg, x);
     }
     public static int audio_codec$get(MemorySegment seg, long index) {
-        return (int)constants$292.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$291.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void audio_codec$set(MemorySegment seg, long index, int x) {
-        constants$292.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$291.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle video_codec$VH() {
-        return constants$293.const$0;
+        return constants$292.const$0;
     }
     /**
      * Getter for field:
@@ -188,7 +188,7 @@ public class AVOutputFormat {
      * }
      */
     public static int video_codec$get(MemorySegment seg) {
-        return (int)constants$293.const$0.get(seg);
+        return (int)constants$292.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -197,16 +197,16 @@ public class AVOutputFormat {
      * }
      */
     public static void video_codec$set(MemorySegment seg, int x) {
-        constants$293.const$0.set(seg, x);
+        constants$292.const$0.set(seg, x);
     }
     public static int video_codec$get(MemorySegment seg, long index) {
-        return (int)constants$293.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$292.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void video_codec$set(MemorySegment seg, long index, int x) {
-        constants$293.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$292.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle subtitle_codec$VH() {
-        return constants$293.const$1;
+        return constants$292.const$1;
     }
     /**
      * Getter for field:
@@ -215,7 +215,7 @@ public class AVOutputFormat {
      * }
      */
     public static int subtitle_codec$get(MemorySegment seg) {
-        return (int)constants$293.const$1.get(seg);
+        return (int)constants$292.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -224,16 +224,16 @@ public class AVOutputFormat {
      * }
      */
     public static void subtitle_codec$set(MemorySegment seg, int x) {
-        constants$293.const$1.set(seg, x);
+        constants$292.const$1.set(seg, x);
     }
     public static int subtitle_codec$get(MemorySegment seg, long index) {
-        return (int)constants$293.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$292.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void subtitle_codec$set(MemorySegment seg, long index, int x) {
-        constants$293.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$292.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flags$VH() {
-        return constants$293.const$2;
+        return constants$292.const$2;
     }
     /**
      * Getter for field:
@@ -242,7 +242,7 @@ public class AVOutputFormat {
      * }
      */
     public static int flags$get(MemorySegment seg) {
-        return (int)constants$293.const$2.get(seg);
+        return (int)constants$292.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -251,16 +251,16 @@ public class AVOutputFormat {
      * }
      */
     public static void flags$set(MemorySegment seg, int x) {
-        constants$293.const$2.set(seg, x);
+        constants$292.const$2.set(seg, x);
     }
     public static int flags$get(MemorySegment seg, long index) {
-        return (int)constants$293.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$292.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void flags$set(MemorySegment seg, long index, int x) {
-        constants$293.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$292.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle codec_tag$VH() {
-        return constants$293.const$3;
+        return constants$292.const$3;
     }
     /**
      * Getter for field:
@@ -269,7 +269,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment codec_tag$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$293.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$292.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -278,43 +278,43 @@ public class AVOutputFormat {
      * }
      */
     public static void codec_tag$set(MemorySegment seg, MemorySegment x) {
-        constants$293.const$3.set(seg, x);
+        constants$292.const$3.set(seg, x);
     }
     public static MemorySegment codec_tag$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$293.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$292.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void codec_tag$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$293.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$292.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle priv_class$VH() {
-        return constants$293.const$4;
+        return constants$292.const$4;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * struct AVClass* priv_class;
+     * const AVClass* priv_class;
      * }
      */
     public static MemorySegment priv_class$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$293.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$292.const$4.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * struct AVClass* priv_class;
+     * const AVClass* priv_class;
      * }
      */
     public static void priv_class$set(MemorySegment seg, MemorySegment x) {
-        constants$293.const$4.set(seg, x);
+        constants$292.const$4.set(seg, x);
     }
     public static MemorySegment priv_class$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$293.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$292.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void priv_class$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$293.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$292.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle priv_data_size$VH() {
-        return constants$293.const$5;
+        return constants$292.const$5;
     }
     /**
      * Getter for field:
@@ -323,7 +323,7 @@ public class AVOutputFormat {
      * }
      */
     public static int priv_data_size$get(MemorySegment seg) {
-        return (int)constants$293.const$5.get(seg);
+        return (int)constants$292.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -332,16 +332,16 @@ public class AVOutputFormat {
      * }
      */
     public static void priv_data_size$set(MemorySegment seg, int x) {
-        constants$293.const$5.set(seg, x);
+        constants$292.const$5.set(seg, x);
     }
     public static int priv_data_size$get(MemorySegment seg, long index) {
-        return (int)constants$293.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$292.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void priv_data_size$set(MemorySegment seg, long index, int x) {
-        constants$293.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$292.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flags_internal$VH() {
-        return constants$294.const$0;
+        return constants$293.const$0;
     }
     /**
      * Getter for field:
@@ -350,7 +350,7 @@ public class AVOutputFormat {
      * }
      */
     public static int flags_internal$get(MemorySegment seg) {
-        return (int)constants$294.const$0.get(seg);
+        return (int)constants$293.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -359,13 +359,13 @@ public class AVOutputFormat {
      * }
      */
     public static void flags_internal$set(MemorySegment seg, int x) {
-        constants$294.const$0.set(seg, x);
+        constants$293.const$0.set(seg, x);
     }
     public static int flags_internal$get(MemorySegment seg, long index) {
-        return (int)constants$294.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$293.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void flags_internal$set(MemorySegment seg, long index, int x) {
-        constants$294.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$293.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -376,13 +376,13 @@ public class AVOutputFormat {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(write_header fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$294.const$1, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$293.const$1, fi, constants$0.const$3, scope);
         }
         static write_header ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$142.const$4.invokeExact(symbol, __x0);
+                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -391,7 +391,7 @@ public class AVOutputFormat {
     }
 
     public static VarHandle write_header$VH() {
-        return constants$294.const$2;
+        return constants$293.const$2;
     }
     /**
      * Getter for field:
@@ -400,7 +400,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment write_header$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$294.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$293.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -409,33 +409,33 @@ public class AVOutputFormat {
      * }
      */
     public static void write_header$set(MemorySegment seg, MemorySegment x) {
-        constants$294.const$2.set(seg, x);
+        constants$293.const$2.set(seg, x);
     }
     public static MemorySegment write_header$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$294.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$293.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void write_header$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$294.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$293.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static write_header write_header(MemorySegment segment, Arena scope) {
         return write_header.ofAddress(write_header$get(segment), scope);
     }
     /**
      * {@snippet :
- * int (*write_packet)(struct AVFormatContext*,struct AVPacket*);
+ * int (*write_packet)(struct AVFormatContext*,AVPacket*);
      * }
      */
     public interface write_packet {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
         static MemorySegment allocate(write_packet fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$294.const$3, fi, constants$66.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$293.const$3, fi, constants$66.const$1, scope);
         }
         static write_packet ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)constants$112.const$3.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$111.const$3.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -444,31 +444,31 @@ public class AVOutputFormat {
     }
 
     public static VarHandle write_packet$VH() {
-        return constants$294.const$4;
+        return constants$293.const$4;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * int (*write_packet)(struct AVFormatContext*,struct AVPacket*);
+     * int (*write_packet)(struct AVFormatContext*,AVPacket*);
      * }
      */
     public static MemorySegment write_packet$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$294.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$293.const$4.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * int (*write_packet)(struct AVFormatContext*,struct AVPacket*);
+     * int (*write_packet)(struct AVFormatContext*,AVPacket*);
      * }
      */
     public static void write_packet$set(MemorySegment seg, MemorySegment x) {
-        constants$294.const$4.set(seg, x);
+        constants$293.const$4.set(seg, x);
     }
     public static MemorySegment write_packet$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$294.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$293.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void write_packet$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$294.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$293.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static write_packet write_packet(MemorySegment segment, Arena scope) {
         return write_packet.ofAddress(write_packet$get(segment), scope);
@@ -482,13 +482,13 @@ public class AVOutputFormat {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(write_trailer fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$294.const$5, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$293.const$5, fi, constants$0.const$3, scope);
         }
         static write_trailer ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$142.const$4.invokeExact(symbol, __x0);
+                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -497,7 +497,7 @@ public class AVOutputFormat {
     }
 
     public static VarHandle write_trailer$VH() {
-        return constants$295.const$0;
+        return constants$294.const$0;
     }
     /**
      * Getter for field:
@@ -506,7 +506,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment write_trailer$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$295.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$294.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -515,33 +515,33 @@ public class AVOutputFormat {
      * }
      */
     public static void write_trailer$set(MemorySegment seg, MemorySegment x) {
-        constants$295.const$0.set(seg, x);
+        constants$294.const$0.set(seg, x);
     }
     public static MemorySegment write_trailer$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$295.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$294.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void write_trailer$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$295.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$294.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static write_trailer write_trailer(MemorySegment segment, Arena scope) {
         return write_trailer.ofAddress(write_trailer$get(segment), scope);
     }
     /**
      * {@snippet :
- * int (*interleave_packet)(struct AVFormatContext*,struct AVPacket*,int,int);
+ * int (*interleave_packet)(struct AVFormatContext*,AVPacket*,int,int);
      * }
      */
     public interface interleave_packet {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, int _x2, int _x3);
         static MemorySegment allocate(interleave_packet fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$295.const$1, fi, constants$258.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$294.const$1, fi, constants$257.const$2, scope);
         }
         static interleave_packet ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, int __x2, int __x3) -> {
                 try {
-                    return (int)constants$258.const$4.invokeExact(symbol, __x0, __x1, __x2, __x3);
+                    return (int)constants$257.const$4.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -550,31 +550,31 @@ public class AVOutputFormat {
     }
 
     public static VarHandle interleave_packet$VH() {
-        return constants$295.const$2;
+        return constants$294.const$2;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * int (*interleave_packet)(struct AVFormatContext*,struct AVPacket*,int,int);
+     * int (*interleave_packet)(struct AVFormatContext*,AVPacket*,int,int);
      * }
      */
     public static MemorySegment interleave_packet$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$295.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$294.const$2.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * int (*interleave_packet)(struct AVFormatContext*,struct AVPacket*,int,int);
+     * int (*interleave_packet)(struct AVFormatContext*,AVPacket*,int,int);
      * }
      */
     public static void interleave_packet$set(MemorySegment seg, MemorySegment x) {
-        constants$295.const$2.set(seg, x);
+        constants$294.const$2.set(seg, x);
     }
     public static MemorySegment interleave_packet$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$295.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$294.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void interleave_packet$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$295.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$294.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static interleave_packet interleave_packet(MemorySegment segment, Arena scope) {
         return interleave_packet.ofAddress(interleave_packet$get(segment), scope);
@@ -588,13 +588,13 @@ public class AVOutputFormat {
 
         int apply(int _x0, int _x1);
         static MemorySegment allocate(query_codec fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$295.const$3, fi, constants$0.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$294.const$3, fi, constants$0.const$5, scope);
         }
         static query_codec ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (int __x0, int __x1) -> {
                 try {
-                    return (int)constants$295.const$4.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$294.const$4.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -603,7 +603,7 @@ public class AVOutputFormat {
     }
 
     public static VarHandle query_codec$VH() {
-        return constants$295.const$5;
+        return constants$294.const$5;
     }
     /**
      * Getter for field:
@@ -612,7 +612,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment query_codec$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$295.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$294.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -621,33 +621,33 @@ public class AVOutputFormat {
      * }
      */
     public static void query_codec$set(MemorySegment seg, MemorySegment x) {
-        constants$295.const$5.set(seg, x);
+        constants$294.const$5.set(seg, x);
     }
     public static MemorySegment query_codec$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$295.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$294.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void query_codec$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$295.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$294.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static query_codec query_codec(MemorySegment segment, Arena scope) {
         return query_codec.ofAddress(query_codec$get(segment), scope);
     }
     /**
      * {@snippet :
- * void (*get_output_timestamp)(struct AVFormatContext*,int,long*,long*);
+ * void (*get_output_timestamp)(struct AVFormatContext*,int,int64_t*,int64_t*);
      * }
      */
     public interface get_output_timestamp {
 
         void apply(java.lang.foreign.MemorySegment _x0, int _x1, java.lang.foreign.MemorySegment _x2, java.lang.foreign.MemorySegment _x3);
         static MemorySegment allocate(get_output_timestamp fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$296.const$0, fi, constants$145.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$295.const$0, fi, constants$143.const$4, scope);
         }
         static get_output_timestamp ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, java.lang.foreign.MemorySegment __x2, java.lang.foreign.MemorySegment __x3) -> {
                 try {
-                    constants$145.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
+                    constants$144.const$3.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -656,51 +656,51 @@ public class AVOutputFormat {
     }
 
     public static VarHandle get_output_timestamp$VH() {
-        return constants$296.const$1;
+        return constants$295.const$1;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * void (*get_output_timestamp)(struct AVFormatContext*,int,long*,long*);
+     * void (*get_output_timestamp)(struct AVFormatContext*,int,int64_t*,int64_t*);
      * }
      */
     public static MemorySegment get_output_timestamp$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$296.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$295.const$1.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * void (*get_output_timestamp)(struct AVFormatContext*,int,long*,long*);
+     * void (*get_output_timestamp)(struct AVFormatContext*,int,int64_t*,int64_t*);
      * }
      */
     public static void get_output_timestamp$set(MemorySegment seg, MemorySegment x) {
-        constants$296.const$1.set(seg, x);
+        constants$295.const$1.set(seg, x);
     }
     public static MemorySegment get_output_timestamp$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$296.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$295.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void get_output_timestamp$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$296.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$295.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_output_timestamp get_output_timestamp(MemorySegment segment, Arena scope) {
         return get_output_timestamp.ofAddress(get_output_timestamp$get(segment), scope);
     }
     /**
      * {@snippet :
- * int (*control_message)(struct AVFormatContext*,int,void*,unsigned long);
+ * int (*control_message)(struct AVFormatContext*,int,void*,size_t);
      * }
      */
     public interface control_message {
 
-        int apply(java.lang.foreign.MemorySegment s, int type, java.lang.foreign.MemorySegment data, long data_size);
+        int apply(java.lang.foreign.MemorySegment _x0, int _x1, java.lang.foreign.MemorySegment _x2, long _x3);
         static MemorySegment allocate(control_message fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$296.const$2, fi, constants$205.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$295.const$2, fi, constants$204.const$5, scope);
         }
         static control_message ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment _s, int _type, java.lang.foreign.MemorySegment _data, long _data_size) -> {
+            return (java.lang.foreign.MemorySegment __x0, int __x1, java.lang.foreign.MemorySegment __x2, long __x3) -> {
                 try {
-                    return (int)constants$296.const$3.invokeExact(symbol, _s, _type, _data, _data_size);
+                    return (int)constants$295.const$3.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -709,51 +709,51 @@ public class AVOutputFormat {
     }
 
     public static VarHandle control_message$VH() {
-        return constants$296.const$4;
+        return constants$295.const$4;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * int (*control_message)(struct AVFormatContext*,int,void*,unsigned long);
+     * int (*control_message)(struct AVFormatContext*,int,void*,size_t);
      * }
      */
     public static MemorySegment control_message$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$296.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$295.const$4.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * int (*control_message)(struct AVFormatContext*,int,void*,unsigned long);
+     * int (*control_message)(struct AVFormatContext*,int,void*,size_t);
      * }
      */
     public static void control_message$set(MemorySegment seg, MemorySegment x) {
-        constants$296.const$4.set(seg, x);
+        constants$295.const$4.set(seg, x);
     }
     public static MemorySegment control_message$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$296.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$295.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void control_message$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$296.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$295.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static control_message control_message(MemorySegment segment, Arena scope) {
         return control_message.ofAddress(control_message$get(segment), scope);
     }
     /**
      * {@snippet :
- * int (*write_uncoded_frame)(struct AVFormatContext*,int,struct AVFrame**,unsigned int);
+ * int (*write_uncoded_frame)(struct AVFormatContext*,int,AVFrame**,unsigned int);
      * }
      */
     public interface write_uncoded_frame {
 
         int apply(java.lang.foreign.MemorySegment _x0, int _x1, java.lang.foreign.MemorySegment _x2, int _x3);
         static MemorySegment allocate(write_uncoded_frame fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$296.const$5, fi, constants$181.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$295.const$5, fi, constants$180.const$2, scope);
         }
         static write_uncoded_frame ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, java.lang.foreign.MemorySegment __x2, int __x3) -> {
                 try {
-                    return (int)constants$239.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3);
+                    return (int)constants$238.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -762,31 +762,31 @@ public class AVOutputFormat {
     }
 
     public static VarHandle write_uncoded_frame$VH() {
-        return constants$297.const$0;
+        return constants$296.const$0;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * int (*write_uncoded_frame)(struct AVFormatContext*,int,struct AVFrame**,unsigned int);
+     * int (*write_uncoded_frame)(struct AVFormatContext*,int,AVFrame**,unsigned int);
      * }
      */
     public static MemorySegment write_uncoded_frame$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$297.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$296.const$0.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * int (*write_uncoded_frame)(struct AVFormatContext*,int,struct AVFrame**,unsigned int);
+     * int (*write_uncoded_frame)(struct AVFormatContext*,int,AVFrame**,unsigned int);
      * }
      */
     public static void write_uncoded_frame$set(MemorySegment seg, MemorySegment x) {
-        constants$297.const$0.set(seg, x);
+        constants$296.const$0.set(seg, x);
     }
     public static MemorySegment write_uncoded_frame$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$297.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$296.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void write_uncoded_frame$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$297.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$296.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static write_uncoded_frame write_uncoded_frame(MemorySegment segment, Arena scope) {
         return write_uncoded_frame.ofAddress(write_uncoded_frame$get(segment), scope);
@@ -800,13 +800,13 @@ public class AVOutputFormat {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
         static MemorySegment allocate(get_device_list fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$297.const$1, fi, constants$66.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$296.const$1, fi, constants$66.const$1, scope);
         }
         static get_device_list ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)constants$112.const$3.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$111.const$3.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -815,7 +815,7 @@ public class AVOutputFormat {
     }
 
     public static VarHandle get_device_list$VH() {
-        return constants$297.const$2;
+        return constants$296.const$2;
     }
     /**
      * Getter for field:
@@ -824,7 +824,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment get_device_list$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$297.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$296.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -833,19 +833,19 @@ public class AVOutputFormat {
      * }
      */
     public static void get_device_list$set(MemorySegment seg, MemorySegment x) {
-        constants$297.const$2.set(seg, x);
+        constants$296.const$2.set(seg, x);
     }
     public static MemorySegment get_device_list$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$297.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$296.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void get_device_list$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$297.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$296.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_device_list get_device_list(MemorySegment segment, Arena scope) {
         return get_device_list.ofAddress(get_device_list$get(segment), scope);
     }
     public static VarHandle data_codec$VH() {
-        return constants$297.const$3;
+        return constants$296.const$3;
     }
     /**
      * Getter for field:
@@ -854,7 +854,7 @@ public class AVOutputFormat {
      * }
      */
     public static int data_codec$get(MemorySegment seg) {
-        return (int)constants$297.const$3.get(seg);
+        return (int)constants$296.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -863,13 +863,13 @@ public class AVOutputFormat {
      * }
      */
     public static void data_codec$set(MemorySegment seg, int x) {
-        constants$297.const$3.set(seg, x);
+        constants$296.const$3.set(seg, x);
     }
     public static int data_codec$get(MemorySegment seg, long index) {
-        return (int)constants$297.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$296.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void data_codec$set(MemorySegment seg, long index, int x) {
-        constants$297.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$296.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -880,13 +880,13 @@ public class AVOutputFormat {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(init fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$297.const$4, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$296.const$4, fi, constants$0.const$3, scope);
         }
         static init ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$142.const$4.invokeExact(symbol, __x0);
+                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -895,7 +895,7 @@ public class AVOutputFormat {
     }
 
     public static VarHandle init$VH() {
-        return constants$297.const$5;
+        return constants$296.const$5;
     }
     /**
      * Getter for field:
@@ -904,7 +904,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment init$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$297.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$296.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -913,13 +913,13 @@ public class AVOutputFormat {
      * }
      */
     public static void init$set(MemorySegment seg, MemorySegment x) {
-        constants$297.const$5.set(seg, x);
+        constants$296.const$5.set(seg, x);
     }
     public static MemorySegment init$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$297.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$296.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void init$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$297.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$296.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static init init(MemorySegment segment, Arena scope) {
         return init.ofAddress(init$get(segment), scope);
@@ -933,13 +933,13 @@ public class AVOutputFormat {
 
         void apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(deinit fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$298.const$0, fi, constants$70.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$297.const$0, fi, constants$70.const$2, scope);
         }
         static deinit ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    constants$152.const$3.invokeExact(symbol, __x0);
+                    constants$151.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -948,7 +948,7 @@ public class AVOutputFormat {
     }
 
     public static VarHandle deinit$VH() {
-        return constants$298.const$1;
+        return constants$297.const$1;
     }
     /**
      * Getter for field:
@@ -957,7 +957,7 @@ public class AVOutputFormat {
      * }
      */
     public static MemorySegment deinit$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$298.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$297.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -966,33 +966,33 @@ public class AVOutputFormat {
      * }
      */
     public static void deinit$set(MemorySegment seg, MemorySegment x) {
-        constants$298.const$1.set(seg, x);
+        constants$297.const$1.set(seg, x);
     }
     public static MemorySegment deinit$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$298.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$297.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void deinit$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$298.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$297.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static deinit deinit(MemorySegment segment, Arena scope) {
         return deinit.ofAddress(deinit$get(segment), scope);
     }
     /**
      * {@snippet :
- * int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,struct AVPacket*);
+ * int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,const AVPacket*);
      * }
      */
     public interface check_bitstream {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2);
         static MemorySegment allocate(check_bitstream fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$298.const$2, fi, constants$71.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$297.const$2, fi, constants$71.const$1, scope);
         }
         static check_bitstream ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)constants$298.const$3.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$297.const$3.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1001,31 +1001,31 @@ public class AVOutputFormat {
     }
 
     public static VarHandle check_bitstream$VH() {
-        return constants$298.const$4;
+        return constants$297.const$4;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,struct AVPacket*);
+     * int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,const AVPacket*);
      * }
      */
     public static MemorySegment check_bitstream$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$298.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$297.const$4.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,struct AVPacket*);
+     * int (*check_bitstream)(struct AVFormatContext*,struct AVStream*,const AVPacket*);
      * }
      */
     public static void check_bitstream$set(MemorySegment seg, MemorySegment x) {
-        constants$298.const$4.set(seg, x);
+        constants$297.const$4.set(seg, x);
     }
     public static MemorySegment check_bitstream$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$298.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$297.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void check_bitstream$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$298.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$297.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static check_bitstream check_bitstream(MemorySegment segment, Arena scope) {
         return check_bitstream.ofAddress(check_bitstream$get(segment), scope);
@@ -1035,7 +1035,7 @@ public class AVOutputFormat {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

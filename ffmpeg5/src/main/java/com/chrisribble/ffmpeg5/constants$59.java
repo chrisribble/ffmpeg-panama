@@ -19,7 +19,7 @@ final class constants$59 {
             JAVA_INT.withName("__wch"),
             MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
         ).withName("__value")
-    ).withName("__mbstate_t");
+    ).withName("");
     static final VarHandle const$3 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("__count"));
     static final UnionLayout const$4 = MemoryLayout.unionLayout(
         JAVA_INT.withName("__wch"),

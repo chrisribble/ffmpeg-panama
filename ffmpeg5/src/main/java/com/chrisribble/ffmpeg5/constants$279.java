@@ -11,12 +11,30 @@ final class constants$279 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$279() {}
-    static final VarHandle const$0 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("write_data_type"));
-    static final VarHandle const$1 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("ignore_boundary_point"));
-    static final VarHandle const$2 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("written"));
-    static final VarHandle const$3 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_ptr_max"));
-    static final VarHandle const$4 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("bytes_read"));
-    static final VarHandle const$5 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("bytes_written"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avio_find_protocol_name",
+        constants$67.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avio_check",
+        constants$82.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avio_open_dir",
+        constants$71.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avio_read_dir",
+        constants$66.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avio_close_dir",
+        constants$0.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avio_free_directory_entry",
+        constants$70.const$2
+    );
 }
 
 

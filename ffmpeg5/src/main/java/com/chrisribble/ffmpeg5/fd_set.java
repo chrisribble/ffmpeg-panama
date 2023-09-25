@@ -9,15 +9,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * struct fd_set {
- *     long __fds_bits[16];
+ * struct {
+ *     __fd_mask __fds_bits[16];
  * };
  * }
  */
 public class fd_set {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$88.const$4;
+        return constants$88.const$0;
     }
     public static MemorySegment __fds_bits$slice(MemorySegment seg) {
         return seg.asSlice(0, 128);
@@ -27,7 +27,7 @@ public class fd_set {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

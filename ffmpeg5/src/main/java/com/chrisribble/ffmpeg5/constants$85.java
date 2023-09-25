@@ -11,33 +11,29 @@ final class constants$85 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$85() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "atoi",
-        constants$0.const$3
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_FLOAT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "atol",
-        constants$79.const$0
+        "strtof",
+        constants$85.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "atoll",
-        constants$79.const$0
+        "strtol",
+        constants$6.const$2
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_DOUBLE,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strtoul",
+        constants$6.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "strtod",
-        constants$85.const$3
+        "strtoq",
+        constants$6.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_FLOAT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "strtof",
-        constants$85.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strtouq",
+        constants$6.const$2
     );
 }
 

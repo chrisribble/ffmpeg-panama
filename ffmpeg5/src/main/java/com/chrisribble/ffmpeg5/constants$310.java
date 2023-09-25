@@ -11,12 +11,21 @@ final class constants$310 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$310() {}
-    static final VarHandle const$0 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("program_num"));
-    static final VarHandle const$1 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("pmt_pid"));
-    static final VarHandle const$2 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("pcr_pid"));
-    static final VarHandle const$3 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("pmt_version"));
-    static final VarHandle const$4 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
-    static final VarHandle const$5 = constants$308.const$5.varHandle(MemoryLayout.PathElement.groupElement("end_time"));
+    static final VarHandle const$0 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_reference"));
+    static final VarHandle const$1 = constants$307.const$5.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_behavior"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("id"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("time_base"),
+        JAVA_LONG.withName("start"),
+        JAVA_LONG.withName("end"),
+        RuntimeHelper.POINTER.withName("metadata")
+    ).withName("AVChapter");
+    static final VarHandle const$3 = constants$310.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$4 = constants$310.const$2.varHandle(MemoryLayout.PathElement.groupElement("start"));
+    static final VarHandle const$5 = constants$310.const$2.varHandle(MemoryLayout.PathElement.groupElement("end"));
 }
 
 

@@ -11,12 +11,12 @@ final class constants$202 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$202() {}
-    static final VarHandle const$0 = constants$201.const$4.varHandle(MemoryLayout.PathElement.groupElement("pts"));
-    static final VarHandle const$1 = constants$201.const$4.varHandle(MemoryLayout.PathElement.groupElement("dts"));
-    static final VarHandle const$2 = constants$201.const$4.varHandle(MemoryLayout.PathElement.groupElement("data"));
-    static final VarHandle const$3 = constants$201.const$4.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$4 = constants$201.const$4.varHandle(MemoryLayout.PathElement.groupElement("stream_index"));
-    static final VarHandle const$5 = constants$201.const$4.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$0 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
+    static final VarHandle const$1 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("side_data_elems"));
+    static final VarHandle const$2 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("duration"));
+    static final VarHandle const$3 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("pos"));
+    static final VarHandle const$4 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final VarHandle const$5 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque_ref"));
 }
 
 

@@ -12,27 +12,40 @@ final class constants$133 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$133() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
         JAVA_LONG,
-        RuntimeHelper.POINTER
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_size_mult",
+        "av_reduce",
         constants$133.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_max_alloc",
-        constants$102.const$5
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("__clang_max_align_nonce1"),
-        MemoryLayout.paddingLayout(8),
-        MemoryLayout.paddingLayout(16).withName("__clang_max_align_nonce2")
-    ).withName("max_align_t");
-    static final VarHandle const$4 = constants$133.const$3.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_mul_q",
+        constants$133.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_div_q",
+        constants$133.const$2
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_strerror",
-        constants$124.const$4
+        "av_add_q",
+        constants$133.const$2
     );
 }
 

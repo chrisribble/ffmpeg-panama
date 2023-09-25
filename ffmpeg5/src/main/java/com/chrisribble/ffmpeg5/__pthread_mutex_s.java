@@ -17,17 +17,17 @@ import static java.lang.foreign.ValueLayout.*;
  *     int __kind;
  *     short __spins;
  *     short __elision;
- *     struct __pthread_internal_list __list;
+ *     __pthread_list_t __list;
  * };
  * }
  */
 public class __pthread_mutex_s {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$91.const$0;
+        return constants$90.const$3;
     }
     public static VarHandle __lock$VH() {
-        return constants$91.const$1;
+        return constants$90.const$4;
     }
     /**
      * Getter for field:
@@ -36,7 +36,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static int __lock$get(MemorySegment seg) {
-        return (int)constants$91.const$1.get(seg);
+        return (int)constants$90.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -45,16 +45,16 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __lock$set(MemorySegment seg, int x) {
-        constants$91.const$1.set(seg, x);
+        constants$90.const$4.set(seg, x);
     }
     public static int __lock$get(MemorySegment seg, long index) {
-        return (int)constants$91.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$90.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void __lock$set(MemorySegment seg, long index, int x) {
-        constants$91.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __count$VH() {
-        return constants$91.const$2;
+        return constants$90.const$5;
     }
     /**
      * Getter for field:
@@ -63,7 +63,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static int __count$get(MemorySegment seg) {
-        return (int)constants$91.const$2.get(seg);
+        return (int)constants$90.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -72,16 +72,16 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __count$set(MemorySegment seg, int x) {
-        constants$91.const$2.set(seg, x);
+        constants$90.const$5.set(seg, x);
     }
     public static int __count$get(MemorySegment seg, long index) {
-        return (int)constants$91.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$90.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void __count$set(MemorySegment seg, long index, int x) {
-        constants$91.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __owner$VH() {
-        return constants$91.const$3;
+        return constants$91.const$0;
     }
     /**
      * Getter for field:
@@ -90,7 +90,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static int __owner$get(MemorySegment seg) {
-        return (int)constants$91.const$3.get(seg);
+        return (int)constants$91.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -99,16 +99,16 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __owner$set(MemorySegment seg, int x) {
-        constants$91.const$3.set(seg, x);
+        constants$91.const$0.set(seg, x);
     }
     public static int __owner$get(MemorySegment seg, long index) {
-        return (int)constants$91.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$91.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void __owner$set(MemorySegment seg, long index, int x) {
-        constants$91.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __nusers$VH() {
-        return constants$91.const$4;
+        return constants$91.const$1;
     }
     /**
      * Getter for field:
@@ -117,7 +117,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static int __nusers$get(MemorySegment seg) {
-        return (int)constants$91.const$4.get(seg);
+        return (int)constants$91.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -126,16 +126,16 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __nusers$set(MemorySegment seg, int x) {
-        constants$91.const$4.set(seg, x);
+        constants$91.const$1.set(seg, x);
     }
     public static int __nusers$get(MemorySegment seg, long index) {
-        return (int)constants$91.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$91.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __nusers$set(MemorySegment seg, long index, int x) {
-        constants$91.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __kind$VH() {
-        return constants$91.const$5;
+        return constants$91.const$2;
     }
     /**
      * Getter for field:
@@ -144,7 +144,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static int __kind$get(MemorySegment seg) {
-        return (int)constants$91.const$5.get(seg);
+        return (int)constants$91.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -153,16 +153,16 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __kind$set(MemorySegment seg, int x) {
-        constants$91.const$5.set(seg, x);
+        constants$91.const$2.set(seg, x);
     }
     public static int __kind$get(MemorySegment seg, long index) {
-        return (int)constants$91.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$91.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void __kind$set(MemorySegment seg, long index, int x) {
-        constants$91.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __spins$VH() {
-        return constants$92.const$0;
+        return constants$91.const$3;
     }
     /**
      * Getter for field:
@@ -171,7 +171,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static short __spins$get(MemorySegment seg) {
-        return (short)constants$92.const$0.get(seg);
+        return (short)constants$91.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -180,16 +180,16 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __spins$set(MemorySegment seg, short x) {
-        constants$92.const$0.set(seg, x);
+        constants$91.const$3.set(seg, x);
     }
     public static short __spins$get(MemorySegment seg, long index) {
-        return (short)constants$92.const$0.get(seg.asSlice(index*sizeof()));
+        return (short)constants$91.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __spins$set(MemorySegment seg, long index, short x) {
-        constants$92.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __elision$VH() {
-        return constants$92.const$1;
+        return constants$91.const$4;
     }
     /**
      * Getter for field:
@@ -198,7 +198,7 @@ public class __pthread_mutex_s {
      * }
      */
     public static short __elision$get(MemorySegment seg) {
-        return (short)constants$92.const$1.get(seg);
+        return (short)constants$91.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -207,13 +207,13 @@ public class __pthread_mutex_s {
      * }
      */
     public static void __elision$set(MemorySegment seg, short x) {
-        constants$92.const$1.set(seg, x);
+        constants$91.const$4.set(seg, x);
     }
     public static short __elision$get(MemorySegment seg, long index) {
-        return (short)constants$92.const$1.get(seg.asSlice(index*sizeof()));
+        return (short)constants$91.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void __elision$set(MemorySegment seg, long index, short x) {
-        constants$92.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment __list$slice(MemorySegment seg) {
         return seg.asSlice(24, 16);
@@ -223,7 +223,7 @@ public class __pthread_mutex_s {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

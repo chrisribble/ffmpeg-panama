@@ -11,24 +11,26 @@ final class constants$91 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$91() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__lock"),
-        JAVA_INT.withName("__count"),
-        JAVA_INT.withName("__owner"),
-        JAVA_INT.withName("__nusers"),
-        JAVA_INT.withName("__kind"),
-        JAVA_SHORT.withName("__spins"),
-        JAVA_SHORT.withName("__elision"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("__prev"),
-            RuntimeHelper.POINTER.withName("__next")
-        ).withName("__list")
-    ).withName("__pthread_mutex_s");
-    static final VarHandle const$1 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__lock"));
-    static final VarHandle const$2 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__count"));
-    static final VarHandle const$3 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__owner"));
-    static final VarHandle const$4 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__nusers"));
-    static final VarHandle const$5 = constants$91.const$0.varHandle(MemoryLayout.PathElement.groupElement("__kind"));
+    static final VarHandle const$0 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__owner"));
+    static final VarHandle const$1 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__nusers"));
+    static final VarHandle const$2 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__kind"));
+    static final VarHandle const$3 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__spins"));
+    static final VarHandle const$4 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__elision"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__readers"),
+        JAVA_INT.withName("__writers"),
+        JAVA_INT.withName("__wrphase_futex"),
+        JAVA_INT.withName("__writers_futex"),
+        JAVA_INT.withName("__pad3"),
+        JAVA_INT.withName("__pad4"),
+        JAVA_INT.withName("__cur_writer"),
+        JAVA_INT.withName("__shared"),
+        JAVA_BYTE.withName("__rwelision"),
+        MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
+        JAVA_LONG.withName("__pad2"),
+        JAVA_INT.withName("__flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("__pthread_rwlock_arch_t");
 }
 
 

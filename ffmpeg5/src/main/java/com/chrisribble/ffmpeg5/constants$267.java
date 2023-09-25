@@ -12,34 +12,30 @@ final class constants$267 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$267() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "dysize",
-        constants$1.const$0
+        "clock_getcpuclockid",
+        constants$72.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nanosleep",
-        constants$66.const$1
+        "timer_create",
+        constants$72.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clock_getres",
-        constants$72.const$4
+        "timer_delete",
+        constants$0.const$3
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "clock_gettime",
-        constants$72.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "clock_settime",
-        constants$72.const$4
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "clock_nanosleep",
-        constants$267.const$5
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "timer_settime",
+        constants$267.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "timer_gettime",
+        constants$66.const$1
     );
 }
 

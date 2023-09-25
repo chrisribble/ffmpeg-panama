@@ -12,28 +12,28 @@ final class constants$327 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$327() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_network_deinit",
-        constants$3.const$4
+        "avformat_new_stream",
+        constants$67.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_muxer_iterate",
-        constants$67.const$1
+        "av_stream_add_side_data",
+        constants$204.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_demuxer_iterate",
-        constants$67.const$1
+        "av_stream_new_side_data",
+        constants$117.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avformat_alloc_context",
-        constants$4.const$0
+        "av_stream_get_side_data",
+        constants$76.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avformat_free_context",
-        constants$70.const$2
+        "av_new_program",
+        constants$120.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_get_class",
-        constants$4.const$0
+        "avformat_alloc_output_context2",
+        constants$246.const$5
     );
 }
 

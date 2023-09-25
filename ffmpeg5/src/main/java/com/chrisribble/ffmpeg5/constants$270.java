@@ -11,23 +11,14 @@ final class constants$270 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$270() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("name"),
-        JAVA_INT.withName("type"),
-        JAVA_INT.withName("utf8"),
-        JAVA_LONG.withName("size"),
-        JAVA_LONG.withName("modification_timestamp"),
-        JAVA_LONG.withName("access_timestamp"),
-        JAVA_LONG.withName("status_change_timestamp"),
-        JAVA_LONG.withName("user_id"),
-        JAVA_LONG.withName("group_id"),
-        JAVA_LONG.withName("filemode")
-    ).withName("AVIODirEntry");
-    static final VarHandle const$1 = constants$270.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$2 = constants$270.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$3 = constants$270.const$0.varHandle(MemoryLayout.PathElement.groupElement("utf8"));
-    static final VarHandle const$4 = constants$270.const$0.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$5 = constants$270.const$0.varHandle(MemoryLayout.PathElement.groupElement("modification_timestamp"));
+    static final VarHandle const$0 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("access_timestamp"));
+    static final VarHandle const$1 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("status_change_timestamp"));
+    static final VarHandle const$2 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("user_id"));
+    static final VarHandle const$3 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("group_id"));
+    static final VarHandle const$4 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("filemode"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("url_context")
+    ).withName("AVIODirContext");
 }
 
 

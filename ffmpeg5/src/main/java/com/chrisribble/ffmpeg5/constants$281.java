@@ -11,25 +11,30 @@ final class constants$281 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$281() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(avio_alloc_context$read_packet.class, "apply", constants$110.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(avio_alloc_context$write_packet.class, "apply", constants$110.const$5);
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(avio_alloc_context$seek.class, "apply", constants$274.const$0);
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avio_w8",
+        constants$159.const$2
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avio_write",
+        constants$281.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avio_wl64",
+        constants$104.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_alloc_context",
-        constants$281.const$3
+        "avio_wb64",
+        constants$104.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avio_context_free",
-        constants$70.const$2
+        "avio_wl32",
+        constants$159.const$2
     );
 }
 

@@ -11,27 +11,39 @@ final class constants$88 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$88() {}
-    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("tv_usec"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("tv_sec"),
-        JAVA_LONG.withName("tv_nsec")
-    ).withName("timespec");
-    static final VarHandle const$2 = constants$88.const$1.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
-    static final VarHandle const$3 = constants$88.const$1.varHandle(MemoryLayout.PathElement.groupElement("tv_nsec"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
+    static final StructLayout const$0 = MemoryLayout.structLayout(
         MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__fds_bits")
-    ).withName("fd_set");
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    ).withName("");
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "select",
-        constants$88.const$5
+        constants$88.const$1
     );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "pselect",
+        constants$88.const$3
+    );
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("__value64"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__low"),
+            JAVA_INT.withName("__high")
+        ).withName("__value32")
+    ).withName("");
 }
 
 

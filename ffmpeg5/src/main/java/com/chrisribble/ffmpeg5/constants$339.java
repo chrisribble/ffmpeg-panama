@@ -12,33 +12,28 @@ final class constants$339 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$339() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_get_riff_audio_tags",
-        constants$4.const$0
+        "avformat_transfer_internal_stream_timing_info",
+        constants$141.const$3
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_get_mov_video_tags",
-        constants$4.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_get_mov_audio_tags",
-        constants$4.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(MemoryLayout.structLayout(
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
         JAVA_INT.withName("num"),
         JAVA_INT.withName("den")
     ).withName("AVRational"),
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_guess_sample_aspect_ratio",
-        constants$339.const$3
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_stream_get_codec_timebase",
+        constants$339.const$1
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_guess_frame_rate",
-        constants$339.const$3
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("plane"),
+        JAVA_INT.withName("step"),
+        JAVA_INT.withName("offset"),
+        JAVA_INT.withName("shift"),
+        JAVA_INT.withName("depth")
+    ).withName("AVComponentDescriptor");
+    static final VarHandle const$4 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("plane"));
+    static final VarHandle const$5 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("step"));
 }
 
 

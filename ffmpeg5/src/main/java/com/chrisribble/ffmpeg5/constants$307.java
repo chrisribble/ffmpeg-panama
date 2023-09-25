@@ -11,12 +11,36 @@ final class constants$307 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$307() {}
-    static final VarHandle const$0 = constants$306.const$0.varHandle(MemoryLayout.PathElement.groupElement("nb_frames"));
-    static final VarHandle const$1 = constants$306.const$0.varHandle(MemoryLayout.PathElement.groupElement("disposition"));
-    static final VarHandle const$2 = constants$306.const$0.varHandle(MemoryLayout.PathElement.groupElement("discard"));
-    static final VarHandle const$3 = constants$306.const$0.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
-    static final VarHandle const$4 = constants$306.const$0.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
-    static final VarHandle const$5 = constants$306.const$0.varHandle(MemoryLayout.PathElement.groupElement("nb_side_data"));
+    static final VarHandle const$0 = constants$305.const$0.varHandle(MemoryLayout.PathElement.groupElement("event_flags"));
+    static final VarHandle const$1 = constants$305.const$0.varHandle(MemoryLayout.PathElement.groupElement("codecpar"));
+    static final VarHandle const$2 = constants$305.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_bits"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_stream_get_parser",
+        constants$67.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_stream_get_end_pts",
+        constants$79.const$0
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("flags"),
+        JAVA_INT.withName("discard"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("stream_index"),
+        JAVA_INT.withName("nb_stream_indexes"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("metadata"),
+        JAVA_INT.withName("program_num"),
+        JAVA_INT.withName("pmt_pid"),
+        JAVA_INT.withName("pcr_pid"),
+        JAVA_INT.withName("pmt_version"),
+        JAVA_LONG.withName("start_time"),
+        JAVA_LONG.withName("end_time"),
+        JAVA_LONG.withName("pts_wrap_reference"),
+        JAVA_INT.withName("pts_wrap_behavior"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("AVProgram");
 }
 
 

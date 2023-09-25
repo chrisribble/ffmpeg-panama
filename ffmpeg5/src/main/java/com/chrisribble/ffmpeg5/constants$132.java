@@ -11,38 +11,22 @@ final class constants$132 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$132() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__clang_max_align_nonce1"),
+        MemoryLayout.paddingLayout(8),
+        MemoryLayout.paddingLayout(16).withName("__clang_max_align_nonce2")
+    ).withName("");
+    static final VarHandle const$1 = constants$132.const$0.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_strerror",
+        constants$123.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_memcpy_backptr",
-        constants$132.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_dynarray_add",
-        constants$132.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_dynarray_add_nofree",
-        constants$71.const$1
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_dynarray2_add",
-        constants$132.const$5
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational");
+    static final VarHandle const$4 = constants$132.const$3.varHandle(MemoryLayout.PathElement.groupElement("num"));
+    static final VarHandle const$5 = constants$132.const$3.varHandle(MemoryLayout.PathElement.groupElement("den"));
 }
 
 

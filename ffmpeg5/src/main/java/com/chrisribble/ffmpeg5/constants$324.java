@@ -11,20 +11,15 @@ final class constants$324 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$324() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_streams"));
+    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("skip_estimate_duration_from_pts"));
+    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_probe_packets"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVFormatContext.io_close2.class, "apply", constants$66.const$1);
+    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_close2"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_format_inject_global_side_data",
+        constants$70.const$2
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$324.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$324.const$0
-    );
-    static final VarHandle const$3 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVFormatContext.io_close.class, "apply", constants$69.const$3);
-    static final VarHandle const$5 = constants$312.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_close"));
 }
 
 

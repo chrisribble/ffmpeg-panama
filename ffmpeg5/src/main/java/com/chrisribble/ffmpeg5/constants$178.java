@@ -11,12 +11,12 @@ final class constants$178 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$178() {}
-    static final VarHandle const$0 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("internal"));
-    static final VarHandle const$1 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("device_ref"));
-    static final VarHandle const$2 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("device_ctx"));
-    static final VarHandle const$3 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWFramesContext.free.class, "apply", constants$70.const$2);
-    static final VarHandle const$5 = constants$177.const$4.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final VarHandle const$0 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("user_opaque"));
+    static final VarHandle const$1 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("pool"));
+    static final VarHandle const$2 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_pool_size"));
+    static final VarHandle const$3 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("format"));
+    static final VarHandle const$4 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("sw_format"));
+    static final VarHandle const$5 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("width"));
 }
 
 

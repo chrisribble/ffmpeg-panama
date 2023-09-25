@@ -12,28 +12,37 @@ final class constants$329 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$329() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_alloc_output_context2",
-        constants$247.const$5
+        "avformat_open_input",
+        constants$246.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_find_input_format",
-        constants$67.const$1
+        "avformat_find_stream_info",
+        constants$66.const$1
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_probe_input_format",
-        constants$122.const$2
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_probe_input_format2",
-        constants$76.const$2
+        "av_find_program_from_stream",
+        constants$329.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_probe_input_format3",
-        constants$76.const$2
+        "av_program_add_stream_index",
+        constants$130.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_probe_input_buffer2",
-        constants$229.const$4
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_find_best_stream",
+        constants$329.const$5
     );
 }
 

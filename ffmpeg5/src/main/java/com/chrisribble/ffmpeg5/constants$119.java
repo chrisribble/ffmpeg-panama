@@ -12,28 +12,22 @@ final class constants$119 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$119() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "memcmp",
-        constants$116.const$3
+        "strxfrm",
+        constants$115.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "__memcmpeq",
-        constants$116.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "memchr",
-        constants$118.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "strcpy",
-        constants$67.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "strncpy",
-        constants$118.const$0
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(13, RuntimeHelper.POINTER).withName("__locales"),
+        RuntimeHelper.POINTER.withName("__ctype_b"),
+        RuntimeHelper.POINTER.withName("__ctype_tolower"),
+        RuntimeHelper.POINTER.withName("__ctype_toupper"),
+        MemoryLayout.sequenceLayout(13, RuntimeHelper.POINTER).withName("__names")
+    ).withName("__locale_struct");
+    static final VarHandle const$2 = constants$119.const$1.varHandle(MemoryLayout.PathElement.groupElement("__ctype_b"));
+    static final VarHandle const$3 = constants$119.const$1.varHandle(MemoryLayout.PathElement.groupElement("__ctype_tolower"));
+    static final VarHandle const$4 = constants$119.const$1.varHandle(MemoryLayout.PathElement.groupElement("__ctype_toupper"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "strcat",
-        constants$67.const$4
+        "strcoll_l",
+        constants$71.const$1
     );
 }
 

@@ -12,34 +12,28 @@ final class constants$334 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$334() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_guess_format",
-        constants$68.const$3
+        "av_codec_get_id",
+        constants$82.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_guess_codec",
-        constants$155.const$0
+        "av_codec_get_tag",
+        constants$82.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_get_output_timestamp",
-        constants$268.const$3
+        "av_codec_get_tag2",
+        constants$331.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hex_dump",
-        constants$282.const$1
+        "av_find_default_stream_index",
+        constants$0.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_hex_dump_log",
-        constants$257.const$5
+        "av_index_search_timestamp",
+        constants$78.const$5
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_pkt_dump2",
-        constants$334.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avformat_index_get_entries_count",
+        constants$0.const$3
     );
 }
 

@@ -11,34 +11,21 @@ final class constants$147 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$147() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_fourcc_make_string",
+        constants$120.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_log_format_line2",
-        constants$147.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_log_set_flags",
-        constants$98.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_log_get_flags",
-        constants$3.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_int_list_length_for_size",
-        constants$124.const$4
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("buffer"),
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_LONG.withName("size")
+    ).withName("AVBufferRef");
+    static final VarHandle const$2 = constants$147.const$1.varHandle(MemoryLayout.PathElement.groupElement("buffer"));
+    static final VarHandle const$3 = constants$147.const$1.varHandle(MemoryLayout.PathElement.groupElement("data"));
+    static final VarHandle const$4 = constants$147.const$1.varHandle(MemoryLayout.PathElement.groupElement("size"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_fopen_utf8",
-        constants$67.const$4
+        "av_buffer_alloc",
+        constants$86.const$2
     );
 }
 

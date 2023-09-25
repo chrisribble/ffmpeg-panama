@@ -1,0 +1,8 @@
+dependencies {
+	testImplementation libs.testng
+}
+
+tasks.named('test') {
+	useTestNG()
+	jvmArgs(['--enable-preview'])
+}

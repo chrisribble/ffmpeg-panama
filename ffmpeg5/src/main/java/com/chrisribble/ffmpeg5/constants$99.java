@@ -12,23 +12,31 @@ final class constants$99 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$99() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "setstate",
-        constants$67.const$1
+        "srandom_r",
+        constants$72.const$4
     );
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("fptr"),
-        RuntimeHelper.POINTER.withName("rptr"),
-        RuntimeHelper.POINTER.withName("state"),
-        JAVA_INT.withName("rand_type"),
-        JAVA_INT.withName("rand_deg"),
-        JAVA_INT.withName("rand_sep"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("end_ptr")
-    ).withName("random_data");
-    static final VarHandle const$2 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("fptr"));
-    static final VarHandle const$3 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("rptr"));
-    static final VarHandle const$4 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("state"));
-    static final VarHandle const$5 = constants$99.const$1.varHandle(MemoryLayout.PathElement.groupElement("rand_type"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "initstate_r",
+        constants$99.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "setstate_r",
+        constants$66.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "rand",
+        constants$3.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "srand",
+        constants$96.const$5
+    );
 }
 
 

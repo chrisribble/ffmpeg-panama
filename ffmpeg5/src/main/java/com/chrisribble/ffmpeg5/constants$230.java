@@ -11,16 +11,12 @@ final class constants$230 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$230() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$229.const$4
-    );
-    static final VarHandle const$1 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("execute"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVCodecContext.execute2.class, "apply", constants$155.const$0);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$155.const$0
-    );
-    static final VarHandle const$4 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("execute2"));
-    static final VarHandle const$5 = constants$209.const$2.varHandle(MemoryLayout.PathElement.groupElement("nsse_weight"));
+    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("profile"));
+    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("level"));
+    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("skip_loop_filter"));
+    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("skip_idct"));
+    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("skip_frame"));
+    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("subtitle_header"));
 }
 
 

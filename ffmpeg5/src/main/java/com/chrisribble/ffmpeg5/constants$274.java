@@ -11,18 +11,12 @@ final class constants$274 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$274() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVIOContext.seek.class, "apply", constants$274.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$274.const$0
-    );
-    static final VarHandle const$3 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("seek"));
-    static final VarHandle const$4 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("pos"));
-    static final VarHandle const$5 = constants$272.const$1.varHandle(MemoryLayout.PathElement.groupElement("eof_reached"));
+    static final VarHandle const$0 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("error"));
+    static final VarHandle const$1 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("write_flag"));
+    static final VarHandle const$2 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("max_packet_size"));
+    static final VarHandle const$3 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("min_packet_size"));
+    static final VarHandle const$4 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("checksum"));
+    static final VarHandle const$5 = constants$271.const$1.varHandle(MemoryLayout.PathElement.groupElement("checksum_ptr"));
 }
 
 

@@ -9,6 +9,22 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 public class FFmpeg5_1 {
 
+    public static MethodHandle __remquo$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.const$3,"__remquo");
+    }
+    /**
+     * {@snippet :
+     * double __remquo(double __x, double __y, int* __quo);
+     * }
+     */
+    public static double __remquo(double __x, double __y, MemorySegment __quo) {
+        var mh$ = __remquo$MH();
+        try {
+            return (double)mh$.invokeExact(__x, __y, __quo);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle lrint$MH() {
         return RuntimeHelper.requireNonNull(constants$29.const$5,"lrint");
     }
@@ -2658,7 +2674,7 @@ public class FFmpeg5_1 {
     /**
      * Getter for variable:
      * {@snippet :
-     * struct _IO_FILE* stdin;
+     * FILE* stdin;
      * }
      */
     public static MemorySegment stdin$get() {
@@ -2667,7 +2683,7 @@ public class FFmpeg5_1 {
     /**
      * Setter for variable:
      * {@snippet :
-     * struct _IO_FILE* stdin;
+     * FILE* stdin;
      * }
      */
     public static void stdin$set(MemorySegment x) {
@@ -2685,7 +2701,7 @@ public class FFmpeg5_1 {
     /**
      * Getter for variable:
      * {@snippet :
-     * struct _IO_FILE* stdout;
+     * FILE* stdout;
      * }
      */
     public static MemorySegment stdout$get() {
@@ -2694,7 +2710,7 @@ public class FFmpeg5_1 {
     /**
      * Setter for variable:
      * {@snippet :
-     * struct _IO_FILE* stdout;
+     * FILE* stdout;
      * }
      */
     public static void stdout$set(MemorySegment x) {
@@ -2712,7 +2728,7 @@ public class FFmpeg5_1 {
     /**
      * Getter for variable:
      * {@snippet :
-     * struct _IO_FILE* stderr;
+     * FILE* stderr;
      * }
      */
     public static MemorySegment stderr$get() {
@@ -2721,7 +2737,7 @@ public class FFmpeg5_1 {
     /**
      * Setter for variable:
      * {@snippet :
-     * struct _IO_FILE* stderr;
+     * FILE* stderr;
      * }
      */
     public static void stderr$set(MemorySegment x) {
@@ -2780,7 +2796,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fclose(struct _IO_FILE* __stream);
+     * int fclose(FILE* __stream);
      * }
      */
     public static int fclose(MemorySegment __stream) {
@@ -2796,7 +2812,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* tmpfile();
+     * FILE* tmpfile();
      * }
      */
     public static MemorySegment tmpfile() {
@@ -2860,7 +2876,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fflush(struct _IO_FILE* __stream);
+     * int fflush(FILE* __stream);
      * }
      */
     public static int fflush(MemorySegment __stream) {
@@ -2876,7 +2892,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fflush_unlocked(struct _IO_FILE* __stream);
+     * int fflush_unlocked(FILE* __stream);
      * }
      */
     public static int fflush_unlocked(MemorySegment __stream) {
@@ -2908,7 +2924,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* freopen(char* __filename, char* __modes, struct _IO_FILE* __stream);
+     * FILE* freopen(char* __filename, char* __modes, FILE* __stream);
      * }
      */
     public static MemorySegment freopen(MemorySegment __filename, MemorySegment __modes, MemorySegment __stream) {
@@ -2924,7 +2940,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* fdopen(int __fd, char* __modes);
+     * FILE* fdopen(int __fd, char* __modes);
      * }
      */
     public static MemorySegment fdopen(int __fd, MemorySegment __modes) {
@@ -2940,7 +2956,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* fmemopen(void* __s, unsigned long __len, char* __modes);
+     * FILE* fmemopen(void* __s, size_t __len, char* __modes);
      * }
      */
     public static MemorySegment fmemopen(MemorySegment __s, long __len, MemorySegment __modes) {
@@ -2956,7 +2972,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* open_memstream(char** __bufloc, unsigned long* __sizeloc);
+     * FILE* open_memstream(char** __bufloc, size_t* __sizeloc);
      * }
      */
     public static MemorySegment open_memstream(MemorySegment __bufloc, MemorySegment __sizeloc) {
@@ -2972,7 +2988,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void setbuf(struct _IO_FILE* __stream, char* __buf);
+     * void setbuf(FILE* __stream, char* __buf);
      * }
      */
     public static void setbuf(MemorySegment __stream, MemorySegment __buf) {
@@ -2988,7 +3004,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int setvbuf(struct _IO_FILE* __stream, char* __buf, int __modes, unsigned long __n);
+     * int setvbuf(FILE* __stream, char* __buf, int __modes, size_t __n);
      * }
      */
     public static int setvbuf(MemorySegment __stream, MemorySegment __buf, int __modes, long __n) {
@@ -3004,7 +3020,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void setbuffer(struct _IO_FILE* __stream, char* __buf, unsigned long __size);
+     * void setbuffer(FILE* __stream, char* __buf, size_t __size);
      * }
      */
     public static void setbuffer(MemorySegment __stream, MemorySegment __buf, long __size) {
@@ -3020,7 +3036,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void setlinebuf(struct _IO_FILE* __stream);
+     * void setlinebuf(FILE* __stream);
      * }
      */
     public static void setlinebuf(MemorySegment __stream) {
@@ -3036,7 +3052,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fprintf(struct _IO_FILE* __stream, char* __format,...);
+     * int fprintf(FILE* __stream, char* __format,...);
      * }
      */
     public static int fprintf(MemorySegment __stream, MemorySegment __format, Object... x2) {
@@ -3084,7 +3100,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vfprintf(struct _IO_FILE* __s, char* __format, struct __va_list_tag __arg[1]);
+     * int vfprintf(FILE* __s, char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vfprintf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
@@ -3100,7 +3116,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vprintf(char* __format, struct __va_list_tag __arg[1]);
+     * int vprintf(char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vprintf(MemorySegment __format, MemorySegment __arg) {
@@ -3116,7 +3132,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vsprintf(char* __s, char* __format, struct __va_list_tag __arg[1]);
+     * int vsprintf(char* __s, char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vsprintf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
@@ -3132,7 +3148,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int snprintf(char* __s, unsigned long __maxlen, char* __format,...);
+     * int snprintf(char* __s, size_t __maxlen, char* __format,...);
      * }
      */
     public static int snprintf(MemorySegment __s, long __maxlen, MemorySegment __format, Object... x3) {
@@ -3148,7 +3164,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vsnprintf(char* __s, unsigned long __maxlen, char* __format, struct __va_list_tag __arg[1]);
+     * int vsnprintf(char* __s, size_t __maxlen, char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vsnprintf(MemorySegment __s, long __maxlen, MemorySegment __format, MemorySegment __arg) {
@@ -3164,7 +3180,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vdprintf(int __fd, char* __fmt, struct __va_list_tag __arg[1]);
+     * int vdprintf(int __fd, char* __fmt, __gnuc_va_list __arg);
      * }
      */
     public static int vdprintf(int __fd, MemorySegment __fmt, MemorySegment __arg) {
@@ -3196,7 +3212,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fscanf(struct _IO_FILE* __stream, char* __format,...);
+     * int fscanf(FILE* __stream, char* __format,...);
      * }
      */
     public static int fscanf(MemorySegment __stream, MemorySegment __format, Object... x2) {
@@ -3244,7 +3260,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vfscanf(struct _IO_FILE* __s, char* __format, struct __va_list_tag __arg[1]);
+     * int vfscanf(FILE* __s, char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vfscanf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
@@ -3260,7 +3276,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vscanf(char* __format, struct __va_list_tag __arg[1]);
+     * int vscanf(char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vscanf(MemorySegment __format, MemorySegment __arg) {
@@ -3276,7 +3292,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int vsscanf(char* __s, char* __format, struct __va_list_tag __arg[1]);
+     * int vsscanf(char* __s, char* __format, __gnuc_va_list __arg);
      * }
      */
     public static int vsscanf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
@@ -3292,7 +3308,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fgetc(struct _IO_FILE* __stream);
+     * int fgetc(FILE* __stream);
      * }
      */
     public static int fgetc(MemorySegment __stream) {
@@ -3308,7 +3324,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int getc(struct _IO_FILE* __stream);
+     * int getc(FILE* __stream);
      * }
      */
     public static int getc(MemorySegment __stream) {
@@ -3340,7 +3356,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int getc_unlocked(struct _IO_FILE* __stream);
+     * int getc_unlocked(FILE* __stream);
      * }
      */
     public static int getc_unlocked(MemorySegment __stream) {
@@ -3372,7 +3388,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fgetc_unlocked(struct _IO_FILE* __stream);
+     * int fgetc_unlocked(FILE* __stream);
      * }
      */
     public static int fgetc_unlocked(MemorySegment __stream) {
@@ -3388,7 +3404,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fputc(int __c, struct _IO_FILE* __stream);
+     * int fputc(int __c, FILE* __stream);
      * }
      */
     public static int fputc(int __c, MemorySegment __stream) {
@@ -3404,7 +3420,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int putc(int __c, struct _IO_FILE* __stream);
+     * int putc(int __c, FILE* __stream);
      * }
      */
     public static int putc(int __c, MemorySegment __stream) {
@@ -3436,7 +3452,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fputc_unlocked(int __c, struct _IO_FILE* __stream);
+     * int fputc_unlocked(int __c, FILE* __stream);
      * }
      */
     public static int fputc_unlocked(int __c, MemorySegment __stream) {
@@ -3452,7 +3468,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int putc_unlocked(int __c, struct _IO_FILE* __stream);
+     * int putc_unlocked(int __c, FILE* __stream);
      * }
      */
     public static int putc_unlocked(int __c, MemorySegment __stream) {
@@ -3484,7 +3500,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int getw(struct _IO_FILE* __stream);
+     * int getw(FILE* __stream);
      * }
      */
     public static int getw(MemorySegment __stream) {
@@ -3500,7 +3516,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int putw(int __w, struct _IO_FILE* __stream);
+     * int putw(int __w, FILE* __stream);
      * }
      */
     public static int putw(int __w, MemorySegment __stream) {
@@ -3516,7 +3532,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * char* fgets(char* __s, int __n, struct _IO_FILE* __stream);
+     * char* fgets(char* __s, int __n, FILE* __stream);
      * }
      */
     public static MemorySegment fgets(MemorySegment __s, int __n, MemorySegment __stream) {
@@ -3532,7 +3548,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * long __getdelim(char** __lineptr, unsigned long* __n, int __delimiter, struct _IO_FILE* __stream);
+     * __ssize_t __getdelim(char** __lineptr, size_t* __n, int __delimiter, FILE* __stream);
      * }
      */
     public static long __getdelim(MemorySegment __lineptr, MemorySegment __n, int __delimiter, MemorySegment __stream) {
@@ -3548,7 +3564,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * long getdelim(char** __lineptr, unsigned long* __n, int __delimiter, struct _IO_FILE* __stream);
+     * __ssize_t getdelim(char** __lineptr, size_t* __n, int __delimiter, FILE* __stream);
      * }
      */
     public static long getdelim(MemorySegment __lineptr, MemorySegment __n, int __delimiter, MemorySegment __stream) {
@@ -3564,7 +3580,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * long getline(char** __lineptr, unsigned long* __n, struct _IO_FILE* __stream);
+     * __ssize_t getline(char** __lineptr, size_t* __n, FILE* __stream);
      * }
      */
     public static long getline(MemorySegment __lineptr, MemorySegment __n, MemorySegment __stream) {
@@ -3580,7 +3596,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fputs(char* __s, struct _IO_FILE* __stream);
+     * int fputs(char* __s, FILE* __stream);
      * }
      */
     public static int fputs(MemorySegment __s, MemorySegment __stream) {
@@ -3612,7 +3628,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int ungetc(int __c, struct _IO_FILE* __stream);
+     * int ungetc(int __c, FILE* __stream);
      * }
      */
     public static int ungetc(int __c, MemorySegment __stream) {
@@ -3628,7 +3644,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * unsigned long fread(void* __ptr, unsigned long __size, unsigned long __n, struct _IO_FILE* __stream);
+     * unsigned long fread(void* __ptr, size_t __size, size_t __n, FILE* __stream);
      * }
      */
     public static long fread(MemorySegment __ptr, long __size, long __n, MemorySegment __stream) {
@@ -3644,7 +3660,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * unsigned long fwrite(void* __ptr, unsigned long __size, unsigned long __n, struct _IO_FILE* __s);
+     * unsigned long fwrite(void* __ptr, size_t __size, size_t __n, FILE* __s);
      * }
      */
     public static long fwrite(MemorySegment __ptr, long __size, long __n, MemorySegment __s) {
@@ -3660,7 +3676,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * unsigned long fread_unlocked(void* __ptr, unsigned long __size, unsigned long __n, struct _IO_FILE* __stream);
+     * size_t fread_unlocked(void* __ptr, size_t __size, size_t __n, FILE* __stream);
      * }
      */
     public static long fread_unlocked(MemorySegment __ptr, long __size, long __n, MemorySegment __stream) {
@@ -3676,7 +3692,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * unsigned long fwrite_unlocked(void* __ptr, unsigned long __size, unsigned long __n, struct _IO_FILE* __stream);
+     * size_t fwrite_unlocked(void* __ptr, size_t __size, size_t __n, FILE* __stream);
      * }
      */
     public static long fwrite_unlocked(MemorySegment __ptr, long __size, long __n, MemorySegment __stream) {
@@ -3692,7 +3708,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fseek(struct _IO_FILE* __stream, long __off, int __whence);
+     * int fseek(FILE* __stream, long __off, int __whence);
      * }
      */
     public static int fseek(MemorySegment __stream, long __off, int __whence) {
@@ -3708,7 +3724,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * long ftell(struct _IO_FILE* __stream);
+     * long ftell(FILE* __stream);
      * }
      */
     public static long ftell(MemorySegment __stream) {
@@ -3724,7 +3740,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void rewind(struct _IO_FILE* __stream);
+     * void rewind(FILE* __stream);
      * }
      */
     public static void rewind(MemorySegment __stream) {
@@ -3740,7 +3756,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fseeko(struct _IO_FILE* __stream, long __off, int __whence);
+     * int fseeko(FILE* __stream, __off_t __off, int __whence);
      * }
      */
     public static int fseeko(MemorySegment __stream, long __off, int __whence) {
@@ -3756,7 +3772,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * long ftello(struct _IO_FILE* __stream);
+     * __off_t ftello(FILE* __stream);
      * }
      */
     public static long ftello(MemorySegment __stream) {
@@ -3772,7 +3788,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fgetpos(struct _IO_FILE* __stream, struct _G_fpos_t* __pos);
+     * int fgetpos(FILE* __stream, fpos_t* __pos);
      * }
      */
     public static int fgetpos(MemorySegment __stream, MemorySegment __pos) {
@@ -3788,7 +3804,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fsetpos(struct _IO_FILE* __stream, struct _G_fpos_t* __pos);
+     * int fsetpos(FILE* __stream, const fpos_t* __pos);
      * }
      */
     public static int fsetpos(MemorySegment __stream, MemorySegment __pos) {
@@ -3804,7 +3820,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void clearerr(struct _IO_FILE* __stream);
+     * void clearerr(FILE* __stream);
      * }
      */
     public static void clearerr(MemorySegment __stream) {
@@ -3820,7 +3836,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int feof(struct _IO_FILE* __stream);
+     * int feof(FILE* __stream);
      * }
      */
     public static int feof(MemorySegment __stream) {
@@ -3836,7 +3852,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int ferror(struct _IO_FILE* __stream);
+     * int ferror(FILE* __stream);
      * }
      */
     public static int ferror(MemorySegment __stream) {
@@ -3852,7 +3868,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void clearerr_unlocked(struct _IO_FILE* __stream);
+     * void clearerr_unlocked(FILE* __stream);
      * }
      */
     public static void clearerr_unlocked(MemorySegment __stream) {
@@ -3868,7 +3884,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int feof_unlocked(struct _IO_FILE* __stream);
+     * int feof_unlocked(FILE* __stream);
      * }
      */
     public static int feof_unlocked(MemorySegment __stream) {
@@ -3884,7 +3900,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int ferror_unlocked(struct _IO_FILE* __stream);
+     * int ferror_unlocked(FILE* __stream);
      * }
      */
     public static int ferror_unlocked(MemorySegment __stream) {
@@ -3916,7 +3932,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fileno(struct _IO_FILE* __stream);
+     * int fileno(FILE* __stream);
      * }
      */
     public static int fileno(MemorySegment __stream) {
@@ -3932,7 +3948,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int fileno_unlocked(struct _IO_FILE* __stream);
+     * int fileno_unlocked(FILE* __stream);
      * }
      */
     public static int fileno_unlocked(MemorySegment __stream) {
@@ -3948,7 +3964,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int pclose(struct _IO_FILE* __stream);
+     * int pclose(FILE* __stream);
      * }
      */
     public static int pclose(MemorySegment __stream) {
@@ -3964,7 +3980,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* popen(char* __command, char* __modes);
+     * FILE* popen(char* __command, char* __modes);
      * }
      */
     public static MemorySegment popen(MemorySegment __command, MemorySegment __modes) {
@@ -3996,7 +4012,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void flockfile(struct _IO_FILE* __stream);
+     * void flockfile(FILE* __stream);
      * }
      */
     public static void flockfile(MemorySegment __stream) {
@@ -4012,7 +4028,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int ftrylockfile(struct _IO_FILE* __stream);
+     * int ftrylockfile(FILE* __stream);
      * }
      */
     public static int ftrylockfile(MemorySegment __stream) {
@@ -4028,7 +4044,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * void funlockfile(struct _IO_FILE* __stream);
+     * void funlockfile(FILE* __stream);
      * }
      */
     public static void funlockfile(MemorySegment __stream) {
@@ -4044,7 +4060,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int __uflow(struct _IO_FILE*);
+     * int __uflow(FILE*);
      * }
      */
     public static int __uflow(MemorySegment x0) {
@@ -4060,7 +4076,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * int __overflow(struct _IO_FILE*, int);
+     * int __overflow(FILE*, int);
      * }
      */
     public static int __overflow(MemorySegment x0, int x1) {
@@ -4078,11 +4094,11 @@ public class FFmpeg5_1 {
      */
     public static final OfInt wchar_t = JAVA_INT;
     public static MethodHandle __ctype_get_mb_cur_max$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.const$4,"__ctype_get_mb_cur_max");
+        return RuntimeHelper.requireNonNull(constants$83.const$6,"__ctype_get_mb_cur_max");
     }
     /**
      * {@snippet :
-     * unsigned long __ctype_get_mb_cur_max();
+     * size_t __ctype_get_mb_cur_max();
      * }
      */
     public static long __ctype_get_mb_cur_max() {
@@ -4094,7 +4110,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle atof$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.const$5,"atof");
+        return RuntimeHelper.requireNonNull(constants$84.const$0,"atof");
     }
     /**
      * {@snippet :
@@ -4110,7 +4126,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle atoi$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.const$0,"atoi");
+        return RuntimeHelper.requireNonNull(constants$84.const$1,"atoi");
     }
     /**
      * {@snippet :
@@ -4126,7 +4142,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle atol$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.const$1,"atol");
+        return RuntimeHelper.requireNonNull(constants$84.const$2,"atol");
     }
     /**
      * {@snippet :
@@ -4142,7 +4158,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle atoll$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.const$2,"atoll");
+        return RuntimeHelper.requireNonNull(constants$84.const$3,"atoll");
     }
     /**
      * {@snippet :
@@ -4158,7 +4174,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtod$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.const$4,"strtod");
+        return RuntimeHelper.requireNonNull(constants$84.const$5,"strtod");
     }
     /**
      * {@snippet :
@@ -4174,7 +4190,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtof$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.const$6,"strtof");
+        return RuntimeHelper.requireNonNull(constants$85.const$1,"strtof");
     }
     /**
      * {@snippet :
@@ -4190,7 +4206,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtol$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.const$0,"strtol");
+        return RuntimeHelper.requireNonNull(constants$85.const$2,"strtol");
     }
     /**
      * {@snippet :
@@ -4206,7 +4222,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtoul$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.const$1,"strtoul");
+        return RuntimeHelper.requireNonNull(constants$85.const$3,"strtoul");
     }
     /**
      * {@snippet :
@@ -4222,7 +4238,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtoq$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.const$2,"strtoq");
+        return RuntimeHelper.requireNonNull(constants$85.const$4,"strtoq");
     }
     /**
      * {@snippet :
@@ -4238,7 +4254,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtouq$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.const$3,"strtouq");
+        return RuntimeHelper.requireNonNull(constants$85.const$5,"strtouq");
     }
     /**
      * {@snippet :
@@ -4254,7 +4270,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtoll$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.const$4,"strtoll");
+        return RuntimeHelper.requireNonNull(constants$86.const$0,"strtoll");
     }
     /**
      * {@snippet :
@@ -4270,7 +4286,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtoull$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.const$5,"strtoull");
+        return RuntimeHelper.requireNonNull(constants$86.const$1,"strtoull");
     }
     /**
      * {@snippet :
@@ -4286,7 +4302,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle l64a$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.const$1,"l64a");
+        return RuntimeHelper.requireNonNull(constants$86.const$3,"l64a");
     }
     /**
      * {@snippet :
@@ -4302,7 +4318,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle a64l$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.const$2,"a64l");
+        return RuntimeHelper.requireNonNull(constants$86.const$4,"a64l");
     }
     /**
      * {@snippet :
@@ -4516,11 +4532,11 @@ public class FFmpeg5_1 {
      */
     public static final OfLong fd_mask = JAVA_LONG;
     public static MethodHandle select$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.const$6,"select");
+        return RuntimeHelper.requireNonNull(constants$88.const$2,"select");
     }
     /**
      * {@snippet :
-     * int select(int __nfds, struct fd_set* __readfds, struct fd_set* __writefds, struct fd_set* __exceptfds, struct timeval* __timeout);
+     * int select(int __nfds, fd_set* __readfds, fd_set* __writefds, fd_set* __exceptfds, struct timeval* __timeout);
      * }
      */
     public static int select(int __nfds, MemorySegment __readfds, MemorySegment __writefds, MemorySegment __exceptfds, MemorySegment __timeout) {
@@ -4532,11 +4548,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle pselect$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.const$1,"pselect");
+        return RuntimeHelper.requireNonNull(constants$88.const$4,"pselect");
     }
     /**
      * {@snippet :
-     * int pselect(int __nfds, struct fd_set* __readfds, struct fd_set* __writefds, struct fd_set* __exceptfds, struct timespec* __timeout, struct __sigset_t* __sigmask);
+     * int pselect(int __nfds, fd_set* __readfds, fd_set* __writefds, fd_set* __exceptfds, struct timespec* __timeout, const __sigset_t* __sigmask);
      * }
      */
     public static int pselect(int __nfds, MemorySegment __readfds, MemorySegment __writefds, MemorySegment __exceptfds, MemorySegment __timeout, MemorySegment __sigmask) {
@@ -4608,7 +4624,7 @@ public class FFmpeg5_1 {
      */
     public static final OfInt pthread_spinlock_t = JAVA_INT;
     public static MethodHandle random$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.const$1,"random");
+        return RuntimeHelper.requireNonNull(constants$96.const$4,"random");
     }
     /**
      * {@snippet :
@@ -4624,7 +4640,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle srandom$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.const$3,"srandom");
+        return RuntimeHelper.requireNonNull(constants$96.const$6,"srandom");
     }
     /**
      * {@snippet :
@@ -4640,11 +4656,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle initstate$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.const$5,"initstate");
+        return RuntimeHelper.requireNonNull(constants$97.const$1,"initstate");
     }
     /**
      * {@snippet :
-     * char* initstate(unsigned int __seed, char* __statebuf, unsigned long __statelen);
+     * char* initstate(unsigned int __seed, char* __statebuf, size_t __statelen);
      * }
      */
     public static MemorySegment initstate(int __seed, MemorySegment __statebuf, long __statelen) {
@@ -4656,7 +4672,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle setstate$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.const$0,"setstate");
+        return RuntimeHelper.requireNonNull(constants$97.const$2,"setstate");
     }
     /**
      * {@snippet :
@@ -4672,11 +4688,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle random_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.const$3,"random_r");
+        return RuntimeHelper.requireNonNull(constants$98.const$5,"random_r");
     }
     /**
      * {@snippet :
-     * int random_r(struct random_data* __buf, int* __result);
+     * int random_r(struct random_data* __buf, int32_t* __result);
      * }
      */
     public static int random_r(MemorySegment __buf, MemorySegment __result) {
@@ -4688,7 +4704,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle srandom_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.const$4,"srandom_r");
+        return RuntimeHelper.requireNonNull(constants$99.const$0,"srandom_r");
     }
     /**
      * {@snippet :
@@ -4704,11 +4720,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle initstate_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.const$6,"initstate_r");
+        return RuntimeHelper.requireNonNull(constants$99.const$2,"initstate_r");
     }
     /**
      * {@snippet :
-     * int initstate_r(unsigned int __seed, char* __statebuf, unsigned long __statelen, struct random_data* __buf);
+     * int initstate_r(unsigned int __seed, char* __statebuf, size_t __statelen, struct random_data* __buf);
      * }
      */
     public static int initstate_r(int __seed, MemorySegment __statebuf, long __statelen, MemorySegment __buf) {
@@ -4720,7 +4736,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle setstate_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.const$0,"setstate_r");
+        return RuntimeHelper.requireNonNull(constants$99.const$3,"setstate_r");
     }
     /**
      * {@snippet :
@@ -4736,7 +4752,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle rand$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.const$1,"rand");
+        return RuntimeHelper.requireNonNull(constants$99.const$4,"rand");
     }
     /**
      * {@snippet :
@@ -4752,7 +4768,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle srand$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.const$2,"srand");
+        return RuntimeHelper.requireNonNull(constants$99.const$5,"srand");
     }
     /**
      * {@snippet :
@@ -4768,7 +4784,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle rand_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.const$3,"rand_r");
+        return RuntimeHelper.requireNonNull(constants$100.const$0,"rand_r");
     }
     /**
      * {@snippet :
@@ -4784,7 +4800,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle drand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.const$5,"drand48");
+        return RuntimeHelper.requireNonNull(constants$100.const$2,"drand48");
     }
     /**
      * {@snippet :
@@ -4800,7 +4816,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle erand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.const$0,"erand48");
+        return RuntimeHelper.requireNonNull(constants$100.const$3,"erand48");
     }
     /**
      * {@snippet :
@@ -4816,7 +4832,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle lrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.const$1,"lrand48");
+        return RuntimeHelper.requireNonNull(constants$100.const$4,"lrand48");
     }
     /**
      * {@snippet :
@@ -4832,7 +4848,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle nrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.const$2,"nrand48");
+        return RuntimeHelper.requireNonNull(constants$100.const$5,"nrand48");
     }
     /**
      * {@snippet :
@@ -4848,7 +4864,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.const$3,"mrand48");
+        return RuntimeHelper.requireNonNull(constants$101.const$0,"mrand48");
     }
     /**
      * {@snippet :
@@ -4864,7 +4880,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle jrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.const$4,"jrand48");
+        return RuntimeHelper.requireNonNull(constants$101.const$1,"jrand48");
     }
     /**
      * {@snippet :
@@ -4880,7 +4896,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle srand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.const$6,"srand48");
+        return RuntimeHelper.requireNonNull(constants$101.const$3,"srand48");
     }
     /**
      * {@snippet :
@@ -4896,7 +4912,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle seed48$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.const$0,"seed48");
+        return RuntimeHelper.requireNonNull(constants$101.const$4,"seed48");
     }
     /**
      * {@snippet :
@@ -4912,7 +4928,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle lcong48$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.const$1,"lcong48");
+        return RuntimeHelper.requireNonNull(constants$101.const$5,"lcong48");
     }
     /**
      * {@snippet :
@@ -4928,7 +4944,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle drand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.const$0,"drand48_r");
+        return RuntimeHelper.requireNonNull(constants$102.const$4,"drand48_r");
     }
     /**
      * {@snippet :
@@ -4944,7 +4960,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle erand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.const$1,"erand48_r");
+        return RuntimeHelper.requireNonNull(constants$102.const$5,"erand48_r");
     }
     /**
      * {@snippet :
@@ -4960,7 +4976,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle lrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.const$2,"lrand48_r");
+        return RuntimeHelper.requireNonNull(constants$103.const$0,"lrand48_r");
     }
     /**
      * {@snippet :
@@ -4976,7 +4992,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle nrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.const$3,"nrand48_r");
+        return RuntimeHelper.requireNonNull(constants$103.const$1,"nrand48_r");
     }
     /**
      * {@snippet :
@@ -4992,7 +5008,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.const$4,"mrand48_r");
+        return RuntimeHelper.requireNonNull(constants$103.const$2,"mrand48_r");
     }
     /**
      * {@snippet :
@@ -5008,7 +5024,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle jrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.const$5,"jrand48_r");
+        return RuntimeHelper.requireNonNull(constants$103.const$3,"jrand48_r");
     }
     /**
      * {@snippet :
@@ -5024,7 +5040,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle srand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.const$1,"srand48_r");
+        return RuntimeHelper.requireNonNull(constants$103.const$5,"srand48_r");
     }
     /**
      * {@snippet :
@@ -5040,7 +5056,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle seed48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.const$2,"seed48_r");
+        return RuntimeHelper.requireNonNull(constants$104.const$0,"seed48_r");
     }
     /**
      * {@snippet :
@@ -5056,7 +5072,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle lcong48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.const$3,"lcong48_r");
+        return RuntimeHelper.requireNonNull(constants$104.const$1,"lcong48_r");
     }
     /**
      * {@snippet :
@@ -5072,11 +5088,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle arc4random$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.const$4,"arc4random");
+        return RuntimeHelper.requireNonNull(constants$104.const$2,"arc4random");
     }
     /**
      * {@snippet :
-     * unsigned int arc4random();
+     * __uint32_t arc4random();
      * }
      */
     public static int arc4random() {
@@ -5088,11 +5104,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle arc4random_buf$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.const$6,"arc4random_buf");
+        return RuntimeHelper.requireNonNull(constants$104.const$4,"arc4random_buf");
     }
     /**
      * {@snippet :
-     * void arc4random_buf(void* __buf, unsigned long __size);
+     * void arc4random_buf(void* __buf, size_t __size);
      * }
      */
     public static void arc4random_buf(MemorySegment __buf, long __size) {
@@ -5104,11 +5120,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle arc4random_uniform$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.const$0,"arc4random_uniform");
+        return RuntimeHelper.requireNonNull(constants$104.const$5,"arc4random_uniform");
     }
     /**
      * {@snippet :
-     * unsigned int arc4random_uniform(unsigned int __upper_bound);
+     * __uint32_t arc4random_uniform(__uint32_t __upper_bound);
      * }
      */
     public static int arc4random_uniform(int __upper_bound) {
@@ -5120,11 +5136,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle malloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.const$1,"malloc");
+        return RuntimeHelper.requireNonNull(constants$105.const$0,"malloc");
     }
     /**
      * {@snippet :
-     * void* malloc(unsigned long __size);
+     * void* malloc(size_t __size);
      * }
      */
     public static MemorySegment malloc(long __size) {
@@ -5136,11 +5152,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle calloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.const$3,"calloc");
+        return RuntimeHelper.requireNonNull(constants$105.const$2,"calloc");
     }
     /**
      * {@snippet :
-     * void* calloc(unsigned long __nmemb, unsigned long __size);
+     * void* calloc(size_t __nmemb, size_t __size);
      * }
      */
     public static MemorySegment calloc(long __nmemb, long __size) {
@@ -5152,11 +5168,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle realloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.const$5,"realloc");
+        return RuntimeHelper.requireNonNull(constants$105.const$4,"realloc");
     }
     /**
      * {@snippet :
-     * void* realloc(void* __ptr, unsigned long __size);
+     * void* realloc(void* __ptr, size_t __size);
      * }
      */
     public static MemorySegment realloc(MemorySegment __ptr, long __size) {
@@ -5168,7 +5184,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle free$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.const$0,"free");
+        return RuntimeHelper.requireNonNull(constants$105.const$5,"free");
     }
     /**
      * {@snippet :
@@ -5184,11 +5200,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle reallocarray$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.const$2,"reallocarray");
+        return RuntimeHelper.requireNonNull(constants$106.const$1,"reallocarray");
     }
     /**
      * {@snippet :
-     * void* reallocarray(void* __ptr, unsigned long __nmemb, unsigned long __size);
+     * void* reallocarray(void* __ptr, size_t __nmemb, size_t __size);
      * }
      */
     public static MemorySegment reallocarray(MemorySegment __ptr, long __nmemb, long __size) {
@@ -5200,11 +5216,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle alloca$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.const$3,"alloca");
+        return RuntimeHelper.requireNonNull(constants$106.const$2,"alloca");
     }
     /**
      * {@snippet :
-     * void* alloca(unsigned long __size);
+     * void* alloca(size_t __size);
      * }
      */
     public static MemorySegment alloca(long __size) {
@@ -5216,11 +5232,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle valloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.const$4,"valloc");
+        return RuntimeHelper.requireNonNull(constants$106.const$3,"valloc");
     }
     /**
      * {@snippet :
-     * void* valloc(unsigned long __size);
+     * void* valloc(size_t __size);
      * }
      */
     public static MemorySegment valloc(long __size) {
@@ -5232,11 +5248,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle posix_memalign$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.const$6,"posix_memalign");
+        return RuntimeHelper.requireNonNull(constants$106.const$5,"posix_memalign");
     }
     /**
      * {@snippet :
-     * int posix_memalign(void** __memptr, unsigned long __alignment, unsigned long __size);
+     * int posix_memalign(void** __memptr, size_t __alignment, size_t __size);
      * }
      */
     public static int posix_memalign(MemorySegment __memptr, long __alignment, long __size) {
@@ -5248,11 +5264,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle aligned_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.const$0,"aligned_alloc");
+        return RuntimeHelper.requireNonNull(constants$107.const$0,"aligned_alloc");
     }
     /**
      * {@snippet :
-     * void* aligned_alloc(unsigned long __alignment, unsigned long __size);
+     * void* aligned_alloc(size_t __alignment, size_t __size);
      * }
      */
     public static MemorySegment aligned_alloc(long __alignment, long __size) {
@@ -5264,7 +5280,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle abort$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.const$2,"abort");
+        return RuntimeHelper.requireNonNull(constants$107.const$2,"abort");
     }
     /**
      * {@snippet :
@@ -5280,7 +5296,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle atexit$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.const$5,"atexit");
+        return RuntimeHelper.requireNonNull(constants$107.const$5,"atexit");
     }
     /**
      * {@snippet :
@@ -5296,7 +5312,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle at_quick_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.const$1,"at_quick_exit");
+        return RuntimeHelper.requireNonNull(constants$108.const$1,"at_quick_exit");
     }
     /**
      * {@snippet :
@@ -5312,7 +5328,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle on_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.const$5,"on_exit");
+        return RuntimeHelper.requireNonNull(constants$108.const$5,"on_exit");
     }
     /**
      * {@snippet :
@@ -5328,7 +5344,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.const$0,"exit");
+        return RuntimeHelper.requireNonNull(constants$109.const$0,"exit");
     }
     /**
      * {@snippet :
@@ -5344,7 +5360,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle quick_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.const$1,"quick_exit");
+        return RuntimeHelper.requireNonNull(constants$109.const$1,"quick_exit");
     }
     /**
      * {@snippet :
@@ -5360,7 +5376,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle _Exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.const$2,"_Exit");
+        return RuntimeHelper.requireNonNull(constants$109.const$2,"_Exit");
     }
     /**
      * {@snippet :
@@ -5376,7 +5392,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle getenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.const$3,"getenv");
+        return RuntimeHelper.requireNonNull(constants$109.const$3,"getenv");
     }
     /**
      * {@snippet :
@@ -5392,7 +5408,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle putenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.const$4,"putenv");
+        return RuntimeHelper.requireNonNull(constants$109.const$4,"putenv");
     }
     /**
      * {@snippet :
@@ -5408,7 +5424,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle setenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.const$6,"setenv");
+        return RuntimeHelper.requireNonNull(constants$109.const$6,"setenv");
     }
     /**
      * {@snippet :
@@ -5424,7 +5440,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle unsetenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.const$0,"unsetenv");
+        return RuntimeHelper.requireNonNull(constants$110.const$0,"unsetenv");
     }
     /**
      * {@snippet :
@@ -5440,7 +5456,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle clearenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.const$1,"clearenv");
+        return RuntimeHelper.requireNonNull(constants$110.const$1,"clearenv");
     }
     /**
      * {@snippet :
@@ -5456,7 +5472,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mktemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.const$2,"mktemp");
+        return RuntimeHelper.requireNonNull(constants$110.const$2,"mktemp");
     }
     /**
      * {@snippet :
@@ -5472,7 +5488,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mkstemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.const$3,"mkstemp");
+        return RuntimeHelper.requireNonNull(constants$110.const$3,"mkstemp");
     }
     /**
      * {@snippet :
@@ -5488,7 +5504,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mkstemps$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.const$4,"mkstemps");
+        return RuntimeHelper.requireNonNull(constants$110.const$4,"mkstemps");
     }
     /**
      * {@snippet :
@@ -5504,7 +5520,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mkdtemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.const$5,"mkdtemp");
+        return RuntimeHelper.requireNonNull(constants$110.const$5,"mkdtemp");
     }
     /**
      * {@snippet :
@@ -5520,7 +5536,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle system$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.const$0,"system");
+        return RuntimeHelper.requireNonNull(constants$111.const$0,"system");
     }
     /**
      * {@snippet :
@@ -5536,7 +5552,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle realpath$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.const$1,"realpath");
+        return RuntimeHelper.requireNonNull(constants$111.const$1,"realpath");
     }
     /**
      * {@snippet :
@@ -5552,11 +5568,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle bsearch$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.const$6,"bsearch");
+        return RuntimeHelper.requireNonNull(constants$111.const$5,"bsearch");
     }
     /**
      * {@snippet :
-     * void* bsearch(void* __key, void* __base, unsigned long __nmemb, unsigned long __size, int (*__compar)(void*,void*));
+     * void* bsearch(void* __key, void* __base, size_t __nmemb, size_t __size, __compar_fn_t __compar);
      * }
      */
     public static MemorySegment bsearch(MemorySegment __key, MemorySegment __base, long __nmemb, long __size, MemorySegment __compar) {
@@ -5568,11 +5584,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle qsort$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.const$2,"qsort");
+        return RuntimeHelper.requireNonNull(constants$112.const$1,"qsort");
     }
     /**
      * {@snippet :
-     * void qsort(void* __base, unsigned long __nmemb, unsigned long __size, int (*__compar)(void*,void*));
+     * void qsort(void* __base, size_t __nmemb, size_t __size, __compar_fn_t __compar);
      * }
      */
     public static void qsort(MemorySegment __base, long __nmemb, long __size, MemorySegment __compar) {
@@ -5584,7 +5600,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle abs$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.const$3,"abs");
+        return RuntimeHelper.requireNonNull(constants$112.const$2,"abs");
     }
     /**
      * {@snippet :
@@ -5600,7 +5616,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle labs$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.const$4,"labs");
+        return RuntimeHelper.requireNonNull(constants$112.const$3,"labs");
     }
     /**
      * {@snippet :
@@ -5616,7 +5632,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle llabs$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.const$5,"llabs");
+        return RuntimeHelper.requireNonNull(constants$112.const$4,"llabs");
     }
     /**
      * {@snippet :
@@ -5632,11 +5648,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle div$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.const$1,"div");
+        return RuntimeHelper.requireNonNull(constants$112.const$6,"div");
     }
     /**
      * {@snippet :
-     * struct div_t div(int __numer, int __denom);
+     * div_t div(int __numer, int __denom);
      * }
      */
     public static MemorySegment div(SegmentAllocator allocator, int __numer, int __denom) {
@@ -5648,11 +5664,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle ldiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.const$3,"ldiv");
+        return RuntimeHelper.requireNonNull(constants$113.const$0,"ldiv");
     }
     /**
      * {@snippet :
-     * struct ldiv_t ldiv(long __numer, long __denom);
+     * ldiv_t ldiv(long __numer, long __denom);
      * }
      */
     public static MemorySegment ldiv(SegmentAllocator allocator, long __numer, long __denom) {
@@ -5664,11 +5680,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle lldiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.const$5,"lldiv");
+        return RuntimeHelper.requireNonNull(constants$113.const$1,"lldiv");
     }
     /**
      * {@snippet :
-     * struct lldiv_t lldiv(long long __numer, long long __denom);
+     * lldiv_t lldiv(long long __numer, long long __denom);
      * }
      */
     public static MemorySegment lldiv(SegmentAllocator allocator, long __numer, long __denom) {
@@ -5680,7 +5696,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle ecvt$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.const$1,"ecvt");
+        return RuntimeHelper.requireNonNull(constants$113.const$3,"ecvt");
     }
     /**
      * {@snippet :
@@ -5696,7 +5712,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle fcvt$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.const$2,"fcvt");
+        return RuntimeHelper.requireNonNull(constants$113.const$4,"fcvt");
     }
     /**
      * {@snippet :
@@ -5712,7 +5728,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle gcvt$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.const$4,"gcvt");
+        return RuntimeHelper.requireNonNull(constants$113.const$6,"gcvt");
     }
     /**
      * {@snippet :
@@ -5728,11 +5744,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle ecvt_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.const$6,"ecvt_r");
+        return RuntimeHelper.requireNonNull(constants$114.const$1,"ecvt_r");
     }
     /**
      * {@snippet :
-     * int ecvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, unsigned long __len);
+     * int ecvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, size_t __len);
      * }
      */
     public static int ecvt_r(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign, MemorySegment __buf, long __len) {
@@ -5744,11 +5760,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle fcvt_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.const$0,"fcvt_r");
+        return RuntimeHelper.requireNonNull(constants$114.const$2,"fcvt_r");
     }
     /**
      * {@snippet :
-     * int fcvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, unsigned long __len);
+     * int fcvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, size_t __len);
      * }
      */
     public static int fcvt_r(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign, MemorySegment __buf, long __len) {
@@ -5760,11 +5776,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mblen$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.const$2,"mblen");
+        return RuntimeHelper.requireNonNull(constants$114.const$4,"mblen");
     }
     /**
      * {@snippet :
-     * int mblen(char* __s, unsigned long __n);
+     * int mblen(char* __s, size_t __n);
      * }
      */
     public static int mblen(MemorySegment __s, long __n) {
@@ -5776,11 +5792,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mbtowc$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.const$4,"mbtowc");
+        return RuntimeHelper.requireNonNull(constants$114.const$6,"mbtowc");
     }
     /**
      * {@snippet :
-     * int mbtowc(int* __pwc, char* __s, unsigned long __n);
+     * int mbtowc(wchar_t* __pwc, char* __s, size_t __n);
      * }
      */
     public static int mbtowc(MemorySegment __pwc, MemorySegment __s, long __n) {
@@ -5792,11 +5808,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle wctomb$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.const$5,"wctomb");
+        return RuntimeHelper.requireNonNull(constants$115.const$0,"wctomb");
     }
     /**
      * {@snippet :
-     * int wctomb(char* __s, int __wchar);
+     * int wctomb(char* __s, wchar_t __wchar);
      * }
      */
     public static int wctomb(MemorySegment __s, int __wchar) {
@@ -5808,11 +5824,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle mbstowcs$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.const$1,"mbstowcs");
+        return RuntimeHelper.requireNonNull(constants$115.const$2,"mbstowcs");
     }
     /**
      * {@snippet :
-     * unsigned long mbstowcs(int* __pwcs, char* __s, unsigned long __n);
+     * size_t mbstowcs(wchar_t* __pwcs, char* __s, size_t __n);
      * }
      */
     public static long mbstowcs(MemorySegment __pwcs, MemorySegment __s, long __n) {
@@ -5824,11 +5840,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle wcstombs$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.const$2,"wcstombs");
+        return RuntimeHelper.requireNonNull(constants$115.const$3,"wcstombs");
     }
     /**
      * {@snippet :
-     * unsigned long wcstombs(char* __s, int* __pwcs, unsigned long __n);
+     * size_t wcstombs(char* __s, const wchar_t* __pwcs, size_t __n);
      * }
      */
     public static long wcstombs(MemorySegment __s, MemorySegment __pwcs, long __n) {
@@ -5840,7 +5856,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle rpmatch$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.const$3,"rpmatch");
+        return RuntimeHelper.requireNonNull(constants$115.const$4,"rpmatch");
     }
     /**
      * {@snippet :
@@ -5856,7 +5872,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle getsubopt$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.const$4,"getsubopt");
+        return RuntimeHelper.requireNonNull(constants$115.const$5,"getsubopt");
     }
     /**
      * {@snippet :
@@ -5872,7 +5888,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle getloadavg$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.const$5,"getloadavg");
+        return RuntimeHelper.requireNonNull(constants$116.const$0,"getloadavg");
     }
     /**
      * {@snippet :
@@ -5888,11 +5904,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle memcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.const$1,"memcpy");
+        return RuntimeHelper.requireNonNull(constants$116.const$2,"memcpy");
     }
     /**
      * {@snippet :
-     * void* memcpy(void* __dest, void* __src, unsigned long __n);
+     * void* memcpy(void* __dest, void* __src, size_t __n);
      * }
      */
     public static MemorySegment memcpy(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -5904,11 +5920,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle memmove$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.const$2,"memmove");
+        return RuntimeHelper.requireNonNull(constants$116.const$3,"memmove");
     }
     /**
      * {@snippet :
-     * void* memmove(void* __dest, void* __src, unsigned long __n);
+     * void* memmove(void* __dest, void* __src, size_t __n);
      * }
      */
     public static MemorySegment memmove(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -5920,11 +5936,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle memccpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.const$4,"memccpy");
+        return RuntimeHelper.requireNonNull(constants$116.const$5,"memccpy");
     }
     /**
      * {@snippet :
-     * void* memccpy(void* __dest, void* __src, int __c, unsigned long __n);
+     * void* memccpy(void* __dest, void* __src, int __c, size_t __n);
      * }
      */
     public static MemorySegment memccpy(MemorySegment __dest, MemorySegment __src, int __c, long __n) {
@@ -5936,11 +5952,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle memset$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.const$6,"memset");
+        return RuntimeHelper.requireNonNull(constants$117.const$1,"memset");
     }
     /**
      * {@snippet :
-     * void* memset(void* __s, int __c, unsigned long __n);
+     * void* memset(void* __s, int __c, size_t __n);
      * }
      */
     public static MemorySegment memset(MemorySegment __s, int __c, long __n) {
@@ -5952,11 +5968,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle memcmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.const$0,"memcmp");
+        return RuntimeHelper.requireNonNull(constants$117.const$2,"memcmp");
     }
     /**
      * {@snippet :
-     * int memcmp(void* __s1, void* __s2, unsigned long __n);
+     * int memcmp(void* __s1, void* __s2, size_t __n);
      * }
      */
     public static int memcmp(MemorySegment __s1, MemorySegment __s2, long __n) {
@@ -5968,11 +5984,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle __memcmpeq$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.const$1,"__memcmpeq");
+        return RuntimeHelper.requireNonNull(constants$117.const$3,"__memcmpeq");
     }
     /**
      * {@snippet :
-     * int __memcmpeq(void* __s1, void* __s2, unsigned long __n);
+     * int __memcmpeq(void* __s1, void* __s2, size_t __n);
      * }
      */
     public static int __memcmpeq(MemorySegment __s1, MemorySegment __s2, long __n) {
@@ -5984,11 +6000,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle memchr$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.const$2,"memchr");
+        return RuntimeHelper.requireNonNull(constants$117.const$4,"memchr");
     }
     /**
      * {@snippet :
-     * void* memchr(void* __s, int __c, unsigned long __n);
+     * void* memchr(void* __s, int __c, size_t __n);
      * }
      */
     public static MemorySegment memchr(MemorySegment __s, int __c, long __n) {
@@ -6000,7 +6016,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.const$3,"strcpy");
+        return RuntimeHelper.requireNonNull(constants$117.const$5,"strcpy");
     }
     /**
      * {@snippet :
@@ -6016,11 +6032,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.const$4,"strncpy");
+        return RuntimeHelper.requireNonNull(constants$118.const$0,"strncpy");
     }
     /**
      * {@snippet :
-     * char* strncpy(char* __dest, char* __src, unsigned long __n);
+     * char* strncpy(char* __dest, char* __src, size_t __n);
      * }
      */
     public static MemorySegment strncpy(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -6032,7 +6048,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcat$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.const$5,"strcat");
+        return RuntimeHelper.requireNonNull(constants$118.const$1,"strcat");
     }
     /**
      * {@snippet :
@@ -6048,11 +6064,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strncat$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.const$0,"strncat");
+        return RuntimeHelper.requireNonNull(constants$118.const$2,"strncat");
     }
     /**
      * {@snippet :
-     * char* strncat(char* __dest, char* __src, unsigned long __n);
+     * char* strncat(char* __dest, char* __src, size_t __n);
      * }
      */
     public static MemorySegment strncat(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -6064,7 +6080,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.const$1,"strcmp");
+        return RuntimeHelper.requireNonNull(constants$118.const$3,"strcmp");
     }
     /**
      * {@snippet :
@@ -6080,11 +6096,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strncmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.const$2,"strncmp");
+        return RuntimeHelper.requireNonNull(constants$118.const$4,"strncmp");
     }
     /**
      * {@snippet :
-     * int strncmp(char* __s1, char* __s2, unsigned long __n);
+     * int strncmp(char* __s1, char* __s2, size_t __n);
      * }
      */
     public static int strncmp(MemorySegment __s1, MemorySegment __s2, long __n) {
@@ -6096,7 +6112,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcoll$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.const$3,"strcoll");
+        return RuntimeHelper.requireNonNull(constants$118.const$5,"strcoll");
     }
     /**
      * {@snippet :
@@ -6112,11 +6128,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strxfrm$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.const$4,"strxfrm");
+        return RuntimeHelper.requireNonNull(constants$119.const$0,"strxfrm");
     }
     /**
      * {@snippet :
-     * unsigned long strxfrm(char* __dest, char* __src, unsigned long __n);
+     * unsigned long strxfrm(char* __dest, char* __src, size_t __n);
      * }
      */
     public static long strxfrm(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -6140,11 +6156,11 @@ public class FFmpeg5_1 {
      */
     public static final AddressLayout locale_t = RuntimeHelper.POINTER;
     public static MethodHandle strcoll_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.const$3,"strcoll_l");
+        return RuntimeHelper.requireNonNull(constants$119.const$5,"strcoll_l");
     }
     /**
      * {@snippet :
-     * int strcoll_l(char* __s1, char* __s2, struct __locale_struct* __l);
+     * int strcoll_l(char* __s1, char* __s2, locale_t __l);
      * }
      */
     public static int strcoll_l(MemorySegment __s1, MemorySegment __s2, MemorySegment __l) {
@@ -6156,11 +6172,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strxfrm_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.const$5,"strxfrm_l");
+        return RuntimeHelper.requireNonNull(constants$120.const$1,"strxfrm_l");
     }
     /**
      * {@snippet :
-     * unsigned long strxfrm_l(char* __dest, char* __src, unsigned long __n, struct __locale_struct* __l);
+     * size_t strxfrm_l(char* __dest, char* __src, size_t __n, locale_t __l);
      * }
      */
     public static long strxfrm_l(MemorySegment __dest, MemorySegment __src, long __n, MemorySegment __l) {
@@ -6172,7 +6188,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strdup$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.const$0,"strdup");
+        return RuntimeHelper.requireNonNull(constants$120.const$2,"strdup");
     }
     /**
      * {@snippet :
@@ -6188,11 +6204,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strndup$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.const$1,"strndup");
+        return RuntimeHelper.requireNonNull(constants$120.const$3,"strndup");
     }
     /**
      * {@snippet :
-     * char* strndup(char* __string, unsigned long __n);
+     * char* strndup(char* __string, size_t __n);
      * }
      */
     public static MemorySegment strndup(MemorySegment __string, long __n) {
@@ -6204,7 +6220,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strchr$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.const$3,"strchr");
+        return RuntimeHelper.requireNonNull(constants$120.const$5,"strchr");
     }
     /**
      * {@snippet :
@@ -6220,7 +6236,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strrchr$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.const$4,"strrchr");
+        return RuntimeHelper.requireNonNull(constants$121.const$0,"strrchr");
     }
     /**
      * {@snippet :
@@ -6236,7 +6252,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcspn$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.const$6,"strcspn");
+        return RuntimeHelper.requireNonNull(constants$121.const$2,"strcspn");
     }
     /**
      * {@snippet :
@@ -6252,7 +6268,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strspn$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.const$0,"strspn");
+        return RuntimeHelper.requireNonNull(constants$121.const$3,"strspn");
     }
     /**
      * {@snippet :
@@ -6268,7 +6284,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strpbrk$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.const$1,"strpbrk");
+        return RuntimeHelper.requireNonNull(constants$121.const$4,"strpbrk");
     }
     /**
      * {@snippet :
@@ -6284,7 +6300,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strstr$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.const$2,"strstr");
+        return RuntimeHelper.requireNonNull(constants$121.const$5,"strstr");
     }
     /**
      * {@snippet :
@@ -6300,7 +6316,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtok$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.const$3,"strtok");
+        return RuntimeHelper.requireNonNull(constants$122.const$0,"strtok");
     }
     /**
      * {@snippet :
@@ -6316,7 +6332,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle __strtok_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.const$4,"__strtok_r");
+        return RuntimeHelper.requireNonNull(constants$122.const$1,"__strtok_r");
     }
     /**
      * {@snippet :
@@ -6332,7 +6348,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strtok_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.const$5,"strtok_r");
+        return RuntimeHelper.requireNonNull(constants$122.const$2,"strtok_r");
     }
     /**
      * {@snippet :
@@ -6348,7 +6364,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.const$0,"strlen");
+        return RuntimeHelper.requireNonNull(constants$122.const$3,"strlen");
     }
     /**
      * {@snippet :
@@ -6364,11 +6380,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strnlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.const$2,"strnlen");
+        return RuntimeHelper.requireNonNull(constants$122.const$5,"strnlen");
     }
     /**
      * {@snippet :
-     * unsigned long strnlen(char* __string, unsigned long __maxlen);
+     * size_t strnlen(char* __string, size_t __maxlen);
      * }
      */
     public static long strnlen(MemorySegment __string, long __maxlen) {
@@ -6380,7 +6396,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strerror$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.const$3,"strerror");
+        return RuntimeHelper.requireNonNull(constants$123.const$0,"strerror");
     }
     /**
      * {@snippet :
@@ -6396,11 +6412,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strerror_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.const$5,"strerror_r");
+        return RuntimeHelper.requireNonNull(constants$123.const$2,"strerror_r");
     }
     /**
      * {@snippet :
-     * int strerror_r(int __errnum, char* __buf, unsigned long __buflen);
+     * int strerror_r(int __errnum, char* __buf, size_t __buflen);
      * }
      */
     public static int strerror_r(int __errnum, MemorySegment __buf, long __buflen) {
@@ -6412,11 +6428,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strerror_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.const$0,"strerror_l");
+        return RuntimeHelper.requireNonNull(constants$123.const$3,"strerror_l");
     }
     /**
      * {@snippet :
-     * char* strerror_l(int __errnum, struct __locale_struct* __l);
+     * char* strerror_l(int __errnum, locale_t __l);
      * }
      */
     public static MemorySegment strerror_l(int __errnum, MemorySegment __l) {
@@ -6428,11 +6444,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle bcmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.const$1,"bcmp");
+        return RuntimeHelper.requireNonNull(constants$123.const$4,"bcmp");
     }
     /**
      * {@snippet :
-     * int bcmp(void* __s1, void* __s2, unsigned long __n);
+     * int bcmp(void* __s1, void* __s2, size_t __n);
      * }
      */
     public static int bcmp(MemorySegment __s1, MemorySegment __s2, long __n) {
@@ -6444,11 +6460,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle bcopy$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.const$2,"bcopy");
+        return RuntimeHelper.requireNonNull(constants$123.const$5,"bcopy");
     }
     /**
      * {@snippet :
-     * void bcopy(void* __src, void* __dest, unsigned long __n);
+     * void bcopy(void* __src, void* __dest, size_t __n);
      * }
      */
     public static void bcopy(MemorySegment __src, MemorySegment __dest, long __n) {
@@ -6460,11 +6476,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle bzero$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.const$3,"bzero");
+        return RuntimeHelper.requireNonNull(constants$124.const$0,"bzero");
     }
     /**
      * {@snippet :
-     * void bzero(void* __s, unsigned long __n);
+     * void bzero(void* __s, size_t __n);
      * }
      */
     public static void bzero(MemorySegment __s, long __n) {
@@ -6476,7 +6492,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle index$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.const$4,"index");
+        return RuntimeHelper.requireNonNull(constants$124.const$1,"index");
     }
     /**
      * {@snippet :
@@ -6492,7 +6508,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle rindex$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.const$5,"rindex");
+        return RuntimeHelper.requireNonNull(constants$124.const$2,"rindex");
     }
     /**
      * {@snippet :
@@ -6508,7 +6524,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle ffs$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.const$0,"ffs");
+        return RuntimeHelper.requireNonNull(constants$124.const$3,"ffs");
     }
     /**
      * {@snippet :
@@ -6524,7 +6540,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle ffsl$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.const$2,"ffsl");
+        return RuntimeHelper.requireNonNull(constants$124.const$5,"ffsl");
     }
     /**
      * {@snippet :
@@ -6540,7 +6556,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle ffsll$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.const$3,"ffsll");
+        return RuntimeHelper.requireNonNull(constants$125.const$0,"ffsll");
     }
     /**
      * {@snippet :
@@ -6556,7 +6572,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcasecmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.const$4,"strcasecmp");
+        return RuntimeHelper.requireNonNull(constants$125.const$1,"strcasecmp");
     }
     /**
      * {@snippet :
@@ -6572,11 +6588,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strncasecmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.const$5,"strncasecmp");
+        return RuntimeHelper.requireNonNull(constants$125.const$2,"strncasecmp");
     }
     /**
      * {@snippet :
-     * int strncasecmp(char* __s1, char* __s2, unsigned long __n);
+     * int strncasecmp(char* __s1, char* __s2, size_t __n);
      * }
      */
     public static int strncasecmp(MemorySegment __s1, MemorySegment __s2, long __n) {
@@ -6588,11 +6604,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strcasecmp_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.const$0,"strcasecmp_l");
+        return RuntimeHelper.requireNonNull(constants$125.const$3,"strcasecmp_l");
     }
     /**
      * {@snippet :
-     * int strcasecmp_l(char* __s1, char* __s2, struct __locale_struct* __loc);
+     * int strcasecmp_l(char* __s1, char* __s2, locale_t __loc);
      * }
      */
     public static int strcasecmp_l(MemorySegment __s1, MemorySegment __s2, MemorySegment __loc) {
@@ -6604,11 +6620,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strncasecmp_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.const$2,"strncasecmp_l");
+        return RuntimeHelper.requireNonNull(constants$125.const$5,"strncasecmp_l");
     }
     /**
      * {@snippet :
-     * int strncasecmp_l(char* __s1, char* __s2, unsigned long __n, struct __locale_struct* __loc);
+     * int strncasecmp_l(char* __s1, char* __s2, size_t __n, locale_t __loc);
      * }
      */
     public static int strncasecmp_l(MemorySegment __s1, MemorySegment __s2, long __n, MemorySegment __loc) {
@@ -6620,11 +6636,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle explicit_bzero$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.const$3,"explicit_bzero");
+        return RuntimeHelper.requireNonNull(constants$126.const$0,"explicit_bzero");
     }
     /**
      * {@snippet :
-     * void explicit_bzero(void* __s, unsigned long __n);
+     * void explicit_bzero(void* __s, size_t __n);
      * }
      */
     public static void explicit_bzero(MemorySegment __s, long __n) {
@@ -6636,7 +6652,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strsep$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.const$4,"strsep");
+        return RuntimeHelper.requireNonNull(constants$126.const$1,"strsep");
     }
     /**
      * {@snippet :
@@ -6652,7 +6668,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle strsignal$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.const$5,"strsignal");
+        return RuntimeHelper.requireNonNull(constants$126.const$2,"strsignal");
     }
     /**
      * {@snippet :
@@ -6668,7 +6684,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle __stpcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.const$0,"__stpcpy");
+        return RuntimeHelper.requireNonNull(constants$126.const$3,"__stpcpy");
     }
     /**
      * {@snippet :
@@ -6684,7 +6700,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle stpcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.const$1,"stpcpy");
+        return RuntimeHelper.requireNonNull(constants$126.const$4,"stpcpy");
     }
     /**
      * {@snippet :
@@ -6700,11 +6716,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle __stpncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.const$2,"__stpncpy");
+        return RuntimeHelper.requireNonNull(constants$126.const$5,"__stpncpy");
     }
     /**
      * {@snippet :
-     * char* __stpncpy(char* __dest, char* __src, unsigned long __n);
+     * char* __stpncpy(char* __dest, char* __src, size_t __n);
      * }
      */
     public static MemorySegment __stpncpy(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -6716,11 +6732,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle stpncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.const$3,"stpncpy");
+        return RuntimeHelper.requireNonNull(constants$127.const$0,"stpncpy");
     }
     /**
      * {@snippet :
-     * char* stpncpy(char* __dest, char* __src, unsigned long __n);
+     * char* stpncpy(char* __dest, char* __src, size_t __n);
      * }
      */
     public static MemorySegment stpncpy(MemorySegment __dest, MemorySegment __src, long __n) {
@@ -6732,7 +6748,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log2$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.const$4,"av_log2");
+        return RuntimeHelper.requireNonNull(constants$127.const$1,"av_log2");
     }
     /**
      * {@snippet :
@@ -6748,7 +6764,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log2_16bit$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.const$5,"av_log2_16bit");
+        return RuntimeHelper.requireNonNull(constants$127.const$2,"av_log2_16bit");
     }
     /**
      * {@snippet :
@@ -6764,11 +6780,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_malloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.const$0,"av_malloc");
+        return RuntimeHelper.requireNonNull(constants$127.const$3,"av_malloc");
     }
     /**
      * {@snippet :
-     * void* av_malloc(unsigned long size);
+     * void* av_malloc(size_t size);
      * }
      */
     public static MemorySegment av_malloc(long size) {
@@ -6780,11 +6796,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_mallocz$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.const$1,"av_mallocz");
+        return RuntimeHelper.requireNonNull(constants$127.const$4,"av_mallocz");
     }
     /**
      * {@snippet :
-     * void* av_mallocz(unsigned long size);
+     * void* av_mallocz(size_t size);
      * }
      */
     public static MemorySegment av_mallocz(long size) {
@@ -6796,11 +6812,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_malloc_array$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.const$2,"av_malloc_array");
+        return RuntimeHelper.requireNonNull(constants$127.const$5,"av_malloc_array");
     }
     /**
      * {@snippet :
-     * void* av_malloc_array(unsigned long nmemb, unsigned long size);
+     * void* av_malloc_array(size_t nmemb, size_t size);
      * }
      */
     public static MemorySegment av_malloc_array(long nmemb, long size) {
@@ -6812,11 +6828,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_calloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.const$3,"av_calloc");
+        return RuntimeHelper.requireNonNull(constants$128.const$0,"av_calloc");
     }
     /**
      * {@snippet :
-     * void* av_calloc(unsigned long nmemb, unsigned long size);
+     * void* av_calloc(size_t nmemb, size_t size);
      * }
      */
     public static MemorySegment av_calloc(long nmemb, long size) {
@@ -6828,11 +6844,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_mallocz_array$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.const$4,"av_mallocz_array");
+        return RuntimeHelper.requireNonNull(constants$128.const$1,"av_mallocz_array");
     }
     /**
      * {@snippet :
-     * void* av_mallocz_array(unsigned long nmemb, unsigned long size);
+     * void* av_mallocz_array(size_t nmemb, size_t size);
      * }
      */
     public static MemorySegment av_mallocz_array(long nmemb, long size) {
@@ -6844,11 +6860,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_realloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.const$5,"av_realloc");
+        return RuntimeHelper.requireNonNull(constants$128.const$2,"av_realloc");
     }
     /**
      * {@snippet :
-     * void* av_realloc(void* ptr, unsigned long size);
+     * void* av_realloc(void* ptr, size_t size);
      * }
      */
     public static MemorySegment av_realloc(MemorySegment ptr, long size) {
@@ -6860,11 +6876,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_reallocp$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.const$0,"av_reallocp");
+        return RuntimeHelper.requireNonNull(constants$128.const$3,"av_reallocp");
     }
     /**
      * {@snippet :
-     * int av_reallocp(void* ptr, unsigned long size);
+     * int av_reallocp(void* ptr, size_t size);
      * }
      */
     public static int av_reallocp(MemorySegment ptr, long size) {
@@ -6876,11 +6892,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_realloc_f$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.const$1,"av_realloc_f");
+        return RuntimeHelper.requireNonNull(constants$128.const$4,"av_realloc_f");
     }
     /**
      * {@snippet :
-     * void* av_realloc_f(void* ptr, unsigned long nelem, unsigned long elsize);
+     * void* av_realloc_f(void* ptr, size_t nelem, size_t elsize);
      * }
      */
     public static MemorySegment av_realloc_f(MemorySegment ptr, long nelem, long elsize) {
@@ -6892,11 +6908,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_realloc_array$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.const$2,"av_realloc_array");
+        return RuntimeHelper.requireNonNull(constants$128.const$5,"av_realloc_array");
     }
     /**
      * {@snippet :
-     * void* av_realloc_array(void* ptr, unsigned long nmemb, unsigned long size);
+     * void* av_realloc_array(void* ptr, size_t nmemb, size_t size);
      * }
      */
     public static MemorySegment av_realloc_array(MemorySegment ptr, long nmemb, long size) {
@@ -6908,11 +6924,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_reallocp_array$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.const$3,"av_reallocp_array");
+        return RuntimeHelper.requireNonNull(constants$129.const$0,"av_reallocp_array");
     }
     /**
      * {@snippet :
-     * int av_reallocp_array(void* ptr, unsigned long nmemb, unsigned long size);
+     * int av_reallocp_array(void* ptr, size_t nmemb, size_t size);
      * }
      */
     public static int av_reallocp_array(MemorySegment ptr, long nmemb, long size) {
@@ -6924,11 +6940,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_fast_realloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.const$4,"av_fast_realloc");
+        return RuntimeHelper.requireNonNull(constants$129.const$1,"av_fast_realloc");
     }
     /**
      * {@snippet :
-     * void* av_fast_realloc(void* ptr, unsigned int* size, unsigned long min_size);
+     * void* av_fast_realloc(void* ptr, unsigned int* size, size_t min_size);
      * }
      */
     public static MemorySegment av_fast_realloc(MemorySegment ptr, MemorySegment size, long min_size) {
@@ -6940,11 +6956,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_fast_malloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.const$5,"av_fast_malloc");
+        return RuntimeHelper.requireNonNull(constants$129.const$2,"av_fast_malloc");
     }
     /**
      * {@snippet :
-     * void av_fast_malloc(void* ptr, unsigned int* size, unsigned long min_size);
+     * void av_fast_malloc(void* ptr, unsigned int* size, size_t min_size);
      * }
      */
     public static void av_fast_malloc(MemorySegment ptr, MemorySegment size, long min_size) {
@@ -6956,11 +6972,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_fast_mallocz$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.const$0,"av_fast_mallocz");
+        return RuntimeHelper.requireNonNull(constants$129.const$3,"av_fast_mallocz");
     }
     /**
      * {@snippet :
-     * void av_fast_mallocz(void* ptr, unsigned int* size, unsigned long min_size);
+     * void av_fast_mallocz(void* ptr, unsigned int* size, size_t min_size);
      * }
      */
     public static void av_fast_mallocz(MemorySegment ptr, MemorySegment size, long min_size) {
@@ -6972,7 +6988,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_free$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.const$1,"av_free");
+        return RuntimeHelper.requireNonNull(constants$129.const$4,"av_free");
     }
     /**
      * {@snippet :
@@ -6988,7 +7004,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_freep$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.const$2,"av_freep");
+        return RuntimeHelper.requireNonNull(constants$129.const$5,"av_freep");
     }
     /**
      * {@snippet :
@@ -7004,7 +7020,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_strdup$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.const$3,"av_strdup");
+        return RuntimeHelper.requireNonNull(constants$130.const$0,"av_strdup");
     }
     /**
      * {@snippet :
@@ -7020,11 +7036,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_strndup$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.const$4,"av_strndup");
+        return RuntimeHelper.requireNonNull(constants$130.const$1,"av_strndup");
     }
     /**
      * {@snippet :
-     * char* av_strndup(char* s, unsigned long len);
+     * char* av_strndup(char* s, size_t len);
      * }
      */
     public static MemorySegment av_strndup(MemorySegment s, long len) {
@@ -7036,11 +7052,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_memdup$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.const$5,"av_memdup");
+        return RuntimeHelper.requireNonNull(constants$130.const$2,"av_memdup");
     }
     /**
      * {@snippet :
-     * void* av_memdup(void* p, unsigned long size);
+     * void* av_memdup(void* p, size_t size);
      * }
      */
     public static MemorySegment av_memdup(MemorySegment p, long size) {
@@ -7052,11 +7068,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_memcpy_backptr$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.const$1,"av_memcpy_backptr");
+        return RuntimeHelper.requireNonNull(constants$130.const$4,"av_memcpy_backptr");
     }
     /**
      * {@snippet :
-     * void av_memcpy_backptr(unsigned char* dst, int back, int cnt);
+     * void av_memcpy_backptr(uint8_t* dst, int back, int cnt);
      * }
      */
     public static void av_memcpy_backptr(MemorySegment dst, int back, int cnt) {
@@ -7068,7 +7084,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dynarray_add$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.const$3,"av_dynarray_add");
+        return RuntimeHelper.requireNonNull(constants$130.const$6,"av_dynarray_add");
     }
     /**
      * {@snippet :
@@ -7084,7 +7100,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dynarray_add_nofree$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.const$4,"av_dynarray_add_nofree");
+        return RuntimeHelper.requireNonNull(constants$131.const$0,"av_dynarray_add_nofree");
     }
     /**
      * {@snippet :
@@ -7100,11 +7116,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dynarray2_add$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.const$6,"av_dynarray2_add");
+        return RuntimeHelper.requireNonNull(constants$131.const$2,"av_dynarray2_add");
     }
     /**
      * {@snippet :
-     * void* av_dynarray2_add(void** tab_ptr, int* nb_ptr, unsigned long elem_size, unsigned char* elem_data);
+     * void* av_dynarray2_add(void** tab_ptr, int* nb_ptr, size_t elem_size, const uint8_t* elem_data);
      * }
      */
     public static MemorySegment av_dynarray2_add(MemorySegment tab_ptr, MemorySegment nb_ptr, long elem_size, MemorySegment elem_data) {
@@ -7116,11 +7132,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_size_mult$MH() {
-        return RuntimeHelper.requireNonNull(constants$133.const$1,"av_size_mult");
+        return RuntimeHelper.requireNonNull(constants$131.const$4,"av_size_mult");
     }
     /**
      * {@snippet :
-     * int av_size_mult(unsigned long a, unsigned long b, unsigned long* r);
+     * int av_size_mult(size_t a, size_t b, size_t* r);
      * }
      */
     public static int av_size_mult(long a, long b, MemorySegment r) {
@@ -7132,11 +7148,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_max_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$133.const$2,"av_max_alloc");
+        return RuntimeHelper.requireNonNull(constants$131.const$5,"av_max_alloc");
     }
     /**
      * {@snippet :
-     * void av_max_alloc(unsigned long max);
+     * void av_max_alloc(size_t max);
      * }
      */
     public static void av_max_alloc(long max) {
@@ -7154,11 +7170,11 @@ public class FFmpeg5_1 {
      */
     public static final OfLong ptrdiff_t = JAVA_LONG;
     public static MethodHandle av_strerror$MH() {
-        return RuntimeHelper.requireNonNull(constants$133.const$5,"av_strerror");
+        return RuntimeHelper.requireNonNull(constants$132.const$2,"av_strerror");
     }
     /**
      * {@snippet :
-     * int av_strerror(int errnum, char* errbuf, unsigned long errbuf_size);
+     * int av_strerror(int errnum, char* errbuf, size_t errbuf_size);
      * }
      */
     public static int av_strerror(int errnum, MemorySegment errbuf, long errbuf_size) {
@@ -7170,11 +7186,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_reduce$MH() {
-        return RuntimeHelper.requireNonNull(constants$134.const$4,"av_reduce");
+        return RuntimeHelper.requireNonNull(constants$133.const$1,"av_reduce");
     }
     /**
      * {@snippet :
-     * int av_reduce(int* dst_num, int* dst_den, long num, long den, long max);
+     * int av_reduce(int* dst_num, int* dst_den, int64_t num, int64_t den, int64_t max);
      * }
      */
     public static int av_reduce(MemorySegment dst_num, MemorySegment dst_den, long num, long den, long max) {
@@ -7186,11 +7202,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_mul_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$134.const$6,"av_mul_q");
+        return RuntimeHelper.requireNonNull(constants$133.const$3,"av_mul_q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_mul_q(struct AVRational b, struct AVRational c);
+     * AVRational av_mul_q(AVRational b, AVRational c);
      * }
      */
     public static MemorySegment av_mul_q(SegmentAllocator allocator, MemorySegment b, MemorySegment c) {
@@ -7202,11 +7218,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_div_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$135.const$0,"av_div_q");
+        return RuntimeHelper.requireNonNull(constants$133.const$4,"av_div_q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_div_q(struct AVRational b, struct AVRational c);
+     * AVRational av_div_q(AVRational b, AVRational c);
      * }
      */
     public static MemorySegment av_div_q(SegmentAllocator allocator, MemorySegment b, MemorySegment c) {
@@ -7218,11 +7234,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_add_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$135.const$1,"av_add_q");
+        return RuntimeHelper.requireNonNull(constants$133.const$5,"av_add_q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_add_q(struct AVRational b, struct AVRational c);
+     * AVRational av_add_q(AVRational b, AVRational c);
      * }
      */
     public static MemorySegment av_add_q(SegmentAllocator allocator, MemorySegment b, MemorySegment c) {
@@ -7234,11 +7250,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_sub_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$135.const$2,"av_sub_q");
+        return RuntimeHelper.requireNonNull(constants$134.const$0,"av_sub_q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_sub_q(struct AVRational b, struct AVRational c);
+     * AVRational av_sub_q(AVRational b, AVRational c);
      * }
      */
     public static MemorySegment av_sub_q(SegmentAllocator allocator, MemorySegment b, MemorySegment c) {
@@ -7250,11 +7266,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_d2q$MH() {
-        return RuntimeHelper.requireNonNull(constants$135.const$4,"av_d2q");
+        return RuntimeHelper.requireNonNull(constants$134.const$2,"av_d2q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_d2q(double d, int max);
+     * AVRational av_d2q(double d, int max);
      * }
      */
     public static MemorySegment av_d2q(SegmentAllocator allocator, double d, int max) {
@@ -7266,11 +7282,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_nearer_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$135.const$6,"av_nearer_q");
+        return RuntimeHelper.requireNonNull(constants$134.const$4,"av_nearer_q");
     }
     /**
      * {@snippet :
-     * int av_nearer_q(struct AVRational q, struct AVRational q1, struct AVRational q2);
+     * int av_nearer_q(AVRational q, AVRational q1, AVRational q2);
      * }
      */
     public static int av_nearer_q(MemorySegment q, MemorySegment q1, MemorySegment q2) {
@@ -7282,11 +7298,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_find_nearest_q_idx$MH() {
-        return RuntimeHelper.requireNonNull(constants$136.const$1,"av_find_nearest_q_idx");
+        return RuntimeHelper.requireNonNull(constants$134.const$6,"av_find_nearest_q_idx");
     }
     /**
      * {@snippet :
-     * int av_find_nearest_q_idx(struct AVRational q, struct AVRational* q_list);
+     * int av_find_nearest_q_idx(AVRational q, const AVRational* q_list);
      * }
      */
     public static int av_find_nearest_q_idx(MemorySegment q, MemorySegment q_list) {
@@ -7298,11 +7314,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_q2intfloat$MH() {
-        return RuntimeHelper.requireNonNull(constants$136.const$3,"av_q2intfloat");
+        return RuntimeHelper.requireNonNull(constants$135.const$1,"av_q2intfloat");
     }
     /**
      * {@snippet :
-     * unsigned int av_q2intfloat(struct AVRational q);
+     * uint32_t av_q2intfloat(AVRational q);
      * }
      */
     public static int av_q2intfloat(MemorySegment q) {
@@ -7314,11 +7330,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_gcd_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$136.const$5,"av_gcd_q");
+        return RuntimeHelper.requireNonNull(constants$135.const$3,"av_gcd_q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_gcd_q(struct AVRational a, struct AVRational b, int max_den, struct AVRational def);
+     * AVRational av_gcd_q(AVRational a, AVRational b, int max_den, AVRational def);
      * }
      */
     public static MemorySegment av_gcd_q(SegmentAllocator allocator, MemorySegment a, MemorySegment b, int max_den, MemorySegment def) {
@@ -7378,11 +7394,11 @@ public class FFmpeg5_1 {
         return (int)8192L;
     }
     public static MethodHandle av_gcd$MH() {
-        return RuntimeHelper.requireNonNull(constants$138.const$1,"av_gcd");
+        return RuntimeHelper.requireNonNull(constants$136.const$5,"av_gcd");
     }
     /**
      * {@snippet :
-     * long av_gcd(long a, long b);
+     * int64_t av_gcd(int64_t a, int64_t b);
      * }
      */
     public static long av_gcd(long a, long b) {
@@ -7394,11 +7410,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_rescale$MH() {
-        return RuntimeHelper.requireNonNull(constants$138.const$3,"av_rescale");
+        return RuntimeHelper.requireNonNull(constants$137.const$1,"av_rescale");
     }
     /**
      * {@snippet :
-     * long av_rescale(long a, long b, long c);
+     * int64_t av_rescale(int64_t a, int64_t b, int64_t c);
      * }
      */
     public static long av_rescale(long a, long b, long c) {
@@ -7410,11 +7426,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_rescale_rnd$MH() {
-        return RuntimeHelper.requireNonNull(constants$138.const$5,"av_rescale_rnd");
+        return RuntimeHelper.requireNonNull(constants$137.const$3,"av_rescale_rnd");
     }
     /**
      * {@snippet :
-     * long av_rescale_rnd(long a, long b, long c, enum AVRounding rnd);
+     * int64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd);
      * }
      */
     public static long av_rescale_rnd(long a, long b, long c, int rnd) {
@@ -7426,11 +7442,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_rescale_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$139.const$1,"av_rescale_q");
+        return RuntimeHelper.requireNonNull(constants$137.const$5,"av_rescale_q");
     }
     /**
      * {@snippet :
-     * long av_rescale_q(long a, struct AVRational bq, struct AVRational cq);
+     * int64_t av_rescale_q(int64_t a, AVRational bq, AVRational cq);
      * }
      */
     public static long av_rescale_q(long a, MemorySegment bq, MemorySegment cq) {
@@ -7442,11 +7458,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_rescale_q_rnd$MH() {
-        return RuntimeHelper.requireNonNull(constants$139.const$3,"av_rescale_q_rnd");
+        return RuntimeHelper.requireNonNull(constants$138.const$1,"av_rescale_q_rnd");
     }
     /**
      * {@snippet :
-     * long av_rescale_q_rnd(long a, struct AVRational bq, struct AVRational cq, enum AVRounding rnd);
+     * int64_t av_rescale_q_rnd(int64_t a, AVRational bq, AVRational cq, enum AVRounding rnd);
      * }
      */
     public static long av_rescale_q_rnd(long a, MemorySegment bq, MemorySegment cq, int rnd) {
@@ -7458,11 +7474,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_compare_ts$MH() {
-        return RuntimeHelper.requireNonNull(constants$139.const$5,"av_compare_ts");
+        return RuntimeHelper.requireNonNull(constants$138.const$3,"av_compare_ts");
     }
     /**
      * {@snippet :
-     * int av_compare_ts(long ts_a, struct AVRational tb_a, long ts_b, struct AVRational tb_b);
+     * int av_compare_ts(int64_t ts_a, AVRational tb_a, int64_t ts_b, AVRational tb_b);
      * }
      */
     public static int av_compare_ts(long ts_a, MemorySegment tb_a, long ts_b, MemorySegment tb_b) {
@@ -7474,11 +7490,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_compare_mod$MH() {
-        return RuntimeHelper.requireNonNull(constants$140.const$0,"av_compare_mod");
+        return RuntimeHelper.requireNonNull(constants$138.const$4,"av_compare_mod");
     }
     /**
      * {@snippet :
-     * long av_compare_mod(unsigned long a, unsigned long b, unsigned long mod);
+     * int64_t av_compare_mod(uint64_t a, uint64_t b, uint64_t mod);
      * }
      */
     public static long av_compare_mod(long a, long b, long mod) {
@@ -7490,11 +7506,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_rescale_delta$MH() {
-        return RuntimeHelper.requireNonNull(constants$140.const$2,"av_rescale_delta");
+        return RuntimeHelper.requireNonNull(constants$138.const$6,"av_rescale_delta");
     }
     /**
      * {@snippet :
-     * long av_rescale_delta(struct AVRational in_tb, long in_ts, struct AVRational fs_tb, int duration, long* last, struct AVRational out_tb);
+     * int64_t av_rescale_delta(AVRational in_tb, int64_t in_ts, AVRational fs_tb, int duration, int64_t* last, AVRational out_tb);
      * }
      */
     public static long av_rescale_delta(MemorySegment in_tb, long in_ts, MemorySegment fs_tb, int duration, MemorySegment last, MemorySegment out_tb) {
@@ -7506,11 +7522,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_add_stable$MH() {
-        return RuntimeHelper.requireNonNull(constants$140.const$4,"av_add_stable");
+        return RuntimeHelper.requireNonNull(constants$139.const$1,"av_add_stable");
     }
     /**
      * {@snippet :
-     * long av_add_stable(struct AVRational ts_tb, long ts, struct AVRational inc_tb, long inc);
+     * int64_t av_add_stable(AVRational ts_tb, int64_t ts, AVRational inc_tb, int64_t inc);
      * }
      */
     public static long av_add_stable(MemorySegment ts_tb, long ts, MemorySegment inc_tb, long inc) {
@@ -7523,7 +7539,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_NA = 0;
+     * enum .AV_CLASS_CATEGORY_NA = 0;
      * }
      */
     public static int AV_CLASS_CATEGORY_NA() {
@@ -7531,7 +7547,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_INPUT = 1;
+     * enum .AV_CLASS_CATEGORY_INPUT = 1;
      * }
      */
     public static int AV_CLASS_CATEGORY_INPUT() {
@@ -7539,7 +7555,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_OUTPUT = 2;
+     * enum .AV_CLASS_CATEGORY_OUTPUT = 2;
      * }
      */
     public static int AV_CLASS_CATEGORY_OUTPUT() {
@@ -7547,7 +7563,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_MUXER = 3;
+     * enum .AV_CLASS_CATEGORY_MUXER = 3;
      * }
      */
     public static int AV_CLASS_CATEGORY_MUXER() {
@@ -7555,7 +7571,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEMUXER = 4;
+     * enum .AV_CLASS_CATEGORY_DEMUXER = 4;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEMUXER() {
@@ -7563,7 +7579,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_ENCODER = 5;
+     * enum .AV_CLASS_CATEGORY_ENCODER = 5;
      * }
      */
     public static int AV_CLASS_CATEGORY_ENCODER() {
@@ -7571,7 +7587,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DECODER = 6;
+     * enum .AV_CLASS_CATEGORY_DECODER = 6;
      * }
      */
     public static int AV_CLASS_CATEGORY_DECODER() {
@@ -7579,7 +7595,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_FILTER = 7;
+     * enum .AV_CLASS_CATEGORY_FILTER = 7;
      * }
      */
     public static int AV_CLASS_CATEGORY_FILTER() {
@@ -7587,7 +7603,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_BITSTREAM_FILTER = 8;
+     * enum .AV_CLASS_CATEGORY_BITSTREAM_FILTER = 8;
      * }
      */
     public static int AV_CLASS_CATEGORY_BITSTREAM_FILTER() {
@@ -7595,7 +7611,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_SWSCALER = 9;
+     * enum .AV_CLASS_CATEGORY_SWSCALER = 9;
      * }
      */
     public static int AV_CLASS_CATEGORY_SWSCALER() {
@@ -7603,7 +7619,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_SWRESAMPLER = 10;
+     * enum .AV_CLASS_CATEGORY_SWRESAMPLER = 10;
      * }
      */
     public static int AV_CLASS_CATEGORY_SWRESAMPLER() {
@@ -7611,7 +7627,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40;
+     * enum .AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT = 40;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT() {
@@ -7619,7 +7635,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT = 41;
+     * enum .AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT = 41;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT() {
@@ -7627,7 +7643,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT = 42;
+     * enum .AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT = 42;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT() {
@@ -7635,7 +7651,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT = 43;
+     * enum .AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT = 43;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT() {
@@ -7643,7 +7659,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEVICE_OUTPUT = 44;
+     * enum .AV_CLASS_CATEGORY_DEVICE_OUTPUT = 44;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEVICE_OUTPUT() {
@@ -7651,7 +7667,7 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_DEVICE_INPUT = 45;
+     * enum .AV_CLASS_CATEGORY_DEVICE_INPUT = 45;
      * }
      */
     public static int AV_CLASS_CATEGORY_DEVICE_INPUT() {
@@ -7659,14 +7675,14 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum AVClassCategory.AV_CLASS_CATEGORY_NB = 46;
+     * enum .AV_CLASS_CATEGORY_NB = 46;
      * }
      */
     public static int AV_CLASS_CATEGORY_NB() {
         return (int)46L;
     }
     public static MethodHandle av_log$MH() {
-        return RuntimeHelper.requireNonNull(constants$144.const$4,"av_log");
+        return RuntimeHelper.requireNonNull(constants$143.const$1,"av_log");
     }
     /**
      * {@snippet :
@@ -7682,7 +7698,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_once$MH() {
-        return RuntimeHelper.requireNonNull(constants$144.const$6,"av_log_once");
+        return RuntimeHelper.requireNonNull(constants$143.const$3,"av_log_once");
     }
     /**
      * {@snippet :
@@ -7698,11 +7714,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_vlog$MH() {
-        return RuntimeHelper.requireNonNull(constants$145.const$1,"av_vlog");
+        return RuntimeHelper.requireNonNull(constants$143.const$5,"av_vlog");
     }
     /**
      * {@snippet :
-     * void av_vlog(void* avcl, int level, char* fmt, struct __va_list_tag vl[1]);
+     * void av_vlog(void* avcl, int level, char* fmt, va_list vl);
      * }
      */
     public static void av_vlog(MemorySegment avcl, int level, MemorySegment fmt, MemorySegment vl) {
@@ -7714,7 +7730,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_get_level$MH() {
-        return RuntimeHelper.requireNonNull(constants$145.const$2,"av_log_get_level");
+        return RuntimeHelper.requireNonNull(constants$144.const$0,"av_log_get_level");
     }
     /**
      * {@snippet :
@@ -7730,7 +7746,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_set_level$MH() {
-        return RuntimeHelper.requireNonNull(constants$145.const$3,"av_log_set_level");
+        return RuntimeHelper.requireNonNull(constants$144.const$1,"av_log_set_level");
     }
     /**
      * {@snippet :
@@ -7746,7 +7762,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_set_callback$MH() {
-        return RuntimeHelper.requireNonNull(constants$146.const$0,"av_log_set_callback");
+        return RuntimeHelper.requireNonNull(constants$144.const$4,"av_log_set_callback");
     }
     /**
      * {@snippet :
@@ -7762,11 +7778,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_default_callback$MH() {
-        return RuntimeHelper.requireNonNull(constants$146.const$1,"av_log_default_callback");
+        return RuntimeHelper.requireNonNull(constants$144.const$5,"av_log_default_callback");
     }
     /**
      * {@snippet :
-     * void av_log_default_callback(void* avcl, int level, char* fmt, struct __va_list_tag vl[1]);
+     * void av_log_default_callback(void* avcl, int level, char* fmt, va_list vl);
      * }
      */
     public static void av_log_default_callback(MemorySegment avcl, int level, MemorySegment fmt, MemorySegment vl) {
@@ -7778,7 +7794,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_default_item_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$146.const$2,"av_default_item_name");
+        return RuntimeHelper.requireNonNull(constants$145.const$0,"av_default_item_name");
     }
     /**
      * {@snippet :
@@ -7794,11 +7810,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_default_get_category$MH() {
-        return RuntimeHelper.requireNonNull(constants$146.const$3,"av_default_get_category");
+        return RuntimeHelper.requireNonNull(constants$145.const$1,"av_default_get_category");
     }
     /**
      * {@snippet :
-     * enum AVClassCategory av_default_get_category(void* ptr);
+     * AVClassCategory av_default_get_category(void* ptr);
      * }
      */
     public static int av_default_get_category(MemorySegment ptr) {
@@ -7810,11 +7826,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_format_line$MH() {
-        return RuntimeHelper.requireNonNull(constants$146.const$5,"av_log_format_line");
+        return RuntimeHelper.requireNonNull(constants$145.const$3,"av_log_format_line");
     }
     /**
      * {@snippet :
-     * void av_log_format_line(void* ptr, int level, char* fmt, struct __va_list_tag vl[1], char* line, int line_size, int* print_prefix);
+     * void av_log_format_line(void* ptr, int level, char* fmt, va_list vl, char* line, int line_size, int* print_prefix);
      * }
      */
     public static void av_log_format_line(MemorySegment ptr, int level, MemorySegment fmt, MemorySegment vl, MemorySegment line, int line_size, MemorySegment print_prefix) {
@@ -7826,11 +7842,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_format_line2$MH() {
-        return RuntimeHelper.requireNonNull(constants$147.const$1,"av_log_format_line2");
+        return RuntimeHelper.requireNonNull(constants$145.const$5,"av_log_format_line2");
     }
     /**
      * {@snippet :
-     * int av_log_format_line2(void* ptr, int level, char* fmt, struct __va_list_tag vl[1], char* line, int line_size, int* print_prefix);
+     * int av_log_format_line2(void* ptr, int level, char* fmt, va_list vl, char* line, int line_size, int* print_prefix);
      * }
      */
     public static int av_log_format_line2(MemorySegment ptr, int level, MemorySegment fmt, MemorySegment vl, MemorySegment line, int line_size, MemorySegment print_prefix) {
@@ -7842,7 +7858,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_set_flags$MH() {
-        return RuntimeHelper.requireNonNull(constants$147.const$2,"av_log_set_flags");
+        return RuntimeHelper.requireNonNull(constants$146.const$0,"av_log_set_flags");
     }
     /**
      * {@snippet :
@@ -7858,7 +7874,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_log_get_flags$MH() {
-        return RuntimeHelper.requireNonNull(constants$147.const$3,"av_log_get_flags");
+        return RuntimeHelper.requireNonNull(constants$146.const$1,"av_log_get_flags");
     }
     /**
      * {@snippet :
@@ -10106,11 +10122,11 @@ public class FFmpeg5_1 {
         return (int)7L;
     }
     public static MethodHandle av_int_list_length_for_size$MH() {
-        return RuntimeHelper.requireNonNull(constants$147.const$4,"av_int_list_length_for_size");
+        return RuntimeHelper.requireNonNull(constants$146.const$2,"av_int_list_length_for_size");
     }
     /**
      * {@snippet :
-     * unsigned int av_int_list_length_for_size(unsigned int elsize, void* list, unsigned long term);
+     * unsigned int av_int_list_length_for_size(unsigned int elsize, void* list, uint64_t term);
      * }
      */
     public static int av_int_list_length_for_size(int elsize, MemorySegment list, long term) {
@@ -10122,11 +10138,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_fopen_utf8$MH() {
-        return RuntimeHelper.requireNonNull(constants$147.const$5,"av_fopen_utf8");
+        return RuntimeHelper.requireNonNull(constants$146.const$3,"av_fopen_utf8");
     }
     /**
      * {@snippet :
-     * struct _IO_FILE* av_fopen_utf8(char* path, char* mode);
+     * FILE* av_fopen_utf8(char* path, char* mode);
      * }
      */
     public static MemorySegment av_fopen_utf8(MemorySegment path, MemorySegment mode) {
@@ -10138,11 +10154,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_time_base_q$MH() {
-        return RuntimeHelper.requireNonNull(constants$148.const$1,"av_get_time_base_q");
+        return RuntimeHelper.requireNonNull(constants$146.const$5,"av_get_time_base_q");
     }
     /**
      * {@snippet :
-     * struct AVRational av_get_time_base_q();
+     * AVRational av_get_time_base_q();
      * }
      */
     public static MemorySegment av_get_time_base_q(SegmentAllocator allocator) {
@@ -10154,11 +10170,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_fourcc_make_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$148.const$2,"av_fourcc_make_string");
+        return RuntimeHelper.requireNonNull(constants$147.const$0,"av_fourcc_make_string");
     }
     /**
      * {@snippet :
-     * char* av_fourcc_make_string(char* buf, unsigned int fourcc);
+     * char* av_fourcc_make_string(char* buf, uint32_t fourcc);
      * }
      */
     public static MemorySegment av_fourcc_make_string(MemorySegment buf, int fourcc) {
@@ -10170,11 +10186,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$149.const$1,"av_buffer_alloc");
+        return RuntimeHelper.requireNonNull(constants$147.const$5,"av_buffer_alloc");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_buffer_alloc(unsigned long size);
+     * AVBufferRef* av_buffer_alloc(size_t size);
      * }
      */
     public static MemorySegment av_buffer_alloc(long size) {
@@ -10186,11 +10202,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_allocz$MH() {
-        return RuntimeHelper.requireNonNull(constants$149.const$2,"av_buffer_allocz");
+        return RuntimeHelper.requireNonNull(constants$148.const$0,"av_buffer_allocz");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_buffer_allocz(unsigned long size);
+     * AVBufferRef* av_buffer_allocz(size_t size);
      * }
      */
     public static MemorySegment av_buffer_allocz(long size) {
@@ -10202,11 +10218,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_create$MH() {
-        return RuntimeHelper.requireNonNull(constants$149.const$6,"av_buffer_create");
+        return RuntimeHelper.requireNonNull(constants$148.const$4,"av_buffer_create");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_buffer_create(unsigned char* data, unsigned long size, void (*free)(void*,unsigned char*), void* opaque, int flags);
+     * AVBufferRef* av_buffer_create(uint8_t* data, size_t size, void (*free)(void*,uint8_t*), void* opaque, int flags);
      * }
      */
     public static MemorySegment av_buffer_create(MemorySegment data, long size, MemorySegment free, MemorySegment opaque, int flags) {
@@ -10218,11 +10234,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_default_free$MH() {
-        return RuntimeHelper.requireNonNull(constants$150.const$0,"av_buffer_default_free");
+        return RuntimeHelper.requireNonNull(constants$148.const$5,"av_buffer_default_free");
     }
     /**
      * {@snippet :
-     * void av_buffer_default_free(void* opaque, unsigned char* data);
+     * void av_buffer_default_free(void* opaque, uint8_t* data);
      * }
      */
     public static void av_buffer_default_free(MemorySegment opaque, MemorySegment data) {
@@ -10234,11 +10250,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$150.const$1,"av_buffer_ref");
+        return RuntimeHelper.requireNonNull(constants$149.const$0,"av_buffer_ref");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_buffer_ref(struct AVBufferRef* buf);
+     * AVBufferRef* av_buffer_ref(const AVBufferRef* buf);
      * }
      */
     public static MemorySegment av_buffer_ref(MemorySegment buf) {
@@ -10250,11 +10266,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_unref$MH() {
-        return RuntimeHelper.requireNonNull(constants$150.const$2,"av_buffer_unref");
+        return RuntimeHelper.requireNonNull(constants$149.const$1,"av_buffer_unref");
     }
     /**
      * {@snippet :
-     * void av_buffer_unref(struct AVBufferRef** buf);
+     * void av_buffer_unref(AVBufferRef** buf);
      * }
      */
     public static void av_buffer_unref(MemorySegment buf) {
@@ -10266,11 +10282,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_is_writable$MH() {
-        return RuntimeHelper.requireNonNull(constants$150.const$3,"av_buffer_is_writable");
+        return RuntimeHelper.requireNonNull(constants$149.const$2,"av_buffer_is_writable");
     }
     /**
      * {@snippet :
-     * int av_buffer_is_writable(struct AVBufferRef* buf);
+     * int av_buffer_is_writable(const AVBufferRef* buf);
      * }
      */
     public static int av_buffer_is_writable(MemorySegment buf) {
@@ -10282,11 +10298,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_get_opaque$MH() {
-        return RuntimeHelper.requireNonNull(constants$150.const$4,"av_buffer_get_opaque");
+        return RuntimeHelper.requireNonNull(constants$149.const$3,"av_buffer_get_opaque");
     }
     /**
      * {@snippet :
-     * void* av_buffer_get_opaque(struct AVBufferRef* buf);
+     * void* av_buffer_get_opaque(const AVBufferRef* buf);
      * }
      */
     public static MemorySegment av_buffer_get_opaque(MemorySegment buf) {
@@ -10298,11 +10314,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_get_ref_count$MH() {
-        return RuntimeHelper.requireNonNull(constants$150.const$5,"av_buffer_get_ref_count");
+        return RuntimeHelper.requireNonNull(constants$149.const$4,"av_buffer_get_ref_count");
     }
     /**
      * {@snippet :
-     * int av_buffer_get_ref_count(struct AVBufferRef* buf);
+     * int av_buffer_get_ref_count(const AVBufferRef* buf);
      * }
      */
     public static int av_buffer_get_ref_count(MemorySegment buf) {
@@ -10314,11 +10330,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_make_writable$MH() {
-        return RuntimeHelper.requireNonNull(constants$151.const$0,"av_buffer_make_writable");
+        return RuntimeHelper.requireNonNull(constants$149.const$5,"av_buffer_make_writable");
     }
     /**
      * {@snippet :
-     * int av_buffer_make_writable(struct AVBufferRef** buf);
+     * int av_buffer_make_writable(AVBufferRef** buf);
      * }
      */
     public static int av_buffer_make_writable(MemorySegment buf) {
@@ -10330,11 +10346,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_realloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$151.const$1,"av_buffer_realloc");
+        return RuntimeHelper.requireNonNull(constants$150.const$0,"av_buffer_realloc");
     }
     /**
      * {@snippet :
-     * int av_buffer_realloc(struct AVBufferRef** buf, unsigned long size);
+     * int av_buffer_realloc(AVBufferRef** buf, size_t size);
      * }
      */
     public static int av_buffer_realloc(MemorySegment buf, long size) {
@@ -10346,11 +10362,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_replace$MH() {
-        return RuntimeHelper.requireNonNull(constants$151.const$2,"av_buffer_replace");
+        return RuntimeHelper.requireNonNull(constants$150.const$1,"av_buffer_replace");
     }
     /**
      * {@snippet :
-     * int av_buffer_replace(struct AVBufferRef** dst, struct AVBufferRef* src);
+     * int av_buffer_replace(AVBufferRef** dst, const AVBufferRef* src);
      * }
      */
     public static int av_buffer_replace(MemorySegment dst, MemorySegment src) {
@@ -10362,11 +10378,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_pool_init$MH() {
-        return RuntimeHelper.requireNonNull(constants$151.const$6,"av_buffer_pool_init");
+        return RuntimeHelper.requireNonNull(constants$150.const$5,"av_buffer_pool_init");
     }
     /**
      * {@snippet :
-     * struct AVBufferPool* av_buffer_pool_init(unsigned long size, struct AVBufferRef* (*alloc)(unsigned long));
+     * AVBufferPool* av_buffer_pool_init(size_t size, AVBufferRef* (*alloc)(size_t));
      * }
      */
     public static MemorySegment av_buffer_pool_init(long size, MemorySegment alloc) {
@@ -10378,11 +10394,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_pool_init2$MH() {
-        return RuntimeHelper.requireNonNull(constants$152.const$5,"av_buffer_pool_init2");
+        return RuntimeHelper.requireNonNull(constants$151.const$5,"av_buffer_pool_init2");
     }
     /**
      * {@snippet :
-     * struct AVBufferPool* av_buffer_pool_init2(unsigned long size, void* opaque, struct AVBufferRef* (*alloc)(void*,unsigned long), void (*pool_free)(void*));
+     * AVBufferPool* av_buffer_pool_init2(size_t size, void* opaque, AVBufferRef* (*alloc)(void*,size_t), void (*pool_free)(void*));
      * }
      */
     public static MemorySegment av_buffer_pool_init2(long size, MemorySegment opaque, MemorySegment alloc, MemorySegment pool_free) {
@@ -10394,11 +10410,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_pool_uninit$MH() {
-        return RuntimeHelper.requireNonNull(constants$153.const$0,"av_buffer_pool_uninit");
+        return RuntimeHelper.requireNonNull(constants$152.const$0,"av_buffer_pool_uninit");
     }
     /**
      * {@snippet :
-     * void av_buffer_pool_uninit(struct AVBufferPool** pool);
+     * void av_buffer_pool_uninit(AVBufferPool** pool);
      * }
      */
     public static void av_buffer_pool_uninit(MemorySegment pool) {
@@ -10410,11 +10426,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_pool_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$153.const$1,"av_buffer_pool_get");
+        return RuntimeHelper.requireNonNull(constants$152.const$1,"av_buffer_pool_get");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_buffer_pool_get(struct AVBufferPool* pool);
+     * AVBufferRef* av_buffer_pool_get(AVBufferPool* pool);
      * }
      */
     public static MemorySegment av_buffer_pool_get(MemorySegment pool) {
@@ -10426,11 +10442,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_buffer_pool_buffer_get_opaque$MH() {
-        return RuntimeHelper.requireNonNull(constants$153.const$2,"av_buffer_pool_buffer_get_opaque");
+        return RuntimeHelper.requireNonNull(constants$152.const$2,"av_buffer_pool_buffer_get_opaque");
     }
     /**
      * {@snippet :
-     * void* av_buffer_pool_buffer_get_opaque(struct AVBufferRef* ref);
+     * void* av_buffer_pool_buffer_get_opaque(const AVBufferRef* ref);
      * }
      */
     public static MemorySegment av_buffer_pool_buffer_get_opaque(MemorySegment ref) {
@@ -10442,11 +10458,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$154.const$1,"av_dict_get");
+        return RuntimeHelper.requireNonNull(constants$153.const$1,"av_dict_get");
     }
     /**
      * {@snippet :
-     * struct AVDictionaryEntry* av_dict_get(struct AVDictionary* m, char* key, struct AVDictionaryEntry* prev, int flags);
+     * AVDictionaryEntry* av_dict_get(const AVDictionary* m, char* key, const AVDictionaryEntry* prev, int flags);
      * }
      */
     public static MemorySegment av_dict_get(MemorySegment m, MemorySegment key, MemorySegment prev, int flags) {
@@ -10458,11 +10474,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_count$MH() {
-        return RuntimeHelper.requireNonNull(constants$154.const$2,"av_dict_count");
+        return RuntimeHelper.requireNonNull(constants$153.const$2,"av_dict_count");
     }
     /**
      * {@snippet :
-     * int av_dict_count(struct AVDictionary* m);
+     * int av_dict_count(const AVDictionary* m);
      * }
      */
     public static int av_dict_count(MemorySegment m) {
@@ -10474,11 +10490,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_set$MH() {
-        return RuntimeHelper.requireNonNull(constants$154.const$3,"av_dict_set");
+        return RuntimeHelper.requireNonNull(constants$153.const$3,"av_dict_set");
     }
     /**
      * {@snippet :
-     * int av_dict_set(struct AVDictionary** pm, char* key, char* value, int flags);
+     * int av_dict_set(AVDictionary** pm, char* key, char* value, int flags);
      * }
      */
     public static int av_dict_set(MemorySegment pm, MemorySegment key, MemorySegment value, int flags) {
@@ -10490,11 +10506,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_set_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$154.const$5,"av_dict_set_int");
+        return RuntimeHelper.requireNonNull(constants$153.const$5,"av_dict_set_int");
     }
     /**
      * {@snippet :
-     * int av_dict_set_int(struct AVDictionary** pm, char* key, long value, int flags);
+     * int av_dict_set_int(AVDictionary** pm, char* key, int64_t value, int flags);
      * }
      */
     public static int av_dict_set_int(MemorySegment pm, MemorySegment key, long value, int flags) {
@@ -10506,11 +10522,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_parse_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$155.const$1,"av_dict_parse_string");
+        return RuntimeHelper.requireNonNull(constants$154.const$1,"av_dict_parse_string");
     }
     /**
      * {@snippet :
-     * int av_dict_parse_string(struct AVDictionary** pm, char* str, char* key_val_sep, char* pairs_sep, int flags);
+     * int av_dict_parse_string(AVDictionary** pm, char* str, char* key_val_sep, char* pairs_sep, int flags);
      * }
      */
     public static int av_dict_parse_string(MemorySegment pm, MemorySegment str, MemorySegment key_val_sep, MemorySegment pairs_sep, int flags) {
@@ -10522,11 +10538,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_copy$MH() {
-        return RuntimeHelper.requireNonNull(constants$155.const$2,"av_dict_copy");
+        return RuntimeHelper.requireNonNull(constants$154.const$2,"av_dict_copy");
     }
     /**
      * {@snippet :
-     * int av_dict_copy(struct AVDictionary** dst, struct AVDictionary* src, int flags);
+     * int av_dict_copy(AVDictionary** dst, const AVDictionary* src, int flags);
      * }
      */
     public static int av_dict_copy(MemorySegment dst, MemorySegment src, int flags) {
@@ -10538,11 +10554,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_free$MH() {
-        return RuntimeHelper.requireNonNull(constants$155.const$3,"av_dict_free");
+        return RuntimeHelper.requireNonNull(constants$154.const$3,"av_dict_free");
     }
     /**
      * {@snippet :
-     * void av_dict_free(struct AVDictionary** m);
+     * void av_dict_free(AVDictionary** m);
      * }
      */
     public static void av_dict_free(MemorySegment m) {
@@ -10554,11 +10570,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_dict_get_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$155.const$5,"av_dict_get_string");
+        return RuntimeHelper.requireNonNull(constants$154.const$5,"av_dict_get_string");
     }
     /**
      * {@snippet :
-     * int av_dict_get_string(struct AVDictionary* m, char** buffer, char key_val_sep, char pairs_sep);
+     * int av_dict_get_string(const AVDictionary* m, char** buffer, char key_val_sep, char pairs_sep);
      * }
      */
     public static int av_dict_get_string(MemorySegment m, MemorySegment buffer, byte key_val_sep, byte pairs_sep) {
@@ -10946,11 +10962,11 @@ public class FFmpeg5_1 {
         return (int)7L;
     }
     public static MethodHandle av_get_channel_layout$MH() {
-        return RuntimeHelper.requireNonNull(constants$157.const$4,"av_get_channel_layout");
+        return RuntimeHelper.requireNonNull(constants$156.const$4,"av_get_channel_layout");
     }
     /**
      * {@snippet :
-     * unsigned long av_get_channel_layout(char* name);
+     * uint64_t av_get_channel_layout(char* name);
      * }
      */
     public static long av_get_channel_layout(MemorySegment name) {
@@ -10962,11 +10978,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_extended_channel_layout$MH() {
-        return RuntimeHelper.requireNonNull(constants$157.const$5,"av_get_extended_channel_layout");
+        return RuntimeHelper.requireNonNull(constants$156.const$5,"av_get_extended_channel_layout");
     }
     /**
      * {@snippet :
-     * int av_get_extended_channel_layout(char* name, unsigned long* channel_layout, int* nb_channels);
+     * int av_get_extended_channel_layout(char* name, uint64_t* channel_layout, int* nb_channels);
      * }
      */
     public static int av_get_extended_channel_layout(MemorySegment name, MemorySegment channel_layout, MemorySegment nb_channels) {
@@ -10978,11 +10994,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_channel_layout_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$158.const$1,"av_get_channel_layout_string");
+        return RuntimeHelper.requireNonNull(constants$157.const$1,"av_get_channel_layout_string");
     }
     /**
      * {@snippet :
-     * void av_get_channel_layout_string(char* buf, int buf_size, int nb_channels, unsigned long channel_layout);
+     * void av_get_channel_layout_string(char* buf, int buf_size, int nb_channels, uint64_t channel_layout);
      * }
      */
     public static void av_get_channel_layout_string(MemorySegment buf, int buf_size, int nb_channels, long channel_layout) {
@@ -10994,11 +11010,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_bprint_channel_layout$MH() {
-        return RuntimeHelper.requireNonNull(constants$158.const$3,"av_bprint_channel_layout");
+        return RuntimeHelper.requireNonNull(constants$157.const$3,"av_bprint_channel_layout");
     }
     /**
      * {@snippet :
-     * void av_bprint_channel_layout(struct AVBPrint* bp, int nb_channels, unsigned long channel_layout);
+     * void av_bprint_channel_layout(struct AVBPrint* bp, int nb_channels, uint64_t channel_layout);
      * }
      */
     public static void av_bprint_channel_layout(MemorySegment bp, int nb_channels, long channel_layout) {
@@ -11010,11 +11026,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_channel_layout_nb_channels$MH() {
-        return RuntimeHelper.requireNonNull(constants$158.const$4,"av_get_channel_layout_nb_channels");
+        return RuntimeHelper.requireNonNull(constants$157.const$4,"av_get_channel_layout_nb_channels");
     }
     /**
      * {@snippet :
-     * int av_get_channel_layout_nb_channels(unsigned long channel_layout);
+     * int av_get_channel_layout_nb_channels(uint64_t channel_layout);
      * }
      */
     public static int av_get_channel_layout_nb_channels(long channel_layout) {
@@ -11026,11 +11042,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_default_channel_layout$MH() {
-        return RuntimeHelper.requireNonNull(constants$158.const$6,"av_get_default_channel_layout");
+        return RuntimeHelper.requireNonNull(constants$157.const$6,"av_get_default_channel_layout");
     }
     /**
      * {@snippet :
-     * long av_get_default_channel_layout(int nb_channels);
+     * int64_t av_get_default_channel_layout(int nb_channels);
      * }
      */
     public static long av_get_default_channel_layout(int nb_channels) {
@@ -11042,11 +11058,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_channel_layout_channel_index$MH() {
-        return RuntimeHelper.requireNonNull(constants$159.const$1,"av_get_channel_layout_channel_index");
+        return RuntimeHelper.requireNonNull(constants$158.const$1,"av_get_channel_layout_channel_index");
     }
     /**
      * {@snippet :
-     * int av_get_channel_layout_channel_index(unsigned long channel_layout, unsigned long channel);
+     * int av_get_channel_layout_channel_index(uint64_t channel_layout, uint64_t channel);
      * }
      */
     public static int av_get_channel_layout_channel_index(long channel_layout, long channel) {
@@ -11058,11 +11074,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_extract_channel$MH() {
-        return RuntimeHelper.requireNonNull(constants$159.const$3,"av_channel_layout_extract_channel");
+        return RuntimeHelper.requireNonNull(constants$158.const$3,"av_channel_layout_extract_channel");
     }
     /**
      * {@snippet :
-     * unsigned long av_channel_layout_extract_channel(unsigned long channel_layout, int index);
+     * uint64_t av_channel_layout_extract_channel(uint64_t channel_layout, int index);
      * }
      */
     public static long av_channel_layout_extract_channel(long channel_layout, int index) {
@@ -11074,11 +11090,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_channel_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$159.const$4,"av_get_channel_name");
+        return RuntimeHelper.requireNonNull(constants$158.const$4,"av_get_channel_name");
     }
     /**
      * {@snippet :
-     * char* av_get_channel_name(unsigned long channel);
+     * char* av_get_channel_name(uint64_t channel);
      * }
      */
     public static MemorySegment av_get_channel_name(long channel) {
@@ -11090,11 +11106,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_channel_description$MH() {
-        return RuntimeHelper.requireNonNull(constants$159.const$5,"av_get_channel_description");
+        return RuntimeHelper.requireNonNull(constants$158.const$5,"av_get_channel_description");
     }
     /**
      * {@snippet :
-     * char* av_get_channel_description(unsigned long channel);
+     * char* av_get_channel_description(uint64_t channel);
      * }
      */
     public static MemorySegment av_get_channel_description(long channel) {
@@ -11106,11 +11122,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_get_standard_channel_layout$MH() {
-        return RuntimeHelper.requireNonNull(constants$160.const$0,"av_get_standard_channel_layout");
+        return RuntimeHelper.requireNonNull(constants$159.const$0,"av_get_standard_channel_layout");
     }
     /**
      * {@snippet :
-     * int av_get_standard_channel_layout(unsigned int index, unsigned long* layout, char** name);
+     * int av_get_standard_channel_layout(unsigned int index, uint64_t* layout, char** name);
      * }
      */
     public static int av_get_standard_channel_layout(int index, MemorySegment layout, MemorySegment name) {
@@ -11122,11 +11138,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$160.const$1,"av_channel_name");
+        return RuntimeHelper.requireNonNull(constants$159.const$1,"av_channel_name");
     }
     /**
      * {@snippet :
-     * int av_channel_name(char* buf, unsigned long buf_size, enum AVChannel channel);
+     * int av_channel_name(char* buf, size_t buf_size, enum AVChannel channel);
      * }
      */
     public static int av_channel_name(MemorySegment buf, long buf_size, int channel) {
@@ -11138,7 +11154,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_name_bprint$MH() {
-        return RuntimeHelper.requireNonNull(constants$160.const$3,"av_channel_name_bprint");
+        return RuntimeHelper.requireNonNull(constants$159.const$3,"av_channel_name_bprint");
     }
     /**
      * {@snippet :
@@ -11154,11 +11170,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_description$MH() {
-        return RuntimeHelper.requireNonNull(constants$160.const$4,"av_channel_description");
+        return RuntimeHelper.requireNonNull(constants$159.const$4,"av_channel_description");
     }
     /**
      * {@snippet :
-     * int av_channel_description(char* buf, unsigned long buf_size, enum AVChannel channel);
+     * int av_channel_description(char* buf, size_t buf_size, enum AVChannel channel);
      * }
      */
     public static int av_channel_description(MemorySegment buf, long buf_size, int channel) {
@@ -11170,7 +11186,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_description_bprint$MH() {
-        return RuntimeHelper.requireNonNull(constants$160.const$5,"av_channel_description_bprint");
+        return RuntimeHelper.requireNonNull(constants$159.const$5,"av_channel_description_bprint");
     }
     /**
      * {@snippet :
@@ -11186,7 +11202,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_from_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$161.const$0,"av_channel_from_string");
+        return RuntimeHelper.requireNonNull(constants$160.const$0,"av_channel_from_string");
     }
     /**
      * {@snippet :
@@ -11202,11 +11218,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_from_mask$MH() {
-        return RuntimeHelper.requireNonNull(constants$161.const$1,"av_channel_layout_from_mask");
+        return RuntimeHelper.requireNonNull(constants$160.const$1,"av_channel_layout_from_mask");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_from_mask(struct AVChannelLayout* channel_layout, unsigned long mask);
+     * int av_channel_layout_from_mask(AVChannelLayout* channel_layout, uint64_t mask);
      * }
      */
     public static int av_channel_layout_from_mask(MemorySegment channel_layout, long mask) {
@@ -11218,11 +11234,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_from_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$161.const$2,"av_channel_layout_from_string");
+        return RuntimeHelper.requireNonNull(constants$160.const$2,"av_channel_layout_from_string");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_from_string(struct AVChannelLayout* channel_layout, char* str);
+     * int av_channel_layout_from_string(AVChannelLayout* channel_layout, char* str);
      * }
      */
     public static int av_channel_layout_from_string(MemorySegment channel_layout, MemorySegment str) {
@@ -11234,11 +11250,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_default$MH() {
-        return RuntimeHelper.requireNonNull(constants$161.const$3,"av_channel_layout_default");
+        return RuntimeHelper.requireNonNull(constants$160.const$3,"av_channel_layout_default");
     }
     /**
      * {@snippet :
-     * void av_channel_layout_default(struct AVChannelLayout* ch_layout, int nb_channels);
+     * void av_channel_layout_default(AVChannelLayout* ch_layout, int nb_channels);
      * }
      */
     public static void av_channel_layout_default(MemorySegment ch_layout, int nb_channels) {
@@ -11250,11 +11266,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_standard$MH() {
-        return RuntimeHelper.requireNonNull(constants$161.const$4,"av_channel_layout_standard");
+        return RuntimeHelper.requireNonNull(constants$160.const$4,"av_channel_layout_standard");
     }
     /**
      * {@snippet :
-     * struct AVChannelLayout* av_channel_layout_standard(void** opaque);
+     * const AVChannelLayout* av_channel_layout_standard(void** opaque);
      * }
      */
     public static MemorySegment av_channel_layout_standard(MemorySegment opaque) {
@@ -11266,11 +11282,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_uninit$MH() {
-        return RuntimeHelper.requireNonNull(constants$161.const$5,"av_channel_layout_uninit");
+        return RuntimeHelper.requireNonNull(constants$160.const$5,"av_channel_layout_uninit");
     }
     /**
      * {@snippet :
-     * void av_channel_layout_uninit(struct AVChannelLayout* channel_layout);
+     * void av_channel_layout_uninit(AVChannelLayout* channel_layout);
      * }
      */
     public static void av_channel_layout_uninit(MemorySegment channel_layout) {
@@ -11282,11 +11298,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_copy$MH() {
-        return RuntimeHelper.requireNonNull(constants$162.const$0,"av_channel_layout_copy");
+        return RuntimeHelper.requireNonNull(constants$161.const$0,"av_channel_layout_copy");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_copy(struct AVChannelLayout* dst, struct AVChannelLayout* src);
+     * int av_channel_layout_copy(AVChannelLayout* dst, const AVChannelLayout* src);
      * }
      */
     public static int av_channel_layout_copy(MemorySegment dst, MemorySegment src) {
@@ -11298,11 +11314,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_describe$MH() {
-        return RuntimeHelper.requireNonNull(constants$162.const$1,"av_channel_layout_describe");
+        return RuntimeHelper.requireNonNull(constants$161.const$1,"av_channel_layout_describe");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_describe(struct AVChannelLayout* channel_layout, char* buf, unsigned long buf_size);
+     * int av_channel_layout_describe(const AVChannelLayout* channel_layout, char* buf, size_t buf_size);
      * }
      */
     public static int av_channel_layout_describe(MemorySegment channel_layout, MemorySegment buf, long buf_size) {
@@ -11314,11 +11330,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_describe_bprint$MH() {
-        return RuntimeHelper.requireNonNull(constants$162.const$2,"av_channel_layout_describe_bprint");
+        return RuntimeHelper.requireNonNull(constants$161.const$2,"av_channel_layout_describe_bprint");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_describe_bprint(struct AVChannelLayout* channel_layout, struct AVBPrint* bp);
+     * int av_channel_layout_describe_bprint(const AVChannelLayout* channel_layout, struct AVBPrint* bp);
      * }
      */
     public static int av_channel_layout_describe_bprint(MemorySegment channel_layout, MemorySegment bp) {
@@ -11330,11 +11346,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_channel_from_index$MH() {
-        return RuntimeHelper.requireNonNull(constants$162.const$3,"av_channel_layout_channel_from_index");
+        return RuntimeHelper.requireNonNull(constants$161.const$3,"av_channel_layout_channel_from_index");
     }
     /**
      * {@snippet :
-     * enum AVChannel av_channel_layout_channel_from_index(struct AVChannelLayout* channel_layout, unsigned int idx);
+     * enum AVChannel av_channel_layout_channel_from_index(const AVChannelLayout* channel_layout, unsigned int idx);
      * }
      */
     public static int av_channel_layout_channel_from_index(MemorySegment channel_layout, int idx) {
@@ -11346,11 +11362,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_index_from_channel$MH() {
-        return RuntimeHelper.requireNonNull(constants$162.const$4,"av_channel_layout_index_from_channel");
+        return RuntimeHelper.requireNonNull(constants$161.const$4,"av_channel_layout_index_from_channel");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_index_from_channel(struct AVChannelLayout* channel_layout, enum AVChannel channel);
+     * int av_channel_layout_index_from_channel(const AVChannelLayout* channel_layout, enum AVChannel channel);
      * }
      */
     public static int av_channel_layout_index_from_channel(MemorySegment channel_layout, int channel) {
@@ -11362,11 +11378,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_index_from_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$162.const$5,"av_channel_layout_index_from_string");
+        return RuntimeHelper.requireNonNull(constants$161.const$5,"av_channel_layout_index_from_string");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_index_from_string(struct AVChannelLayout* channel_layout, char* name);
+     * int av_channel_layout_index_from_string(const AVChannelLayout* channel_layout, char* name);
      * }
      */
     public static int av_channel_layout_index_from_string(MemorySegment channel_layout, MemorySegment name) {
@@ -11378,11 +11394,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_channel_from_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$163.const$0,"av_channel_layout_channel_from_string");
+        return RuntimeHelper.requireNonNull(constants$162.const$0,"av_channel_layout_channel_from_string");
     }
     /**
      * {@snippet :
-     * enum AVChannel av_channel_layout_channel_from_string(struct AVChannelLayout* channel_layout, char* name);
+     * enum AVChannel av_channel_layout_channel_from_string(const AVChannelLayout* channel_layout, char* name);
      * }
      */
     public static int av_channel_layout_channel_from_string(MemorySegment channel_layout, MemorySegment name) {
@@ -11394,11 +11410,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_subset$MH() {
-        return RuntimeHelper.requireNonNull(constants$163.const$1,"av_channel_layout_subset");
+        return RuntimeHelper.requireNonNull(constants$162.const$1,"av_channel_layout_subset");
     }
     /**
      * {@snippet :
-     * unsigned long av_channel_layout_subset(struct AVChannelLayout* channel_layout, unsigned long mask);
+     * uint64_t av_channel_layout_subset(const AVChannelLayout* channel_layout, uint64_t mask);
      * }
      */
     public static long av_channel_layout_subset(MemorySegment channel_layout, long mask) {
@@ -11410,11 +11426,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_check$MH() {
-        return RuntimeHelper.requireNonNull(constants$163.const$2,"av_channel_layout_check");
+        return RuntimeHelper.requireNonNull(constants$162.const$2,"av_channel_layout_check");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_check(struct AVChannelLayout* channel_layout);
+     * int av_channel_layout_check(const AVChannelLayout* channel_layout);
      * }
      */
     public static int av_channel_layout_check(MemorySegment channel_layout) {
@@ -11426,11 +11442,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_channel_layout_compare$MH() {
-        return RuntimeHelper.requireNonNull(constants$163.const$3,"av_channel_layout_compare");
+        return RuntimeHelper.requireNonNull(constants$162.const$3,"av_channel_layout_compare");
     }
     /**
      * {@snippet :
-     * int av_channel_layout_compare(struct AVChannelLayout* chl, struct AVChannelLayout* chl1);
+     * int av_channel_layout_compare(const AVChannelLayout* chl, const AVChannelLayout* chl1);
      * }
      */
     public static int av_channel_layout_compare(MemorySegment chl, MemorySegment chl1) {
@@ -11706,7 +11722,7 @@ public class FFmpeg5_1 {
         return (int)15L;
     }
     public static MethodHandle av_get_colorspace_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$173.const$1,"av_get_colorspace_name");
+        return RuntimeHelper.requireNonNull(constants$172.const$1,"av_get_colorspace_name");
     }
     /**
      * {@snippet :
@@ -11722,11 +11738,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$173.const$2,"av_frame_alloc");
+        return RuntimeHelper.requireNonNull(constants$172.const$2,"av_frame_alloc");
     }
     /**
      * {@snippet :
-     * struct AVFrame* av_frame_alloc();
+     * AVFrame* av_frame_alloc();
      * }
      */
     public static MemorySegment av_frame_alloc() {
@@ -11738,11 +11754,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_free$MH() {
-        return RuntimeHelper.requireNonNull(constants$173.const$3,"av_frame_free");
+        return RuntimeHelper.requireNonNull(constants$172.const$3,"av_frame_free");
     }
     /**
      * {@snippet :
-     * void av_frame_free(struct AVFrame** frame);
+     * void av_frame_free(AVFrame** frame);
      * }
      */
     public static void av_frame_free(MemorySegment frame) {
@@ -11754,11 +11770,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$173.const$4,"av_frame_ref");
+        return RuntimeHelper.requireNonNull(constants$172.const$4,"av_frame_ref");
     }
     /**
      * {@snippet :
-     * int av_frame_ref(struct AVFrame* dst, struct AVFrame* src);
+     * int av_frame_ref(AVFrame* dst, const AVFrame* src);
      * }
      */
     public static int av_frame_ref(MemorySegment dst, MemorySegment src) {
@@ -11770,11 +11786,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_clone$MH() {
-        return RuntimeHelper.requireNonNull(constants$173.const$5,"av_frame_clone");
+        return RuntimeHelper.requireNonNull(constants$172.const$5,"av_frame_clone");
     }
     /**
      * {@snippet :
-     * struct AVFrame* av_frame_clone(struct AVFrame* src);
+     * AVFrame* av_frame_clone(const AVFrame* src);
      * }
      */
     public static MemorySegment av_frame_clone(MemorySegment src) {
@@ -11786,11 +11802,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_unref$MH() {
-        return RuntimeHelper.requireNonNull(constants$174.const$0,"av_frame_unref");
+        return RuntimeHelper.requireNonNull(constants$173.const$0,"av_frame_unref");
     }
     /**
      * {@snippet :
-     * void av_frame_unref(struct AVFrame* frame);
+     * void av_frame_unref(AVFrame* frame);
      * }
      */
     public static void av_frame_unref(MemorySegment frame) {
@@ -11802,11 +11818,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_move_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$174.const$1,"av_frame_move_ref");
+        return RuntimeHelper.requireNonNull(constants$173.const$1,"av_frame_move_ref");
     }
     /**
      * {@snippet :
-     * void av_frame_move_ref(struct AVFrame* dst, struct AVFrame* src);
+     * void av_frame_move_ref(AVFrame* dst, AVFrame* src);
      * }
      */
     public static void av_frame_move_ref(MemorySegment dst, MemorySegment src) {
@@ -11818,11 +11834,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_get_buffer$MH() {
-        return RuntimeHelper.requireNonNull(constants$174.const$2,"av_frame_get_buffer");
+        return RuntimeHelper.requireNonNull(constants$173.const$2,"av_frame_get_buffer");
     }
     /**
      * {@snippet :
-     * int av_frame_get_buffer(struct AVFrame* frame, int align);
+     * int av_frame_get_buffer(AVFrame* frame, int align);
      * }
      */
     public static int av_frame_get_buffer(MemorySegment frame, int align) {
@@ -11834,11 +11850,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_is_writable$MH() {
-        return RuntimeHelper.requireNonNull(constants$174.const$3,"av_frame_is_writable");
+        return RuntimeHelper.requireNonNull(constants$173.const$3,"av_frame_is_writable");
     }
     /**
      * {@snippet :
-     * int av_frame_is_writable(struct AVFrame* frame);
+     * int av_frame_is_writable(AVFrame* frame);
      * }
      */
     public static int av_frame_is_writable(MemorySegment frame) {
@@ -11850,11 +11866,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_make_writable$MH() {
-        return RuntimeHelper.requireNonNull(constants$174.const$4,"av_frame_make_writable");
+        return RuntimeHelper.requireNonNull(constants$173.const$4,"av_frame_make_writable");
     }
     /**
      * {@snippet :
-     * int av_frame_make_writable(struct AVFrame* frame);
+     * int av_frame_make_writable(AVFrame* frame);
      * }
      */
     public static int av_frame_make_writable(MemorySegment frame) {
@@ -11866,11 +11882,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_copy$MH() {
-        return RuntimeHelper.requireNonNull(constants$174.const$5,"av_frame_copy");
+        return RuntimeHelper.requireNonNull(constants$173.const$5,"av_frame_copy");
     }
     /**
      * {@snippet :
-     * int av_frame_copy(struct AVFrame* dst, struct AVFrame* src);
+     * int av_frame_copy(AVFrame* dst, const AVFrame* src);
      * }
      */
     public static int av_frame_copy(MemorySegment dst, MemorySegment src) {
@@ -11882,11 +11898,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_copy_props$MH() {
-        return RuntimeHelper.requireNonNull(constants$175.const$0,"av_frame_copy_props");
+        return RuntimeHelper.requireNonNull(constants$174.const$0,"av_frame_copy_props");
     }
     /**
      * {@snippet :
-     * int av_frame_copy_props(struct AVFrame* dst, struct AVFrame* src);
+     * int av_frame_copy_props(AVFrame* dst, const AVFrame* src);
      * }
      */
     public static int av_frame_copy_props(MemorySegment dst, MemorySegment src) {
@@ -11898,11 +11914,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_get_plane_buffer$MH() {
-        return RuntimeHelper.requireNonNull(constants$175.const$1,"av_frame_get_plane_buffer");
+        return RuntimeHelper.requireNonNull(constants$174.const$1,"av_frame_get_plane_buffer");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_frame_get_plane_buffer(struct AVFrame* frame, int plane);
+     * AVBufferRef* av_frame_get_plane_buffer(AVFrame* frame, int plane);
      * }
      */
     public static MemorySegment av_frame_get_plane_buffer(MemorySegment frame, int plane) {
@@ -11914,11 +11930,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_new_side_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$175.const$2,"av_frame_new_side_data");
+        return RuntimeHelper.requireNonNull(constants$174.const$2,"av_frame_new_side_data");
     }
     /**
      * {@snippet :
-     * struct AVFrameSideData* av_frame_new_side_data(struct AVFrame* frame, enum AVFrameSideDataType type, unsigned long size);
+     * AVFrameSideData* av_frame_new_side_data(AVFrame* frame, enum AVFrameSideDataType type, size_t size);
      * }
      */
     public static MemorySegment av_frame_new_side_data(MemorySegment frame, int type, long size) {
@@ -11930,11 +11946,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_new_side_data_from_buf$MH() {
-        return RuntimeHelper.requireNonNull(constants$175.const$3,"av_frame_new_side_data_from_buf");
+        return RuntimeHelper.requireNonNull(constants$174.const$3,"av_frame_new_side_data_from_buf");
     }
     /**
      * {@snippet :
-     * struct AVFrameSideData* av_frame_new_side_data_from_buf(struct AVFrame* frame, enum AVFrameSideDataType type, struct AVBufferRef* buf);
+     * AVFrameSideData* av_frame_new_side_data_from_buf(AVFrame* frame, enum AVFrameSideDataType type, AVBufferRef* buf);
      * }
      */
     public static MemorySegment av_frame_new_side_data_from_buf(MemorySegment frame, int type, MemorySegment buf) {
@@ -11946,11 +11962,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_get_side_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$175.const$4,"av_frame_get_side_data");
+        return RuntimeHelper.requireNonNull(constants$174.const$4,"av_frame_get_side_data");
     }
     /**
      * {@snippet :
-     * struct AVFrameSideData* av_frame_get_side_data(struct AVFrame* frame, enum AVFrameSideDataType type);
+     * AVFrameSideData* av_frame_get_side_data(const AVFrame* frame, enum AVFrameSideDataType type);
      * }
      */
     public static MemorySegment av_frame_get_side_data(MemorySegment frame, int type) {
@@ -11962,11 +11978,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_remove_side_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$175.const$5,"av_frame_remove_side_data");
+        return RuntimeHelper.requireNonNull(constants$174.const$5,"av_frame_remove_side_data");
     }
     /**
      * {@snippet :
-     * void av_frame_remove_side_data(struct AVFrame* frame, enum AVFrameSideDataType type);
+     * void av_frame_remove_side_data(AVFrame* frame, enum AVFrameSideDataType type);
      * }
      */
     public static void av_frame_remove_side_data(MemorySegment frame, int type) {
@@ -11979,18 +11995,18 @@ public class FFmpeg5_1 {
     }
     /**
      * {@snippet :
-     * enum enum (unnamed at /usr/include/libavutil/frame.h:908:1).AV_FRAME_CROP_UNALIGNED = 1;
+     * enum .AV_FRAME_CROP_UNALIGNED = 1;
      * }
      */
     public static int AV_FRAME_CROP_UNALIGNED() {
         return (int)1L;
     }
     public static MethodHandle av_frame_apply_cropping$MH() {
-        return RuntimeHelper.requireNonNull(constants$176.const$0,"av_frame_apply_cropping");
+        return RuntimeHelper.requireNonNull(constants$175.const$0,"av_frame_apply_cropping");
     }
     /**
      * {@snippet :
-     * int av_frame_apply_cropping(struct AVFrame* frame, int flags);
+     * int av_frame_apply_cropping(AVFrame* frame, int flags);
      * }
      */
     public static int av_frame_apply_cropping(MemorySegment frame, int flags) {
@@ -12002,7 +12018,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_frame_side_data_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$176.const$1,"av_frame_side_data_name");
+        return RuntimeHelper.requireNonNull(constants$175.const$1,"av_frame_side_data_name");
     }
     /**
      * {@snippet :
@@ -12114,7 +12130,7 @@ public class FFmpeg5_1 {
         return (int)11L;
     }
     public static MethodHandle av_hwdevice_find_type_by_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$180.const$1,"av_hwdevice_find_type_by_name");
+        return RuntimeHelper.requireNonNull(constants$179.const$1,"av_hwdevice_find_type_by_name");
     }
     /**
      * {@snippet :
@@ -12130,7 +12146,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_get_type_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$180.const$2,"av_hwdevice_get_type_name");
+        return RuntimeHelper.requireNonNull(constants$179.const$2,"av_hwdevice_get_type_name");
     }
     /**
      * {@snippet :
@@ -12146,7 +12162,7 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_iterate_types$MH() {
-        return RuntimeHelper.requireNonNull(constants$180.const$3,"av_hwdevice_iterate_types");
+        return RuntimeHelper.requireNonNull(constants$179.const$3,"av_hwdevice_iterate_types");
     }
     /**
      * {@snippet :
@@ -12162,11 +12178,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_ctx_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$180.const$4,"av_hwdevice_ctx_alloc");
+        return RuntimeHelper.requireNonNull(constants$179.const$4,"av_hwdevice_ctx_alloc");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_hwdevice_ctx_alloc(enum AVHWDeviceType type);
+     * AVBufferRef* av_hwdevice_ctx_alloc(enum AVHWDeviceType type);
      * }
      */
     public static MemorySegment av_hwdevice_ctx_alloc(int type) {
@@ -12178,11 +12194,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_ctx_init$MH() {
-        return RuntimeHelper.requireNonNull(constants$180.const$5,"av_hwdevice_ctx_init");
+        return RuntimeHelper.requireNonNull(constants$179.const$5,"av_hwdevice_ctx_init");
     }
     /**
      * {@snippet :
-     * int av_hwdevice_ctx_init(struct AVBufferRef* ref);
+     * int av_hwdevice_ctx_init(AVBufferRef* ref);
      * }
      */
     public static int av_hwdevice_ctx_init(MemorySegment ref) {
@@ -12194,11 +12210,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_ctx_create$MH() {
-        return RuntimeHelper.requireNonNull(constants$181.const$1,"av_hwdevice_ctx_create");
+        return RuntimeHelper.requireNonNull(constants$180.const$1,"av_hwdevice_ctx_create");
     }
     /**
      * {@snippet :
-     * int av_hwdevice_ctx_create(struct AVBufferRef** device_ctx, enum AVHWDeviceType type, char* device, struct AVDictionary* opts, int flags);
+     * int av_hwdevice_ctx_create(AVBufferRef** device_ctx, enum AVHWDeviceType type, char* device, AVDictionary* opts, int flags);
      * }
      */
     public static int av_hwdevice_ctx_create(MemorySegment device_ctx, int type, MemorySegment device, MemorySegment opts, int flags) {
@@ -12210,11 +12226,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_ctx_create_derived$MH() {
-        return RuntimeHelper.requireNonNull(constants$181.const$3,"av_hwdevice_ctx_create_derived");
+        return RuntimeHelper.requireNonNull(constants$180.const$3,"av_hwdevice_ctx_create_derived");
     }
     /**
      * {@snippet :
-     * int av_hwdevice_ctx_create_derived(struct AVBufferRef** dst_ctx, enum AVHWDeviceType type, struct AVBufferRef* src_ctx, int flags);
+     * int av_hwdevice_ctx_create_derived(AVBufferRef** dst_ctx, enum AVHWDeviceType type, AVBufferRef* src_ctx, int flags);
      * }
      */
     public static int av_hwdevice_ctx_create_derived(MemorySegment dst_ctx, int type, MemorySegment src_ctx, int flags) {
@@ -12226,11 +12242,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwdevice_ctx_create_derived_opts$MH() {
-        return RuntimeHelper.requireNonNull(constants$181.const$4,"av_hwdevice_ctx_create_derived_opts");
+        return RuntimeHelper.requireNonNull(constants$180.const$4,"av_hwdevice_ctx_create_derived_opts");
     }
     /**
      * {@snippet :
-     * int av_hwdevice_ctx_create_derived_opts(struct AVBufferRef** dst_ctx, enum AVHWDeviceType type, struct AVBufferRef* src_ctx, struct AVDictionary* options, int flags);
+     * int av_hwdevice_ctx_create_derived_opts(AVBufferRef** dst_ctx, enum AVHWDeviceType type, AVBufferRef* src_ctx, AVDictionary* options, int flags);
      * }
      */
     public static int av_hwdevice_ctx_create_derived_opts(MemorySegment dst_ctx, int type, MemorySegment src_ctx, MemorySegment options, int flags) {
@@ -12242,11 +12258,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwframe_ctx_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$181.const$5,"av_hwframe_ctx_alloc");
+        return RuntimeHelper.requireNonNull(constants$180.const$5,"av_hwframe_ctx_alloc");
     }
     /**
      * {@snippet :
-     * struct AVBufferRef* av_hwframe_ctx_alloc(struct AVBufferRef* device_ctx);
+     * AVBufferRef* av_hwframe_ctx_alloc(AVBufferRef* device_ctx);
      * }
      */
     public static MemorySegment av_hwframe_ctx_alloc(MemorySegment device_ctx) {
@@ -12258,11 +12274,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwframe_ctx_init$MH() {
-        return RuntimeHelper.requireNonNull(constants$182.const$0,"av_hwframe_ctx_init");
+        return RuntimeHelper.requireNonNull(constants$181.const$0,"av_hwframe_ctx_init");
     }
     /**
      * {@snippet :
-     * int av_hwframe_ctx_init(struct AVBufferRef* ref);
+     * int av_hwframe_ctx_init(AVBufferRef* ref);
      * }
      */
     public static int av_hwframe_ctx_init(MemorySegment ref) {
@@ -12274,11 +12290,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwframe_get_buffer$MH() {
-        return RuntimeHelper.requireNonNull(constants$182.const$1,"av_hwframe_get_buffer");
+        return RuntimeHelper.requireNonNull(constants$181.const$1,"av_hwframe_get_buffer");
     }
     /**
      * {@snippet :
-     * int av_hwframe_get_buffer(struct AVBufferRef* hwframe_ctx, struct AVFrame* frame, int flags);
+     * int av_hwframe_get_buffer(AVBufferRef* hwframe_ctx, AVFrame* frame, int flags);
      * }
      */
     public static int av_hwframe_get_buffer(MemorySegment hwframe_ctx, MemorySegment frame, int flags) {
@@ -12290,11 +12306,11 @@ public class FFmpeg5_1 {
         }
     }
     public static MethodHandle av_hwframe_transfer_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$182.const$2,"av_hwframe_transfer_data");
+        return RuntimeHelper.requireNonNull(constants$181.const$2,"av_hwframe_transfer_data");
     }
     /**
      * {@snippet :
-     * int av_hwframe_transfer_data(struct AVFrame* dst, struct AVFrame* src, int flags);
+     * int av_hwframe_transfer_data(AVFrame* dst, const AVFrame* src, int flags);
      * }
      */
     public static int av_hwframe_transfer_data(MemorySegment dst, MemorySegment src, int flags) {
@@ -12322,33 +12338,17 @@ public class FFmpeg5_1 {
         return (int)1L;
     }
     public static MethodHandle av_hwframe_transfer_get_formats$MH() {
-        return RuntimeHelper.requireNonNull(constants$182.const$3,"av_hwframe_transfer_get_formats");
+        return RuntimeHelper.requireNonNull(constants$181.const$3,"av_hwframe_transfer_get_formats");
     }
     /**
      * {@snippet :
-     * int av_hwframe_transfer_get_formats(struct AVBufferRef* hwframe_ctx, enum AVHWFrameTransferDirection dir, enum AVPixelFormat** formats, int flags);
+     * int av_hwframe_transfer_get_formats(AVBufferRef* hwframe_ctx, enum AVHWFrameTransferDirection dir, enum AVPixelFormat** formats, int flags);
      * }
      */
     public static int av_hwframe_transfer_get_formats(MemorySegment hwframe_ctx, int dir, MemorySegment formats, int flags) {
         var mh$ = av_hwframe_transfer_get_formats$MH();
         try {
             return (int)mh$.invokeExact(hwframe_ctx, dir, formats, flags);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_hwdevice_hwconfig_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$183.const$5,"av_hwdevice_hwconfig_alloc");
-    }
-    /**
-     * {@snippet :
-     * void* av_hwdevice_hwconfig_alloc(struct AVBufferRef* device_ctx);
-     * }
-     */
-    public static MemorySegment av_hwdevice_hwconfig_alloc(MemorySegment device_ctx) {
-        var mh$ = av_hwdevice_hwconfig_alloc$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(device_ctx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

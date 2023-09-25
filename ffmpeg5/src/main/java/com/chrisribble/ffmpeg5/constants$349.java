@@ -11,44 +11,37 @@ final class constants$349 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$349() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_image_copy_uc_from",
+        constants$348.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_image_fill_pointers",
-        constants$349.const$0
+        "av_image_fill_arrays",
+        constants$2.const$3
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_image_alloc",
-        constants$2.const$5
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
-        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
         JAVA_INT
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_image_copy_plane",
-        constants$349.const$3
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_image_get_buffer_size",
+        constants$349.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
+        JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
         JAVA_INT
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_image_copy_plane_uc_from",
-        constants$349.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_image_copy_to_buffer",
+        constants$349.const$4
     );
 }
 

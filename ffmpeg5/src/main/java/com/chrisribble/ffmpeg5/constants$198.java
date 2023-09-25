@@ -11,26 +11,18 @@ final class constants$198 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$198() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_free",
-        constants$70.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_copy",
-        constants$66.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_get_audio_frame_duration2",
-        constants$82.const$5
-    );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("id"),
-        JAVA_INT.withName("width"),
-        JAVA_INT.withName("height"),
-        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(2, JAVA_SHORT)).withName("position")
-    ).withName("AVPanScan");
-    static final VarHandle const$4 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$5 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$0 = constants$197.const$3.varHandle(MemoryLayout.PathElement.groupElement("height"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("max_bitrate"),
+        JAVA_LONG.withName("min_bitrate"),
+        JAVA_LONG.withName("avg_bitrate"),
+        JAVA_LONG.withName("buffer_size"),
+        JAVA_LONG.withName("vbv_delay")
+    ).withName("AVCPBProperties");
+    static final VarHandle const$2 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("max_bitrate"));
+    static final VarHandle const$3 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("min_bitrate"));
+    static final VarHandle const$4 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("avg_bitrate"));
+    static final VarHandle const$5 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("buffer_size"));
 }
 
 

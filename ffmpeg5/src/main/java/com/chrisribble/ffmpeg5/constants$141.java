@@ -11,14 +11,21 @@ final class constants$141 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$141() {}
-    static final VarHandle const$0 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("class_name"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVClass.item_name.class, "apply", constants$67.const$1);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$67.const$1
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVClass.get_category.class, "apply", constants$0.const$3);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$0.const$3
     );
-    static final VarHandle const$3 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("item_name"));
-    static final VarHandle const$4 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("option"));
-    static final VarHandle const$5 = constants$140.const$5.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$2 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("get_category"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVClass.query_ranges.class, "apply", constants$141.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$141.const$3
+    );
 }
 
 

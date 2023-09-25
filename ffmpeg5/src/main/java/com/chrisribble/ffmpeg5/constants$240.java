@@ -11,12 +11,27 @@ final class constants$240 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$240() {}
-    static final VarHandle const$0 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("end_frame"));
-    static final VarHandle const$1 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("frame_priv_data_size"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.init.class, "apply", constants$0.const$3);
-    static final VarHandle const$3 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("init"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWAccel.uninit.class, "apply", constants$0.const$3);
-    static final VarHandle const$5 = constants$237.const$2.varHandle(MemoryLayout.PathElement.groupElement("uninit"));
+    static final VarHandle const$0 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
+    static final VarHandle const$1 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("caps_internal"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.frame_params.class, "apply", constants$66.const$1);
+    static final VarHandle const$3 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("frame_params"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("x"),
+        JAVA_INT.withName("y"),
+        JAVA_INT.withName("w"),
+        JAVA_INT.withName("h"),
+        JAVA_INT.withName("nb_colors"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.sequenceLayout(4, RuntimeHelper.POINTER).withName("data"),
+        MemoryLayout.sequenceLayout(4, JAVA_INT).withName("linesize"),
+        JAVA_INT.withName("type"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("text"),
+        RuntimeHelper.POINTER.withName("ass"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("AVSubtitleRect");
+    static final VarHandle const$5 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("x"));
 }
 
 

@@ -11,25 +11,18 @@ final class constants$87 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$87() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "l64a",
-        constants$87.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "a64l",
-        constants$79.const$0
-    );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__val")
-    ).withName("__sigset_t");
-    static final StructLayout const$4 = MemoryLayout.structLayout(
+    static final StructLayout const$0 = MemoryLayout.structLayout(
         JAVA_LONG.withName("tv_sec"),
         JAVA_LONG.withName("tv_usec")
     ).withName("timeval");
-    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
+    static final VarHandle const$1 = constants$87.const$0.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
+    static final VarHandle const$2 = constants$87.const$0.varHandle(MemoryLayout.PathElement.groupElement("tv_usec"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("tv_sec"),
+        JAVA_LONG.withName("tv_nsec")
+    ).withName("timespec");
+    static final VarHandle const$4 = constants$87.const$3.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
+    static final VarHandle const$5 = constants$87.const$3.varHandle(MemoryLayout.PathElement.groupElement("tv_nsec"));
 }
 
 

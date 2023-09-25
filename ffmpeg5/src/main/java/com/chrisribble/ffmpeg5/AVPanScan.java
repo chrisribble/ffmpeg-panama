@@ -13,17 +13,17 @@ import static java.lang.foreign.ValueLayout.*;
  *     int id;
  *     int width;
  *     int height;
- *     short  position[3][2];
+ *     int16_t  position[3][2];
  * };
  * }
  */
 public class AVPanScan {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$198.const$3;
+        return constants$197.const$3;
     }
     public static VarHandle id$VH() {
-        return constants$198.const$4;
+        return constants$197.const$4;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class AVPanScan {
      * }
      */
     public static int id$get(MemorySegment seg) {
-        return (int)constants$198.const$4.get(seg);
+        return (int)constants$197.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class AVPanScan {
      * }
      */
     public static void id$set(MemorySegment seg, int x) {
-        constants$198.const$4.set(seg, x);
+        constants$197.const$4.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
-        return (int)constants$198.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$197.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void id$set(MemorySegment seg, long index, int x) {
-        constants$198.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$197.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle width$VH() {
-        return constants$198.const$5;
+        return constants$197.const$5;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class AVPanScan {
      * }
      */
     public static int width$get(MemorySegment seg) {
-        return (int)constants$198.const$5.get(seg);
+        return (int)constants$197.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -68,16 +68,16 @@ public class AVPanScan {
      * }
      */
     public static void width$set(MemorySegment seg, int x) {
-        constants$198.const$5.set(seg, x);
+        constants$197.const$5.set(seg, x);
     }
     public static int width$get(MemorySegment seg, long index) {
-        return (int)constants$198.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$197.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void width$set(MemorySegment seg, long index, int x) {
-        constants$198.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$197.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle height$VH() {
-        return constants$199.const$0;
+        return constants$198.const$0;
     }
     /**
      * Getter for field:
@@ -86,7 +86,7 @@ public class AVPanScan {
      * }
      */
     public static int height$get(MemorySegment seg) {
-        return (int)constants$199.const$0.get(seg);
+        return (int)constants$198.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -95,13 +95,13 @@ public class AVPanScan {
      * }
      */
     public static void height$set(MemorySegment seg, int x) {
-        constants$199.const$0.set(seg, x);
+        constants$198.const$0.set(seg, x);
     }
     public static int height$get(MemorySegment seg, long index) {
-        return (int)constants$199.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$198.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void height$set(MemorySegment seg, long index, int x) {
-        constants$199.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$198.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment position$slice(MemorySegment seg) {
         return seg.asSlice(12, 12);
@@ -111,7 +111,7 @@ public class AVPanScan {
     public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

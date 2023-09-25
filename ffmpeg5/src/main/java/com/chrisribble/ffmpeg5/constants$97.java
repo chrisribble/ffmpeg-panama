@@ -11,21 +11,31 @@ final class constants$97 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$97() {}
-    static final VarHandle const$0 = constants$96.const$5.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final UnionLayout const$1 = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(8, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("pthread_rwlockattr_t");
-    static final VarHandle const$2 = constants$97.const$1.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final UnionLayout const$3 = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(32, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("pthread_barrier_t");
-    static final VarHandle const$4 = constants$97.const$3.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final UnionLayout const$5 = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__size"),
-        JAVA_INT.withName("__align")
-    ).withName("pthread_barrierattr_t");
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "initstate",
+        constants$97.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "setstate",
+        constants$67.const$1
+    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("fptr"),
+        RuntimeHelper.POINTER.withName("rptr"),
+        RuntimeHelper.POINTER.withName("state"),
+        JAVA_INT.withName("rand_type"),
+        JAVA_INT.withName("rand_deg"),
+        JAVA_INT.withName("rand_sep"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("end_ptr")
+    ).withName("random_data");
+    static final VarHandle const$4 = constants$97.const$3.varHandle(MemoryLayout.PathElement.groupElement("fptr"));
+    static final VarHandle const$5 = constants$97.const$3.varHandle(MemoryLayout.PathElement.groupElement("rptr"));
 }
 
 
