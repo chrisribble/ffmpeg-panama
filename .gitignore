@@ -39,3 +39,6 @@ bin/
 # Common media files
 *.ppm
 *.bmp
+
+# Extracted FFmpeg tarballs
+ffmpeg-*/
