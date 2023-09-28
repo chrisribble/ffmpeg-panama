@@ -6,4 +6,8 @@ public class AVException extends RuntimeException {
 	public AVException(final String message) {
 		super(message);
 	}
+
+	public AVException(final String message, final Throwable cause) {
+		super(message, cause);
+	}
 }
