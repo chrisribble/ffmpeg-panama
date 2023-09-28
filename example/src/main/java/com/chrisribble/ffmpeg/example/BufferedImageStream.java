@@ -30,17 +30,18 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-public class Mp4FrameStream implements Stream<BufferedImage> {
+public class BufferedImageStream implements Stream<BufferedImage> {
 	private final Arena arena;
 	private final Stream<BufferedImage> delegate;
 
-	private Mp4FrameStream(final Builder builder) throws FileNotFoundException {
+	private BufferedImageStream(final Builder builder) throws FileNotFoundException {
 		arena = Arena.ofConfined();
 		try {
-			Spliterator<BufferedImage> splitr = Mp4FrameStreamSpliterator.builder()
+			Spliterator<BufferedImage> splitr = BufferedImageStreamSpliterator.builder()
 					.mp4(builder.mp4)
 					.modFrames(builder.modFrames)
-					.palette(builder.palette)
+					.pixelFormat(builder.pixelFormat)
+					.dimensions(builder.dimensions)
 					.build(arena);
 			delegate = StreamSupport.stream(splitr, false);
 		} catch (FileNotFoundException | RuntimeException e) {
@@ -295,7 +296,8 @@ public class Mp4FrameStream implements Stream<BufferedImage> {
 	public static final class Builder {
 		private Path mp4;
 		private Integer modFrames;
-		private ColorPalette palette;
+		private PixelFormat pixelFormat;
+		private Dimensions dimensions;
 
 		private Builder() {}
 
@@ -309,19 +311,24 @@ public class Mp4FrameStream implements Stream<BufferedImage> {
 			return this;
 		}
 
-		public Builder palette(final ColorPalette palette) {
-			this.palette = palette;
+		public Builder pixelFormat(final PixelFormat pixelFormat) {
+			this.pixelFormat = pixelFormat;
 			return this;
 		}
 
-		public Mp4FrameStream build() throws FileNotFoundException {
+		public Builder dimensions(final Dimensions dimensions) {
+			this.dimensions = dimensions;
+			return this;
+		}
+
+		public BufferedImageStream build() throws FileNotFoundException {
 			if (mp4 == null) {
 				throw new IllegalArgumentException("mp4 must be non-null");
 			}
-			if (palette == null) {
+			if (pixelFormat == null) {
 				throw new IllegalArgumentException("palette must be non-null");
 			}
-			return new Mp4FrameStream(this);
+			return new BufferedImageStream(this);
 		}
 	}
 

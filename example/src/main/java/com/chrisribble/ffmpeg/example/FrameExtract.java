@@ -174,15 +174,16 @@ public class FrameExtract {
 				while ((returnCode = avcodec_receive_frame(decoderContext.avCodecContext(), decodedFrame)) == 0) {
 					LOG.debug("Received frame from decoder");
 
-					// Convert the image from its native format to RGB
-					sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
-							AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
-							AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame));
 					if (dumpedFrames >= dumpFrames) {
 						return dumpedFrames;
 					}
 
 					if (frameNumber++ % frameRadix == 0) {
+						// Convert the image from its native format to RGB
+						sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
+								AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
+								AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame));
+
 						// Write every Nth frame
 						writePpm(arena, outputFrame, dstDimensions, OUTPUT_PIX_FMT, ++dumpedFrames);
 					}

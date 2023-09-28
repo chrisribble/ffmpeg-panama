@@ -32,14 +32,15 @@ public class StreamTest {
 
 		long startNanos = System.nanoTime();
 
-		try (Stream<BufferedImage> stream = Mp4FrameStream.builder()
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.mp4(MP4)
 				.modFrames(100)
-				.palette(ColorPalette.GRAY)
+				.pixelFormat(PixelFormat.RGB)
+				.dimensions(new Dimensions(960, 540))
 				.build()) {
 
 			stream.forEach(i -> {
-				LOG.info("image sampled");
+				LOG.debug("image sampled");
 
 				Path file = Paths.get(tmpDir.toString(), "frame" + counter.incrementAndGet() + ".bmp");
 				try {
@@ -47,7 +48,6 @@ public class StreamTest {
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 				}
-
 			});
 
 			long totalNanos = System.nanoTime() - startNanos;

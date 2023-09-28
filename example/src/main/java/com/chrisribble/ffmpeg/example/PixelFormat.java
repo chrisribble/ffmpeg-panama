@@ -1,6 +1,6 @@
 package com.chrisribble.ffmpeg.example;
 
-public enum ColorPalette {
+public enum PixelFormat {
 	RGB,
 	GRAY
 }

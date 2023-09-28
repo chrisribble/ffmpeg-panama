@@ -61,7 +61,7 @@ import com.chrisribble.ffmpeg6.AVFrame;
 import com.chrisribble.ffmpeg6.AVPacket;
 import com.chrisribble.ffmpeg6.AVStream;
 
-public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
+public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage> {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	// TODO: Should this be 1, 16, 32?
@@ -74,12 +74,14 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 
 	private MemorySegment ppFormatCtx;
 	private MemorySegment pFormatCtx;
-	private DecoderContext decoderContext;
+	private MemorySegment avCodecCtx;
 	private MemorySegment swScaleCtx;
 	private MemorySegment decodedFrame;
 	private MemorySegment outputFrame;
 	private MemorySegment buffer;
 	private MemorySegment packet;
+
+	private VideoStream videoStream;
 
 	private Dimensions srcDimensions;
 	private Dimensions dstDimensions;
@@ -89,7 +91,7 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 	private boolean opened;
 	private boolean closed;
 
-	private Mp4FrameStreamSpliterator(final Builder builder) throws FileNotFoundException {
+	private BufferedImageStreamSpliterator(final Builder builder) throws FileNotFoundException {
 		if (!Files.exists(builder.mp4)) {
 			throw new FileNotFoundException("File " + builder.mp4 + " does not exist");
 		}
@@ -97,78 +99,14 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 		arena = builder.arena;
 		mp4 = builder.mp4;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
-		pixelFormat = builder.palette == ColorPalette.RGB
+		pixelFormat = builder.pixelFormat == PixelFormat.RGB
 				? AV_PIX_FMT_RGB24()
 				: AV_PIX_FMT_GRAY8();
-
-		// TODO: Make this configurable or rely on callers to do it?
-		//av_log_set_level(AV_LOG_VERBOSE());
+		dstDimensions = builder.dimensions;
 	}
 
 	public static Builder builder() {
 		return new Builder();
-	}
-
-	@Override
-	public boolean tryAdvance(final Consumer<? super BufferedImage> action) {
-		LOG.trace("tryAdvance");
-		if (closed) {
-			throw new IllegalStateException("tryAdvance must not be called after closed");
-		}
-
-		try {
-			init();
-
-			int dumpedFrames = 0;
-			while (av_read_frame(pFormatCtx, packet) >= 0) {
-				// Ignore packets from other streams
-				int streamIndex = AVPacket.stream_index$get(packet);
-				if (streamIndex != decoderContext.videoStream().index()) {
-					LOG.debug("Ignoring packet for stream {}", streamIndex);
-					av_packet_unref(packet);
-					continue;
-				}
-
-				// Dispatch packet to decoder
-				int decodeErr = avcodec_send_packet(decoderContext.avCodecContext(), packet);
-				av_packet_unref(packet);
-				LOG.debug("Sent packet to decoder");
-				if (decodeErr != 0) {
-					throw new AVException("Decode failure at frame " + dumpedFrames + "; invalid packet");
-				}
-
-				// Retrieve frames from decoder if ready
-				int returnCode;
-				while ((returnCode = avcodec_receive_frame(decoderContext.avCodecContext(), decodedFrame)) == 0) {
-					LOG.debug("Received frame from decoder");
-
-					// Convert the image from its native format to requested pixelFormat
-					sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
-							AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
-							AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame));
-
-					if (frameNumber++ % modFrames == 0) {
-						// Accept every Nth frame
-						BufferedImage image = getBufferedImage(outputFrame, dstDimensions);
-						action.accept(image);
-						return true;
-					}
-				}
-				if (returnCode == AVERROR_EOF()) {
-					return false;
-				}
-				if (returnCode != AVERROR(EAGAIN())) {
-					throw new AVException("Decode failure (" + returnCode + "); cannot decode at frame " + ++dumpedFrames);
-				}
-			}
-
-			avcodec_send_packet(decoderContext.avCodecContext(), NULL);
-			//FIXME: drain decover after NULL packet
-			return false;
-		} catch (RuntimeException e) {
-			close();
-			throw e;
-		}
 	}
 
 	@Override
@@ -188,6 +126,71 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 		return Spliterator.NONNULL | Spliterator.ORDERED | Spliterator.IMMUTABLE;
 	}
 
+	@Override
+	public boolean tryAdvance(final Consumer<? super BufferedImage> action) {
+		LOG.trace("tryAdvance");
+		if (closed) {
+			throw new IllegalStateException("tryAdvance must not be called after closed");
+		}
+
+		try {
+			init();
+
+			while (av_read_frame(pFormatCtx, packet) >= 0) {
+				// Ignore packets from other streams
+				int streamIndex = AVPacket.stream_index$get(packet);
+				if (streamIndex != videoStream.index()) {
+					LOG.debug("Ignoring packet for stream {}", streamIndex);
+					av_packet_unref(packet);
+					continue;
+				}
+
+				// Dispatch packet to decoder
+				int decodeErr = avcodec_send_packet(avCodecCtx, packet);
+				av_packet_unref(packet);
+				LOG.debug("Sent packet to decoder");
+				if (decodeErr != 0) {
+					throw new AVException("Decode failure at frame " + frameNumber + "; invalid packet");
+				}
+
+				// Retrieve frames from decoder if ready
+				int returnCode;
+				while ((returnCode = avcodec_receive_frame(avCodecCtx, decodedFrame)) == 0) {
+					LOG.debug("Received frame from decoder");
+
+					// Accept every Nth frame
+					if (frameNumber++ % modFrames == 0) {
+						// Convert the image from its native format/size to requested format/size
+						sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
+								AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
+								AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame));
+
+						BufferedImage image = getBufferedImage(outputFrame, dstDimensions);
+						action.accept(image);
+						return true;
+					}
+				}
+				if (returnCode == AVERROR_EOF()) {
+					return false;
+				}
+				if (returnCode != AVERROR(EAGAIN())) {
+					throw new AVException("Decode failure (" + returnCode + "); cannot decode at frame " + ++frameNumber);
+				}
+			}
+
+			avcodec_send_packet(avCodecCtx, NULL);
+			//FIXME: drain decover after NULL packet
+			return false;
+		} catch (RuntimeException e) {
+			close();
+			throw e;
+		}
+	}
+
+	//	private boolean readFrame() {
+	//
+	//	}
+
 	private void init() {
 		if (opened) {
 			return;
@@ -200,11 +203,14 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 		pFormatCtx = openFile(ppFormatCtx, mp4.toString());
 
 		// Initialize decoder context
-		decoderContext = getDecoderContext(pFormatCtx);
+		var decoderContext = getDecoderContext(pFormatCtx);
+		avCodecCtx = decoderContext.avCodecContext();
+		videoStream = decoderContext.videoStream();
 
-		// TODO: Support dynamic scaling configuration
 		srcDimensions = new Dimensions(decoderContext);
-		dstDimensions = new Dimensions(srcDimensions.width() / 2, srcDimensions.height() / 2);
+		if (dstDimensions == null) {
+			dstDimensions = srcDimensions;
+		}
 
 		// Determine required buffer size and allocate
 		buffer = allocateRgb24Buffer(srcDimensions);
@@ -286,7 +292,7 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 			avFreeNonNull(outputFrame);
 			avFreeNonNull(decodedFrame);
 			swsFreeNonNull(swScaleCtx);
-			avCodecCloseNonNull(decoderContext);
+			avCodecCloseNonNull(avCodecCtx);
 			avFormatCloseNonNull(ppFormatCtx);
 		} finally {
 			closed = true;
@@ -427,11 +433,11 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 		sws_freeContext(swScaleCtx);
 	}
 
-	private void avCodecCloseNonNull(final DecoderContext decoderContext) {
-		if (decoderContext == null || decoderContext.avCodecContext() == null) {
+	private void avCodecCloseNonNull(final MemorySegment avCodecCtx) {
+		if (avCodecCtx == null) {
 			return;
 		}
-		avcodec_close(decoderContext.avCodecContext());
+		avcodec_close(avCodecCtx);
 	}
 
 	private void avFormatCloseNonNull(final MemorySegment ppFormatCtx) {
@@ -445,7 +451,8 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 		private Arena arena;
 		private Path mp4;
 		private Integer modFrames;
-		private ColorPalette palette;
+		private PixelFormat pixelFormat;
+		private Dimensions dimensions;
 
 		private Builder() {}
 
@@ -459,23 +466,28 @@ public class Mp4FrameStreamSpliterator implements Spliterator<BufferedImage> {
 			return this;
 		}
 
-		public Builder palette(final ColorPalette palette) {
-			this.palette = palette;
+		public Builder pixelFormat(final PixelFormat pixelFormat) {
+			this.pixelFormat = pixelFormat;
 			return this;
 		}
 
-		public Mp4FrameStreamSpliterator build(final Arena arena) throws FileNotFoundException {
+		public Builder dimensions(final Dimensions dimensions) {
+			this.dimensions = dimensions;
+			return this;
+		}
+
+		public BufferedImageStreamSpliterator build(final Arena arena) throws FileNotFoundException {
 			if (arena == null) {
 				throw new IllegalArgumentException("arena must be non-null");
 			}
 			if (mp4 == null) {
 				throw new IllegalArgumentException("mp4 must be non-null");
 			}
-			if (palette == null) {
-				throw new IllegalArgumentException("palette must be non-null");
+			if (pixelFormat == null) {
+				throw new IllegalArgumentException("pixelFormat must be non-null");
 			}
 			this.arena = arena;
-			return new Mp4FrameStreamSpliterator(this);
+			return new BufferedImageStreamSpliterator(this);
 		}
 	}
 }
