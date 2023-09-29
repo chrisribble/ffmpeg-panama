@@ -41,7 +41,7 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 					.mp4(builder.mp4)
 					.modFrames(builder.modFrames)
 					.pixelFormat(builder.pixelFormat)
-					.dimensions(builder.dimensions)
+					.resolution(builder.resolution)
 					.build(arena);
 			delegate = StreamSupport.stream(splitr, false);
 		} catch (FileNotFoundException | RuntimeException e) {
@@ -297,7 +297,7 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 		private Path mp4;
 		private Integer modFrames;
 		private PixelFormat pixelFormat;
-		private Dimensions dimensions;
+		private Resolution resolution;
 
 		private Builder() {}
 
@@ -316,8 +316,8 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 			return this;
 		}
 
-		public Builder dimensions(final Dimensions dimensions) {
-			this.dimensions = dimensions;
+		public Builder resolution(final Resolution resolution) {
+			this.resolution = resolution;
 			return this;
 		}
 

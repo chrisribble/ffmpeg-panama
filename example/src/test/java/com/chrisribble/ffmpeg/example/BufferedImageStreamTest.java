@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 public class BufferedImageStreamTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private static final Dimensions OUTPUT_SIZE = new Dimensions(960, 540);
+	private static final Resolution OUTPUT_RESOLUTION = new Resolution(960, 540);
 
 	@Test
 	public void testStream() throws IOException {
@@ -40,7 +40,7 @@ public class BufferedImageStreamTest {
 				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(100)
 				.pixelFormat(PixelFormat.RGB)
-				.dimensions(OUTPUT_SIZE)
+				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();

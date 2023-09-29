@@ -83,8 +83,8 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 	private VideoStream videoStream;
 
-	private Dimensions srcDimensions;
-	private Dimensions dstDimensions;
+	private Resolution srcResolution;
+	private Resolution dstResolution;
 
 	private int frameNumber;
 
@@ -102,7 +102,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		pixelFormat = builder.pixelFormat == PixelFormat.RGB
 				? AV_PIX_FMT_RGB24()
 				: AV_PIX_FMT_GRAY8();
-		dstDimensions = builder.dimensions;
+		dstResolution = builder.resolution;
 	}
 
 	public static Builder builder() {
@@ -145,7 +145,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 	private boolean tryReadFrame(final Consumer<? super BufferedImage> action) {
 		// Retrieve frames from decoder if ready
 		if (drainFrames(outputFrame)) {
-			action.accept(getBufferedImage(outputFrame, dstDimensions));
+			action.accept(getBufferedImage(outputFrame, dstResolution));
 			return true;
 		}
 
@@ -168,7 +168,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 			// Retrieve frames from decoder if ready
 			if (drainFrames(outputFrame)) {
-				action.accept(getBufferedImage(outputFrame, dstDimensions));
+				action.accept(getBufferedImage(outputFrame, dstResolution));
 				return true;
 			}
 		}
@@ -176,7 +176,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		// Initiate end-of-stream drain
 		avcodec_send_packet(avCodecCtx, NULL);
 		if (drainFrames(outputFrame)) {
-			action.accept(getBufferedImage(outputFrame, dstDimensions));
+			action.accept(getBufferedImage(outputFrame, dstResolution));
 			return true;
 		}
 
@@ -213,7 +213,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 		// Convert the image from its native format/size to requested format/size
 		sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
-				AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
+				AVFrame.linesize$slice(decodedFrame), 0, srcResolution.height(),
 				AVFrame.data$slice(output), AVFrame.linesize$slice(output));
 
 		return FrameReceiveResult.READ;
@@ -235,13 +235,13 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		avCodecCtx = decoderContext.avCodecContext();
 		videoStream = decoderContext.videoStream();
 
-		srcDimensions = new Dimensions(decoderContext);
-		if (dstDimensions == null) {
-			dstDimensions = srcDimensions;
+		srcResolution = new Resolution(decoderContext);
+		if (dstResolution == null) {
+			dstResolution = srcResolution;
 		}
 
 		// Determine required buffer size and allocate
-		buffer = allocateRgb24Buffer(srcDimensions);
+		buffer = allocateRgb24Buffer(srcResolution);
 
 		// Allocate input/output AVFrame*
 		decodedFrame = allocateFrame();
@@ -250,10 +250,10 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		// Assign appropriate parts of buffer to image planes in outputFrame
 		av_image_fill_arrays(
 				AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame), buffer,
-				pixelFormat, dstDimensions.width(), dstDimensions.height(), SIMD_ALIGN_BYTES);
+				pixelFormat, dstResolution.width(), dstResolution.height(), SIMD_ALIGN_BYTES);
 
 		// initialize SWS context for software scaling
-		swScaleCtx = getSwScaleContext(decoderContext.avCodecContext(), dstDimensions, pixelFormat);
+		swScaleCtx = getSwScaleContext(decoderContext.avCodecContext(), dstResolution, pixelFormat);
 
 		// AVPacket*
 		packet = AVPacket.allocate(arena);
@@ -261,9 +261,9 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		opened = true;
 	}
 
-	private BufferedImage getBufferedImage(final MemorySegment frame, final Dimensions dimensions) {
-		int width = dimensions.width();
-		int height = dimensions.height();
+	private BufferedImage getBufferedImage(final MemorySegment frame, final Resolution resolution) {
+		int width = resolution.width();
+		int height = resolution.height();
 
 		int bytesPerPixel = pixelFormat == AV_PIX_FMT_RGB24() ? 3 : 1;
 		int bufferedImageType = pixelFormat == AV_PIX_FMT_RGB24()
@@ -398,9 +398,9 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		}
 	}
 
-	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Dimensions dstDimensions, final int outputPixelFormat) {
+	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution, final int outputPixelFormat) {
 		int pixFmt = AVCodecContext.pix_fmt$get(avCodecContext);
-		return sws_getContext(srcDimensions.width(), srcDimensions.height(), pixFmt, dstDimensions.width(), dstDimensions.height(),
+		return sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt, dstResolution.width(), dstResolution.height(),
 				outputPixelFormat, SWS_BILINEAR(), NULL, NULL, NULL);
 	}
 
@@ -413,9 +413,9 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		}
 	}
 
-	private MemorySegment allocateRgb24Buffer(final Dimensions dimensions) {
-		int width = dimensions.width();
-		int height = dimensions.height();
+	private MemorySegment allocateRgb24Buffer(final Resolution resolution) {
+		int width = resolution.width();
+		int height = resolution.height();
 
 		int bufferBytes = av_image_get_buffer_size(AV_PIX_FMT_RGB24(), width, height, SIMD_ALIGN_BYTES);
 		var buf = av_malloc(bufferBytes * C_CHAR.byteSize());
@@ -480,7 +480,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		private Path mp4;
 		private Integer modFrames;
 		private PixelFormat pixelFormat;
-		private Dimensions dimensions;
+		private Resolution resolution;
 
 		private Builder() {}
 
@@ -499,8 +499,8 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 			return this;
 		}
 
-		public Builder dimensions(final Dimensions dimensions) {
-			this.dimensions = dimensions;
+		public Builder resolution(final Resolution resolution) {
+			this.resolution = resolution;
 			return this;
 		}
 
