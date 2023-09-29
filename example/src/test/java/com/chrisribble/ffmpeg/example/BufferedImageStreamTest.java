@@ -1,5 +1,8 @@
 package com.chrisribble.ffmpeg.example;
 
+import static com.chrisribble.ffmpeg6.FFmpeg.AV_LOG_VERBOSE;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_log_set_level;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,17 +21,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
-public class StreamTest {
+public class BufferedImageStreamTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static final Path MP4 = Paths.get("/home/chris/Desktop/video/fireman-clip.mp4");
 
 	@Test
-	public void testStuff() throws IOException {
+	public void testStream() throws IOException {
 		AtomicInteger counter = new AtomicInteger();
 		Path tmpDir = Files.createTempDirectory("foo");
 
-		//av_log_set_level(AV_LOG_VERBOSE());
+		av_log_set_level(AV_LOG_VERBOSE());
 
 		long startNanos = System.nanoTime();
 

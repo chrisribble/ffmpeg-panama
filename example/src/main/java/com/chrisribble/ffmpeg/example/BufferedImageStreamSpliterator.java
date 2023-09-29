@@ -1,36 +1,36 @@
 package com.chrisribble.ffmpeg.example;
 
 import static com.chrisribble.ffmpeg.example.Macros.AVERROR;
-import static com.chrisribble.ffmpeg6.FFmpeg6.AVMEDIA_TYPE_VIDEO;
-import static com.chrisribble.ffmpeg6.FFmpeg6.C_CHAR;
-import static com.chrisribble.ffmpeg6.FFmpeg6.C_INT;
-import static com.chrisribble.ffmpeg6.FFmpeg6.C_POINTER;
-import static com.chrisribble.ffmpeg6.FFmpeg6.EAGAIN;
-import static com.chrisribble.ffmpeg6.FFmpeg6.SWS_BILINEAR;
-import static com.chrisribble.ffmpeg6.FFmpeg6_1.AV_PIX_FMT_GRAY8;
-import static com.chrisribble.ffmpeg6.FFmpeg6_1.AV_PIX_FMT_RGB24;
-import static com.chrisribble.ffmpeg6.FFmpeg6_1.av_frame_alloc;
-import static com.chrisribble.ffmpeg6.FFmpeg6_1.av_free;
-import static com.chrisribble.ffmpeg6.FFmpeg6_1.av_malloc;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.av_dump_format;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.av_image_fill_arrays;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.av_image_get_buffer_size;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.av_packet_unref;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.av_read_frame;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_alloc_context3;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_close;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_find_decoder;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_open2;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_parameters_to_context;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_receive_frame;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avcodec_send_packet;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avformat_close_input;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avformat_find_stream_info;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.avformat_open_input;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.sws_freeContext;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.sws_getContext;
-import static com.chrisribble.ffmpeg6.FFmpeg6_2.sws_scale;
-import static com.chrisribble.ffmpeg6.FFmpeg6_3.AVERROR_EOF;
+import static com.chrisribble.ffmpeg6.FFmpeg.AVMEDIA_TYPE_VIDEO;
+import static com.chrisribble.ffmpeg6.FFmpeg.C_CHAR;
+import static com.chrisribble.ffmpeg6.FFmpeg.C_INT;
+import static com.chrisribble.ffmpeg6.FFmpeg.C_POINTER;
+import static com.chrisribble.ffmpeg6.FFmpeg.EAGAIN;
+import static com.chrisribble.ffmpeg6.FFmpeg.SWS_BILINEAR;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.AV_PIX_FMT_GRAY8;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.AV_PIX_FMT_RGB24;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_frame_alloc;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_free;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_malloc;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_dump_format;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_image_fill_arrays;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_image_get_buffer_size;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_packet_unref;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_read_frame;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_alloc_context3;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_close;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_find_decoder;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_open2;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_parameters_to_context;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_receive_frame;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_send_packet;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avformat_close_input;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avformat_find_stream_info;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.avformat_open_input;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.sws_freeContext;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.sws_getContext;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.sws_scale;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.AVERROR_EOF;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.awt.Point;
@@ -135,61 +135,89 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 		try {
 			init();
-
-			while (av_read_frame(pFormatCtx, packet) >= 0) {
-				// Ignore packets from other streams
-				int streamIndex = AVPacket.stream_index$get(packet);
-				if (streamIndex != videoStream.index()) {
-					LOG.debug("Ignoring packet for stream {}", streamIndex);
-					av_packet_unref(packet);
-					continue;
-				}
-
-				// Dispatch packet to decoder
-				int decodeErr = avcodec_send_packet(avCodecCtx, packet);
-				av_packet_unref(packet);
-				LOG.debug("Sent packet to decoder");
-				if (decodeErr != 0) {
-					throw new AVException("Decode failure at frame " + frameNumber + "; invalid packet");
-				}
-
-				// Retrieve frames from decoder if ready
-				int returnCode;
-				while ((returnCode = avcodec_receive_frame(avCodecCtx, decodedFrame)) == 0) {
-					LOG.debug("Received frame from decoder");
-
-					// Accept every Nth frame
-					if (frameNumber++ % modFrames == 0) {
-						// Convert the image from its native format/size to requested format/size
-						sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
-								AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
-								AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame));
-
-						BufferedImage image = getBufferedImage(outputFrame, dstDimensions);
-						action.accept(image);
-						return true;
-					}
-				}
-				if (returnCode == AVERROR_EOF()) {
-					return false;
-				}
-				if (returnCode != AVERROR(EAGAIN())) {
-					throw new AVException("Decode failure (" + returnCode + "); cannot decode at frame " + ++frameNumber);
-				}
-			}
-
-			avcodec_send_packet(avCodecCtx, NULL);
-			//FIXME: drain decover after NULL packet
-			return false;
+			return tryReadFrame(action);
 		} catch (RuntimeException e) {
 			close();
 			throw e;
 		}
 	}
 
-	//	private boolean readFrame() {
-	//
-	//	}
+	private boolean tryReadFrame(final Consumer<? super BufferedImage> action) {
+		// Retrieve frames from decoder if ready
+		if (drainFrames(outputFrame)) {
+			action.accept(getBufferedImage(outputFrame, dstDimensions));
+			return true;
+		}
+
+		while (av_read_frame(pFormatCtx, packet) >= 0) {
+			// Ignore packets from other streams
+			int streamIndex = AVPacket.stream_index$get(packet);
+			if (streamIndex != videoStream.index()) {
+				LOG.debug("Ignoring packet for stream {}", streamIndex);
+				av_packet_unref(packet);
+				continue;
+			}
+
+			// Dispatch packet to decoder
+			int decodeErr = avcodec_send_packet(avCodecCtx, packet);
+			av_packet_unref(packet);
+			LOG.debug("Sent packet to decoder");
+			if (decodeErr != 0) {
+				throw new AVException("Decode failure at frame " + frameNumber + "; invalid packet");
+			}
+
+			// Retrieve frames from decoder if ready
+			if (drainFrames(outputFrame)) {
+				action.accept(getBufferedImage(outputFrame, dstDimensions));
+				return true;
+			}
+		}
+
+		// Initiate end-of-stream drain
+		avcodec_send_packet(avCodecCtx, NULL);
+		if (drainFrames(outputFrame)) {
+			action.accept(getBufferedImage(outputFrame, dstDimensions));
+			return true;
+		}
+
+		return false;
+	}
+
+	private boolean drainFrames(final MemorySegment output) {
+		FrameReceiveResult result;
+		while ((result = receiveFrame(output)) == FrameReceiveResult.SKIP) {
+			// ignore skipped frames
+		}
+		return result == FrameReceiveResult.READ;
+	}
+
+	private FrameReceiveResult receiveFrame(final MemorySegment output) {
+		// Retrieve frames from decoder if ready
+		int returnCode = avcodec_receive_frame(avCodecCtx, decodedFrame);
+		if (returnCode == AVERROR_EOF()) {
+			return FrameReceiveResult.EOF;
+		}
+		if (returnCode == AVERROR(EAGAIN())) {
+			return FrameReceiveResult.AGAIN;
+		}
+		if (returnCode != 0) {
+			throw new AVException("Decode failure (" + returnCode + "); cannot decode at frame " + ++frameNumber);
+		}
+
+		LOG.debug("Received frame from decoder");
+
+		// Accept every Nth frame
+		if (frameNumber++ % modFrames > 0) {
+			return FrameReceiveResult.SKIP;
+		}
+
+		// Convert the image from its native format/size to requested format/size
+		sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
+				AVFrame.linesize$slice(decodedFrame), 0, srcDimensions.height(),
+				AVFrame.data$slice(output), AVFrame.linesize$slice(output));
+
+		return FrameReceiveResult.READ;
+	}
 
 	private void init() {
 		if (opened) {

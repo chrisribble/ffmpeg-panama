@@ -13,7 +13,7 @@ PATH="/usr/local/jextract/bin:${PATH}" jextract \
   --source \
   -I ./ffmpeg-${FFMPEG_VERSION} \
   -l avcodec -l avformat -l avutil -l swscale \
-  --output ffmpeg5/src/main/java --target-package com.chrisribble.ffmpeg5 --header-class-name FFmpeg5 \
+  --output ffmpeg5/src/main/java --target-package com.chrisribble.ffmpeg5 --header-class-name FFmpeg \
   ffmpeg5/ffmpeg.h
 
 export FFMPEG_VERSION=6.0
@@ -23,6 +23,6 @@ PATH="/usr/local/jextract/bin:${PATH}" jextract \
   --source \
   -I ./ffmpeg-${FFMPEG_VERSION} \
   -l avcodec -l avformat -l avutil -l swscale \
-  --output ffmpeg6/src/main/java --target-package com.chrisribble.ffmpeg6 --header-class-name FFmpeg6 \
+  --output ffmpeg6/src/main/java --target-package com.chrisribble.ffmpeg6 --header-class-name FFmpeg \
   ffmpeg6/ffmpeg.h
 ```

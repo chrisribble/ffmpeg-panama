@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-public class FFmpeg5 extends FFmpeg5_3 {
+public class FFmpeg extends FFmpeg_3 {
 
     public static final OfByte C_CHAR = JAVA_BYTE;
     public static final OfShort C_SHORT = JAVA_SHORT;

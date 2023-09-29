@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-public class FFmpeg6_1 {
+public class FFmpeg_1 {
 
     public static MethodHandle __llrint$MH() {
         return RuntimeHelper.requireNonNull(constants$30.const$2,"__llrint");
