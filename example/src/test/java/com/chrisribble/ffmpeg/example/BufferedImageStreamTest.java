@@ -31,7 +31,7 @@ public class BufferedImageStreamTest {
 	public void testStream() throws IOException {
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 
-		//av_log_set_level(AV_LOG_VERBOSE());
+		// av_log_set_level(AV_LOG_TRACE());
 		av_log_set_level(AV_LOG_WARNING());
 
 		long startNanos = System.nanoTime();

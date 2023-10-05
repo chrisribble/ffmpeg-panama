@@ -26,7 +26,7 @@ replay_pid*
 .gradle
 
 # Ignore Gradle build output directory
-build
+build/
 
 # Ignore IDE files
 .idea
@@ -34,6 +34,7 @@ build
 .settings
 .classpath
 bin/
+test-output/
 
 # Common media files
 *.ppm
