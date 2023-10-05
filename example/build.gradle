@@ -9,5 +9,10 @@ dependencies {
 
 tasks.named('test') {
 	useTestNG()
-	jvmArgs(['--enable-preview'])
+	testLogging {
+		showStandardStreams = true
+		exceptionFormat = 'full'
+	}
+	jvmArgs(['--enable-preview', '--enable-native-access=ALL-UNNAMED'])
+	systemProperty 'java.library.path', '/usr/local/lib'
 }

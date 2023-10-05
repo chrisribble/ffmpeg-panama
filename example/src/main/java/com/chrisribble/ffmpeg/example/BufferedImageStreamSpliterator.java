@@ -5,7 +5,6 @@ import static com.chrisribble.ffmpeg6.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static com.chrisribble.ffmpeg6.FFmpeg.C_CHAR;
 import static com.chrisribble.ffmpeg6.FFmpeg.C_INT;
 import static com.chrisribble.ffmpeg6.FFmpeg.C_POINTER;
-import static com.chrisribble.ffmpeg6.FFmpeg.EAGAIN;
 import static com.chrisribble.ffmpeg6.FFmpeg.SWS_BILINEAR;
 import static com.chrisribble.ffmpeg6.FFmpeg_1.AV_PIX_FMT_GRAY8;
 import static com.chrisribble.ffmpeg6.FFmpeg_1.AV_PIX_FMT_RGB24;
@@ -197,11 +196,11 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		if (returnCode == AVERROR_EOF()) {
 			return FrameReceiveResult.EOF;
 		}
-		if (returnCode == AVERROR(EAGAIN())) {
+		if (returnCode == AVERROR(RuntimePosix.EAGAIN())) {
 			return FrameReceiveResult.AGAIN;
 		}
 		if (returnCode != 0) {
-			throw new AVException("Decode failure (" + returnCode + "); cannot decode at frame " + ++frameNumber);
+			throw new AVException("Decode failure (" + returnCode + ") at frame " + ++frameNumber);
 		}
 
 		LOG.debug("Received frame from decoder");
