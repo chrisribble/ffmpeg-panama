@@ -196,7 +196,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		if (returnCode == AVERROR_EOF()) {
 			return FrameReceiveResult.EOF;
 		}
-		if (returnCode == AVERROR(RuntimePosix.EAGAIN())) {
+		if (returnCode == AVERROR(RuntimeErrno.EAGAIN())) {
 			return FrameReceiveResult.AGAIN;
 		}
 		if (returnCode != 0) {

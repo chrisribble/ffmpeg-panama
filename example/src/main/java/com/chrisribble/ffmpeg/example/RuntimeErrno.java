@@ -1,23 +1,26 @@
 package com.chrisribble.ffmpeg.example;
 
-public final class RuntimePosix {
-	private RuntimePosix() {}
+/**
+ * Look up POSIX errno.h values for the current runtime platform
+ */
+public final class RuntimeErrno {
+	private RuntimeErrno() {}
 
 	public static int EAGAIN() {
-		return PosixDetector.INSTANCE.EAGAIN();
+		return ErrnoDetector.ERRNO.EAGAIN();
 	}
 
 	// TODO: Map other POSIX error codes that do not match across *nix systems
 
-	private static class PosixDetector {
+	private static class ErrnoDetector {
 		private static final String BSD = "bsd";
 		private static final String LINUX = "linux";
 		private static final String MAC = "mac";
 		private static final String WINDOWS = "windows";
 
-		static final Posix INSTANCE = getPosixImpl();
+		static final Errno ERRNO = getErrnoImpl();
 
-		private static Posix getPosixImpl() {
+		private static Errno getErrnoImpl() {
 			String os = System.getProperty("os.name");
 			String lowercaseOs = os.toLowerCase();
 			if (lowercaseOs.contains(BSD)) {
@@ -37,7 +40,7 @@ public final class RuntimePosix {
 		}
 	}
 
-	private static class Linux implements Posix {
+	private static class Linux implements Errno {
 		@Override
 		public int EAGAIN() {
 			return 11;
@@ -46,21 +49,21 @@ public final class RuntimePosix {
 
 	private static class MacOSX extends BSD {}
 
-	private static class BSD implements Posix {
+	private static class BSD implements Errno {
 		@Override
 		public int EAGAIN() {
 			return 35;
 		}
 	}
 
-	private static class Windows implements Posix {
+	private static class Windows implements Errno {
 		@Override
 		public int EAGAIN() {
 			return 11;
 		}
 	}
 
-	private static final class Unknown implements Posix {
+	private static final class Unknown implements Errno {
 		private final String os;
 
 		Unknown(final String os) {
@@ -73,7 +76,7 @@ public final class RuntimePosix {
 		}
 	}
 
-	private interface Posix {
+	private interface Errno {
 		int EAGAIN();
 	}
 }
