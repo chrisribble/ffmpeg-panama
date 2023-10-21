@@ -14,5 +14,5 @@ tasks.named('test') {
 		exceptionFormat = 'full'
 	}
 	jvmArgs(['--enable-preview', '--enable-native-access=ALL-UNNAMED'])
-	systemProperty 'java.library.path', '/usr/local/lib'
+	systemProperty 'java.library.path', '/usr/lib64:/usr/lib:/usr/local/lib'
 }
