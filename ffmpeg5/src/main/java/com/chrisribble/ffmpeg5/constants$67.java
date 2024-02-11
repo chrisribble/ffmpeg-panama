@@ -11,29 +11,12 @@ final class constants$67 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$67() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "tmpfile",
-        constants$4.const$0
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "tmpnam",
-        constants$67.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "tmpnam_r",
-        constants$67.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "tempnam",
-        constants$67.const$4
-    );
+    static final VarHandle const$0 = constants$66.const$5.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final VarHandle const$1 = constants$66.const$5.varHandle(MemoryLayout.PathElement.groupElement("write"));
+    static final VarHandle const$2 = constants$66.const$5.varHandle(MemoryLayout.PathElement.groupElement("seek"));
+    static final VarHandle const$3 = constants$66.const$5.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final VarHandle const$4 = RuntimeHelper.POINTER.varHandle();
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
 }
 
 

@@ -11,30 +11,23 @@ final class constants$159 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$159() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_get_standard_channel_layout",
-        constants$72.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_channel_name",
-        constants$78.const$5
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_channel_name_bprint",
-        constants$159.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_channel_description",
-        constants$78.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_channel_description_bprint",
-        constants$159.const$2
-    );
+    static final VarHandle const$0 = constants$158.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("order"),
+        JAVA_INT.withName("nb_channels"),
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("mask"),
+            RuntimeHelper.POINTER.withName("map")
+        ).withName("u"),
+        RuntimeHelper.POINTER.withName("opaque")
+    ).withName("AVChannelLayout");
+    static final VarHandle const$2 = constants$159.const$1.varHandle(MemoryLayout.PathElement.groupElement("order"));
+    static final VarHandle const$3 = constants$159.const$1.varHandle(MemoryLayout.PathElement.groupElement("nb_channels"));
+    static final UnionLayout const$4 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("mask"),
+        RuntimeHelper.POINTER.withName("map")
+    ).withName("");
+    static final VarHandle const$5 = constants$159.const$4.varHandle(MemoryLayout.PathElement.groupElement("mask"));
 }
 
 

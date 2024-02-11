@@ -11,41 +11,26 @@ final class constants$339 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$339() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_chroma_location_enum_to_pos",
-        constants$109.const$5
-    );
+    static final VarHandle const$0 = constants$338.const$0.varHandle(MemoryLayout.PathElement.groupElement("alias"));
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_chroma_location_pos_to_enum",
-        constants$0.const$5
+        "av_get_bits_per_pixel",
+        constants$0.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_get_pix_fmt",
+        "av_get_padded_bits_per_pixel",
         constants$0.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_get_pix_fmt_name",
+        "av_pix_fmt_desc_get",
         constants$0.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_get_pix_fmt_string",
-        constants$1.const$3
+        "av_pix_fmt_desc_next",
+        constants$69.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_read_image_line2",
-        constants$339.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_pix_fmt_desc_get_id",
+        constants$0.const$3
     );
 }
 

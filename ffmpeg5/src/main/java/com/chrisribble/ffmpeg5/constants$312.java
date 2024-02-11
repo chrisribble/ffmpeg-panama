@@ -11,12 +11,12 @@ final class constants$312 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$312() {}
-    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
-    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("iformat"));
-    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("oformat"));
-    static final VarHandle const$3 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
-    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("pb"));
-    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("ctx_flags"));
+    static final VarHandle const$0 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$1 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("program_num"));
+    static final VarHandle const$2 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("pmt_pid"));
+    static final VarHandle const$3 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("pcr_pid"));
+    static final VarHandle const$4 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("pmt_version"));
+    static final VarHandle const$5 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
 }
 
 

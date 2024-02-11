@@ -11,43 +11,34 @@ final class constants$352 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$352() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_freeVec",
-        constants$70.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_FLOAT,
-        JAVA_INT
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_getDefaultFilter",
-        constants$352.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_freeFilter",
-        constants$70.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "sws_scale",
+        constants$352.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sws_scale_frame",
+        constants$73.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_frame_start",
+        constants$73.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "sws_frame_end",
+        constants$72.const$4
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_getCachedContext",
-        constants$352.const$4
+        "sws_send_slice",
+        constants$334.const$4
     );
 }
 

@@ -23,10 +23,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class random_data {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$97.const$3;
+        return constants$100.const$3;
     }
     public static VarHandle fptr$VH() {
-        return constants$97.const$4;
+        return constants$100.const$4;
     }
     /**
      * Getter for field:
@@ -35,7 +35,7 @@ public class random_data {
      * }
      */
     public static MemorySegment fptr$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$97.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$100.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -44,16 +44,16 @@ public class random_data {
      * }
      */
     public static void fptr$set(MemorySegment seg, MemorySegment x) {
-        constants$97.const$4.set(seg, x);
+        constants$100.const$4.set(seg, x);
     }
     public static MemorySegment fptr$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$97.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$100.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void fptr$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$97.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$100.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rptr$VH() {
-        return constants$97.const$5;
+        return constants$100.const$5;
     }
     /**
      * Getter for field:
@@ -62,7 +62,7 @@ public class random_data {
      * }
      */
     public static MemorySegment rptr$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$97.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$100.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -71,16 +71,16 @@ public class random_data {
      * }
      */
     public static void rptr$set(MemorySegment seg, MemorySegment x) {
-        constants$97.const$5.set(seg, x);
+        constants$100.const$5.set(seg, x);
     }
     public static MemorySegment rptr$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$97.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$100.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void rptr$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$97.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$100.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle state$VH() {
-        return constants$98.const$0;
+        return constants$101.const$0;
     }
     /**
      * Getter for field:
@@ -89,7 +89,7 @@ public class random_data {
      * }
      */
     public static MemorySegment state$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$98.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$101.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -98,16 +98,16 @@ public class random_data {
      * }
      */
     public static void state$set(MemorySegment seg, MemorySegment x) {
-        constants$98.const$0.set(seg, x);
+        constants$101.const$0.set(seg, x);
     }
     public static MemorySegment state$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$98.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$101.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void state$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$98.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$101.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rand_type$VH() {
-        return constants$98.const$1;
+        return constants$101.const$1;
     }
     /**
      * Getter for field:
@@ -116,7 +116,7 @@ public class random_data {
      * }
      */
     public static int rand_type$get(MemorySegment seg) {
-        return (int)constants$98.const$1.get(seg);
+        return (int)constants$101.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -125,16 +125,16 @@ public class random_data {
      * }
      */
     public static void rand_type$set(MemorySegment seg, int x) {
-        constants$98.const$1.set(seg, x);
+        constants$101.const$1.set(seg, x);
     }
     public static int rand_type$get(MemorySegment seg, long index) {
-        return (int)constants$98.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$101.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void rand_type$set(MemorySegment seg, long index, int x) {
-        constants$98.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$101.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rand_deg$VH() {
-        return constants$98.const$2;
+        return constants$101.const$2;
     }
     /**
      * Getter for field:
@@ -143,7 +143,7 @@ public class random_data {
      * }
      */
     public static int rand_deg$get(MemorySegment seg) {
-        return (int)constants$98.const$2.get(seg);
+        return (int)constants$101.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -152,16 +152,16 @@ public class random_data {
      * }
      */
     public static void rand_deg$set(MemorySegment seg, int x) {
-        constants$98.const$2.set(seg, x);
+        constants$101.const$2.set(seg, x);
     }
     public static int rand_deg$get(MemorySegment seg, long index) {
-        return (int)constants$98.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$101.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void rand_deg$set(MemorySegment seg, long index, int x) {
-        constants$98.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$101.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rand_sep$VH() {
-        return constants$98.const$3;
+        return constants$101.const$3;
     }
     /**
      * Getter for field:
@@ -170,7 +170,7 @@ public class random_data {
      * }
      */
     public static int rand_sep$get(MemorySegment seg) {
-        return (int)constants$98.const$3.get(seg);
+        return (int)constants$101.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -179,16 +179,16 @@ public class random_data {
      * }
      */
     public static void rand_sep$set(MemorySegment seg, int x) {
-        constants$98.const$3.set(seg, x);
+        constants$101.const$3.set(seg, x);
     }
     public static int rand_sep$get(MemorySegment seg, long index) {
-        return (int)constants$98.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$101.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void rand_sep$set(MemorySegment seg, long index, int x) {
-        constants$98.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$101.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle end_ptr$VH() {
-        return constants$98.const$4;
+        return constants$101.const$4;
     }
     /**
      * Getter for field:
@@ -197,7 +197,7 @@ public class random_data {
      * }
      */
     public static MemorySegment end_ptr$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$98.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$101.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -206,13 +206,13 @@ public class random_data {
      * }
      */
     public static void end_ptr$set(MemorySegment seg, MemorySegment x) {
-        constants$98.const$4.set(seg, x);
+        constants$101.const$4.set(seg, x);
     }
     public static MemorySegment end_ptr$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$98.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$101.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void end_ptr$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$98.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$101.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

@@ -12,29 +12,32 @@ final class constants$121 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$121() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "strrchr",
-        constants$120.const$4
+        "strncat",
+        constants$119.const$0
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strcmp",
+        constants$68.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "strcspn",
-        constants$121.const$1
+        "strncmp",
+        constants$117.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "strspn",
-        constants$121.const$1
+        "strcoll",
+        constants$68.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "strpbrk",
-        constants$67.const$4
+        "strxfrm",
+        constants$65.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "strstr",
-        constants$67.const$4
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(13, RuntimeHelper.POINTER).withName("__locales"),
+        RuntimeHelper.POINTER.withName("__ctype_b"),
+        RuntimeHelper.POINTER.withName("__ctype_tolower"),
+        RuntimeHelper.POINTER.withName("__ctype_toupper"),
+        MemoryLayout.sequenceLayout(13, RuntimeHelper.POINTER).withName("__names")
+    ).withName("__locale_struct");
 }
 
 

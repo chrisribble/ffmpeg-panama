@@ -11,31 +11,29 @@ final class constants$120 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$120() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "memcmp",
+        constants$117.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "strxfrm_l",
-        constants$120.const$0
+        "__memcmpeq",
+        constants$117.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "strdup",
-        constants$67.const$1
+        "memchr",
+        constants$119.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "strndup",
-        constants$105.const$3
+        "strcpy",
+        constants$69.const$5
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strncpy",
+        constants$119.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "strchr",
-        constants$120.const$4
+        "strcat",
+        constants$69.const$5
     );
 }
 

@@ -11,12 +11,12 @@ final class constants$231 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$231() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("subtitle_header_size"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("initial_padding"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("sw_pix_fmt"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("codec_descriptor"));
-    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts_correction_num_faulty_pts"));
-    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts_correction_num_faulty_dts"));
+    static final VarHandle const$0 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
+    static final VarHandle const$1 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("lowres"));
+    static final VarHandle const$2 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("thread_count"));
+    static final VarHandle const$3 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("thread_type"));
+    static final VarHandle const$4 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("active_thread_type"));
+    static final VarHandle const$5 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("thread_safe_callbacks"));
 }
 
 

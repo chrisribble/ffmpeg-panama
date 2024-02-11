@@ -11,34 +11,29 @@ final class constants$328 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$328() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avformat_flush",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_pkt_dump2",
-        constants$328.const$0
+        "av_read_play",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_read_pause",
+        constants$0.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_pkt_dump_log2",
-        constants$328.const$2
+        "avformat_close_input",
+        constants$72.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_codec_get_id",
-        constants$82.const$5
+        "avformat_write_header",
+        constants$68.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_codec_get_tag",
-        constants$82.const$5
+        "avformat_init_output",
+        constants$68.const$3
     );
 }
 

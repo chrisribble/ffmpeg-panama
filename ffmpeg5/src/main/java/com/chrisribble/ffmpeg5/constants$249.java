@@ -11,12 +11,32 @@ final class constants$249 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$249() {}
-    static final VarHandle const$0 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("pict_type"));
-    static final VarHandle const$1 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("repeat_pict"));
-    static final VarHandle const$2 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts"));
-    static final VarHandle const$3 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("dts"));
-    static final VarHandle const$4 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("last_pts"));
-    static final VarHandle const$5 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("last_dts"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avcodec_default_get_buffer2",
+        constants$66.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avcodec_default_get_encode_buffer",
+        constants$66.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avcodec_align_dimensions",
+        constants$134.const$4
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_align_dimensions2",
+        constants$249.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_enum_to_chroma_pos",
+        constants$66.const$0
+    );
 }
 
 

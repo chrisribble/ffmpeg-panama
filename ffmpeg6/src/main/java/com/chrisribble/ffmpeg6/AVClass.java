@@ -27,10 +27,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVClass {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$139.const$2;
+        return constants$143.const$0;
     }
     public static VarHandle class_name$VH() {
-        return constants$139.const$3;
+        return constants$143.const$1;
     }
     /**
      * Getter for field:
@@ -39,7 +39,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment class_name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$139.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$143.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -48,13 +48,13 @@ public class AVClass {
      * }
      */
     public static void class_name$set(MemorySegment seg, MemorySegment x) {
-        constants$139.const$3.set(seg, x);
+        constants$143.const$1.set(seg, x);
     }
     public static MemorySegment class_name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$139.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$143.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void class_name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$139.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$143.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -65,13 +65,13 @@ public class AVClass {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(item_name fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$139.const$4, fi, constants$67.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$143.const$2, fi, constants$69.const$2, scope);
         }
         static item_name ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$139.const$5.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$143.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -80,7 +80,7 @@ public class AVClass {
     }
 
     public static VarHandle item_name$VH() {
-        return constants$140.const$0;
+        return constants$143.const$4;
     }
     /**
      * Getter for field:
@@ -89,7 +89,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment item_name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$140.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$143.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -98,19 +98,19 @@ public class AVClass {
      * }
      */
     public static void item_name$set(MemorySegment seg, MemorySegment x) {
-        constants$140.const$0.set(seg, x);
+        constants$143.const$4.set(seg, x);
     }
     public static MemorySegment item_name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$140.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$143.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void item_name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$140.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$143.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static item_name item_name(MemorySegment segment, Arena scope) {
         return item_name.ofAddress(item_name$get(segment), scope);
     }
     public static VarHandle option$VH() {
-        return constants$140.const$1;
+        return constants$143.const$5;
     }
     /**
      * Getter for field:
@@ -119,7 +119,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment option$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$140.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$143.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -128,16 +128,16 @@ public class AVClass {
      * }
      */
     public static void option$set(MemorySegment seg, MemorySegment x) {
-        constants$140.const$1.set(seg, x);
+        constants$143.const$5.set(seg, x);
     }
     public static MemorySegment option$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$140.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$143.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void option$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$140.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$143.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle version$VH() {
-        return constants$140.const$2;
+        return constants$144.const$0;
     }
     /**
      * Getter for field:
@@ -146,7 +146,7 @@ public class AVClass {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$140.const$2.get(seg);
+        return (int)constants$144.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -155,16 +155,16 @@ public class AVClass {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$140.const$2.set(seg, x);
+        constants$144.const$0.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$140.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$144.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$140.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$144.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle log_level_offset_offset$VH() {
-        return constants$140.const$3;
+        return constants$144.const$1;
     }
     /**
      * Getter for field:
@@ -173,7 +173,7 @@ public class AVClass {
      * }
      */
     public static int log_level_offset_offset$get(MemorySegment seg) {
-        return (int)constants$140.const$3.get(seg);
+        return (int)constants$144.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -182,16 +182,16 @@ public class AVClass {
      * }
      */
     public static void log_level_offset_offset$set(MemorySegment seg, int x) {
-        constants$140.const$3.set(seg, x);
+        constants$144.const$1.set(seg, x);
     }
     public static int log_level_offset_offset$get(MemorySegment seg, long index) {
-        return (int)constants$140.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$144.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void log_level_offset_offset$set(MemorySegment seg, long index, int x) {
-        constants$140.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$144.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle parent_log_context_offset$VH() {
-        return constants$140.const$4;
+        return constants$144.const$2;
     }
     /**
      * Getter for field:
@@ -200,7 +200,7 @@ public class AVClass {
      * }
      */
     public static int parent_log_context_offset$get(MemorySegment seg) {
-        return (int)constants$140.const$4.get(seg);
+        return (int)constants$144.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -209,16 +209,16 @@ public class AVClass {
      * }
      */
     public static void parent_log_context_offset$set(MemorySegment seg, int x) {
-        constants$140.const$4.set(seg, x);
+        constants$144.const$2.set(seg, x);
     }
     public static int parent_log_context_offset$get(MemorySegment seg, long index) {
-        return (int)constants$140.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$144.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void parent_log_context_offset$set(MemorySegment seg, long index, int x) {
-        constants$140.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$144.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle category$VH() {
-        return constants$140.const$5;
+        return constants$144.const$3;
     }
     /**
      * Getter for field:
@@ -227,7 +227,7 @@ public class AVClass {
      * }
      */
     public static int category$get(MemorySegment seg) {
-        return (int)constants$140.const$5.get(seg);
+        return (int)constants$144.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -236,13 +236,13 @@ public class AVClass {
      * }
      */
     public static void category$set(MemorySegment seg, int x) {
-        constants$140.const$5.set(seg, x);
+        constants$144.const$3.set(seg, x);
     }
     public static int category$get(MemorySegment seg, long index) {
-        return (int)constants$140.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$144.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void category$set(MemorySegment seg, long index, int x) {
-        constants$140.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$144.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -253,13 +253,13 @@ public class AVClass {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(get_category fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$141.const$0, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$144.const$4, fi, constants$0.const$3, scope);
         }
         static get_category ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
+                    return (int)constants$66.const$4.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -268,7 +268,7 @@ public class AVClass {
     }
 
     public static VarHandle get_category$VH() {
-        return constants$141.const$2;
+        return constants$144.const$5;
     }
     /**
      * Getter for field:
@@ -277,7 +277,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment get_category$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$141.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$144.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -286,13 +286,13 @@ public class AVClass {
      * }
      */
     public static void get_category$set(MemorySegment seg, MemorySegment x) {
-        constants$141.const$2.set(seg, x);
+        constants$144.const$5.set(seg, x);
     }
     public static MemorySegment get_category$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$141.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$144.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void get_category$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$141.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$144.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_category get_category(MemorySegment segment, Arena scope) {
         return get_category.ofAddress(get_category$get(segment), scope);
@@ -306,13 +306,13 @@ public class AVClass {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2, int _x3);
         static MemorySegment allocate(query_ranges fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$141.const$4, fi, constants$141.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$145.const$1, fi, constants$145.const$0, scope);
         }
         static query_ranges ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2, int __x3) -> {
                 try {
-                    return (int)constants$141.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
+                    return (int)constants$145.const$2.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -321,7 +321,7 @@ public class AVClass {
     }
 
     public static VarHandle query_ranges$VH() {
-        return constants$142.const$0;
+        return constants$145.const$3;
     }
     /**
      * Getter for field:
@@ -330,7 +330,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment query_ranges$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$142.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$145.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -339,13 +339,13 @@ public class AVClass {
      * }
      */
     public static void query_ranges$set(MemorySegment seg, MemorySegment x) {
-        constants$142.const$0.set(seg, x);
+        constants$145.const$3.set(seg, x);
     }
     public static MemorySegment query_ranges$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$142.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$145.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void query_ranges$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$142.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$145.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static query_ranges query_ranges(MemorySegment segment, Arena scope) {
         return query_ranges.ofAddress(query_ranges$get(segment), scope);
@@ -359,13 +359,13 @@ public class AVClass {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
         static MemorySegment allocate(child_next fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$142.const$1, fi, constants$67.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$145.const$4, fi, constants$69.const$5, scope);
         }
         static child_next ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$142.const$2.invokeExact(symbol, __x0, __x1);
+                    return (java.lang.foreign.MemorySegment)constants$145.const$5.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -374,7 +374,7 @@ public class AVClass {
     }
 
     public static VarHandle child_next$VH() {
-        return constants$142.const$3;
+        return constants$146.const$0;
     }
     /**
      * Getter for field:
@@ -383,7 +383,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment child_next$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$142.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$146.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -392,13 +392,13 @@ public class AVClass {
      * }
      */
     public static void child_next$set(MemorySegment seg, MemorySegment x) {
-        constants$142.const$3.set(seg, x);
+        constants$146.const$0.set(seg, x);
     }
     public static MemorySegment child_next$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$142.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$146.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void child_next$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$142.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$146.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static child_next child_next(MemorySegment segment, Arena scope) {
         return child_next.ofAddress(child_next$get(segment), scope);
@@ -412,13 +412,13 @@ public class AVClass {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(child_class_iterate fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$142.const$4, fi, constants$67.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$146.const$1, fi, constants$69.const$2, scope);
         }
         static child_class_iterate ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$139.const$5.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$143.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -427,7 +427,7 @@ public class AVClass {
     }
 
     public static VarHandle child_class_iterate$VH() {
-        return constants$142.const$5;
+        return constants$146.const$2;
     }
     /**
      * Getter for field:
@@ -436,7 +436,7 @@ public class AVClass {
      * }
      */
     public static MemorySegment child_class_iterate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$142.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$146.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -445,13 +445,13 @@ public class AVClass {
      * }
      */
     public static void child_class_iterate$set(MemorySegment seg, MemorySegment x) {
-        constants$142.const$5.set(seg, x);
+        constants$146.const$2.set(seg, x);
     }
     public static MemorySegment child_class_iterate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$142.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$146.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void child_class_iterate$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$142.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$146.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static child_class_iterate child_class_iterate(MemorySegment segment, Arena scope) {
         return child_class_iterate.ofAddress(child_class_iterate$get(segment), scope);

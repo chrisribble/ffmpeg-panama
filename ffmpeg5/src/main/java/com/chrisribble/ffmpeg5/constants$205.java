@@ -11,31 +11,12 @@ final class constants$205 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$205() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_packet_shrink_side_data",
-        constants$205.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_packet_get_side_data",
-        constants$76.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_packet_side_data_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_packet_pack_dictionary",
-        constants$67.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_packet_unpack_dictionary",
-        constants$71.const$5
-    );
+    static final VarHandle const$0 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("data"));
+    static final VarHandle const$1 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final VarHandle const$2 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("stream_index"));
+    static final VarHandle const$3 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$4 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
+    static final VarHandle const$5 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("side_data_elems"));
 }
 
 

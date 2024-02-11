@@ -11,29 +11,41 @@ final class constants$339 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$339() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_transfer_internal_stream_timing_info",
-        constants$141.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_stream_get_codec_timebase",
-        constants$339.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_url_split",
+        constants$339.const$0
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("plane"),
-        JAVA_INT.withName("step"),
-        JAVA_INT.withName("offset"),
-        JAVA_INT.withName("shift"),
-        JAVA_INT.withName("depth")
-    ).withName("AVComponentDescriptor");
-    static final VarHandle const$4 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("plane"));
-    static final VarHandle const$5 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("step"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_dump_format",
+        constants$260.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_get_frame_filename2",
+        constants$339.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_get_frame_filename",
+        constants$184.const$0
+    );
 }
 
 

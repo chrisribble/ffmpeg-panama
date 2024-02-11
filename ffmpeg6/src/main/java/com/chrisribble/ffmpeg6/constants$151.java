@@ -11,23 +11,29 @@ final class constants$151 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$151() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(av_buffer_pool_init2$alloc.class, "apply", constants$105.const$3);
+    static final VarHandle const$0 = constants$150.const$3.varHandle(MemoryLayout.PathElement.groupElement("size"));
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$105.const$3
+        "av_buffer_alloc",
+        constants$89.const$2
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(av_buffer_pool_init2$pool_free.class, "apply", constants$70.const$2);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$70.const$2
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_buffer_allocz",
+        constants$89.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(av_buffer_create$free.class, "apply", constants$71.const$5);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$71.const$5
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_INT
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_buffer_pool_init2",
-        constants$151.const$4
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_buffer_create",
+        constants$151.const$5
     );
 }
 

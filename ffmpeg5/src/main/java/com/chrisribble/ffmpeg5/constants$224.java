@@ -11,12 +11,12 @@ final class constants$224 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$224() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("rc_buffer_size"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("rc_override_count"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("rc_override"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("rc_max_rate"));
-    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("rc_min_rate"));
-    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("rc_max_available_vbv_use"));
+    static final VarHandle const$0 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("slices"));
+    static final VarHandle const$1 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$2 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("sample_rate"));
+    static final VarHandle const$3 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("channels"));
+    static final VarHandle const$4 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("sample_fmt"));
+    static final VarHandle const$5 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
 }
 
 

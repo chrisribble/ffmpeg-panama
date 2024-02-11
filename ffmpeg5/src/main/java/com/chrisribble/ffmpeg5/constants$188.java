@@ -11,30 +11,25 @@ final class constants$188 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$188() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_codec_iterate",
-        constants$67.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_find_decoder",
-        constants$0.const$1
+        "avcodec_profile_name",
+        constants$188.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_find_decoder_by_name",
-        constants$67.const$1
+        "av_get_pcm_codec",
+        constants$0.const$5
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_find_encoder",
-        constants$0.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_find_encoder_by_name",
-        constants$67.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_codec_is_encoder",
-        constants$0.const$3
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("profile"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("name")
+    ).withName("AVProfile");
+    static final VarHandle const$4 = constants$188.const$3.varHandle(MemoryLayout.PathElement.groupElement("profile"));
+    static final VarHandle const$5 = constants$188.const$3.varHandle(MemoryLayout.PathElement.groupElement("name"));
 }
 
 

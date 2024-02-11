@@ -16,13 +16,13 @@ public interface av_buffer_pool_init2$alloc {
 
     java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, long _x1);
     static MemorySegment allocate(av_buffer_pool_init2$alloc fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$151.const$0, fi, constants$105.const$3, scope);
+        return RuntimeHelper.upcallStub(constants$154.const$0, fi, constants$108.const$3, scope);
     }
     static av_buffer_pool_init2$alloc ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment __x0, long __x1) -> {
             try {
-                return (java.lang.foreign.MemorySegment)constants$151.const$1.invokeExact(symbol, __x0, __x1);
+                return (java.lang.foreign.MemorySegment)constants$154.const$1.invokeExact(symbol, __x0, __x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

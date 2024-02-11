@@ -11,31 +11,41 @@ final class constants$99 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$99() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "srandom_r",
-        constants$72.const$4
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "initstate_r",
-        constants$99.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "setstate_r",
-        constants$66.const$1
-    );
+    static final UnionLayout const$0 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__readers"),
+            JAVA_INT.withName("__writers"),
+            JAVA_INT.withName("__wrphase_futex"),
+            JAVA_INT.withName("__writers_futex"),
+            JAVA_INT.withName("__pad3"),
+            JAVA_INT.withName("__pad4"),
+            JAVA_INT.withName("__cur_writer"),
+            JAVA_INT.withName("__shared"),
+            JAVA_BYTE.withName("__rwelision"),
+            MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
+            JAVA_LONG.withName("__pad2"),
+            JAVA_INT.withName("__flags"),
+            MemoryLayout.paddingLayout(4)
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
+    static final VarHandle const$1 = constants$99.const$0.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(8, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
+    static final VarHandle const$3 = constants$99.const$2.varHandle(MemoryLayout.PathElement.groupElement("__align"));
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "rand",
-        constants$3.const$4
+        "random",
+        constants$86.const$5
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "srand",
-        constants$96.const$5
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "srandom",
+        constants$99.const$5
     );
 }
 

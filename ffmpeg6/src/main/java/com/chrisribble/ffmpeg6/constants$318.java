@@ -11,12 +11,12 @@ final class constants$318 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$318() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVFormatContext.io_close.class, "apply", constants$69.const$3);
-    static final VarHandle const$1 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("io_close"));
-    static final VarHandle const$2 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
-    static final VarHandle const$3 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_streams"));
-    static final VarHandle const$4 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("skip_estimate_duration_from_pts"));
-    static final VarHandle const$5 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_probe_packets"));
+    static final VarHandle const$0 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("codec_whitelist"));
+    static final VarHandle const$1 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("format_whitelist"));
+    static final VarHandle const$2 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("io_repositioned"));
+    static final VarHandle const$3 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("video_codec"));
+    static final VarHandle const$4 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("audio_codec"));
+    static final VarHandle const$5 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("subtitle_codec"));
 }
 
 

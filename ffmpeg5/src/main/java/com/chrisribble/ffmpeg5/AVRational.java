@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVRational {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$132.const$3;
+        return constants$136.const$3;
     }
     public static VarHandle num$VH() {
-        return constants$132.const$4;
+        return constants$136.const$4;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class AVRational {
      * }
      */
     public static int num$get(MemorySegment seg) {
-        return (int)constants$132.const$4.get(seg);
+        return (int)constants$136.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class AVRational {
      * }
      */
     public static void num$set(MemorySegment seg, int x) {
-        constants$132.const$4.set(seg, x);
+        constants$136.const$4.set(seg, x);
     }
     public static int num$get(MemorySegment seg, long index) {
-        return (int)constants$132.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$136.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void num$set(MemorySegment seg, long index, int x) {
-        constants$132.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$136.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle den$VH() {
-        return constants$132.const$5;
+        return constants$136.const$5;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class AVRational {
      * }
      */
     public static int den$get(MemorySegment seg) {
-        return (int)constants$132.const$5.get(seg);
+        return (int)constants$136.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class AVRational {
      * }
      */
     public static void den$set(MemorySegment seg, int x) {
-        constants$132.const$5.set(seg, x);
+        constants$136.const$5.set(seg, x);
     }
     public static int den$get(MemorySegment seg, long index) {
-        return (int)constants$132.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$136.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void den$set(MemorySegment seg, long index, int x) {
-        constants$132.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$136.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

@@ -11,27 +11,14 @@ final class constants$240 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$240() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVHWAccel.frame_params.class, "apply", constants$66.const$1);
-    static final VarHandle const$1 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("frame_params"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("x"),
-        JAVA_INT.withName("y"),
-        JAVA_INT.withName("w"),
-        JAVA_INT.withName("h"),
-        JAVA_INT.withName("nb_colors"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(4, RuntimeHelper.POINTER).withName("data"),
-        MemoryLayout.sequenceLayout(4, JAVA_INT).withName("linesize"),
-        JAVA_INT.withName("type"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("text"),
-        RuntimeHelper.POINTER.withName("ass"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVSubtitleRect");
-    static final VarHandle const$3 = constants$240.const$2.varHandle(MemoryLayout.PathElement.groupElement("x"));
-    static final VarHandle const$4 = constants$240.const$2.varHandle(MemoryLayout.PathElement.groupElement("y"));
-    static final VarHandle const$5 = constants$240.const$2.varHandle(MemoryLayout.PathElement.groupElement("w"));
+    static final VarHandle const$0 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("alloc_frame"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVHWAccel.start_frame.class, "apply", constants$66.const$0);
+    static final VarHandle const$2 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_frame"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVHWAccel.decode_params.class, "apply", constants$183.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$183.const$2
+    );
+    static final VarHandle const$5 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("decode_params"));
 }
 
 

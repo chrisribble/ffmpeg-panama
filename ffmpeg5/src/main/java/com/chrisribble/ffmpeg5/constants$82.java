@@ -11,33 +11,28 @@ final class constants$82 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$82() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "ctermid",
-        constants$67.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "flockfile",
-        constants$70.const$2
+        "ftell",
+        constants$82.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "ftrylockfile",
-        constants$0.const$3
+        "rewind",
+        constants$72.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "funlockfile",
-        constants$70.const$2
+        "fseeko",
+        constants$81.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "__uflow",
-        constants$0.const$3
+        "ftello",
+        constants$82.const$0
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "__overflow",
-        constants$82.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fgetpos",
+        constants$68.const$3
     );
 }
 

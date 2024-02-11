@@ -20,10 +20,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class RcOverride {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$207.const$3;
+        return constants$210.const$3;
     }
     public static VarHandle start_frame$VH() {
-        return constants$207.const$4;
+        return constants$210.const$4;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class RcOverride {
      * }
      */
     public static int start_frame$get(MemorySegment seg) {
-        return (int)constants$207.const$4.get(seg);
+        return (int)constants$210.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class RcOverride {
      * }
      */
     public static void start_frame$set(MemorySegment seg, int x) {
-        constants$207.const$4.set(seg, x);
+        constants$210.const$4.set(seg, x);
     }
     public static int start_frame$get(MemorySegment seg, long index) {
-        return (int)constants$207.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$210.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void start_frame$set(MemorySegment seg, long index, int x) {
-        constants$207.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$210.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle end_frame$VH() {
-        return constants$207.const$5;
+        return constants$210.const$5;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class RcOverride {
      * }
      */
     public static int end_frame$get(MemorySegment seg) {
-        return (int)constants$207.const$5.get(seg);
+        return (int)constants$210.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -68,16 +68,16 @@ public class RcOverride {
      * }
      */
     public static void end_frame$set(MemorySegment seg, int x) {
-        constants$207.const$5.set(seg, x);
+        constants$210.const$5.set(seg, x);
     }
     public static int end_frame$get(MemorySegment seg, long index) {
-        return (int)constants$207.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$210.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void end_frame$set(MemorySegment seg, long index, int x) {
-        constants$207.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$210.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle qscale$VH() {
-        return constants$208.const$0;
+        return constants$211.const$0;
     }
     /**
      * Getter for field:
@@ -86,7 +86,7 @@ public class RcOverride {
      * }
      */
     public static int qscale$get(MemorySegment seg) {
-        return (int)constants$208.const$0.get(seg);
+        return (int)constants$211.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -95,16 +95,16 @@ public class RcOverride {
      * }
      */
     public static void qscale$set(MemorySegment seg, int x) {
-        constants$208.const$0.set(seg, x);
+        constants$211.const$0.set(seg, x);
     }
     public static int qscale$get(MemorySegment seg, long index) {
-        return (int)constants$208.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$211.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void qscale$set(MemorySegment seg, long index, int x) {
-        constants$208.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$211.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle quality_factor$VH() {
-        return constants$208.const$1;
+        return constants$211.const$1;
     }
     /**
      * Getter for field:
@@ -113,7 +113,7 @@ public class RcOverride {
      * }
      */
     public static float quality_factor$get(MemorySegment seg) {
-        return (float)constants$208.const$1.get(seg);
+        return (float)constants$211.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -122,13 +122,13 @@ public class RcOverride {
      * }
      */
     public static void quality_factor$set(MemorySegment seg, float x) {
-        constants$208.const$1.set(seg, x);
+        constants$211.const$1.set(seg, x);
     }
     public static float quality_factor$get(MemorySegment seg, long index) {
-        return (float)constants$208.const$1.get(seg.asSlice(index*sizeof()));
+        return (float)constants$211.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void quality_factor$set(MemorySegment seg, long index, float x) {
-        constants$208.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$211.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

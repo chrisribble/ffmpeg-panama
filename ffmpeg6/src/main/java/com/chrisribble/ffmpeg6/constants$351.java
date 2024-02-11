@@ -12,28 +12,40 @@ final class constants$351 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$351() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_allocVec",
-        constants$0.const$1
+        "sws_isSupportedOutput",
+        constants$1.const$0
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_DOUBLE,
-        JAVA_DOUBLE
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "sws_isSupportedEndiannessConversion",
+        constants$1.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_getGaussianVec",
-        constants$351.const$1
+        "sws_alloc_context",
+        constants$4.const$0
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_DOUBLE
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_init_context",
+        constants$73.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_scaleVec",
-        constants$351.const$3
+        "sws_freeContext",
+        constants$72.const$4
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_normalizeVec",
-        constants$351.const$3
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "sws_getContext",
+        constants$351.const$5
     );
 }
 

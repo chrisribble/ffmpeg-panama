@@ -11,17 +11,26 @@ final class constants$94 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$94() {}
-    static final VarHandle const$0 = constants$93.const$5.varHandle(MemoryLayout.PathElement.groupElement("__g1_orig_size"));
-    static final VarHandle const$1 = constants$93.const$5.varHandle(MemoryLayout.PathElement.groupElement("__wrefs"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__data")
-    ).withName("");
-    static final VarHandle const$3 = constants$94.const$2.varHandle(MemoryLayout.PathElement.groupElement("__data"));
-    static final UnionLayout const$4 = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__size"),
-        JAVA_INT.withName("__align")
-    ).withName("");
-    static final VarHandle const$5 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final VarHandle const$0 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__owner"));
+    static final VarHandle const$1 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__nusers"));
+    static final VarHandle const$2 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__kind"));
+    static final VarHandle const$3 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__spins"));
+    static final VarHandle const$4 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__elision"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__readers"),
+        JAVA_INT.withName("__writers"),
+        JAVA_INT.withName("__wrphase_futex"),
+        JAVA_INT.withName("__writers_futex"),
+        JAVA_INT.withName("__pad3"),
+        JAVA_INT.withName("__pad4"),
+        JAVA_INT.withName("__cur_writer"),
+        JAVA_INT.withName("__shared"),
+        JAVA_BYTE.withName("__rwelision"),
+        MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
+        JAVA_LONG.withName("__pad2"),
+        JAVA_INT.withName("__flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("__pthread_rwlock_arch_t");
 }
 
 

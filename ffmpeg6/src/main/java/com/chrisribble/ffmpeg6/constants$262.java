@@ -11,33 +11,12 @@ final class constants$262 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$262() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "strftime_l",
-        constants$262.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "gmtime",
-        constants$67.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "localtime",
-        constants$67.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "gmtime_r",
-        constants$67.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "localtime_r",
-        constants$67.const$4
-    );
+    static final VarHandle const$0 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_min"));
+    static final VarHandle const$1 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_hour"));
+    static final VarHandle const$2 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_mday"));
+    static final VarHandle const$3 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_mon"));
+    static final VarHandle const$4 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_year"));
+    static final VarHandle const$5 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_wday"));
 }
 
 

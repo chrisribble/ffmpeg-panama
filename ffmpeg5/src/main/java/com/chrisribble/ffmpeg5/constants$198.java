@@ -11,18 +11,12 @@ final class constants$198 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$198() {}
-    static final VarHandle const$0 = constants$197.const$3.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("max_bitrate"),
-        JAVA_LONG.withName("min_bitrate"),
-        JAVA_LONG.withName("avg_bitrate"),
-        JAVA_LONG.withName("buffer_size"),
-        JAVA_LONG.withName("vbv_delay")
-    ).withName("AVCPBProperties");
-    static final VarHandle const$2 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("max_bitrate"));
-    static final VarHandle const$3 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("min_bitrate"));
-    static final VarHandle const$4 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("avg_bitrate"));
-    static final VarHandle const$5 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("buffer_size"));
+    static final VarHandle const$0 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$1 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
+    static final VarHandle const$2 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
+    static final VarHandle const$3 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
+    static final VarHandle const$4 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_space"));
+    static final VarHandle const$5 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("chroma_location"));
 }
 
 

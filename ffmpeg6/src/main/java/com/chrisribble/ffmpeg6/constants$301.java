@@ -11,14 +11,19 @@ final class constants$301 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$301() {}
-    static final VarHandle const$0 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
-    static final VarHandle const$1 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
-    static final VarHandle const$2 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("nb_side_data"));
-    static final VarHandle const$3 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("event_flags"));
-    static final VarHandle const$4 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_bits"));
+    static final VarHandle const$0 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_device_list"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("pos"),
+        JAVA_LONG.withName("timestamp"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_INT.withName("min_distance")
+    ).withName("AVIndexEntry");
+    static final VarHandle const$2 = constants$301.const$1.varHandle(MemoryLayout.PathElement.groupElement("pos"));
+    static final VarHandle const$3 = constants$301.const$1.varHandle(MemoryLayout.PathElement.groupElement("timestamp"));
+    static final VarHandle const$4 = constants$301.const$1.varHandle(MemoryLayout.PathElement.groupElement("min_distance"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_stream_get_parser",
-        constants$67.const$1
+        "av_disposition_from_string",
+        constants$0.const$3
     );
 }
 

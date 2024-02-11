@@ -11,12 +11,14 @@ final class constants$241 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$241() {}
-    static final VarHandle const$0 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("y"));
-    static final VarHandle const$1 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("w"));
-    static final VarHandle const$2 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("h"));
-    static final VarHandle const$3 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_colors"));
-    static final VarHandle const$4 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$5 = constants$240.const$4.varHandle(MemoryLayout.PathElement.groupElement("text"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVHWAccel.start_frame.class, "apply", constants$66.const$0);
+    static final VarHandle const$1 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("start_frame"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.decode_params.class, "apply", constants$184.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$184.const$0
+    );
+    static final VarHandle const$4 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("decode_params"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVHWAccel.decode_slice.class, "apply", constants$66.const$0);
 }
 
 

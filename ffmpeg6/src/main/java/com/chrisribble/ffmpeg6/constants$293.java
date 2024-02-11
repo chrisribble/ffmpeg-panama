@@ -11,12 +11,23 @@ final class constants$293 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$293() {}
-    static final VarHandle const$0 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("priv_class"));
-    static final VarHandle const$1 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
-    static final VarHandle const$2 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("raw_codec_id"));
-    static final VarHandle const$3 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final VarHandle const$4 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags_internal"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVInputFormat.read_probe.class, "apply", constants$0.const$3);
+    static final VarHandle const$0 = constants$292.const$2.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        RuntimeHelper.POINTER.withName("mime_type"),
+        RuntimeHelper.POINTER.withName("extensions"),
+        JAVA_INT.withName("audio_codec"),
+        JAVA_INT.withName("video_codec"),
+        JAVA_INT.withName("subtitle_codec"),
+        JAVA_INT.withName("flags"),
+        RuntimeHelper.POINTER.withName("codec_tag"),
+        RuntimeHelper.POINTER.withName("priv_class")
+    ).withName("AVOutputFormat");
+    static final VarHandle const$2 = constants$293.const$1.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$3 = constants$293.const$1.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
+    static final VarHandle const$4 = constants$293.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
+    static final VarHandle const$5 = constants$293.const$1.varHandle(MemoryLayout.PathElement.groupElement("extensions"));
 }
 
 

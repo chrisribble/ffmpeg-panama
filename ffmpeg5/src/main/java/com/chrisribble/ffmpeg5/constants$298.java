@@ -11,12 +11,14 @@ final class constants$298 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$298() {}
-    static final VarHandle const$0 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$1 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
-    static final VarHandle const$2 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags"));
-    static final VarHandle const$3 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("extensions"));
-    static final VarHandle const$4 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_tag"));
-    static final VarHandle const$5 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("priv_class"));
+    static final VarHandle const$0 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("query_codec"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVOutputFormat.get_output_timestamp.class, "apply", constants$147.const$2);
+    static final VarHandle const$2 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_output_timestamp"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVOutputFormat.control_message.class, "apply", constants$208.const$3);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$208.const$3
+    );
+    static final VarHandle const$5 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("control_message"));
 }
 
 

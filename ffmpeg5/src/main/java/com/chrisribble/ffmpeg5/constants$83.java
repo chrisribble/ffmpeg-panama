@@ -11,18 +11,29 @@ final class constants$83 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$83() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("quot"),
-        JAVA_INT.withName("rem")
-    ).withName("");
-    static final VarHandle const$1 = constants$83.const$0.varHandle(MemoryLayout.PathElement.groupElement("quot"));
-    static final VarHandle const$2 = constants$83.const$0.varHandle(MemoryLayout.PathElement.groupElement("rem"));
-    static final VarHandle const$3 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("quot"));
-    static final VarHandle const$4 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("rem"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "__ctype_get_mb_cur_max",
-        constants$83.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fsetpos",
+        constants$68.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clearerr",
+        constants$72.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "feof",
+        constants$0.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "ferror",
+        constants$0.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clearerr_unlocked",
+        constants$72.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "feof_unlocked",
+        constants$0.const$3
     );
 }
 

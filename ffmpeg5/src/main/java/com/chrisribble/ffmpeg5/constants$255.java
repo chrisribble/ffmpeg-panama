@@ -11,34 +11,12 @@ final class constants$255 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$255() {}
-    static final VarHandle const$0 = constants$253.const$1.varHandle(MemoryLayout.PathElement.groupElement("split"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_parser_iterate",
-        constants$67.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_parser_init",
-        constants$0.const$1
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_parser_parse2",
-        constants$255.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_parser_close",
-        constants$70.const$2
-    );
+    static final VarHandle const$0 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("last_pos"));
+    static final VarHandle const$1 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("duration"));
+    static final VarHandle const$2 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$3 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("picture_structure"));
+    static final VarHandle const$4 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("output_picture_number"));
+    static final VarHandle const$5 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("width"));
 }
 
 

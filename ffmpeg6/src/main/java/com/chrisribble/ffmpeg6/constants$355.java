@@ -11,12 +11,44 @@ final class constants$355 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$355() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hd");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "sws_freeVec",
+        constants$72.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_FLOAT,
+        JAVA_FLOAT,
+        JAVA_FLOAT,
+        JAVA_FLOAT,
+        JAVA_FLOAT,
+        JAVA_FLOAT,
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sws_getDefaultFilter",
+        constants$355.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_freeFilter",
+        constants$72.const$4
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_getCachedContext",
+        constants$355.const$4
+    );
 }
 
 

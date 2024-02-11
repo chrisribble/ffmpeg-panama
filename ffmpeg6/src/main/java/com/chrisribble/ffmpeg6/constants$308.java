@@ -11,12 +11,21 @@ final class constants$308 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$308() {}
-    static final VarHandle const$0 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
-    static final VarHandle const$1 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final VarHandle const$2 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
-    static final VarHandle const$3 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("packet_size"));
-    static final VarHandle const$4 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_delay"));
-    static final VarHandle const$5 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$0 = constants$307.const$4.varHandle(MemoryLayout.PathElement.groupElement("start"));
+    static final VarHandle const$1 = constants$307.const$4.varHandle(MemoryLayout.PathElement.groupElement("end"));
+    static final VarHandle const$2 = constants$307.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(av_format_control_message.class, "apply", constants$207.const$5);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$207.const$5
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
 }
 
 

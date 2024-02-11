@@ -11,30 +11,38 @@ final class constants$115 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$115() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "wctomb",
-        constants$82.const$5
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "qsort",
+        constants$115.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "mbstowcs",
-        constants$115.const$1
+        "abs",
+        constants$1.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "wcstombs",
-        constants$115.const$1
+        "labs",
+        constants$5.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "rpmatch",
-        constants$0.const$3
+        "llabs",
+        constants$5.const$4
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "getsubopt",
-        constants$71.const$1
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("quot"),
+        JAVA_INT.withName("rem")
+    ).withName(""),
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "div",
+        constants$115.const$5
     );
 }
 

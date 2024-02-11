@@ -11,33 +11,29 @@ final class constants$341 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$341() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_color_transfer_name",
+        constants$0.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_pix_fmt_loss",
-        constants$341.const$0
+        "av_color_transfer_from_name",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_color_space_name",
+        constants$0.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_find_best_pix_fmt_of_2",
-        constants$341.const$2
+        "av_color_space_from_name",
+        constants$0.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_image_fill_max_pixsteps",
-        constants$130.const$4
+        "av_chroma_location_name",
+        constants$0.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_image_get_linesize",
-        constants$341.const$0
+        "av_chroma_location_from_name",
+        constants$0.const$3
     );
 }
 

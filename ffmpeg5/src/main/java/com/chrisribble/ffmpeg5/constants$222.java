@@ -11,14 +11,12 @@ final class constants$222 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$222() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("request_channel_layout"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("audio_service_type"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("request_sample_fmt"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVCodecContext.get_buffer2.class, "apply", constants$109.const$5);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$109.const$5
-    );
+    static final VarHandle const$0 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("skip_bottom"));
+    static final VarHandle const$1 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("mb_lmin"));
+    static final VarHandle const$2 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("mb_lmax"));
+    static final VarHandle const$3 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("bidir_refine"));
+    static final VarHandle const$4 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("keyint_min"));
+    static final VarHandle const$5 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("refs"));
 }
 
 

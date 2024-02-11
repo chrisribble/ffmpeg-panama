@@ -11,30 +11,35 @@ final class constants$206 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$206() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_packet_free_side_data",
-        constants$70.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_packet_ref",
-        constants$66.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_packet_unref",
-        constants$70.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_packet_move_ref",
-        constants$69.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_packet_copy_props",
-        constants$66.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_packet_make_refcounted",
-        constants$0.const$3
-    );
+    static final VarHandle const$0 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("duration"));
+    static final VarHandle const$1 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("pos"));
+    static final VarHandle const$2 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final VarHandle const$3 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("opaque_ref"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("buf"),
+            JAVA_LONG.withName("pts"),
+            JAVA_LONG.withName("dts"),
+            RuntimeHelper.POINTER.withName("data"),
+            JAVA_INT.withName("size"),
+            JAVA_INT.withName("stream_index"),
+            JAVA_INT.withName("flags"),
+            MemoryLayout.paddingLayout(4),
+            RuntimeHelper.POINTER.withName("side_data"),
+            JAVA_INT.withName("side_data_elems"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("duration"),
+            JAVA_LONG.withName("pos"),
+            RuntimeHelper.POINTER.withName("opaque"),
+            RuntimeHelper.POINTER.withName("opaque_ref"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("num"),
+                JAVA_INT.withName("den")
+            ).withName("time_base")
+        ).withName("pkt"),
+        RuntimeHelper.POINTER.withName("next")
+    ).withName("AVPacketList");
+    static final VarHandle const$5 = constants$206.const$4.varHandle(MemoryLayout.PathElement.groupElement("next"));
 }
 
 

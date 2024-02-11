@@ -11,12 +11,12 @@ final class constants$237 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$237() {}
-    static final VarHandle const$0 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
-    static final VarHandle const$1 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("capabilities"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.alloc_frame.class, "apply", constants$66.const$1);
-    static final VarHandle const$3 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("alloc_frame"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWAccel.start_frame.class, "apply", constants$109.const$5);
-    static final VarHandle const$5 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("start_frame"));
+    static final VarHandle const$0 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("properties"));
+    static final VarHandle const$1 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("coded_side_data"));
+    static final VarHandle const$2 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("nb_coded_side_data"));
+    static final VarHandle const$3 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("hw_frames_ctx"));
+    static final VarHandle const$4 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("sub_text_format"));
+    static final VarHandle const$5 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
 }
 
 

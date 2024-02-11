@@ -11,14 +11,32 @@ final class constants$270 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$270() {}
-    static final VarHandle const$0 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("access_timestamp"));
-    static final VarHandle const$1 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("status_change_timestamp"));
-    static final VarHandle const$2 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("user_id"));
-    static final VarHandle const$3 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("group_id"));
-    static final VarHandle const$4 = constants$269.const$0.varHandle(MemoryLayout.PathElement.groupElement("filemode"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("url_context")
-    ).withName("AVIODirContext");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clock_gettime",
+        constants$75.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clock_settime",
+        constants$75.const$4
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clock_nanosleep",
+        constants$270.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clock_getcpuclockid",
+        constants$75.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "timer_create",
+        constants$75.const$2
+    );
 }
 
 

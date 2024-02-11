@@ -11,12 +11,24 @@ final class constants$193 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$193() {}
-    static final VarHandle const$0 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$1 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
-    static final VarHandle const$2 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
-    static final VarHandle const$3 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
-    static final VarHandle const$4 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("profile"));
-    static final VarHandle const$5 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("level"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avcodec_get_hw_config",
+        constants$123.const$2
+    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("type"),
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        JAVA_INT.withName("props"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("mime_types"),
+        RuntimeHelper.POINTER.withName("profiles")
+    ).withName("AVCodecDescriptor");
+    static final VarHandle const$2 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$3 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$5 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
 }
 
 

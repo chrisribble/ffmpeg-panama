@@ -11,21 +11,16 @@ final class constants$275 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$275() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$274.const$4
-    );
-    static final VarHandle const$1 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("update_checksum"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVIOContext.read_pause.class, "apply", constants$82.const$5);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$82.const$5
-    );
-    static final VarHandle const$4 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("read_pause"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVIOContext.read_packet.class, "apply", constants$66.const$0);
+    static final VarHandle const$1 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("read_packet"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVIOContext.write_packet.class, "apply", constants$66.const$0);
+    static final VarHandle const$3 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("write_packet"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT,
         JAVA_LONG,
         JAVA_INT
     );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVIOContext.seek.class, "apply", constants$275.const$4);
 }
 
 

@@ -11,31 +11,45 @@ final class constants$351 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$351() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_image_fill_black",
-        constants$2.const$5
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "swscale_version",
-        constants$3.const$4
+        "av_image_fill_pointers",
+        constants$351.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "swscale_configuration",
-        constants$4.const$0
+        "av_image_alloc",
+        constants$2.const$5
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "swscale_license",
-        constants$4.const$0
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_getCoefficients",
-        constants$0.const$1
+        "av_image_copy_plane",
+        constants$351.const$3
     );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("coeff"),
-        JAVA_INT.withName("length"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("SwsVector");
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_image_copy_plane_uc_from",
+        constants$351.const$5
+    );
 }
 
 

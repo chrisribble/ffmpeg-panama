@@ -16,13 +16,13 @@ public interface AVOpenCallback {
 
     int apply(java.lang.foreign.MemorySegment s, java.lang.foreign.MemorySegment pb, java.lang.foreign.MemorySegment url, int flags, java.lang.foreign.MemorySegment int_cb, java.lang.foreign.MemorySegment options);
     static MemorySegment allocate(AVOpenCallback fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$306.const$0, fi, constants$305.const$5, scope);
+        return RuntimeHelper.upcallStub(constants$309.const$0, fi, constants$308.const$5, scope);
     }
     static AVOpenCallback ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _s, java.lang.foreign.MemorySegment _pb, java.lang.foreign.MemorySegment _url, int _flags, java.lang.foreign.MemorySegment _int_cb, java.lang.foreign.MemorySegment _options) -> {
             try {
-                return (int)constants$306.const$1.invokeExact(symbol, _s, _pb, _url, _flags, _int_cb, _options);
+                return (int)constants$309.const$1.invokeExact(symbol, _s, _pb, _url, _flags, _int_cb, _options);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

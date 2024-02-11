@@ -11,8 +11,7 @@ final class constants$138 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$138() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
@@ -21,52 +20,35 @@ final class constants$138 {
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
         ).withName("AVRational"),
-        JAVA_INT
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_rescale_q_rnd",
+        "av_nearer_q",
         constants$138.const$0
     );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
         ).withName("AVRational"),
-        JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_compare_ts",
+        "av_find_nearest_q_idx",
         constants$138.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_compare_mod",
-        constants$137.const$0
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_LONG,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_INT,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
         ).withName("AVRational")
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_rescale_delta",
-        constants$138.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_q2intfloat",
+        constants$138.const$4
     );
 }
 

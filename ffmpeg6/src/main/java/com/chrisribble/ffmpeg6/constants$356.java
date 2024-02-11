@@ -11,12 +11,21 @@ final class constants$356 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$356() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhi");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hi");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hu");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ho");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "sws_convertPalette8ToPacked32",
+        constants$331.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "sws_convertPalette8ToPacked24",
+        constants$331.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sws_get_class",
+        constants$4.const$0
+    );
+    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
+    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
 }
 
 

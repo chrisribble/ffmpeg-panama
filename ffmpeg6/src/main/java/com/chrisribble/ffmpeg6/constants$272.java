@@ -11,16 +11,12 @@ final class constants$272 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$272() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVIOContext.read_packet.class, "apply", constants$109.const$5);
-    static final VarHandle const$1 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("read_packet"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVIOContext.write_packet.class, "apply", constants$109.const$5);
-    static final VarHandle const$3 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("write_packet"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVIOContext.seek.class, "apply", constants$272.const$4);
+    static final VarHandle const$0 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$1 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("utf8"));
+    static final VarHandle const$2 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final VarHandle const$3 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("modification_timestamp"));
+    static final VarHandle const$4 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("access_timestamp"));
+    static final VarHandle const$5 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("status_change_timestamp"));
 }
 
 

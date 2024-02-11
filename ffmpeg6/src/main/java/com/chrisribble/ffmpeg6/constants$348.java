@@ -11,41 +11,37 @@ final class constants$348 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$348() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_isSupportedOutput",
-        constants$1.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_isSupportedEndiannessConversion",
-        constants$1.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_alloc_context",
-        constants$4.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_init_context",
-        constants$71.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_freeContext",
-        constants$70.const$2
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
         JAVA_INT,
+        JAVA_LONG,
         JAVA_INT,
         JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "sws_getContext",
-        constants$348.const$5
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_image_check_size2",
+        constants$348.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_image_check_sar",
+        constants$348.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_image_fill_black",
+        constants$2.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "swscale_version",
+        constants$3.const$4
     );
 }
 

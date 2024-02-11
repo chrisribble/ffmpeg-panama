@@ -11,29 +11,20 @@ final class constants$281 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$281() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_wl64",
-        constants$104.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avio_wb64",
-        constants$104.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_wl32",
-        constants$159.const$2
-    );
+    static final VarHandle const$0 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("buf_ptr_max"));
+    static final VarHandle const$1 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("bytes_read"));
+    static final VarHandle const$2 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("bytes_written"));
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avio_wb32",
-        constants$159.const$2
+        "avio_find_protocol_name",
+        constants$69.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_wl24",
-        constants$159.const$2
+        "avio_check",
+        constants$85.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avio_wb24",
-        constants$159.const$2
+        "avio_open_dir",
+        constants$73.const$3
     );
 }
 

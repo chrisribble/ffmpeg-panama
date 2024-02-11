@@ -11,14 +11,39 @@ final class constants$294 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$294() {}
-    static final VarHandle const$0 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("write_trailer"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVOutputFormat.interleave_packet.class, "apply", constants$257.const$2);
-    static final VarHandle const$2 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("interleave_packet"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVOutputFormat.query_codec.class, "apply", constants$0.const$5);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$0.const$5
-    );
-    static final VarHandle const$5 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("query_codec"));
+    static final VarHandle const$0 = constants$293.const$2.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        RuntimeHelper.POINTER.withName("mime_type"),
+        RuntimeHelper.POINTER.withName("extensions"),
+        JAVA_INT.withName("audio_codec"),
+        JAVA_INT.withName("video_codec"),
+        JAVA_INT.withName("subtitle_codec"),
+        JAVA_INT.withName("flags"),
+        RuntimeHelper.POINTER.withName("codec_tag"),
+        RuntimeHelper.POINTER.withName("priv_class"),
+        JAVA_INT.withName("priv_data_size"),
+        JAVA_INT.withName("flags_internal"),
+        RuntimeHelper.POINTER.withName("write_header"),
+        RuntimeHelper.POINTER.withName("write_packet"),
+        RuntimeHelper.POINTER.withName("write_trailer"),
+        RuntimeHelper.POINTER.withName("interleave_packet"),
+        RuntimeHelper.POINTER.withName("query_codec"),
+        RuntimeHelper.POINTER.withName("get_output_timestamp"),
+        RuntimeHelper.POINTER.withName("control_message"),
+        RuntimeHelper.POINTER.withName("write_uncoded_frame"),
+        RuntimeHelper.POINTER.withName("get_device_list"),
+        JAVA_INT.withName("data_codec"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("init"),
+        RuntimeHelper.POINTER.withName("deinit"),
+        RuntimeHelper.POINTER.withName("check_bitstream")
+    ).withName("AVOutputFormat");
+    static final VarHandle const$2 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$3 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
+    static final VarHandle const$4 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
+    static final VarHandle const$5 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("extensions"));
 }
 
 

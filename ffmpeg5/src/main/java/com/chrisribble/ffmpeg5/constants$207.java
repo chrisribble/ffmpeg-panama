@@ -12,32 +12,29 @@ final class constants$207 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$207() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_packet_make_writable",
-        constants$0.const$3
+        "av_packet_alloc",
+        constants$4.const$0
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_packet_clone",
+        constants$69.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_packet_rescale_ts",
-        constants$207.const$1
+        "av_packet_free",
+        constants$72.const$4
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("start_frame"),
-        JAVA_INT.withName("end_frame"),
-        JAVA_INT.withName("qscale"),
-        JAVA_FLOAT.withName("quality_factor")
-    ).withName("RcOverride");
-    static final VarHandle const$4 = constants$207.const$3.varHandle(MemoryLayout.PathElement.groupElement("start_frame"));
-    static final VarHandle const$5 = constants$207.const$3.varHandle(MemoryLayout.PathElement.groupElement("end_frame"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_init_packet",
+        constants$72.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_new_packet",
+        constants$85.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_shrink_packet",
+        constants$163.const$0
+    );
 }
 
 

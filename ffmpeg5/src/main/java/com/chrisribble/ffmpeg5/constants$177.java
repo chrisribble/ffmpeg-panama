@@ -11,12 +11,30 @@ final class constants$177 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$177() {}
-    static final VarHandle const$0 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("internal"));
-    static final VarHandle const$1 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("device_ref"));
-    static final VarHandle const$2 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("device_ctx"));
-    static final VarHandle const$3 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWFramesContext.free.class, "apply", constants$70.const$2);
-    static final VarHandle const$5 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_frame_get_buffer",
+        constants$85.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_frame_is_writable",
+        constants$0.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_frame_make_writable",
+        constants$0.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_frame_copy",
+        constants$68.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_frame_copy_props",
+        constants$68.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_frame_get_plane_buffer",
+        constants$123.const$2
+    );
 }
 
 

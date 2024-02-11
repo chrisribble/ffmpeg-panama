@@ -11,22 +11,29 @@ final class constants$189 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$189() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_codec_is_decoder",
-        constants$0.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_profile_name",
-        constants$120.const$4
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("pix_fmt"),
-        JAVA_INT.withName("methods"),
-        JAVA_INT.withName("device_type")
-    ).withName("AVCodecHWConfig");
-    static final VarHandle const$3 = constants$189.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
-    static final VarHandle const$4 = constants$189.const$2.varHandle(MemoryLayout.PathElement.groupElement("methods"));
-    static final VarHandle const$5 = constants$189.const$2.varHandle(MemoryLayout.PathElement.groupElement("device_type"));
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("capabilities"),
+        JAVA_BYTE.withName("max_lowres"),
+        MemoryLayout.paddingLayout(3),
+        RuntimeHelper.POINTER.withName("supported_framerates"),
+        RuntimeHelper.POINTER.withName("pix_fmts"),
+        RuntimeHelper.POINTER.withName("supported_samplerates"),
+        RuntimeHelper.POINTER.withName("sample_fmts"),
+        RuntimeHelper.POINTER.withName("channel_layouts"),
+        RuntimeHelper.POINTER.withName("priv_class"),
+        RuntimeHelper.POINTER.withName("profiles"),
+        RuntimeHelper.POINTER.withName("wrapper_name"),
+        RuntimeHelper.POINTER.withName("ch_layouts")
+    ).withName("AVCodec");
+    static final VarHandle const$1 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$2 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
+    static final VarHandle const$3 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$5 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("capabilities"));
 }
 
 

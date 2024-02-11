@@ -11,37 +11,21 @@ final class constants$200 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$200() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("data"),
-        JAVA_LONG.withName("size"),
-        JAVA_INT.withName("type"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVPacketSideData");
-    static final VarHandle const$1 = constants$200.const$0.varHandle(MemoryLayout.PathElement.groupElement("data"));
-    static final VarHandle const$2 = constants$200.const$0.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$3 = constants$200.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("buf"),
-        JAVA_LONG.withName("pts"),
-        JAVA_LONG.withName("dts"),
-        RuntimeHelper.POINTER.withName("data"),
-        JAVA_INT.withName("size"),
-        JAVA_INT.withName("stream_index"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("side_data"),
-        JAVA_INT.withName("side_data_elems"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("duration"),
-        JAVA_LONG.withName("pos"),
-        RuntimeHelper.POINTER.withName("opaque"),
-        RuntimeHelper.POINTER.withName("opaque_ref"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("time_base")
-    ).withName("AVPacket");
-    static final VarHandle const$5 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final VarHandle const$0 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_padding"));
+    static final VarHandle const$1 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
+    static final VarHandle const$2 = constants$195.const$4.varHandle(MemoryLayout.PathElement.groupElement("seek_preroll"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_alloc",
+        constants$4.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_free",
+        constants$72.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_copy",
+        constants$68.const$3
+    );
 }
 
 

@@ -20,10 +20,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class SwsFilter {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$347.const$0;
+        return constants$350.const$0;
     }
     public static VarHandle lumH$VH() {
-        return constants$347.const$1;
+        return constants$350.const$1;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class SwsFilter {
      * }
      */
     public static MemorySegment lumH$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$350.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class SwsFilter {
      * }
      */
     public static void lumH$set(MemorySegment seg, MemorySegment x) {
-        constants$347.const$1.set(seg, x);
+        constants$350.const$1.set(seg, x);
     }
     public static MemorySegment lumH$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$350.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void lumH$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$347.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$350.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle lumV$VH() {
-        return constants$347.const$2;
+        return constants$350.const$2;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class SwsFilter {
      * }
      */
     public static MemorySegment lumV$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$350.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -68,16 +68,16 @@ public class SwsFilter {
      * }
      */
     public static void lumV$set(MemorySegment seg, MemorySegment x) {
-        constants$347.const$2.set(seg, x);
+        constants$350.const$2.set(seg, x);
     }
     public static MemorySegment lumV$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$350.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void lumV$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$347.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$350.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle chrH$VH() {
-        return constants$347.const$3;
+        return constants$350.const$3;
     }
     /**
      * Getter for field:
@@ -86,7 +86,7 @@ public class SwsFilter {
      * }
      */
     public static MemorySegment chrH$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$350.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -95,16 +95,16 @@ public class SwsFilter {
      * }
      */
     public static void chrH$set(MemorySegment seg, MemorySegment x) {
-        constants$347.const$3.set(seg, x);
+        constants$350.const$3.set(seg, x);
     }
     public static MemorySegment chrH$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$350.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void chrH$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$347.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$350.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle chrV$VH() {
-        return constants$347.const$4;
+        return constants$350.const$4;
     }
     /**
      * Getter for field:
@@ -113,7 +113,7 @@ public class SwsFilter {
      * }
      */
     public static MemorySegment chrV$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$350.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -122,13 +122,13 @@ public class SwsFilter {
      * }
      */
     public static void chrV$set(MemorySegment seg, MemorySegment x) {
-        constants$347.const$4.set(seg, x);
+        constants$350.const$4.set(seg, x);
     }
     public static MemorySegment chrV$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$347.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$350.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void chrV$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$347.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$350.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

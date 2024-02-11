@@ -11,18 +11,28 @@ final class constants$89 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$89() {}
-    static final VarHandle const$0 = constants$88.const$5.varHandle(MemoryLayout.PathElement.groupElement("__value64"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__low"),
-        JAVA_INT.withName("__high")
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "strtoll",
+        constants$6.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strtoull",
+        constants$6.const$2
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "l64a",
+        constants$89.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "a64l",
+        constants$82.const$0
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__val")
     ).withName("");
-    static final VarHandle const$2 = constants$89.const$1.varHandle(MemoryLayout.PathElement.groupElement("__low"));
-    static final VarHandle const$3 = constants$89.const$1.varHandle(MemoryLayout.PathElement.groupElement("__high"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("__prev"),
-        RuntimeHelper.POINTER.withName("__next")
-    ).withName("__pthread_internal_list");
-    static final VarHandle const$5 = constants$89.const$4.varHandle(MemoryLayout.PathElement.groupElement("__prev"));
 }
 
 

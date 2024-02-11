@@ -11,14 +11,12 @@ final class constants$237 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$237() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVHWAccel.alloc_frame.class, "apply", constants$66.const$1);
-    static final VarHandle const$1 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("alloc_frame"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.start_frame.class, "apply", constants$109.const$5);
-    static final VarHandle const$3 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("start_frame"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWAccel.decode_params.class, "apply", constants$180.const$2);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$180.const$2
-    );
+    static final VarHandle const$0 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_pixels"));
+    static final VarHandle const$1 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("hw_device_ctx"));
+    static final VarHandle const$2 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_flags"));
+    static final VarHandle const$3 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("apply_cropping"));
+    static final VarHandle const$4 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("extra_hw_frames"));
+    static final VarHandle const$5 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("discard_damaged_percentage"));
 }
 
 

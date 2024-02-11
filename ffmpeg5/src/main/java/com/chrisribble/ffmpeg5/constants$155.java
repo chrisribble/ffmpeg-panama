@@ -11,25 +11,28 @@ final class constants$155 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$155() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("id"),
-        MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("name"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("opaque")
-    ).withName("AVChannelCustom");
-    static final VarHandle const$1 = constants$155.const$0.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$2 = constants$155.const$0.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("order"),
-        JAVA_INT.withName("nb_channels"),
-        MemoryLayout.unionLayout(
-            JAVA_LONG.withName("mask"),
-            RuntimeHelper.POINTER.withName("map")
-        ).withName("u"),
-        RuntimeHelper.POINTER.withName("opaque")
-    ).withName("AVChannelLayout");
-    static final VarHandle const$4 = constants$155.const$3.varHandle(MemoryLayout.PathElement.groupElement("order"));
-    static final VarHandle const$5 = constants$155.const$3.varHandle(MemoryLayout.PathElement.groupElement("nb_channels"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(av_buffer_pool_init2$pool_free.class, "apply", constants$72.const$4);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$72.const$4
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_buffer_pool_init2",
+        constants$155.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_buffer_pool_uninit",
+        constants$72.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_buffer_pool_get",
+        constants$69.const$2
+    );
 }
 
 

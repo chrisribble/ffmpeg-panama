@@ -12,30 +12,30 @@ final class constants$184 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$184() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_get_bits_per_sample",
-        constants$1.const$0
+        "av_hwframe_ctx_init",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_exact_bits_per_sample",
-        constants$1.const$0
+        "av_hwframe_get_buffer",
+        constants$66.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_hwframe_transfer_data",
+        constants$66.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_profile_name",
-        constants$184.const$2
+        "av_hwframe_transfer_get_formats",
+        constants$183.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_get_pcm_codec",
-        constants$0.const$5
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_INT.withName("profile"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("name")
-    ).withName("AVProfile");
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("valid_hw_formats"),
+        RuntimeHelper.POINTER.withName("valid_sw_formats"),
+        JAVA_INT.withName("min_width"),
+        JAVA_INT.withName("min_height"),
+        JAVA_INT.withName("max_width"),
+        JAVA_INT.withName("max_height")
+    ).withName("AVHWFramesConstraints");
+    static final VarHandle const$5 = constants$184.const$4.varHandle(MemoryLayout.PathElement.groupElement("valid_hw_formats"));
 }
 
 

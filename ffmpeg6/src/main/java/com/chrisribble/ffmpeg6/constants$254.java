@@ -11,15 +11,12 @@ final class constants$254 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$254() {}
-    static final VarHandle const$0 = constants$252.const$5.varHandle(MemoryLayout.PathElement.groupElement("parser_parse"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVCodecParser.parser_close.class, "apply", constants$70.const$2);
-    static final VarHandle const$2 = constants$252.const$5.varHandle(MemoryLayout.PathElement.groupElement("parser_close"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecParser.split.class, "apply", constants$109.const$5);
-    static final VarHandle const$4 = constants$252.const$5.varHandle(MemoryLayout.PathElement.groupElement("split"));
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_parser_iterate",
-        constants$67.const$1
-    );
+    static final VarHandle const$0 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("last_pos"));
+    static final VarHandle const$1 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("duration"));
+    static final VarHandle const$2 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$3 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("picture_structure"));
+    static final VarHandle const$4 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("output_picture_number"));
+    static final VarHandle const$5 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("width"));
 }
 
 

@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class timespec {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$87.const$3;
+        return constants$90.const$3;
     }
     public static VarHandle tv_sec$VH() {
-        return constants$87.const$4;
+        return constants$90.const$4;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class timespec {
      * }
      */
     public static long tv_sec$get(MemorySegment seg) {
-        return (long)constants$87.const$4.get(seg);
+        return (long)constants$90.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class timespec {
      * }
      */
     public static void tv_sec$set(MemorySegment seg, long x) {
-        constants$87.const$4.set(seg, x);
+        constants$90.const$4.set(seg, x);
     }
     public static long tv_sec$get(MemorySegment seg, long index) {
-        return (long)constants$87.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$90.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void tv_sec$set(MemorySegment seg, long index, long x) {
-        constants$87.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tv_nsec$VH() {
-        return constants$87.const$5;
+        return constants$90.const$5;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class timespec {
      * }
      */
     public static long tv_nsec$get(MemorySegment seg) {
-        return (long)constants$87.const$5.get(seg);
+        return (long)constants$90.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class timespec {
      * }
      */
     public static void tv_nsec$set(MemorySegment seg, long x) {
-        constants$87.const$5.set(seg, x);
+        constants$90.const$5.set(seg, x);
     }
     public static long tv_nsec$get(MemorySegment seg, long index) {
-        return (long)constants$87.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$90.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void tv_nsec$set(MemorySegment seg, long index, long x) {
-        constants$87.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

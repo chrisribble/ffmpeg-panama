@@ -12,32 +12,33 @@ final class constants$332 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$332() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_get_riff_video_tags",
-        constants$4.const$0
+        "av_codec_get_tag2",
+        constants$329.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_get_riff_audio_tags",
-        constants$4.const$0
+        "av_find_default_stream_index",
+        constants$0.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_get_mov_video_tags",
-        constants$4.const$0
+        "av_index_search_timestamp",
+        constants$81.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avformat_get_mov_audio_tags",
-        constants$4.const$0
+        "avformat_index_get_entries_count",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avformat_index_get_entry",
+        constants$123.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_guess_sample_aspect_ratio",
-        constants$332.const$4
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "avformat_index_get_entry_from_timestamp",
+        constants$332.const$5
     );
 }
 

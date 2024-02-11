@@ -11,12 +11,22 @@ final class constants$167 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$167() {}
-    static final VarHandle const$0 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("repeat_pict"));
-    static final VarHandle const$1 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("interlaced_frame"));
-    static final VarHandle const$2 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("top_field_first"));
-    static final VarHandle const$3 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("palette_has_changed"));
-    static final VarHandle const$4 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("reordered_opaque"));
-    static final VarHandle const$5 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("sample_rate"));
+    static final VarHandle const$0 = constants$166.const$2.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$1 = constants$166.const$2.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("self_size"),
+        JAVA_INT.withName("top"),
+        JAVA_INT.withName("bottom"),
+        JAVA_INT.withName("left"),
+        JAVA_INT.withName("right"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("qoffset")
+    ).withName("AVRegionOfInterest");
+    static final VarHandle const$3 = constants$167.const$2.varHandle(MemoryLayout.PathElement.groupElement("self_size"));
+    static final VarHandle const$4 = constants$167.const$2.varHandle(MemoryLayout.PathElement.groupElement("top"));
+    static final VarHandle const$5 = constants$167.const$2.varHandle(MemoryLayout.PathElement.groupElement("bottom"));
 }
 
 

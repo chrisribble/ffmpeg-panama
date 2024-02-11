@@ -12,30 +12,29 @@ final class constants$162 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$162() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_channel_from_string",
-        constants$66.const$1
+        "av_get_standard_channel_layout",
+        constants$75.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_subset",
-        constants$122.const$4
+        "av_channel_name",
+        constants$81.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_check",
-        constants$0.const$3
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_compare",
-        constants$66.const$1
+        "av_channel_name_bprint",
+        constants$162.const$2
     );
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("type"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("data"),
-        JAVA_LONG.withName("size"),
-        RuntimeHelper.POINTER.withName("metadata"),
-        RuntimeHelper.POINTER.withName("buf")
-    ).withName("AVFrameSideData");
-    static final VarHandle const$5 = constants$162.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_channel_description",
+        constants$81.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_channel_description_bprint",
+        constants$162.const$2
+    );
 }
 
 

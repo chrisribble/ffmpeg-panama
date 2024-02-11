@@ -11,21 +11,14 @@ final class constants$199 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$199() {}
-    static final VarHandle const$0 = constants$198.const$1.varHandle(MemoryLayout.PathElement.groupElement("vbv_delay"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_cpb_properties_alloc",
-        constants$67.const$1
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("wallclock"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVProducerReferenceTime");
-    static final VarHandle const$3 = constants$199.const$2.varHandle(MemoryLayout.PathElement.groupElement("wallclock"));
-    static final VarHandle const$4 = constants$199.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$0 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("block_align"));
+    static final VarHandle const$1 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
+    static final VarHandle const$2 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("initial_padding"));
+    static final VarHandle const$3 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
+    static final VarHandle const$4 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("seek_preroll"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_xiphlacing",
-        constants$82.const$5
+        "avcodec_parameters_alloc",
+        constants$4.const$0
     );
 }
 

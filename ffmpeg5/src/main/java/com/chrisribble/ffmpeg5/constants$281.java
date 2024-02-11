@@ -11,31 +11,20 @@ final class constants$281 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$281() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_w8",
-        constants$159.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
+    static final VarHandle const$0 = constants$274.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        JAVA_INT
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_write",
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVIOContext.write_data_type.class, "apply", constants$281.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         constants$281.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avio_wl64",
-        constants$104.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_wb64",
-        constants$104.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avio_wl32",
-        constants$159.const$2
-    );
+    static final VarHandle const$4 = constants$274.const$5.varHandle(MemoryLayout.PathElement.groupElement("write_data_type"));
+    static final VarHandle const$5 = constants$274.const$5.varHandle(MemoryLayout.PathElement.groupElement("ignore_boundary_point"));
 }
 
 

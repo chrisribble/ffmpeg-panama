@@ -12,20 +12,36 @@ final class constants$290 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$290() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_append_packet",
-        constants$109.const$5
+        "avio_rb64",
+        constants$82.const$0
     );
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("filename"),
-        RuntimeHelper.POINTER.withName("buf"),
-        JAVA_INT.withName("buf_size"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("mime_type")
-    ).withName("AVProbeData");
-    static final VarHandle const$2 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("filename"));
-    static final VarHandle const$3 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf"));
-    static final VarHandle const$4 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
-    static final VarHandle const$5 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avio_get_str",
+        constants$184.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avio_get_str16le",
+        constants$184.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avio_get_str16be",
+        constants$184.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avio_open",
+        constants$66.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "avio_open2",
+        constants$290.const$5
+    );
 }
 
 

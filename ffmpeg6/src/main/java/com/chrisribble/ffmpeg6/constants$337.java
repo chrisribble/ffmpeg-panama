@@ -11,30 +11,18 @@ final class constants$337 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$337() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_get_chroma_sub_sample",
-        constants$72.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_count_planes",
-        constants$1.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_color_range_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_color_range_from_name",
-        constants$0.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_color_primaries_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_color_primaries_from_name",
-        constants$0.const$3
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("plane"),
+        JAVA_INT.withName("step"),
+        JAVA_INT.withName("offset"),
+        JAVA_INT.withName("shift"),
+        JAVA_INT.withName("depth")
+    ).withName("AVComponentDescriptor");
+    static final VarHandle const$1 = constants$337.const$0.varHandle(MemoryLayout.PathElement.groupElement("plane"));
+    static final VarHandle const$2 = constants$337.const$0.varHandle(MemoryLayout.PathElement.groupElement("step"));
+    static final VarHandle const$3 = constants$337.const$0.varHandle(MemoryLayout.PathElement.groupElement("offset"));
+    static final VarHandle const$4 = constants$337.const$0.varHandle(MemoryLayout.PathElement.groupElement("shift"));
+    static final VarHandle const$5 = constants$337.const$0.varHandle(MemoryLayout.PathElement.groupElement("depth"));
 }
 
 

@@ -11,17 +11,37 @@ final class constants$352 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$352() {}
-    static final VarHandle const$0 = constants$351.const$5.varHandle(MemoryLayout.PathElement.groupElement("coeff"));
-    static final VarHandle const$1 = constants$351.const$5.varHandle(MemoryLayout.PathElement.groupElement("length"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("lumH"),
-        RuntimeHelper.POINTER.withName("lumV"),
-        RuntimeHelper.POINTER.withName("chrH"),
-        RuntimeHelper.POINTER.withName("chrV")
-    ).withName("SwsFilter");
-    static final VarHandle const$3 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("lumH"));
-    static final VarHandle const$4 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("lumV"));
-    static final VarHandle const$5 = constants$352.const$2.varHandle(MemoryLayout.PathElement.groupElement("chrH"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_image_copy",
+        constants$352.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_image_copy_uc_from",
+        constants$352.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_image_fill_arrays",
+        constants$2.const$3
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_image_get_buffer_size",
+        constants$352.const$4
+    );
 }
 
 

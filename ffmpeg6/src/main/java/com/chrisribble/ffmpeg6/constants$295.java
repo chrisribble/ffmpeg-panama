@@ -11,24 +11,35 @@ final class constants$295 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$295() {}
-    static final VarHandle const$0 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("read_close"));
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVInputFormat.read_seek.class, "apply", constants$295.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$295.const$1
-    );
-    static final VarHandle const$4 = constants$292.const$0.varHandle(MemoryLayout.PathElement.groupElement("read_seek"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("extensions"),
+        RuntimeHelper.POINTER.withName("codec_tag"),
+        RuntimeHelper.POINTER.withName("priv_class"),
+        RuntimeHelper.POINTER.withName("mime_type"),
+        JAVA_INT.withName("raw_codec_id"),
+        JAVA_INT.withName("priv_data_size"),
+        JAVA_INT.withName("flags_internal"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("read_probe"),
+        RuntimeHelper.POINTER.withName("read_header"),
+        RuntimeHelper.POINTER.withName("read_packet"),
+        RuntimeHelper.POINTER.withName("read_close"),
+        RuntimeHelper.POINTER.withName("read_seek"),
+        RuntimeHelper.POINTER.withName("read_timestamp"),
+        RuntimeHelper.POINTER.withName("read_play"),
+        RuntimeHelper.POINTER.withName("read_pause"),
+        RuntimeHelper.POINTER.withName("read_seek2"),
+        RuntimeHelper.POINTER.withName("get_device_list")
+    ).withName("AVInputFormat");
+    static final VarHandle const$1 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$2 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
+    static final VarHandle const$3 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$4 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("extensions"));
+    static final VarHandle const$5 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("codec_tag"));
 }
 
 

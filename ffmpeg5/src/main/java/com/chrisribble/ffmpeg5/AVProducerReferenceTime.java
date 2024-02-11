@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVProducerReferenceTime {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$199.const$2;
+        return constants$203.const$0;
     }
     public static VarHandle wallclock$VH() {
-        return constants$199.const$3;
+        return constants$203.const$1;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class AVProducerReferenceTime {
      * }
      */
     public static long wallclock$get(MemorySegment seg) {
-        return (long)constants$199.const$3.get(seg);
+        return (long)constants$203.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class AVProducerReferenceTime {
      * }
      */
     public static void wallclock$set(MemorySegment seg, long x) {
-        constants$199.const$3.set(seg, x);
+        constants$203.const$1.set(seg, x);
     }
     public static long wallclock$get(MemorySegment seg, long index) {
-        return (long)constants$199.const$3.get(seg.asSlice(index*sizeof()));
+        return (long)constants$203.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void wallclock$set(MemorySegment seg, long index, long x) {
-        constants$199.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$203.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flags$VH() {
-        return constants$199.const$4;
+        return constants$203.const$2;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class AVProducerReferenceTime {
      * }
      */
     public static int flags$get(MemorySegment seg) {
-        return (int)constants$199.const$4.get(seg);
+        return (int)constants$203.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class AVProducerReferenceTime {
      * }
      */
     public static void flags$set(MemorySegment seg, int x) {
-        constants$199.const$4.set(seg, x);
+        constants$203.const$2.set(seg, x);
     }
     public static int flags$get(MemorySegment seg, long index) {
-        return (int)constants$199.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$203.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void flags$set(MemorySegment seg, long index, int x) {
-        constants$199.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$203.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

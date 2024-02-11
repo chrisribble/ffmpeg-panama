@@ -11,33 +11,29 @@ final class constants$153 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$153() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_buffer_is_writable",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_dict_get",
-        constants$153.const$0
+        "av_buffer_get_opaque",
+        constants$69.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_dict_count",
+        "av_buffer_get_ref_count",
         constants$0.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_dict_set",
-        constants$141.const$3
+        "av_buffer_make_writable",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_buffer_realloc",
+        constants$117.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_dict_set_int",
-        constants$153.const$4
+        "av_buffer_replace",
+        constants$68.const$3
     );
 }
 

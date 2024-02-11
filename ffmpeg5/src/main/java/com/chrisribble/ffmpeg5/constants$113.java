@@ -12,35 +12,28 @@ final class constants$113 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$113() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "ldiv",
-        constants$6.const$0
+        "unsetenv",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "lldiv",
-        constants$6.const$0
+        "clearenv",
+        constants$3.const$4
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "mktemp",
+        constants$69.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "ecvt",
-        constants$113.const$2
+        "mkstemp",
+        constants$0.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fcvt",
-        constants$113.const$2
+        "mkstemps",
+        constants$85.const$5
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "gcvt",
-        constants$113.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "mkdtemp",
+        constants$69.const$2
     );
 }
 

@@ -11,20 +11,29 @@ final class constants$191 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$191() {}
-    static final VarHandle const$0 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("props"));
-    static final VarHandle const$1 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_types"));
-    static final VarHandle const$2 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("profiles"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_codec_iterate",
+        constants$69.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avcodec_find_decoder",
+        constants$0.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avcodec_find_decoder_by_name",
+        constants$69.const$2
+    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_descriptor_get",
+        "avcodec_find_encoder",
         constants$0.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_descriptor_next",
-        constants$67.const$1
+        "avcodec_find_encoder_by_name",
+        constants$69.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_descriptor_get_by_name",
-        constants$67.const$1
+        "av_codec_is_encoder",
+        constants$0.const$3
     );
 }
 

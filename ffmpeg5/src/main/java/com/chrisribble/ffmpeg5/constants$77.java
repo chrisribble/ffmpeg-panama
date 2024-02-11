@@ -12,29 +12,28 @@ final class constants$77 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$77() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "getdelim",
-        constants$76.const$4
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "getline",
-        constants$77.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "fputs",
-        constants$66.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "puts",
+        "fgetc",
         constants$0.const$3
     );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "getc",
+        constants$0.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "getchar",
+        constants$3.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "getc_unlocked",
+        constants$0.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getchar_unlocked",
+        constants$3.const$4
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "ungetc",
-        constants$72.const$4
+        "fgetc_unlocked",
+        constants$0.const$3
     );
 }
 

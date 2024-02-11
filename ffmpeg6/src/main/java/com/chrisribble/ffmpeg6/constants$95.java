@@ -11,55 +11,12 @@ final class constants$95 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$95() {}
-    static final UnionLayout const$0 = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("pthread_attr_t");
-    static final VarHandle const$1 = constants$95.const$0.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final UnionLayout const$2 = MemoryLayout.unionLayout(
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("__lock"),
-            JAVA_INT.withName("__count"),
-            JAVA_INT.withName("__owner"),
-            JAVA_INT.withName("__nusers"),
-            JAVA_INT.withName("__kind"),
-            JAVA_SHORT.withName("__spins"),
-            JAVA_SHORT.withName("__elision"),
-            MemoryLayout.structLayout(
-                RuntimeHelper.POINTER.withName("__prev"),
-                RuntimeHelper.POINTER.withName("__next")
-            ).withName("__list")
-        ).withName("__data"),
-        MemoryLayout.sequenceLayout(40, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("");
-    static final VarHandle const$3 = constants$95.const$2.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final UnionLayout const$4 = MemoryLayout.unionLayout(
-        MemoryLayout.structLayout(
-            MemoryLayout.unionLayout(
-                JAVA_LONG.withName("__value64"),
-                MemoryLayout.structLayout(
-                    JAVA_INT.withName("__low"),
-                    JAVA_INT.withName("__high")
-                ).withName("__value32")
-            ).withName("__wseq"),
-            MemoryLayout.unionLayout(
-                JAVA_LONG.withName("__value64"),
-                MemoryLayout.structLayout(
-                    JAVA_INT.withName("__low"),
-                    JAVA_INT.withName("__high")
-                ).withName("__value32")
-            ).withName("__g1_start"),
-            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_refs"),
-            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_size"),
-            JAVA_INT.withName("__g1_orig_size"),
-            JAVA_INT.withName("__wrefs"),
-            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_signals")
-        ).withName("__data"),
-        MemoryLayout.sequenceLayout(48, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("");
-    static final VarHandle const$5 = constants$95.const$4.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final VarHandle const$0 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__readers"));
+    static final VarHandle const$1 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__writers"));
+    static final VarHandle const$2 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__wrphase_futex"));
+    static final VarHandle const$3 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__writers_futex"));
+    static final VarHandle const$4 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad3"));
+    static final VarHandle const$5 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad4"));
 }
 
 

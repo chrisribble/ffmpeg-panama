@@ -11,14 +11,12 @@ final class constants$323 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$323() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$322.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$322.const$5
-    );
-    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVFormatContext.io_close.class, "apply", constants$69.const$3);
-    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("io_close"));
-    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
+    static final VarHandle const$0 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("seek2any"));
+    static final VarHandle const$1 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("flush_packets"));
+    static final VarHandle const$2 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("probe_score"));
+    static final VarHandle const$3 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("format_probesize"));
+    static final VarHandle const$4 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("codec_whitelist"));
+    static final VarHandle const$5 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("format_whitelist"));
 }
 
 

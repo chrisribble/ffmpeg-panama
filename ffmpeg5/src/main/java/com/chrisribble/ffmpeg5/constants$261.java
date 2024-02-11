@@ -11,32 +11,29 @@ final class constants$261 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$261() {}
-    static final VarHandle const$0 = constants$259.const$1.varHandle(MemoryLayout.PathElement.groupElement("tm_zone"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("tv_sec"),
-            JAVA_LONG.withName("tv_nsec")
-        ).withName("it_interval"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("tv_sec"),
-            JAVA_LONG.withName("tv_nsec")
-        ).withName("it_value")
-    ).withName("itimerspec");
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(avcodec_default_execute2$func.class, "apply", constants$260.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$260.const$5
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "clock",
-        constants$83.const$5
+        "avcodec_default_execute2",
+        constants$157.const$4
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "time",
-        constants$79.const$0
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_DOUBLE,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_fill_audio_frame",
+        constants$261.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "difftime",
-        constants$261.const$4
+        "avcodec_flush_buffers",
+        constants$72.const$4
     );
 }
 

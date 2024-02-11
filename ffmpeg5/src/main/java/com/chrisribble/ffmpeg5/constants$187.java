@@ -11,12 +11,30 @@ final class constants$187 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$187() {}
-    static final VarHandle const$0 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("sample_fmts"));
-    static final VarHandle const$1 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("channel_layouts"));
-    static final VarHandle const$2 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("priv_class"));
-    static final VarHandle const$3 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("profiles"));
-    static final VarHandle const$4 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("wrapper_name"));
-    static final VarHandle const$5 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("ch_layouts"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_hwframe_map",
+        constants$66.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_hwframe_ctx_create_derived",
+        constants$183.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avcodec_get_type",
+        constants$1.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avcodec_get_name",
+        constants$0.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_get_bits_per_sample",
+        constants$1.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_get_exact_bits_per_sample",
+        constants$1.const$0
+    );
 }
 
 

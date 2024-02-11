@@ -11,12 +11,30 @@ final class constants$165 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$165() {}
-    static final VarHandle const$0 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("width"));
-    static final VarHandle const$1 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final VarHandle const$2 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_samples"));
-    static final VarHandle const$3 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$4 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("key_frame"));
-    static final VarHandle const$5 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("pict_type"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_describe_bprint",
+        constants$68.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_channel_from_index",
+        constants$85.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_index_from_channel",
+        constants$85.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_index_from_string",
+        constants$68.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_channel_from_string",
+        constants$68.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_subset",
+        constants$126.const$2
+    );
 }
 
 

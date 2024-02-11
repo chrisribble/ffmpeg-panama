@@ -20,10 +20,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVChannelLayout {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$155.const$3;
+        return constants$159.const$1;
     }
     public static VarHandle order$VH() {
-        return constants$155.const$4;
+        return constants$159.const$2;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class AVChannelLayout {
      * }
      */
     public static int order$get(MemorySegment seg) {
-        return (int)constants$155.const$4.get(seg);
+        return (int)constants$159.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class AVChannelLayout {
      * }
      */
     public static void order$set(MemorySegment seg, int x) {
-        constants$155.const$4.set(seg, x);
+        constants$159.const$2.set(seg, x);
     }
     public static int order$get(MemorySegment seg, long index) {
-        return (int)constants$155.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$159.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void order$set(MemorySegment seg, long index, int x) {
-        constants$155.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$159.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle nb_channels$VH() {
-        return constants$155.const$5;
+        return constants$159.const$3;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class AVChannelLayout {
      * }
      */
     public static int nb_channels$get(MemorySegment seg) {
-        return (int)constants$155.const$5.get(seg);
+        return (int)constants$159.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -68,13 +68,13 @@ public class AVChannelLayout {
      * }
      */
     public static void nb_channels$set(MemorySegment seg, int x) {
-        constants$155.const$5.set(seg, x);
+        constants$159.const$3.set(seg, x);
     }
     public static int nb_channels$get(MemorySegment seg, long index) {
-        return (int)constants$155.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$159.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void nb_channels$set(MemorySegment seg, long index, int x) {
-        constants$155.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$159.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -89,10 +89,10 @@ public class AVChannelLayout {
         // Suppresses default constructor, ensuring non-instantiability.
         private u() {}
         public static MemoryLayout $LAYOUT() {
-            return constants$156.const$0;
+            return constants$159.const$4;
         }
         public static VarHandle mask$VH() {
-            return constants$156.const$1;
+            return constants$159.const$5;
         }
         /**
          * Getter for field:
@@ -101,7 +101,7 @@ public class AVChannelLayout {
          * }
          */
         public static long mask$get(MemorySegment seg) {
-            return (long)constants$156.const$1.get(seg);
+            return (long)constants$159.const$5.get(seg);
         }
         /**
          * Setter for field:
@@ -110,16 +110,16 @@ public class AVChannelLayout {
          * }
          */
         public static void mask$set(MemorySegment seg, long x) {
-            constants$156.const$1.set(seg, x);
+            constants$159.const$5.set(seg, x);
         }
         public static long mask$get(MemorySegment seg, long index) {
-            return (long)constants$156.const$1.get(seg.asSlice(index*sizeof()));
+            return (long)constants$159.const$5.get(seg.asSlice(index*sizeof()));
         }
         public static void mask$set(MemorySegment seg, long index, long x) {
-            constants$156.const$1.set(seg.asSlice(index*sizeof()), x);
+            constants$159.const$5.set(seg.asSlice(index*sizeof()), x);
         }
         public static VarHandle map$VH() {
-            return constants$156.const$2;
+            return constants$160.const$0;
         }
         /**
          * Getter for field:
@@ -128,7 +128,7 @@ public class AVChannelLayout {
          * }
          */
         public static MemorySegment map$get(MemorySegment seg) {
-            return (java.lang.foreign.MemorySegment)constants$156.const$2.get(seg);
+            return (java.lang.foreign.MemorySegment)constants$160.const$0.get(seg);
         }
         /**
          * Setter for field:
@@ -137,13 +137,13 @@ public class AVChannelLayout {
          * }
          */
         public static void map$set(MemorySegment seg, MemorySegment x) {
-            constants$156.const$2.set(seg, x);
+            constants$160.const$0.set(seg, x);
         }
         public static MemorySegment map$get(MemorySegment seg, long index) {
-            return (java.lang.foreign.MemorySegment)constants$156.const$2.get(seg.asSlice(index*sizeof()));
+            return (java.lang.foreign.MemorySegment)constants$160.const$0.get(seg.asSlice(index*sizeof()));
         }
         public static void map$set(MemorySegment seg, long index, MemorySegment x) {
-            constants$156.const$2.set(seg.asSlice(index*sizeof()), x);
+            constants$160.const$0.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
@@ -157,7 +157,7 @@ public class AVChannelLayout {
         return seg.asSlice(8, 8);
     }
     public static VarHandle opaque$VH() {
-        return constants$156.const$3;
+        return constants$160.const$1;
     }
     /**
      * Getter for field:
@@ -166,7 +166,7 @@ public class AVChannelLayout {
      * }
      */
     public static MemorySegment opaque$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$156.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$160.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -175,13 +175,13 @@ public class AVChannelLayout {
      * }
      */
     public static void opaque$set(MemorySegment seg, MemorySegment x) {
-        constants$156.const$3.set(seg, x);
+        constants$160.const$1.set(seg, x);
     }
     public static MemorySegment opaque$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$156.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$160.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void opaque$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$156.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$160.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

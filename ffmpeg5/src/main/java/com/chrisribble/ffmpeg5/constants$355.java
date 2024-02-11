@@ -12,39 +12,23 @@ final class constants$355 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$355() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_frame_start",
-        constants$71.const$1
+        "sws_getCoefficients",
+        constants$0.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_frame_end",
-        constants$70.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_send_slice",
-        constants$337.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_receive_slice",
-        constants$337.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_receive_slice_alignment",
-        constants$0.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "sws_setColorspaceDetails",
-        constants$355.const$5
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("coeff"),
+        JAVA_INT.withName("length"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("SwsVector");
+    static final VarHandle const$2 = constants$355.const$1.varHandle(MemoryLayout.PathElement.groupElement("coeff"));
+    static final VarHandle const$3 = constants$355.const$1.varHandle(MemoryLayout.PathElement.groupElement("length"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("lumH"),
+        RuntimeHelper.POINTER.withName("lumV"),
+        RuntimeHelper.POINTER.withName("chrH"),
+        RuntimeHelper.POINTER.withName("chrV")
+    ).withName("SwsFilter");
+    static final VarHandle const$5 = constants$355.const$4.varHandle(MemoryLayout.PathElement.groupElement("lumH"));
 }
 
 

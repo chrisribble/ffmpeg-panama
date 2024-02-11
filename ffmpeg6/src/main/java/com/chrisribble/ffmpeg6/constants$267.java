@@ -11,32 +11,15 @@ final class constants$267 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$267() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "timer_delete",
-        constants$0.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "timer_settime",
-        constants$267.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "timer_gettime",
-        constants$66.const$1
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("__daylight", JAVA_INT);
+    static final VarHandle const$1 = JAVA_LONG.varHandle();
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("__timezone", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("tzname", constants$266.const$4);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "timer_getoverrun",
-        constants$0.const$3
+        "tzset",
+        constants$110.const$1
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "timespec_get",
-        constants$82.const$5
-    );
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("daylight", JAVA_INT);
 }
 
 

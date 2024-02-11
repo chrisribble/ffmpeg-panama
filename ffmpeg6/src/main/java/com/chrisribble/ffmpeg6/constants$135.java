@@ -11,43 +11,34 @@ final class constants$135 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$135() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_q2intfloat",
+        "av_dynarray2_add",
         constants$135.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_gcd_q",
+        "av_size_mult",
         constants$135.const$2
     );
-    static final UnionLayout const$4 = MemoryLayout.unionLayout(
-        JAVA_INT.withName("i"),
-        JAVA_FLOAT.withName("f")
-    ).withName("av_intfloat32");
-    static final VarHandle const$5 = constants$135.const$4.varHandle(MemoryLayout.PathElement.groupElement("i"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_max_alloc",
+        constants$104.const$2
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__clang_max_align_nonce1"),
+        MemoryLayout.paddingLayout(8),
+        MemoryLayout.paddingLayout(16).withName("__clang_max_align_nonce2")
+    ).withName("");
 }
 
 

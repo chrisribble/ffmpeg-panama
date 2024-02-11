@@ -11,36 +11,20 @@ final class constants$307 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$307() {}
-    static final VarHandle const$0 = constants$305.const$0.varHandle(MemoryLayout.PathElement.groupElement("event_flags"));
-    static final VarHandle const$1 = constants$305.const$0.varHandle(MemoryLayout.PathElement.groupElement("codecpar"));
-    static final VarHandle const$2 = constants$305.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_bits"));
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_stream_get_parser",
-        constants$67.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_stream_get_end_pts",
-        constants$79.const$0
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_INT.withName("id"),
-        JAVA_INT.withName("flags"),
-        JAVA_INT.withName("discard"),
+    static final VarHandle const$0 = constants$301.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_device_list"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("pos"),
+        JAVA_LONG.withName("timestamp"),
         MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("stream_index"),
-        JAVA_INT.withName("nb_stream_indexes"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("metadata"),
-        JAVA_INT.withName("program_num"),
-        JAVA_INT.withName("pmt_pid"),
-        JAVA_INT.withName("pcr_pid"),
-        JAVA_INT.withName("pmt_version"),
-        JAVA_LONG.withName("start_time"),
-        JAVA_LONG.withName("end_time"),
-        JAVA_LONG.withName("pts_wrap_reference"),
-        JAVA_INT.withName("pts_wrap_behavior"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVProgram");
+        JAVA_INT.withName("min_distance")
+    ).withName("AVIndexEntry");
+    static final VarHandle const$2 = constants$307.const$1.varHandle(MemoryLayout.PathElement.groupElement("pos"));
+    static final VarHandle const$3 = constants$307.const$1.varHandle(MemoryLayout.PathElement.groupElement("timestamp"));
+    static final VarHandle const$4 = constants$307.const$1.varHandle(MemoryLayout.PathElement.groupElement("min_distance"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_disposition_from_string",
+        constants$0.const$3
+    );
 }
 
 

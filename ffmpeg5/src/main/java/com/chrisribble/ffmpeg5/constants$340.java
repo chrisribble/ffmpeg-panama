@@ -11,27 +11,31 @@ final class constants$340 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$340() {}
-    static final VarHandle const$0 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("offset"));
-    static final VarHandle const$1 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("shift"));
-    static final VarHandle const$2 = constants$339.const$3.varHandle(MemoryLayout.PathElement.groupElement("depth"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("name"),
-        JAVA_BYTE.withName("nb_components"),
-        JAVA_BYTE.withName("log2_chroma_w"),
-        JAVA_BYTE.withName("log2_chroma_h"),
-        MemoryLayout.paddingLayout(5),
-        JAVA_LONG.withName("flags"),
-        MemoryLayout.sequenceLayout(4, MemoryLayout.structLayout(
-            JAVA_INT.withName("plane"),
-            JAVA_INT.withName("step"),
-            JAVA_INT.withName("offset"),
-            JAVA_INT.withName("shift"),
-            JAVA_INT.withName("depth")
-        ).withName("AVComponentDescriptor")).withName("comp"),
-        RuntimeHelper.POINTER.withName("alias")
-    ).withName("AVPixFmtDescriptor");
-    static final VarHandle const$4 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$5 = constants$340.const$3.varHandle(MemoryLayout.PathElement.groupElement("nb_components"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_filename_number_test",
+        constants$0.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_sdp_create",
+        constants$184.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_match_ext",
+        constants$68.const$3
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avformat_query_codec",
+        constants$340.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avformat_get_riff_video_tags",
+        constants$4.const$0
+    );
 }
 
 

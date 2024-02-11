@@ -11,18 +11,31 @@ final class constants$334 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$334() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("plane"),
-        JAVA_INT.withName("step"),
-        JAVA_INT.withName("offset"),
-        JAVA_INT.withName("shift"),
-        JAVA_INT.withName("depth")
-    ).withName("AVComponentDescriptor");
-    static final VarHandle const$1 = constants$334.const$0.varHandle(MemoryLayout.PathElement.groupElement("plane"));
-    static final VarHandle const$2 = constants$334.const$0.varHandle(MemoryLayout.PathElement.groupElement("step"));
-    static final VarHandle const$3 = constants$334.const$0.varHandle(MemoryLayout.PathElement.groupElement("offset"));
-    static final VarHandle const$4 = constants$334.const$0.varHandle(MemoryLayout.PathElement.groupElement("shift"));
-    static final VarHandle const$5 = constants$334.const$0.varHandle(MemoryLayout.PathElement.groupElement("depth"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_get_frame_filename",
+        constants$183.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_filename_number_test",
+        constants$0.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_sdp_create",
+        constants$183.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_match_ext",
+        constants$68.const$3
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avformat_query_codec",
+        constants$334.const$4
+    );
 }
 
 

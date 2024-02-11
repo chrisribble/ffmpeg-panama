@@ -12,28 +12,27 @@ final class constants$104 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$104() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "seed48_r",
-        constants$66.const$1
+        "mrand48",
+        constants$86.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "lcong48_r",
-        constants$66.const$1
+        "jrand48",
+        constants$82.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "arc4random",
-        constants$3.const$4
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
         JAVA_LONG
     );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "srand48",
+        constants$104.const$2
+    );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "arc4random_buf",
-        constants$104.const$3
+        "seed48",
+        constants$69.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "arc4random_uniform",
-        constants$1.const$0
+        "lcong48",
+        constants$72.const$4
     );
 }
 

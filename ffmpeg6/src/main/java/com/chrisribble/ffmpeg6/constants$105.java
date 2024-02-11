@@ -11,29 +11,23 @@ final class constants$105 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$105() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "malloc",
-        constants$86.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "calloc",
-        constants$105.const$1
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(3, JAVA_SHORT).withName("__x"),
+        MemoryLayout.sequenceLayout(3, JAVA_SHORT).withName("__old_x"),
+        JAVA_SHORT.withName("__c"),
+        JAVA_SHORT.withName("__init"),
+        JAVA_LONG.withName("__a")
+    ).withName("drand48_data");
+    static final VarHandle const$1 = constants$105.const$0.varHandle(MemoryLayout.PathElement.groupElement("__c"));
+    static final VarHandle const$2 = constants$105.const$0.varHandle(MemoryLayout.PathElement.groupElement("__init"));
+    static final VarHandle const$3 = constants$105.const$0.varHandle(MemoryLayout.PathElement.groupElement("__a"));
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "realloc",
-        constants$105.const$3
+        "drand48_r",
+        constants$68.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "free",
-        constants$70.const$2
+        "erand48_r",
+        constants$73.const$3
     );
 }
 

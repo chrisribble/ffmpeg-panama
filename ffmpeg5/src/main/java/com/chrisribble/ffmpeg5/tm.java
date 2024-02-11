@@ -27,10 +27,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class tm {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$259.const$1;
+        return constants$262.const$4;
     }
     public static VarHandle tm_sec$VH() {
-        return constants$259.const$2;
+        return constants$262.const$5;
     }
     /**
      * Getter for field:
@@ -39,7 +39,7 @@ public class tm {
      * }
      */
     public static int tm_sec$get(MemorySegment seg) {
-        return (int)constants$259.const$2.get(seg);
+        return (int)constants$262.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -48,16 +48,16 @@ public class tm {
      * }
      */
     public static void tm_sec$set(MemorySegment seg, int x) {
-        constants$259.const$2.set(seg, x);
+        constants$262.const$5.set(seg, x);
     }
     public static int tm_sec$get(MemorySegment seg, long index) {
-        return (int)constants$259.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$262.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_sec$set(MemorySegment seg, long index, int x) {
-        constants$259.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$262.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_min$VH() {
-        return constants$259.const$3;
+        return constants$263.const$0;
     }
     /**
      * Getter for field:
@@ -66,7 +66,7 @@ public class tm {
      * }
      */
     public static int tm_min$get(MemorySegment seg) {
-        return (int)constants$259.const$3.get(seg);
+        return (int)constants$263.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -75,16 +75,16 @@ public class tm {
      * }
      */
     public static void tm_min$set(MemorySegment seg, int x) {
-        constants$259.const$3.set(seg, x);
+        constants$263.const$0.set(seg, x);
     }
     public static int tm_min$get(MemorySegment seg, long index) {
-        return (int)constants$259.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$263.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_min$set(MemorySegment seg, long index, int x) {
-        constants$259.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$263.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_hour$VH() {
-        return constants$259.const$4;
+        return constants$263.const$1;
     }
     /**
      * Getter for field:
@@ -93,7 +93,7 @@ public class tm {
      * }
      */
     public static int tm_hour$get(MemorySegment seg) {
-        return (int)constants$259.const$4.get(seg);
+        return (int)constants$263.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -102,16 +102,16 @@ public class tm {
      * }
      */
     public static void tm_hour$set(MemorySegment seg, int x) {
-        constants$259.const$4.set(seg, x);
+        constants$263.const$1.set(seg, x);
     }
     public static int tm_hour$get(MemorySegment seg, long index) {
-        return (int)constants$259.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$263.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_hour$set(MemorySegment seg, long index, int x) {
-        constants$259.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$263.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_mday$VH() {
-        return constants$259.const$5;
+        return constants$263.const$2;
     }
     /**
      * Getter for field:
@@ -120,7 +120,7 @@ public class tm {
      * }
      */
     public static int tm_mday$get(MemorySegment seg) {
-        return (int)constants$259.const$5.get(seg);
+        return (int)constants$263.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -129,16 +129,16 @@ public class tm {
      * }
      */
     public static void tm_mday$set(MemorySegment seg, int x) {
-        constants$259.const$5.set(seg, x);
+        constants$263.const$2.set(seg, x);
     }
     public static int tm_mday$get(MemorySegment seg, long index) {
-        return (int)constants$259.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$263.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_mday$set(MemorySegment seg, long index, int x) {
-        constants$259.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$263.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_mon$VH() {
-        return constants$260.const$0;
+        return constants$263.const$3;
     }
     /**
      * Getter for field:
@@ -147,7 +147,7 @@ public class tm {
      * }
      */
     public static int tm_mon$get(MemorySegment seg) {
-        return (int)constants$260.const$0.get(seg);
+        return (int)constants$263.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -156,16 +156,16 @@ public class tm {
      * }
      */
     public static void tm_mon$set(MemorySegment seg, int x) {
-        constants$260.const$0.set(seg, x);
+        constants$263.const$3.set(seg, x);
     }
     public static int tm_mon$get(MemorySegment seg, long index) {
-        return (int)constants$260.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$263.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_mon$set(MemorySegment seg, long index, int x) {
-        constants$260.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$263.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_year$VH() {
-        return constants$260.const$1;
+        return constants$263.const$4;
     }
     /**
      * Getter for field:
@@ -174,7 +174,7 @@ public class tm {
      * }
      */
     public static int tm_year$get(MemorySegment seg) {
-        return (int)constants$260.const$1.get(seg);
+        return (int)constants$263.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -183,16 +183,16 @@ public class tm {
      * }
      */
     public static void tm_year$set(MemorySegment seg, int x) {
-        constants$260.const$1.set(seg, x);
+        constants$263.const$4.set(seg, x);
     }
     public static int tm_year$get(MemorySegment seg, long index) {
-        return (int)constants$260.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$263.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_year$set(MemorySegment seg, long index, int x) {
-        constants$260.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$263.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_wday$VH() {
-        return constants$260.const$2;
+        return constants$263.const$5;
     }
     /**
      * Getter for field:
@@ -201,7 +201,7 @@ public class tm {
      * }
      */
     public static int tm_wday$get(MemorySegment seg) {
-        return (int)constants$260.const$2.get(seg);
+        return (int)constants$263.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -210,16 +210,16 @@ public class tm {
      * }
      */
     public static void tm_wday$set(MemorySegment seg, int x) {
-        constants$260.const$2.set(seg, x);
+        constants$263.const$5.set(seg, x);
     }
     public static int tm_wday$get(MemorySegment seg, long index) {
-        return (int)constants$260.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$263.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_wday$set(MemorySegment seg, long index, int x) {
-        constants$260.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$263.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_yday$VH() {
-        return constants$260.const$3;
+        return constants$264.const$0;
     }
     /**
      * Getter for field:
@@ -228,7 +228,7 @@ public class tm {
      * }
      */
     public static int tm_yday$get(MemorySegment seg) {
-        return (int)constants$260.const$3.get(seg);
+        return (int)constants$264.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -237,16 +237,16 @@ public class tm {
      * }
      */
     public static void tm_yday$set(MemorySegment seg, int x) {
-        constants$260.const$3.set(seg, x);
+        constants$264.const$0.set(seg, x);
     }
     public static int tm_yday$get(MemorySegment seg, long index) {
-        return (int)constants$260.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$264.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_yday$set(MemorySegment seg, long index, int x) {
-        constants$260.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$264.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_isdst$VH() {
-        return constants$260.const$4;
+        return constants$264.const$1;
     }
     /**
      * Getter for field:
@@ -255,7 +255,7 @@ public class tm {
      * }
      */
     public static int tm_isdst$get(MemorySegment seg) {
-        return (int)constants$260.const$4.get(seg);
+        return (int)constants$264.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -264,16 +264,16 @@ public class tm {
      * }
      */
     public static void tm_isdst$set(MemorySegment seg, int x) {
-        constants$260.const$4.set(seg, x);
+        constants$264.const$1.set(seg, x);
     }
     public static int tm_isdst$get(MemorySegment seg, long index) {
-        return (int)constants$260.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$264.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_isdst$set(MemorySegment seg, long index, int x) {
-        constants$260.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$264.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_gmtoff$VH() {
-        return constants$260.const$5;
+        return constants$264.const$2;
     }
     /**
      * Getter for field:
@@ -282,7 +282,7 @@ public class tm {
      * }
      */
     public static long tm_gmtoff$get(MemorySegment seg) {
-        return (long)constants$260.const$5.get(seg);
+        return (long)constants$264.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -291,16 +291,16 @@ public class tm {
      * }
      */
     public static void tm_gmtoff$set(MemorySegment seg, long x) {
-        constants$260.const$5.set(seg, x);
+        constants$264.const$2.set(seg, x);
     }
     public static long tm_gmtoff$get(MemorySegment seg, long index) {
-        return (long)constants$260.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$264.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_gmtoff$set(MemorySegment seg, long index, long x) {
-        constants$260.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$264.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle tm_zone$VH() {
-        return constants$261.const$0;
+        return constants$264.const$3;
     }
     /**
      * Getter for field:
@@ -309,7 +309,7 @@ public class tm {
      * }
      */
     public static MemorySegment tm_zone$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$261.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$264.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -318,13 +318,13 @@ public class tm {
      * }
      */
     public static void tm_zone$set(MemorySegment seg, MemorySegment x) {
-        constants$261.const$0.set(seg, x);
+        constants$264.const$3.set(seg, x);
     }
     public static MemorySegment tm_zone$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$261.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$264.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void tm_zone$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$261.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$264.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

@@ -11,12 +11,15 @@ final class constants$202 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$202() {}
-    static final VarHandle const$0 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
-    static final VarHandle const$1 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("side_data_elems"));
-    static final VarHandle const$2 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final VarHandle const$3 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("pos"));
-    static final VarHandle const$4 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
-    static final VarHandle const$5 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque_ref"));
+    static final VarHandle const$0 = constants$201.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_bitrate"));
+    static final VarHandle const$1 = constants$201.const$5.varHandle(MemoryLayout.PathElement.groupElement("min_bitrate"));
+    static final VarHandle const$2 = constants$201.const$5.varHandle(MemoryLayout.PathElement.groupElement("avg_bitrate"));
+    static final VarHandle const$3 = constants$201.const$5.varHandle(MemoryLayout.PathElement.groupElement("buffer_size"));
+    static final VarHandle const$4 = constants$201.const$5.varHandle(MemoryLayout.PathElement.groupElement("vbv_delay"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_cpb_properties_alloc",
+        constants$69.const$2
+    );
 }
 
 

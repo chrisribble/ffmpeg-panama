@@ -11,12 +11,21 @@ final class constants$300 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$300() {}
-    static final VarHandle const$0 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
-    static final VarHandle const$1 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
-    static final VarHandle const$2 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final VarHandle const$3 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("nb_frames"));
-    static final VarHandle const$4 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("disposition"));
-    static final VarHandle const$5 = constants$299.const$1.varHandle(MemoryLayout.PathElement.groupElement("discard"));
+    static final VarHandle const$0 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("read_pause"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVInputFormat.read_seek2.class, "apply", constants$300.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$300.const$1
+    );
+    static final VarHandle const$4 = constants$295.const$0.varHandle(MemoryLayout.PathElement.groupElement("read_seek2"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVInputFormat.get_device_list.class, "apply", constants$68.const$3);
 }
 
 

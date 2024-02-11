@@ -11,21 +11,12 @@ final class constants$243 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$243() {}
-    static final VarHandle const$0 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("num_rects"));
-    static final VarHandle const$1 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("rects"));
-    static final VarHandle const$2 = constants$242.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts"));
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_version",
-        constants$3.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_configuration",
-        constants$4.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_license",
-        constants$4.const$0
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVHWAccel.uninit.class, "apply", constants$0.const$3);
+    static final VarHandle const$1 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("uninit"));
+    static final VarHandle const$2 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
+    static final VarHandle const$3 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("caps_internal"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWAccel.frame_params.class, "apply", constants$68.const$3);
+    static final VarHandle const$5 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("frame_params"));
 }
 
 

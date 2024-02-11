@@ -11,12 +11,24 @@ final class constants$293 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$293() {}
-    static final VarHandle const$0 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags_internal"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVOutputFormat.write_header.class, "apply", constants$0.const$3);
-    static final VarHandle const$2 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("write_header"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVOutputFormat.write_packet.class, "apply", constants$66.const$1);
-    static final VarHandle const$4 = constants$291.const$0.varHandle(MemoryLayout.PathElement.groupElement("write_packet"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVOutputFormat.write_trailer.class, "apply", constants$0.const$3);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_get_packet",
+        constants$66.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_append_packet",
+        constants$66.const$0
+    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("filename"),
+        RuntimeHelper.POINTER.withName("buf"),
+        JAVA_INT.withName("buf_size"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("mime_type")
+    ).withName("AVProbeData");
+    static final VarHandle const$3 = constants$293.const$2.varHandle(MemoryLayout.PathElement.groupElement("filename"));
+    static final VarHandle const$4 = constants$293.const$2.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final VarHandle const$5 = constants$293.const$2.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
 }
 
 

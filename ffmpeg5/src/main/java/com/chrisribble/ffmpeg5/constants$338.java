@@ -12,32 +12,37 @@ final class constants$338 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$338() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_get_mov_audio_tags",
-        constants$4.const$0
+        "av_index_search_timestamp",
+        constants$81.const$5
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avformat_index_get_entries_count",
+        constants$0.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_guess_sample_aspect_ratio",
-        constants$338.const$1
+        "avformat_index_get_entry",
+        constants$123.const$2
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_guess_frame_rate",
-        constants$338.const$1
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avformat_match_stream_specifier",
-        constants$71.const$1
+        "avformat_index_get_entry_from_timestamp",
+        constants$338.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_queue_attached_pictures",
-        constants$0.const$3
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_add_index_entry",
+        constants$338.const$5
     );
 }
 

@@ -11,29 +11,33 @@ final class constants$161 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$161() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_copy",
-        constants$66.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_describe",
-        constants$114.const$5
+        "av_bprint_channel_layout",
+        constants$161.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_describe_bprint",
-        constants$66.const$1
+        "av_get_channel_layout_nb_channels",
+        constants$128.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_channel_from_index",
-        constants$82.const$5
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_index_from_channel",
-        constants$82.const$5
+        "av_get_default_channel_layout",
+        constants$161.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_index_from_string",
-        constants$66.const$1
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_get_channel_layout_channel_index",
+        constants$161.const$5
     );
 }
 

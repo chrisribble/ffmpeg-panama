@@ -11,32 +11,25 @@ final class constants$66 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$66() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "remove",
-        constants$0.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(cookie_seek_function_t.class, "apply", constants$66.const$0);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "rename",
-        constants$66.const$1
+        constants$66.const$0
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(cookie_close_function_t.class, "apply", constants$0.const$3);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "renameat",
-        constants$66.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fclose",
         constants$0.const$3
     );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("seek"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("_IO_cookie_io_functions_t");
 }
 
 

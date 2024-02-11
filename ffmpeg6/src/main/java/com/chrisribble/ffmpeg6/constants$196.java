@@ -11,15 +11,12 @@ final class constants$196 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$196() {}
-    static final VarHandle const$0 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("block_align"));
-    static final VarHandle const$1 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
-    static final VarHandle const$2 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("initial_padding"));
-    static final VarHandle const$3 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
-    static final VarHandle const$4 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("seek_preroll"));
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_alloc",
-        constants$4.const$0
-    );
+    static final VarHandle const$0 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("format"));
+    static final VarHandle const$1 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
+    static final VarHandle const$2 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
+    static final VarHandle const$3 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
+    static final VarHandle const$4 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("profile"));
+    static final VarHandle const$5 = constants$195.const$0.varHandle(MemoryLayout.PathElement.groupElement("level"));
 }
 
 

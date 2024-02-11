@@ -12,29 +12,34 @@ final class constants$342 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$342() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_desc_get",
-        constants$0.const$1
+        "avformat_match_stream_specifier",
+        constants$73.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_desc_next",
-        constants$67.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_desc_get_id",
+        "avformat_queue_attached_pictures",
         constants$0.const$3
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_get_chroma_sub_sample",
-        constants$72.const$2
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avformat_transfer_internal_stream_timing_info",
+        constants$145.const$2
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"),
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_count_planes",
-        constants$1.const$0
+        "av_stream_get_codec_timebase",
+        constants$342.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_color_range_name",
-        constants$0.const$1
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("plane"),
+        JAVA_INT.withName("step"),
+        JAVA_INT.withName("offset"),
+        JAVA_INT.withName("shift"),
+        JAVA_INT.withName("depth")
+    ).withName("AVComponentDescriptor");
 }
 
 

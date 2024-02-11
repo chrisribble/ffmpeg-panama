@@ -11,26 +11,12 @@ final class constants$144 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$144() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_log_get_level",
-        constants$3.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_log_set_level",
-        constants$96.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(av_log_set_callback$callback.class, "apply", constants$143.const$4);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$143.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_log_set_callback",
-        constants$70.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_log_default_callback",
-        constants$143.const$4
-    );
+    static final VarHandle const$0 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("item_name"));
+    static final VarHandle const$1 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("option"));
+    static final VarHandle const$2 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$3 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("log_level_offset_offset"));
+    static final VarHandle const$4 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("parent_log_context_offset"));
+    static final VarHandle const$5 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("category"));
 }
 
 

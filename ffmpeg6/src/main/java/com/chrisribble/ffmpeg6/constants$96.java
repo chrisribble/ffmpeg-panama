@@ -11,42 +11,32 @@ final class constants$96 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$96() {}
-    static final UnionLayout const$0 = MemoryLayout.unionLayout(
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("__readers"),
-            JAVA_INT.withName("__writers"),
-            JAVA_INT.withName("__wrphase_futex"),
-            JAVA_INT.withName("__writers_futex"),
-            JAVA_INT.withName("__pad3"),
-            JAVA_INT.withName("__pad4"),
-            JAVA_INT.withName("__cur_writer"),
-            JAVA_INT.withName("__shared"),
-            JAVA_BYTE.withName("__rwelision"),
-            MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
-            JAVA_LONG.withName("__pad2"),
-            JAVA_INT.withName("__flags"),
-            MemoryLayout.paddingLayout(4)
-        ).withName("__data"),
-        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("");
-    static final VarHandle const$1 = constants$96.const$0.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final UnionLayout const$2 = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(8, JAVA_BYTE).withName("__size"),
-        JAVA_LONG.withName("__align")
-    ).withName("");
-    static final VarHandle const$3 = constants$96.const$2.varHandle(MemoryLayout.PathElement.groupElement("__align"));
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "random",
-        constants$83.const$5
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "srandom",
-        constants$96.const$5
-    );
+    static final VarHandle const$0 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__cur_writer"));
+    static final VarHandle const$1 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__shared"));
+    static final VarHandle const$2 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__rwelision"));
+    static final VarHandle const$3 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad2"));
+    static final VarHandle const$4 = constants$94.const$5.varHandle(MemoryLayout.PathElement.groupElement("__flags"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("__value64"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("__low"),
+                JAVA_INT.withName("__high")
+            ).withName("__value32")
+        ).withName("__wseq"),
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("__value64"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("__low"),
+                JAVA_INT.withName("__high")
+            ).withName("__value32")
+        ).withName("__g1_start"),
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_refs"),
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_size"),
+        JAVA_INT.withName("__g1_orig_size"),
+        JAVA_INT.withName("__wrefs"),
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_signals")
+    ).withName("__pthread_cond_s");
 }
 
 

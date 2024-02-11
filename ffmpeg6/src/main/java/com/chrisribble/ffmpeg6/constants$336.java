@@ -11,26 +11,31 @@ final class constants$336 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$336() {}
-    static final VarHandle const$0 = constants$335.const$0.varHandle(MemoryLayout.PathElement.groupElement("alias"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_guess_frame_rate",
+        constants$335.const$4
+    );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_bits_per_pixel",
-        constants$0.const$3
+        "avformat_match_stream_specifier",
+        constants$73.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_get_padded_bits_per_pixel",
+        "avformat_queue_attached_pictures",
         constants$0.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_desc_get",
-        constants$0.const$1
+        "avformat_transfer_internal_stream_timing_info",
+        constants$145.const$0
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_desc_next",
-        constants$67.const$1
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"),
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_pix_fmt_desc_get_id",
-        constants$0.const$3
+        "av_stream_get_codec_timebase",
+        constants$336.const$4
     );
 }
 

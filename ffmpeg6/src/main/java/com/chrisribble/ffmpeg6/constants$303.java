@@ -11,12 +11,12 @@ final class constants$303 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$303() {}
-    static final VarHandle const$0 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("nb_stream_indexes"));
-    static final VarHandle const$1 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
-    static final VarHandle const$2 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("program_num"));
-    static final VarHandle const$3 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("pmt_pid"));
-    static final VarHandle const$4 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("pcr_pid"));
-    static final VarHandle const$5 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("pmt_version"));
+    static final VarHandle const$0 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
+    static final VarHandle const$1 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
+    static final VarHandle const$2 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("duration"));
+    static final VarHandle const$3 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("nb_frames"));
+    static final VarHandle const$4 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("disposition"));
+    static final VarHandle const$5 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("discard"));
 }
 
 

@@ -11,12 +11,21 @@ final class constants$231 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$231() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("initial_padding"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("sw_pix_fmt"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("codec_descriptor"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts_correction_num_faulty_pts"));
-    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts_correction_num_faulty_dts"));
-    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts_correction_last_pts"));
+    static final VarHandle const$0 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("thread_type"));
+    static final VarHandle const$1 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("active_thread_type"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecContext.execute.class, "apply", constants$231.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$231.const$2
+    );
+    static final VarHandle const$5 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("execute"));
 }
 
 

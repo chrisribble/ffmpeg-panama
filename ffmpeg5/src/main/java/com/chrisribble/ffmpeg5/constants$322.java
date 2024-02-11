@@ -11,18 +11,12 @@ final class constants$322 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$322() {}
-    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("control_message_cb"));
-    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("output_ts_offset"));
-    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("dump_separator"));
-    static final VarHandle const$3 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("data_codec_id"));
-    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
+    static final VarHandle const$0 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("max_chunk_size"));
+    static final VarHandle const$1 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("use_wallclock_as_timestamps"));
+    static final VarHandle const$2 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("avio_flags"));
+    static final VarHandle const$3 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("duration_estimation_method"));
+    static final VarHandle const$4 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("skip_initial_bytes"));
+    static final VarHandle const$5 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("correct_ts_overflow"));
 }
 
 

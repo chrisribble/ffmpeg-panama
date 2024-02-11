@@ -11,12 +11,12 @@ final class constants$239 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$239() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVHWAccel.init.class, "apply", constants$0.const$3);
-    static final VarHandle const$1 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("init"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.uninit.class, "apply", constants$0.const$3);
-    static final VarHandle const$3 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("uninit"));
-    static final VarHandle const$4 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final VarHandle const$5 = constants$236.const$0.varHandle(MemoryLayout.PathElement.groupElement("caps_internal"));
+    static final VarHandle const$0 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$1 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$2 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$3 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
+    static final VarHandle const$4 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("capabilities"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVHWAccel.alloc_frame.class, "apply", constants$68.const$3);
 }
 
 

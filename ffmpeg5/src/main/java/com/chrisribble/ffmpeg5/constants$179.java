@@ -11,27 +11,20 @@ final class constants$179 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$179() {}
-    static final VarHandle const$0 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_find_type_by_name",
-        constants$0.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_get_type_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_iterate_types",
-        constants$1.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_alloc",
-        constants$0.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_init",
-        constants$0.const$3
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("av_class"),
+        RuntimeHelper.POINTER.withName("internal"),
+        JAVA_INT.withName("type"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("hwctx"),
+        RuntimeHelper.POINTER.withName("free"),
+        RuntimeHelper.POINTER.withName("user_opaque")
+    ).withName("AVHWDeviceContext");
+    static final VarHandle const$1 = constants$179.const$0.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
+    static final VarHandle const$2 = constants$179.const$0.varHandle(MemoryLayout.PathElement.groupElement("internal"));
+    static final VarHandle const$3 = constants$179.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$179.const$0.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVHWDeviceContext.free.class, "apply", constants$72.const$4);
 }
 
 

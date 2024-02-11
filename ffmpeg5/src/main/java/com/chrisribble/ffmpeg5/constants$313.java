@@ -11,12 +11,21 @@ final class constants$313 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$313() {}
-    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("nb_streams"));
-    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("streams"));
-    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("url"));
-    static final VarHandle const$3 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
-    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
+    static final VarHandle const$0 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("end_time"));
+    static final VarHandle const$1 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_reference"));
+    static final VarHandle const$2 = constants$311.const$0.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_behavior"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("id"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("time_base"),
+        JAVA_LONG.withName("start"),
+        JAVA_LONG.withName("end"),
+        RuntimeHelper.POINTER.withName("metadata")
+    ).withName("AVChapter");
+    static final VarHandle const$4 = constants$313.const$3.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$5 = constants$313.const$3.varHandle(MemoryLayout.PathElement.groupElement("start"));
 }
 
 

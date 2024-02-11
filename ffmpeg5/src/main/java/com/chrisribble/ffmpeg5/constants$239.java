@@ -11,12 +11,30 @@ final class constants$239 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$239() {}
-    static final VarHandle const$0 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("end_frame"));
-    static final VarHandle const$1 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("frame_priv_data_size"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWAccel.init.class, "apply", constants$0.const$3);
-    static final VarHandle const$3 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("init"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVHWAccel.uninit.class, "apply", constants$0.const$3);
-    static final VarHandle const$5 = constants$236.const$2.varHandle(MemoryLayout.PathElement.groupElement("uninit"));
+    static final VarHandle const$0 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_samples"));
+    static final VarHandle const$1 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("export_side_data"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVCodecContext.get_encode_buffer.class, "apply", constants$66.const$0);
+    static final VarHandle const$3 = constants$211.const$5.varHandle(MemoryLayout.PathElement.groupElement("get_encode_buffer"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("pix_fmt"),
+        JAVA_INT.withName("capabilities"),
+        RuntimeHelper.POINTER.withName("alloc_frame"),
+        RuntimeHelper.POINTER.withName("start_frame"),
+        RuntimeHelper.POINTER.withName("decode_params"),
+        RuntimeHelper.POINTER.withName("decode_slice"),
+        RuntimeHelper.POINTER.withName("end_frame"),
+        JAVA_INT.withName("frame_priv_data_size"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("init"),
+        RuntimeHelper.POINTER.withName("uninit"),
+        JAVA_INT.withName("priv_data_size"),
+        JAVA_INT.withName("caps_internal"),
+        RuntimeHelper.POINTER.withName("frame_params")
+    ).withName("AVHWAccel");
+    static final VarHandle const$5 = constants$239.const$4.varHandle(MemoryLayout.PathElement.groupElement("name"));
 }
 
 

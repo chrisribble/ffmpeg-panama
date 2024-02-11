@@ -11,28 +11,19 @@ final class constants$86 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$86() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "strtoll",
-        constants$6.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "strtoull",
-        constants$6.const$2
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "l64a",
-        constants$86.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "a64l",
-        constants$79.const$0
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__val")
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("quot"),
+        JAVA_INT.withName("rem")
     ).withName("");
+    static final VarHandle const$1 = constants$86.const$0.varHandle(MemoryLayout.PathElement.groupElement("quot"));
+    static final VarHandle const$2 = constants$86.const$0.varHandle(MemoryLayout.PathElement.groupElement("rem"));
+    static final VarHandle const$3 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("quot"));
+    static final VarHandle const$4 = constants$5.const$1.varHandle(MemoryLayout.PathElement.groupElement("rem"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "__ctype_get_mb_cur_max",
+        constants$86.const$5
+    );
 }
 
 

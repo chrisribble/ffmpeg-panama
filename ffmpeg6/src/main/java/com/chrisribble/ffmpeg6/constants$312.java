@@ -11,12 +11,12 @@ final class constants$312 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$312() {}
-    static final VarHandle const$0 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_interleave_delta"));
-    static final VarHandle const$1 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("strict_std_compliance"));
-    static final VarHandle const$2 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("event_flags"));
-    static final VarHandle const$3 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_ts_probe"));
-    static final VarHandle const$4 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("avoid_negative_ts"));
-    static final VarHandle const$5 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("ts_id"));
+    static final VarHandle const$0 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("probesize"));
+    static final VarHandle const$1 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_analyze_duration"));
+    static final VarHandle const$2 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("key"));
+    static final VarHandle const$3 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("keylen"));
+    static final VarHandle const$4 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("nb_programs"));
+    static final VarHandle const$5 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("programs"));
 }
 
 

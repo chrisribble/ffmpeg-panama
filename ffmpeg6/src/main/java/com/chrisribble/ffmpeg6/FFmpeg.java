@@ -211,6 +211,14 @@ public class FFmpeg extends FFmpeg_3 {
     }
     /**
      * {@snippet :
+     * #define __GLIBC_USE_C2X_STRTOL 0
+     * }
+     */
+    public static int __GLIBC_USE_C2X_STRTOL() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
      * #define _STDC_PREDEF_H 1
      * }
      */
@@ -251,11 +259,11 @@ public class FFmpeg extends FFmpeg_3 {
     }
     /**
      * {@snippet :
-     * #define __GLIBC_MINOR__ 37
+     * #define __GLIBC_MINOR__ 38
      * }
      */
     public static int __GLIBC_MINOR__() {
-        return (int)37L;
+        return (int)38L;
     }
     /**
      * {@snippet :
@@ -2411,6 +2419,14 @@ public class FFmpeg extends FFmpeg_3 {
     }
     /**
      * {@snippet :
+     * #define __cookie_io_functions_t_defined 1
+     * }
+     */
+    public static int __cookie_io_functions_t_defined() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
      * #define _IOFBF 0
      * }
      */
@@ -2467,14 +2483,6 @@ public class FFmpeg extends FFmpeg_3 {
     }
     /**
      * {@snippet :
-     * #define _BITS_STDIO_LIM_H 1
-     * }
-     */
-    public static int _BITS_STDIO_LIM_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
      * #define L_tmpnam 20
      * }
      */
@@ -2488,6 +2496,14 @@ public class FFmpeg extends FFmpeg_3 {
      */
     public static int TMP_MAX() {
         return (int)238328L;
+    }
+    /**
+     * {@snippet :
+     * #define _BITS_STDIO_LIM_H 1
+     * }
+     */
+    public static int _BITS_STDIO_LIM_H() {
+        return (int)1L;
     }
     /**
      * {@snippet :
@@ -9027,38 +9043,6 @@ public class FFmpeg extends FFmpeg_3 {
      */
     public static long lrint(double __x) {
         var mh$ = lrint$MH();
-        try {
-            return (long)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __lrint$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$0,"__lrint");
-    }
-    /**
-     * {@snippet :
-     * long __lrint(double __x);
-     * }
-     */
-    public static long __lrint(double __x) {
-        var mh$ = __lrint$MH();
-        try {
-            return (long)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle llrint$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$1,"llrint");
-    }
-    /**
-     * {@snippet :
-     * long long llrint(double __x);
-     * }
-     */
-    public static long llrint(double __x) {
-        var mh$ = llrint$MH();
         try {
             return (long)mh$.invokeExact(__x);
         } catch (Throwable ex$) {

@@ -11,12 +11,30 @@ final class constants$354 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$354() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "sws_allocVec",
+        constants$0.const$1
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_DOUBLE,
+        JAVA_DOUBLE
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sws_getGaussianVec",
+        constants$354.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_DOUBLE
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "sws_scaleVec",
+        constants$354.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_normalizeVec",
+        constants$354.const$3
+    );
 }
 
 

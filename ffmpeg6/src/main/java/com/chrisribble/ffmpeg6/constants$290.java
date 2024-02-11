@@ -11,23 +11,30 @@ final class constants$290 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$290() {}
-    static final VarHandle const$0 = constants$289.const$2.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("name"),
-        RuntimeHelper.POINTER.withName("long_name"),
-        RuntimeHelper.POINTER.withName("mime_type"),
-        RuntimeHelper.POINTER.withName("extensions"),
-        JAVA_INT.withName("audio_codec"),
-        JAVA_INT.withName("video_codec"),
-        JAVA_INT.withName("subtitle_codec"),
-        JAVA_INT.withName("flags"),
-        RuntimeHelper.POINTER.withName("codec_tag"),
-        RuntimeHelper.POINTER.withName("priv_class")
-    ).withName("AVOutputFormat");
-    static final VarHandle const$2 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$3 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
-    static final VarHandle const$4 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
-    static final VarHandle const$5 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("extensions"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avio_close",
+        constants$0.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avio_closep",
+        constants$0.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avio_open_dyn_buf",
+        constants$0.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avio_get_dyn_buf",
+        constants$68.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avio_close_dyn_buf",
+        constants$68.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avio_enum_protocols",
+        constants$123.const$2
+    );
 }
 
 

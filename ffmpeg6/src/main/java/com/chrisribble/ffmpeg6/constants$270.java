@@ -11,47 +11,32 @@ final class constants$270 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$270() {}
-    static final VarHandle const$0 = constants$268.const$4.varHandle(MemoryLayout.PathElement.groupElement("user_id"));
-    static final VarHandle const$1 = constants$268.const$4.varHandle(MemoryLayout.PathElement.groupElement("group_id"));
-    static final VarHandle const$2 = constants$268.const$4.varHandle(MemoryLayout.PathElement.groupElement("filemode"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("url_context")
-    ).withName("AVIODirContext");
-    static final VarHandle const$4 = constants$270.const$3.varHandle(MemoryLayout.PathElement.groupElement("url_context"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("av_class"),
-        RuntimeHelper.POINTER.withName("buffer"),
-        JAVA_INT.withName("buffer_size"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("buf_ptr"),
-        RuntimeHelper.POINTER.withName("buf_end"),
-        RuntimeHelper.POINTER.withName("opaque"),
-        RuntimeHelper.POINTER.withName("read_packet"),
-        RuntimeHelper.POINTER.withName("write_packet"),
-        RuntimeHelper.POINTER.withName("seek"),
-        JAVA_LONG.withName("pos"),
-        JAVA_INT.withName("eof_reached"),
-        JAVA_INT.withName("error"),
-        JAVA_INT.withName("write_flag"),
-        JAVA_INT.withName("max_packet_size"),
-        JAVA_INT.withName("min_packet_size"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("checksum"),
-        RuntimeHelper.POINTER.withName("checksum_ptr"),
-        RuntimeHelper.POINTER.withName("update_checksum"),
-        RuntimeHelper.POINTER.withName("read_pause"),
-        RuntimeHelper.POINTER.withName("read_seek"),
-        JAVA_INT.withName("seekable"),
-        JAVA_INT.withName("direct"),
-        RuntimeHelper.POINTER.withName("protocol_whitelist"),
-        RuntimeHelper.POINTER.withName("protocol_blacklist"),
-        RuntimeHelper.POINTER.withName("write_data_type"),
-        JAVA_INT.withName("ignore_boundary_point"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("buf_ptr_max"),
-        JAVA_LONG.withName("bytes_read"),
-        JAVA_LONG.withName("bytes_written")
-    ).withName("AVIOContext");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "timer_delete",
+        constants$0.const$3
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "timer_settime",
+        constants$270.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "timer_gettime",
+        constants$68.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "timer_getoverrun",
+        constants$0.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "timespec_get",
+        constants$85.const$5
+    );
 }
 
 

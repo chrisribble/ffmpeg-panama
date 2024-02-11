@@ -12,25 +12,30 @@ final class constants$150 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$150() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_buffer_realloc",
-        constants$114.const$3
+        "av_int_list_length_for_size",
+        constants$126.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_buffer_replace",
-        constants$66.const$1
+        "av_fopen_utf8",
+        constants$69.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(av_buffer_pool_init$alloc.class, "apply", constants$86.const$2);
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"));
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$86.const$2
+        "av_get_time_base_q",
+        constants$150.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_fourcc_make_string",
+        constants$123.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_buffer_pool_init",
-        constants$150.const$4
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("buffer"),
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_LONG.withName("size")
+    ).withName("AVBufferRef");
 }
 
 

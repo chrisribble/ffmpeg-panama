@@ -11,20 +11,12 @@ final class constants$317 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$317() {}
-    static final VarHandle const$0 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("data_codec_id"));
-    static final VarHandle const$1 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$317.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$317.const$2
-    );
-    static final VarHandle const$5 = constants$306.const$2.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
+    static final VarHandle const$0 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("skip_initial_bytes"));
+    static final VarHandle const$1 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("correct_ts_overflow"));
+    static final VarHandle const$2 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("seek2any"));
+    static final VarHandle const$3 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("flush_packets"));
+    static final VarHandle const$4 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("probe_score"));
+    static final VarHandle const$5 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("format_probesize"));
 }
 
 

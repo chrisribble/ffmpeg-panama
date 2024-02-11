@@ -11,20 +11,12 @@ final class constants$242 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$242() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_SHORT.withName("format"),
-        MemoryLayout.paddingLayout(2),
-        JAVA_INT.withName("start_display_time"),
-        JAVA_INT.withName("end_display_time"),
-        JAVA_INT.withName("num_rects"),
-        RuntimeHelper.POINTER.withName("rects"),
-        JAVA_LONG.withName("pts")
-    ).withName("AVSubtitle");
-    static final VarHandle const$1 = constants$242.const$0.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$2 = constants$242.const$0.varHandle(MemoryLayout.PathElement.groupElement("start_display_time"));
-    static final VarHandle const$3 = constants$242.const$0.varHandle(MemoryLayout.PathElement.groupElement("end_display_time"));
-    static final VarHandle const$4 = constants$242.const$0.varHandle(MemoryLayout.PathElement.groupElement("num_rects"));
-    static final VarHandle const$5 = constants$242.const$0.varHandle(MemoryLayout.PathElement.groupElement("rects"));
+    static final VarHandle const$0 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("init"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVHWAccel.uninit.class, "apply", constants$0.const$3);
+    static final VarHandle const$2 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("uninit"));
+    static final VarHandle const$3 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
+    static final VarHandle const$4 = constants$238.const$5.varHandle(MemoryLayout.PathElement.groupElement("caps_internal"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVHWAccel.frame_params.class, "apply", constants$68.const$3);
 }
 
 

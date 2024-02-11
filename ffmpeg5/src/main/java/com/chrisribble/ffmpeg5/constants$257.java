@@ -11,25 +11,21 @@ final class constants$257 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$257() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(avcodec_default_execute$func.class, "apply", constants$66.const$1);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_default_execute",
-        constants$228.const$4
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVCodecParser.parser_init.class, "apply", constants$0.const$3);
+    static final VarHandle const$1 = constants$256.const$4.varHandle(MemoryLayout.PathElement.groupElement("parser_init"));
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_INT
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(avcodec_default_execute2$func.class, "apply", constants$257.const$2);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecParser.parser_parse.class, "apply", constants$257.const$2);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         constants$257.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_default_execute2",
-        constants$154.const$0
-    );
+    static final VarHandle const$5 = constants$256.const$4.varHandle(MemoryLayout.PathElement.groupElement("parser_parse"));
 }
 
 

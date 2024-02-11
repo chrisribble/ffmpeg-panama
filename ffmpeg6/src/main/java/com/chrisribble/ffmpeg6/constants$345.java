@@ -11,37 +11,40 @@ final class constants$345 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$345() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_image_fill_linesizes",
+        constants$334.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_image_check_size2",
-        constants$345.const$0
+        "av_image_fill_plane_sizes",
+        constants$258.const$5
     );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_image_check_sar",
+        "av_image_fill_pointers",
         constants$345.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_image_fill_black",
+        "av_image_alloc",
         constants$2.const$5
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "swscale_version",
-        constants$3.const$4
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_image_copy_plane",
+        constants$345.const$5
     );
 }
 

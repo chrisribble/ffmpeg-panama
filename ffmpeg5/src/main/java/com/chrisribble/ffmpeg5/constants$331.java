@@ -12,33 +12,28 @@ final class constants$331 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$331() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_close_input",
-        constants$70.const$2
+        "avformat_alloc_output_context2",
+        constants$250.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_write_header",
-        constants$66.const$1
+        "av_find_input_format",
+        constants$69.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_init_output",
-        constants$66.const$1
+        "av_probe_input_format",
+        constants$123.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_write_frame",
-        constants$66.const$1
+        "av_probe_input_format2",
+        constants$79.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_interleaved_write_frame",
-        constants$66.const$1
+        "av_probe_input_format3",
+        constants$79.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "av_write_uncoded_frame",
-        constants$331.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_probe_input_buffer2",
+        constants$232.const$0
     );
 }
 

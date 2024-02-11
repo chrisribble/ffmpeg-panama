@@ -11,31 +11,48 @@ final class constants$333 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$333() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_guess_frame_rate",
-        constants$332.const$4
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_match_stream_specifier",
-        constants$71.const$1
+        "av_add_index_entry",
+        constants$333.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_queue_attached_pictures",
-        constants$0.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avformat_transfer_internal_stream_timing_info",
-        constants$141.const$3
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_stream_get_codec_timebase",
-        constants$333.const$4
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_url_split",
+        constants$333.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_dump_format",
+        constants$259.const$1
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_get_frame_filename2",
+        constants$333.const$5
     );
 }
 

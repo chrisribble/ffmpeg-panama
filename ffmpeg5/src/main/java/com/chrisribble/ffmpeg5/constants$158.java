@@ -11,30 +11,31 @@ final class constants$158 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$158() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_dict_copy",
+        constants$66.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_channel_layout_channel_index",
-        constants$158.const$0
+        "av_dict_free",
+        constants$72.const$4
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_BYTE,
+        JAVA_BYTE
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_channel_layout_extract_channel",
+        "av_dict_get_string",
         constants$158.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_get_channel_name",
-        constants$86.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_get_channel_description",
-        constants$86.const$2
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("name"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("opaque")
+    ).withName("AVChannelCustom");
+    static final VarHandle const$5 = constants$158.const$4.varHandle(MemoryLayout.PathElement.groupElement("id"));
 }
 
 

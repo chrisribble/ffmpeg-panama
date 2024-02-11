@@ -11,20 +11,46 @@ final class constants$141 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$141() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVClass.get_category.class, "apply", constants$0.const$3);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$0.const$3
-    );
-    static final VarHandle const$2 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("get_category"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_INT
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVClass.query_ranges.class, "apply", constants$141.const$3);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_rescale_rnd",
+        constants$141.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_rescale_q",
+        constants$141.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        JAVA_INT
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$141.const$3
+        "av_rescale_q_rnd",
+        constants$141.const$4
     );
 }
 

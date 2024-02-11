@@ -11,41 +11,29 @@ final class constants$133 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$133() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_fast_realloc",
+        constants$119.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_reduce",
-        constants$133.const$0
+        "av_fast_malloc",
+        constants$72.const$2
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("num"),
-        JAVA_INT.withName("den")
-    ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_fast_mallocz",
+        constants$72.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_mul_q",
-        constants$133.const$2
+        "av_free",
+        constants$72.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_div_q",
-        constants$133.const$2
+        "av_freep",
+        constants$72.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_add_q",
-        constants$133.const$2
+        "av_strdup",
+        constants$69.const$2
     );
 }
 

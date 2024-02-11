@@ -16,13 +16,13 @@ public interface __compar_fn_t {
 
     int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
     static MemorySegment allocate(__compar_fn_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$111.const$2, fi, constants$66.const$1, scope);
+        return RuntimeHelper.upcallStub(constants$114.const$2, fi, constants$68.const$3, scope);
     }
     static __compar_fn_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
             try {
-                return (int)constants$111.const$3.invokeExact(symbol, __x0, __x1);
+                return (int)constants$114.const$3.invokeExact(symbol, __x0, __x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

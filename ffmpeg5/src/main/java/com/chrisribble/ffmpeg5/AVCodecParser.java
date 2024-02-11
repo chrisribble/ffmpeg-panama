@@ -22,13 +22,13 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVCodecParser {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$253.const$1;
+        return constants$256.const$4;
     }
     public static MemorySegment codec_ids$slice(MemorySegment seg) {
         return seg.asSlice(0, 28);
     }
     public static VarHandle priv_data_size$VH() {
-        return constants$253.const$2;
+        return constants$256.const$5;
     }
     /**
      * Getter for field:
@@ -37,7 +37,7 @@ public class AVCodecParser {
      * }
      */
     public static int priv_data_size$get(MemorySegment seg) {
-        return (int)constants$253.const$2.get(seg);
+        return (int)constants$256.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -46,13 +46,13 @@ public class AVCodecParser {
      * }
      */
     public static void priv_data_size$set(MemorySegment seg, int x) {
-        constants$253.const$2.set(seg, x);
+        constants$256.const$5.set(seg, x);
     }
     public static int priv_data_size$get(MemorySegment seg, long index) {
-        return (int)constants$253.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$256.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void priv_data_size$set(MemorySegment seg, long index, int x) {
-        constants$253.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$256.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -61,15 +61,15 @@ public class AVCodecParser {
      */
     public interface parser_init {
 
-        int apply(java.lang.foreign.MemorySegment _x0);
+        int apply(java.lang.foreign.MemorySegment __cookie);
         static MemorySegment allocate(parser_init fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$253.const$3, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$257.const$0, fi, constants$0.const$3, scope);
         }
         static parser_init ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0) -> {
+            return (java.lang.foreign.MemorySegment ___cookie) -> {
                 try {
-                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
+                    return (int)constants$66.const$4.invokeExact(symbol, ___cookie);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -78,7 +78,7 @@ public class AVCodecParser {
     }
 
     public static VarHandle parser_init$VH() {
-        return constants$253.const$4;
+        return constants$257.const$1;
     }
     /**
      * Getter for field:
@@ -87,7 +87,7 @@ public class AVCodecParser {
      * }
      */
     public static MemorySegment parser_init$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$253.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$257.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -96,13 +96,13 @@ public class AVCodecParser {
      * }
      */
     public static void parser_init$set(MemorySegment seg, MemorySegment x) {
-        constants$253.const$4.set(seg, x);
+        constants$257.const$1.set(seg, x);
     }
     public static MemorySegment parser_init$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$253.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$257.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void parser_init$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$253.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$257.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static parser_init parser_init(MemorySegment segment, Arena scope) {
         return parser_init.ofAddress(parser_init$get(segment), scope);
@@ -116,13 +116,13 @@ public class AVCodecParser {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2, java.lang.foreign.MemorySegment _x3, java.lang.foreign.MemorySegment _x4, int _x5);
         static MemorySegment allocate(parser_parse fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$254.const$0, fi, constants$253.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$257.const$3, fi, constants$257.const$2, scope);
         }
         static parser_parse ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2, java.lang.foreign.MemorySegment __x3, java.lang.foreign.MemorySegment __x4, int __x5) -> {
                 try {
-                    return (int)constants$254.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
+                    return (int)constants$257.const$4.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -131,7 +131,7 @@ public class AVCodecParser {
     }
 
     public static VarHandle parser_parse$VH() {
-        return constants$254.const$2;
+        return constants$257.const$5;
     }
     /**
      * Getter for field:
@@ -140,7 +140,7 @@ public class AVCodecParser {
      * }
      */
     public static MemorySegment parser_parse$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$254.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$257.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -149,13 +149,13 @@ public class AVCodecParser {
      * }
      */
     public static void parser_parse$set(MemorySegment seg, MemorySegment x) {
-        constants$254.const$2.set(seg, x);
+        constants$257.const$5.set(seg, x);
     }
     public static MemorySegment parser_parse$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$254.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$257.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void parser_parse$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$254.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$257.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static parser_parse parser_parse(MemorySegment segment, Arena scope) {
         return parser_parse.ofAddress(parser_parse$get(segment), scope);
@@ -169,13 +169,13 @@ public class AVCodecParser {
 
         void apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(parser_close fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$254.const$3, fi, constants$70.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$258.const$0, fi, constants$72.const$4, scope);
         }
         static parser_close ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    constants$151.const$3.invokeExact(symbol, __x0);
+                    constants$155.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -184,7 +184,7 @@ public class AVCodecParser {
     }
 
     public static VarHandle parser_close$VH() {
-        return constants$254.const$4;
+        return constants$258.const$1;
     }
     /**
      * Getter for field:
@@ -193,7 +193,7 @@ public class AVCodecParser {
      * }
      */
     public static MemorySegment parser_close$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$254.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$258.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -202,13 +202,13 @@ public class AVCodecParser {
      * }
      */
     public static void parser_close$set(MemorySegment seg, MemorySegment x) {
-        constants$254.const$4.set(seg, x);
+        constants$258.const$1.set(seg, x);
     }
     public static MemorySegment parser_close$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$254.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$258.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void parser_close$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$254.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$258.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static parser_close parser_close(MemorySegment segment, Arena scope) {
         return parser_close.ofAddress(parser_close$get(segment), scope);
@@ -220,15 +220,15 @@ public class AVCodecParser {
      */
     public interface split {
 
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, int _x2);
+        int apply(java.lang.foreign.MemorySegment __cookie, java.lang.foreign.MemorySegment __pos, int __w);
         static MemorySegment allocate(split fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$254.const$5, fi, constants$109.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$258.const$2, fi, constants$66.const$0, scope);
         }
         static split ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, int __x2) -> {
+            return (java.lang.foreign.MemorySegment ___cookie, java.lang.foreign.MemorySegment ___pos, int ___w) -> {
                 try {
-                    return (int)constants$222.const$5.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$66.const$2.invokeExact(symbol, ___cookie, ___pos, ___w);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -237,7 +237,7 @@ public class AVCodecParser {
     }
 
     public static VarHandle split$VH() {
-        return constants$255.const$0;
+        return constants$258.const$3;
     }
     /**
      * Getter for field:
@@ -246,7 +246,7 @@ public class AVCodecParser {
      * }
      */
     public static MemorySegment split$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$255.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$258.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -255,13 +255,13 @@ public class AVCodecParser {
      * }
      */
     public static void split$set(MemorySegment seg, MemorySegment x) {
-        constants$255.const$0.set(seg, x);
+        constants$258.const$3.set(seg, x);
     }
     public static MemorySegment split$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$255.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$258.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void split$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$255.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$258.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static split split(MemorySegment segment, Arena scope) {
         return split.ofAddress(split$get(segment), scope);

@@ -12,35 +12,28 @@ final class constants$286 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$286() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_rb64",
-        constants$79.const$0
+        "avio_seek",
+        constants$275.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avio_get_str",
-        constants$180.const$2
+        "avio_skip",
+        constants$126.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_get_str16le",
-        constants$180.const$2
+        "avio_size",
+        constants$82.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avio_get_str16be",
-        constants$180.const$2
+        "avio_feof",
+        constants$0.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_open",
-        constants$109.const$5
+        "avio_vprintf",
+        constants$73.const$3
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "avio_open2",
-        constants$286.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "avio_printf",
+        constants$68.const$3
     );
 }
 

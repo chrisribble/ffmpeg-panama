@@ -11,37 +11,26 @@ final class constants$200 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$200() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("data"),
-        JAVA_LONG.withName("size"),
-        JAVA_INT.withName("type"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVPacketSideData");
-    static final VarHandle const$1 = constants$200.const$0.varHandle(MemoryLayout.PathElement.groupElement("data"));
-    static final VarHandle const$2 = constants$200.const$0.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$3 = constants$200.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("buf"),
-        JAVA_LONG.withName("pts"),
-        JAVA_LONG.withName("dts"),
-        RuntimeHelper.POINTER.withName("data"),
-        JAVA_INT.withName("size"),
-        JAVA_INT.withName("stream_index"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("side_data"),
-        JAVA_INT.withName("side_data_elems"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("duration"),
-        JAVA_LONG.withName("pos"),
-        RuntimeHelper.POINTER.withName("opaque"),
-        RuntimeHelper.POINTER.withName("opaque_ref"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("time_base")
-    ).withName("AVPacket");
-    static final VarHandle const$5 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_free",
+        constants$72.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_copy",
+        constants$68.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_get_audio_frame_duration2",
+        constants$85.const$5
+    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("width"),
+        JAVA_INT.withName("height"),
+        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(2, JAVA_SHORT)).withName("position")
+    ).withName("AVPanScan");
+    static final VarHandle const$4 = constants$200.const$3.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$5 = constants$200.const$3.varHandle(MemoryLayout.PathElement.groupElement("width"));
 }
 
 

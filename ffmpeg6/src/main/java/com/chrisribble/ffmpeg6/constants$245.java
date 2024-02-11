@@ -11,32 +11,12 @@ final class constants$245 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$245() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avsubtitle_free",
-        constants$70.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_default_get_buffer2",
-        constants$109.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_default_get_encode_buffer",
-        constants$109.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_align_dimensions",
-        constants$130.const$4
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_align_dimensions2",
-        constants$245.const$4
-    );
+    static final VarHandle const$0 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("format"));
+    static final VarHandle const$1 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_display_time"));
+    static final VarHandle const$2 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("end_display_time"));
+    static final VarHandle const$3 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("num_rects"));
+    static final VarHandle const$4 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("rects"));
+    static final VarHandle const$5 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("pts"));
 }
 
 

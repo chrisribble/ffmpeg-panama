@@ -11,21 +11,15 @@ final class constants$304 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$304() {}
-    static final VarHandle const$0 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("start_time"));
-    static final VarHandle const$1 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("end_time"));
-    static final VarHandle const$2 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_reference"));
-    static final VarHandle const$3 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_behavior"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("id"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("time_base"),
-        JAVA_LONG.withName("start"),
-        JAVA_LONG.withName("end"),
-        RuntimeHelper.POINTER.withName("metadata")
-    ).withName("AVChapter");
-    static final VarHandle const$5 = constants$304.const$4.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$0 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$1 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
+    static final VarHandle const$2 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("nb_side_data"));
+    static final VarHandle const$3 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("event_flags"));
+    static final VarHandle const$4 = constants$302.const$1.varHandle(MemoryLayout.PathElement.groupElement("pts_wrap_bits"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_stream_get_parser",
+        constants$69.const$2
+    );
 }
 
 

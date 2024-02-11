@@ -12,20 +12,29 @@ final class constants$358 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$358() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_convertPalette8ToPacked32",
-        constants$333.const$2
+        "sws_scale_frame",
+        constants$73.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_convertPalette8ToPacked24",
-        constants$333.const$2
+        "sws_frame_start",
+        constants$73.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_get_class",
-        constants$4.const$0
+        "sws_frame_end",
+        constants$72.const$4
     );
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_send_slice",
+        constants$340.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "sws_receive_slice",
+        constants$340.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_receive_slice_alignment",
+        constants$0.const$3
+    );
 }
 
 

@@ -11,30 +11,20 @@ final class constants$245 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$245() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_to_context",
-        constants$66.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_open2",
-        constants$71.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_close",
-        constants$0.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avsubtitle_free",
-        constants$70.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_default_get_buffer2",
-        constants$109.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_default_get_encode_buffer",
-        constants$109.const$5
-    );
+    static final VarHandle const$0 = constants$244.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$1 = constants$244.const$0.varHandle(MemoryLayout.PathElement.groupElement("text"));
+    static final VarHandle const$2 = constants$244.const$0.varHandle(MemoryLayout.PathElement.groupElement("ass"));
+    static final VarHandle const$3 = constants$244.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_SHORT.withName("format"),
+        MemoryLayout.paddingLayout(2),
+        JAVA_INT.withName("start_display_time"),
+        JAVA_INT.withName("end_display_time"),
+        JAVA_INT.withName("num_rects"),
+        RuntimeHelper.POINTER.withName("rects"),
+        JAVA_LONG.withName("pts")
+    ).withName("AVSubtitle");
+    static final VarHandle const$5 = constants$245.const$4.varHandle(MemoryLayout.PathElement.groupElement("format"));
 }
 
 

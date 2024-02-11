@@ -11,12 +11,21 @@ final class constants$194 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$194() {}
-    static final VarHandle const$0 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("width"));
-    static final VarHandle const$1 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final VarHandle const$2 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
-    static final VarHandle const$3 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
-    static final VarHandle const$4 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
-    static final VarHandle const$5 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
+    static final VarHandle const$0 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("props"));
+    static final VarHandle const$1 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("mime_types"));
+    static final VarHandle const$2 = constants$193.const$1.varHandle(MemoryLayout.PathElement.groupElement("profiles"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "avcodec_descriptor_get",
+        constants$0.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_descriptor_next",
+        constants$69.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_descriptor_get_by_name",
+        constants$69.const$2
+    );
 }
 
 

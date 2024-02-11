@@ -11,27 +11,12 @@ final class constants$172 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$172() {}
-    static final VarHandle const$0 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("private_ref"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_colorspace_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_frame_alloc",
-        constants$4.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_frame_free",
-        constants$70.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_frame_ref",
-        constants$66.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_frame_clone",
-        constants$67.const$1
-    );
+    static final VarHandle const$0 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("nb_extended_buf"));
+    static final VarHandle const$1 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("side_data"));
+    static final VarHandle const$2 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("nb_side_data"));
+    static final VarHandle const$3 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$4 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
+    static final VarHandle const$5 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
 }
 
 

@@ -11,29 +11,34 @@ final class constants$149 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$149() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_buffer_ref",
-        constants$67.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_buffer_unref",
-        constants$70.const$2
+        "av_log_format_line2",
+        constants$149.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_buffer_is_writable",
-        constants$0.const$3
+        "av_log_set_flags",
+        constants$99.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_buffer_get_opaque",
-        constants$67.const$1
+        "av_log_get_flags",
+        constants$3.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_buffer_get_ref_count",
-        constants$0.const$3
+        "av_int_list_length_for_size",
+        constants$126.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_buffer_make_writable",
-        constants$0.const$3
+        "av_fopen_utf8",
+        constants$69.const$5
     );
 }
 

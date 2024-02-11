@@ -11,25 +11,39 @@ final class constants$346 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$346() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "swscale_configuration",
-        constants$4.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "swscale_license",
-        constants$4.const$0
+        "av_image_copy_plane_uc_from",
+        constants$346.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_getCoefficients",
-        constants$0.const$1
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("coeff"),
-        JAVA_INT.withName("length"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("SwsVector");
-    static final VarHandle const$4 = constants$346.const$3.varHandle(MemoryLayout.PathElement.groupElement("coeff"));
-    static final VarHandle const$5 = constants$346.const$3.varHandle(MemoryLayout.PathElement.groupElement("length"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_image_copy",
+        constants$346.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_image_copy_uc_from",
+        constants$346.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_image_fill_arrays",
+        constants$2.const$3
+    );
 }
 
 

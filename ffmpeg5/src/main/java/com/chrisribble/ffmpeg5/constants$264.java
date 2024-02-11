@@ -11,15 +11,24 @@ final class constants$264 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$264() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "ctime_r",
-        constants$67.const$4
+    static final VarHandle const$0 = constants$262.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_yday"));
+    static final VarHandle const$1 = constants$262.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_isdst"));
+    static final VarHandle const$2 = constants$262.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_gmtoff"));
+    static final VarHandle const$3 = constants$262.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_zone"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("it_interval"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("it_value")
+    ).withName("itimerspec");
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clock",
+        constants$86.const$5
     );
-    static final SequenceLayout const$1 = MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("__tzname", constants$264.const$1);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("__daylight", JAVA_INT);
-    static final VarHandle const$4 = JAVA_LONG.varHandle();
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("__timezone", JAVA_LONG);
 }
 
 

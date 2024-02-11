@@ -11,22 +11,12 @@ final class constants$189 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$189() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_codec_is_decoder",
-        constants$0.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_profile_name",
-        constants$120.const$4
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("pix_fmt"),
-        JAVA_INT.withName("methods"),
-        JAVA_INT.withName("device_type")
-    ).withName("AVCodecHWConfig");
-    static final VarHandle const$3 = constants$189.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
-    static final VarHandle const$4 = constants$189.const$2.varHandle(MemoryLayout.PathElement.groupElement("methods"));
-    static final VarHandle const$5 = constants$189.const$2.varHandle(MemoryLayout.PathElement.groupElement("device_type"));
+    static final VarHandle const$0 = constants$188.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$1 = constants$188.const$2.varHandle(MemoryLayout.PathElement.groupElement("capabilities"));
+    static final VarHandle const$2 = constants$188.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_lowres"));
+    static final VarHandle const$3 = constants$188.const$2.varHandle(MemoryLayout.PathElement.groupElement("supported_framerates"));
+    static final VarHandle const$4 = constants$188.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmts"));
+    static final VarHandle const$5 = constants$188.const$2.varHandle(MemoryLayout.PathElement.groupElement("supported_samplerates"));
 }
 
 

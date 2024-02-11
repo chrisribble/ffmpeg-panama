@@ -11,12 +11,26 @@ final class constants$201 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$201() {}
-    static final VarHandle const$0 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("pts"));
-    static final VarHandle const$1 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("dts"));
-    static final VarHandle const$2 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("data"));
-    static final VarHandle const$3 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$4 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("stream_index"));
-    static final VarHandle const$5 = constants$200.const$4.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_get_audio_frame_duration2",
+        constants$85.const$5
+    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("width"),
+        JAVA_INT.withName("height"),
+        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(2, JAVA_SHORT)).withName("position")
+    ).withName("AVPanScan");
+    static final VarHandle const$2 = constants$201.const$1.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$3 = constants$201.const$1.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$4 = constants$201.const$1.varHandle(MemoryLayout.PathElement.groupElement("height"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("max_bitrate"),
+        JAVA_LONG.withName("min_bitrate"),
+        JAVA_LONG.withName("avg_bitrate"),
+        JAVA_LONG.withName("buffer_size"),
+        JAVA_LONG.withName("vbv_delay")
+    ).withName("AVCPBProperties");
 }
 
 

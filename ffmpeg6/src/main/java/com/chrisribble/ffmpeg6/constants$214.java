@@ -11,12 +11,12 @@ final class constants$214 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$214() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("b_quant_offset"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("has_b_frames"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("i_quant_factor"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("i_quant_offset"));
-    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("lumi_masking"));
-    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("temporal_cplx_masking"));
+    static final VarHandle const$0 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("extradata"));
+    static final VarHandle const$1 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("extradata_size"));
+    static final VarHandle const$2 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("ticks_per_frame"));
+    static final VarHandle const$3 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("delay"));
+    static final VarHandle const$4 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$5 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("height"));
 }
 
 

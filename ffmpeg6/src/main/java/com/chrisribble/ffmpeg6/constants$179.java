@@ -11,27 +11,27 @@ final class constants$179 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$179() {}
-    static final VarHandle const$0 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_find_type_by_name",
-        constants$0.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_get_type_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_iterate_types",
-        constants$1.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_alloc",
-        constants$0.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_ctx_init",
-        constants$0.const$3
-    );
+    static final VarHandle const$0 = constants$178.const$2.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVHWDeviceContext.free.class, "apply", constants$72.const$4);
+    static final VarHandle const$2 = constants$178.const$2.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final VarHandle const$3 = constants$178.const$2.varHandle(MemoryLayout.PathElement.groupElement("user_opaque"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("av_class"),
+        RuntimeHelper.POINTER.withName("internal"),
+        RuntimeHelper.POINTER.withName("device_ref"),
+        RuntimeHelper.POINTER.withName("device_ctx"),
+        RuntimeHelper.POINTER.withName("hwctx"),
+        RuntimeHelper.POINTER.withName("free"),
+        RuntimeHelper.POINTER.withName("user_opaque"),
+        RuntimeHelper.POINTER.withName("pool"),
+        JAVA_INT.withName("initial_pool_size"),
+        JAVA_INT.withName("format"),
+        JAVA_INT.withName("sw_format"),
+        JAVA_INT.withName("width"),
+        JAVA_INT.withName("height"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("AVHWFramesContext");
+    static final VarHandle const$5 = constants$179.const$4.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
 }
 
 

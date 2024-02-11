@@ -12,20 +12,41 @@ final class constants$353 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$353() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_convertPalette8ToPacked32",
-        constants$328.const$0
+        "sws_receive_slice",
+        constants$334.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_convertPalette8ToPacked24",
-        constants$328.const$0
+        "sws_receive_slice_alignment",
+        constants$0.const$3
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_get_class",
-        constants$4.const$0
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_setColorspaceDetails",
+        constants$353.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_getColorspaceDetails",
+        constants$353.const$4
+    );
 }
 
 

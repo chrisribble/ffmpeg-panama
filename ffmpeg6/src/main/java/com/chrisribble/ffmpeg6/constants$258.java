@@ -11,40 +11,43 @@ final class constants$258 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$258() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_flush_buffers",
-        constants$70.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_get_audio_frame_duration",
-        constants$82.const$5
+        "av_parser_parse2",
+        constants$258.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_fast_padded_malloc",
-        constants$70.const$0
+        "av_parser_close",
+        constants$72.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_fast_padded_mallocz",
-        constants$70.const$0
+        "avcodec_encode_subtitle",
+        constants$250.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_is_open",
-        constants$0.const$3
+        "avcodec_pix_fmt_to_codec_tag",
+        constants$1.const$0
     );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_INT.withName("tm_sec"),
-        JAVA_INT.withName("tm_min"),
-        JAVA_INT.withName("tm_hour"),
-        JAVA_INT.withName("tm_mday"),
-        JAVA_INT.withName("tm_mon"),
-        JAVA_INT.withName("tm_year"),
-        JAVA_INT.withName("tm_wday"),
-        JAVA_INT.withName("tm_yday"),
-        JAVA_INT.withName("tm_isdst"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("tm_gmtoff"),
-        RuntimeHelper.POINTER.withName("tm_zone")
-    ).withName("tm");
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "avcodec_find_best_pix_fmt_of_list",
+        constants$258.const$5
+    );
 }
 
 

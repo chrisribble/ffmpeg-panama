@@ -11,30 +11,20 @@ final class constants$326 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$326() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_muxer_iterate",
-        constants$67.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_demuxer_iterate",
-        constants$67.const$1
-    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$326.const$0);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_alloc_context",
-        constants$4.const$0
+        constants$326.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avformat_free_context",
-        constants$70.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avformat_get_class",
-        constants$4.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_stream_get_class",
-        constants$4.const$0
-    );
+    static final VarHandle const$3 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVFormatContext.io_close.class, "apply", constants$71.const$5);
+    static final VarHandle const$5 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("io_close"));
 }
 
 

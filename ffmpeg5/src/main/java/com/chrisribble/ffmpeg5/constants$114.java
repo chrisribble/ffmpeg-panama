@@ -11,38 +11,28 @@ final class constants$114 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$114() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "system",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "ecvt_r",
-        constants$114.const$0
+        "realpath",
+        constants$69.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "fcvt_r",
-        constants$114.const$0
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(__compar_fn_t.class, "apply", constants$68.const$3);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$68.const$3
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "mblen",
-        constants$114.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        JAVA_LONG
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "mbtowc",
-        constants$114.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "bsearch",
+        constants$114.const$4
     );
 }
 

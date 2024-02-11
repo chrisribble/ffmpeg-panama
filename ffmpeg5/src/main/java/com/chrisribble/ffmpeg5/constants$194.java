@@ -11,12 +11,12 @@ final class constants$194 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$194() {}
-    static final VarHandle const$0 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("width"));
-    static final VarHandle const$1 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final VarHandle const$2 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
-    static final VarHandle const$3 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
-    static final VarHandle const$4 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
-    static final VarHandle const$5 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
+    static final VarHandle const$0 = constants$193.const$5.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$1 = constants$193.const$5.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$2 = constants$193.const$5.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$3 = constants$193.const$5.varHandle(MemoryLayout.PathElement.groupElement("long_name"));
+    static final VarHandle const$4 = constants$193.const$5.varHandle(MemoryLayout.PathElement.groupElement("props"));
+    static final VarHandle const$5 = constants$193.const$5.varHandle(MemoryLayout.PathElement.groupElement("mime_types"));
 }
 
 

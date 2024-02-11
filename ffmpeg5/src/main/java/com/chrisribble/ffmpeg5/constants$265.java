@@ -11,20 +11,31 @@ final class constants$265 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$265() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("tzname", constants$264.const$1);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "tzset",
-        constants$107.const$1
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "time",
+        constants$82.const$0
     );
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("daylight", JAVA_INT);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("timezone", JAVA_LONG);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "timegm",
-        constants$79.const$0
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_DOUBLE,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "difftime",
+        constants$265.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "mktime",
+        constants$82.const$0
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "timelocal",
-        constants$79.const$0
+        "strftime",
+        constants$265.const$4
     );
 }
 

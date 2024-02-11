@@ -11,32 +11,26 @@ final class constants$93 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$93() {}
-    static final VarHandle const$0 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__cur_writer"));
-    static final VarHandle const$1 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__shared"));
-    static final VarHandle const$2 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__rwelision"));
-    static final VarHandle const$3 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad2"));
-    static final VarHandle const$4 = constants$91.const$5.varHandle(MemoryLayout.PathElement.groupElement("__flags"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        MemoryLayout.unionLayout(
-            JAVA_LONG.withName("__value64"),
-            MemoryLayout.structLayout(
-                JAVA_INT.withName("__low"),
-                JAVA_INT.withName("__high")
-            ).withName("__value32")
-        ).withName("__wseq"),
-        MemoryLayout.unionLayout(
-            JAVA_LONG.withName("__value64"),
-            MemoryLayout.structLayout(
-                JAVA_INT.withName("__low"),
-                JAVA_INT.withName("__high")
-            ).withName("__value32")
-        ).withName("__g1_start"),
-        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_refs"),
-        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_size"),
-        JAVA_INT.withName("__g1_orig_size"),
-        JAVA_INT.withName("__wrefs"),
-        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_signals")
-    ).withName("__pthread_cond_s");
+    static final VarHandle const$0 = constants$92.const$4.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("__next")
+    ).withName("__pthread_internal_slist");
+    static final VarHandle const$2 = constants$93.const$1.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__lock"),
+        JAVA_INT.withName("__count"),
+        JAVA_INT.withName("__owner"),
+        JAVA_INT.withName("__nusers"),
+        JAVA_INT.withName("__kind"),
+        JAVA_SHORT.withName("__spins"),
+        JAVA_SHORT.withName("__elision"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("__prev"),
+            RuntimeHelper.POINTER.withName("__next")
+        ).withName("__list")
+    ).withName("__pthread_mutex_s");
+    static final VarHandle const$4 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__lock"));
+    static final VarHandle const$5 = constants$93.const$3.varHandle(MemoryLayout.PathElement.groupElement("__count"));
 }
 
 

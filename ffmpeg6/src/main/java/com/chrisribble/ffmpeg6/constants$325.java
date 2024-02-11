@@ -12,28 +12,28 @@ final class constants$325 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$325() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_flush",
-        constants$0.const$3
+        "av_stream_get_side_data",
+        constants$79.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_read_play",
-        constants$0.const$3
+        "av_new_program",
+        constants$123.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_read_pause",
-        constants$0.const$3
+        "avformat_alloc_output_context2",
+        constants$249.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avformat_close_input",
-        constants$70.const$2
+        "av_find_input_format",
+        constants$69.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avformat_write_header",
-        constants$66.const$1
+        "av_probe_input_format",
+        constants$123.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_init_output",
-        constants$66.const$1
+        "av_probe_input_format2",
+        constants$79.const$2
     );
 }
 

@@ -16,13 +16,13 @@ public interface atexit$__func {
 
     void apply();
     static MemorySegment allocate(atexit$__func fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$107.const$3, fi, constants$107.const$1, scope);
+        return RuntimeHelper.upcallStub(constants$110.const$3, fi, constants$110.const$1, scope);
     }
     static atexit$__func ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return () -> {
             try {
-                constants$107.const$4.invokeExact(symbol);
+                constants$110.const$4.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

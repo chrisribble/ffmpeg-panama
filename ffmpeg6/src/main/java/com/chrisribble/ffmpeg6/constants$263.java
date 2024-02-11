@@ -11,24 +11,24 @@ final class constants$263 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$263() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "asctime",
-        constants$67.const$1
+    static final VarHandle const$0 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_yday"));
+    static final VarHandle const$1 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_isdst"));
+    static final VarHandle const$2 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_gmtoff"));
+    static final VarHandle const$3 = constants$261.const$4.varHandle(MemoryLayout.PathElement.groupElement("tm_zone"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("it_interval"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("it_value")
+    ).withName("itimerspec");
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clock",
+        constants$86.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "ctime",
-        constants$67.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "asctime_r",
-        constants$67.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "ctime_r",
-        constants$67.const$4
-    );
-    static final SequenceLayout const$4 = MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("__tzname", constants$263.const$4);
 }
 
 

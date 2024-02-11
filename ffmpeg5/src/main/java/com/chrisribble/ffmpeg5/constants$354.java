@@ -11,42 +11,33 @@ final class constants$354 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$354() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_freeContext",
-        constants$70.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_image_check_sar",
+        constants$354.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_getContext",
-        constants$354.const$1
+        "av_image_fill_black",
+        constants$2.const$5
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "swscale_version",
+        constants$3.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_scale",
-        constants$354.const$3
+        "swscale_configuration",
+        constants$4.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_scale_frame",
-        constants$71.const$1
+        "swscale_license",
+        constants$4.const$0
     );
 }
 

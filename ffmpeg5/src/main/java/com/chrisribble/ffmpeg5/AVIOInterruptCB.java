@@ -18,7 +18,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVIOInterruptCB {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$268.const$2;
+        return constants$272.const$0;
     }
     /**
      * {@snippet :
@@ -27,15 +27,15 @@ public class AVIOInterruptCB {
      */
     public interface callback {
 
-        int apply(java.lang.foreign.MemorySegment _x0);
+        int apply(java.lang.foreign.MemorySegment __cookie);
         static MemorySegment allocate(callback fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$268.const$3, fi, constants$0.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$272.const$1, fi, constants$0.const$3, scope);
         }
         static callback ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0) -> {
+            return (java.lang.foreign.MemorySegment ___cookie) -> {
                 try {
-                    return (int)constants$141.const$1.invokeExact(symbol, __x0);
+                    return (int)constants$66.const$4.invokeExact(symbol, ___cookie);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -44,7 +44,7 @@ public class AVIOInterruptCB {
     }
 
     public static VarHandle callback$VH() {
-        return constants$268.const$4;
+        return constants$272.const$2;
     }
     /**
      * Getter for field:
@@ -53,7 +53,7 @@ public class AVIOInterruptCB {
      * }
      */
     public static MemorySegment callback$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$268.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$272.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -62,19 +62,19 @@ public class AVIOInterruptCB {
      * }
      */
     public static void callback$set(MemorySegment seg, MemorySegment x) {
-        constants$268.const$4.set(seg, x);
+        constants$272.const$2.set(seg, x);
     }
     public static MemorySegment callback$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$268.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$272.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void callback$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$268.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static callback callback(MemorySegment segment, Arena scope) {
         return callback.ofAddress(callback$get(segment), scope);
     }
     public static VarHandle opaque$VH() {
-        return constants$268.const$5;
+        return constants$272.const$3;
     }
     /**
      * Getter for field:
@@ -83,7 +83,7 @@ public class AVIOInterruptCB {
      * }
      */
     public static MemorySegment opaque$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$268.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$272.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -92,13 +92,13 @@ public class AVIOInterruptCB {
      * }
      */
     public static void opaque$set(MemorySegment seg, MemorySegment x) {
-        constants$268.const$5.set(seg, x);
+        constants$272.const$3.set(seg, x);
     }
     public static MemorySegment opaque$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$268.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$272.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void opaque$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$268.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

@@ -11,31 +11,17 @@ final class constants$97 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$97() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "initstate",
-        constants$97.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "setstate",
-        constants$67.const$1
-    );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("fptr"),
-        RuntimeHelper.POINTER.withName("rptr"),
-        RuntimeHelper.POINTER.withName("state"),
-        JAVA_INT.withName("rand_type"),
-        JAVA_INT.withName("rand_deg"),
-        JAVA_INT.withName("rand_sep"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("end_ptr")
-    ).withName("random_data");
-    static final VarHandle const$4 = constants$97.const$3.varHandle(MemoryLayout.PathElement.groupElement("fptr"));
-    static final VarHandle const$5 = constants$97.const$3.varHandle(MemoryLayout.PathElement.groupElement("rptr"));
+    static final VarHandle const$0 = constants$96.const$5.varHandle(MemoryLayout.PathElement.groupElement("__g1_orig_size"));
+    static final VarHandle const$1 = constants$96.const$5.varHandle(MemoryLayout.PathElement.groupElement("__wrefs"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__data")
+    ).withName("");
+    static final VarHandle const$3 = constants$97.const$2.varHandle(MemoryLayout.PathElement.groupElement("__data"));
+    static final UnionLayout const$4 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__size"),
+        JAVA_INT.withName("__align")
+    ).withName("");
+    static final VarHandle const$5 = constants$97.const$4.varHandle(MemoryLayout.PathElement.groupElement("__align"));
 }
 
 

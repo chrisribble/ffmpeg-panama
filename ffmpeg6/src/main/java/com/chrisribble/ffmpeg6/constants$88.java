@@ -11,39 +11,30 @@ final class constants$88 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$88() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__fds_bits")
-    ).withName("");
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_FLOAT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strtof",
+        constants$88.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "select",
-        constants$88.const$1
+        "strtol",
+        constants$6.const$2
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strtoul",
+        constants$6.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "pselect",
-        constants$88.const$3
+        "strtoq",
+        constants$6.const$2
     );
-    static final UnionLayout const$5 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("__value64"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("__low"),
-            JAVA_INT.withName("__high")
-        ).withName("__value32")
-    ).withName("");
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strtouq",
+        constants$6.const$2
+    );
 }
 
 

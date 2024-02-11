@@ -11,21 +11,14 @@ final class constants$279 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$279() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_read_dir",
-        constants$66.const$1
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVIOContext.read_seek.class, "apply", constants$278.const$5);
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avio_close_dir",
-        constants$0.const$3
+        constants$278.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_free_directory_entry",
-        constants$70.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(avio_alloc_context$read_packet.class, "apply", constants$109.const$5);
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(avio_alloc_context$write_packet.class, "apply", constants$109.const$5);
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(avio_alloc_context$seek.class, "apply", constants$272.const$4);
+    static final VarHandle const$2 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("read_seek"));
+    static final VarHandle const$3 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("seekable"));
+    static final VarHandle const$4 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("direct"));
+    static final VarHandle const$5 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
 }
 
 

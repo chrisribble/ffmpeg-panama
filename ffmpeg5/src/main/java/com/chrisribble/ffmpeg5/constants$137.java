@@ -11,27 +11,21 @@ final class constants$137 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$137() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_rescale",
+        "av_reduce",
         constants$137.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_rescale_rnd",
-        constants$137.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"),
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
@@ -41,9 +35,17 @@ final class constants$137 {
             JAVA_INT.withName("den")
         ).withName("AVRational")
     );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_mul_q",
+        constants$137.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_div_q",
+        constants$137.const$2
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_rescale_q",
-        constants$137.const$4
+        "av_add_q",
+        constants$137.const$2
     );
 }
 

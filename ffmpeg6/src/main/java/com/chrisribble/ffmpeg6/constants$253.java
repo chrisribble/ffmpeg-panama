@@ -11,21 +11,12 @@ final class constants$253 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$253() {}
-    static final VarHandle const$0 = constants$252.const$5.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVCodecParser.parser_init.class, "apply", constants$0.const$3);
-    static final VarHandle const$2 = constants$252.const$5.varHandle(MemoryLayout.PathElement.groupElement("parser_init"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVCodecParser.parser_parse.class, "apply", constants$253.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$253.const$3
-    );
+    static final VarHandle const$0 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("offset"));
+    static final VarHandle const$1 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("key_frame"));
+    static final VarHandle const$2 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("dts_sync_point"));
+    static final VarHandle const$3 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("dts_ref_dts_delta"));
+    static final VarHandle const$4 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("pts_dts_delta"));
+    static final VarHandle const$5 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("pos"));
 }
 
 

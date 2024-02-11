@@ -11,12 +11,21 @@ final class constants$314 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$314() {}
-    static final VarHandle const$0 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("packet_size"));
-    static final VarHandle const$1 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_delay"));
-    static final VarHandle const$2 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags"));
-    static final VarHandle const$3 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("probesize"));
-    static final VarHandle const$4 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_analyze_duration"));
-    static final VarHandle const$5 = constants$311.const$5.varHandle(MemoryLayout.PathElement.groupElement("key"));
+    static final VarHandle const$0 = constants$313.const$3.varHandle(MemoryLayout.PathElement.groupElement("end"));
+    static final VarHandle const$1 = constants$313.const$3.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(av_format_control_message.class, "apply", constants$208.const$3);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVOpenCallback.class, "apply", constants$314.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$314.const$3
+    );
 }
 
 

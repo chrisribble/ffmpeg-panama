@@ -11,41 +11,19 @@ final class constants$350 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$350() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "sws_receive_slice",
-        constants$331.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_receive_slice_alignment",
-        constants$0.const$3
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_setColorspaceDetails",
-        constants$350.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("lumH"),
+        RuntimeHelper.POINTER.withName("lumV"),
+        RuntimeHelper.POINTER.withName("chrH"),
+        RuntimeHelper.POINTER.withName("chrV")
+    ).withName("SwsFilter");
+    static final VarHandle const$1 = constants$350.const$0.varHandle(MemoryLayout.PathElement.groupElement("lumH"));
+    static final VarHandle const$2 = constants$350.const$0.varHandle(MemoryLayout.PathElement.groupElement("lumV"));
+    static final VarHandle const$3 = constants$350.const$0.varHandle(MemoryLayout.PathElement.groupElement("chrH"));
+    static final VarHandle const$4 = constants$350.const$0.varHandle(MemoryLayout.PathElement.groupElement("chrV"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_getColorspaceDetails",
-        constants$350.const$4
+        "sws_isSupportedInput",
+        constants$1.const$0
     );
 }
 

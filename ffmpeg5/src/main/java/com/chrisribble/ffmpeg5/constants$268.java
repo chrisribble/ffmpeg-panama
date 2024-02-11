@@ -11,21 +11,15 @@ final class constants$268 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$268() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "timer_getoverrun",
-        constants$0.const$3
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("__daylight", JAVA_INT);
+    static final VarHandle const$1 = JAVA_LONG.varHandle();
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("__timezone", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("tzname", constants$267.const$4);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "tzset",
+        constants$110.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "timespec_get",
-        constants$82.const$5
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("callback"),
-        RuntimeHelper.POINTER.withName("opaque")
-    ).withName("AVIOInterruptCB");
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVIOInterruptCB.callback.class, "apply", constants$0.const$3);
-    static final VarHandle const$4 = constants$268.const$2.varHandle(MemoryLayout.PathElement.groupElement("callback"));
-    static final VarHandle const$5 = constants$268.const$2.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("daylight", JAVA_INT);
 }
 
 

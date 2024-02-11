@@ -12,28 +12,21 @@ final class constants$110 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$110() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "unsetenv",
-        constants$0.const$3
+        "aligned_alloc",
+        constants$108.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "clearenv",
-        constants$3.const$4
-    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid();
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "mktemp",
-        constants$67.const$1
+        "abort",
+        constants$110.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "mkstemp",
-        constants$0.const$3
-    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(atexit$__func.class, "apply", constants$110.const$1);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "mkstemps",
-        constants$82.const$5
+        constants$110.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "mkdtemp",
-        constants$67.const$1
+        "atexit",
+        constants$0.const$3
     );
 }
 

@@ -14,15 +14,15 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public interface avio_alloc_context$read_packet {
 
-    int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, int _x2);
+    int apply(java.lang.foreign.MemorySegment __cookie, java.lang.foreign.MemorySegment __pos, int __w);
     static MemorySegment allocate(avio_alloc_context$read_packet fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$280.const$0, fi, constants$109.const$5, scope);
+        return RuntimeHelper.upcallStub(constants$283.const$4, fi, constants$66.const$0, scope);
     }
     static avio_alloc_context$read_packet ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, int __x2) -> {
+        return (java.lang.foreign.MemorySegment ___cookie, java.lang.foreign.MemorySegment ___pos, int ___w) -> {
             try {
-                return (int)constants$222.const$5.invokeExact(symbol, __x0, __x1, __x2);
+                return (int)constants$66.const$2.invokeExact(symbol, ___cookie, ___pos, ___w);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

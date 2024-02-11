@@ -11,28 +11,32 @@ final class constants$79 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$79() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getw",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "ftell",
-        constants$79.const$0
+        "putw",
+        constants$75.const$4
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "rewind",
-        constants$70.const$2
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "fseeko",
-        constants$78.const$5
+        "fgets",
+        constants$79.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "ftello",
-        constants$79.const$0
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fgetpos",
-        constants$66.const$1
+        "__getdelim",
+        constants$79.const$4
     );
 }
 

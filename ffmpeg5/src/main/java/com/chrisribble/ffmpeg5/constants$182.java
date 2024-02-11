@@ -11,14 +11,14 @@ final class constants$182 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$182() {}
-    static final VarHandle const$0 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("valid_sw_formats"));
-    static final VarHandle const$1 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_width"));
-    static final VarHandle const$2 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_height"));
-    static final VarHandle const$3 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_width"));
-    static final VarHandle const$4 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_height"));
+    static final VarHandle const$0 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("initial_pool_size"));
+    static final VarHandle const$1 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("format"));
+    static final VarHandle const$2 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("sw_format"));
+    static final VarHandle const$3 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$4 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("height"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_hwconfig_alloc",
-        constants$67.const$1
+        "av_hwdevice_find_type_by_name",
+        constants$0.const$3
     );
 }
 

@@ -11,35 +11,39 @@ final class constants$143 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$143() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        JAVA_LONG,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational"),
+        JAVA_LONG
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
-        "av_log",
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_add_stable",
         constants$143.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
-        "av_log_once",
-        constants$143.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("class_name"),
+        RuntimeHelper.POINTER.withName("item_name"),
+        RuntimeHelper.POINTER.withName("option"),
+        JAVA_INT.withName("version"),
+        JAVA_INT.withName("log_level_offset_offset"),
+        JAVA_INT.withName("parent_log_context_offset"),
+        JAVA_INT.withName("category"),
+        RuntimeHelper.POINTER.withName("get_category"),
+        RuntimeHelper.POINTER.withName("query_ranges"),
+        RuntimeHelper.POINTER.withName("child_next"),
+        RuntimeHelper.POINTER.withName("child_class_iterate")
+    ).withName("AVClass");
+    static final VarHandle const$3 = constants$143.const$2.varHandle(MemoryLayout.PathElement.groupElement("class_name"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVClass.item_name.class, "apply", constants$69.const$2);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_vlog",
-        constants$143.const$4
+        constants$69.const$2
     );
 }
 

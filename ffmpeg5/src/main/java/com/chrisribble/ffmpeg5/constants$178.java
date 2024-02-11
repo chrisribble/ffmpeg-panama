@@ -11,12 +11,30 @@ final class constants$178 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$178() {}
-    static final VarHandle const$0 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("user_opaque"));
-    static final VarHandle const$1 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("pool"));
-    static final VarHandle const$2 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_pool_size"));
-    static final VarHandle const$3 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$4 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("sw_format"));
-    static final VarHandle const$5 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_frame_new_side_data",
+        constants$119.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_frame_new_side_data_from_buf",
+        constants$79.const$2
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_frame_get_side_data",
+        constants$123.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_frame_remove_side_data",
+        constants$163.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_frame_apply_cropping",
+        constants$85.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_frame_side_data_name",
+        constants$0.const$1
+    );
 }
 
 

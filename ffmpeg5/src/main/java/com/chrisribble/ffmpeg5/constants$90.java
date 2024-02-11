@@ -11,26 +11,18 @@ final class constants$90 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$90() {}
-    static final VarHandle const$0 = constants$89.const$4.varHandle(MemoryLayout.PathElement.groupElement("__next"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("__next")
-    ).withName("__pthread_internal_slist");
-    static final VarHandle const$2 = constants$90.const$1.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("tv_sec"),
+        JAVA_LONG.withName("tv_usec")
+    ).withName("timeval");
+    static final VarHandle const$1 = constants$90.const$0.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
+    static final VarHandle const$2 = constants$90.const$0.varHandle(MemoryLayout.PathElement.groupElement("tv_usec"));
     static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__lock"),
-        JAVA_INT.withName("__count"),
-        JAVA_INT.withName("__owner"),
-        JAVA_INT.withName("__nusers"),
-        JAVA_INT.withName("__kind"),
-        JAVA_SHORT.withName("__spins"),
-        JAVA_SHORT.withName("__elision"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("__prev"),
-            RuntimeHelper.POINTER.withName("__next")
-        ).withName("__list")
-    ).withName("__pthread_mutex_s");
-    static final VarHandle const$4 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__lock"));
-    static final VarHandle const$5 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("__count"));
+        JAVA_LONG.withName("tv_sec"),
+        JAVA_LONG.withName("tv_nsec")
+    ).withName("timespec");
+    static final VarHandle const$4 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
+    static final VarHandle const$5 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("tv_nsec"));
 }
 
 

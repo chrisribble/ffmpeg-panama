@@ -11,12 +11,25 @@ final class constants$166 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$166() {}
-    static final VarHandle const$0 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("pts"));
-    static final VarHandle const$1 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("pkt_dts"));
-    static final VarHandle const$2 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("coded_picture_number"));
-    static final VarHandle const$3 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("display_picture_number"));
-    static final VarHandle const$4 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("quality"));
-    static final VarHandle const$5 = constants$164.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_check",
+        constants$0.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_compare",
+        constants$68.const$3
+    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_LONG.withName("size"),
+        RuntimeHelper.POINTER.withName("metadata"),
+        RuntimeHelper.POINTER.withName("buf")
+    ).withName("AVFrameSideData");
+    static final VarHandle const$3 = constants$166.const$2.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$166.const$2.varHandle(MemoryLayout.PathElement.groupElement("data"));
+    static final VarHandle const$5 = constants$166.const$2.varHandle(MemoryLayout.PathElement.groupElement("size"));
 }
 
 

@@ -11,30 +11,27 @@ final class constants$343 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$343() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_color_range_from_name",
-        constants$0.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_color_primaries_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_color_primaries_from_name",
-        constants$0.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_color_transfer_name",
-        constants$0.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_color_transfer_from_name",
-        constants$0.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_color_space_name",
-        constants$0.const$1
-    );
+    static final VarHandle const$0 = constants$342.const$5.varHandle(MemoryLayout.PathElement.groupElement("plane"));
+    static final VarHandle const$1 = constants$342.const$5.varHandle(MemoryLayout.PathElement.groupElement("step"));
+    static final VarHandle const$2 = constants$342.const$5.varHandle(MemoryLayout.PathElement.groupElement("offset"));
+    static final VarHandle const$3 = constants$342.const$5.varHandle(MemoryLayout.PathElement.groupElement("shift"));
+    static final VarHandle const$4 = constants$342.const$5.varHandle(MemoryLayout.PathElement.groupElement("depth"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_BYTE.withName("nb_components"),
+        JAVA_BYTE.withName("log2_chroma_w"),
+        JAVA_BYTE.withName("log2_chroma_h"),
+        MemoryLayout.paddingLayout(5),
+        JAVA_LONG.withName("flags"),
+        MemoryLayout.sequenceLayout(4, MemoryLayout.structLayout(
+            JAVA_INT.withName("plane"),
+            JAVA_INT.withName("step"),
+            JAVA_INT.withName("offset"),
+            JAVA_INT.withName("shift"),
+            JAVA_INT.withName("depth")
+        ).withName("AVComponentDescriptor")).withName("comp"),
+        RuntimeHelper.POINTER.withName("alias")
+    ).withName("AVPixFmtDescriptor");
 }
 
 

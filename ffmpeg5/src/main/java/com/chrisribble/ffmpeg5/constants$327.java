@@ -11,30 +11,12 @@ final class constants$327 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$327() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_new_stream",
-        constants$67.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_stream_add_side_data",
-        constants$204.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_stream_new_side_data",
-        constants$117.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_stream_get_side_data",
-        constants$76.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_new_program",
-        constants$120.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_alloc_output_context2",
-        constants$246.const$5
-    );
+    static final VarHandle const$0 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("protocol_blacklist"));
+    static final VarHandle const$1 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("max_streams"));
+    static final VarHandle const$2 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("skip_estimate_duration_from_pts"));
+    static final VarHandle const$3 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("max_probe_packets"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVFormatContext.io_close2.class, "apply", constants$68.const$3);
+    static final VarHandle const$5 = constants$315.const$0.varHandle(MemoryLayout.PathElement.groupElement("io_close2"));
 }
 
 

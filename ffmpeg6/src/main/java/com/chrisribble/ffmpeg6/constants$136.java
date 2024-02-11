@@ -11,20 +11,27 @@ final class constants$136 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$136() {}
-    static final VarHandle const$0 = constants$135.const$4.varHandle(MemoryLayout.PathElement.groupElement("f"));
-    static final UnionLayout const$1 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("i"),
-        JAVA_DOUBLE.withName("f")
-    ).withName("av_intfloat64");
-    static final VarHandle const$2 = constants$136.const$1.varHandle(MemoryLayout.PathElement.groupElement("i"));
-    static final VarHandle const$3 = constants$136.const$1.varHandle(MemoryLayout.PathElement.groupElement("f"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+    static final VarHandle const$0 = constants$135.const$5.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_strerror",
+        constants$126.const$5
+    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational");
+    static final VarHandle const$3 = constants$136.const$2.varHandle(MemoryLayout.PathElement.groupElement("num"));
+    static final VarHandle const$4 = constants$136.const$2.varHandle(MemoryLayout.PathElement.groupElement("den"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_gcd",
-        constants$136.const$4
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_reduce",
+        constants$136.const$5
     );
 }
 

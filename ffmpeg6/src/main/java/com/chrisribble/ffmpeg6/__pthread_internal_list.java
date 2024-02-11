@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class __pthread_internal_list {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$89.const$4;
+        return constants$92.const$4;
     }
     public static VarHandle __prev$VH() {
-        return constants$89.const$5;
+        return constants$92.const$5;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class __pthread_internal_list {
      * }
      */
     public static MemorySegment __prev$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$89.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$92.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class __pthread_internal_list {
      * }
      */
     public static void __prev$set(MemorySegment seg, MemorySegment x) {
-        constants$89.const$5.set(seg, x);
+        constants$92.const$5.set(seg, x);
     }
     public static MemorySegment __prev$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$89.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$92.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void __prev$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$89.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __next$VH() {
-        return constants$90.const$0;
+        return constants$93.const$0;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class __pthread_internal_list {
      * }
      */
     public static MemorySegment __next$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$90.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$93.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class __pthread_internal_list {
      * }
      */
     public static void __next$set(MemorySegment seg, MemorySegment x) {
-        constants$90.const$0.set(seg, x);
+        constants$93.const$0.set(seg, x);
     }
     public static MemorySegment __next$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$90.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$93.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void __next$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$90.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

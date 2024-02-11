@@ -11,12 +11,30 @@ final class constants$186 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$186() {}
-    static final VarHandle const$0 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$1 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("capabilities"));
-    static final VarHandle const$2 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_lowres"));
-    static final VarHandle const$3 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("supported_framerates"));
-    static final VarHandle const$4 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("pix_fmts"));
-    static final VarHandle const$5 = constants$185.const$2.varHandle(MemoryLayout.PathElement.groupElement("supported_samplerates"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_hwdevice_get_hwframe_constraints",
+        constants$69.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_hwframe_constraints_free",
+        constants$72.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_hwframe_map",
+        constants$66.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_hwframe_ctx_create_derived",
+        constants$183.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_get_type",
+        constants$1.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_get_name",
+        constants$0.const$1
+    );
 }
 
 

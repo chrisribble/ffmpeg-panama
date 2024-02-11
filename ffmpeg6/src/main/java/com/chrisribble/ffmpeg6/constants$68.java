@@ -11,33 +11,28 @@ final class constants$68 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$68() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "fflush",
-        constants$0.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "fflush_unlocked",
-        constants$0.const$3
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "fopen",
-        constants$67.const$4
+        "remove",
+        constants$0.const$3
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "freopen",
+        "rename",
         constants$68.const$3
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_INT,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "fdopen",
+        "renameat",
         constants$68.const$5
     );
 }

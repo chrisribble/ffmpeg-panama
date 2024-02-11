@@ -11,27 +11,30 @@ final class constants$176 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$176() {}
-    static final VarHandle const$0 = constants$175.const$2.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVHWDeviceContext.free.class, "apply", constants$70.const$2);
-    static final VarHandle const$2 = constants$175.const$2.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final VarHandle const$3 = constants$175.const$2.varHandle(MemoryLayout.PathElement.groupElement("user_opaque"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("av_class"),
-        RuntimeHelper.POINTER.withName("internal"),
-        RuntimeHelper.POINTER.withName("device_ref"),
-        RuntimeHelper.POINTER.withName("device_ctx"),
-        RuntimeHelper.POINTER.withName("hwctx"),
-        RuntimeHelper.POINTER.withName("free"),
-        RuntimeHelper.POINTER.withName("user_opaque"),
-        RuntimeHelper.POINTER.withName("pool"),
-        JAVA_INT.withName("initial_pool_size"),
-        JAVA_INT.withName("format"),
-        JAVA_INT.withName("sw_format"),
-        JAVA_INT.withName("width"),
-        JAVA_INT.withName("height"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVHWFramesContext");
-    static final VarHandle const$5 = constants$176.const$4.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_frame_unref",
+        constants$72.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_frame_move_ref",
+        constants$71.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_frame_get_buffer",
+        constants$85.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_frame_is_writable",
+        constants$0.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_frame_make_writable",
+        constants$0.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_frame_copy",
+        constants$68.const$3
+    );
 }
 
 

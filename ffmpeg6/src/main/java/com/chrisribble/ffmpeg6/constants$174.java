@@ -11,30 +11,12 @@ final class constants$174 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$174() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_frame_copy_props",
-        constants$66.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_frame_get_plane_buffer",
-        constants$120.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_frame_new_side_data",
-        constants$117.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_frame_new_side_data_from_buf",
-        constants$76.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_frame_get_side_data",
-        constants$120.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_frame_remove_side_data",
-        constants$159.const$2
-    );
+    static final VarHandle const$0 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("hw_frames_ctx"));
+    static final VarHandle const$1 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque_ref"));
+    static final VarHandle const$2 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("crop_top"));
+    static final VarHandle const$3 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("crop_bottom"));
+    static final VarHandle const$4 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("crop_left"));
+    static final VarHandle const$5 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("crop_right"));
 }
 
 

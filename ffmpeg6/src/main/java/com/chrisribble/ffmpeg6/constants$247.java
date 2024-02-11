@@ -12,63 +12,29 @@ final class constants$247 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$247() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_send_frame",
-        constants$66.const$1
+        "avcodec_get_subtitle_rect_class",
+        constants$4.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_receive_packet",
-        constants$66.const$1
+        "avcodec_parameters_from_context",
+        constants$68.const$3
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avcodec_parameters_to_context",
+        constants$68.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_get_hw_frames_parameters",
-        constants$247.const$2
+        "avcodec_open2",
+        constants$73.const$3
     );
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("priv_data"),
-        RuntimeHelper.POINTER.withName("parser"),
-        JAVA_LONG.withName("frame_offset"),
-        JAVA_LONG.withName("cur_offset"),
-        JAVA_LONG.withName("next_frame_offset"),
-        JAVA_INT.withName("pict_type"),
-        JAVA_INT.withName("repeat_pict"),
-        JAVA_LONG.withName("pts"),
-        JAVA_LONG.withName("dts"),
-        JAVA_LONG.withName("last_pts"),
-        JAVA_LONG.withName("last_dts"),
-        JAVA_INT.withName("fetch_timestamp"),
-        JAVA_INT.withName("cur_frame_start_index"),
-        MemoryLayout.sequenceLayout(4, JAVA_LONG).withName("cur_frame_offset"),
-        MemoryLayout.sequenceLayout(4, JAVA_LONG).withName("cur_frame_pts"),
-        MemoryLayout.sequenceLayout(4, JAVA_LONG).withName("cur_frame_dts"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("offset"),
-        MemoryLayout.sequenceLayout(4, JAVA_LONG).withName("cur_frame_end"),
-        JAVA_INT.withName("key_frame"),
-        JAVA_INT.withName("dts_sync_point"),
-        JAVA_INT.withName("dts_ref_dts_delta"),
-        JAVA_INT.withName("pts_dts_delta"),
-        MemoryLayout.sequenceLayout(4, JAVA_LONG).withName("cur_frame_pos"),
-        JAVA_LONG.withName("pos"),
-        JAVA_LONG.withName("last_pos"),
-        JAVA_INT.withName("duration"),
-        JAVA_INT.withName("field_order"),
-        JAVA_INT.withName("picture_structure"),
-        JAVA_INT.withName("output_picture_number"),
-        JAVA_INT.withName("width"),
-        JAVA_INT.withName("height"),
-        JAVA_INT.withName("coded_width"),
-        JAVA_INT.withName("coded_height"),
-        JAVA_INT.withName("format"),
-        MemoryLayout.paddingLayout(4)
-    ).withName("AVCodecParserContext");
-    static final VarHandle const$5 = constants$247.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_close",
+        constants$0.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avsubtitle_free",
+        constants$72.const$4
+    );
 }
 
 

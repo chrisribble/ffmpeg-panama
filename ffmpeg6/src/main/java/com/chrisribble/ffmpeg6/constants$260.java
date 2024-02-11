@@ -11,21 +11,30 @@ final class constants$260 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$260() {}
-    static final VarHandle const$0 = constants$258.const$5.varHandle(MemoryLayout.PathElement.groupElement("tm_wday"));
-    static final VarHandle const$1 = constants$258.const$5.varHandle(MemoryLayout.PathElement.groupElement("tm_yday"));
-    static final VarHandle const$2 = constants$258.const$5.varHandle(MemoryLayout.PathElement.groupElement("tm_isdst"));
-    static final VarHandle const$3 = constants$258.const$5.varHandle(MemoryLayout.PathElement.groupElement("tm_gmtoff"));
-    static final VarHandle const$4 = constants$258.const$5.varHandle(MemoryLayout.PathElement.groupElement("tm_zone"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("tv_sec"),
-            JAVA_LONG.withName("tv_nsec")
-        ).withName("it_interval"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("tv_sec"),
-            JAVA_LONG.withName("tv_nsec")
-        ).withName("it_value")
-    ).withName("itimerspec");
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(avcodec_default_execute2$func.class, "apply", constants$259.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$259.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "avcodec_default_execute2",
+        constants$157.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_fill_audio_frame",
+        constants$260.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "avcodec_flush_buffers",
+        constants$72.const$4
+    );
 }
 
 

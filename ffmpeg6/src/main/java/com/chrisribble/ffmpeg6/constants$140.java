@@ -11,12 +11,25 @@ final class constants$140 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$140() {}
-    static final VarHandle const$0 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("item_name"));
-    static final VarHandle const$1 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("option"));
-    static final VarHandle const$2 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$3 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("log_level_offset_offset"));
-    static final VarHandle const$4 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("parent_log_context_offset"));
-    static final VarHandle const$5 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("category"));
+    static final VarHandle const$0 = constants$139.const$5.varHandle(MemoryLayout.PathElement.groupElement("i"));
+    static final VarHandle const$1 = constants$139.const$5.varHandle(MemoryLayout.PathElement.groupElement("f"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_gcd",
+        constants$140.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_rescale",
+        constants$140.const$4
+    );
 }
 
 

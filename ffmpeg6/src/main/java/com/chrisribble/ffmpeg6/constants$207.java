@@ -12,32 +12,35 @@ final class constants$207 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$207() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_packet_make_writable",
-        constants$0.const$3
+        "av_new_packet",
+        constants$85.const$5
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("num"),
-            JAVA_INT.withName("den")
-        ).withName("AVRational")
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_shrink_packet",
+        constants$162.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_packet_rescale_ts",
-        constants$207.const$1
+        "av_grow_packet",
+        constants$85.const$5
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("start_frame"),
-        JAVA_INT.withName("end_frame"),
-        JAVA_INT.withName("qscale"),
-        JAVA_FLOAT.withName("quality_factor")
-    ).withName("RcOverride");
-    static final VarHandle const$4 = constants$207.const$3.varHandle(MemoryLayout.PathElement.groupElement("start_frame"));
-    static final VarHandle const$5 = constants$207.const$3.varHandle(MemoryLayout.PathElement.groupElement("end_frame"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_packet_from_data",
+        constants$66.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_packet_new_side_data",
+        constants$119.const$5
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "av_packet_add_side_data",
+        constants$207.const$5
+    );
 }
 
 

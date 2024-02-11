@@ -19,10 +19,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVBufferRef {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$147.const$1;
+        return constants$150.const$3;
     }
     public static VarHandle buffer$VH() {
-        return constants$147.const$2;
+        return constants$150.const$4;
     }
     /**
      * Getter for field:
@@ -31,7 +31,7 @@ public class AVBufferRef {
      * }
      */
     public static MemorySegment buffer$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$147.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$150.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -40,16 +40,16 @@ public class AVBufferRef {
      * }
      */
     public static void buffer$set(MemorySegment seg, MemorySegment x) {
-        constants$147.const$2.set(seg, x);
+        constants$150.const$4.set(seg, x);
     }
     public static MemorySegment buffer$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$147.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$150.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void buffer$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$147.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$150.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle data$VH() {
-        return constants$147.const$3;
+        return constants$150.const$5;
     }
     /**
      * Getter for field:
@@ -58,7 +58,7 @@ public class AVBufferRef {
      * }
      */
     public static MemorySegment data$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$147.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$150.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -67,16 +67,16 @@ public class AVBufferRef {
      * }
      */
     public static void data$set(MemorySegment seg, MemorySegment x) {
-        constants$147.const$3.set(seg, x);
+        constants$150.const$5.set(seg, x);
     }
     public static MemorySegment data$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$147.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$150.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void data$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$147.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$150.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle size$VH() {
-        return constants$147.const$4;
+        return constants$151.const$0;
     }
     /**
      * Getter for field:
@@ -85,7 +85,7 @@ public class AVBufferRef {
      * }
      */
     public static long size$get(MemorySegment seg) {
-        return (long)constants$147.const$4.get(seg);
+        return (long)constants$151.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -94,13 +94,13 @@ public class AVBufferRef {
      * }
      */
     public static void size$set(MemorySegment seg, long x) {
-        constants$147.const$4.set(seg, x);
+        constants$151.const$0.set(seg, x);
     }
     public static long size$get(MemorySegment seg, long index) {
-        return (long)constants$147.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$151.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void size$set(MemorySegment seg, long index, long x) {
-        constants$147.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$151.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

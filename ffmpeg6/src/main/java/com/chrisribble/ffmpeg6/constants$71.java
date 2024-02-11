@@ -11,34 +11,39 @@ final class constants$71 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$71() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
-        "sprintf",
-        constants$66.const$1
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("read"),
+            RuntimeHelper.POINTER.withName("write"),
+            RuntimeHelper.POINTER.withName("seek"),
+            RuntimeHelper.POINTER.withName("close")
+        ).withName("_IO_cookie_io_functions_t")
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "vfprintf",
-        constants$71.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fopencookie",
+        constants$71.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "vprintf",
-        constants$66.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "vsprintf",
-        constants$71.const$1
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandleVariadic(
-        "snprintf",
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fmemopen",
+        constants$71.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "open_memstream",
+        constants$69.const$5
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "setbuf",
         constants$71.const$5
     );
 }

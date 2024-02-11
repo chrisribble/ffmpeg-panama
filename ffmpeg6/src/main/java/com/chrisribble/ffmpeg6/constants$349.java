@@ -11,35 +11,25 @@ final class constants$349 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$349() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "swscale_configuration",
+        constants$4.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_scale",
-        constants$349.const$0
+        "swscale_license",
+        constants$4.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_scale_frame",
-        constants$71.const$1
+        "sws_getCoefficients",
+        constants$0.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "sws_frame_start",
-        constants$71.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_frame_end",
-        constants$70.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "sws_send_slice",
-        constants$331.const$4
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("coeff"),
+        JAVA_INT.withName("length"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("SwsVector");
+    static final VarHandle const$4 = constants$349.const$3.varHandle(MemoryLayout.PathElement.groupElement("coeff"));
+    static final VarHandle const$5 = constants$349.const$3.varHandle(MemoryLayout.PathElement.groupElement("length"));
 }
 
 

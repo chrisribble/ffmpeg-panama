@@ -19,7 +19,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class pthread_mutex_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$95.const$2;
+        return constants$98.const$2;
     }
     public static MemorySegment __data$slice(MemorySegment seg) {
         return seg.asSlice(0, 40);
@@ -28,7 +28,7 @@ public class pthread_mutex_t {
         return seg.asSlice(0, 40);
     }
     public static VarHandle __align$VH() {
-        return constants$95.const$3;
+        return constants$98.const$3;
     }
     /**
      * Getter for field:
@@ -37,7 +37,7 @@ public class pthread_mutex_t {
      * }
      */
     public static long __align$get(MemorySegment seg) {
-        return (long)constants$95.const$3.get(seg);
+        return (long)constants$98.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -46,13 +46,13 @@ public class pthread_mutex_t {
      * }
      */
     public static void __align$set(MemorySegment seg, long x) {
-        constants$95.const$3.set(seg, x);
+        constants$98.const$3.set(seg, x);
     }
     public static long __align$get(MemorySegment seg, long index) {
-        return (long)constants$95.const$3.get(seg.asSlice(index*sizeof()));
+        return (long)constants$98.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __align$set(MemorySegment seg, long index, long x) {
-        constants$95.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$98.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

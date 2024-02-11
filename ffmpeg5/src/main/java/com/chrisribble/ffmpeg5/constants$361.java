@@ -11,12 +11,39 @@ final class constants$361 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$361() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhi");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hi");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hu");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ho");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "sws_freeFilter",
+        constants$72.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sws_getCachedContext",
+        constants$361.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_convertPalette8ToPacked32",
+        constants$336.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "sws_convertPalette8ToPacked24",
+        constants$336.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_get_class",
+        constants$4.const$0
+    );
 }
 
 

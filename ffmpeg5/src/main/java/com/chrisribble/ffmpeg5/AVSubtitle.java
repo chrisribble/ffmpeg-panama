@@ -22,10 +22,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class AVSubtitle {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$242.const$2;
+        return constants$245.const$4;
     }
     public static VarHandle format$VH() {
-        return constants$242.const$3;
+        return constants$245.const$5;
     }
     /**
      * Getter for field:
@@ -34,7 +34,7 @@ public class AVSubtitle {
      * }
      */
     public static short format$get(MemorySegment seg) {
-        return (short)constants$242.const$3.get(seg);
+        return (short)constants$245.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -43,16 +43,16 @@ public class AVSubtitle {
      * }
      */
     public static void format$set(MemorySegment seg, short x) {
-        constants$242.const$3.set(seg, x);
+        constants$245.const$5.set(seg, x);
     }
     public static short format$get(MemorySegment seg, long index) {
-        return (short)constants$242.const$3.get(seg.asSlice(index*sizeof()));
+        return (short)constants$245.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void format$set(MemorySegment seg, long index, short x) {
-        constants$242.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$245.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle start_display_time$VH() {
-        return constants$242.const$4;
+        return constants$246.const$0;
     }
     /**
      * Getter for field:
@@ -61,7 +61,7 @@ public class AVSubtitle {
      * }
      */
     public static int start_display_time$get(MemorySegment seg) {
-        return (int)constants$242.const$4.get(seg);
+        return (int)constants$246.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -70,16 +70,16 @@ public class AVSubtitle {
      * }
      */
     public static void start_display_time$set(MemorySegment seg, int x) {
-        constants$242.const$4.set(seg, x);
+        constants$246.const$0.set(seg, x);
     }
     public static int start_display_time$get(MemorySegment seg, long index) {
-        return (int)constants$242.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$246.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void start_display_time$set(MemorySegment seg, long index, int x) {
-        constants$242.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$246.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle end_display_time$VH() {
-        return constants$242.const$5;
+        return constants$246.const$1;
     }
     /**
      * Getter for field:
@@ -88,7 +88,7 @@ public class AVSubtitle {
      * }
      */
     public static int end_display_time$get(MemorySegment seg) {
-        return (int)constants$242.const$5.get(seg);
+        return (int)constants$246.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -97,16 +97,16 @@ public class AVSubtitle {
      * }
      */
     public static void end_display_time$set(MemorySegment seg, int x) {
-        constants$242.const$5.set(seg, x);
+        constants$246.const$1.set(seg, x);
     }
     public static int end_display_time$get(MemorySegment seg, long index) {
-        return (int)constants$242.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$246.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void end_display_time$set(MemorySegment seg, long index, int x) {
-        constants$242.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$246.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle num_rects$VH() {
-        return constants$243.const$0;
+        return constants$246.const$2;
     }
     /**
      * Getter for field:
@@ -115,7 +115,7 @@ public class AVSubtitle {
      * }
      */
     public static int num_rects$get(MemorySegment seg) {
-        return (int)constants$243.const$0.get(seg);
+        return (int)constants$246.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -124,16 +124,16 @@ public class AVSubtitle {
      * }
      */
     public static void num_rects$set(MemorySegment seg, int x) {
-        constants$243.const$0.set(seg, x);
+        constants$246.const$2.set(seg, x);
     }
     public static int num_rects$get(MemorySegment seg, long index) {
-        return (int)constants$243.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$246.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void num_rects$set(MemorySegment seg, long index, int x) {
-        constants$243.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$246.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rects$VH() {
-        return constants$243.const$1;
+        return constants$246.const$3;
     }
     /**
      * Getter for field:
@@ -142,7 +142,7 @@ public class AVSubtitle {
      * }
      */
     public static MemorySegment rects$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$243.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$246.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -151,16 +151,16 @@ public class AVSubtitle {
      * }
      */
     public static void rects$set(MemorySegment seg, MemorySegment x) {
-        constants$243.const$1.set(seg, x);
+        constants$246.const$3.set(seg, x);
     }
     public static MemorySegment rects$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$243.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$246.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void rects$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$243.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$246.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle pts$VH() {
-        return constants$243.const$2;
+        return constants$246.const$4;
     }
     /**
      * Getter for field:
@@ -169,7 +169,7 @@ public class AVSubtitle {
      * }
      */
     public static long pts$get(MemorySegment seg) {
-        return (long)constants$243.const$2.get(seg);
+        return (long)constants$246.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -178,13 +178,13 @@ public class AVSubtitle {
      * }
      */
     public static void pts$set(MemorySegment seg, long x) {
-        constants$243.const$2.set(seg, x);
+        constants$246.const$4.set(seg, x);
     }
     public static long pts$get(MemorySegment seg, long index) {
-        return (long)constants$243.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$246.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void pts$set(MemorySegment seg, long index, long x) {
-        constants$243.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$246.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

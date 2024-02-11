@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class av_intfloat64 {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$136.const$1;
+        return constants$140.const$1;
     }
     public static VarHandle i$VH() {
-        return constants$136.const$2;
+        return constants$140.const$2;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class av_intfloat64 {
      * }
      */
     public static long i$get(MemorySegment seg) {
-        return (long)constants$136.const$2.get(seg);
+        return (long)constants$140.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class av_intfloat64 {
      * }
      */
     public static void i$set(MemorySegment seg, long x) {
-        constants$136.const$2.set(seg, x);
+        constants$140.const$2.set(seg, x);
     }
     public static long i$get(MemorySegment seg, long index) {
-        return (long)constants$136.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$140.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void i$set(MemorySegment seg, long index, long x) {
-        constants$136.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$140.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle f$VH() {
-        return constants$136.const$3;
+        return constants$140.const$3;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class av_intfloat64 {
      * }
      */
     public static double f$get(MemorySegment seg) {
-        return (double)constants$136.const$3.get(seg);
+        return (double)constants$140.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class av_intfloat64 {
      * }
      */
     public static void f$set(MemorySegment seg, double x) {
-        constants$136.const$3.set(seg, x);
+        constants$140.const$3.set(seg, x);
     }
     public static double f$get(MemorySegment seg, long index) {
-        return (double)constants$136.const$3.get(seg.asSlice(index*sizeof()));
+        return (double)constants$140.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void f$set(MemorySegment seg, long index, double x) {
-        constants$136.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$140.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

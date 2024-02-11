@@ -12,28 +12,31 @@ final class constants$183 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$183() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_hwdevice_get_hwframe_constraints",
-        constants$67.const$4
+        "av_hwdevice_get_type_name",
+        constants$0.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwframe_constraints_free",
-        constants$70.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_hwframe_map",
-        constants$109.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwframe_ctx_create_derived",
-        constants$180.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_get_type",
+        "av_hwdevice_iterate_types",
         constants$1.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_get_name",
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_hwdevice_ctx_alloc",
         constants$0.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_hwdevice_ctx_init",
+        constants$0.const$3
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_hwdevice_ctx_create",
+        constants$183.const$4
     );
 }
 

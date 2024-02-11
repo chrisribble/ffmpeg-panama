@@ -16,13 +16,13 @@ public interface avcodec_default_execute$func {
 
     int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
     static MemorySegment allocate(avcodec_default_execute$func fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$256.const$5, fi, constants$66.const$1, scope);
+        return RuntimeHelper.upcallStub(constants$259.const$3, fi, constants$68.const$3, scope);
     }
     static avcodec_default_execute$func ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
             try {
-                return (int)constants$111.const$3.invokeExact(symbol, __x0, __x1);
+                return (int)constants$114.const$3.invokeExact(symbol, __x0, __x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

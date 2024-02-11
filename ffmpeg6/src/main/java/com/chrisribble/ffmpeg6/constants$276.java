@@ -11,14 +11,14 @@ final class constants$276 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$276() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVIOContext.read_seek.class, "apply", constants$275.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$275.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$275.const$4
     );
-    static final VarHandle const$2 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("read_seek"));
-    static final VarHandle const$3 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("seekable"));
-    static final VarHandle const$4 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("direct"));
-    static final VarHandle const$5 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
+    static final VarHandle const$1 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("seek"));
+    static final VarHandle const$2 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("pos"));
+    static final VarHandle const$3 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("eof_reached"));
+    static final VarHandle const$4 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("error"));
+    static final VarHandle const$5 = constants$273.const$5.varHandle(MemoryLayout.PathElement.groupElement("write_flag"));
 }
 
 

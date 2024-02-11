@@ -12,28 +12,32 @@ final class constants$327 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$327() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_write_trailer",
-        constants$0.const$3
+        "av_program_add_stream_index",
+        constants$134.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_guess_format",
-        constants$68.const$3
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_guess_codec",
-        constants$154.const$0
+        "av_find_best_stream",
+        constants$327.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_get_output_timestamp",
-        constants$267.const$1
+        "av_read_frame",
+        constants$68.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_hex_dump",
-        constants$280.const$4
+        "av_seek_frame",
+        constants$298.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_hex_dump_log",
-        constants$256.const$3
+        "avformat_seek_file",
+        constants$300.const$1
     );
 }
 

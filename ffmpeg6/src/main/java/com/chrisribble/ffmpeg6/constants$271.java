@@ -11,12 +11,26 @@ final class constants$271 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$271() {}
-    static final VarHandle const$0 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
-    static final VarHandle const$1 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("buffer"));
-    static final VarHandle const$2 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("buffer_size"));
-    static final VarHandle const$3 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("buf_ptr"));
-    static final VarHandle const$4 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("buf_end"));
-    static final VarHandle const$5 = constants$270.const$5.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("callback"),
+        RuntimeHelper.POINTER.withName("opaque")
+    ).withName("AVIOInterruptCB");
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVIOInterruptCB.callback.class, "apply", constants$0.const$3);
+    static final VarHandle const$2 = constants$271.const$0.varHandle(MemoryLayout.PathElement.groupElement("callback"));
+    static final VarHandle const$3 = constants$271.const$0.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("utf8"),
+        JAVA_LONG.withName("size"),
+        JAVA_LONG.withName("modification_timestamp"),
+        JAVA_LONG.withName("access_timestamp"),
+        JAVA_LONG.withName("status_change_timestamp"),
+        JAVA_LONG.withName("user_id"),
+        JAVA_LONG.withName("group_id"),
+        JAVA_LONG.withName("filemode")
+    ).withName("AVIODirEntry");
+    static final VarHandle const$5 = constants$271.const$4.varHandle(MemoryLayout.PathElement.groupElement("name"));
 }
 
 

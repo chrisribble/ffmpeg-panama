@@ -11,23 +11,37 @@ final class constants$119 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$119() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "strxfrm",
-        constants$115.const$1
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(13, RuntimeHelper.POINTER).withName("__locales"),
-        RuntimeHelper.POINTER.withName("__ctype_b"),
-        RuntimeHelper.POINTER.withName("__ctype_tolower"),
-        RuntimeHelper.POINTER.withName("__ctype_toupper"),
-        MemoryLayout.sequenceLayout(13, RuntimeHelper.POINTER).withName("__names")
-    ).withName("__locale_struct");
-    static final VarHandle const$2 = constants$119.const$1.varHandle(MemoryLayout.PathElement.groupElement("__ctype_b"));
-    static final VarHandle const$3 = constants$119.const$1.varHandle(MemoryLayout.PathElement.groupElement("__ctype_tolower"));
-    static final VarHandle const$4 = constants$119.const$1.varHandle(MemoryLayout.PathElement.groupElement("__ctype_toupper"));
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "strcoll_l",
-        constants$71.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "memcpy",
+        constants$119.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "memmove",
+        constants$119.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "memccpy",
+        constants$119.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "memset",
+        constants$119.const$5
     );
 }
 

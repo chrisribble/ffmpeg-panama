@@ -11,12 +11,30 @@ final class constants$209 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$209() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("codec"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("codec_id"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("codec_tag"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
-    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("internal"));
-    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_packet_free_side_data",
+        constants$72.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_packet_ref",
+        constants$68.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_packet_unref",
+        constants$72.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_packet_move_ref",
+        constants$71.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_packet_copy_props",
+        constants$68.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_packet_make_refcounted",
+        constants$0.const$3
+    );
 }
 
 

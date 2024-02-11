@@ -11,35 +11,31 @@ final class constants$69 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$69() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fclose",
+        constants$0.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "fmemopen",
-        constants$69.const$0
+        "tmpfile",
+        constants$4.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "open_memstream",
-        constants$67.const$4
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "tmpnam",
+        constants$69.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "tmpnam_r",
+        constants$69.const$2
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "setbuf",
-        constants$69.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG
-    );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "setvbuf",
+        "tempnam",
         constants$69.const$5
     );
 }

@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class __sigset_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$86.const$5;
+        return constants$89.const$5;
     }
     public static MemorySegment __val$slice(MemorySegment seg) {
         return seg.asSlice(0, 128);

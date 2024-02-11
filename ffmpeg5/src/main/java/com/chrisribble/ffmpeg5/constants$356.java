@@ -11,39 +11,20 @@ final class constants$356 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$356() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "sws_getColorspaceDetails",
-        constants$356.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "sws_allocVec",
-        constants$0.const$1
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_DOUBLE,
-        JAVA_DOUBLE
+    static final VarHandle const$0 = constants$355.const$4.varHandle(MemoryLayout.PathElement.groupElement("lumV"));
+    static final VarHandle const$1 = constants$355.const$4.varHandle(MemoryLayout.PathElement.groupElement("chrH"));
+    static final VarHandle const$2 = constants$355.const$4.varHandle(MemoryLayout.PathElement.groupElement("chrV"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sws_isSupportedInput",
+        constants$1.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "sws_getGaussianVec",
-        constants$356.const$3
+        "sws_isSupportedOutput",
+        constants$1.const$0
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_DOUBLE
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "sws_scaleVec",
-        constants$356.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "sws_isSupportedEndiannessConversion",
+        constants$1.const$0
     );
 }
 

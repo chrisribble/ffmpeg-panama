@@ -23,7 +23,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class __pthread_cond_s {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$93.const$5;
+        return constants$96.const$5;
     }
     public static MemorySegment __wseq$slice(MemorySegment seg) {
         return seg.asSlice(0, 8);
@@ -38,7 +38,7 @@ public class __pthread_cond_s {
         return seg.asSlice(24, 8);
     }
     public static VarHandle __g1_orig_size$VH() {
-        return constants$94.const$0;
+        return constants$97.const$0;
     }
     /**
      * Getter for field:
@@ -47,7 +47,7 @@ public class __pthread_cond_s {
      * }
      */
     public static int __g1_orig_size$get(MemorySegment seg) {
-        return (int)constants$94.const$0.get(seg);
+        return (int)constants$97.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -56,16 +56,16 @@ public class __pthread_cond_s {
      * }
      */
     public static void __g1_orig_size$set(MemorySegment seg, int x) {
-        constants$94.const$0.set(seg, x);
+        constants$97.const$0.set(seg, x);
     }
     public static int __g1_orig_size$get(MemorySegment seg, long index) {
-        return (int)constants$94.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$97.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void __g1_orig_size$set(MemorySegment seg, long index, int x) {
-        constants$94.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$97.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle __wrefs$VH() {
-        return constants$94.const$1;
+        return constants$97.const$1;
     }
     /**
      * Getter for field:
@@ -74,7 +74,7 @@ public class __pthread_cond_s {
      * }
      */
     public static int __wrefs$get(MemorySegment seg) {
-        return (int)constants$94.const$1.get(seg);
+        return (int)constants$97.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -83,13 +83,13 @@ public class __pthread_cond_s {
      * }
      */
     public static void __wrefs$set(MemorySegment seg, int x) {
-        constants$94.const$1.set(seg, x);
+        constants$97.const$1.set(seg, x);
     }
     public static int __wrefs$get(MemorySegment seg, long index) {
-        return (int)constants$94.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$97.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __wrefs$set(MemorySegment seg, long index, int x) {
-        constants$94.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$97.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment __g_signals$slice(MemorySegment seg) {
         return seg.asSlice(40, 8);

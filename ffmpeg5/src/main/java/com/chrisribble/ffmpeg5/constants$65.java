@@ -13,10 +13,16 @@ final class constants$65 {
     private constants$65() {}
     static final VarHandle const$0 = constants$60.const$4.varHandle(MemoryLayout.PathElement.groupElement("__pad5"));
     static final VarHandle const$1 = constants$60.const$4.varHandle(MemoryLayout.PathElement.groupElement("_mode"));
-    static final VarHandle const$2 = RuntimeHelper.POINTER.varHandle();
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(cookie_read_function_t.class, "apply", constants$65.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$65.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(cookie_write_function_t.class, "apply", constants$65.const$2);
 }
 
 

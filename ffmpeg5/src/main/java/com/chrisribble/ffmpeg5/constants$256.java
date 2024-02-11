@@ -11,38 +11,19 @@ final class constants$256 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$256() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_encode_subtitle",
-        constants$247.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_pix_fmt_to_codec_tag",
-        constants$1.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_find_best_pix_fmt_of_list",
-        constants$256.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_default_get_format",
-        constants$66.const$1
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "avcodec_string",
-        constants$256.const$5
-    );
+    static final VarHandle const$0 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("height"));
+    static final VarHandle const$1 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("coded_width"));
+    static final VarHandle const$2 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("coded_height"));
+    static final VarHandle const$3 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("format"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(7, JAVA_INT).withName("codec_ids"),
+        JAVA_INT.withName("priv_data_size"),
+        RuntimeHelper.POINTER.withName("parser_init"),
+        RuntimeHelper.POINTER.withName("parser_parse"),
+        RuntimeHelper.POINTER.withName("parser_close"),
+        RuntimeHelper.POINTER.withName("split")
+    ).withName("AVCodecParser");
+    static final VarHandle const$5 = constants$256.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
 }
 
 

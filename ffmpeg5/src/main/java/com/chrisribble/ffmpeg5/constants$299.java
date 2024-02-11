@@ -11,12 +11,12 @@ final class constants$299 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$299() {}
-    static final VarHandle const$0 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("mime_type"));
-    static final VarHandle const$1 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("raw_codec_id"));
-    static final VarHandle const$2 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final VarHandle const$3 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags_internal"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVInputFormat.read_probe.class, "apply", constants$0.const$3);
-    static final VarHandle const$5 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("read_probe"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVOutputFormat.write_uncoded_frame.class, "apply", constants$184.const$0);
+    static final VarHandle const$1 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("write_uncoded_frame"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVOutputFormat.get_device_list.class, "apply", constants$68.const$3);
+    static final VarHandle const$3 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_device_list"));
+    static final VarHandle const$4 = constants$294.const$1.varHandle(MemoryLayout.PathElement.groupElement("data_codec"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVOutputFormat.init.class, "apply", constants$0.const$3);
 }
 
 

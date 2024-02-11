@@ -13,29 +13,28 @@ final class constants$72 {
     private constants$72() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_INT,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "vsnprintf",
+        "setvbuf",
         constants$72.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "vdprintf",
+        "setbuffer",
         constants$72.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
-        "dprintf",
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "setlinebuf",
         constants$72.const$4
     );
 }

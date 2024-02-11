@@ -11,28 +11,22 @@ final class constants$111 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$111() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "system",
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(at_quick_exit$__func.class, "apply", constants$110.const$1);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "at_quick_exit",
         constants$0.const$3
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "realpath",
-        constants$67.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(__compar_fn_t.class, "apply", constants$66.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$66.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(on_exit$__func.class, "apply", constants$111.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$111.const$2
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "bsearch",
-        constants$111.const$4
+        "on_exit",
+        constants$68.const$3
     );
 }
 

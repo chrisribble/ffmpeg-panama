@@ -16,13 +16,13 @@ public interface av_format_control_message {
 
     int apply(java.lang.foreign.MemorySegment s, int type, java.lang.foreign.MemorySegment data, long data_size);
     static MemorySegment allocate(av_format_control_message fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$311.const$1, fi, constants$204.const$5, scope);
+        return RuntimeHelper.upcallStub(constants$314.const$2, fi, constants$208.const$3, scope);
     }
     static av_format_control_message ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _s, int _type, java.lang.foreign.MemorySegment _data, long _data_size) -> {
             try {
-                return (int)constants$295.const$3.invokeExact(symbol, _s, _type, _data, _data_size);
+                return (int)constants$298.const$4.invokeExact(symbol, _s, _type, _data, _data_size);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

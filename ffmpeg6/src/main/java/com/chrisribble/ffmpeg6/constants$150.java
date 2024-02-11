@@ -11,26 +11,25 @@ final class constants$150 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$150() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_buffer_realloc",
-        constants$114.const$3
-    );
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"));
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_buffer_replace",
-        constants$66.const$1
+        "av_get_time_base_q",
+        constants$150.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(av_buffer_pool_init$alloc.class, "apply", constants$86.const$2);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$86.const$2
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "av_fourcc_make_string",
+        constants$123.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_buffer_pool_init",
-        constants$150.const$4
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("buffer"),
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_LONG.withName("size")
+    ).withName("AVBufferRef");
+    static final VarHandle const$4 = constants$150.const$3.varHandle(MemoryLayout.PathElement.groupElement("buffer"));
+    static final VarHandle const$5 = constants$150.const$3.varHandle(MemoryLayout.PathElement.groupElement("data"));
 }
 
 

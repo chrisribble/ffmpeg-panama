@@ -11,18 +11,30 @@ final class constants$87 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$87() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("tv_sec"),
-        JAVA_LONG.withName("tv_usec")
-    ).withName("timeval");
-    static final VarHandle const$1 = constants$87.const$0.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
-    static final VarHandle const$2 = constants$87.const$0.varHandle(MemoryLayout.PathElement.groupElement("tv_usec"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("tv_sec"),
-        JAVA_LONG.withName("tv_nsec")
-    ).withName("timespec");
-    static final VarHandle const$4 = constants$87.const$3.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
-    static final VarHandle const$5 = constants$87.const$3.varHandle(MemoryLayout.PathElement.groupElement("tv_nsec"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "atof",
+        constants$21.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "atoi",
+        constants$0.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "atol",
+        constants$82.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "atoll",
+        constants$82.const$0
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_DOUBLE,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strtod",
+        constants$87.const$4
+    );
 }
 
 

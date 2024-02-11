@@ -12,28 +12,28 @@ final class constants$118 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$118() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "strncpy",
-        constants$116.const$1
+        "wctomb",
+        constants$85.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "strcat",
-        constants$67.const$4
+        "mbstowcs",
+        constants$65.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "strncat",
-        constants$116.const$1
+        "wcstombs",
+        constants$65.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "strcmp",
-        constants$66.const$1
+        "rpmatch",
+        constants$0.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "strncmp",
-        constants$114.const$5
+        "getsubopt",
+        constants$73.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "strcoll",
-        constants$66.const$1
+        "getloadavg",
+        constants$85.const$5
     );
 }
 

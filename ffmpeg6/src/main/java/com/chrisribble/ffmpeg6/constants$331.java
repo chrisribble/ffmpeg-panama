@@ -11,30 +11,34 @@ final class constants$331 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$331() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_get_frame_filename",
-        constants$180.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_filename_number_test",
-        constants$0.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_sdp_create",
-        constants$180.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_match_ext",
-        constants$66.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
-        JAVA_INT
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_pkt_dump2",
+        constants$331.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_pkt_dump_log2",
+        constants$331.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_codec_get_id",
+        constants$85.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_query_codec",
-        constants$331.const$4
+        "av_codec_get_tag",
+        constants$85.const$5
     );
 }
 

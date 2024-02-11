@@ -11,35 +11,17 @@ final class constants$257 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$257() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avcodec_default_execute",
-        constants$228.const$3
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(avcodec_default_execute2$func.class, "apply", constants$257.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$257.const$1
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVCodecParser.parser_close.class, "apply", constants$72.const$4);
+    static final VarHandle const$1 = constants$255.const$4.varHandle(MemoryLayout.PathElement.groupElement("parser_close"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVCodecParser.split.class, "apply", constants$66.const$0);
+    static final VarHandle const$3 = constants$255.const$4.varHandle(MemoryLayout.PathElement.groupElement("split"));
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avcodec_default_execute2",
-        constants$154.const$0
+        "av_parser_iterate",
+        constants$69.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "avcodec_fill_audio_frame",
-        constants$257.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_parser_init",
+        constants$0.const$1
     );
 }
 

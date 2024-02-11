@@ -11,12 +11,28 @@ final class constants$193 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$193() {}
-    static final VarHandle const$0 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$1 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
-    static final VarHandle const$2 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
-    static final VarHandle const$3 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
-    static final VarHandle const$4 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("profile"));
-    static final VarHandle const$5 = constants$192.const$0.varHandle(MemoryLayout.PathElement.groupElement("level"));
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("pix_fmt"),
+        JAVA_INT.withName("methods"),
+        JAVA_INT.withName("device_type")
+    ).withName("AVCodecHWConfig");
+    static final VarHandle const$1 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
+    static final VarHandle const$2 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("methods"));
+    static final VarHandle const$3 = constants$193.const$0.varHandle(MemoryLayout.PathElement.groupElement("device_type"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "avcodec_get_hw_config",
+        constants$123.const$2
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        JAVA_INT.withName("type"),
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("long_name"),
+        JAVA_INT.withName("props"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("mime_types"),
+        RuntimeHelper.POINTER.withName("profiles")
+    ).withName("AVCodecDescriptor");
 }
 
 

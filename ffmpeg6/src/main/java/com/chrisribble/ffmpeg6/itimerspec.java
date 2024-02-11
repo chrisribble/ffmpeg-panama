@@ -18,7 +18,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class itimerspec {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$260.const$5;
+        return constants$263.const$4;
     }
     public static MemorySegment it_interval$slice(MemorySegment seg) {
         return seg.asSlice(0, 16);

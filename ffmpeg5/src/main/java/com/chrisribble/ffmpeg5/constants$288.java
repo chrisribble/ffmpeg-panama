@@ -12,28 +12,28 @@ final class constants$288 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$288() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avio_closep",
-        constants$0.const$3
+        "avio_print_string_array",
+        constants$71.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avio_open_dyn_buf",
-        constants$0.const$3
+        "avio_flush",
+        constants$72.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avio_get_dyn_buf",
-        constants$66.const$1
+        "avio_read",
+        constants$66.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avio_close_dyn_buf",
-        constants$66.const$1
+        "avio_read_partial",
+        constants$66.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "avio_enum_protocols",
-        constants$120.const$4
+        "avio_r8",
+        constants$0.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avio_protocol_get_class",
-        constants$67.const$1
+        "avio_rl16",
+        constants$0.const$3
     );
 }
 

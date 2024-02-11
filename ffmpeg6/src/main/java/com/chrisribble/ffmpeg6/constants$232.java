@@ -11,12 +11,14 @@ final class constants$232 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$232() {}
-    static final VarHandle const$0 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("pts_correction_last_dts"));
-    static final VarHandle const$1 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("sub_charenc"));
-    static final VarHandle const$2 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("sub_charenc_mode"));
-    static final VarHandle const$3 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("skip_alpha"));
-    static final VarHandle const$4 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("seek_preroll"));
-    static final VarHandle const$5 = constants$208.const$2.varHandle(MemoryLayout.PathElement.groupElement("chroma_intra_matrix"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVCodecContext.execute2.class, "apply", constants$157.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$157.const$0
+    );
+    static final VarHandle const$2 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("execute2"));
+    static final VarHandle const$3 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("nsse_weight"));
+    static final VarHandle const$4 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("profile"));
+    static final VarHandle const$5 = constants$211.const$2.varHandle(MemoryLayout.PathElement.groupElement("level"));
 }
 
 

@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class max_align_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$132.const$0;
+        return constants$136.const$0;
     }
     public static VarHandle __clang_max_align_nonce1$VH() {
-        return constants$132.const$1;
+        return constants$136.const$1;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class max_align_t {
      * }
      */
     public static long __clang_max_align_nonce1$get(MemorySegment seg) {
-        return (long)constants$132.const$1.get(seg);
+        return (long)constants$136.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -39,13 +39,13 @@ public class max_align_t {
      * }
      */
     public static void __clang_max_align_nonce1$set(MemorySegment seg, long x) {
-        constants$132.const$1.set(seg, x);
+        constants$136.const$1.set(seg, x);
     }
     public static long __clang_max_align_nonce1$get(MemorySegment seg, long index) {
-        return (long)constants$132.const$1.get(seg.asSlice(index*sizeof()));
+        return (long)constants$136.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void __clang_max_align_nonce1$set(MemorySegment seg, long index, long x) {
-        constants$132.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$136.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

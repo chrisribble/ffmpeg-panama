@@ -12,28 +12,28 @@ final class constants$328 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$328() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_find_input_format",
-        constants$67.const$1
+        "av_format_inject_global_side_data",
+        constants$72.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_probe_input_format",
-        constants$120.const$4
+        "av_fmt_ctx_get_duration_estimation_method",
+        constants$0.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_probe_input_format2",
-        constants$76.const$2
+        "avformat_version",
+        constants$3.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_probe_input_format3",
-        constants$76.const$2
+        "avformat_configuration",
+        constants$4.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_probe_input_buffer2",
-        constants$228.const$4
+        "avformat_license",
+        constants$4.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_probe_input_buffer",
-        constants$228.const$4
+        "avformat_network_init",
+        constants$3.const$4
     );
 }
 

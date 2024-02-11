@@ -11,26 +11,12 @@ final class constants$253 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$253() {}
-    static final VarHandle const$0 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(7, JAVA_INT).withName("codec_ids"),
-        JAVA_INT.withName("priv_data_size"),
-        RuntimeHelper.POINTER.withName("parser_init"),
-        RuntimeHelper.POINTER.withName("parser_parse"),
-        RuntimeHelper.POINTER.withName("parser_close"),
-        RuntimeHelper.POINTER.withName("split")
-    ).withName("AVCodecParser");
-    static final VarHandle const$2 = constants$253.const$1.varHandle(MemoryLayout.PathElement.groupElement("priv_data_size"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecParser.parser_init.class, "apply", constants$0.const$3);
-    static final VarHandle const$4 = constants$253.const$1.varHandle(MemoryLayout.PathElement.groupElement("parser_init"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
+    static final VarHandle const$0 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("dts"));
+    static final VarHandle const$1 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("last_pts"));
+    static final VarHandle const$2 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("last_dts"));
+    static final VarHandle const$3 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("fetch_timestamp"));
+    static final VarHandle const$4 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("cur_frame_start_index"));
+    static final VarHandle const$5 = constants$251.const$3.varHandle(MemoryLayout.PathElement.groupElement("flags"));
 }
 
 

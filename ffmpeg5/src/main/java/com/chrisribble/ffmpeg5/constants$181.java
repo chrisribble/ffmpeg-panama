@@ -11,31 +11,12 @@ final class constants$181 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$181() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "av_hwframe_ctx_init",
-        constants$0.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_hwframe_get_buffer",
-        constants$109.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_hwframe_transfer_data",
-        constants$109.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_hwframe_transfer_get_formats",
-        constants$180.const$2
-    );
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("valid_hw_formats"),
-        RuntimeHelper.POINTER.withName("valid_sw_formats"),
-        JAVA_INT.withName("min_width"),
-        JAVA_INT.withName("min_height"),
-        JAVA_INT.withName("max_width"),
-        JAVA_INT.withName("max_height")
-    ).withName("AVHWFramesConstraints");
-    static final VarHandle const$5 = constants$181.const$4.varHandle(MemoryLayout.PathElement.groupElement("valid_hw_formats"));
+    static final VarHandle const$0 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("device_ctx"));
+    static final VarHandle const$1 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("hwctx"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVHWFramesContext.free.class, "apply", constants$72.const$4);
+    static final VarHandle const$3 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final VarHandle const$4 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("user_opaque"));
+    static final VarHandle const$5 = constants$180.const$2.varHandle(MemoryLayout.PathElement.groupElement("pool"));
 }
 
 

@@ -11,40 +11,38 @@ final class constants$139 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$139() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("num"),
+        JAVA_INT.withName("den")
+    ).withName("AVRational"),
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
         ).withName("AVRational"),
-        JAVA_LONG,
         MemoryLayout.structLayout(
             JAVA_INT.withName("num"),
             JAVA_INT.withName("den")
         ).withName("AVRational"),
-        JAVA_LONG
+        JAVA_INT,
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("AVRational")
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "av_add_stable",
+        "av_gcd_q",
         constants$139.const$0
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("class_name"),
-        RuntimeHelper.POINTER.withName("item_name"),
-        RuntimeHelper.POINTER.withName("option"),
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("log_level_offset_offset"),
-        JAVA_INT.withName("parent_log_context_offset"),
-        JAVA_INT.withName("category"),
-        RuntimeHelper.POINTER.withName("get_category"),
-        RuntimeHelper.POINTER.withName("query_ranges"),
-        RuntimeHelper.POINTER.withName("child_next"),
-        RuntimeHelper.POINTER.withName("child_class_iterate")
-    ).withName("AVClass");
-    static final VarHandle const$3 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("class_name"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVClass.item_name.class, "apply", constants$67.const$1);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$67.const$1
-    );
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        JAVA_INT.withName("i"),
+        JAVA_FLOAT.withName("f")
+    ).withName("av_intfloat32");
+    static final VarHandle const$3 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("i"));
+    static final VarHandle const$4 = constants$139.const$2.varHandle(MemoryLayout.PathElement.groupElement("f"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("i"),
+        JAVA_DOUBLE.withName("f")
+    ).withName("av_intfloat64");
 }
 
 

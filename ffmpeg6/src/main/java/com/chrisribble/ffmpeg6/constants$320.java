@@ -11,30 +11,20 @@ final class constants$320 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$320() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_license",
-        constants$4.const$0
+    static final VarHandle const$0 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("data_codec_id"));
+    static final VarHandle const$1 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avformat_network_init",
-        constants$3.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avformat_network_deinit",
-        constants$3.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "av_muxer_iterate",
-        constants$67.const$1
-    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$320.const$2);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_demuxer_iterate",
-        constants$67.const$1
+        constants$320.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_alloc_context",
-        constants$4.const$0
-    );
+    static final VarHandle const$5 = constants$309.const$2.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
 }
 
 
