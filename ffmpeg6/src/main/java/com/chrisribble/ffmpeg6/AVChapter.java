@@ -2,144 +2,310 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVChapter {
  *     int64_t id;
  *     AVRational time_base;
  *     int64_t start;
  *     int64_t end;
- *     AVDictionary* metadata;
- * };
+ *     AVDictionary *metadata;
+ * }
  * }
  */
 public class AVChapter {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$307.const$4;
+    AVChapter() {
+        // Should not be called directly
     }
-    public static VarHandle id$VH() {
-        return constants$307.const$5;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t id;
-     * }
-     */
-    public static long id$get(MemorySegment seg) {
-        return (long)constants$307.const$5.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t id;
-     * }
-     */
-    public static void id$set(MemorySegment seg, long x) {
-        constants$307.const$5.set(seg, x);
-    }
-    public static long id$get(MemorySegment seg, long index) {
-        return (long)constants$307.const$5.get(seg.asSlice(index*sizeof()));
-    }
-    public static void id$set(MemorySegment seg, long index, long x) {
-        constants$307.const$5.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static MemorySegment time_base$slice(MemorySegment seg) {
-        return seg.asSlice(8, 8);
-    }
-    public static VarHandle start$VH() {
-        return constants$308.const$0;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t start;
-     * }
-     */
-    public static long start$get(MemorySegment seg) {
-        return (long)constants$308.const$0.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t start;
-     * }
-     */
-    public static void start$set(MemorySegment seg, long x) {
-        constants$308.const$0.set(seg, x);
-    }
-    public static long start$get(MemorySegment seg, long index) {
-        return (long)constants$308.const$0.get(seg.asSlice(index*sizeof()));
-    }
-    public static void start$set(MemorySegment seg, long index, long x) {
-        constants$308.const$0.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle end$VH() {
-        return constants$308.const$1;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t end;
-     * }
-     */
-    public static long end$get(MemorySegment seg) {
-        return (long)constants$308.const$1.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t end;
-     * }
-     */
-    public static void end$set(MemorySegment seg, long x) {
-        constants$308.const$1.set(seg, x);
-    }
-    public static long end$get(MemorySegment seg, long index) {
-        return (long)constants$308.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void end$set(MemorySegment seg, long index, long x) {
-        constants$308.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle metadata$VH() {
-        return constants$308.const$2;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * AVDictionary* metadata;
-     * }
-     */
-    public static MemorySegment metadata$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$308.const$2.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * AVDictionary* metadata;
-     * }
-     */
-    public static void metadata$set(MemorySegment seg, MemorySegment x) {
-        constants$308.const$2.set(seg, x);
-    }
-    public static MemorySegment metadata$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$308.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void metadata$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$308.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
-    }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
-}
 
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_LONG.withName("id"),
+        AVRational.layout().withName("time_base"),
+        FFmpeg.C_LONG.withName("start"),
+        FFmpeg.C_LONG.withName("end"),
+        FFmpeg.C_POINTER.withName("metadata")
+    ).withName("AVChapter");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
+    }
+
+    private static final OfLong id$LAYOUT = (OfLong)$LAYOUT.select(groupElement("id"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t id
+     * }
+     */
+    public static final OfLong id$layout() {
+        return id$LAYOUT;
+    }
+
+    private static final long id$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t id
+     * }
+     */
+    public static final long id$offset() {
+        return id$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t id
+     * }
+     */
+    public static long id(MemorySegment struct) {
+        return struct.get(id$LAYOUT, id$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t id
+     * }
+     */
+    public static void id(MemorySegment struct, long fieldValue) {
+        struct.set(id$LAYOUT, id$OFFSET, fieldValue);
+    }
+
+    private static final GroupLayout time_base$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("time_base"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * AVRational time_base
+     * }
+     */
+    public static final GroupLayout time_base$layout() {
+        return time_base$LAYOUT;
+    }
+
+    private static final long time_base$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * AVRational time_base
+     * }
+     */
+    public static final long time_base$offset() {
+        return time_base$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * AVRational time_base
+     * }
+     */
+    public static MemorySegment time_base(MemorySegment struct) {
+        return struct.asSlice(time_base$OFFSET, time_base$LAYOUT.byteSize());
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * AVRational time_base
+     * }
+     */
+    public static void time_base(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, time_base$OFFSET, time_base$LAYOUT.byteSize());
+    }
+
+    private static final OfLong start$LAYOUT = (OfLong)$LAYOUT.select(groupElement("start"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t start
+     * }
+     */
+    public static final OfLong start$layout() {
+        return start$LAYOUT;
+    }
+
+    private static final long start$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t start
+     * }
+     */
+    public static final long start$offset() {
+        return start$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t start
+     * }
+     */
+    public static long start(MemorySegment struct) {
+        return struct.get(start$LAYOUT, start$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t start
+     * }
+     */
+    public static void start(MemorySegment struct, long fieldValue) {
+        struct.set(start$LAYOUT, start$OFFSET, fieldValue);
+    }
+
+    private static final OfLong end$LAYOUT = (OfLong)$LAYOUT.select(groupElement("end"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t end
+     * }
+     */
+    public static final OfLong end$layout() {
+        return end$LAYOUT;
+    }
+
+    private static final long end$OFFSET = 24;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t end
+     * }
+     */
+    public static final long end$offset() {
+        return end$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t end
+     * }
+     */
+    public static long end(MemorySegment struct) {
+        return struct.get(end$LAYOUT, end$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t end
+     * }
+     */
+    public static void end(MemorySegment struct, long fieldValue) {
+        struct.set(end$LAYOUT, end$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout metadata$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("metadata"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * AVDictionary *metadata
+     * }
+     */
+    public static final AddressLayout metadata$layout() {
+        return metadata$LAYOUT;
+    }
+
+    private static final long metadata$OFFSET = 32;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * AVDictionary *metadata
+     * }
+     */
+    public static final long metadata$offset() {
+        return metadata$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * AVDictionary *metadata
+     * }
+     */
+    public static MemorySegment metadata(MemorySegment struct) {
+        return struct.get(metadata$LAYOUT, metadata$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * AVDictionary *metadata
+     * }
+     */
+    public static void metadata(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(metadata$LAYOUT, metadata$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
+}
 

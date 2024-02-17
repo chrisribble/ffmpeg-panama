@@ -2,32 +2,66 @@
 
 package com.chrisribble.ffmpeg5;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
- * int (*avcodec_default_execute2$func)(AVCodecContext*,void*,int,int);
+ * {@snippet lang=c :
+ * int (*func)(AVCodecContext *, void *, int, int)
  * }
  */
-public interface avcodec_default_execute2$func {
+public class avcodec_default_execute2$func {
 
-    int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, int _x2, int _x3);
-    static MemorySegment allocate(avcodec_default_execute2$func fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$261.const$0, fi, constants$260.const$5, scope);
+    /**
+     * The function pointer signature, expressed as a functional interface
+     */
+    public interface Function {
+        int apply(MemorySegment _x0, MemorySegment _x1, int _x2, int _x3);
     }
-    static avcodec_default_execute2$func ofAddress(MemorySegment addr, Arena arena) {
-        MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, int __x2, int __x3) -> {
-            try {
-                return (int)constants$261.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3);
-            } catch (Throwable ex$) {
-                throw new AssertionError("should not reach here", ex$);
-            }
-        };
+
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+        FFmpeg.C_INT,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_INT,
+        FFmpeg.C_INT
+    );
+
+    /**
+     * The descriptor of this function pointer
+     */
+    public static FunctionDescriptor descriptor() {
+        return $DESC;
+    }
+
+    private static final MethodHandle UP$MH = FFmpeg.upcallHandle(avcodec_default_execute2$func.Function.class, "apply", $DESC);
+
+    /**
+     * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+     * The lifetime of the returned segment is managed by {@code arena}
+     */
+    public static MemorySegment allocate(avcodec_default_execute2$func.Function fi, Arena arena) {
+        return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+    }
+
+    private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+    /**
+     * Invoke the upcall stub {@code funcPtr}, with given parameters
+     */
+    public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2, int _x3) {
+        try {
+            return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
     }
 }
-
 

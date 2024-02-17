@@ -2,276 +2,595 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVCodecParser {
  *     int codec_ids[7];
  *     int priv_data_size;
- *     int (*parser_init)(AVCodecParserContext*);
- *     int (*parser_parse)(AVCodecParserContext*,AVCodecContext*,const uint8_t**,int*,const uint8_t*,int);
- *     void (*parser_close)(AVCodecParserContext*);
- *     int (*split)(AVCodecContext*,const uint8_t*,int);
- * };
+ *     int (*parser_init)(AVCodecParserContext *);
+ *     int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int);
+ *     void (*parser_close)(AVCodecParserContext *);
+ *     int (*split)(AVCodecContext *, const uint8_t *, int);
+ * }
  * }
  */
 public class AVCodecParser {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$255.const$4;
+    AVCodecParser() {
+        // Should not be called directly
     }
-    public static MemorySegment codec_ids$slice(MemorySegment seg) {
-        return seg.asSlice(0, 28);
+
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(7, FFmpeg.C_INT).withName("codec_ids"),
+        FFmpeg.C_INT.withName("priv_data_size"),
+        FFmpeg.C_POINTER.withName("parser_init"),
+        FFmpeg.C_POINTER.withName("parser_parse"),
+        FFmpeg.C_POINTER.withName("parser_close"),
+        FFmpeg.C_POINTER.withName("split")
+    ).withName("AVCodecParser");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
     }
-    public static VarHandle priv_data_size$VH() {
-        return constants$255.const$5;
+
+    private static final SequenceLayout codec_ids$LAYOUT = (SequenceLayout)$LAYOUT.select(groupElement("codec_ids"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int codec_ids[7]
+     * }
+     */
+    public static final SequenceLayout codec_ids$layout() {
+        return codec_ids$LAYOUT;
     }
+
+    private static final long codec_ids$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int codec_ids[7]
+     * }
+     */
+    public static final long codec_ids$offset() {
+        return codec_ids$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int priv_data_size;
+     * {@snippet lang=c :
+     * int codec_ids[7]
      * }
      */
-    public static int priv_data_size$get(MemorySegment seg) {
-        return (int)constants$255.const$5.get(seg);
+    public static MemorySegment codec_ids(MemorySegment struct) {
+        return struct.asSlice(codec_ids$OFFSET, codec_ids$LAYOUT.byteSize());
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int priv_data_size;
+     * {@snippet lang=c :
+     * int codec_ids[7]
      * }
      */
-    public static void priv_data_size$set(MemorySegment seg, int x) {
-        constants$255.const$5.set(seg, x);
+    public static void codec_ids(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, codec_ids$OFFSET, codec_ids$LAYOUT.byteSize());
     }
-    public static int priv_data_size$get(MemorySegment seg, long index) {
-        return (int)constants$255.const$5.get(seg.asSlice(index*sizeof()));
-    }
-    public static void priv_data_size$set(MemorySegment seg, long index, int x) {
-        constants$255.const$5.set(seg.asSlice(index*sizeof()), x);
-    }
+
+    private static long[] codec_ids$DIMS = { 7 };
+
     /**
-     * {@snippet :
- * int (*parser_init)(AVCodecParserContext*);
+     * Dimensions for array field:
+     * {@snippet lang=c :
+     * int codec_ids[7]
      * }
      */
-    public interface parser_init {
+    public static long[] codec_ids$dimensions() {
+        return codec_ids$DIMS;
+    }
+    private static final VarHandle codec_ids$ELEM_HANDLE = codec_ids$LAYOUT.varHandle(sequenceElement());
 
-        int apply(java.lang.foreign.MemorySegment __cookie);
-        static MemorySegment allocate(parser_init fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$256.const$0, fi, constants$0.const$3, scope);
-        }
-        static parser_init ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment ___cookie) -> {
-                try {
-                    return (int)constants$66.const$4.invokeExact(symbol, ___cookie);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    /**
+     * Indexed getter for field:
+     * {@snippet lang=c :
+     * int codec_ids[7]
+     * }
+     */
+    public static int codec_ids(MemorySegment struct, long index0) {
+        return (int)codec_ids$ELEM_HANDLE.get(struct, 0L, index0);
     }
 
-    public static VarHandle parser_init$VH() {
-        return constants$256.const$1;
+    /**
+     * Indexed setter for field:
+     * {@snippet lang=c :
+     * int codec_ids[7]
+     * }
+     */
+    public static void codec_ids(MemorySegment struct, long index0, int fieldValue) {
+        codec_ids$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
     }
+
+    private static final OfInt priv_data_size$LAYOUT = (OfInt)$LAYOUT.select(groupElement("priv_data_size"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int priv_data_size
+     * }
+     */
+    public static final OfInt priv_data_size$layout() {
+        return priv_data_size$LAYOUT;
+    }
+
+    private static final long priv_data_size$OFFSET = 28;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int priv_data_size
+     * }
+     */
+    public static final long priv_data_size$offset() {
+        return priv_data_size$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*parser_init)(AVCodecParserContext*);
+     * {@snippet lang=c :
+     * int priv_data_size
      * }
      */
-    public static MemorySegment parser_init$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$256.const$1.get(seg);
+    public static int priv_data_size(MemorySegment struct) {
+        return struct.get(priv_data_size$LAYOUT, priv_data_size$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*parser_init)(AVCodecParserContext*);
+     * {@snippet lang=c :
+     * int priv_data_size
      * }
      */
-    public static void parser_init$set(MemorySegment seg, MemorySegment x) {
-        constants$256.const$1.set(seg, x);
+    public static void priv_data_size(MemorySegment struct, int fieldValue) {
+        struct.set(priv_data_size$LAYOUT, priv_data_size$OFFSET, fieldValue);
     }
-    public static MemorySegment parser_init$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$256.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void parser_init$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$256.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static parser_init parser_init(MemorySegment segment, Arena scope) {
-        return parser_init.ofAddress(parser_init$get(segment), scope);
-    }
+
     /**
-     * {@snippet :
- * int (*parser_parse)(AVCodecParserContext*,AVCodecContext*,const uint8_t**,int*,const uint8_t*,int);
+     * {@snippet lang=c :
+     * int (*parser_init)(AVCodecParserContext *)
      * }
      */
-    public interface parser_parse {
+    public class parser_init {
 
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2, java.lang.foreign.MemorySegment _x3, java.lang.foreign.MemorySegment _x4, int _x5);
-        static MemorySegment allocate(parser_parse fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$256.const$3, fi, constants$256.const$2, scope);
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0);
         }
-        static parser_parse ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2, java.lang.foreign.MemorySegment __x3, java.lang.foreign.MemorySegment __x4, int __x5) -> {
-                try {
-                    return (int)constants$256.const$4.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(parser_init.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(parser_init.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    public static VarHandle parser_parse$VH() {
-        return constants$256.const$5;
+    private static final AddressLayout parser_init$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("parser_init"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*parser_init)(AVCodecParserContext *)
+     * }
+     */
+    public static final AddressLayout parser_init$layout() {
+        return parser_init$LAYOUT;
     }
+
+    private static final long parser_init$OFFSET = 32;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*parser_init)(AVCodecParserContext *)
+     * }
+     */
+    public static final long parser_init$offset() {
+        return parser_init$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*parser_parse)(AVCodecParserContext*,AVCodecContext*,const uint8_t**,int*,const uint8_t*,int);
+     * {@snippet lang=c :
+     * int (*parser_init)(AVCodecParserContext *)
      * }
      */
-    public static MemorySegment parser_parse$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$256.const$5.get(seg);
+    public static MemorySegment parser_init(MemorySegment struct) {
+        return struct.get(parser_init$LAYOUT, parser_init$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*parser_parse)(AVCodecParserContext*,AVCodecContext*,const uint8_t**,int*,const uint8_t*,int);
+     * {@snippet lang=c :
+     * int (*parser_init)(AVCodecParserContext *)
      * }
      */
-    public static void parser_parse$set(MemorySegment seg, MemorySegment x) {
-        constants$256.const$5.set(seg, x);
+    public static void parser_init(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(parser_init$LAYOUT, parser_init$OFFSET, fieldValue);
     }
-    public static MemorySegment parser_parse$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$256.const$5.get(seg.asSlice(index*sizeof()));
-    }
-    public static void parser_parse$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$256.const$5.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static parser_parse parser_parse(MemorySegment segment, Arena scope) {
-        return parser_parse.ofAddress(parser_parse$get(segment), scope);
-    }
+
     /**
-     * {@snippet :
- * void (*parser_close)(AVCodecParserContext*);
+     * {@snippet lang=c :
+     * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
      * }
      */
-    public interface parser_close {
+    public class parser_parse {
 
-        void apply(java.lang.foreign.MemorySegment _x0);
-        static MemorySegment allocate(parser_close fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$257.const$0, fi, constants$72.const$4, scope);
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1, MemorySegment _x2, MemorySegment _x3, MemorySegment _x4, int _x5);
         }
-        static parser_close ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0) -> {
-                try {
-                    constants$154.const$3.invokeExact(symbol, __x0);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(parser_parse.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(parser_parse.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, MemorySegment _x2, MemorySegment _x3, MemorySegment _x4, int _x5) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3, _x4, _x5);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    public static VarHandle parser_close$VH() {
-        return constants$257.const$1;
+    private static final AddressLayout parser_parse$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("parser_parse"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
+     * }
+     */
+    public static final AddressLayout parser_parse$layout() {
+        return parser_parse$LAYOUT;
     }
+
+    private static final long parser_parse$OFFSET = 40;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
+     * }
+     */
+    public static final long parser_parse$offset() {
+        return parser_parse$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * void (*parser_close)(AVCodecParserContext*);
+     * {@snippet lang=c :
+     * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
      * }
      */
-    public static MemorySegment parser_close$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$257.const$1.get(seg);
+    public static MemorySegment parser_parse(MemorySegment struct) {
+        return struct.get(parser_parse$LAYOUT, parser_parse$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * void (*parser_close)(AVCodecParserContext*);
+     * {@snippet lang=c :
+     * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
      * }
      */
-    public static void parser_close$set(MemorySegment seg, MemorySegment x) {
-        constants$257.const$1.set(seg, x);
+    public static void parser_parse(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(parser_parse$LAYOUT, parser_parse$OFFSET, fieldValue);
     }
-    public static MemorySegment parser_close$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$257.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void parser_close$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$257.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static parser_close parser_close(MemorySegment segment, Arena scope) {
-        return parser_close.ofAddress(parser_close$get(segment), scope);
-    }
+
     /**
-     * {@snippet :
- * int (*split)(AVCodecContext*,const uint8_t*,int);
+     * {@snippet lang=c :
+     * void (*parser_close)(AVCodecParserContext *)
      * }
      */
-    public interface split {
+    public class parser_close {
 
-        int apply(java.lang.foreign.MemorySegment __cookie, java.lang.foreign.MemorySegment __pos, int __w);
-        static MemorySegment allocate(split fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$257.const$2, fi, constants$66.const$0, scope);
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            void apply(MemorySegment _x0);
         }
-        static split ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment ___cookie, java.lang.foreign.MemorySegment ___pos, int ___w) -> {
-                try {
-                    return (int)constants$66.const$2.invokeExact(symbol, ___cookie, ___pos, ___w);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(parser_close.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(parser_close.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static void invoke(MemorySegment funcPtr,MemorySegment _x0) {
+            try {
+                 DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    public static VarHandle split$VH() {
-        return constants$257.const$3;
+    private static final AddressLayout parser_close$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("parser_close"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * void (*parser_close)(AVCodecParserContext *)
+     * }
+     */
+    public static final AddressLayout parser_close$layout() {
+        return parser_close$LAYOUT;
     }
+
+    private static final long parser_close$OFFSET = 48;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * void (*parser_close)(AVCodecParserContext *)
+     * }
+     */
+    public static final long parser_close$offset() {
+        return parser_close$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*split)(AVCodecContext*,const uint8_t*,int);
+     * {@snippet lang=c :
+     * void (*parser_close)(AVCodecParserContext *)
      * }
      */
-    public static MemorySegment split$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$257.const$3.get(seg);
+    public static MemorySegment parser_close(MemorySegment struct) {
+        return struct.get(parser_close$LAYOUT, parser_close$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*split)(AVCodecContext*,const uint8_t*,int);
+     * {@snippet lang=c :
+     * void (*parser_close)(AVCodecParserContext *)
      * }
      */
-    public static void split$set(MemorySegment seg, MemorySegment x) {
-        constants$257.const$3.set(seg, x);
+    public static void parser_close(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(parser_close$LAYOUT, parser_close$OFFSET, fieldValue);
     }
-    public static MemorySegment split$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$257.const$3.get(seg.asSlice(index*sizeof()));
+
+    /**
+     * {@snippet lang=c :
+     * int (*split)(AVCodecContext *, const uint8_t *, int)
+     * }
+     */
+    public class split {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1, int _x2);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(split.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(split.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
     }
-    public static void split$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$257.const$3.set(seg.asSlice(index*sizeof()), x);
+
+    private static final AddressLayout split$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("split"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*split)(AVCodecContext *, const uint8_t *, int)
+     * }
+     */
+    public static final AddressLayout split$layout() {
+        return split$LAYOUT;
     }
-    public static split split(MemorySegment segment, Arena scope) {
-        return split.ofAddress(split$get(segment), scope);
+
+    private static final long split$OFFSET = 56;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*split)(AVCodecContext *, const uint8_t *, int)
+     * }
+     */
+    public static final long split$offset() {
+        return split$OFFSET;
     }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*split)(AVCodecContext *, const uint8_t *, int)
+     * }
+     */
+    public static MemorySegment split(MemorySegment struct) {
+        return struct.get(split$LAYOUT, split$OFFSET);
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*split)(AVCodecContext *, const uint8_t *, int)
+     * }
+     */
+    public static void split(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(split$LAYOUT, split$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
 }
-
 

@@ -10,6 +10,6 @@ public record Resolution(int width, int height) {
 	}
 
 	Resolution(final MemorySegment avCodecContext) {
-		this(AVCodecContext.width$get(avCodecContext), AVCodecContext.height$get(avCodecContext));
+		this(AVCodecContext.width(avCodecContext), AVCodecContext.height(avCodecContext));
 	}
 }

@@ -2,684 +2,1226 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVHWAccel {
- *     char* name;
+ *     const char *name;
  *     enum AVMediaType type;
  *     enum AVCodecID id;
  *     enum AVPixelFormat pix_fmt;
  *     int capabilities;
- *     int (*alloc_frame)(AVCodecContext*,AVFrame*);
- *     int (*start_frame)(AVCodecContext*,const uint8_t*,uint32_t);
- *     int (*decode_params)(AVCodecContext*,int,const uint8_t*,uint32_t);
- *     int (*decode_slice)(AVCodecContext*,const uint8_t*,uint32_t);
- *     int (*end_frame)(AVCodecContext*);
+ *     int (*alloc_frame)(AVCodecContext *, AVFrame *);
+ *     int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t);
+ *     int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t);
+ *     int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t);
+ *     int (*end_frame)(AVCodecContext *);
  *     int frame_priv_data_size;
- *     int (*init)(AVCodecContext*);
- *     int (*uninit)(AVCodecContext*);
+ *     int (*init)(AVCodecContext *);
+ *     int (*uninit)(AVCodecContext *);
  *     int priv_data_size;
  *     int caps_internal;
- *     int (*frame_params)(AVCodecContext*,AVBufferRef*);
- * };
+ *     int (*frame_params)(AVCodecContext *, AVBufferRef *);
+ * }
  * }
  */
 public class AVHWAccel {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$238.const$5;
-    }
-    public static VarHandle name$VH() {
-        return constants$239.const$0;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * char* name;
-     * }
-     */
-    public static MemorySegment name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$239.const$0.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * char* name;
-     * }
-     */
-    public static void name$set(MemorySegment seg, MemorySegment x) {
-        constants$239.const$0.set(seg, x);
-    }
-    public static MemorySegment name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$239.const$0.get(seg.asSlice(index*sizeof()));
-    }
-    public static void name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$239.const$0.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle type$VH() {
-        return constants$239.const$1;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * enum AVMediaType type;
-     * }
-     */
-    public static int type$get(MemorySegment seg) {
-        return (int)constants$239.const$1.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * enum AVMediaType type;
-     * }
-     */
-    public static void type$set(MemorySegment seg, int x) {
-        constants$239.const$1.set(seg, x);
-    }
-    public static int type$get(MemorySegment seg, long index) {
-        return (int)constants$239.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void type$set(MemorySegment seg, long index, int x) {
-        constants$239.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle id$VH() {
-        return constants$239.const$2;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * enum AVCodecID id;
-     * }
-     */
-    public static int id$get(MemorySegment seg) {
-        return (int)constants$239.const$2.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * enum AVCodecID id;
-     * }
-     */
-    public static void id$set(MemorySegment seg, int x) {
-        constants$239.const$2.set(seg, x);
-    }
-    public static int id$get(MemorySegment seg, long index) {
-        return (int)constants$239.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void id$set(MemorySegment seg, long index, int x) {
-        constants$239.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle pix_fmt$VH() {
-        return constants$239.const$3;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * enum AVPixelFormat pix_fmt;
-     * }
-     */
-    public static int pix_fmt$get(MemorySegment seg) {
-        return (int)constants$239.const$3.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * enum AVPixelFormat pix_fmt;
-     * }
-     */
-    public static void pix_fmt$set(MemorySegment seg, int x) {
-        constants$239.const$3.set(seg, x);
-    }
-    public static int pix_fmt$get(MemorySegment seg, long index) {
-        return (int)constants$239.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void pix_fmt$set(MemorySegment seg, long index, int x) {
-        constants$239.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle capabilities$VH() {
-        return constants$239.const$4;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int capabilities;
-     * }
-     */
-    public static int capabilities$get(MemorySegment seg) {
-        return (int)constants$239.const$4.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int capabilities;
-     * }
-     */
-    public static void capabilities$set(MemorySegment seg, int x) {
-        constants$239.const$4.set(seg, x);
-    }
-    public static int capabilities$get(MemorySegment seg, long index) {
-        return (int)constants$239.const$4.get(seg.asSlice(index*sizeof()));
-    }
-    public static void capabilities$set(MemorySegment seg, long index, int x) {
-        constants$239.const$4.set(seg.asSlice(index*sizeof()), x);
-    }
-    /**
-     * {@snippet :
- * int (*alloc_frame)(AVCodecContext*,AVFrame*);
-     * }
-     */
-    public interface alloc_frame {
-
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
-        static MemorySegment allocate(alloc_frame fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$239.const$5, fi, constants$68.const$3, scope);
-        }
-        static alloc_frame ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
-                try {
-                    return (int)constants$114.const$3.invokeExact(symbol, __x0, __x1);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    AVHWAccel() {
+        // Should not be called directly
     }
 
-    public static VarHandle alloc_frame$VH() {
-        return constants$240.const$0;
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_POINTER.withName("name"),
+        FFmpeg.C_INT.withName("type"),
+        FFmpeg.C_INT.withName("id"),
+        FFmpeg.C_INT.withName("pix_fmt"),
+        FFmpeg.C_INT.withName("capabilities"),
+        FFmpeg.C_POINTER.withName("alloc_frame"),
+        FFmpeg.C_POINTER.withName("start_frame"),
+        FFmpeg.C_POINTER.withName("decode_params"),
+        FFmpeg.C_POINTER.withName("decode_slice"),
+        FFmpeg.C_POINTER.withName("end_frame"),
+        FFmpeg.C_INT.withName("frame_priv_data_size"),
+        MemoryLayout.paddingLayout(4),
+        FFmpeg.C_POINTER.withName("init"),
+        FFmpeg.C_POINTER.withName("uninit"),
+        FFmpeg.C_INT.withName("priv_data_size"),
+        FFmpeg.C_INT.withName("caps_internal"),
+        FFmpeg.C_POINTER.withName("frame_params")
+    ).withName("AVHWAccel");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
     }
+
+    private static final AddressLayout name$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("name"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * const char *name
+     * }
+     */
+    public static final AddressLayout name$layout() {
+        return name$LAYOUT;
+    }
+
+    private static final long name$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * const char *name
+     * }
+     */
+    public static final long name$offset() {
+        return name$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*alloc_frame)(AVCodecContext*,AVFrame*);
+     * {@snippet lang=c :
+     * const char *name
      * }
      */
-    public static MemorySegment alloc_frame$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$240.const$0.get(seg);
+    public static MemorySegment name(MemorySegment struct) {
+        return struct.get(name$LAYOUT, name$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*alloc_frame)(AVCodecContext*,AVFrame*);
+     * {@snippet lang=c :
+     * const char *name
      * }
      */
-    public static void alloc_frame$set(MemorySegment seg, MemorySegment x) {
-        constants$240.const$0.set(seg, x);
+    public static void name(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(name$LAYOUT, name$OFFSET, fieldValue);
     }
-    public static MemorySegment alloc_frame$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$240.const$0.get(seg.asSlice(index*sizeof()));
-    }
-    public static void alloc_frame$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$240.const$0.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static alloc_frame alloc_frame(MemorySegment segment, Arena scope) {
-        return alloc_frame.ofAddress(alloc_frame$get(segment), scope);
-    }
+
+    private static final OfInt type$LAYOUT = (OfInt)$LAYOUT.select(groupElement("type"));
+
     /**
-     * {@snippet :
- * int (*start_frame)(AVCodecContext*,const uint8_t*,uint32_t);
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVMediaType type
      * }
      */
-    public interface start_frame {
-
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, int _x2);
-        static MemorySegment allocate(start_frame fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$240.const$1, fi, constants$66.const$0, scope);
-        }
-        static start_frame ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, int __x2) -> {
-                try {
-                    return (int)constants$66.const$2.invokeExact(symbol, __x0, __x1, __x2);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    public static final OfInt type$layout() {
+        return type$LAYOUT;
     }
 
-    public static VarHandle start_frame$VH() {
-        return constants$240.const$2;
+    private static final long type$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVMediaType type
+     * }
+     */
+    public static final long type$offset() {
+        return type$OFFSET;
     }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*start_frame)(AVCodecContext*,const uint8_t*,uint32_t);
+     * {@snippet lang=c :
+     * enum AVMediaType type
      * }
      */
-    public static MemorySegment start_frame$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$240.const$2.get(seg);
+    public static int type(MemorySegment struct) {
+        return struct.get(type$LAYOUT, type$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*start_frame)(AVCodecContext*,const uint8_t*,uint32_t);
+     * {@snippet lang=c :
+     * enum AVMediaType type
      * }
      */
-    public static void start_frame$set(MemorySegment seg, MemorySegment x) {
-        constants$240.const$2.set(seg, x);
+    public static void type(MemorySegment struct, int fieldValue) {
+        struct.set(type$LAYOUT, type$OFFSET, fieldValue);
     }
-    public static MemorySegment start_frame$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$240.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void start_frame$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$240.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static start_frame start_frame(MemorySegment segment, Arena scope) {
-        return start_frame.ofAddress(start_frame$get(segment), scope);
-    }
+
+    private static final OfInt id$LAYOUT = (OfInt)$LAYOUT.select(groupElement("id"));
+
     /**
-     * {@snippet :
- * int (*decode_params)(AVCodecContext*,int,const uint8_t*,uint32_t);
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVCodecID id
      * }
      */
-    public interface decode_params {
-
-        int apply(java.lang.foreign.MemorySegment _x0, int _x1, java.lang.foreign.MemorySegment _x2, int _x3);
-        static MemorySegment allocate(decode_params fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$240.const$3, fi, constants$183.const$2, scope);
-        }
-        static decode_params ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, int __x1, java.lang.foreign.MemorySegment __x2, int __x3) -> {
-                try {
-                    return (int)constants$240.const$4.invokeExact(symbol, __x0, __x1, __x2, __x3);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    public static final OfInt id$layout() {
+        return id$LAYOUT;
     }
 
-    public static VarHandle decode_params$VH() {
-        return constants$240.const$5;
+    private static final long id$OFFSET = 12;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVCodecID id
+     * }
+     */
+    public static final long id$offset() {
+        return id$OFFSET;
     }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*decode_params)(AVCodecContext*,int,const uint8_t*,uint32_t);
+     * {@snippet lang=c :
+     * enum AVCodecID id
      * }
      */
-    public static MemorySegment decode_params$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$240.const$5.get(seg);
+    public static int id(MemorySegment struct) {
+        return struct.get(id$LAYOUT, id$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*decode_params)(AVCodecContext*,int,const uint8_t*,uint32_t);
+     * {@snippet lang=c :
+     * enum AVCodecID id
      * }
      */
-    public static void decode_params$set(MemorySegment seg, MemorySegment x) {
-        constants$240.const$5.set(seg, x);
+    public static void id(MemorySegment struct, int fieldValue) {
+        struct.set(id$LAYOUT, id$OFFSET, fieldValue);
     }
-    public static MemorySegment decode_params$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$240.const$5.get(seg.asSlice(index*sizeof()));
-    }
-    public static void decode_params$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$240.const$5.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static decode_params decode_params(MemorySegment segment, Arena scope) {
-        return decode_params.ofAddress(decode_params$get(segment), scope);
-    }
-    /**
-     * {@snippet :
- * int (*decode_slice)(AVCodecContext*,const uint8_t*,uint32_t);
-     * }
-     */
-    public interface decode_slice {
 
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, int _x2);
-        static MemorySegment allocate(decode_slice fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$241.const$0, fi, constants$66.const$0, scope);
+    private static final OfInt pix_fmt$LAYOUT = (OfInt)$LAYOUT.select(groupElement("pix_fmt"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVPixelFormat pix_fmt
+     * }
+     */
+    public static final OfInt pix_fmt$layout() {
+        return pix_fmt$LAYOUT;
+    }
+
+    private static final long pix_fmt$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVPixelFormat pix_fmt
+     * }
+     */
+    public static final long pix_fmt$offset() {
+        return pix_fmt$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * enum AVPixelFormat pix_fmt
+     * }
+     */
+    public static int pix_fmt(MemorySegment struct) {
+        return struct.get(pix_fmt$LAYOUT, pix_fmt$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * enum AVPixelFormat pix_fmt
+     * }
+     */
+    public static void pix_fmt(MemorySegment struct, int fieldValue) {
+        struct.set(pix_fmt$LAYOUT, pix_fmt$OFFSET, fieldValue);
+    }
+
+    private static final OfInt capabilities$LAYOUT = (OfInt)$LAYOUT.select(groupElement("capabilities"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int capabilities
+     * }
+     */
+    public static final OfInt capabilities$layout() {
+        return capabilities$LAYOUT;
+    }
+
+    private static final long capabilities$OFFSET = 20;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int capabilities
+     * }
+     */
+    public static final long capabilities$offset() {
+        return capabilities$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int capabilities
+     * }
+     */
+    public static int capabilities(MemorySegment struct) {
+        return struct.get(capabilities$LAYOUT, capabilities$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int capabilities
+     * }
+     */
+    public static void capabilities(MemorySegment struct, int fieldValue) {
+        struct.set(capabilities$LAYOUT, capabilities$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*alloc_frame)(AVCodecContext *, AVFrame *)
+     * }
+     */
+    public class alloc_frame {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1);
         }
-        static decode_slice ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, int __x2) -> {
-                try {
-                    return (int)constants$66.const$2.invokeExact(symbol, __x0, __x1, __x2);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(alloc_frame.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(alloc_frame.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    public static VarHandle decode_slice$VH() {
-        return constants$241.const$1;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int (*decode_slice)(AVCodecContext*,const uint8_t*,uint32_t);
-     * }
-     */
-    public static MemorySegment decode_slice$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$241.const$1.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int (*decode_slice)(AVCodecContext*,const uint8_t*,uint32_t);
-     * }
-     */
-    public static void decode_slice$set(MemorySegment seg, MemorySegment x) {
-        constants$241.const$1.set(seg, x);
-    }
-    public static MemorySegment decode_slice$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$241.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void decode_slice$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$241.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static decode_slice decode_slice(MemorySegment segment, Arena scope) {
-        return decode_slice.ofAddress(decode_slice$get(segment), scope);
-    }
-    /**
-     * {@snippet :
- * int (*end_frame)(AVCodecContext*);
-     * }
-     */
-    public interface end_frame {
+    private static final AddressLayout alloc_frame$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("alloc_frame"));
 
-        int apply(java.lang.foreign.MemorySegment __cookie);
-        static MemorySegment allocate(end_frame fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$241.const$2, fi, constants$0.const$3, scope);
-        }
-        static end_frame ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment ___cookie) -> {
-                try {
-                    return (int)constants$66.const$4.invokeExact(symbol, ___cookie);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*alloc_frame)(AVCodecContext *, AVFrame *)
+     * }
+     */
+    public static final AddressLayout alloc_frame$layout() {
+        return alloc_frame$LAYOUT;
     }
 
-    public static VarHandle end_frame$VH() {
-        return constants$241.const$3;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int (*end_frame)(AVCodecContext*);
-     * }
-     */
-    public static MemorySegment end_frame$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$241.const$3.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int (*end_frame)(AVCodecContext*);
-     * }
-     */
-    public static void end_frame$set(MemorySegment seg, MemorySegment x) {
-        constants$241.const$3.set(seg, x);
-    }
-    public static MemorySegment end_frame$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$241.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void end_frame$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$241.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static end_frame end_frame(MemorySegment segment, Arena scope) {
-        return end_frame.ofAddress(end_frame$get(segment), scope);
-    }
-    public static VarHandle frame_priv_data_size$VH() {
-        return constants$241.const$4;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int frame_priv_data_size;
-     * }
-     */
-    public static int frame_priv_data_size$get(MemorySegment seg) {
-        return (int)constants$241.const$4.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int frame_priv_data_size;
-     * }
-     */
-    public static void frame_priv_data_size$set(MemorySegment seg, int x) {
-        constants$241.const$4.set(seg, x);
-    }
-    public static int frame_priv_data_size$get(MemorySegment seg, long index) {
-        return (int)constants$241.const$4.get(seg.asSlice(index*sizeof()));
-    }
-    public static void frame_priv_data_size$set(MemorySegment seg, long index, int x) {
-        constants$241.const$4.set(seg.asSlice(index*sizeof()), x);
-    }
-    /**
-     * {@snippet :
- * int (*init)(AVCodecContext*);
-     * }
-     */
-    public interface init {
+    private static final long alloc_frame$OFFSET = 24;
 
-        int apply(java.lang.foreign.MemorySegment __cookie);
-        static MemorySegment allocate(init fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$241.const$5, fi, constants$0.const$3, scope);
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*alloc_frame)(AVCodecContext *, AVFrame *)
+     * }
+     */
+    public static final long alloc_frame$offset() {
+        return alloc_frame$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*alloc_frame)(AVCodecContext *, AVFrame *)
+     * }
+     */
+    public static MemorySegment alloc_frame(MemorySegment struct) {
+        return struct.get(alloc_frame$LAYOUT, alloc_frame$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*alloc_frame)(AVCodecContext *, AVFrame *)
+     * }
+     */
+    public static void alloc_frame(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(alloc_frame$LAYOUT, alloc_frame$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public class start_frame {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1, int _x2);
         }
-        static init ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment ___cookie) -> {
-                try {
-                    return (int)constants$66.const$4.invokeExact(symbol, ___cookie);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(start_frame.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(start_frame.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    public static VarHandle init$VH() {
-        return constants$242.const$0;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int (*init)(AVCodecContext*);
-     * }
-     */
-    public static MemorySegment init$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$242.const$0.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int (*init)(AVCodecContext*);
-     * }
-     */
-    public static void init$set(MemorySegment seg, MemorySegment x) {
-        constants$242.const$0.set(seg, x);
-    }
-    public static MemorySegment init$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$242.const$0.get(seg.asSlice(index*sizeof()));
-    }
-    public static void init$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$242.const$0.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static init init(MemorySegment segment, Arena scope) {
-        return init.ofAddress(init$get(segment), scope);
-    }
-    /**
-     * {@snippet :
- * int (*uninit)(AVCodecContext*);
-     * }
-     */
-    public interface uninit {
+    private static final AddressLayout start_frame$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("start_frame"));
 
-        int apply(java.lang.foreign.MemorySegment __cookie);
-        static MemorySegment allocate(uninit fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$242.const$1, fi, constants$0.const$3, scope);
-        }
-        static uninit ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment ___cookie) -> {
-                try {
-                    return (int)constants$66.const$4.invokeExact(symbol, ___cookie);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
-        }
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static final AddressLayout start_frame$layout() {
+        return start_frame$LAYOUT;
     }
 
-    public static VarHandle uninit$VH() {
-        return constants$242.const$2;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int (*uninit)(AVCodecContext*);
-     * }
-     */
-    public static MemorySegment uninit$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$242.const$2.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int (*uninit)(AVCodecContext*);
-     * }
-     */
-    public static void uninit$set(MemorySegment seg, MemorySegment x) {
-        constants$242.const$2.set(seg, x);
-    }
-    public static MemorySegment uninit$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$242.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void uninit$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$242.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static uninit uninit(MemorySegment segment, Arena scope) {
-        return uninit.ofAddress(uninit$get(segment), scope);
-    }
-    public static VarHandle priv_data_size$VH() {
-        return constants$242.const$3;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int priv_data_size;
-     * }
-     */
-    public static int priv_data_size$get(MemorySegment seg) {
-        return (int)constants$242.const$3.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int priv_data_size;
-     * }
-     */
-    public static void priv_data_size$set(MemorySegment seg, int x) {
-        constants$242.const$3.set(seg, x);
-    }
-    public static int priv_data_size$get(MemorySegment seg, long index) {
-        return (int)constants$242.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void priv_data_size$set(MemorySegment seg, long index, int x) {
-        constants$242.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle caps_internal$VH() {
-        return constants$242.const$4;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int caps_internal;
-     * }
-     */
-    public static int caps_internal$get(MemorySegment seg) {
-        return (int)constants$242.const$4.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int caps_internal;
-     * }
-     */
-    public static void caps_internal$set(MemorySegment seg, int x) {
-        constants$242.const$4.set(seg, x);
-    }
-    public static int caps_internal$get(MemorySegment seg, long index) {
-        return (int)constants$242.const$4.get(seg.asSlice(index*sizeof()));
-    }
-    public static void caps_internal$set(MemorySegment seg, long index, int x) {
-        constants$242.const$4.set(seg.asSlice(index*sizeof()), x);
-    }
-    /**
-     * {@snippet :
- * int (*frame_params)(AVCodecContext*,AVBufferRef*);
-     * }
-     */
-    public interface frame_params {
+    private static final long start_frame$OFFSET = 32;
 
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
-        static MemorySegment allocate(frame_params fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$242.const$5, fi, constants$68.const$3, scope);
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static final long start_frame$offset() {
+        return start_frame$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static MemorySegment start_frame(MemorySegment struct) {
+        return struct.get(start_frame$LAYOUT, start_frame$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static void start_frame(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(start_frame$LAYOUT, start_frame$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t)
+     * }
+     */
+    public class decode_params {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, int _x1, MemorySegment _x2, int _x3);
         }
-        static frame_params ofAddress(MemorySegment addr, Arena arena) {
-            MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
-                try {
-                    return (int)constants$114.const$3.invokeExact(symbol, __x0, __x1);
-                } catch (Throwable ex$) {
-                    throw new AssertionError("should not reach here", ex$);
-                }
-            };
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(decode_params.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(decode_params.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, int _x1, MemorySegment _x2, int _x3) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
         }
     }
 
-    public static VarHandle frame_params$VH() {
-        return constants$243.const$0;
+    private static final AddressLayout decode_params$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("decode_params"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t)
+     * }
+     */
+    public static final AddressLayout decode_params$layout() {
+        return decode_params$LAYOUT;
     }
+
+    private static final long decode_params$OFFSET = 40;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t)
+     * }
+     */
+    public static final long decode_params$offset() {
+        return decode_params$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int (*frame_params)(AVCodecContext*,AVBufferRef*);
+     * {@snippet lang=c :
+     * int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t)
      * }
      */
-    public static MemorySegment frame_params$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$243.const$0.get(seg);
+    public static MemorySegment decode_params(MemorySegment struct) {
+        return struct.get(decode_params$LAYOUT, decode_params$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int (*frame_params)(AVCodecContext*,AVBufferRef*);
+     * {@snippet lang=c :
+     * int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t)
      * }
      */
-    public static void frame_params$set(MemorySegment seg, MemorySegment x) {
-        constants$243.const$0.set(seg, x);
+    public static void decode_params(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(decode_params$LAYOUT, decode_params$OFFSET, fieldValue);
     }
-    public static MemorySegment frame_params$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$243.const$0.get(seg.asSlice(index*sizeof()));
+
+    /**
+     * {@snippet lang=c :
+     * int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public class decode_slice {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1, int _x2);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(decode_slice.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(decode_slice.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
     }
-    public static void frame_params$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$243.const$0.set(seg.asSlice(index*sizeof()), x);
+
+    private static final AddressLayout decode_slice$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("decode_slice"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static final AddressLayout decode_slice$layout() {
+        return decode_slice$LAYOUT;
     }
-    public static frame_params frame_params(MemorySegment segment, Arena scope) {
-        return frame_params.ofAddress(frame_params$get(segment), scope);
+
+    private static final long decode_slice$OFFSET = 48;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static final long decode_slice$offset() {
+        return decode_slice$OFFSET;
     }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static MemorySegment decode_slice(MemorySegment struct) {
+        return struct.get(decode_slice$LAYOUT, decode_slice$OFFSET);
     }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t)
+     * }
+     */
+    public static void decode_slice(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(decode_slice$LAYOUT, decode_slice$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*end_frame)(AVCodecContext *)
+     * }
+     */
+    public class end_frame {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(end_frame.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(end_frame.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static final AddressLayout end_frame$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("end_frame"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*end_frame)(AVCodecContext *)
+     * }
+     */
+    public static final AddressLayout end_frame$layout() {
+        return end_frame$LAYOUT;
+    }
+
+    private static final long end_frame$OFFSET = 56;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*end_frame)(AVCodecContext *)
+     * }
+     */
+    public static final long end_frame$offset() {
+        return end_frame$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*end_frame)(AVCodecContext *)
+     * }
+     */
+    public static MemorySegment end_frame(MemorySegment struct) {
+        return struct.get(end_frame$LAYOUT, end_frame$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*end_frame)(AVCodecContext *)
+     * }
+     */
+    public static void end_frame(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(end_frame$LAYOUT, end_frame$OFFSET, fieldValue);
+    }
+
+    private static final OfInt frame_priv_data_size$LAYOUT = (OfInt)$LAYOUT.select(groupElement("frame_priv_data_size"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int frame_priv_data_size
+     * }
+     */
+    public static final OfInt frame_priv_data_size$layout() {
+        return frame_priv_data_size$LAYOUT;
+    }
+
+    private static final long frame_priv_data_size$OFFSET = 64;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int frame_priv_data_size
+     * }
+     */
+    public static final long frame_priv_data_size$offset() {
+        return frame_priv_data_size$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int frame_priv_data_size
+     * }
+     */
+    public static int frame_priv_data_size(MemorySegment struct) {
+        return struct.get(frame_priv_data_size$LAYOUT, frame_priv_data_size$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int frame_priv_data_size
+     * }
+     */
+    public static void frame_priv_data_size(MemorySegment struct, int fieldValue) {
+        struct.set(frame_priv_data_size$LAYOUT, frame_priv_data_size$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*init)(AVCodecContext *)
+     * }
+     */
+    public class init {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(init.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(init.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static final AddressLayout init$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("init"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*init)(AVCodecContext *)
+     * }
+     */
+    public static final AddressLayout init$layout() {
+        return init$LAYOUT;
+    }
+
+    private static final long init$OFFSET = 72;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*init)(AVCodecContext *)
+     * }
+     */
+    public static final long init$offset() {
+        return init$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*init)(AVCodecContext *)
+     * }
+     */
+    public static MemorySegment init(MemorySegment struct) {
+        return struct.get(init$LAYOUT, init$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*init)(AVCodecContext *)
+     * }
+     */
+    public static void init(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(init$LAYOUT, init$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*uninit)(AVCodecContext *)
+     * }
+     */
+    public class uninit {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(uninit.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(uninit.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static final AddressLayout uninit$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("uninit"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*uninit)(AVCodecContext *)
+     * }
+     */
+    public static final AddressLayout uninit$layout() {
+        return uninit$LAYOUT;
+    }
+
+    private static final long uninit$OFFSET = 80;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*uninit)(AVCodecContext *)
+     * }
+     */
+    public static final long uninit$offset() {
+        return uninit$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*uninit)(AVCodecContext *)
+     * }
+     */
+    public static MemorySegment uninit(MemorySegment struct) {
+        return struct.get(uninit$LAYOUT, uninit$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*uninit)(AVCodecContext *)
+     * }
+     */
+    public static void uninit(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(uninit$LAYOUT, uninit$OFFSET, fieldValue);
+    }
+
+    private static final OfInt priv_data_size$LAYOUT = (OfInt)$LAYOUT.select(groupElement("priv_data_size"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int priv_data_size
+     * }
+     */
+    public static final OfInt priv_data_size$layout() {
+        return priv_data_size$LAYOUT;
+    }
+
+    private static final long priv_data_size$OFFSET = 88;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int priv_data_size
+     * }
+     */
+    public static final long priv_data_size$offset() {
+        return priv_data_size$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int priv_data_size
+     * }
+     */
+    public static int priv_data_size(MemorySegment struct) {
+        return struct.get(priv_data_size$LAYOUT, priv_data_size$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int priv_data_size
+     * }
+     */
+    public static void priv_data_size(MemorySegment struct, int fieldValue) {
+        struct.set(priv_data_size$LAYOUT, priv_data_size$OFFSET, fieldValue);
+    }
+
+    private static final OfInt caps_internal$LAYOUT = (OfInt)$LAYOUT.select(groupElement("caps_internal"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int caps_internal
+     * }
+     */
+    public static final OfInt caps_internal$layout() {
+        return caps_internal$LAYOUT;
+    }
+
+    private static final long caps_internal$OFFSET = 92;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int caps_internal
+     * }
+     */
+    public static final long caps_internal$offset() {
+        return caps_internal$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int caps_internal
+     * }
+     */
+    public static int caps_internal(MemorySegment struct) {
+        return struct.get(caps_internal$LAYOUT, caps_internal$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int caps_internal
+     * }
+     */
+    public static void caps_internal(MemorySegment struct, int fieldValue) {
+        struct.set(caps_internal$LAYOUT, caps_internal$OFFSET, fieldValue);
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int (*frame_params)(AVCodecContext *, AVBufferRef *)
+     * }
+     */
+    public class frame_params {
+
+        /**
+         * The function pointer signature, expressed as a functional interface
+         */
+        public interface Function {
+            int apply(MemorySegment _x0, MemorySegment _x1);
+        }
+
+        private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER
+        );
+
+        /**
+         * The descriptor of this function pointer
+         */
+        public static FunctionDescriptor descriptor() {
+            return $DESC;
+        }
+
+        private static final MethodHandle UP$MH = FFmpeg.upcallHandle(frame_params.Function.class, "apply", $DESC);
+
+        /**
+         * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+         * The lifetime of the returned segment is managed by {@code arena}
+         */
+        public static MemorySegment allocate(frame_params.Function fi, Arena arena) {
+            return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+        }
+
+        private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+        /**
+         * Invoke the upcall stub {@code funcPtr}, with given parameters
+         */
+        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1) {
+            try {
+                return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+            } catch (Throwable ex$) {
+                throw new AssertionError("should not reach here", ex$);
+            }
+        }
+    }
+
+    private static final AddressLayout frame_params$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("frame_params"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int (*frame_params)(AVCodecContext *, AVBufferRef *)
+     * }
+     */
+    public static final AddressLayout frame_params$layout() {
+        return frame_params$LAYOUT;
+    }
+
+    private static final long frame_params$OFFSET = 96;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int (*frame_params)(AVCodecContext *, AVBufferRef *)
+     * }
+     */
+    public static final long frame_params$offset() {
+        return frame_params$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int (*frame_params)(AVCodecContext *, AVBufferRef *)
+     * }
+     */
+    public static MemorySegment frame_params(MemorySegment struct) {
+        return struct.get(frame_params$LAYOUT, frame_params$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int (*frame_params)(AVCodecContext *, AVBufferRef *)
+     * }
+     */
+    public static void frame_params(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(frame_params$LAYOUT, frame_params$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
 }
-
 

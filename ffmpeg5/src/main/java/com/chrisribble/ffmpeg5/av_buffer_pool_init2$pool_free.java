@@ -2,32 +2,62 @@
 
 package com.chrisribble.ffmpeg5;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
- * void (*av_buffer_pool_init2$pool_free)(void*);
+ * {@snippet lang=c :
+ * void (*pool_free)(void *)
  * }
  */
-public interface av_buffer_pool_init2$pool_free {
+public class av_buffer_pool_init2$pool_free {
 
-    void apply(java.lang.foreign.MemorySegment _x0);
-    static MemorySegment allocate(av_buffer_pool_init2$pool_free fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$155.const$0, fi, constants$72.const$4, scope);
+    /**
+     * The function pointer signature, expressed as a functional interface
+     */
+    public interface Function {
+        void apply(MemorySegment _x0);
     }
-    static av_buffer_pool_init2$pool_free ofAddress(MemorySegment addr, Arena arena) {
-        MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment __x0) -> {
-            try {
-                constants$155.const$1.invokeExact(symbol, __x0);
-            } catch (Throwable ex$) {
-                throw new AssertionError("should not reach here", ex$);
-            }
-        };
+
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+        FFmpeg.C_POINTER
+    );
+
+    /**
+     * The descriptor of this function pointer
+     */
+    public static FunctionDescriptor descriptor() {
+        return $DESC;
+    }
+
+    private static final MethodHandle UP$MH = FFmpeg.upcallHandle(av_buffer_pool_init2$pool_free.Function.class, "apply", $DESC);
+
+    /**
+     * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+     * The lifetime of the returned segment is managed by {@code arena}
+     */
+    public static MemorySegment allocate(av_buffer_pool_init2$pool_free.Function fi, Arena arena) {
+        return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+    }
+
+    private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+    /**
+     * Invoke the upcall stub {@code funcPtr}, with given parameters
+     */
+    public static void invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        try {
+             DOWN$MH.invokeExact(funcPtr, _x0);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
     }
 }
-
 

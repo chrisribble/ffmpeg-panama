@@ -2,20 +2,25 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
- * typedef struct _G_fpos_t fpos_t;
+ * {@snippet lang=c :
+ * typedef __fpos_t fpos_t
  * }
  */
-public final class fpos_t extends _G_fpos_t {
+public class fpos_t extends _G_fpos_t {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private fpos_t() {}
+    fpos_t() {
+        // Should not be called directly
+    }
 }
-
 

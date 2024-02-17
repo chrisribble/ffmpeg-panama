@@ -1,35 +1,35 @@
 package com.chrisribble.ffmpeg.example;
 
 import static com.chrisribble.ffmpeg.example.Macros.AVERROR;
-import static com.chrisribble.ffmpeg6.FFmpeg.AVMEDIA_TYPE_VIDEO;
-import static com.chrisribble.ffmpeg6.FFmpeg.C_CHAR;
-import static com.chrisribble.ffmpeg6.FFmpeg.C_INT;
-import static com.chrisribble.ffmpeg6.FFmpeg.C_POINTER;
-import static com.chrisribble.ffmpeg6.FFmpeg.SWS_BILINEAR;
-import static com.chrisribble.ffmpeg6.FFmpeg_1.AV_PIX_FMT_GRAY8;
-import static com.chrisribble.ffmpeg6.FFmpeg_1.AV_PIX_FMT_RGB24;
-import static com.chrisribble.ffmpeg6.FFmpeg_1.av_frame_alloc;
-import static com.chrisribble.ffmpeg6.FFmpeg_1.av_free;
-import static com.chrisribble.ffmpeg6.FFmpeg_1.av_malloc;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.av_dump_format;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.av_image_fill_arrays;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.av_image_get_buffer_size;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.av_packet_unref;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.av_read_frame;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_alloc_context3;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_close;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_find_decoder;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_open2;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_parameters_to_context;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_receive_frame;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avcodec_send_packet;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avformat_close_input;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avformat_find_stream_info;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.avformat_open_input;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.sws_freeContext;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.sws_getContext;
-import static com.chrisribble.ffmpeg6.FFmpeg_2.sws_scale;
-import static com.chrisribble.ffmpeg6.FFmpeg_3.AVERROR_EOF;
+import static com.chrisribble.ffmpeg6.FFmpeg.AVERROR_EOF;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_dump_format;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_image_fill_arrays;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_image_get_buffer_size;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_packet_unref;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.av_read_frame;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_alloc_context3;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_close;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_find_decoder;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_open2;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_parameters_to_context;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_receive_frame;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avcodec_send_packet;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avformat_close_input;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avformat_find_stream_info;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.avformat_open_input;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.sws_freeContext;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.sws_getContext;
+import static com.chrisribble.ffmpeg6.FFmpeg_1.sws_scale;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.AV_PIX_FMT_GRAY8;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.AV_PIX_FMT_RGB24;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_frame_alloc;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_free;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_malloc;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.AVMEDIA_TYPE_VIDEO;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.C_CHAR;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.C_INT;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.C_POINTER;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.SWS_BILINEAR;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.awt.Point;
@@ -40,6 +40,7 @@ import java.io.FileNotFoundException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -150,7 +151,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 		while (av_read_frame(pFormatCtx, packet) >= 0) {
 			// Ignore packets from other streams
-			int streamIndex = AVPacket.stream_index$get(packet);
+			int streamIndex = AVPacket.stream_index(packet);
 			if (streamIndex != videoStream.index()) {
 				LOG.debug("Ignoring packet for stream {}", streamIndex);
 				av_packet_unref(packet);
@@ -211,9 +212,9 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		}
 
 		// Convert the image from its native format/size to requested format/size
-		sws_scale(swScaleCtx, AVFrame.data$slice(decodedFrame),
-				AVFrame.linesize$slice(decodedFrame), 0, srcResolution.height(),
-				AVFrame.data$slice(output), AVFrame.linesize$slice(output));
+		sws_scale(swScaleCtx, AVFrame.data(decodedFrame),
+				AVFrame.linesize(decodedFrame), 0, srcResolution.height(),
+				AVFrame.data(output), AVFrame.linesize(output));
 
 		return FrameReceiveResult.READ;
 	}
@@ -248,7 +249,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 		// Assign appropriate parts of buffer to image planes in outputFrame
 		av_image_fill_arrays(
-				AVFrame.data$slice(outputFrame), AVFrame.linesize$slice(outputFrame), buffer,
+				AVFrame.data(outputFrame), AVFrame.linesize(outputFrame), buffer,
 				pixelFormat, dstResolution.width(), dstResolution.height(), SIMD_ALIGN_BYTES);
 
 		// initialize SWS context for software scaling
@@ -271,11 +272,11 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 		byte[] pixelBuf = new byte[width * height * bytesPerPixel];
 
-		var data = AVFrame.data$slice(frame);
+		var data = AVFrame.data(frame);
 		// frame.data[0]
 		var pdata = data.get(C_POINTER, 0);
 		// frame.linespace[0]
-		var linesize = AVFrame.linesize$slice(frame).get(C_INT, 0);
+		var linesize = AVFrame.linesize(frame).get(C_INT, 0);
 
 		// Copy pixel data
 		for (int y = 0; y < height; y++) {
@@ -328,7 +329,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 	private MemorySegment openFile(final MemorySegment ppFormatCtx, final String file) {
 		// char* fileName;
-		var fileName = arena.allocateUtf8String(file);
+		var fileName = arena.allocateFrom(file, StandardCharsets.UTF_8);
 		if (avformat_open_input(ppFormatCtx, fileName, NULL, NULL) != 0) {
 			if (!Files.exists(Paths.get(file))) {
 				throw new AVIOException("File '" + file + "' does not exist");
@@ -350,8 +351,8 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 	private VideoStream getFirstVideoStream(final MemorySegment pFormatCtx) {
 		// Find the first video stream
-		int streams = AVFormatContext.nb_streams$get(pFormatCtx);
-		var pStreams = AVFormatContext.streams$get(pFormatCtx);
+		int streams = AVFormatContext.nb_streams(pFormatCtx);
+		var pStreams = AVFormatContext.streams(pFormatCtx);
 
 		LOG.debug("Found {} streams", streams);
 
@@ -359,8 +360,8 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 			// AVStream*;
 			var pStream = pStreams.getAtIndex(C_POINTER, i);
 			// AVCodecParameters*;
-			var pCodecParams = AVStream.codecpar$get(pStream);
-			if (AVCodecParameters.codec_type$get(pCodecParams) == AVMEDIA_TYPE_VIDEO()) {
+			var pCodecParams = AVStream.codecpar(pStream);
+			if (AVCodecParameters.codec_type(pCodecParams) == AVMEDIA_TYPE_VIDEO()) {
 				return new VideoStream(i, pCodecParams);
 			}
 		}
@@ -387,7 +388,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 			// Open codec context so that we can feed packets to the decoder
 			if (avcodec_open2(decoderCtx, pCodec, NULL) < 0) {
-				throw new AVException("Failed to open decoder context using codec '" + AVCodec.name$get(pCodec) + "'");
+				throw new AVException("Failed to open decoder context using codec '" + AVCodec.name(pCodec) + "'");
 			}
 
 			return new DecoderContext(videoStream, decoderCtx);
@@ -398,7 +399,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 	}
 
 	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution, final int outputPixelFormat) {
-		int pixFmt = AVCodecContext.pix_fmt$get(avCodecContext);
+		int pixFmt = AVCodecContext.pix_fmt(avCodecContext);
 		return sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt, dstResolution.width(), dstResolution.height(),
 				outputPixelFormat, SWS_BILINEAR(), NULL, NULL, NULL);
 	}
@@ -439,7 +440,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 	 */
 	private MemorySegment getAVCodec(final VideoStream videoStream) throws AVAllocateException {
 		// Find the AVCodec* decoder for the video stream
-		int codecId = AVCodecParameters.codec_id$get(videoStream.avCodecParams());
+		int codecId = AVCodecParameters.codec_id(videoStream.avCodecParams());
 		var pCodec = avcodec_find_decoder(codecId);
 		requireNonNull(pCodec, "No decoder found for codec id: " + codecId);
 

@@ -2,140 +2,264 @@
 
 package com.chrisribble.ffmpeg5;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct SwsFilter {
- *     SwsVector* lumH;
- *     SwsVector* lumV;
- *     SwsVector* chrH;
- *     SwsVector* chrV;
- * };
+ *     SwsVector *lumH;
+ *     SwsVector *lumV;
+ *     SwsVector *chrH;
+ *     SwsVector *chrV;
+ * }
  * }
  */
 public class SwsFilter {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$355.const$4;
+    SwsFilter() {
+        // Should not be called directly
     }
-    public static VarHandle lumH$VH() {
-        return constants$355.const$5;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * SwsVector* lumH;
-     * }
-     */
-    public static MemorySegment lumH$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$355.const$5.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * SwsVector* lumH;
-     * }
-     */
-    public static void lumH$set(MemorySegment seg, MemorySegment x) {
-        constants$355.const$5.set(seg, x);
-    }
-    public static MemorySegment lumH$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$355.const$5.get(seg.asSlice(index*sizeof()));
-    }
-    public static void lumH$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$355.const$5.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle lumV$VH() {
-        return constants$356.const$0;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * SwsVector* lumV;
-     * }
-     */
-    public static MemorySegment lumV$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$356.const$0.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * SwsVector* lumV;
-     * }
-     */
-    public static void lumV$set(MemorySegment seg, MemorySegment x) {
-        constants$356.const$0.set(seg, x);
-    }
-    public static MemorySegment lumV$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$356.const$0.get(seg.asSlice(index*sizeof()));
-    }
-    public static void lumV$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$356.const$0.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle chrH$VH() {
-        return constants$356.const$1;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * SwsVector* chrH;
-     * }
-     */
-    public static MemorySegment chrH$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$356.const$1.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * SwsVector* chrH;
-     * }
-     */
-    public static void chrH$set(MemorySegment seg, MemorySegment x) {
-        constants$356.const$1.set(seg, x);
-    }
-    public static MemorySegment chrH$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$356.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void chrH$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$356.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle chrV$VH() {
-        return constants$356.const$2;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * SwsVector* chrV;
-     * }
-     */
-    public static MemorySegment chrV$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$356.const$2.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * SwsVector* chrV;
-     * }
-     */
-    public static void chrV$set(MemorySegment seg, MemorySegment x) {
-        constants$356.const$2.set(seg, x);
-    }
-    public static MemorySegment chrV$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$356.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void chrV$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$356.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
-    }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
-}
 
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_POINTER.withName("lumH"),
+        FFmpeg.C_POINTER.withName("lumV"),
+        FFmpeg.C_POINTER.withName("chrH"),
+        FFmpeg.C_POINTER.withName("chrV")
+    ).withName("SwsFilter");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
+    }
+
+    private static final AddressLayout lumH$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("lumH"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsVector *lumH
+     * }
+     */
+    public static final AddressLayout lumH$layout() {
+        return lumH$LAYOUT;
+    }
+
+    private static final long lumH$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsVector *lumH
+     * }
+     */
+    public static final long lumH$offset() {
+        return lumH$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsVector *lumH
+     * }
+     */
+    public static MemorySegment lumH(MemorySegment struct) {
+        return struct.get(lumH$LAYOUT, lumH$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsVector *lumH
+     * }
+     */
+    public static void lumH(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(lumH$LAYOUT, lumH$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout lumV$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("lumV"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsVector *lumV
+     * }
+     */
+    public static final AddressLayout lumV$layout() {
+        return lumV$LAYOUT;
+    }
+
+    private static final long lumV$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsVector *lumV
+     * }
+     */
+    public static final long lumV$offset() {
+        return lumV$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsVector *lumV
+     * }
+     */
+    public static MemorySegment lumV(MemorySegment struct) {
+        return struct.get(lumV$LAYOUT, lumV$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsVector *lumV
+     * }
+     */
+    public static void lumV(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(lumV$LAYOUT, lumV$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout chrH$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("chrH"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsVector *chrH
+     * }
+     */
+    public static final AddressLayout chrH$layout() {
+        return chrH$LAYOUT;
+    }
+
+    private static final long chrH$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsVector *chrH
+     * }
+     */
+    public static final long chrH$offset() {
+        return chrH$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsVector *chrH
+     * }
+     */
+    public static MemorySegment chrH(MemorySegment struct) {
+        return struct.get(chrH$LAYOUT, chrH$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsVector *chrH
+     * }
+     */
+    public static void chrH(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(chrH$LAYOUT, chrH$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout chrV$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("chrV"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsVector *chrV
+     * }
+     */
+    public static final AddressLayout chrV$layout() {
+        return chrV$LAYOUT;
+    }
+
+    private static final long chrV$OFFSET = 24;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsVector *chrV
+     * }
+     */
+    public static final long chrV$offset() {
+        return chrV$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsVector *chrV
+     * }
+     */
+    public static MemorySegment chrV(MemorySegment struct) {
+        return struct.get(chrV$LAYOUT, chrV$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsVector *chrV
+     * }
+     */
+    public static void chrV(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(chrV$LAYOUT, chrV$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
+}
 

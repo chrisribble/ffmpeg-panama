@@ -2,9053 +2,6119 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.ValueLayout.*;
-public class FFmpeg extends FFmpeg_3 {
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-    public static final OfByte C_CHAR = JAVA_BYTE;
-    public static final OfShort C_SHORT = JAVA_SHORT;
-    public static final OfInt C_INT = JAVA_INT;
-    public static final OfLong C_LONG = JAVA_LONG;
-    public static final OfLong C_LONG_LONG = JAVA_LONG;
-    public static final OfFloat C_FLOAT = JAVA_FLOAT;
-    public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
-    public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
-    /**
-     * {@snippet :
-     * #define _STDINT_H 1
-     * }
-     */
-    public static int _STDINT_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define _FEATURES_H 1
-     * }
-     */
-    public static int _FEATURES_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define _DEFAULT_SOURCE 1
-     * }
-     */
-    public static int _DEFAULT_SOURCE() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_ISOC2X 0
-     * }
-     */
-    public static int __GLIBC_USE_ISOC2X() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_ISOC11 1
-     * }
-     */
-    public static int __USE_ISOC11() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_ISOC99 1
-     * }
-     */
-    public static int __USE_ISOC99() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_ISOC95 1
-     * }
-     */
-    public static int __USE_ISOC95() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX_IMPLICITLY 1
-     * }
-     */
-    public static int __USE_POSIX_IMPLICITLY() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define _POSIX_SOURCE 1
-     * }
-     */
-    public static int _POSIX_SOURCE() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX 1
-     * }
-     */
-    public static int __USE_POSIX() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX2 1
-     * }
-     */
-    public static int __USE_POSIX2() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX199309 1
-     * }
-     */
-    public static int __USE_POSIX199309() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX199506 1
-     * }
-     */
-    public static int __USE_POSIX199506() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_XOPEN2K 1
-     * }
-     */
-    public static int __USE_XOPEN2K() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_XOPEN2K8 1
-     * }
-     */
-    public static int __USE_XOPEN2K8() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define _ATFILE_SOURCE 1
-     * }
-     */
-    public static int _ATFILE_SOURCE() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __WORDSIZE 64
-     * }
-     */
-    public static int __WORDSIZE() {
-        return (int)64L;
-    }
-    /**
-     * {@snippet :
-     * #define __WORDSIZE_TIME64_COMPAT32 1
-     * }
-     */
-    public static int __WORDSIZE_TIME64_COMPAT32() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __SYSCALL_WORDSIZE 64
-     * }
-     */
-    public static int __SYSCALL_WORDSIZE() {
-        return (int)64L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_MISC 1
-     * }
-     */
-    public static int __USE_MISC() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_ATFILE 1
-     * }
-     */
-    public static int __USE_ATFILE() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define __USE_FORTIFY_LEVEL 0
-     * }
-     */
-    public static int __USE_FORTIFY_LEVEL() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_DEPRECATED_GETS 0
-     * }
-     */
-    public static int __GLIBC_USE_DEPRECATED_GETS() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_DEPRECATED_SCANF 0
-     * }
-     */
-    public static int __GLIBC_USE_DEPRECATED_SCANF() {
-        return (int)0L;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
+public class FFmpeg extends FFmpeg_1 {
+
+    FFmpeg() {
+        // Should not be called directly
     }
+    private static final long __STDC_ISO_10646__ = 201706L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_C2X_STRTOL 0
+     * {@snippet lang=c :
+     * #define __STDC_ISO_10646__ 201706
      * }
      */
-    public static int __GLIBC_USE_C2X_STRTOL() {
-        return (int)0L;
+    public static long __STDC_ISO_10646__() {
+        return __STDC_ISO_10646__;
     }
+    private static final int __WCHAR_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define _STDC_PREDEF_H 1
+     * {@snippet lang=c :
+     * #define __WCHAR_MAX 2147483647
      * }
      */
-    public static int _STDC_PREDEF_H() {
-        return (int)1L;
+    public static int __WCHAR_MAX() {
+        return __WCHAR_MAX;
     }
+    private static final int __WCHAR_MIN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define __STDC_IEC_559__ 1
+     * {@snippet lang=c :
+     * #define __WCHAR_MIN -2147483648
      * }
      */
-    public static int __STDC_IEC_559__() {
-        return (int)1L;
+    public static int __WCHAR_MIN() {
+        return __WCHAR_MIN;
     }
+    private static final int INT8_MIN = (int)-128L;
     /**
-     * {@snippet :
-     * #define __STDC_IEC_559_COMPLEX__ 1
+     * {@snippet lang=c :
+     * #define INT8_MIN -128
      * }
      */
-    public static int __STDC_IEC_559_COMPLEX__() {
-        return (int)1L;
+    public static int INT8_MIN() {
+        return INT8_MIN;
     }
+    private static final int INT16_MIN = (int)-32768L;
     /**
-     * {@snippet :
-     * #define __GNU_LIBRARY__ 6
+     * {@snippet lang=c :
+     * #define INT16_MIN -32768
      * }
      */
-    public static int __GNU_LIBRARY__() {
-        return (int)6L;
+    public static int INT16_MIN() {
+        return INT16_MIN;
     }
+    private static final int INT32_MIN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define __GLIBC__ 2
+     * {@snippet lang=c :
+     * #define INT32_MIN -2147483648
      * }
      */
-    public static int __GLIBC__() {
-        return (int)2L;
+    public static int INT32_MIN() {
+        return INT32_MIN;
     }
+    private static final long INT64_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define __GLIBC_MINOR__ 38
+     * {@snippet lang=c :
+     * #define INT64_MIN -9223372036854775808
      * }
      */
-    public static int __GLIBC_MINOR__() {
-        return (int)38L;
+    public static long INT64_MIN() {
+        return INT64_MIN;
     }
+    private static final int INT8_MAX = (int)127L;
     /**
-     * {@snippet :
-     * #define _SYS_CDEFS_H 1
+     * {@snippet lang=c :
+     * #define INT8_MAX 127
      * }
      */
-    public static int _SYS_CDEFS_H() {
-        return (int)1L;
+    public static int INT8_MAX() {
+        return INT8_MAX;
     }
+    private static final int INT16_MAX = (int)32767L;
     /**
-     * {@snippet :
-     * #define __glibc_c99_flexarr_available 1
+     * {@snippet lang=c :
+     * #define INT16_MAX 32767
      * }
      */
-    public static int __glibc_c99_flexarr_available() {
-        return (int)1L;
+    public static int INT16_MAX() {
+        return INT16_MAX;
     }
+    private static final int INT32_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI 0
+     * {@snippet lang=c :
+     * #define INT32_MAX 2147483647
      * }
      */
-    public static int __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI() {
-        return (int)0L;
+    public static int INT32_MAX() {
+        return INT32_MAX;
     }
+    private static final long INT64_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define __HAVE_GENERIC_SELECTION 1
+     * {@snippet lang=c :
+     * #define INT64_MAX 9223372036854775807
      * }
      */
-    public static int __HAVE_GENERIC_SELECTION() {
-        return (int)1L;
+    public static long INT64_MAX() {
+        return INT64_MAX;
     }
+    private static final int UINT8_MAX = (int)255L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_LIB_EXT2 0
+     * {@snippet lang=c :
+     * #define UINT8_MAX 255
      * }
      */
-    public static int __GLIBC_USE_LIB_EXT2() {
-        return (int)0L;
+    public static int UINT8_MAX() {
+        return UINT8_MAX;
     }
+    private static final int UINT16_MAX = (int)65535L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_BFP_EXT 0
+     * {@snippet lang=c :
+     * #define UINT16_MAX 65535
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_BFP_EXT() {
-        return (int)0L;
+    public static int UINT16_MAX() {
+        return UINT16_MAX;
     }
+    private static final int UINT32_MAX = (int)4294967295L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_BFP_EXT_C2X 0
+     * {@snippet lang=c :
+     * #define UINT32_MAX 4294967295
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_BFP_EXT_C2X() {
-        return (int)0L;
+    public static int UINT32_MAX() {
+        return UINT32_MAX;
     }
+    private static final long UINT64_MAX = -1L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_EXT 0
+     * {@snippet lang=c :
+     * #define UINT64_MAX -1
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_EXT() {
-        return (int)0L;
+    public static long UINT64_MAX() {
+        return UINT64_MAX;
     }
+    private static final int INT_LEAST8_MIN = (int)-128L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT 0
+     * {@snippet lang=c :
+     * #define INT_LEAST8_MIN -128
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_FUNCS_EXT() {
-        return (int)0L;
+    public static int INT_LEAST8_MIN() {
+        return INT_LEAST8_MIN;
     }
+    private static final int INT_LEAST16_MIN = (int)-32768L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X 0
+     * {@snippet lang=c :
+     * #define INT_LEAST16_MIN -32768
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X() {
-        return (int)0L;
+    public static int INT_LEAST16_MIN() {
+        return INT_LEAST16_MIN;
     }
+    private static final int INT_LEAST32_MIN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_TYPES_EXT 0
+     * {@snippet lang=c :
+     * #define INT_LEAST32_MIN -2147483648
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_TYPES_EXT() {
-        return (int)0L;
+    public static int INT_LEAST32_MIN() {
+        return INT_LEAST32_MIN;
     }
+    private static final long INT_LEAST64_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define _BITS_TYPES_H 1
+     * {@snippet lang=c :
+     * #define INT_LEAST64_MIN -9223372036854775808
      * }
      */
-    public static int _BITS_TYPES_H() {
-        return (int)1L;
+    public static long INT_LEAST64_MIN() {
+        return INT_LEAST64_MIN;
     }
+    private static final int INT_LEAST8_MAX = (int)127L;
     /**
-     * {@snippet :
-     * #define _BITS_TYPESIZES_H 1
+     * {@snippet lang=c :
+     * #define INT_LEAST8_MAX 127
      * }
      */
-    public static int _BITS_TYPESIZES_H() {
-        return (int)1L;
+    public static int INT_LEAST8_MAX() {
+        return INT_LEAST8_MAX;
     }
+    private static final int INT_LEAST16_MAX = (int)32767L;
     /**
-     * {@snippet :
-     * #define __OFF_T_MATCHES_OFF64_T 1
+     * {@snippet lang=c :
+     * #define INT_LEAST16_MAX 32767
      * }
      */
-    public static int __OFF_T_MATCHES_OFF64_T() {
-        return (int)1L;
+    public static int INT_LEAST16_MAX() {
+        return INT_LEAST16_MAX;
     }
+    private static final int INT_LEAST32_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define __INO_T_MATCHES_INO64_T 1
+     * {@snippet lang=c :
+     * #define INT_LEAST32_MAX 2147483647
      * }
      */
-    public static int __INO_T_MATCHES_INO64_T() {
-        return (int)1L;
+    public static int INT_LEAST32_MAX() {
+        return INT_LEAST32_MAX;
     }
+    private static final long INT_LEAST64_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define __RLIM_T_MATCHES_RLIM64_T 1
+     * {@snippet lang=c :
+     * #define INT_LEAST64_MAX 9223372036854775807
      * }
      */
-    public static int __RLIM_T_MATCHES_RLIM64_T() {
-        return (int)1L;
+    public static long INT_LEAST64_MAX() {
+        return INT_LEAST64_MAX;
     }
+    private static final int UINT_LEAST8_MAX = (int)255L;
     /**
-     * {@snippet :
-     * #define __STATFS_MATCHES_STATFS64 1
+     * {@snippet lang=c :
+     * #define UINT_LEAST8_MAX 255
      * }
      */
-    public static int __STATFS_MATCHES_STATFS64() {
-        return (int)1L;
+    public static int UINT_LEAST8_MAX() {
+        return UINT_LEAST8_MAX;
     }
+    private static final int UINT_LEAST16_MAX = (int)65535L;
     /**
-     * {@snippet :
-     * #define __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 1
+     * {@snippet lang=c :
+     * #define UINT_LEAST16_MAX 65535
      * }
      */
-    public static int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64() {
-        return (int)1L;
+    public static int UINT_LEAST16_MAX() {
+        return UINT_LEAST16_MAX;
     }
+    private static final int UINT_LEAST32_MAX = (int)4294967295L;
     /**
-     * {@snippet :
-     * #define __FD_SETSIZE 1024
+     * {@snippet lang=c :
+     * #define UINT_LEAST32_MAX 4294967295
      * }
      */
-    public static int __FD_SETSIZE() {
-        return (int)1024L;
+    public static int UINT_LEAST32_MAX() {
+        return UINT_LEAST32_MAX;
     }
+    private static final long UINT_LEAST64_MAX = -1L;
     /**
-     * {@snippet :
-     * #define _BITS_TIME64_H 1
+     * {@snippet lang=c :
+     * #define UINT_LEAST64_MAX -1
      * }
      */
-    public static int _BITS_TIME64_H() {
-        return (int)1L;
+    public static long UINT_LEAST64_MAX() {
+        return UINT_LEAST64_MAX;
     }
+    private static final int INT_FAST8_MIN = (int)-128L;
     /**
-     * {@snippet :
-     * #define _BITS_WCHAR_H 1
+     * {@snippet lang=c :
+     * #define INT_FAST8_MIN -128
      * }
      */
-    public static int _BITS_WCHAR_H() {
-        return (int)1L;
+    public static int INT_FAST8_MIN() {
+        return INT_FAST8_MIN;
     }
+    private static final long INT_FAST16_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define _BITS_STDINT_INTN_H 1
+     * {@snippet lang=c :
+     * #define INT_FAST16_MIN -9223372036854775808
      * }
      */
-    public static int _BITS_STDINT_INTN_H() {
-        return (int)1L;
+    public static long INT_FAST16_MIN() {
+        return INT_FAST16_MIN;
     }
+    private static final long INT_FAST32_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define _BITS_STDINT_UINTN_H 1
+     * {@snippet lang=c :
+     * #define INT_FAST32_MIN -9223372036854775808
      * }
      */
-    public static int _BITS_STDINT_UINTN_H() {
-        return (int)1L;
+    public static long INT_FAST32_MIN() {
+        return INT_FAST32_MIN;
     }
+    private static final long INT_FAST64_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define FF_LAMBDA_SHIFT 7
+     * {@snippet lang=c :
+     * #define INT_FAST64_MIN -9223372036854775808
      * }
      */
-    public static int FF_LAMBDA_SHIFT() {
-        return (int)7L;
+    public static long INT_FAST64_MIN() {
+        return INT_FAST64_MIN;
     }
+    private static final int INT_FAST8_MAX = (int)127L;
     /**
-     * {@snippet :
-     * #define FF_QP2LAMBDA 118
+     * {@snippet lang=c :
+     * #define INT_FAST8_MAX 127
      * }
      */
-    public static int FF_QP2LAMBDA() {
-        return (int)118L;
+    public static int INT_FAST8_MAX() {
+        return INT_FAST8_MAX;
     }
+    private static final long INT_FAST16_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define AV_TIME_BASE 1000000
+     * {@snippet lang=c :
+     * #define INT_FAST16_MAX 9223372036854775807
      * }
      */
-    public static int AV_TIME_BASE() {
-        return (int)1000000L;
+    public static long INT_FAST16_MAX() {
+        return INT_FAST16_MAX;
     }
+    private static final long INT_FAST32_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define _ERRNO_H 1
+     * {@snippet lang=c :
+     * #define INT_FAST32_MAX 9223372036854775807
      * }
      */
-    public static int _ERRNO_H() {
-        return (int)1L;
+    public static long INT_FAST32_MAX() {
+        return INT_FAST32_MAX;
     }
+    private static final long INT_FAST64_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define _BITS_ERRNO_H 1
+     * {@snippet lang=c :
+     * #define INT_FAST64_MAX 9223372036854775807
      * }
      */
-    public static int _BITS_ERRNO_H() {
-        return (int)1L;
+    public static long INT_FAST64_MAX() {
+        return INT_FAST64_MAX;
     }
+    private static final int UINT_FAST8_MAX = (int)255L;
     /**
-     * {@snippet :
-     * #define EPERM 1
+     * {@snippet lang=c :
+     * #define UINT_FAST8_MAX 255
      * }
      */
-    public static int EPERM() {
-        return (int)1L;
+    public static int UINT_FAST8_MAX() {
+        return UINT_FAST8_MAX;
     }
+    private static final long UINT_FAST16_MAX = -1L;
     /**
-     * {@snippet :
-     * #define ENOENT 2
+     * {@snippet lang=c :
+     * #define UINT_FAST16_MAX -1
      * }
      */
-    public static int ENOENT() {
-        return (int)2L;
+    public static long UINT_FAST16_MAX() {
+        return UINT_FAST16_MAX;
     }
+    private static final long UINT_FAST32_MAX = -1L;
     /**
-     * {@snippet :
-     * #define ESRCH 3
+     * {@snippet lang=c :
+     * #define UINT_FAST32_MAX -1
      * }
      */
-    public static int ESRCH() {
-        return (int)3L;
+    public static long UINT_FAST32_MAX() {
+        return UINT_FAST32_MAX;
     }
+    private static final long UINT_FAST64_MAX = -1L;
     /**
-     * {@snippet :
-     * #define EINTR 4
+     * {@snippet lang=c :
+     * #define UINT_FAST64_MAX -1
      * }
      */
-    public static int EINTR() {
-        return (int)4L;
+    public static long UINT_FAST64_MAX() {
+        return UINT_FAST64_MAX;
     }
+    private static final long INTPTR_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define EIO 5
+     * {@snippet lang=c :
+     * #define INTPTR_MIN -9223372036854775808
      * }
      */
-    public static int EIO() {
-        return (int)5L;
+    public static long INTPTR_MIN() {
+        return INTPTR_MIN;
     }
+    private static final long INTPTR_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define ENXIO 6
+     * {@snippet lang=c :
+     * #define INTPTR_MAX 9223372036854775807
      * }
      */
-    public static int ENXIO() {
-        return (int)6L;
+    public static long INTPTR_MAX() {
+        return INTPTR_MAX;
     }
+    private static final long UINTPTR_MAX = -1L;
     /**
-     * {@snippet :
-     * #define E2BIG 7
+     * {@snippet lang=c :
+     * #define UINTPTR_MAX -1
      * }
      */
-    public static int E2BIG() {
-        return (int)7L;
+    public static long UINTPTR_MAX() {
+        return UINTPTR_MAX;
     }
+    private static final long INTMAX_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define ENOEXEC 8
+     * {@snippet lang=c :
+     * #define INTMAX_MIN -9223372036854775808
      * }
      */
-    public static int ENOEXEC() {
-        return (int)8L;
+    public static long INTMAX_MIN() {
+        return INTMAX_MIN;
     }
+    private static final long INTMAX_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define EBADF 9
+     * {@snippet lang=c :
+     * #define INTMAX_MAX 9223372036854775807
      * }
      */
-    public static int EBADF() {
-        return (int)9L;
+    public static long INTMAX_MAX() {
+        return INTMAX_MAX;
     }
+    private static final long UINTMAX_MAX = -1L;
     /**
-     * {@snippet :
-     * #define ECHILD 10
+     * {@snippet lang=c :
+     * #define UINTMAX_MAX -1
      * }
      */
-    public static int ECHILD() {
-        return (int)10L;
+    public static long UINTMAX_MAX() {
+        return UINTMAX_MAX;
     }
+    private static final long PTRDIFF_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define EAGAIN 11
+     * {@snippet lang=c :
+     * #define PTRDIFF_MIN -9223372036854775808
      * }
      */
-    public static int EAGAIN() {
-        return (int)11L;
+    public static long PTRDIFF_MIN() {
+        return PTRDIFF_MIN;
     }
+    private static final long PTRDIFF_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define ENOMEM 12
+     * {@snippet lang=c :
+     * #define PTRDIFF_MAX 9223372036854775807
      * }
      */
-    public static int ENOMEM() {
-        return (int)12L;
+    public static long PTRDIFF_MAX() {
+        return PTRDIFF_MAX;
     }
+    private static final int SIG_ATOMIC_MIN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define EACCES 13
+     * {@snippet lang=c :
+     * #define SIG_ATOMIC_MIN -2147483648
      * }
      */
-    public static int EACCES() {
-        return (int)13L;
+    public static int SIG_ATOMIC_MIN() {
+        return SIG_ATOMIC_MIN;
     }
+    private static final int SIG_ATOMIC_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define EFAULT 14
+     * {@snippet lang=c :
+     * #define SIG_ATOMIC_MAX 2147483647
      * }
      */
-    public static int EFAULT() {
-        return (int)14L;
+    public static int SIG_ATOMIC_MAX() {
+        return SIG_ATOMIC_MAX;
     }
+    private static final long SIZE_MAX = -1L;
     /**
-     * {@snippet :
-     * #define ENOTBLK 15
+     * {@snippet lang=c :
+     * #define SIZE_MAX -1
      * }
      */
-    public static int ENOTBLK() {
-        return (int)15L;
+    public static long SIZE_MAX() {
+        return SIZE_MAX;
     }
+    private static final int WCHAR_MIN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define EBUSY 16
+     * {@snippet lang=c :
+     * #define WCHAR_MIN -2147483648
      * }
      */
-    public static int EBUSY() {
-        return (int)16L;
+    public static int WCHAR_MIN() {
+        return WCHAR_MIN;
     }
+    private static final int WCHAR_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define EEXIST 17
+     * {@snippet lang=c :
+     * #define WCHAR_MAX 2147483647
      * }
      */
-    public static int EEXIST() {
-        return (int)17L;
+    public static int WCHAR_MAX() {
+        return WCHAR_MAX;
     }
+    private static final int WINT_MIN = (int)0L;
     /**
-     * {@snippet :
-     * #define EXDEV 18
+     * {@snippet lang=c :
+     * #define WINT_MIN 0
      * }
      */
-    public static int EXDEV() {
-        return (int)18L;
+    public static int WINT_MIN() {
+        return WINT_MIN;
     }
+    private static final int WINT_MAX = (int)4294967295L;
     /**
-     * {@snippet :
-     * #define ENODEV 19
+     * {@snippet lang=c :
+     * #define WINT_MAX 4294967295
      * }
      */
-    public static int ENODEV() {
-        return (int)19L;
+    public static int WINT_MAX() {
+        return WINT_MAX;
     }
+    private static final int FF_LAMBDA_SCALE = (int)128L;
     /**
-     * {@snippet :
-     * #define ENOTDIR 20
+     * {@snippet lang=c :
+     * #define FF_LAMBDA_SCALE 128
      * }
      */
-    public static int ENOTDIR() {
-        return (int)20L;
+    public static int FF_LAMBDA_SCALE() {
+        return FF_LAMBDA_SCALE;
     }
+    private static final int FF_LAMBDA_MAX = (int)32767L;
     /**
-     * {@snippet :
-     * #define EISDIR 21
+     * {@snippet lang=c :
+     * #define FF_LAMBDA_MAX 32767
      * }
      */
-    public static int EISDIR() {
-        return (int)21L;
+    public static int FF_LAMBDA_MAX() {
+        return FF_LAMBDA_MAX;
     }
+    private static final int FF_QUALITY_SCALE = (int)128L;
     /**
-     * {@snippet :
-     * #define EINVAL 22
+     * {@snippet lang=c :
+     * #define FF_QUALITY_SCALE 128
      * }
      */
-    public static int EINVAL() {
-        return (int)22L;
+    public static int FF_QUALITY_SCALE() {
+        return FF_QUALITY_SCALE;
     }
+    private static final long AV_NOPTS_VALUE = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define ENFILE 23
+     * {@snippet lang=c :
+     * #define AV_NOPTS_VALUE -9223372036854775808
      * }
      */
-    public static int ENFILE() {
-        return (int)23L;
+    public static long AV_NOPTS_VALUE() {
+        return AV_NOPTS_VALUE;
     }
+    private static final int EWOULDBLOCK = (int)11L;
     /**
-     * {@snippet :
-     * #define EMFILE 24
+     * {@snippet lang=c :
+     * #define EWOULDBLOCK 11
      * }
      */
-    public static int EMFILE() {
-        return (int)24L;
+    public static int EWOULDBLOCK() {
+        return EWOULDBLOCK;
     }
+    private static final int EDEADLOCK = (int)35L;
     /**
-     * {@snippet :
-     * #define ENOTTY 25
+     * {@snippet lang=c :
+     * #define EDEADLOCK 35
      * }
      */
-    public static int ENOTTY() {
-        return (int)25L;
+    public static int EDEADLOCK() {
+        return EDEADLOCK;
     }
+    private static final int ENOTSUP = (int)95L;
     /**
-     * {@snippet :
-     * #define ETXTBSY 26
+     * {@snippet lang=c :
+     * #define ENOTSUP 95
      * }
      */
-    public static int ETXTBSY() {
-        return (int)26L;
+    public static int ENOTSUP() {
+        return ENOTSUP;
     }
     /**
-     * {@snippet :
-     * #define EFBIG 27
+     * {@snippet lang=c :
+     * #define __PRI64_PREFIX "l"
      * }
      */
-    public static int EFBIG() {
-        return (int)27L;
+    public static MemorySegment __PRI64_PREFIX() {
+        class Holder {
+            static final MemorySegment __PRI64_PREFIX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("l");
+        }
+        return Holder.__PRI64_PREFIX;
     }
     /**
-     * {@snippet :
-     * #define ENOSPC 28
+     * {@snippet lang=c :
+     * #define __PRIPTR_PREFIX "l"
      * }
      */
-    public static int ENOSPC() {
-        return (int)28L;
+    public static MemorySegment __PRIPTR_PREFIX() {
+        class Holder {
+            static final MemorySegment __PRIPTR_PREFIX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("l");
+        }
+        return Holder.__PRIPTR_PREFIX;
     }
     /**
-     * {@snippet :
-     * #define ESPIPE 29
+     * {@snippet lang=c :
+     * #define PRId8 "d"
      * }
      */
-    public static int ESPIPE() {
-        return (int)29L;
+    public static MemorySegment PRId8() {
+        class Holder {
+            static final MemorySegment PRId8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRId8;
     }
     /**
-     * {@snippet :
-     * #define EROFS 30
+     * {@snippet lang=c :
+     * #define PRId16 "d"
      * }
      */
-    public static int EROFS() {
-        return (int)30L;
+    public static MemorySegment PRId16() {
+        class Holder {
+            static final MemorySegment PRId16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRId16;
     }
     /**
-     * {@snippet :
-     * #define EMLINK 31
+     * {@snippet lang=c :
+     * #define PRId32 "d"
      * }
      */
-    public static int EMLINK() {
-        return (int)31L;
+    public static MemorySegment PRId32() {
+        class Holder {
+            static final MemorySegment PRId32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRId32;
     }
     /**
-     * {@snippet :
-     * #define EPIPE 32
+     * {@snippet lang=c :
+     * #define PRId64 "ld"
      * }
      */
-    public static int EPIPE() {
-        return (int)32L;
+    public static MemorySegment PRId64() {
+        class Holder {
+            static final MemorySegment PRId64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRId64;
     }
     /**
-     * {@snippet :
-     * #define EDOM 33
+     * {@snippet lang=c :
+     * #define PRIdLEAST8 "d"
      * }
      */
-    public static int EDOM() {
-        return (int)33L;
+    public static MemorySegment PRIdLEAST8() {
+        class Holder {
+            static final MemorySegment PRIdLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRIdLEAST8;
     }
     /**
-     * {@snippet :
-     * #define ERANGE 34
+     * {@snippet lang=c :
+     * #define PRIdLEAST16 "d"
      * }
      */
-    public static int ERANGE() {
-        return (int)34L;
+    public static MemorySegment PRIdLEAST16() {
+        class Holder {
+            static final MemorySegment PRIdLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRIdLEAST16;
     }
     /**
-     * {@snippet :
-     * #define EDEADLK 35
+     * {@snippet lang=c :
+     * #define PRIdLEAST32 "d"
      * }
      */
-    public static int EDEADLK() {
-        return (int)35L;
+    public static MemorySegment PRIdLEAST32() {
+        class Holder {
+            static final MemorySegment PRIdLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRIdLEAST32;
     }
     /**
-     * {@snippet :
-     * #define ENAMETOOLONG 36
+     * {@snippet lang=c :
+     * #define PRIdLEAST64 "ld"
      * }
      */
-    public static int ENAMETOOLONG() {
-        return (int)36L;
+    public static MemorySegment PRIdLEAST64() {
+        class Holder {
+            static final MemorySegment PRIdLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRIdLEAST64;
     }
     /**
-     * {@snippet :
-     * #define ENOLCK 37
+     * {@snippet lang=c :
+     * #define PRIdFAST8 "d"
      * }
      */
-    public static int ENOLCK() {
-        return (int)37L;
+    public static MemorySegment PRIdFAST8() {
+        class Holder {
+            static final MemorySegment PRIdFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.PRIdFAST8;
     }
     /**
-     * {@snippet :
-     * #define ENOSYS 38
+     * {@snippet lang=c :
+     * #define PRIdFAST16 "ld"
      * }
      */
-    public static int ENOSYS() {
-        return (int)38L;
+    public static MemorySegment PRIdFAST16() {
+        class Holder {
+            static final MemorySegment PRIdFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRIdFAST16;
     }
     /**
-     * {@snippet :
-     * #define ENOTEMPTY 39
+     * {@snippet lang=c :
+     * #define PRIdFAST32 "ld"
      * }
      */
-    public static int ENOTEMPTY() {
-        return (int)39L;
+    public static MemorySegment PRIdFAST32() {
+        class Holder {
+            static final MemorySegment PRIdFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRIdFAST32;
     }
     /**
-     * {@snippet :
-     * #define ELOOP 40
+     * {@snippet lang=c :
+     * #define PRIdFAST64 "ld"
      * }
      */
-    public static int ELOOP() {
-        return (int)40L;
+    public static MemorySegment PRIdFAST64() {
+        class Holder {
+            static final MemorySegment PRIdFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRIdFAST64;
     }
     /**
-     * {@snippet :
-     * #define ENOMSG 42
+     * {@snippet lang=c :
+     * #define PRIi8 "i"
      * }
      */
-    public static int ENOMSG() {
-        return (int)42L;
+    public static MemorySegment PRIi8() {
+        class Holder {
+            static final MemorySegment PRIi8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIi8;
     }
     /**
-     * {@snippet :
-     * #define EIDRM 43
+     * {@snippet lang=c :
+     * #define PRIi16 "i"
      * }
      */
-    public static int EIDRM() {
-        return (int)43L;
+    public static MemorySegment PRIi16() {
+        class Holder {
+            static final MemorySegment PRIi16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIi16;
     }
     /**
-     * {@snippet :
-     * #define ECHRNG 44
+     * {@snippet lang=c :
+     * #define PRIi32 "i"
      * }
      */
-    public static int ECHRNG() {
-        return (int)44L;
+    public static MemorySegment PRIi32() {
+        class Holder {
+            static final MemorySegment PRIi32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIi32;
     }
     /**
-     * {@snippet :
-     * #define EL2NSYNC 45
+     * {@snippet lang=c :
+     * #define PRIi64 "li"
      * }
      */
-    public static int EL2NSYNC() {
-        return (int)45L;
+    public static MemorySegment PRIi64() {
+        class Holder {
+            static final MemorySegment PRIi64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIi64;
     }
     /**
-     * {@snippet :
-     * #define EL3HLT 46
+     * {@snippet lang=c :
+     * #define PRIiLEAST8 "i"
      * }
      */
-    public static int EL3HLT() {
-        return (int)46L;
+    public static MemorySegment PRIiLEAST8() {
+        class Holder {
+            static final MemorySegment PRIiLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIiLEAST8;
     }
     /**
-     * {@snippet :
-     * #define EL3RST 47
+     * {@snippet lang=c :
+     * #define PRIiLEAST16 "i"
      * }
      */
-    public static int EL3RST() {
-        return (int)47L;
+    public static MemorySegment PRIiLEAST16() {
+        class Holder {
+            static final MemorySegment PRIiLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIiLEAST16;
     }
     /**
-     * {@snippet :
-     * #define ELNRNG 48
+     * {@snippet lang=c :
+     * #define PRIiLEAST32 "i"
      * }
      */
-    public static int ELNRNG() {
-        return (int)48L;
+    public static MemorySegment PRIiLEAST32() {
+        class Holder {
+            static final MemorySegment PRIiLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIiLEAST32;
     }
     /**
-     * {@snippet :
-     * #define EUNATCH 49
+     * {@snippet lang=c :
+     * #define PRIiLEAST64 "li"
      * }
      */
-    public static int EUNATCH() {
-        return (int)49L;
+    public static MemorySegment PRIiLEAST64() {
+        class Holder {
+            static final MemorySegment PRIiLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIiLEAST64;
     }
     /**
-     * {@snippet :
-     * #define ENOCSI 50
+     * {@snippet lang=c :
+     * #define PRIiFAST8 "i"
      * }
      */
-    public static int ENOCSI() {
-        return (int)50L;
+    public static MemorySegment PRIiFAST8() {
+        class Holder {
+            static final MemorySegment PRIiFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.PRIiFAST8;
     }
     /**
-     * {@snippet :
-     * #define EL2HLT 51
+     * {@snippet lang=c :
+     * #define PRIiFAST16 "li"
      * }
      */
-    public static int EL2HLT() {
-        return (int)51L;
+    public static MemorySegment PRIiFAST16() {
+        class Holder {
+            static final MemorySegment PRIiFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIiFAST16;
     }
     /**
-     * {@snippet :
-     * #define EBADE 52
+     * {@snippet lang=c :
+     * #define PRIiFAST32 "li"
      * }
      */
-    public static int EBADE() {
-        return (int)52L;
+    public static MemorySegment PRIiFAST32() {
+        class Holder {
+            static final MemorySegment PRIiFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIiFAST32;
     }
     /**
-     * {@snippet :
-     * #define EBADR 53
+     * {@snippet lang=c :
+     * #define PRIiFAST64 "li"
      * }
      */
-    public static int EBADR() {
-        return (int)53L;
+    public static MemorySegment PRIiFAST64() {
+        class Holder {
+            static final MemorySegment PRIiFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIiFAST64;
     }
     /**
-     * {@snippet :
-     * #define EXFULL 54
+     * {@snippet lang=c :
+     * #define PRIo8 "o"
      * }
      */
-    public static int EXFULL() {
-        return (int)54L;
+    public static MemorySegment PRIo8() {
+        class Holder {
+            static final MemorySegment PRIo8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIo8;
     }
     /**
-     * {@snippet :
-     * #define ENOANO 55
+     * {@snippet lang=c :
+     * #define PRIo16 "o"
      * }
      */
-    public static int ENOANO() {
-        return (int)55L;
+    public static MemorySegment PRIo16() {
+        class Holder {
+            static final MemorySegment PRIo16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIo16;
     }
     /**
-     * {@snippet :
-     * #define EBADRQC 56
+     * {@snippet lang=c :
+     * #define PRIo32 "o"
      * }
      */
-    public static int EBADRQC() {
-        return (int)56L;
+    public static MemorySegment PRIo32() {
+        class Holder {
+            static final MemorySegment PRIo32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIo32;
     }
     /**
-     * {@snippet :
-     * #define EBADSLT 57
+     * {@snippet lang=c :
+     * #define PRIo64 "lo"
      * }
      */
-    public static int EBADSLT() {
-        return (int)57L;
+    public static MemorySegment PRIo64() {
+        class Holder {
+            static final MemorySegment PRIo64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIo64;
     }
     /**
-     * {@snippet :
-     * #define EBFONT 59
+     * {@snippet lang=c :
+     * #define PRIoLEAST8 "o"
      * }
      */
-    public static int EBFONT() {
-        return (int)59L;
+    public static MemorySegment PRIoLEAST8() {
+        class Holder {
+            static final MemorySegment PRIoLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIoLEAST8;
     }
     /**
-     * {@snippet :
-     * #define ENOSTR 60
+     * {@snippet lang=c :
+     * #define PRIoLEAST16 "o"
      * }
      */
-    public static int ENOSTR() {
-        return (int)60L;
+    public static MemorySegment PRIoLEAST16() {
+        class Holder {
+            static final MemorySegment PRIoLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIoLEAST16;
     }
     /**
-     * {@snippet :
-     * #define ENODATA 61
+     * {@snippet lang=c :
+     * #define PRIoLEAST32 "o"
      * }
      */
-    public static int ENODATA() {
-        return (int)61L;
+    public static MemorySegment PRIoLEAST32() {
+        class Holder {
+            static final MemorySegment PRIoLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIoLEAST32;
     }
     /**
-     * {@snippet :
-     * #define ETIME 62
+     * {@snippet lang=c :
+     * #define PRIoLEAST64 "lo"
      * }
      */
-    public static int ETIME() {
-        return (int)62L;
+    public static MemorySegment PRIoLEAST64() {
+        class Holder {
+            static final MemorySegment PRIoLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIoLEAST64;
     }
     /**
-     * {@snippet :
-     * #define ENOSR 63
+     * {@snippet lang=c :
+     * #define PRIoFAST8 "o"
      * }
      */
-    public static int ENOSR() {
-        return (int)63L;
+    public static MemorySegment PRIoFAST8() {
+        class Holder {
+            static final MemorySegment PRIoFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.PRIoFAST8;
     }
     /**
-     * {@snippet :
-     * #define ENONET 64
+     * {@snippet lang=c :
+     * #define PRIoFAST16 "lo"
      * }
      */
-    public static int ENONET() {
-        return (int)64L;
+    public static MemorySegment PRIoFAST16() {
+        class Holder {
+            static final MemorySegment PRIoFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIoFAST16;
     }
     /**
-     * {@snippet :
-     * #define ENOPKG 65
+     * {@snippet lang=c :
+     * #define PRIoFAST32 "lo"
      * }
      */
-    public static int ENOPKG() {
-        return (int)65L;
+    public static MemorySegment PRIoFAST32() {
+        class Holder {
+            static final MemorySegment PRIoFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIoFAST32;
     }
     /**
-     * {@snippet :
-     * #define EREMOTE 66
+     * {@snippet lang=c :
+     * #define PRIoFAST64 "lo"
      * }
      */
-    public static int EREMOTE() {
-        return (int)66L;
+    public static MemorySegment PRIoFAST64() {
+        class Holder {
+            static final MemorySegment PRIoFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIoFAST64;
     }
     /**
-     * {@snippet :
-     * #define ENOLINK 67
+     * {@snippet lang=c :
+     * #define PRIu8 "u"
      * }
      */
-    public static int ENOLINK() {
-        return (int)67L;
+    public static MemorySegment PRIu8() {
+        class Holder {
+            static final MemorySegment PRIu8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIu8;
     }
     /**
-     * {@snippet :
-     * #define EADV 68
+     * {@snippet lang=c :
+     * #define PRIu16 "u"
      * }
      */
-    public static int EADV() {
-        return (int)68L;
+    public static MemorySegment PRIu16() {
+        class Holder {
+            static final MemorySegment PRIu16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIu16;
     }
     /**
-     * {@snippet :
-     * #define ESRMNT 69
+     * {@snippet lang=c :
+     * #define PRIu32 "u"
      * }
      */
-    public static int ESRMNT() {
-        return (int)69L;
+    public static MemorySegment PRIu32() {
+        class Holder {
+            static final MemorySegment PRIu32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIu32;
     }
     /**
-     * {@snippet :
-     * #define ECOMM 70
+     * {@snippet lang=c :
+     * #define PRIu64 "lu"
      * }
      */
-    public static int ECOMM() {
-        return (int)70L;
+    public static MemorySegment PRIu64() {
+        class Holder {
+            static final MemorySegment PRIu64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIu64;
     }
     /**
-     * {@snippet :
-     * #define EPROTO 71
+     * {@snippet lang=c :
+     * #define PRIuLEAST8 "u"
      * }
      */
-    public static int EPROTO() {
-        return (int)71L;
+    public static MemorySegment PRIuLEAST8() {
+        class Holder {
+            static final MemorySegment PRIuLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIuLEAST8;
     }
     /**
-     * {@snippet :
-     * #define EMULTIHOP 72
+     * {@snippet lang=c :
+     * #define PRIuLEAST16 "u"
      * }
      */
-    public static int EMULTIHOP() {
-        return (int)72L;
+    public static MemorySegment PRIuLEAST16() {
+        class Holder {
+            static final MemorySegment PRIuLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIuLEAST16;
     }
     /**
-     * {@snippet :
-     * #define EDOTDOT 73
+     * {@snippet lang=c :
+     * #define PRIuLEAST32 "u"
      * }
      */
-    public static int EDOTDOT() {
-        return (int)73L;
+    public static MemorySegment PRIuLEAST32() {
+        class Holder {
+            static final MemorySegment PRIuLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIuLEAST32;
     }
     /**
-     * {@snippet :
-     * #define EBADMSG 74
+     * {@snippet lang=c :
+     * #define PRIuLEAST64 "lu"
      * }
      */
-    public static int EBADMSG() {
-        return (int)74L;
+    public static MemorySegment PRIuLEAST64() {
+        class Holder {
+            static final MemorySegment PRIuLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIuLEAST64;
     }
     /**
-     * {@snippet :
-     * #define EOVERFLOW 75
+     * {@snippet lang=c :
+     * #define PRIuFAST8 "u"
      * }
      */
-    public static int EOVERFLOW() {
-        return (int)75L;
+    public static MemorySegment PRIuFAST8() {
+        class Holder {
+            static final MemorySegment PRIuFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.PRIuFAST8;
     }
     /**
-     * {@snippet :
-     * #define ENOTUNIQ 76
+     * {@snippet lang=c :
+     * #define PRIuFAST16 "lu"
      * }
      */
-    public static int ENOTUNIQ() {
-        return (int)76L;
+    public static MemorySegment PRIuFAST16() {
+        class Holder {
+            static final MemorySegment PRIuFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIuFAST16;
     }
     /**
-     * {@snippet :
-     * #define EBADFD 77
+     * {@snippet lang=c :
+     * #define PRIuFAST32 "lu"
      * }
      */
-    public static int EBADFD() {
-        return (int)77L;
+    public static MemorySegment PRIuFAST32() {
+        class Holder {
+            static final MemorySegment PRIuFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIuFAST32;
     }
     /**
-     * {@snippet :
-     * #define EREMCHG 78
+     * {@snippet lang=c :
+     * #define PRIuFAST64 "lu"
      * }
      */
-    public static int EREMCHG() {
-        return (int)78L;
+    public static MemorySegment PRIuFAST64() {
+        class Holder {
+            static final MemorySegment PRIuFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIuFAST64;
     }
     /**
-     * {@snippet :
-     * #define ELIBACC 79
+     * {@snippet lang=c :
+     * #define PRIx8 "x"
      * }
      */
-    public static int ELIBACC() {
-        return (int)79L;
+    public static MemorySegment PRIx8() {
+        class Holder {
+            static final MemorySegment PRIx8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIx8;
     }
     /**
-     * {@snippet :
-     * #define ELIBBAD 80
+     * {@snippet lang=c :
+     * #define PRIx16 "x"
      * }
      */
-    public static int ELIBBAD() {
-        return (int)80L;
+    public static MemorySegment PRIx16() {
+        class Holder {
+            static final MemorySegment PRIx16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIx16;
     }
     /**
-     * {@snippet :
-     * #define ELIBSCN 81
+     * {@snippet lang=c :
+     * #define PRIx32 "x"
      * }
      */
-    public static int ELIBSCN() {
-        return (int)81L;
+    public static MemorySegment PRIx32() {
+        class Holder {
+            static final MemorySegment PRIx32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIx32;
     }
     /**
-     * {@snippet :
-     * #define ELIBMAX 82
+     * {@snippet lang=c :
+     * #define PRIx64 "lx"
      * }
      */
-    public static int ELIBMAX() {
-        return (int)82L;
+    public static MemorySegment PRIx64() {
+        class Holder {
+            static final MemorySegment PRIx64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIx64;
     }
     /**
-     * {@snippet :
-     * #define ELIBEXEC 83
+     * {@snippet lang=c :
+     * #define PRIxLEAST8 "x"
      * }
      */
-    public static int ELIBEXEC() {
-        return (int)83L;
+    public static MemorySegment PRIxLEAST8() {
+        class Holder {
+            static final MemorySegment PRIxLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIxLEAST8;
     }
     /**
-     * {@snippet :
-     * #define EILSEQ 84
+     * {@snippet lang=c :
+     * #define PRIxLEAST16 "x"
      * }
      */
-    public static int EILSEQ() {
-        return (int)84L;
+    public static MemorySegment PRIxLEAST16() {
+        class Holder {
+            static final MemorySegment PRIxLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIxLEAST16;
     }
     /**
-     * {@snippet :
-     * #define ERESTART 85
+     * {@snippet lang=c :
+     * #define PRIxLEAST32 "x"
      * }
      */
-    public static int ERESTART() {
-        return (int)85L;
+    public static MemorySegment PRIxLEAST32() {
+        class Holder {
+            static final MemorySegment PRIxLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIxLEAST32;
     }
     /**
-     * {@snippet :
-     * #define ESTRPIPE 86
+     * {@snippet lang=c :
+     * #define PRIxLEAST64 "lx"
      * }
      */
-    public static int ESTRPIPE() {
-        return (int)86L;
+    public static MemorySegment PRIxLEAST64() {
+        class Holder {
+            static final MemorySegment PRIxLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIxLEAST64;
     }
     /**
-     * {@snippet :
-     * #define EUSERS 87
+     * {@snippet lang=c :
+     * #define PRIxFAST8 "x"
      * }
      */
-    public static int EUSERS() {
-        return (int)87L;
+    public static MemorySegment PRIxFAST8() {
+        class Holder {
+            static final MemorySegment PRIxFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.PRIxFAST8;
     }
     /**
-     * {@snippet :
-     * #define ENOTSOCK 88
+     * {@snippet lang=c :
+     * #define PRIxFAST16 "lx"
      * }
      */
-    public static int ENOTSOCK() {
-        return (int)88L;
+    public static MemorySegment PRIxFAST16() {
+        class Holder {
+            static final MemorySegment PRIxFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIxFAST16;
     }
     /**
-     * {@snippet :
-     * #define EDESTADDRREQ 89
+     * {@snippet lang=c :
+     * #define PRIxFAST32 "lx"
      * }
      */
-    public static int EDESTADDRREQ() {
-        return (int)89L;
+    public static MemorySegment PRIxFAST32() {
+        class Holder {
+            static final MemorySegment PRIxFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIxFAST32;
     }
     /**
-     * {@snippet :
-     * #define EMSGSIZE 90
+     * {@snippet lang=c :
+     * #define PRIxFAST64 "lx"
      * }
      */
-    public static int EMSGSIZE() {
-        return (int)90L;
+    public static MemorySegment PRIxFAST64() {
+        class Holder {
+            static final MemorySegment PRIxFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIxFAST64;
     }
     /**
-     * {@snippet :
-     * #define EPROTOTYPE 91
+     * {@snippet lang=c :
+     * #define PRIX8 "X"
      * }
      */
-    public static int EPROTOTYPE() {
-        return (int)91L;
+    public static MemorySegment PRIX8() {
+        class Holder {
+            static final MemorySegment PRIX8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIX8;
     }
     /**
-     * {@snippet :
-     * #define ENOPROTOOPT 92
+     * {@snippet lang=c :
+     * #define PRIX16 "X"
      * }
      */
-    public static int ENOPROTOOPT() {
-        return (int)92L;
+    public static MemorySegment PRIX16() {
+        class Holder {
+            static final MemorySegment PRIX16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIX16;
     }
     /**
-     * {@snippet :
-     * #define EPROTONOSUPPORT 93
+     * {@snippet lang=c :
+     * #define PRIX32 "X"
      * }
      */
-    public static int EPROTONOSUPPORT() {
-        return (int)93L;
+    public static MemorySegment PRIX32() {
+        class Holder {
+            static final MemorySegment PRIX32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIX32;
     }
     /**
-     * {@snippet :
-     * #define ESOCKTNOSUPPORT 94
+     * {@snippet lang=c :
+     * #define PRIX64 "lX"
      * }
      */
-    public static int ESOCKTNOSUPPORT() {
-        return (int)94L;
+    public static MemorySegment PRIX64() {
+        class Holder {
+            static final MemorySegment PRIX64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIX64;
     }
     /**
-     * {@snippet :
-     * #define EOPNOTSUPP 95
+     * {@snippet lang=c :
+     * #define PRIXLEAST8 "X"
      * }
      */
-    public static int EOPNOTSUPP() {
-        return (int)95L;
+    public static MemorySegment PRIXLEAST8() {
+        class Holder {
+            static final MemorySegment PRIXLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIXLEAST8;
     }
     /**
-     * {@snippet :
-     * #define EPFNOSUPPORT 96
+     * {@snippet lang=c :
+     * #define PRIXLEAST16 "X"
      * }
      */
-    public static int EPFNOSUPPORT() {
-        return (int)96L;
+    public static MemorySegment PRIXLEAST16() {
+        class Holder {
+            static final MemorySegment PRIXLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIXLEAST16;
     }
     /**
-     * {@snippet :
-     * #define EAFNOSUPPORT 97
+     * {@snippet lang=c :
+     * #define PRIXLEAST32 "X"
      * }
      */
-    public static int EAFNOSUPPORT() {
-        return (int)97L;
+    public static MemorySegment PRIXLEAST32() {
+        class Holder {
+            static final MemorySegment PRIXLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIXLEAST32;
     }
     /**
-     * {@snippet :
-     * #define EADDRINUSE 98
+     * {@snippet lang=c :
+     * #define PRIXLEAST64 "lX"
      * }
      */
-    public static int EADDRINUSE() {
-        return (int)98L;
+    public static MemorySegment PRIXLEAST64() {
+        class Holder {
+            static final MemorySegment PRIXLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIXLEAST64;
     }
     /**
-     * {@snippet :
-     * #define EADDRNOTAVAIL 99
+     * {@snippet lang=c :
+     * #define PRIXFAST8 "X"
      * }
      */
-    public static int EADDRNOTAVAIL() {
-        return (int)99L;
+    public static MemorySegment PRIXFAST8() {
+        class Holder {
+            static final MemorySegment PRIXFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("X");
+        }
+        return Holder.PRIXFAST8;
     }
     /**
-     * {@snippet :
-     * #define ENETDOWN 100
+     * {@snippet lang=c :
+     * #define PRIXFAST16 "lX"
      * }
      */
-    public static int ENETDOWN() {
-        return (int)100L;
+    public static MemorySegment PRIXFAST16() {
+        class Holder {
+            static final MemorySegment PRIXFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIXFAST16;
     }
     /**
-     * {@snippet :
-     * #define ENETUNREACH 101
+     * {@snippet lang=c :
+     * #define PRIXFAST32 "lX"
      * }
      */
-    public static int ENETUNREACH() {
-        return (int)101L;
+    public static MemorySegment PRIXFAST32() {
+        class Holder {
+            static final MemorySegment PRIXFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIXFAST32;
     }
     /**
-     * {@snippet :
-     * #define ENETRESET 102
+     * {@snippet lang=c :
+     * #define PRIXFAST64 "lX"
      * }
      */
-    public static int ENETRESET() {
-        return (int)102L;
+    public static MemorySegment PRIXFAST64() {
+        class Holder {
+            static final MemorySegment PRIXFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIXFAST64;
     }
     /**
-     * {@snippet :
-     * #define ECONNABORTED 103
+     * {@snippet lang=c :
+     * #define PRIdMAX "ld"
      * }
      */
-    public static int ECONNABORTED() {
-        return (int)103L;
+    public static MemorySegment PRIdMAX() {
+        class Holder {
+            static final MemorySegment PRIdMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRIdMAX;
     }
     /**
-     * {@snippet :
-     * #define ECONNRESET 104
+     * {@snippet lang=c :
+     * #define PRIiMAX "li"
      * }
      */
-    public static int ECONNRESET() {
-        return (int)104L;
+    public static MemorySegment PRIiMAX() {
+        class Holder {
+            static final MemorySegment PRIiMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIiMAX;
     }
     /**
-     * {@snippet :
-     * #define ENOBUFS 105
+     * {@snippet lang=c :
+     * #define PRIoMAX "lo"
      * }
      */
-    public static int ENOBUFS() {
-        return (int)105L;
+    public static MemorySegment PRIoMAX() {
+        class Holder {
+            static final MemorySegment PRIoMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIoMAX;
     }
     /**
-     * {@snippet :
-     * #define EISCONN 106
+     * {@snippet lang=c :
+     * #define PRIuMAX "lu"
      * }
      */
-    public static int EISCONN() {
-        return (int)106L;
+    public static MemorySegment PRIuMAX() {
+        class Holder {
+            static final MemorySegment PRIuMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIuMAX;
     }
     /**
-     * {@snippet :
-     * #define ENOTCONN 107
+     * {@snippet lang=c :
+     * #define PRIxMAX "lx"
      * }
      */
-    public static int ENOTCONN() {
-        return (int)107L;
+    public static MemorySegment PRIxMAX() {
+        class Holder {
+            static final MemorySegment PRIxMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIxMAX;
     }
     /**
-     * {@snippet :
-     * #define ESHUTDOWN 108
+     * {@snippet lang=c :
+     * #define PRIXMAX "lX"
      * }
      */
-    public static int ESHUTDOWN() {
-        return (int)108L;
+    public static MemorySegment PRIXMAX() {
+        class Holder {
+            static final MemorySegment PRIXMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIXMAX;
     }
     /**
-     * {@snippet :
-     * #define ETOOMANYREFS 109
+     * {@snippet lang=c :
+     * #define PRIdPTR "ld"
      * }
      */
-    public static int ETOOMANYREFS() {
-        return (int)109L;
+    public static MemorySegment PRIdPTR() {
+        class Holder {
+            static final MemorySegment PRIdPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.PRIdPTR;
     }
     /**
-     * {@snippet :
-     * #define ETIMEDOUT 110
+     * {@snippet lang=c :
+     * #define PRIiPTR "li"
      * }
      */
-    public static int ETIMEDOUT() {
-        return (int)110L;
+    public static MemorySegment PRIiPTR() {
+        class Holder {
+            static final MemorySegment PRIiPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.PRIiPTR;
     }
     /**
-     * {@snippet :
-     * #define ECONNREFUSED 111
+     * {@snippet lang=c :
+     * #define PRIoPTR "lo"
      * }
      */
-    public static int ECONNREFUSED() {
-        return (int)111L;
+    public static MemorySegment PRIoPTR() {
+        class Holder {
+            static final MemorySegment PRIoPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.PRIoPTR;
     }
     /**
-     * {@snippet :
-     * #define EHOSTDOWN 112
+     * {@snippet lang=c :
+     * #define PRIuPTR "lu"
      * }
      */
-    public static int EHOSTDOWN() {
-        return (int)112L;
+    public static MemorySegment PRIuPTR() {
+        class Holder {
+            static final MemorySegment PRIuPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.PRIuPTR;
     }
     /**
-     * {@snippet :
-     * #define EHOSTUNREACH 113
+     * {@snippet lang=c :
+     * #define PRIxPTR "lx"
      * }
      */
-    public static int EHOSTUNREACH() {
-        return (int)113L;
+    public static MemorySegment PRIxPTR() {
+        class Holder {
+            static final MemorySegment PRIxPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.PRIxPTR;
     }
     /**
-     * {@snippet :
-     * #define EALREADY 114
+     * {@snippet lang=c :
+     * #define PRIXPTR "lX"
      * }
      */
-    public static int EALREADY() {
-        return (int)114L;
+    public static MemorySegment PRIXPTR() {
+        class Holder {
+            static final MemorySegment PRIXPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lX");
+        }
+        return Holder.PRIXPTR;
     }
     /**
-     * {@snippet :
-     * #define EINPROGRESS 115
+     * {@snippet lang=c :
+     * #define SCNd8 "hhd"
      * }
      */
-    public static int EINPROGRESS() {
-        return (int)115L;
+    public static MemorySegment SCNd8() {
+        class Holder {
+            static final MemorySegment SCNd8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhd");
+        }
+        return Holder.SCNd8;
     }
     /**
-     * {@snippet :
-     * #define ESTALE 116
+     * {@snippet lang=c :
+     * #define SCNd16 "hd"
      * }
      */
-    public static int ESTALE() {
-        return (int)116L;
+    public static MemorySegment SCNd16() {
+        class Holder {
+            static final MemorySegment SCNd16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hd");
+        }
+        return Holder.SCNd16;
     }
     /**
-     * {@snippet :
-     * #define EUCLEAN 117
+     * {@snippet lang=c :
+     * #define SCNd32 "d"
      * }
      */
-    public static int EUCLEAN() {
-        return (int)117L;
+    public static MemorySegment SCNd32() {
+        class Holder {
+            static final MemorySegment SCNd32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.SCNd32;
     }
     /**
-     * {@snippet :
-     * #define ENOTNAM 118
+     * {@snippet lang=c :
+     * #define SCNd64 "ld"
      * }
      */
-    public static int ENOTNAM() {
-        return (int)118L;
+    public static MemorySegment SCNd64() {
+        class Holder {
+            static final MemorySegment SCNd64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNd64;
     }
     /**
-     * {@snippet :
-     * #define ENAVAIL 119
+     * {@snippet lang=c :
+     * #define SCNdLEAST8 "hhd"
      * }
      */
-    public static int ENAVAIL() {
-        return (int)119L;
+    public static MemorySegment SCNdLEAST8() {
+        class Holder {
+            static final MemorySegment SCNdLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhd");
+        }
+        return Holder.SCNdLEAST8;
     }
     /**
-     * {@snippet :
-     * #define EISNAM 120
+     * {@snippet lang=c :
+     * #define SCNdLEAST16 "hd"
      * }
      */
-    public static int EISNAM() {
-        return (int)120L;
+    public static MemorySegment SCNdLEAST16() {
+        class Holder {
+            static final MemorySegment SCNdLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hd");
+        }
+        return Holder.SCNdLEAST16;
     }
     /**
-     * {@snippet :
-     * #define EREMOTEIO 121
+     * {@snippet lang=c :
+     * #define SCNdLEAST32 "d"
      * }
      */
-    public static int EREMOTEIO() {
-        return (int)121L;
+    public static MemorySegment SCNdLEAST32() {
+        class Holder {
+            static final MemorySegment SCNdLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("d");
+        }
+        return Holder.SCNdLEAST32;
     }
     /**
-     * {@snippet :
-     * #define EDQUOT 122
+     * {@snippet lang=c :
+     * #define SCNdLEAST64 "ld"
      * }
      */
-    public static int EDQUOT() {
-        return (int)122L;
+    public static MemorySegment SCNdLEAST64() {
+        class Holder {
+            static final MemorySegment SCNdLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNdLEAST64;
     }
     /**
-     * {@snippet :
-     * #define ENOMEDIUM 123
+     * {@snippet lang=c :
+     * #define SCNdFAST8 "hhd"
      * }
      */
-    public static int ENOMEDIUM() {
-        return (int)123L;
+    public static MemorySegment SCNdFAST8() {
+        class Holder {
+            static final MemorySegment SCNdFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhd");
+        }
+        return Holder.SCNdFAST8;
     }
     /**
-     * {@snippet :
-     * #define EMEDIUMTYPE 124
+     * {@snippet lang=c :
+     * #define SCNdFAST16 "ld"
      * }
      */
-    public static int EMEDIUMTYPE() {
-        return (int)124L;
+    public static MemorySegment SCNdFAST16() {
+        class Holder {
+            static final MemorySegment SCNdFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNdFAST16;
     }
     /**
-     * {@snippet :
-     * #define ECANCELED 125
+     * {@snippet lang=c :
+     * #define SCNdFAST32 "ld"
      * }
      */
-    public static int ECANCELED() {
-        return (int)125L;
+    public static MemorySegment SCNdFAST32() {
+        class Holder {
+            static final MemorySegment SCNdFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNdFAST32;
     }
     /**
-     * {@snippet :
-     * #define ENOKEY 126
+     * {@snippet lang=c :
+     * #define SCNdFAST64 "ld"
      * }
      */
-    public static int ENOKEY() {
-        return (int)126L;
+    public static MemorySegment SCNdFAST64() {
+        class Holder {
+            static final MemorySegment SCNdFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNdFAST64;
     }
     /**
-     * {@snippet :
-     * #define EKEYEXPIRED 127
+     * {@snippet lang=c :
+     * #define SCNi8 "hhi"
      * }
      */
-    public static int EKEYEXPIRED() {
-        return (int)127L;
+    public static MemorySegment SCNi8() {
+        class Holder {
+            static final MemorySegment SCNi8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhi");
+        }
+        return Holder.SCNi8;
     }
     /**
-     * {@snippet :
-     * #define EKEYREVOKED 128
+     * {@snippet lang=c :
+     * #define SCNi16 "hi"
      * }
      */
-    public static int EKEYREVOKED() {
-        return (int)128L;
+    public static MemorySegment SCNi16() {
+        class Holder {
+            static final MemorySegment SCNi16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hi");
+        }
+        return Holder.SCNi16;
     }
     /**
-     * {@snippet :
-     * #define EKEYREJECTED 129
+     * {@snippet lang=c :
+     * #define SCNi32 "i"
      * }
      */
-    public static int EKEYREJECTED() {
-        return (int)129L;
+    public static MemorySegment SCNi32() {
+        class Holder {
+            static final MemorySegment SCNi32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.SCNi32;
     }
     /**
-     * {@snippet :
-     * #define EOWNERDEAD 130
+     * {@snippet lang=c :
+     * #define SCNi64 "li"
      * }
      */
-    public static int EOWNERDEAD() {
-        return (int)130L;
+    public static MemorySegment SCNi64() {
+        class Holder {
+            static final MemorySegment SCNi64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNi64;
     }
     /**
-     * {@snippet :
-     * #define ENOTRECOVERABLE 131
+     * {@snippet lang=c :
+     * #define SCNiLEAST8 "hhi"
      * }
      */
-    public static int ENOTRECOVERABLE() {
-        return (int)131L;
+    public static MemorySegment SCNiLEAST8() {
+        class Holder {
+            static final MemorySegment SCNiLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhi");
+        }
+        return Holder.SCNiLEAST8;
     }
     /**
-     * {@snippet :
-     * #define ERFKILL 132
+     * {@snippet lang=c :
+     * #define SCNiLEAST16 "hi"
      * }
      */
-    public static int ERFKILL() {
-        return (int)132L;
+    public static MemorySegment SCNiLEAST16() {
+        class Holder {
+            static final MemorySegment SCNiLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hi");
+        }
+        return Holder.SCNiLEAST16;
     }
     /**
-     * {@snippet :
-     * #define EHWPOISON 133
+     * {@snippet lang=c :
+     * #define SCNiLEAST32 "i"
      * }
      */
-    public static int EHWPOISON() {
-        return (int)133L;
+    public static MemorySegment SCNiLEAST32() {
+        class Holder {
+            static final MemorySegment SCNiLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("i");
+        }
+        return Holder.SCNiLEAST32;
     }
     /**
-     * {@snippet :
-     * #define _INTTYPES_H 1
+     * {@snippet lang=c :
+     * #define SCNiLEAST64 "li"
      * }
      */
-    public static int _INTTYPES_H() {
-        return (int)1L;
+    public static MemorySegment SCNiLEAST64() {
+        class Holder {
+            static final MemorySegment SCNiLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNiLEAST64;
     }
     /**
-     * {@snippet :
-     * #define ____gwchar_t_defined 1
+     * {@snippet lang=c :
+     * #define SCNiFAST8 "hhi"
      * }
      */
-    public static int ____gwchar_t_defined() {
-        return (int)1L;
+    public static MemorySegment SCNiFAST8() {
+        class Holder {
+            static final MemorySegment SCNiFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhi");
+        }
+        return Holder.SCNiFAST8;
     }
     /**
-     * {@snippet :
-     * #define _LIBC_LIMITS_H_ 1
+     * {@snippet lang=c :
+     * #define SCNiFAST16 "li"
      * }
      */
-    public static int _LIBC_LIMITS_H_() {
-        return (int)1L;
+    public static MemorySegment SCNiFAST16() {
+        class Holder {
+            static final MemorySegment SCNiFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNiFAST16;
     }
     /**
-     * {@snippet :
-     * #define MB_LEN_MAX 16
+     * {@snippet lang=c :
+     * #define SCNiFAST32 "li"
      * }
      */
-    public static int MB_LEN_MAX() {
-        return (int)16L;
+    public static MemorySegment SCNiFAST32() {
+        class Holder {
+            static final MemorySegment SCNiFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNiFAST32;
     }
     /**
-     * {@snippet :
-     * #define _BITS_POSIX1_LIM_H 1
+     * {@snippet lang=c :
+     * #define SCNiFAST64 "li"
      * }
      */
-    public static int _BITS_POSIX1_LIM_H() {
-        return (int)1L;
+    public static MemorySegment SCNiFAST64() {
+        class Holder {
+            static final MemorySegment SCNiFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNiFAST64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_AIO_LISTIO_MAX 2
+     * {@snippet lang=c :
+     * #define SCNu8 "hhu"
      * }
      */
-    public static int _POSIX_AIO_LISTIO_MAX() {
-        return (int)2L;
+    public static MemorySegment SCNu8() {
+        class Holder {
+            static final MemorySegment SCNu8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhu");
+        }
+        return Holder.SCNu8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_AIO_MAX 1
+     * {@snippet lang=c :
+     * #define SCNu16 "hu"
      * }
      */
-    public static int _POSIX_AIO_MAX() {
-        return (int)1L;
+    public static MemorySegment SCNu16() {
+        class Holder {
+            static final MemorySegment SCNu16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hu");
+        }
+        return Holder.SCNu16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_ARG_MAX 4096
+     * {@snippet lang=c :
+     * #define SCNu32 "u"
      * }
      */
-    public static int _POSIX_ARG_MAX() {
-        return (int)4096L;
+    public static MemorySegment SCNu32() {
+        class Holder {
+            static final MemorySegment SCNu32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.SCNu32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_CHILD_MAX 25
+     * {@snippet lang=c :
+     * #define SCNu64 "lu"
      * }
      */
-    public static int _POSIX_CHILD_MAX() {
-        return (int)25L;
+    public static MemorySegment SCNu64() {
+        class Holder {
+            static final MemorySegment SCNu64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNu64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_DELAYTIMER_MAX 32
+     * {@snippet lang=c :
+     * #define SCNuLEAST8 "hhu"
      * }
      */
-    public static int _POSIX_DELAYTIMER_MAX() {
-        return (int)32L;
+    public static MemorySegment SCNuLEAST8() {
+        class Holder {
+            static final MemorySegment SCNuLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhu");
+        }
+        return Holder.SCNuLEAST8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_HOST_NAME_MAX 255
+     * {@snippet lang=c :
+     * #define SCNuLEAST16 "hu"
      * }
      */
-    public static int _POSIX_HOST_NAME_MAX() {
-        return (int)255L;
+    public static MemorySegment SCNuLEAST16() {
+        class Holder {
+            static final MemorySegment SCNuLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hu");
+        }
+        return Holder.SCNuLEAST16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_LINK_MAX 8
+     * {@snippet lang=c :
+     * #define SCNuLEAST32 "u"
      * }
      */
-    public static int _POSIX_LINK_MAX() {
-        return (int)8L;
+    public static MemorySegment SCNuLEAST32() {
+        class Holder {
+            static final MemorySegment SCNuLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("u");
+        }
+        return Holder.SCNuLEAST32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_LOGIN_NAME_MAX 9
+     * {@snippet lang=c :
+     * #define SCNuLEAST64 "lu"
      * }
      */
-    public static int _POSIX_LOGIN_NAME_MAX() {
-        return (int)9L;
+    public static MemorySegment SCNuLEAST64() {
+        class Holder {
+            static final MemorySegment SCNuLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNuLEAST64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_MAX_CANON 255
+     * {@snippet lang=c :
+     * #define SCNuFAST8 "hhu"
      * }
      */
-    public static int _POSIX_MAX_CANON() {
-        return (int)255L;
+    public static MemorySegment SCNuFAST8() {
+        class Holder {
+            static final MemorySegment SCNuFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhu");
+        }
+        return Holder.SCNuFAST8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_MAX_INPUT 255
+     * {@snippet lang=c :
+     * #define SCNuFAST16 "lu"
      * }
      */
-    public static int _POSIX_MAX_INPUT() {
-        return (int)255L;
+    public static MemorySegment SCNuFAST16() {
+        class Holder {
+            static final MemorySegment SCNuFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNuFAST16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_MQ_OPEN_MAX 8
+     * {@snippet lang=c :
+     * #define SCNuFAST32 "lu"
      * }
      */
-    public static int _POSIX_MQ_OPEN_MAX() {
-        return (int)8L;
+    public static MemorySegment SCNuFAST32() {
+        class Holder {
+            static final MemorySegment SCNuFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNuFAST32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_MQ_PRIO_MAX 32
+     * {@snippet lang=c :
+     * #define SCNuFAST64 "lu"
      * }
      */
-    public static int _POSIX_MQ_PRIO_MAX() {
-        return (int)32L;
+    public static MemorySegment SCNuFAST64() {
+        class Holder {
+            static final MemorySegment SCNuFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNuFAST64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_NAME_MAX 14
+     * {@snippet lang=c :
+     * #define SCNo8 "hho"
      * }
      */
-    public static int _POSIX_NAME_MAX() {
-        return (int)14L;
+    public static MemorySegment SCNo8() {
+        class Holder {
+            static final MemorySegment SCNo8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hho");
+        }
+        return Holder.SCNo8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_NGROUPS_MAX 8
+     * {@snippet lang=c :
+     * #define SCNo16 "ho"
      * }
      */
-    public static int _POSIX_NGROUPS_MAX() {
-        return (int)8L;
+    public static MemorySegment SCNo16() {
+        class Holder {
+            static final MemorySegment SCNo16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ho");
+        }
+        return Holder.SCNo16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_OPEN_MAX 20
+     * {@snippet lang=c :
+     * #define SCNo32 "o"
      * }
      */
-    public static int _POSIX_OPEN_MAX() {
-        return (int)20L;
+    public static MemorySegment SCNo32() {
+        class Holder {
+            static final MemorySegment SCNo32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.SCNo32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_PATH_MAX 256
+     * {@snippet lang=c :
+     * #define SCNo64 "lo"
      * }
      */
-    public static int _POSIX_PATH_MAX() {
-        return (int)256L;
+    public static MemorySegment SCNo64() {
+        class Holder {
+            static final MemorySegment SCNo64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNo64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_PIPE_BUF 512
+     * {@snippet lang=c :
+     * #define SCNoLEAST8 "hho"
      * }
      */
-    public static int _POSIX_PIPE_BUF() {
-        return (int)512L;
+    public static MemorySegment SCNoLEAST8() {
+        class Holder {
+            static final MemorySegment SCNoLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hho");
+        }
+        return Holder.SCNoLEAST8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_RE_DUP_MAX 255
+     * {@snippet lang=c :
+     * #define SCNoLEAST16 "ho"
      * }
      */
-    public static int _POSIX_RE_DUP_MAX() {
-        return (int)255L;
+    public static MemorySegment SCNoLEAST16() {
+        class Holder {
+            static final MemorySegment SCNoLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ho");
+        }
+        return Holder.SCNoLEAST16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_RTSIG_MAX 8
+     * {@snippet lang=c :
+     * #define SCNoLEAST32 "o"
      * }
      */
-    public static int _POSIX_RTSIG_MAX() {
-        return (int)8L;
+    public static MemorySegment SCNoLEAST32() {
+        class Holder {
+            static final MemorySegment SCNoLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("o");
+        }
+        return Holder.SCNoLEAST32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_SEM_NSEMS_MAX 256
+     * {@snippet lang=c :
+     * #define SCNoLEAST64 "lo"
      * }
      */
-    public static int _POSIX_SEM_NSEMS_MAX() {
-        return (int)256L;
+    public static MemorySegment SCNoLEAST64() {
+        class Holder {
+            static final MemorySegment SCNoLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNoLEAST64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_SEM_VALUE_MAX 32767
+     * {@snippet lang=c :
+     * #define SCNoFAST8 "hho"
      * }
      */
-    public static int _POSIX_SEM_VALUE_MAX() {
-        return (int)32767L;
+    public static MemorySegment SCNoFAST8() {
+        class Holder {
+            static final MemorySegment SCNoFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hho");
+        }
+        return Holder.SCNoFAST8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_SIGQUEUE_MAX 32
+     * {@snippet lang=c :
+     * #define SCNoFAST16 "lo"
      * }
      */
-    public static int _POSIX_SIGQUEUE_MAX() {
-        return (int)32L;
+    public static MemorySegment SCNoFAST16() {
+        class Holder {
+            static final MemorySegment SCNoFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNoFAST16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_SSIZE_MAX 32767
+     * {@snippet lang=c :
+     * #define SCNoFAST32 "lo"
      * }
      */
-    public static int _POSIX_SSIZE_MAX() {
-        return (int)32767L;
+    public static MemorySegment SCNoFAST32() {
+        class Holder {
+            static final MemorySegment SCNoFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNoFAST32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_STREAM_MAX 8
+     * {@snippet lang=c :
+     * #define SCNoFAST64 "lo"
      * }
      */
-    public static int _POSIX_STREAM_MAX() {
-        return (int)8L;
+    public static MemorySegment SCNoFAST64() {
+        class Holder {
+            static final MemorySegment SCNoFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNoFAST64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_SYMLINK_MAX 255
+     * {@snippet lang=c :
+     * #define SCNx8 "hhx"
      * }
      */
-    public static int _POSIX_SYMLINK_MAX() {
-        return (int)255L;
+    public static MemorySegment SCNx8() {
+        class Holder {
+            static final MemorySegment SCNx8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhx");
+        }
+        return Holder.SCNx8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_SYMLOOP_MAX 8
+     * {@snippet lang=c :
+     * #define SCNx16 "hx"
      * }
      */
-    public static int _POSIX_SYMLOOP_MAX() {
-        return (int)8L;
+    public static MemorySegment SCNx16() {
+        class Holder {
+            static final MemorySegment SCNx16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hx");
+        }
+        return Holder.SCNx16;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_TIMER_MAX 32
+     * {@snippet lang=c :
+     * #define SCNx32 "x"
      * }
      */
-    public static int _POSIX_TIMER_MAX() {
-        return (int)32L;
+    public static MemorySegment SCNx32() {
+        class Holder {
+            static final MemorySegment SCNx32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.SCNx32;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_TTY_NAME_MAX 9
+     * {@snippet lang=c :
+     * #define SCNx64 "lx"
      * }
      */
-    public static int _POSIX_TTY_NAME_MAX() {
-        return (int)9L;
+    public static MemorySegment SCNx64() {
+        class Holder {
+            static final MemorySegment SCNx64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNx64;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_TZNAME_MAX 6
+     * {@snippet lang=c :
+     * #define SCNxLEAST8 "hhx"
      * }
      */
-    public static int _POSIX_TZNAME_MAX() {
-        return (int)6L;
+    public static MemorySegment SCNxLEAST8() {
+        class Holder {
+            static final MemorySegment SCNxLEAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhx");
+        }
+        return Holder.SCNxLEAST8;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_CLOCKRES_MIN 20000000
+     * {@snippet lang=c :
+     * #define SCNxLEAST16 "hx"
      * }
      */
-    public static int _POSIX_CLOCKRES_MIN() {
-        return (int)20000000L;
+    public static MemorySegment SCNxLEAST16() {
+        class Holder {
+            static final MemorySegment SCNxLEAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hx");
+        }
+        return Holder.SCNxLEAST16;
     }
     /**
-     * {@snippet :
-     * #define NR_OPEN 1024
+     * {@snippet lang=c :
+     * #define SCNxLEAST32 "x"
      * }
      */
-    public static int NR_OPEN() {
-        return (int)1024L;
+    public static MemorySegment SCNxLEAST32() {
+        class Holder {
+            static final MemorySegment SCNxLEAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("x");
+        }
+        return Holder.SCNxLEAST32;
     }
     /**
-     * {@snippet :
-     * #define NGROUPS_MAX 65536
+     * {@snippet lang=c :
+     * #define SCNxLEAST64 "lx"
      * }
      */
-    public static int NGROUPS_MAX() {
-        return (int)65536L;
+    public static MemorySegment SCNxLEAST64() {
+        class Holder {
+            static final MemorySegment SCNxLEAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNxLEAST64;
     }
     /**
-     * {@snippet :
-     * #define ARG_MAX 131072
+     * {@snippet lang=c :
+     * #define SCNxFAST8 "hhx"
      * }
      */
-    public static int ARG_MAX() {
-        return (int)131072L;
+    public static MemorySegment SCNxFAST8() {
+        class Holder {
+            static final MemorySegment SCNxFAST8
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("hhx");
+        }
+        return Holder.SCNxFAST8;
     }
     /**
-     * {@snippet :
-     * #define LINK_MAX 127
+     * {@snippet lang=c :
+     * #define SCNxFAST16 "lx"
      * }
      */
-    public static int LINK_MAX() {
-        return (int)127L;
+    public static MemorySegment SCNxFAST16() {
+        class Holder {
+            static final MemorySegment SCNxFAST16
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNxFAST16;
     }
     /**
-     * {@snippet :
-     * #define MAX_CANON 255
+     * {@snippet lang=c :
+     * #define SCNxFAST32 "lx"
      * }
      */
-    public static int MAX_CANON() {
-        return (int)255L;
+    public static MemorySegment SCNxFAST32() {
+        class Holder {
+            static final MemorySegment SCNxFAST32
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNxFAST32;
     }
     /**
-     * {@snippet :
-     * #define MAX_INPUT 255
+     * {@snippet lang=c :
+     * #define SCNxFAST64 "lx"
      * }
      */
-    public static int MAX_INPUT() {
-        return (int)255L;
+    public static MemorySegment SCNxFAST64() {
+        class Holder {
+            static final MemorySegment SCNxFAST64
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNxFAST64;
     }
     /**
-     * {@snippet :
-     * #define NAME_MAX 255
+     * {@snippet lang=c :
+     * #define SCNdMAX "ld"
      * }
      */
-    public static int NAME_MAX() {
-        return (int)255L;
+    public static MemorySegment SCNdMAX() {
+        class Holder {
+            static final MemorySegment SCNdMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNdMAX;
     }
     /**
-     * {@snippet :
-     * #define PATH_MAX 4096
+     * {@snippet lang=c :
+     * #define SCNiMAX "li"
      * }
      */
-    public static int PATH_MAX() {
-        return (int)4096L;
+    public static MemorySegment SCNiMAX() {
+        class Holder {
+            static final MemorySegment SCNiMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNiMAX;
     }
     /**
-     * {@snippet :
-     * #define PIPE_BUF 4096
+     * {@snippet lang=c :
+     * #define SCNoMAX "lo"
      * }
      */
-    public static int PIPE_BUF() {
-        return (int)4096L;
+    public static MemorySegment SCNoMAX() {
+        class Holder {
+            static final MemorySegment SCNoMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNoMAX;
     }
     /**
-     * {@snippet :
-     * #define XATTR_NAME_MAX 255
+     * {@snippet lang=c :
+     * #define SCNuMAX "lu"
      * }
      */
-    public static int XATTR_NAME_MAX() {
-        return (int)255L;
+    public static MemorySegment SCNuMAX() {
+        class Holder {
+            static final MemorySegment SCNuMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNuMAX;
     }
     /**
-     * {@snippet :
-     * #define XATTR_SIZE_MAX 65536
+     * {@snippet lang=c :
+     * #define SCNxMAX "lx"
      * }
      */
-    public static int XATTR_SIZE_MAX() {
-        return (int)65536L;
+    public static MemorySegment SCNxMAX() {
+        class Holder {
+            static final MemorySegment SCNxMAX
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNxMAX;
     }
     /**
-     * {@snippet :
-     * #define XATTR_LIST_MAX 65536
+     * {@snippet lang=c :
+     * #define SCNdPTR "ld"
      * }
      */
-    public static int XATTR_LIST_MAX() {
-        return (int)65536L;
+    public static MemorySegment SCNdPTR() {
+        class Holder {
+            static final MemorySegment SCNdPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("ld");
+        }
+        return Holder.SCNdPTR;
     }
     /**
-     * {@snippet :
-     * #define RTSIG_MAX 32
+     * {@snippet lang=c :
+     * #define SCNiPTR "li"
      * }
      */
-    public static int RTSIG_MAX() {
-        return (int)32L;
+    public static MemorySegment SCNiPTR() {
+        class Holder {
+            static final MemorySegment SCNiPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("li");
+        }
+        return Holder.SCNiPTR;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_THREAD_KEYS_MAX 128
+     * {@snippet lang=c :
+     * #define SCNoPTR "lo"
      * }
      */
-    public static int _POSIX_THREAD_KEYS_MAX() {
-        return (int)128L;
+    public static MemorySegment SCNoPTR() {
+        class Holder {
+            static final MemorySegment SCNoPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lo");
+        }
+        return Holder.SCNoPTR;
     }
     /**
-     * {@snippet :
-     * #define PTHREAD_KEYS_MAX 1024
+     * {@snippet lang=c :
+     * #define SCNuPTR "lu"
      * }
      */
-    public static int PTHREAD_KEYS_MAX() {
-        return (int)1024L;
+    public static MemorySegment SCNuPTR() {
+        class Holder {
+            static final MemorySegment SCNuPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lu");
+        }
+        return Holder.SCNuPTR;
     }
     /**
-     * {@snippet :
-     * #define _POSIX_THREAD_DESTRUCTOR_ITERATIONS 4
+     * {@snippet lang=c :
+     * #define SCNxPTR "lx"
      * }
      */
-    public static int _POSIX_THREAD_DESTRUCTOR_ITERATIONS() {
-        return (int)4L;
+    public static MemorySegment SCNxPTR() {
+        class Holder {
+            static final MemorySegment SCNxPTR
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("lx");
+        }
+        return Holder.SCNxPTR;
     }
+    private static final long LLONG_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define _POSIX_THREAD_THREADS_MAX 64
+     * {@snippet lang=c :
+     * #define LLONG_MIN -9223372036854775808
      * }
      */
-    public static int _POSIX_THREAD_THREADS_MAX() {
-        return (int)64L;
+    public static long LLONG_MIN() {
+        return LLONG_MIN;
     }
+    private static final long LLONG_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define AIO_PRIO_DELTA_MAX 20
+     * {@snippet lang=c :
+     * #define LLONG_MAX 9223372036854775807
      * }
      */
-    public static int AIO_PRIO_DELTA_MAX() {
-        return (int)20L;
+    public static long LLONG_MAX() {
+        return LLONG_MAX;
     }
+    private static final long ULLONG_MAX = -1L;
     /**
-     * {@snippet :
-     * #define PTHREAD_STACK_MIN 16384
+     * {@snippet lang=c :
+     * #define ULLONG_MAX -1
      * }
      */
-    public static int PTHREAD_STACK_MIN() {
-        return (int)16384L;
+    public static long ULLONG_MAX() {
+        return ULLONG_MAX;
     }
+    private static final int PTHREAD_DESTRUCTOR_ITERATIONS = (int)4L;
     /**
-     * {@snippet :
-     * #define DELAYTIMER_MAX 2147483647
+     * {@snippet lang=c :
+     * #define PTHREAD_DESTRUCTOR_ITERATIONS 4
      * }
      */
-    public static int DELAYTIMER_MAX() {
-        return (int)2147483647L;
+    public static int PTHREAD_DESTRUCTOR_ITERATIONS() {
+        return PTHREAD_DESTRUCTOR_ITERATIONS;
     }
+    private static final int SEM_VALUE_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define TTY_NAME_MAX 32
+     * {@snippet lang=c :
+     * #define SEM_VALUE_MAX 2147483647
      * }
      */
-    public static int TTY_NAME_MAX() {
-        return (int)32L;
+    public static int SEM_VALUE_MAX() {
+        return SEM_VALUE_MAX;
     }
+    private static final long SSIZE_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define LOGIN_NAME_MAX 256
+     * {@snippet lang=c :
+     * #define SSIZE_MAX 9223372036854775807
      * }
      */
-    public static int LOGIN_NAME_MAX() {
-        return (int)256L;
+    public static long SSIZE_MAX() {
+        return SSIZE_MAX;
     }
+    private static final int BC_BASE_MAX = (int)99L;
     /**
-     * {@snippet :
-     * #define HOST_NAME_MAX 64
+     * {@snippet lang=c :
+     * #define BC_BASE_MAX 99
      * }
      */
-    public static int HOST_NAME_MAX() {
-        return (int)64L;
+    public static int BC_BASE_MAX() {
+        return BC_BASE_MAX;
     }
+    private static final int BC_DIM_MAX = (int)2048L;
     /**
-     * {@snippet :
-     * #define MQ_PRIO_MAX 32768
+     * {@snippet lang=c :
+     * #define BC_DIM_MAX 2048
      * }
      */
-    public static int MQ_PRIO_MAX() {
-        return (int)32768L;
+    public static int BC_DIM_MAX() {
+        return BC_DIM_MAX;
     }
+    private static final int BC_SCALE_MAX = (int)99L;
     /**
-     * {@snippet :
-     * #define _BITS_POSIX2_LIM_H 1
+     * {@snippet lang=c :
+     * #define BC_SCALE_MAX 99
      * }
      */
-    public static int _BITS_POSIX2_LIM_H() {
-        return (int)1L;
+    public static int BC_SCALE_MAX() {
+        return BC_SCALE_MAX;
     }
+    private static final int BC_STRING_MAX = (int)1000L;
     /**
-     * {@snippet :
-     * #define _POSIX2_BC_BASE_MAX 99
+     * {@snippet lang=c :
+     * #define BC_STRING_MAX 1000
      * }
      */
-    public static int _POSIX2_BC_BASE_MAX() {
-        return (int)99L;
+    public static int BC_STRING_MAX() {
+        return BC_STRING_MAX;
     }
+    private static final int EXPR_NEST_MAX = (int)32L;
     /**
-     * {@snippet :
-     * #define _POSIX2_BC_DIM_MAX 2048
+     * {@snippet lang=c :
+     * #define EXPR_NEST_MAX 32
      * }
      */
-    public static int _POSIX2_BC_DIM_MAX() {
-        return (int)2048L;
+    public static int EXPR_NEST_MAX() {
+        return EXPR_NEST_MAX;
     }
+    private static final int LINE_MAX = (int)2048L;
     /**
-     * {@snippet :
-     * #define _POSIX2_BC_SCALE_MAX 99
+     * {@snippet lang=c :
+     * #define LINE_MAX 2048
      * }
      */
-    public static int _POSIX2_BC_SCALE_MAX() {
-        return (int)99L;
+    public static int LINE_MAX() {
+        return LINE_MAX;
     }
+    private static final int RE_DUP_MAX = (int)32767L;
     /**
-     * {@snippet :
-     * #define _POSIX2_BC_STRING_MAX 1000
+     * {@snippet lang=c :
+     * #define RE_DUP_MAX 32767
      * }
      */
-    public static int _POSIX2_BC_STRING_MAX() {
-        return (int)1000L;
+    public static int RE_DUP_MAX() {
+        return RE_DUP_MAX;
     }
+    private static final int SCHAR_MAX = (int)127L;
     /**
-     * {@snippet :
-     * #define _POSIX2_COLL_WEIGHTS_MAX 2
+     * {@snippet lang=c :
+     * #define SCHAR_MAX 127
      * }
      */
-    public static int _POSIX2_COLL_WEIGHTS_MAX() {
-        return (int)2L;
+    public static int SCHAR_MAX() {
+        return SCHAR_MAX;
     }
+    private static final int SHRT_MAX = (int)32767L;
     /**
-     * {@snippet :
-     * #define _POSIX2_EXPR_NEST_MAX 32
+     * {@snippet lang=c :
+     * #define SHRT_MAX 32767
      * }
      */
-    public static int _POSIX2_EXPR_NEST_MAX() {
-        return (int)32L;
+    public static int SHRT_MAX() {
+        return SHRT_MAX;
     }
+    private static final int INT_MAX = (int)2147483647L;
     /**
-     * {@snippet :
-     * #define _POSIX2_LINE_MAX 2048
+     * {@snippet lang=c :
+     * #define INT_MAX 2147483647
      * }
      */
-    public static int _POSIX2_LINE_MAX() {
-        return (int)2048L;
+    public static int INT_MAX() {
+        return INT_MAX;
     }
+    private static final long LONG_MAX = 9223372036854775807L;
     /**
-     * {@snippet :
-     * #define _POSIX2_RE_DUP_MAX 255
+     * {@snippet lang=c :
+     * #define LONG_MAX 9223372036854775807
      * }
      */
-    public static int _POSIX2_RE_DUP_MAX() {
-        return (int)255L;
+    public static long LONG_MAX() {
+        return LONG_MAX;
     }
+    private static final int SCHAR_MIN = (int)-128L;
     /**
-     * {@snippet :
-     * #define _POSIX2_CHARCLASS_NAME_MAX 14
+     * {@snippet lang=c :
+     * #define SCHAR_MIN -128
      * }
      */
-    public static int _POSIX2_CHARCLASS_NAME_MAX() {
-        return (int)14L;
+    public static int SCHAR_MIN() {
+        return SCHAR_MIN;
     }
+    private static final int SHRT_MIN = (int)-32768L;
     /**
-     * {@snippet :
-     * #define COLL_WEIGHTS_MAX 255
+     * {@snippet lang=c :
+     * #define SHRT_MIN -32768
      * }
      */
-    public static int COLL_WEIGHTS_MAX() {
-        return (int)255L;
+    public static int SHRT_MIN() {
+        return SHRT_MIN;
     }
+    private static final int INT_MIN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define CHARCLASS_NAME_MAX 2048
+     * {@snippet lang=c :
+     * #define INT_MIN -2147483648
      * }
      */
-    public static int CHARCLASS_NAME_MAX() {
-        return (int)2048L;
+    public static int INT_MIN() {
+        return INT_MIN;
     }
+    private static final long LONG_MIN = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define _MATH_H 1
+     * {@snippet lang=c :
+     * #define LONG_MIN -9223372036854775808
      * }
      */
-    public static int _MATH_H() {
-        return (int)1L;
+    public static long LONG_MIN() {
+        return LONG_MIN;
     }
+    private static final int UCHAR_MAX = (int)255L;
     /**
-     * {@snippet :
-     * #define _BITS_LIBM_SIMD_DECL_STUBS_H 1
+     * {@snippet lang=c :
+     * #define UCHAR_MAX 255
      * }
      */
-    public static int _BITS_LIBM_SIMD_DECL_STUBS_H() {
-        return (int)1L;
+    public static int UCHAR_MAX() {
+        return UCHAR_MAX;
     }
+    private static final int USHRT_MAX = (int)65535L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT128 0
+     * {@snippet lang=c :
+     * #define USHRT_MAX 65535
      * }
      */
-    public static int __HAVE_FLOAT128() {
-        return (int)0L;
+    public static int USHRT_MAX() {
+        return USHRT_MAX;
     }
+    private static final int UINT_MAX = (int)4294967295L;
     /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT128 0
+     * {@snippet lang=c :
+     * #define UINT_MAX 4294967295
      * }
      */
-    public static int __HAVE_DISTINCT_FLOAT128() {
-        return (int)0L;
+    public static int UINT_MAX() {
+        return UINT_MAX;
     }
+    private static final long ULONG_MAX = -1L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT64X 1
+     * {@snippet lang=c :
+     * #define ULONG_MAX -1
      * }
      */
-    public static int __HAVE_FLOAT64X() {
-        return (int)1L;
+    public static long ULONG_MAX() {
+        return ULONG_MAX;
     }
+    private static final int CHAR_BIT = (int)8L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT64X_LONG_DOUBLE 1
+     * {@snippet lang=c :
+     * #define CHAR_BIT 8
      * }
      */
-    public static int __HAVE_FLOAT64X_LONG_DOUBLE() {
-        return (int)1L;
+    public static int CHAR_BIT() {
+        return CHAR_BIT;
     }
+    private static final int CHAR_MIN = (int)-128L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT16 0
+     * {@snippet lang=c :
+     * #define CHAR_MIN -128
      * }
      */
-    public static int __HAVE_FLOAT16() {
-        return (int)0L;
+    public static int CHAR_MIN() {
+        return CHAR_MIN;
     }
+    private static final int CHAR_MAX = (int)127L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT32 1
+     * {@snippet lang=c :
+     * #define CHAR_MAX 127
      * }
      */
-    public static int __HAVE_FLOAT32() {
-        return (int)1L;
+    public static int CHAR_MAX() {
+        return CHAR_MAX;
     }
+    private static final int __HAVE_DISTINCT_FLOAT16 = (int)0L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT64 1
+     * {@snippet lang=c :
+     * #define __HAVE_DISTINCT_FLOAT16 0
      * }
      */
-    public static int __HAVE_FLOAT64() {
-        return (int)1L;
+    public static int __HAVE_DISTINCT_FLOAT16() {
+        return __HAVE_DISTINCT_FLOAT16;
     }
+    private static final int __HAVE_DISTINCT_FLOAT128X = (int)0L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT32X 1
+     * {@snippet lang=c :
+     * #define __HAVE_DISTINCT_FLOAT128X 0
      * }
      */
-    public static int __HAVE_FLOAT32X() {
-        return (int)1L;
+    public static int __HAVE_DISTINCT_FLOAT128X() {
+        return __HAVE_DISTINCT_FLOAT128X;
     }
+    private static final int __HAVE_FLOAT128_UNLIKE_LDBL = (int)0L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOAT128X 0
+     * {@snippet lang=c :
+     * #define __HAVE_FLOAT128_UNLIKE_LDBL 0
      * }
      */
-    public static int __HAVE_FLOAT128X() {
-        return (int)0L;
+    public static int __HAVE_FLOAT128_UNLIKE_LDBL() {
+        return __HAVE_FLOAT128_UNLIKE_LDBL;
     }
+    private static final double HUGE_VAL = Double.valueOf("Infinity");
     /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT32 0
+     * {@snippet lang=c :
+     * #define HUGE_VAL Infinity
      * }
      */
-    public static int __HAVE_DISTINCT_FLOAT32() {
-        return (int)0L;
+    public static double HUGE_VAL() {
+        return HUGE_VAL;
     }
+    private static final float HUGE_VALF = Float.valueOf("Infinity");
     /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT64 0
+     * {@snippet lang=c :
+     * #define HUGE_VALF Infinity
      * }
      */
-    public static int __HAVE_DISTINCT_FLOAT64() {
-        return (int)0L;
+    public static float HUGE_VALF() {
+        return HUGE_VALF;
     }
+    private static final float INFINITY = Float.valueOf("Infinity");
     /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT32X 0
+     * {@snippet lang=c :
+     * #define INFINITY Infinity
      * }
      */
-    public static int __HAVE_DISTINCT_FLOAT32X() {
-        return (int)0L;
+    public static float INFINITY() {
+        return INFINITY;
     }
+    private static final float NAN = Float.valueOf("NaN");
     /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT64X 0
+     * {@snippet lang=c :
+     * #define NAN NaN
      * }
      */
-    public static int __HAVE_DISTINCT_FLOAT64X() {
-        return (int)0L;
+    public static float NAN() {
+        return NAN;
     }
+    private static final int __GLIBC_FLT_EVAL_METHOD = (int)0L;
     /**
-     * {@snippet :
-     * #define __HAVE_FLOATN_NOT_TYPEDEF 0
+     * {@snippet lang=c :
+     * #define __GLIBC_FLT_EVAL_METHOD 0
      * }
      */
-    public static int __HAVE_FLOATN_NOT_TYPEDEF() {
-        return (int)0L;
+    public static int __GLIBC_FLT_EVAL_METHOD() {
+        return __GLIBC_FLT_EVAL_METHOD;
     }
+    private static final int FP_ILOGB0 = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define __FP_LOGB0_IS_MIN 1
+     * {@snippet lang=c :
+     * #define FP_ILOGB0 -2147483648
      * }
      */
-    public static int __FP_LOGB0_IS_MIN() {
-        return (int)1L;
+    public static int FP_ILOGB0() {
+        return FP_ILOGB0;
     }
+    private static final int FP_ILOGBNAN = (int)-2147483648L;
     /**
-     * {@snippet :
-     * #define __FP_LOGBNAN_IS_MIN 1
+     * {@snippet lang=c :
+     * #define FP_ILOGBNAN -2147483648
      * }
      */
-    public static int __FP_LOGBNAN_IS_MIN() {
-        return (int)1L;
+    public static int FP_ILOGBNAN() {
+        return FP_ILOGBNAN;
     }
+    private static final int math_errhandling = (int)3L;
     /**
-     * {@snippet :
-     * #define __MATH_DECLARING_DOUBLE 1
+     * {@snippet lang=c :
+     * #define math_errhandling 3
      * }
      */
-    public static int __MATH_DECLARING_DOUBLE() {
-        return (int)1L;
+    public static int math_errhandling() {
+        return math_errhandling;
     }
+    private static final double M_E = 2.718281828459045d;
     /**
-     * {@snippet :
-     * #define __MATH_DECLARING_FLOATN 0
+     * {@snippet lang=c :
+     * #define M_E 2.718281828459045
      * }
      */
-    public static int __MATH_DECLARING_FLOATN() {
-        return (int)0L;
+    public static double M_E() {
+        return M_E;
     }
+    private static final double M_LOG2E = 1.4426950408889634d;
     /**
-     * {@snippet :
-     * #define __MATH_DECLARE_LDOUBLE 1
+     * {@snippet lang=c :
+     * #define M_LOG2E 1.4426950408889634
      * }
      */
-    public static int __MATH_DECLARE_LDOUBLE() {
-        return (int)1L;
+    public static double M_LOG2E() {
+        return M_LOG2E;
     }
+    private static final double M_LOG10E = 0.4342944819032518d;
     /**
-     * {@snippet :
-     * #define FP_NAN 0
+     * {@snippet lang=c :
+     * #define M_LOG10E 0.4342944819032518
      * }
      */
-    public static int FP_NAN() {
-        return (int)0L;
+    public static double M_LOG10E() {
+        return M_LOG10E;
     }
+    private static final double M_LN2 = 0.6931471805599453d;
     /**
-     * {@snippet :
-     * #define FP_INFINITE 1
+     * {@snippet lang=c :
+     * #define M_LN2 0.6931471805599453
      * }
      */
-    public static int FP_INFINITE() {
-        return (int)1L;
+    public static double M_LN2() {
+        return M_LN2;
     }
+    private static final double M_LN10 = 2.302585092994046d;
     /**
-     * {@snippet :
-     * #define FP_ZERO 2
+     * {@snippet lang=c :
+     * #define M_LN10 2.302585092994046
      * }
      */
-    public static int FP_ZERO() {
-        return (int)2L;
+    public static double M_LN10() {
+        return M_LN10;
     }
+    private static final double M_PI = 3.141592653589793d;
     /**
-     * {@snippet :
-     * #define FP_SUBNORMAL 3
+     * {@snippet lang=c :
+     * #define M_PI 3.141592653589793
      * }
      */
-    public static int FP_SUBNORMAL() {
-        return (int)3L;
+    public static double M_PI() {
+        return M_PI;
     }
+    private static final double M_PI_2 = 1.5707963267948966d;
     /**
-     * {@snippet :
-     * #define FP_NORMAL 4
+     * {@snippet lang=c :
+     * #define M_PI_2 1.5707963267948966
      * }
      */
-    public static int FP_NORMAL() {
-        return (int)4L;
+    public static double M_PI_2() {
+        return M_PI_2;
     }
+    private static final double M_PI_4 = 0.7853981633974483d;
     /**
-     * {@snippet :
-     * #define MATH_ERRNO 1
+     * {@snippet lang=c :
+     * #define M_PI_4 0.7853981633974483
      * }
      */
-    public static int MATH_ERRNO() {
-        return (int)1L;
+    public static double M_PI_4() {
+        return M_PI_4;
     }
+    private static final double M_1_PI = 0.3183098861837907d;
     /**
-     * {@snippet :
-     * #define MATH_ERREXCEPT 2
+     * {@snippet lang=c :
+     * #define M_1_PI 0.3183098861837907
      * }
      */
-    public static int MATH_ERREXCEPT() {
-        return (int)2L;
+    public static double M_1_PI() {
+        return M_1_PI;
     }
+    private static final double M_2_PI = 0.6366197723675814d;
     /**
-     * {@snippet :
-     * #define _STDIO_H 1
+     * {@snippet lang=c :
+     * #define M_2_PI 0.6366197723675814
      * }
      */
-    public static int _STDIO_H() {
-        return (int)1L;
+    public static double M_2_PI() {
+        return M_2_PI;
     }
+    private static final double M_2_SQRTPI = 1.1283791670955126d;
     /**
-     * {@snippet :
-     * #define __GNUC_VA_LIST 1
+     * {@snippet lang=c :
+     * #define M_2_SQRTPI 1.1283791670955126
      * }
      */
-    public static int __GNUC_VA_LIST() {
-        return (int)1L;
+    public static double M_2_SQRTPI() {
+        return M_2_SQRTPI;
     }
+    private static final double M_SQRT2 = 1.4142135623730951d;
     /**
-     * {@snippet :
-     * #define _____fpos_t_defined 1
+     * {@snippet lang=c :
+     * #define M_SQRT2 1.4142135623730951
      * }
      */
-    public static int _____fpos_t_defined() {
-        return (int)1L;
+    public static double M_SQRT2() {
+        return M_SQRT2;
     }
+    private static final double M_SQRT1_2 = 0.7071067811865476d;
     /**
-     * {@snippet :
-     * #define ____mbstate_t_defined 1
+     * {@snippet lang=c :
+     * #define M_SQRT1_2 0.7071067811865476
      * }
      */
-    public static int ____mbstate_t_defined() {
-        return (int)1L;
+    public static double M_SQRT1_2() {
+        return M_SQRT1_2;
     }
+    private static final MemorySegment NULL = MemorySegment.ofAddress(0L);
     /**
-     * {@snippet :
-     * #define _____fpos64_t_defined 1
+     * {@snippet lang=c :
+     * #define NULL (void*) 0
      * }
      */
-    public static int _____fpos64_t_defined() {
-        return (int)1L;
+    public static MemorySegment NULL() {
+        return NULL;
     }
+    private static final int EOF = (int)-1L;
     /**
-     * {@snippet :
-     * #define ____FILE_defined 1
+     * {@snippet lang=c :
+     * #define EOF -1
      * }
      */
-    public static int ____FILE_defined() {
-        return (int)1L;
+    public static int EOF() {
+        return EOF;
     }
     /**
-     * {@snippet :
-     * #define __FILE_defined 1
+     * {@snippet lang=c :
+     * #define P_tmpdir "/tmp"
      * }
      */
-    public static int __FILE_defined() {
-        return (int)1L;
+    public static MemorySegment P_tmpdir() {
+        class Holder {
+            static final MemorySegment P_tmpdir
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("/tmp");
+        }
+        return Holder.P_tmpdir;
     }
+    private static final int __WCLONE = (int)2147483648L;
     /**
-     * {@snippet :
-     * #define __struct_FILE_defined 1
+     * {@snippet lang=c :
+     * #define __WCLONE 2147483648
      * }
      */
-    public static int __struct_FILE_defined() {
-        return (int)1L;
+    public static int __WCLONE() {
+        return __WCLONE;
     }
+    private static final int __BYTE_ORDER = (int)1234L;
     /**
-     * {@snippet :
-     * #define _IO_EOF_SEEN 16
+     * {@snippet lang=c :
+     * #define __BYTE_ORDER 1234
      * }
      */
-    public static int _IO_EOF_SEEN() {
-        return (int)16L;
+    public static int __BYTE_ORDER() {
+        return __BYTE_ORDER;
     }
+    private static final int __FLOAT_WORD_ORDER = (int)1234L;
     /**
-     * {@snippet :
-     * #define _IO_ERR_SEEN 32
+     * {@snippet lang=c :
+     * #define __FLOAT_WORD_ORDER 1234
      * }
      */
-    public static int _IO_ERR_SEEN() {
-        return (int)32L;
+    public static int __FLOAT_WORD_ORDER() {
+        return __FLOAT_WORD_ORDER;
     }
+    private static final int LITTLE_ENDIAN = (int)1234L;
     /**
-     * {@snippet :
-     * #define _IO_USER_LOCK 32768
+     * {@snippet lang=c :
+     * #define LITTLE_ENDIAN 1234
      * }
      */
-    public static int _IO_USER_LOCK() {
-        return (int)32768L;
+    public static int LITTLE_ENDIAN() {
+        return LITTLE_ENDIAN;
     }
+    private static final int BIG_ENDIAN = (int)4321L;
     /**
-     * {@snippet :
-     * #define __cookie_io_functions_t_defined 1
+     * {@snippet lang=c :
+     * #define BIG_ENDIAN 4321
      * }
      */
-    public static int __cookie_io_functions_t_defined() {
-        return (int)1L;
+    public static int BIG_ENDIAN() {
+        return BIG_ENDIAN;
     }
+    private static final int PDP_ENDIAN = (int)3412L;
     /**
-     * {@snippet :
-     * #define _IOFBF 0
+     * {@snippet lang=c :
+     * #define PDP_ENDIAN 3412
      * }
      */
-    public static int _IOFBF() {
-        return (int)0L;
+    public static int PDP_ENDIAN() {
+        return PDP_ENDIAN;
     }
+    private static final int BYTE_ORDER = (int)1234L;
     /**
-     * {@snippet :
-     * #define _IOLBF 1
+     * {@snippet lang=c :
+     * #define BYTE_ORDER 1234
      * }
      */
-    public static int _IOLBF() {
-        return (int)1L;
+    public static int BYTE_ORDER() {
+        return BYTE_ORDER;
     }
+    private static final long _SIGSET_NWORDS = 16L;
     /**
-     * {@snippet :
-     * #define _IONBF 2
+     * {@snippet lang=c :
+     * #define _SIGSET_NWORDS 16
      * }
      */
-    public static int _IONBF() {
-        return (int)2L;
+    public static long _SIGSET_NWORDS() {
+        return _SIGSET_NWORDS;
     }
+    private static final int __NFDBITS = (int)64L;
     /**
-     * {@snippet :
-     * #define BUFSIZ 8192
+     * {@snippet lang=c :
+     * #define __NFDBITS 64
      * }
      */
-    public static int BUFSIZ() {
-        return (int)8192L;
+    public static int __NFDBITS() {
+        return __NFDBITS;
     }
+    private static final int FD_SETSIZE = (int)1024L;
     /**
-     * {@snippet :
-     * #define SEEK_SET 0
+     * {@snippet lang=c :
+     * #define FD_SETSIZE 1024
      * }
      */
-    public static int SEEK_SET() {
-        return (int)0L;
+    public static int FD_SETSIZE() {
+        return FD_SETSIZE;
     }
+    private static final int NFDBITS = (int)64L;
     /**
-     * {@snippet :
-     * #define SEEK_CUR 1
+     * {@snippet lang=c :
+     * #define NFDBITS 64
      * }
      */
-    public static int SEEK_CUR() {
-        return (int)1L;
+    public static int NFDBITS() {
+        return NFDBITS;
     }
+    private static final int __PTHREAD_RWLOCK_ELISION_EXTRA = (int)0L;
     /**
-     * {@snippet :
-     * #define SEEK_END 2
+     * {@snippet lang=c :
+     * #define __PTHREAD_RWLOCK_ELISION_EXTRA 0
      * }
      */
-    public static int SEEK_END() {
-        return (int)2L;
+    public static int __PTHREAD_RWLOCK_ELISION_EXTRA() {
+        return __PTHREAD_RWLOCK_ELISION_EXTRA;
     }
+    private static final int LIBAVUTIL_VERSION_INT = (int)3801700L;
     /**
-     * {@snippet :
-     * #define L_tmpnam 20
+     * {@snippet lang=c :
+     * #define LIBAVUTIL_VERSION_INT 3801700
      * }
      */
-    public static int L_tmpnam() {
-        return (int)20L;
+    public static int LIBAVUTIL_VERSION_INT() {
+        return LIBAVUTIL_VERSION_INT;
     }
+    private static final int LIBAVUTIL_BUILD = (int)3801700L;
     /**
-     * {@snippet :
-     * #define TMP_MAX 238328
+     * {@snippet lang=c :
+     * #define LIBAVUTIL_BUILD 3801700
      * }
      */
-    public static int TMP_MAX() {
-        return (int)238328L;
+    public static int LIBAVUTIL_BUILD() {
+        return LIBAVUTIL_BUILD;
     }
     /**
-     * {@snippet :
-     * #define _BITS_STDIO_LIM_H 1
+     * {@snippet lang=c :
+     * #define LIBAVUTIL_IDENT "Lavu58.2.100"
      * }
      */
-    public static int _BITS_STDIO_LIM_H() {
-        return (int)1L;
+    public static MemorySegment LIBAVUTIL_IDENT() {
+        class Holder {
+            static final MemorySegment LIBAVUTIL_IDENT
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("Lavu58.2.100");
+        }
+        return Holder.LIBAVUTIL_IDENT;
     }
+    private static final int FF_API_FIFO_PEEK2 = (int)1L;
     /**
-     * {@snippet :
-     * #define FILENAME_MAX 4096
+     * {@snippet lang=c :
+     * #define FF_API_FIFO_PEEK2 1
      * }
      */
-    public static int FILENAME_MAX() {
-        return (int)4096L;
+    public static int FF_API_FIFO_PEEK2() {
+        return FF_API_FIFO_PEEK2;
     }
+    private static final int FF_API_FIFO_OLD_API = (int)1L;
     /**
-     * {@snippet :
-     * #define L_ctermid 9
+     * {@snippet lang=c :
+     * #define FF_API_FIFO_OLD_API 1
      * }
      */
-    public static int L_ctermid() {
-        return (int)9L;
+    public static int FF_API_FIFO_OLD_API() {
+        return FF_API_FIFO_OLD_API;
     }
+    private static final int FF_API_XVMC = (int)1L;
     /**
-     * {@snippet :
-     * #define FOPEN_MAX 16
+     * {@snippet lang=c :
+     * #define FF_API_XVMC 1
      * }
      */
-    public static int FOPEN_MAX() {
-        return (int)16L;
+    public static int FF_API_XVMC() {
+        return FF_API_XVMC;
     }
+    private static final int FF_API_OLD_CHANNEL_LAYOUT = (int)1L;
     /**
-     * {@snippet :
-     * #define _STDLIB_H 1
+     * {@snippet lang=c :
+     * #define FF_API_OLD_CHANNEL_LAYOUT 1
      * }
      */
-    public static int _STDLIB_H() {
-        return (int)1L;
+    public static int FF_API_OLD_CHANNEL_LAYOUT() {
+        return FF_API_OLD_CHANNEL_LAYOUT;
     }
+    private static final int FF_API_AV_FOPEN_UTF8 = (int)1L;
     /**
-     * {@snippet :
-     * #define WNOHANG 1
+     * {@snippet lang=c :
+     * #define FF_API_AV_FOPEN_UTF8 1
      * }
      */
-    public static int WNOHANG() {
-        return (int)1L;
+    public static int FF_API_AV_FOPEN_UTF8() {
+        return FF_API_AV_FOPEN_UTF8;
     }
+    private static final int FF_API_PKT_DURATION = (int)1L;
     /**
-     * {@snippet :
-     * #define WUNTRACED 2
+     * {@snippet lang=c :
+     * #define FF_API_PKT_DURATION 1
      * }
      */
-    public static int WUNTRACED() {
-        return (int)2L;
+    public static int FF_API_PKT_DURATION() {
+        return FF_API_PKT_DURATION;
     }
+    private static final int FF_API_REORDERED_OPAQUE = (int)1L;
     /**
-     * {@snippet :
-     * #define WSTOPPED 2
+     * {@snippet lang=c :
+     * #define FF_API_REORDERED_OPAQUE 1
      * }
      */
-    public static int WSTOPPED() {
-        return (int)2L;
+    public static int FF_API_REORDERED_OPAQUE() {
+        return FF_API_REORDERED_OPAQUE;
     }
+    private static final int FF_API_FRAME_PICTURE_NUMBER = (int)1L;
     /**
-     * {@snippet :
-     * #define WEXITED 4
+     * {@snippet lang=c :
+     * #define FF_API_FRAME_PICTURE_NUMBER 1
      * }
      */
-    public static int WEXITED() {
-        return (int)4L;
+    public static int FF_API_FRAME_PICTURE_NUMBER() {
+        return FF_API_FRAME_PICTURE_NUMBER;
     }
+    private static final int AVERROR_BSF_NOT_FOUND = (int)-1179861752L;
     /**
-     * {@snippet :
-     * #define WCONTINUED 8
+     * {@snippet lang=c :
+     * #define AVERROR_BSF_NOT_FOUND -1179861752
      * }
      */
-    public static int WCONTINUED() {
-        return (int)8L;
+    public static int AVERROR_BSF_NOT_FOUND() {
+        return AVERROR_BSF_NOT_FOUND;
     }
+    private static final int AVERROR_BUG = (int)-558323010L;
     /**
-     * {@snippet :
-     * #define WNOWAIT 16777216
+     * {@snippet lang=c :
+     * #define AVERROR_BUG -558323010
      * }
      */
-    public static int WNOWAIT() {
-        return (int)16777216L;
+    public static int AVERROR_BUG() {
+        return AVERROR_BUG;
     }
+    private static final int AVERROR_BUFFER_TOO_SMALL = (int)-1397118274L;
     /**
-     * {@snippet :
-     * #define __WNOTHREAD 536870912
+     * {@snippet lang=c :
+     * #define AVERROR_BUFFER_TOO_SMALL -1397118274
      * }
      */
-    public static int __WNOTHREAD() {
-        return (int)536870912L;
+    public static int AVERROR_BUFFER_TOO_SMALL() {
+        return AVERROR_BUFFER_TOO_SMALL;
     }
+    private static final int AVERROR_DECODER_NOT_FOUND = (int)-1128613112L;
     /**
-     * {@snippet :
-     * #define __WALL 1073741824
+     * {@snippet lang=c :
+     * #define AVERROR_DECODER_NOT_FOUND -1128613112
      * }
      */
-    public static int __WALL() {
-        return (int)1073741824L;
+    public static int AVERROR_DECODER_NOT_FOUND() {
+        return AVERROR_DECODER_NOT_FOUND;
     }
+    private static final int AVERROR_DEMUXER_NOT_FOUND = (int)-1296385272L;
     /**
-     * {@snippet :
-     * #define __W_CONTINUED 65535
+     * {@snippet lang=c :
+     * #define AVERROR_DEMUXER_NOT_FOUND -1296385272
      * }
      */
-    public static int __W_CONTINUED() {
-        return (int)65535L;
+    public static int AVERROR_DEMUXER_NOT_FOUND() {
+        return AVERROR_DEMUXER_NOT_FOUND;
     }
+    private static final int AVERROR_ENCODER_NOT_FOUND = (int)-1129203192L;
     /**
-     * {@snippet :
-     * #define __WCOREFLAG 128
+     * {@snippet lang=c :
+     * #define AVERROR_ENCODER_NOT_FOUND -1129203192
      * }
      */
-    public static int __WCOREFLAG() {
-        return (int)128L;
+    public static int AVERROR_ENCODER_NOT_FOUND() {
+        return AVERROR_ENCODER_NOT_FOUND;
     }
+    private static final int AVERROR_EOF = (int)-541478725L;
     /**
-     * {@snippet :
-     * #define __ldiv_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_EOF -541478725
      * }
      */
-    public static int __ldiv_t_defined() {
-        return (int)1L;
+    public static int AVERROR_EOF() {
+        return AVERROR_EOF;
     }
+    private static final int AVERROR_EXIT = (int)-1414092869L;
     /**
-     * {@snippet :
-     * #define __lldiv_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_EXIT -1414092869
      * }
      */
-    public static int __lldiv_t_defined() {
-        return (int)1L;
+    public static int AVERROR_EXIT() {
+        return AVERROR_EXIT;
     }
+    private static final int AVERROR_EXTERNAL = (int)-542398533L;
     /**
-     * {@snippet :
-     * #define RAND_MAX 2147483647
+     * {@snippet lang=c :
+     * #define AVERROR_EXTERNAL -542398533
      * }
      */
-    public static int RAND_MAX() {
-        return (int)2147483647L;
+    public static int AVERROR_EXTERNAL() {
+        return AVERROR_EXTERNAL;
     }
+    private static final int AVERROR_FILTER_NOT_FOUND = (int)-1279870712L;
     /**
-     * {@snippet :
-     * #define EXIT_FAILURE 1
+     * {@snippet lang=c :
+     * #define AVERROR_FILTER_NOT_FOUND -1279870712
      * }
      */
-    public static int EXIT_FAILURE() {
-        return (int)1L;
+    public static int AVERROR_FILTER_NOT_FOUND() {
+        return AVERROR_FILTER_NOT_FOUND;
     }
+    private static final int AVERROR_INVALIDDATA = (int)-1094995529L;
     /**
-     * {@snippet :
-     * #define EXIT_SUCCESS 0
+     * {@snippet lang=c :
+     * #define AVERROR_INVALIDDATA -1094995529
      * }
      */
-    public static int EXIT_SUCCESS() {
-        return (int)0L;
+    public static int AVERROR_INVALIDDATA() {
+        return AVERROR_INVALIDDATA;
     }
+    private static final int AVERROR_MUXER_NOT_FOUND = (int)-1481985528L;
     /**
-     * {@snippet :
-     * #define _SYS_TYPES_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_MUXER_NOT_FOUND -1481985528
      * }
      */
-    public static int _SYS_TYPES_H() {
-        return (int)1L;
+    public static int AVERROR_MUXER_NOT_FOUND() {
+        return AVERROR_MUXER_NOT_FOUND;
     }
+    private static final int AVERROR_OPTION_NOT_FOUND = (int)-1414549496L;
     /**
-     * {@snippet :
-     * #define __clock_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_OPTION_NOT_FOUND -1414549496
      * }
      */
-    public static int __clock_t_defined() {
-        return (int)1L;
+    public static int AVERROR_OPTION_NOT_FOUND() {
+        return AVERROR_OPTION_NOT_FOUND;
     }
+    private static final int AVERROR_PATCHWELCOME = (int)-1163346256L;
     /**
-     * {@snippet :
-     * #define __clockid_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_PATCHWELCOME -1163346256
      * }
      */
-    public static int __clockid_t_defined() {
-        return (int)1L;
+    public static int AVERROR_PATCHWELCOME() {
+        return AVERROR_PATCHWELCOME;
     }
+    private static final int AVERROR_PROTOCOL_NOT_FOUND = (int)-1330794744L;
     /**
-     * {@snippet :
-     * #define __time_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_PROTOCOL_NOT_FOUND -1330794744
      * }
      */
-    public static int __time_t_defined() {
-        return (int)1L;
+    public static int AVERROR_PROTOCOL_NOT_FOUND() {
+        return AVERROR_PROTOCOL_NOT_FOUND;
     }
+    private static final int AVERROR_STREAM_NOT_FOUND = (int)-1381258232L;
     /**
-     * {@snippet :
-     * #define __timer_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_STREAM_NOT_FOUND -1381258232
      * }
      */
-    public static int __timer_t_defined() {
-        return (int)1L;
+    public static int AVERROR_STREAM_NOT_FOUND() {
+        return AVERROR_STREAM_NOT_FOUND;
     }
+    private static final int AVERROR_BUG2 = (int)-541545794L;
     /**
-     * {@snippet :
-     * #define __BIT_TYPES_DEFINED__ 1
+     * {@snippet lang=c :
+     * #define AVERROR_BUG2 -541545794
      * }
      */
-    public static int __BIT_TYPES_DEFINED__() {
-        return (int)1L;
+    public static int AVERROR_BUG2() {
+        return AVERROR_BUG2;
     }
+    private static final int AVERROR_UNKNOWN = (int)-1313558101L;
     /**
-     * {@snippet :
-     * #define _ENDIAN_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_UNKNOWN -1313558101
      * }
      */
-    public static int _ENDIAN_H() {
-        return (int)1L;
+    public static int AVERROR_UNKNOWN() {
+        return AVERROR_UNKNOWN;
     }
+    private static final int AVERROR_EXPERIMENTAL = (int)-733130664L;
     /**
-     * {@snippet :
-     * #define _BITS_ENDIAN_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_EXPERIMENTAL -733130664
      * }
      */
-    public static int _BITS_ENDIAN_H() {
-        return (int)1L;
+    public static int AVERROR_EXPERIMENTAL() {
+        return AVERROR_EXPERIMENTAL;
     }
+    private static final int AVERROR_INPUT_CHANGED = (int)-1668179713L;
     /**
-     * {@snippet :
-     * #define __LITTLE_ENDIAN 1234
+     * {@snippet lang=c :
+     * #define AVERROR_INPUT_CHANGED -1668179713
      * }
      */
-    public static int __LITTLE_ENDIAN() {
-        return (int)1234L;
+    public static int AVERROR_INPUT_CHANGED() {
+        return AVERROR_INPUT_CHANGED;
     }
+    private static final int AVERROR_OUTPUT_CHANGED = (int)-1668179714L;
     /**
-     * {@snippet :
-     * #define __BIG_ENDIAN 4321
+     * {@snippet lang=c :
+     * #define AVERROR_OUTPUT_CHANGED -1668179714
      * }
      */
-    public static int __BIG_ENDIAN() {
-        return (int)4321L;
+    public static int AVERROR_OUTPUT_CHANGED() {
+        return AVERROR_OUTPUT_CHANGED;
     }
+    private static final int AVERROR_HTTP_BAD_REQUEST = (int)-808465656L;
     /**
-     * {@snippet :
-     * #define __PDP_ENDIAN 3412
+     * {@snippet lang=c :
+     * #define AVERROR_HTTP_BAD_REQUEST -808465656
      * }
      */
-    public static int __PDP_ENDIAN() {
-        return (int)3412L;
+    public static int AVERROR_HTTP_BAD_REQUEST() {
+        return AVERROR_HTTP_BAD_REQUEST;
     }
+    private static final int AVERROR_HTTP_UNAUTHORIZED = (int)-825242872L;
     /**
-     * {@snippet :
-     * #define _BITS_ENDIANNESS_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_HTTP_UNAUTHORIZED -825242872
      * }
      */
-    public static int _BITS_ENDIANNESS_H() {
-        return (int)1L;
+    public static int AVERROR_HTTP_UNAUTHORIZED() {
+        return AVERROR_HTTP_UNAUTHORIZED;
     }
+    private static final int AVERROR_HTTP_FORBIDDEN = (int)-858797304L;
     /**
-     * {@snippet :
-     * #define _BITS_BYTESWAP_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_HTTP_FORBIDDEN -858797304
      * }
      */
-    public static int _BITS_BYTESWAP_H() {
-        return (int)1L;
+    public static int AVERROR_HTTP_FORBIDDEN() {
+        return AVERROR_HTTP_FORBIDDEN;
     }
+    private static final int AVERROR_HTTP_NOT_FOUND = (int)-875574520L;
     /**
-     * {@snippet :
-     * #define _BITS_UINTN_IDENTITY_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_HTTP_NOT_FOUND -875574520
      * }
      */
-    public static int _BITS_UINTN_IDENTITY_H() {
-        return (int)1L;
+    public static int AVERROR_HTTP_NOT_FOUND() {
+        return AVERROR_HTTP_NOT_FOUND;
     }
+    private static final int AVERROR_HTTP_OTHER_4XX = (int)-1482175736L;
     /**
-     * {@snippet :
-     * #define _SYS_SELECT_H 1
+     * {@snippet lang=c :
+     * #define AVERROR_HTTP_OTHER_4XX -1482175736
      * }
      */
-    public static int _SYS_SELECT_H() {
-        return (int)1L;
+    public static int AVERROR_HTTP_OTHER_4XX() {
+        return AVERROR_HTTP_OTHER_4XX;
     }
+    private static final int AVERROR_HTTP_SERVER_ERROR = (int)-1482175992L;
     /**
-     * {@snippet :
-     * #define __sigset_t_defined 1
+     * {@snippet lang=c :
+     * #define AVERROR_HTTP_SERVER_ERROR -1482175992
      * }
      */
-    public static int __sigset_t_defined() {
-        return (int)1L;
+    public static int AVERROR_HTTP_SERVER_ERROR() {
+        return AVERROR_HTTP_SERVER_ERROR;
     }
+    private static final double M_LOG2_10 = 3.321928094887362d;
     /**
-     * {@snippet :
-     * #define __timeval_defined 1
+     * {@snippet lang=c :
+     * #define M_LOG2_10 3.321928094887362
      * }
      */
-    public static int __timeval_defined() {
-        return (int)1L;
+    public static double M_LOG2_10() {
+        return M_LOG2_10;
     }
+    private static final double M_PHI = 1.618033988749895d;
     /**
-     * {@snippet :
-     * #define _STRUCT_TIMESPEC 1
+     * {@snippet lang=c :
+     * #define M_PHI 1.618033988749895
      * }
      */
-    public static int _STRUCT_TIMESPEC() {
-        return (int)1L;
+    public static double M_PHI() {
+        return M_PHI;
     }
+    private static final int AV_LOG_QUIET = (int)-8L;
     /**
-     * {@snippet :
-     * #define _BITS_PTHREADTYPES_COMMON_H 1
+     * {@snippet lang=c :
+     * #define AV_LOG_QUIET -8
      * }
      */
-    public static int _BITS_PTHREADTYPES_COMMON_H() {
-        return (int)1L;
+    public static int AV_LOG_QUIET() {
+        return AV_LOG_QUIET;
     }
+    private static final int AV_LOG_MAX_OFFSET = (int)64L;
     /**
-     * {@snippet :
-     * #define _THREAD_SHARED_TYPES_H 1
+     * {@snippet lang=c :
+     * #define AV_LOG_MAX_OFFSET 64
      * }
      */
-    public static int _THREAD_SHARED_TYPES_H() {
-        return (int)1L;
+    public static int AV_LOG_MAX_OFFSET() {
+        return AV_LOG_MAX_OFFSET;
     }
+    private static final int AV_PIX_FMT_RGB32 = (int)28L;
     /**
-     * {@snippet :
-     * #define _BITS_PTHREADTYPES_ARCH_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGB32 28
      * }
      */
-    public static int _BITS_PTHREADTYPES_ARCH_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGB32() {
+        return AV_PIX_FMT_RGB32;
     }
+    private static final int AV_PIX_FMT_RGB32_1 = (int)27L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_MUTEX_T 40
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGB32_1 27
      * }
      */
-    public static int __SIZEOF_PTHREAD_MUTEX_T() {
-        return (int)40L;
+    public static int AV_PIX_FMT_RGB32_1() {
+        return AV_PIX_FMT_RGB32_1;
     }
+    private static final int AV_PIX_FMT_BGR32 = (int)26L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_ATTR_T 56
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGR32 26
      * }
      */
-    public static int __SIZEOF_PTHREAD_ATTR_T() {
-        return (int)56L;
+    public static int AV_PIX_FMT_BGR32() {
+        return AV_PIX_FMT_BGR32;
     }
+    private static final int AV_PIX_FMT_BGR32_1 = (int)25L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_RWLOCK_T 56
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGR32_1 25
      * }
      */
-    public static int __SIZEOF_PTHREAD_RWLOCK_T() {
-        return (int)56L;
+    public static int AV_PIX_FMT_BGR32_1() {
+        return AV_PIX_FMT_BGR32_1;
     }
+    private static final int AV_PIX_FMT_0RGB32 = (int)121L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_BARRIER_T 32
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_0RGB32 121
      * }
      */
-    public static int __SIZEOF_PTHREAD_BARRIER_T() {
-        return (int)32L;
+    public static int AV_PIX_FMT_0RGB32() {
+        return AV_PIX_FMT_0RGB32;
     }
+    private static final int AV_PIX_FMT_0BGR32 = (int)119L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_MUTEXATTR_T 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_0BGR32 119
      * }
      */
-    public static int __SIZEOF_PTHREAD_MUTEXATTR_T() {
-        return (int)4L;
+    public static int AV_PIX_FMT_0BGR32() {
+        return AV_PIX_FMT_0BGR32;
     }
+    private static final int AV_PIX_FMT_GRAY9 = (int)174L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_COND_T 48
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GRAY9 174
      * }
      */
-    public static int __SIZEOF_PTHREAD_COND_T() {
-        return (int)48L;
+    public static int AV_PIX_FMT_GRAY9() {
+        return AV_PIX_FMT_GRAY9;
     }
+    private static final int AV_PIX_FMT_GRAY10 = (int)169L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_CONDATTR_T 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GRAY10 169
      * }
      */
-    public static int __SIZEOF_PTHREAD_CONDATTR_T() {
-        return (int)4L;
+    public static int AV_PIX_FMT_GRAY10() {
+        return AV_PIX_FMT_GRAY10;
     }
+    private static final int AV_PIX_FMT_GRAY12 = (int)167L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_RWLOCKATTR_T 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GRAY12 167
      * }
      */
-    public static int __SIZEOF_PTHREAD_RWLOCKATTR_T() {
-        return (int)8L;
+    public static int AV_PIX_FMT_GRAY12() {
+        return AV_PIX_FMT_GRAY12;
     }
+    private static final int AV_PIX_FMT_GRAY14 = (int)182L;
     /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_BARRIERATTR_T 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GRAY14 182
      * }
      */
-    public static int __SIZEOF_PTHREAD_BARRIERATTR_T() {
-        return (int)4L;
+    public static int AV_PIX_FMT_GRAY14() {
+        return AV_PIX_FMT_GRAY14;
     }
+    private static final int AV_PIX_FMT_GRAY16 = (int)30L;
     /**
-     * {@snippet :
-     * #define _THREAD_MUTEX_INTERNAL_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GRAY16 30
      * }
      */
-    public static int _THREAD_MUTEX_INTERNAL_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_GRAY16() {
+        return AV_PIX_FMT_GRAY16;
     }
+    private static final int AV_PIX_FMT_YA16 = (int)110L;
     /**
-     * {@snippet :
-     * #define __PTHREAD_MUTEX_HAVE_PREV 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YA16 110
      * }
      */
-    public static int __PTHREAD_MUTEX_HAVE_PREV() {
-        return (int)1L;
+    public static int AV_PIX_FMT_YA16() {
+        return AV_PIX_FMT_YA16;
     }
+    private static final int AV_PIX_FMT_RGB48 = (int)35L;
     /**
-     * {@snippet :
-     * #define __have_pthread_attr_t 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGB48 35
      * }
      */
-    public static int __have_pthread_attr_t() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGB48() {
+        return AV_PIX_FMT_RGB48;
     }
+    private static final int AV_PIX_FMT_RGB565 = (int)37L;
     /**
-     * {@snippet :
-     * #define _ALLOCA_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGB565 37
      * }
      */
-    public static int _ALLOCA_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGB565() {
+        return AV_PIX_FMT_RGB565;
     }
+    private static final int AV_PIX_FMT_RGB555 = (int)39L;
     /**
-     * {@snippet :
-     * #define _STRING_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGB555 39
      * }
      */
-    public static int _STRING_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGB555() {
+        return AV_PIX_FMT_RGB555;
     }
+    private static final int AV_PIX_FMT_RGB444 = (int)52L;
     /**
-     * {@snippet :
-     * #define _BITS_TYPES_LOCALE_T_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGB444 52
      * }
      */
-    public static int _BITS_TYPES_LOCALE_T_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGB444() {
+        return AV_PIX_FMT_RGB444;
     }
+    private static final int AV_PIX_FMT_RGBA64 = (int)105L;
     /**
-     * {@snippet :
-     * #define _BITS_TYPES___LOCALE_T_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGBA64 105
      * }
      */
-    public static int _BITS_TYPES___LOCALE_T_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGBA64() {
+        return AV_PIX_FMT_RGBA64;
     }
+    private static final int AV_PIX_FMT_BGR48 = (int)58L;
     /**
-     * {@snippet :
-     * #define _STRINGS_H 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGR48 58
      * }
      */
-    public static int _STRINGS_H() {
-        return (int)1L;
+    public static int AV_PIX_FMT_BGR48() {
+        return AV_PIX_FMT_BGR48;
     }
+    private static final int AV_PIX_FMT_BGR565 = (int)41L;
     /**
-     * {@snippet :
-     * #define AV_HAVE_BIGENDIAN 0
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGR565 41
      * }
      */
-    public static int AV_HAVE_BIGENDIAN() {
-        return (int)0L;
+    public static int AV_PIX_FMT_BGR565() {
+        return AV_PIX_FMT_BGR565;
     }
+    private static final int AV_PIX_FMT_BGR555 = (int)43L;
     /**
-     * {@snippet :
-     * #define AV_HAVE_FAST_UNALIGNED 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGR555 43
      * }
      */
-    public static int AV_HAVE_FAST_UNALIGNED() {
-        return (int)1L;
+    public static int AV_PIX_FMT_BGR555() {
+        return AV_PIX_FMT_BGR555;
     }
+    private static final int AV_PIX_FMT_BGR444 = (int)54L;
     /**
-     * {@snippet :
-     * #define LIBAVUTIL_VERSION_MAJOR 58
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGR444 54
      * }
      */
-    public static int LIBAVUTIL_VERSION_MAJOR() {
-        return (int)58L;
+    public static int AV_PIX_FMT_BGR444() {
+        return AV_PIX_FMT_BGR444;
     }
+    private static final int AV_PIX_FMT_BGRA64 = (int)107L;
     /**
-     * {@snippet :
-     * #define LIBAVUTIL_VERSION_MINOR 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BGRA64 107
      * }
      */
-    public static int LIBAVUTIL_VERSION_MINOR() {
-        return (int)2L;
+    public static int AV_PIX_FMT_BGRA64() {
+        return AV_PIX_FMT_BGRA64;
     }
+    private static final int AV_PIX_FMT_YUV420P9 = (int)60L;
     /**
-     * {@snippet :
-     * #define LIBAVUTIL_VERSION_MICRO 100
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV420P9 60
      * }
      */
-    public static int LIBAVUTIL_VERSION_MICRO() {
-        return (int)100L;
+    public static int AV_PIX_FMT_YUV420P9() {
+        return AV_PIX_FMT_YUV420P9;
     }
+    private static final int AV_PIX_FMT_YUV422P9 = (int)70L;
     /**
-     * {@snippet :
-     * #define AV_ERROR_MAX_STRING_SIZE 64
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV422P9 70
      * }
      */
-    public static int AV_ERROR_MAX_STRING_SIZE() {
-        return (int)64L;
+    public static int AV_PIX_FMT_YUV422P9() {
+        return AV_PIX_FMT_YUV422P9;
     }
+    private static final int AV_PIX_FMT_YUV444P9 = (int)66L;
     /**
-     * {@snippet :
-     * #define AV_LOG_PANIC 0
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV444P9 66
      * }
      */
-    public static int AV_LOG_PANIC() {
-        return (int)0L;
+    public static int AV_PIX_FMT_YUV444P9() {
+        return AV_PIX_FMT_YUV444P9;
     }
+    private static final int AV_PIX_FMT_YUV420P10 = (int)62L;
     /**
-     * {@snippet :
-     * #define AV_LOG_FATAL 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV420P10 62
      * }
      */
-    public static int AV_LOG_FATAL() {
-        return (int)8L;
+    public static int AV_PIX_FMT_YUV420P10() {
+        return AV_PIX_FMT_YUV420P10;
     }
+    private static final int AV_PIX_FMT_YUV422P10 = (int)64L;
     /**
-     * {@snippet :
-     * #define AV_LOG_ERROR 16
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV422P10 64
      * }
      */
-    public static int AV_LOG_ERROR() {
-        return (int)16L;
+    public static int AV_PIX_FMT_YUV422P10() {
+        return AV_PIX_FMT_YUV422P10;
     }
+    private static final int AV_PIX_FMT_YUV440P10 = (int)152L;
     /**
-     * {@snippet :
-     * #define AV_LOG_WARNING 24
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV440P10 152
      * }
      */
-    public static int AV_LOG_WARNING() {
-        return (int)24L;
+    public static int AV_PIX_FMT_YUV440P10() {
+        return AV_PIX_FMT_YUV440P10;
     }
+    private static final int AV_PIX_FMT_YUV444P10 = (int)68L;
     /**
-     * {@snippet :
-     * #define AV_LOG_INFO 32
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV444P10 68
      * }
      */
-    public static int AV_LOG_INFO() {
-        return (int)32L;
+    public static int AV_PIX_FMT_YUV444P10() {
+        return AV_PIX_FMT_YUV444P10;
     }
+    private static final int AV_PIX_FMT_YUV420P12 = (int)123L;
     /**
-     * {@snippet :
-     * #define AV_LOG_VERBOSE 40
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV420P12 123
      * }
      */
-    public static int AV_LOG_VERBOSE() {
-        return (int)40L;
+    public static int AV_PIX_FMT_YUV420P12() {
+        return AV_PIX_FMT_YUV420P12;
     }
+    private static final int AV_PIX_FMT_YUV422P12 = (int)127L;
     /**
-     * {@snippet :
-     * #define AV_LOG_DEBUG 48
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV422P12 127
      * }
      */
-    public static int AV_LOG_DEBUG() {
-        return (int)48L;
+    public static int AV_PIX_FMT_YUV422P12() {
+        return AV_PIX_FMT_YUV422P12;
     }
+    private static final int AV_PIX_FMT_YUV440P12 = (int)154L;
     /**
-     * {@snippet :
-     * #define AV_LOG_TRACE 56
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV440P12 154
      * }
      */
-    public static int AV_LOG_TRACE() {
-        return (int)56L;
+    public static int AV_PIX_FMT_YUV440P12() {
+        return AV_PIX_FMT_YUV440P12;
     }
+    private static final int AV_PIX_FMT_YUV444P12 = (int)131L;
     /**
-     * {@snippet :
-     * #define AV_LOG_SKIP_REPEATED 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV444P12 131
      * }
      */
-    public static int AV_LOG_SKIP_REPEATED() {
-        return (int)1L;
+    public static int AV_PIX_FMT_YUV444P12() {
+        return AV_PIX_FMT_YUV444P12;
     }
+    private static final int AV_PIX_FMT_YUV420P14 = (int)125L;
     /**
-     * {@snippet :
-     * #define AV_LOG_PRINT_LEVEL 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV420P14 125
      * }
      */
-    public static int AV_LOG_PRINT_LEVEL() {
-        return (int)2L;
+    public static int AV_PIX_FMT_YUV420P14() {
+        return AV_PIX_FMT_YUV420P14;
     }
+    private static final int AV_PIX_FMT_YUV422P14 = (int)129L;
     /**
-     * {@snippet :
-     * #define AVPALETTE_SIZE 1024
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV422P14 129
      * }
      */
-    public static int AVPALETTE_SIZE() {
-        return (int)1024L;
+    public static int AV_PIX_FMT_YUV422P14() {
+        return AV_PIX_FMT_YUV422P14;
     }
+    private static final int AV_PIX_FMT_YUV444P14 = (int)133L;
     /**
-     * {@snippet :
-     * #define AVPALETTE_COUNT 256
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV444P14 133
      * }
      */
-    public static int AVPALETTE_COUNT() {
-        return (int)256L;
+    public static int AV_PIX_FMT_YUV444P14() {
+        return AV_PIX_FMT_YUV444P14;
     }
+    private static final int AV_PIX_FMT_YUV420P16 = (int)45L;
     /**
-     * {@snippet :
-     * #define AV_FOURCC_MAX_STRING_SIZE 32
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV420P16 45
      * }
      */
-    public static int AV_FOURCC_MAX_STRING_SIZE() {
-        return (int)32L;
+    public static int AV_PIX_FMT_YUV420P16() {
+        return AV_PIX_FMT_YUV420P16;
     }
+    private static final int AV_PIX_FMT_YUV422P16 = (int)47L;
     /**
-     * {@snippet :
-     * #define AV_DICT_MATCH_CASE 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV422P16 47
      * }
      */
-    public static int AV_DICT_MATCH_CASE() {
-        return (int)1L;
+    public static int AV_PIX_FMT_YUV422P16() {
+        return AV_PIX_FMT_YUV422P16;
     }
+    private static final int AV_PIX_FMT_YUV444P16 = (int)49L;
     /**
-     * {@snippet :
-     * #define AV_DICT_IGNORE_SUFFIX 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUV444P16 49
      * }
      */
-    public static int AV_DICT_IGNORE_SUFFIX() {
-        return (int)2L;
+    public static int AV_PIX_FMT_YUV444P16() {
+        return AV_PIX_FMT_YUV444P16;
     }
+    private static final int AV_PIX_FMT_GBRP9 = (int)73L;
     /**
-     * {@snippet :
-     * #define AV_DICT_DONT_STRDUP_KEY 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRP9 73
      * }
      */
-    public static int AV_DICT_DONT_STRDUP_KEY() {
-        return (int)4L;
+    public static int AV_PIX_FMT_GBRP9() {
+        return AV_PIX_FMT_GBRP9;
     }
+    private static final int AV_PIX_FMT_GBRP10 = (int)75L;
     /**
-     * {@snippet :
-     * #define AV_DICT_DONT_STRDUP_VAL 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRP10 75
      * }
      */
-    public static int AV_DICT_DONT_STRDUP_VAL() {
-        return (int)8L;
+    public static int AV_PIX_FMT_GBRP10() {
+        return AV_PIX_FMT_GBRP10;
     }
+    private static final int AV_PIX_FMT_GBRP12 = (int)135L;
     /**
-     * {@snippet :
-     * #define AV_DICT_DONT_OVERWRITE 16
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRP12 135
      * }
      */
-    public static int AV_DICT_DONT_OVERWRITE() {
-        return (int)16L;
+    public static int AV_PIX_FMT_GBRP12() {
+        return AV_PIX_FMT_GBRP12;
     }
+    private static final int AV_PIX_FMT_GBRP14 = (int)137L;
     /**
-     * {@snippet :
-     * #define AV_DICT_APPEND 32
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRP14 137
      * }
      */
-    public static int AV_DICT_APPEND() {
-        return (int)32L;
+    public static int AV_PIX_FMT_GBRP14() {
+        return AV_PIX_FMT_GBRP14;
     }
+    private static final int AV_PIX_FMT_GBRP16 = (int)77L;
     /**
-     * {@snippet :
-     * #define AV_DICT_MULTIKEY 64
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRP16 77
      * }
      */
-    public static int AV_DICT_MULTIKEY() {
-        return (int)64L;
+    public static int AV_PIX_FMT_GBRP16() {
+        return AV_PIX_FMT_GBRP16;
     }
+    private static final int AV_PIX_FMT_GBRAP10 = (int)164L;
     /**
-     * {@snippet :
-     * #define AV_NUM_DATA_POINTERS 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRAP10 164
      * }
      */
-    public static int AV_NUM_DATA_POINTERS() {
-        return (int)8L;
+    public static int AV_PIX_FMT_GBRAP10() {
+        return AV_PIX_FMT_GBRAP10;
     }
+    private static final int AV_PIX_FMT_GBRAP12 = (int)162L;
     /**
-     * {@snippet :
-     * #define FF_DECODE_ERROR_INVALID_BITSTREAM 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRAP12 162
      * }
      */
-    public static int FF_DECODE_ERROR_INVALID_BITSTREAM() {
-        return (int)1L;
+    public static int AV_PIX_FMT_GBRAP12() {
+        return AV_PIX_FMT_GBRAP12;
     }
+    private static final int AV_PIX_FMT_GBRAP16 = (int)113L;
     /**
-     * {@snippet :
-     * #define FF_DECODE_ERROR_MISSING_REFERENCE 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRAP16 113
      * }
      */
-    public static int FF_DECODE_ERROR_MISSING_REFERENCE() {
-        return (int)2L;
+    public static int AV_PIX_FMT_GBRAP16() {
+        return AV_PIX_FMT_GBRAP16;
     }
+    private static final int AV_PIX_FMT_BAYER_BGGR16 = (int)143L;
     /**
-     * {@snippet :
-     * #define FF_DECODE_ERROR_CONCEALMENT_ACTIVE 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BAYER_BGGR16 143
      * }
      */
-    public static int FF_DECODE_ERROR_CONCEALMENT_ACTIVE() {
-        return (int)4L;
+    public static int AV_PIX_FMT_BAYER_BGGR16() {
+        return AV_PIX_FMT_BAYER_BGGR16;
     }
+    private static final int AV_PIX_FMT_BAYER_RGGB16 = (int)145L;
     /**
-     * {@snippet :
-     * #define FF_DECODE_ERROR_DECODE_SLICES 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BAYER_RGGB16 145
      * }
      */
-    public static int FF_DECODE_ERROR_DECODE_SLICES() {
-        return (int)8L;
+    public static int AV_PIX_FMT_BAYER_RGGB16() {
+        return AV_PIX_FMT_BAYER_RGGB16;
     }
+    private static final int AV_PIX_FMT_BAYER_GBRG16 = (int)147L;
     /**
-     * {@snippet :
-     * #define LIBAVCODEC_VERSION_MAJOR 60
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BAYER_GBRG16 147
      * }
      */
-    public static int LIBAVCODEC_VERSION_MAJOR() {
-        return (int)60L;
+    public static int AV_PIX_FMT_BAYER_GBRG16() {
+        return AV_PIX_FMT_BAYER_GBRG16;
     }
+    private static final int AV_PIX_FMT_BAYER_GRBG16 = (int)149L;
     /**
-     * {@snippet :
-     * #define AV_INPUT_BUFFER_PADDING_SIZE 64
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_BAYER_GRBG16 149
      * }
      */
-    public static int AV_INPUT_BUFFER_PADDING_SIZE() {
-        return (int)64L;
+    public static int AV_PIX_FMT_BAYER_GRBG16() {
+        return AV_PIX_FMT_BAYER_GRBG16;
     }
+    private static final int AV_PIX_FMT_GBRPF32 = (int)176L;
     /**
-     * {@snippet :
-     * #define FF_COMPLIANCE_VERY_STRICT 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRPF32 176
      * }
      */
-    public static int FF_COMPLIANCE_VERY_STRICT() {
-        return (int)2L;
+    public static int AV_PIX_FMT_GBRPF32() {
+        return AV_PIX_FMT_GBRPF32;
     }
+    private static final int AV_PIX_FMT_GBRAPF32 = (int)178L;
     /**
-     * {@snippet :
-     * #define FF_COMPLIANCE_STRICT 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GBRAPF32 178
      * }
      */
-    public static int FF_COMPLIANCE_STRICT() {
-        return (int)1L;
+    public static int AV_PIX_FMT_GBRAPF32() {
+        return AV_PIX_FMT_GBRAPF32;
     }
+    private static final int AV_PIX_FMT_GRAYF32 = (int)184L;
     /**
-     * {@snippet :
-     * #define FF_COMPLIANCE_NORMAL 0
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_GRAYF32 184
      * }
      */
-    public static int FF_COMPLIANCE_NORMAL() {
-        return (int)0L;
+    public static int AV_PIX_FMT_GRAYF32() {
+        return AV_PIX_FMT_GRAYF32;
     }
+    private static final int AV_PIX_FMT_YUVA420P9 = (int)81L;
     /**
-     * {@snippet :
-     * #define AV_PKT_FLAG_KEY 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA420P9 81
      * }
      */
-    public static int AV_PKT_FLAG_KEY() {
-        return (int)1L;
+    public static int AV_PIX_FMT_YUVA420P9() {
+        return AV_PIX_FMT_YUVA420P9;
     }
+    private static final int AV_PIX_FMT_YUVA422P9 = (int)83L;
     /**
-     * {@snippet :
-     * #define AV_PKT_FLAG_CORRUPT 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA422P9 83
      * }
      */
-    public static int AV_PKT_FLAG_CORRUPT() {
-        return (int)2L;
+    public static int AV_PIX_FMT_YUVA422P9() {
+        return AV_PIX_FMT_YUVA422P9;
     }
+    private static final int AV_PIX_FMT_YUVA444P9 = (int)85L;
     /**
-     * {@snippet :
-     * #define AV_PKT_FLAG_DISCARD 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA444P9 85
      * }
      */
-    public static int AV_PKT_FLAG_DISCARD() {
-        return (int)4L;
+    public static int AV_PIX_FMT_YUVA444P9() {
+        return AV_PIX_FMT_YUVA444P9;
     }
+    private static final int AV_PIX_FMT_YUVA420P10 = (int)87L;
     /**
-     * {@snippet :
-     * #define AV_PKT_FLAG_TRUSTED 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA420P10 87
      * }
      */
-    public static int AV_PKT_FLAG_TRUSTED() {
-        return (int)8L;
+    public static int AV_PIX_FMT_YUVA420P10() {
+        return AV_PIX_FMT_YUVA420P10;
     }
+    private static final int AV_PIX_FMT_YUVA422P10 = (int)89L;
     /**
-     * {@snippet :
-     * #define AV_PKT_FLAG_DISPOSABLE 16
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA422P10 89
      * }
      */
-    public static int AV_PKT_FLAG_DISPOSABLE() {
-        return (int)16L;
+    public static int AV_PIX_FMT_YUVA422P10() {
+        return AV_PIX_FMT_YUVA422P10;
     }
+    private static final int AV_PIX_FMT_YUVA444P10 = (int)91L;
     /**
-     * {@snippet :
-     * #define LIBAVCODEC_VERSION_MINOR 3
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA444P10 91
      * }
      */
-    public static int LIBAVCODEC_VERSION_MINOR() {
-        return (int)3L;
+    public static int AV_PIX_FMT_YUVA444P10() {
+        return AV_PIX_FMT_YUVA444P10;
     }
+    private static final int AV_PIX_FMT_YUVA422P12 = (int)186L;
     /**
-     * {@snippet :
-     * #define LIBAVCODEC_VERSION_MICRO 100
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA422P12 186
      * }
      */
-    public static int LIBAVCODEC_VERSION_MICRO() {
-        return (int)100L;
+    public static int AV_PIX_FMT_YUVA422P12() {
+        return AV_PIX_FMT_YUVA422P12;
     }
+    private static final int AV_PIX_FMT_YUVA444P12 = (int)188L;
     /**
-     * {@snippet :
-     * #define AV_INPUT_BUFFER_MIN_SIZE 16384
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA444P12 188
      * }
      */
-    public static int AV_INPUT_BUFFER_MIN_SIZE() {
-        return (int)16384L;
+    public static int AV_PIX_FMT_YUVA444P12() {
+        return AV_PIX_FMT_YUVA444P12;
     }
+    private static final int AV_PIX_FMT_YUVA420P16 = (int)93L;
     /**
-     * {@snippet :
-     * #define FF_CMP_SAD 0
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA420P16 93
      * }
      */
-    public static int FF_CMP_SAD() {
-        return (int)0L;
+    public static int AV_PIX_FMT_YUVA420P16() {
+        return AV_PIX_FMT_YUVA420P16;
     }
+    private static final int AV_PIX_FMT_YUVA422P16 = (int)95L;
     /**
-     * {@snippet :
-     * #define FF_CMP_SSE 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA422P16 95
      * }
      */
-    public static int FF_CMP_SSE() {
-        return (int)1L;
+    public static int AV_PIX_FMT_YUVA422P16() {
+        return AV_PIX_FMT_YUVA422P16;
     }
+    private static final int AV_PIX_FMT_YUVA444P16 = (int)97L;
     /**
-     * {@snippet :
-     * #define FF_CMP_SATD 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_YUVA444P16 97
      * }
      */
-    public static int FF_CMP_SATD() {
-        return (int)2L;
+    public static int AV_PIX_FMT_YUVA444P16() {
+        return AV_PIX_FMT_YUVA444P16;
     }
+    private static final int AV_PIX_FMT_XYZ12 = (int)99L;
     /**
-     * {@snippet :
-     * #define FF_CMP_DCT 3
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_XYZ12 99
      * }
      */
-    public static int FF_CMP_DCT() {
-        return (int)3L;
+    public static int AV_PIX_FMT_XYZ12() {
+        return AV_PIX_FMT_XYZ12;
     }
+    private static final int AV_PIX_FMT_NV20 = (int)102L;
     /**
-     * {@snippet :
-     * #define FF_CMP_PSNR 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_NV20 102
      * }
      */
-    public static int FF_CMP_PSNR() {
-        return (int)4L;
+    public static int AV_PIX_FMT_NV20() {
+        return AV_PIX_FMT_NV20;
     }
+    private static final int AV_PIX_FMT_AYUV64 = (int)156L;
     /**
-     * {@snippet :
-     * #define FF_CMP_BIT 5
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_AYUV64 156
      * }
      */
-    public static int FF_CMP_BIT() {
-        return (int)5L;
+    public static int AV_PIX_FMT_AYUV64() {
+        return AV_PIX_FMT_AYUV64;
     }
+    private static final int AV_PIX_FMT_P010 = (int)159L;
     /**
-     * {@snippet :
-     * #define FF_CMP_RD 6
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P010 159
      * }
      */
-    public static int FF_CMP_RD() {
-        return (int)6L;
+    public static int AV_PIX_FMT_P010() {
+        return AV_PIX_FMT_P010;
     }
+    private static final int AV_PIX_FMT_P012 = (int)210L;
     /**
-     * {@snippet :
-     * #define FF_CMP_ZERO 7
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P012 210
      * }
      */
-    public static int FF_CMP_ZERO() {
-        return (int)7L;
+    public static int AV_PIX_FMT_P012() {
+        return AV_PIX_FMT_P012;
     }
+    private static final int AV_PIX_FMT_P016 = (int)170L;
     /**
-     * {@snippet :
-     * #define FF_CMP_VSAD 8
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P016 170
      * }
      */
-    public static int FF_CMP_VSAD() {
-        return (int)8L;
+    public static int AV_PIX_FMT_P016() {
+        return AV_PIX_FMT_P016;
     }
+    private static final int AV_PIX_FMT_Y210 = (int)193L;
     /**
-     * {@snippet :
-     * #define FF_CMP_VSSE 9
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_Y210 193
      * }
      */
-    public static int FF_CMP_VSSE() {
-        return (int)9L;
+    public static int AV_PIX_FMT_Y210() {
+        return AV_PIX_FMT_Y210;
     }
+    private static final int AV_PIX_FMT_Y212 = (int)213L;
     /**
-     * {@snippet :
-     * #define FF_CMP_NSSE 10
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_Y212 213
      * }
      */
-    public static int FF_CMP_NSSE() {
-        return (int)10L;
+    public static int AV_PIX_FMT_Y212() {
+        return AV_PIX_FMT_Y212;
     }
+    private static final int AV_PIX_FMT_XV30 = (int)215L;
     /**
-     * {@snippet :
-     * #define FF_CMP_W53 11
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_XV30 215
      * }
      */
-    public static int FF_CMP_W53() {
-        return (int)11L;
+    public static int AV_PIX_FMT_XV30() {
+        return AV_PIX_FMT_XV30;
     }
+    private static final int AV_PIX_FMT_XV36 = (int)217L;
     /**
-     * {@snippet :
-     * #define FF_CMP_W97 12
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_XV36 217
      * }
      */
-    public static int FF_CMP_W97() {
-        return (int)12L;
+    public static int AV_PIX_FMT_XV36() {
+        return AV_PIX_FMT_XV36;
     }
+    private static final int AV_PIX_FMT_X2RGB10 = (int)194L;
     /**
-     * {@snippet :
-     * #define FF_CMP_DCTMAX 13
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_X2RGB10 194
      * }
      */
-    public static int FF_CMP_DCTMAX() {
-        return (int)13L;
+    public static int AV_PIX_FMT_X2RGB10() {
+        return AV_PIX_FMT_X2RGB10;
     }
+    private static final int AV_PIX_FMT_X2BGR10 = (int)196L;
     /**
-     * {@snippet :
-     * #define FF_CMP_DCT264 14
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_X2BGR10 196
      * }
      */
-    public static int FF_CMP_DCT264() {
-        return (int)14L;
+    public static int AV_PIX_FMT_X2BGR10() {
+        return AV_PIX_FMT_X2BGR10;
     }
+    private static final int AV_PIX_FMT_P210 = (int)199L;
     /**
-     * {@snippet :
-     * #define FF_CMP_MEDIAN_SAD 15
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P210 199
      * }
      */
-    public static int FF_CMP_MEDIAN_SAD() {
-        return (int)15L;
+    public static int AV_PIX_FMT_P210() {
+        return AV_PIX_FMT_P210;
     }
+    private static final int AV_PIX_FMT_P410 = (int)201L;
     /**
-     * {@snippet :
-     * #define FF_CMP_CHROMA 256
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P410 201
      * }
      */
-    public static int FF_CMP_CHROMA() {
-        return (int)256L;
+    public static int AV_PIX_FMT_P410() {
+        return AV_PIX_FMT_P410;
     }
+    private static final int AV_PIX_FMT_P216 = (int)203L;
     /**
-     * {@snippet :
-     * #define SLICE_FLAG_CODED_ORDER 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P216 203
      * }
      */
-    public static int SLICE_FLAG_CODED_ORDER() {
-        return (int)1L;
+    public static int AV_PIX_FMT_P216() {
+        return AV_PIX_FMT_P216;
     }
+    private static final int AV_PIX_FMT_P416 = (int)205L;
     /**
-     * {@snippet :
-     * #define SLICE_FLAG_ALLOW_FIELD 2
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_P416 205
      * }
      */
-    public static int SLICE_FLAG_ALLOW_FIELD() {
-        return (int)2L;
+    public static int AV_PIX_FMT_P416() {
+        return AV_PIX_FMT_P416;
     }
+    private static final int AV_PIX_FMT_RGBAF16 = (int)208L;
     /**
-     * {@snippet :
-     * #define SLICE_FLAG_ALLOW_PLANE 4
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGBAF16 208
      * }
      */
-    public static int SLICE_FLAG_ALLOW_PLANE() {
-        return (int)4L;
+    public static int AV_PIX_FMT_RGBAF16() {
+        return AV_PIX_FMT_RGBAF16;
     }
+    private static final int AV_PIX_FMT_RGBF32 = (int)219L;
     /**
-     * {@snippet :
-     * #define FF_MB_DECISION_SIMPLE 0
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGBF32 219
      * }
      */
-    public static int FF_MB_DECISION_SIMPLE() {
-        return (int)0L;
+    public static int AV_PIX_FMT_RGBF32() {
+        return AV_PIX_FMT_RGBF32;
     }
+    private static final int AV_PIX_FMT_RGBAF32 = (int)221L;
     /**
-     * {@snippet :
-     * #define FF_MB_DECISION_BITS 1
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_RGBAF32 221
      * }
      */
-    public static int FF_MB_DECISION_BITS() {
-        return (int)1L;
+    public static int AV_PIX_FMT_RGBAF32() {
+        return AV_PIX_FMT_RGBAF32;
     }
+    private static final int AV_BUFFER_FLAG_READONLY = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_MB_DECISION_RD 2
+     * {@snippet lang=c :
+     * #define AV_BUFFER_FLAG_READONLY 1
      * }
      */
-    public static int FF_MB_DECISION_RD() {
-        return (int)2L;
+    public static int AV_BUFFER_FLAG_READONLY() {
+        return AV_BUFFER_FLAG_READONLY;
     }
+    private static final long AV_CH_FRONT_LEFT = 1L;
     /**
-     * {@snippet :
-     * #define FF_BUG_AUTODETECT 1
+     * {@snippet lang=c :
+     * #define AV_CH_FRONT_LEFT 1
      * }
      */
-    public static int FF_BUG_AUTODETECT() {
-        return (int)1L;
+    public static long AV_CH_FRONT_LEFT() {
+        return AV_CH_FRONT_LEFT;
     }
+    private static final long AV_CH_FRONT_RIGHT = 2L;
     /**
-     * {@snippet :
-     * #define FF_BUG_XVID_ILACE 4
+     * {@snippet lang=c :
+     * #define AV_CH_FRONT_RIGHT 2
      * }
      */
-    public static int FF_BUG_XVID_ILACE() {
-        return (int)4L;
+    public static long AV_CH_FRONT_RIGHT() {
+        return AV_CH_FRONT_RIGHT;
     }
+    private static final long AV_CH_FRONT_CENTER = 4L;
     /**
-     * {@snippet :
-     * #define FF_BUG_UMP4 8
+     * {@snippet lang=c :
+     * #define AV_CH_FRONT_CENTER 4
      * }
      */
-    public static int FF_BUG_UMP4() {
-        return (int)8L;
+    public static long AV_CH_FRONT_CENTER() {
+        return AV_CH_FRONT_CENTER;
     }
+    private static final long AV_CH_LOW_FREQUENCY = 8L;
     /**
-     * {@snippet :
-     * #define FF_BUG_NO_PADDING 16
+     * {@snippet lang=c :
+     * #define AV_CH_LOW_FREQUENCY 8
      * }
      */
-    public static int FF_BUG_NO_PADDING() {
-        return (int)16L;
+    public static long AV_CH_LOW_FREQUENCY() {
+        return AV_CH_LOW_FREQUENCY;
     }
+    private static final long AV_CH_BACK_LEFT = 16L;
     /**
-     * {@snippet :
-     * #define FF_BUG_AMV 32
+     * {@snippet lang=c :
+     * #define AV_CH_BACK_LEFT 16
      * }
      */
-    public static int FF_BUG_AMV() {
-        return (int)32L;
+    public static long AV_CH_BACK_LEFT() {
+        return AV_CH_BACK_LEFT;
     }
+    private static final long AV_CH_BACK_RIGHT = 32L;
     /**
-     * {@snippet :
-     * #define FF_BUG_QPEL_CHROMA 64
+     * {@snippet lang=c :
+     * #define AV_CH_BACK_RIGHT 32
      * }
      */
-    public static int FF_BUG_QPEL_CHROMA() {
-        return (int)64L;
+    public static long AV_CH_BACK_RIGHT() {
+        return AV_CH_BACK_RIGHT;
     }
+    private static final long AV_CH_FRONT_LEFT_OF_CENTER = 64L;
     /**
-     * {@snippet :
-     * #define FF_BUG_STD_QPEL 128
+     * {@snippet lang=c :
+     * #define AV_CH_FRONT_LEFT_OF_CENTER 64
      * }
      */
-    public static int FF_BUG_STD_QPEL() {
-        return (int)128L;
+    public static long AV_CH_FRONT_LEFT_OF_CENTER() {
+        return AV_CH_FRONT_LEFT_OF_CENTER;
     }
+    private static final long AV_CH_FRONT_RIGHT_OF_CENTER = 128L;
     /**
-     * {@snippet :
-     * #define FF_BUG_QPEL_CHROMA2 256
+     * {@snippet lang=c :
+     * #define AV_CH_FRONT_RIGHT_OF_CENTER 128
      * }
      */
-    public static int FF_BUG_QPEL_CHROMA2() {
-        return (int)256L;
+    public static long AV_CH_FRONT_RIGHT_OF_CENTER() {
+        return AV_CH_FRONT_RIGHT_OF_CENTER;
     }
+    private static final long AV_CH_BACK_CENTER = 256L;
     /**
-     * {@snippet :
-     * #define FF_BUG_DIRECT_BLOCKSIZE 512
+     * {@snippet lang=c :
+     * #define AV_CH_BACK_CENTER 256
      * }
      */
-    public static int FF_BUG_DIRECT_BLOCKSIZE() {
-        return (int)512L;
+    public static long AV_CH_BACK_CENTER() {
+        return AV_CH_BACK_CENTER;
     }
+    private static final long AV_CH_SIDE_LEFT = 512L;
     /**
-     * {@snippet :
-     * #define FF_BUG_EDGE 1024
+     * {@snippet lang=c :
+     * #define AV_CH_SIDE_LEFT 512
      * }
      */
-    public static int FF_BUG_EDGE() {
-        return (int)1024L;
+    public static long AV_CH_SIDE_LEFT() {
+        return AV_CH_SIDE_LEFT;
     }
+    private static final long AV_CH_SIDE_RIGHT = 1024L;
     /**
-     * {@snippet :
-     * #define FF_BUG_HPEL_CHROMA 2048
+     * {@snippet lang=c :
+     * #define AV_CH_SIDE_RIGHT 1024
      * }
      */
-    public static int FF_BUG_HPEL_CHROMA() {
-        return (int)2048L;
+    public static long AV_CH_SIDE_RIGHT() {
+        return AV_CH_SIDE_RIGHT;
     }
+    private static final long AV_CH_TOP_CENTER = 2048L;
     /**
-     * {@snippet :
-     * #define FF_BUG_DC_CLIP 4096
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_CENTER 2048
      * }
      */
-    public static int FF_BUG_DC_CLIP() {
-        return (int)4096L;
+    public static long AV_CH_TOP_CENTER() {
+        return AV_CH_TOP_CENTER;
     }
+    private static final long AV_CH_TOP_FRONT_LEFT = 4096L;
     /**
-     * {@snippet :
-     * #define FF_BUG_MS 8192
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_FRONT_LEFT 4096
      * }
      */
-    public static int FF_BUG_MS() {
-        return (int)8192L;
+    public static long AV_CH_TOP_FRONT_LEFT() {
+        return AV_CH_TOP_FRONT_LEFT;
     }
+    private static final long AV_CH_TOP_FRONT_CENTER = 8192L;
     /**
-     * {@snippet :
-     * #define FF_BUG_TRUNCATED 16384
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_FRONT_CENTER 8192
      * }
      */
-    public static int FF_BUG_TRUNCATED() {
-        return (int)16384L;
+    public static long AV_CH_TOP_FRONT_CENTER() {
+        return AV_CH_TOP_FRONT_CENTER;
     }
+    private static final long AV_CH_TOP_FRONT_RIGHT = 16384L;
     /**
-     * {@snippet :
-     * #define FF_BUG_IEDGE 32768
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_FRONT_RIGHT 16384
      * }
      */
-    public static int FF_BUG_IEDGE() {
-        return (int)32768L;
+    public static long AV_CH_TOP_FRONT_RIGHT() {
+        return AV_CH_TOP_FRONT_RIGHT;
     }
+    private static final long AV_CH_TOP_BACK_LEFT = 32768L;
     /**
-     * {@snippet :
-     * #define FF_EC_GUESS_MVS 1
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_BACK_LEFT 32768
      * }
      */
-    public static int FF_EC_GUESS_MVS() {
-        return (int)1L;
+    public static long AV_CH_TOP_BACK_LEFT() {
+        return AV_CH_TOP_BACK_LEFT;
     }
+    private static final long AV_CH_TOP_BACK_CENTER = 65536L;
     /**
-     * {@snippet :
-     * #define FF_EC_DEBLOCK 2
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_BACK_CENTER 65536
      * }
      */
-    public static int FF_EC_DEBLOCK() {
-        return (int)2L;
+    public static long AV_CH_TOP_BACK_CENTER() {
+        return AV_CH_TOP_BACK_CENTER;
     }
+    private static final long AV_CH_TOP_BACK_RIGHT = 131072L;
     /**
-     * {@snippet :
-     * #define FF_EC_FAVOR_INTER 256
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_BACK_RIGHT 131072
      * }
      */
-    public static int FF_EC_FAVOR_INTER() {
-        return (int)256L;
+    public static long AV_CH_TOP_BACK_RIGHT() {
+        return AV_CH_TOP_BACK_RIGHT;
     }
+    private static final long AV_CH_STEREO_LEFT = 536870912L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_PICT_INFO 1
+     * {@snippet lang=c :
+     * #define AV_CH_STEREO_LEFT 536870912
      * }
      */
-    public static int FF_DEBUG_PICT_INFO() {
-        return (int)1L;
+    public static long AV_CH_STEREO_LEFT() {
+        return AV_CH_STEREO_LEFT;
     }
+    private static final long AV_CH_STEREO_RIGHT = 1073741824L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_RC 2
+     * {@snippet lang=c :
+     * #define AV_CH_STEREO_RIGHT 1073741824
      * }
      */
-    public static int FF_DEBUG_RC() {
-        return (int)2L;
+    public static long AV_CH_STEREO_RIGHT() {
+        return AV_CH_STEREO_RIGHT;
     }
+    private static final long AV_CH_WIDE_LEFT = 2147483648L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_BITSTREAM 4
+     * {@snippet lang=c :
+     * #define AV_CH_WIDE_LEFT 2147483648
      * }
      */
-    public static int FF_DEBUG_BITSTREAM() {
-        return (int)4L;
+    public static long AV_CH_WIDE_LEFT() {
+        return AV_CH_WIDE_LEFT;
     }
+    private static final long AV_CH_WIDE_RIGHT = 4294967296L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_MB_TYPE 8
+     * {@snippet lang=c :
+     * #define AV_CH_WIDE_RIGHT 4294967296
      * }
      */
-    public static int FF_DEBUG_MB_TYPE() {
-        return (int)8L;
+    public static long AV_CH_WIDE_RIGHT() {
+        return AV_CH_WIDE_RIGHT;
     }
+    private static final long AV_CH_SURROUND_DIRECT_LEFT = 8589934592L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_QP 16
+     * {@snippet lang=c :
+     * #define AV_CH_SURROUND_DIRECT_LEFT 8589934592
      * }
      */
-    public static int FF_DEBUG_QP() {
-        return (int)16L;
+    public static long AV_CH_SURROUND_DIRECT_LEFT() {
+        return AV_CH_SURROUND_DIRECT_LEFT;
     }
+    private static final long AV_CH_SURROUND_DIRECT_RIGHT = 17179869184L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_DCT_COEFF 64
+     * {@snippet lang=c :
+     * #define AV_CH_SURROUND_DIRECT_RIGHT 17179869184
      * }
      */
-    public static int FF_DEBUG_DCT_COEFF() {
-        return (int)64L;
+    public static long AV_CH_SURROUND_DIRECT_RIGHT() {
+        return AV_CH_SURROUND_DIRECT_RIGHT;
     }
+    private static final long AV_CH_LOW_FREQUENCY_2 = 34359738368L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_SKIP 128
+     * {@snippet lang=c :
+     * #define AV_CH_LOW_FREQUENCY_2 34359738368
      * }
      */
-    public static int FF_DEBUG_SKIP() {
-        return (int)128L;
+    public static long AV_CH_LOW_FREQUENCY_2() {
+        return AV_CH_LOW_FREQUENCY_2;
     }
+    private static final long AV_CH_TOP_SIDE_LEFT = 68719476736L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_STARTCODE 256
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_SIDE_LEFT 68719476736
      * }
      */
-    public static int FF_DEBUG_STARTCODE() {
-        return (int)256L;
+    public static long AV_CH_TOP_SIDE_LEFT() {
+        return AV_CH_TOP_SIDE_LEFT;
     }
+    private static final long AV_CH_TOP_SIDE_RIGHT = 137438953472L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_ER 1024
+     * {@snippet lang=c :
+     * #define AV_CH_TOP_SIDE_RIGHT 137438953472
      * }
      */
-    public static int FF_DEBUG_ER() {
-        return (int)1024L;
+    public static long AV_CH_TOP_SIDE_RIGHT() {
+        return AV_CH_TOP_SIDE_RIGHT;
     }
+    private static final long AV_CH_BOTTOM_FRONT_CENTER = 274877906944L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_MMCO 2048
+     * {@snippet lang=c :
+     * #define AV_CH_BOTTOM_FRONT_CENTER 274877906944
      * }
      */
-    public static int FF_DEBUG_MMCO() {
-        return (int)2048L;
+    public static long AV_CH_BOTTOM_FRONT_CENTER() {
+        return AV_CH_BOTTOM_FRONT_CENTER;
     }
+    private static final long AV_CH_BOTTOM_FRONT_LEFT = 549755813888L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_BUGS 4096
+     * {@snippet lang=c :
+     * #define AV_CH_BOTTOM_FRONT_LEFT 549755813888
      * }
      */
-    public static int FF_DEBUG_BUGS() {
-        return (int)4096L;
+    public static long AV_CH_BOTTOM_FRONT_LEFT() {
+        return AV_CH_BOTTOM_FRONT_LEFT;
     }
+    private static final long AV_CH_BOTTOM_FRONT_RIGHT = 1099511627776L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_BUFFERS 32768
+     * {@snippet lang=c :
+     * #define AV_CH_BOTTOM_FRONT_RIGHT 1099511627776
      * }
      */
-    public static int FF_DEBUG_BUFFERS() {
-        return (int)32768L;
+    public static long AV_CH_BOTTOM_FRONT_RIGHT() {
+        return AV_CH_BOTTOM_FRONT_RIGHT;
     }
+    private static final long AV_CH_LAYOUT_NATIVE = -9223372036854775808L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_THREADS 65536
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_NATIVE -9223372036854775808
      * }
      */
-    public static int FF_DEBUG_THREADS() {
-        return (int)65536L;
+    public static long AV_CH_LAYOUT_NATIVE() {
+        return AV_CH_LAYOUT_NATIVE;
     }
+    private static final long AV_CH_LAYOUT_MONO = 4L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_GREEN_MD 8388608
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_MONO 4
      * }
      */
-    public static int FF_DEBUG_GREEN_MD() {
-        return (int)8388608L;
+    public static long AV_CH_LAYOUT_MONO() {
+        return AV_CH_LAYOUT_MONO;
     }
+    private static final long AV_CH_LAYOUT_STEREO = 3L;
     /**
-     * {@snippet :
-     * #define FF_DEBUG_NOMC 16777216
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_STEREO 3
      * }
      */
-    public static int FF_DEBUG_NOMC() {
-        return (int)16777216L;
+    public static long AV_CH_LAYOUT_STEREO() {
+        return AV_CH_LAYOUT_STEREO;
     }
+    private static final long AV_CH_LAYOUT_2POINT1 = 11L;
     /**
-     * {@snippet :
-     * #define FF_DCT_AUTO 0
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_2POINT1 11
      * }
      */
-    public static int FF_DCT_AUTO() {
-        return (int)0L;
+    public static long AV_CH_LAYOUT_2POINT1() {
+        return AV_CH_LAYOUT_2POINT1;
     }
+    private static final long AV_CH_LAYOUT_2_1 = 259L;
     /**
-     * {@snippet :
-     * #define FF_DCT_FASTINT 1
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_2_1 259
      * }
      */
-    public static int FF_DCT_FASTINT() {
-        return (int)1L;
+    public static long AV_CH_LAYOUT_2_1() {
+        return AV_CH_LAYOUT_2_1;
     }
+    private static final long AV_CH_LAYOUT_SURROUND = 7L;
     /**
-     * {@snippet :
-     * #define FF_DCT_INT 2
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_SURROUND 7
      * }
      */
-    public static int FF_DCT_INT() {
-        return (int)2L;
+    public static long AV_CH_LAYOUT_SURROUND() {
+        return AV_CH_LAYOUT_SURROUND;
     }
+    private static final long AV_CH_LAYOUT_3POINT1 = 15L;
     /**
-     * {@snippet :
-     * #define FF_DCT_MMX 3
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_3POINT1 15
      * }
      */
-    public static int FF_DCT_MMX() {
-        return (int)3L;
+    public static long AV_CH_LAYOUT_3POINT1() {
+        return AV_CH_LAYOUT_3POINT1;
     }
+    private static final long AV_CH_LAYOUT_4POINT0 = 263L;
     /**
-     * {@snippet :
-     * #define FF_DCT_ALTIVEC 5
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_4POINT0 263
      * }
      */
-    public static int FF_DCT_ALTIVEC() {
-        return (int)5L;
+    public static long AV_CH_LAYOUT_4POINT0() {
+        return AV_CH_LAYOUT_4POINT0;
     }
+    private static final long AV_CH_LAYOUT_4POINT1 = 271L;
     /**
-     * {@snippet :
-     * #define FF_DCT_FAAN 6
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_4POINT1 271
      * }
      */
-    public static int FF_DCT_FAAN() {
-        return (int)6L;
+    public static long AV_CH_LAYOUT_4POINT1() {
+        return AV_CH_LAYOUT_4POINT1;
     }
+    private static final long AV_CH_LAYOUT_2_2 = 1539L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_AUTO 0
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_2_2 1539
      * }
      */
-    public static int FF_IDCT_AUTO() {
-        return (int)0L;
+    public static long AV_CH_LAYOUT_2_2() {
+        return AV_CH_LAYOUT_2_2;
     }
+    private static final long AV_CH_LAYOUT_QUAD = 51L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_INT 1
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_QUAD 51
      * }
      */
-    public static int FF_IDCT_INT() {
-        return (int)1L;
+    public static long AV_CH_LAYOUT_QUAD() {
+        return AV_CH_LAYOUT_QUAD;
     }
+    private static final long AV_CH_LAYOUT_5POINT0 = 1543L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLE 2
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_5POINT0 1543
      * }
      */
-    public static int FF_IDCT_SIMPLE() {
-        return (int)2L;
+    public static long AV_CH_LAYOUT_5POINT0() {
+        return AV_CH_LAYOUT_5POINT0;
     }
+    private static final long AV_CH_LAYOUT_5POINT1 = 1551L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLEMMX 3
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_5POINT1 1551
      * }
      */
-    public static int FF_IDCT_SIMPLEMMX() {
-        return (int)3L;
+    public static long AV_CH_LAYOUT_5POINT1() {
+        return AV_CH_LAYOUT_5POINT1;
     }
+    private static final long AV_CH_LAYOUT_5POINT0_BACK = 55L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_ARM 7
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_5POINT0_BACK 55
      * }
      */
-    public static int FF_IDCT_ARM() {
-        return (int)7L;
+    public static long AV_CH_LAYOUT_5POINT0_BACK() {
+        return AV_CH_LAYOUT_5POINT0_BACK;
     }
+    private static final long AV_CH_LAYOUT_5POINT1_BACK = 63L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_ALTIVEC 8
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_5POINT1_BACK 63
      * }
      */
-    public static int FF_IDCT_ALTIVEC() {
-        return (int)8L;
+    public static long AV_CH_LAYOUT_5POINT1_BACK() {
+        return AV_CH_LAYOUT_5POINT1_BACK;
     }
+    private static final long AV_CH_LAYOUT_6POINT0 = 1799L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLEARM 10
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_6POINT0 1799
      * }
      */
-    public static int FF_IDCT_SIMPLEARM() {
-        return (int)10L;
+    public static long AV_CH_LAYOUT_6POINT0() {
+        return AV_CH_LAYOUT_6POINT0;
     }
+    private static final long AV_CH_LAYOUT_6POINT0_FRONT = 1731L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_XVID 14
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_6POINT0_FRONT 1731
      * }
      */
-    public static int FF_IDCT_XVID() {
-        return (int)14L;
+    public static long AV_CH_LAYOUT_6POINT0_FRONT() {
+        return AV_CH_LAYOUT_6POINT0_FRONT;
     }
+    private static final long AV_CH_LAYOUT_HEXAGONAL = 311L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLEARMV5TE 16
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_HEXAGONAL 311
      * }
      */
-    public static int FF_IDCT_SIMPLEARMV5TE() {
-        return (int)16L;
+    public static long AV_CH_LAYOUT_HEXAGONAL() {
+        return AV_CH_LAYOUT_HEXAGONAL;
     }
+    private static final long AV_CH_LAYOUT_6POINT1 = 1807L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLEARMV6 17
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_6POINT1 1807
      * }
      */
-    public static int FF_IDCT_SIMPLEARMV6() {
-        return (int)17L;
+    public static long AV_CH_LAYOUT_6POINT1() {
+        return AV_CH_LAYOUT_6POINT1;
     }
+    private static final long AV_CH_LAYOUT_6POINT1_BACK = 319L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_FAAN 20
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_6POINT1_BACK 319
      * }
      */
-    public static int FF_IDCT_FAAN() {
-        return (int)20L;
+    public static long AV_CH_LAYOUT_6POINT1_BACK() {
+        return AV_CH_LAYOUT_6POINT1_BACK;
     }
+    private static final long AV_CH_LAYOUT_6POINT1_FRONT = 1739L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLENEON 22
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_6POINT1_FRONT 1739
      * }
      */
-    public static int FF_IDCT_SIMPLENEON() {
-        return (int)22L;
+    public static long AV_CH_LAYOUT_6POINT1_FRONT() {
+        return AV_CH_LAYOUT_6POINT1_FRONT;
     }
+    private static final long AV_CH_LAYOUT_7POINT0 = 1591L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_NONE 24
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_7POINT0 1591
      * }
      */
-    public static int FF_IDCT_NONE() {
-        return (int)24L;
+    public static long AV_CH_LAYOUT_7POINT0() {
+        return AV_CH_LAYOUT_7POINT0;
     }
+    private static final long AV_CH_LAYOUT_7POINT0_FRONT = 1735L;
     /**
-     * {@snippet :
-     * #define FF_IDCT_SIMPLEAUTO 128
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_7POINT0_FRONT 1735
      * }
      */
-    public static int FF_IDCT_SIMPLEAUTO() {
-        return (int)128L;
+    public static long AV_CH_LAYOUT_7POINT0_FRONT() {
+        return AV_CH_LAYOUT_7POINT0_FRONT;
     }
+    private static final long AV_CH_LAYOUT_7POINT1 = 1599L;
     /**
-     * {@snippet :
-     * #define FF_THREAD_FRAME 1
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_7POINT1 1599
      * }
      */
-    public static int FF_THREAD_FRAME() {
-        return (int)1L;
+    public static long AV_CH_LAYOUT_7POINT1() {
+        return AV_CH_LAYOUT_7POINT1;
     }
+    private static final long AV_CH_LAYOUT_7POINT1_WIDE = 1743L;
     /**
-     * {@snippet :
-     * #define FF_THREAD_SLICE 2
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_7POINT1_WIDE 1743
      * }
      */
-    public static int FF_THREAD_SLICE() {
-        return (int)2L;
+    public static long AV_CH_LAYOUT_7POINT1_WIDE() {
+        return AV_CH_LAYOUT_7POINT1_WIDE;
     }
+    private static final long AV_CH_LAYOUT_7POINT1_WIDE_BACK = 255L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_MAIN 0
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_7POINT1_WIDE_BACK 255
      * }
      */
-    public static int FF_PROFILE_AAC_MAIN() {
-        return (int)0L;
+    public static long AV_CH_LAYOUT_7POINT1_WIDE_BACK() {
+        return AV_CH_LAYOUT_7POINT1_WIDE_BACK;
     }
+    private static final long AV_CH_LAYOUT_7POINT1_TOP_BACK = 20543L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_LOW 1
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_7POINT1_TOP_BACK 20543
      * }
      */
-    public static int FF_PROFILE_AAC_LOW() {
-        return (int)1L;
+    public static long AV_CH_LAYOUT_7POINT1_TOP_BACK() {
+        return AV_CH_LAYOUT_7POINT1_TOP_BACK;
     }
+    private static final long AV_CH_LAYOUT_OCTAGONAL = 1847L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_SSR 2
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_OCTAGONAL 1847
      * }
      */
-    public static int FF_PROFILE_AAC_SSR() {
-        return (int)2L;
+    public static long AV_CH_LAYOUT_OCTAGONAL() {
+        return AV_CH_LAYOUT_OCTAGONAL;
     }
+    private static final long AV_CH_LAYOUT_CUBE = 184371L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_LTP 3
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_CUBE 184371
      * }
      */
-    public static int FF_PROFILE_AAC_LTP() {
-        return (int)3L;
+    public static long AV_CH_LAYOUT_CUBE() {
+        return AV_CH_LAYOUT_CUBE;
     }
+    private static final long AV_CH_LAYOUT_HEXADECAGONAL = 6442710839L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_HE 4
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_HEXADECAGONAL 6442710839
      * }
      */
-    public static int FF_PROFILE_AAC_HE() {
-        return (int)4L;
+    public static long AV_CH_LAYOUT_HEXADECAGONAL() {
+        return AV_CH_LAYOUT_HEXADECAGONAL;
     }
+    private static final long AV_CH_LAYOUT_STEREO_DOWNMIX = 1610612736L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_HE_V2 28
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_STEREO_DOWNMIX 1610612736
      * }
      */
-    public static int FF_PROFILE_AAC_HE_V2() {
-        return (int)28L;
+    public static long AV_CH_LAYOUT_STEREO_DOWNMIX() {
+        return AV_CH_LAYOUT_STEREO_DOWNMIX;
     }
+    private static final long AV_CH_LAYOUT_22POINT2 = 2164663779327L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_LD 22
+     * {@snippet lang=c :
+     * #define AV_CH_LAYOUT_22POINT2 2164663779327
      * }
      */
-    public static int FF_PROFILE_AAC_LD() {
-        return (int)22L;
+    public static long AV_CH_LAYOUT_22POINT2() {
+        return AV_CH_LAYOUT_22POINT2;
     }
+    private static final int AV_FRAME_FLAG_CORRUPT = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AAC_ELD 38
+     * {@snippet lang=c :
+     * #define AV_FRAME_FLAG_CORRUPT 1
      * }
      */
-    public static int FF_PROFILE_AAC_ELD() {
-        return (int)38L;
+    public static int AV_FRAME_FLAG_CORRUPT() {
+        return AV_FRAME_FLAG_CORRUPT;
     }
+    private static final int AV_FRAME_FLAG_DISCARD = (int)4L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_AAC_LOW 128
+     * {@snippet lang=c :
+     * #define AV_FRAME_FLAG_DISCARD 4
      * }
      */
-    public static int FF_PROFILE_MPEG2_AAC_LOW() {
-        return (int)128L;
+    public static int AV_FRAME_FLAG_DISCARD() {
+        return AV_FRAME_FLAG_DISCARD;
     }
+    private static final int FF_API_INIT_PACKET = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_AAC_HE 131
+     * {@snippet lang=c :
+     * #define FF_API_INIT_PACKET 1
      * }
      */
-    public static int FF_PROFILE_MPEG2_AAC_HE() {
-        return (int)131L;
+    public static int FF_API_INIT_PACKET() {
+        return FF_API_INIT_PACKET;
     }
+    private static final int FF_API_IDCT_NONE = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DNXHD 0
+     * {@snippet lang=c :
+     * #define FF_API_IDCT_NONE 1
      * }
      */
-    public static int FF_PROFILE_DNXHD() {
-        return (int)0L;
+    public static int FF_API_IDCT_NONE() {
+        return FF_API_IDCT_NONE;
     }
+    private static final int FF_API_SVTAV1_OPTS = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DNXHR_LB 1
+     * {@snippet lang=c :
+     * #define FF_API_SVTAV1_OPTS 1
      * }
      */
-    public static int FF_PROFILE_DNXHR_LB() {
-        return (int)1L;
+    public static int FF_API_SVTAV1_OPTS() {
+        return FF_API_SVTAV1_OPTS;
     }
+    private static final int FF_API_AYUV_CODECID = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DNXHR_SQ 2
+     * {@snippet lang=c :
+     * #define FF_API_AYUV_CODECID 1
      * }
      */
-    public static int FF_PROFILE_DNXHR_SQ() {
-        return (int)2L;
+    public static int FF_API_AYUV_CODECID() {
+        return FF_API_AYUV_CODECID;
     }
+    private static final int FF_API_VT_OUTPUT_CALLBACK = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DNXHR_HQ 3
+     * {@snippet lang=c :
+     * #define FF_API_VT_OUTPUT_CALLBACK 1
      * }
      */
-    public static int FF_PROFILE_DNXHR_HQ() {
-        return (int)3L;
+    public static int FF_API_VT_OUTPUT_CALLBACK() {
+        return FF_API_VT_OUTPUT_CALLBACK;
     }
+    private static final int FF_API_AVCODEC_CHROMA_POS = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DNXHR_HQX 4
+     * {@snippet lang=c :
+     * #define FF_API_AVCODEC_CHROMA_POS 1
      * }
      */
-    public static int FF_PROFILE_DNXHR_HQX() {
-        return (int)4L;
+    public static int FF_API_AVCODEC_CHROMA_POS() {
+        return FF_API_AVCODEC_CHROMA_POS;
     }
+    private static final int FF_API_VT_HWACCEL_CONTEXT = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DNXHR_444 5
+     * {@snippet lang=c :
+     * #define FF_API_VT_HWACCEL_CONTEXT 1
      * }
      */
-    public static int FF_PROFILE_DNXHR_444() {
-        return (int)5L;
+    public static int FF_API_VT_HWACCEL_CONTEXT() {
+        return FF_API_VT_HWACCEL_CONTEXT;
     }
+    private static final int FF_API_AVCTX_FRAME_NUMBER = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DTS 20
+     * {@snippet lang=c :
+     * #define FF_API_AVCTX_FRAME_NUMBER 1
      * }
      */
-    public static int FF_PROFILE_DTS() {
-        return (int)20L;
+    public static int FF_API_AVCTX_FRAME_NUMBER() {
+        return FF_API_AVCTX_FRAME_NUMBER;
     }
+    private static final int FF_CODEC_CRYSTAL_HD = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DTS_ES 30
+     * {@snippet lang=c :
+     * #define FF_CODEC_CRYSTAL_HD 1
      * }
      */
-    public static int FF_PROFILE_DTS_ES() {
-        return (int)30L;
+    public static int FF_CODEC_CRYSTAL_HD() {
+        return FF_CODEC_CRYSTAL_HD;
     }
+    private static final int AV_CODEC_ID_IFF_BYTERUN1 = (int)136L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DTS_96_24 40
+     * {@snippet lang=c :
+     * #define AV_CODEC_ID_IFF_BYTERUN1 136
      * }
      */
-    public static int FF_PROFILE_DTS_96_24() {
-        return (int)40L;
+    public static int AV_CODEC_ID_IFF_BYTERUN1() {
+        return AV_CODEC_ID_IFF_BYTERUN1;
     }
+    private static final int AV_CODEC_ID_H265 = (int)173L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DTS_HD_HRA 50
+     * {@snippet lang=c :
+     * #define AV_CODEC_ID_H265 173
      * }
      */
-    public static int FF_PROFILE_DTS_HD_HRA() {
-        return (int)50L;
+    public static int AV_CODEC_ID_H265() {
+        return AV_CODEC_ID_H265;
     }
+    private static final int AV_CODEC_ID_H266 = (int)196L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DTS_HD_MA 60
+     * {@snippet lang=c :
+     * #define AV_CODEC_ID_H266 196
      * }
      */
-    public static int FF_PROFILE_DTS_HD_MA() {
-        return (int)60L;
+    public static int AV_CODEC_ID_H266() {
+        return AV_CODEC_ID_H266;
     }
+    private static final int AV_CODEC_CAP_DRAW_HORIZ_BAND = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_DTS_EXPRESS 70
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_DRAW_HORIZ_BAND 1
      * }
      */
-    public static int FF_PROFILE_DTS_EXPRESS() {
-        return (int)70L;
+    public static int AV_CODEC_CAP_DRAW_HORIZ_BAND() {
+        return AV_CODEC_CAP_DRAW_HORIZ_BAND;
     }
+    private static final int AV_CODEC_CAP_DR1 = (int)2L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_422 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_DR1 2
      * }
      */
-    public static int FF_PROFILE_MPEG2_422() {
-        return (int)0L;
+    public static int AV_CODEC_CAP_DR1() {
+        return AV_CODEC_CAP_DR1;
     }
+    private static final int AV_CODEC_CAP_DELAY = (int)32L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_HIGH 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_DELAY 32
      * }
      */
-    public static int FF_PROFILE_MPEG2_HIGH() {
-        return (int)1L;
+    public static int AV_CODEC_CAP_DELAY() {
+        return AV_CODEC_CAP_DELAY;
     }
+    private static final int AV_CODEC_CAP_SMALL_LAST_FRAME = (int)64L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_SS 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_SMALL_LAST_FRAME 64
      * }
      */
-    public static int FF_PROFILE_MPEG2_SS() {
-        return (int)2L;
+    public static int AV_CODEC_CAP_SMALL_LAST_FRAME() {
+        return AV_CODEC_CAP_SMALL_LAST_FRAME;
     }
+    private static final int AV_CODEC_CAP_SUBFRAMES = (int)256L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_SNR_SCALABLE 3
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_SUBFRAMES 256
      * }
      */
-    public static int FF_PROFILE_MPEG2_SNR_SCALABLE() {
-        return (int)3L;
+    public static int AV_CODEC_CAP_SUBFRAMES() {
+        return AV_CODEC_CAP_SUBFRAMES;
     }
+    private static final int AV_CODEC_CAP_EXPERIMENTAL = (int)512L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_MAIN 4
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_EXPERIMENTAL 512
      * }
      */
-    public static int FF_PROFILE_MPEG2_MAIN() {
-        return (int)4L;
+    public static int AV_CODEC_CAP_EXPERIMENTAL() {
+        return AV_CODEC_CAP_EXPERIMENTAL;
     }
+    private static final int AV_CODEC_CAP_CHANNEL_CONF = (int)1024L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG2_SIMPLE 5
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_CHANNEL_CONF 1024
      * }
      */
-    public static int FF_PROFILE_MPEG2_SIMPLE() {
-        return (int)5L;
+    public static int AV_CODEC_CAP_CHANNEL_CONF() {
+        return AV_CODEC_CAP_CHANNEL_CONF;
     }
+    private static final int AV_CODEC_CAP_FRAME_THREADS = (int)4096L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_BASELINE 66
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_FRAME_THREADS 4096
      * }
      */
-    public static int FF_PROFILE_H264_BASELINE() {
-        return (int)66L;
+    public static int AV_CODEC_CAP_FRAME_THREADS() {
+        return AV_CODEC_CAP_FRAME_THREADS;
     }
+    private static final int AV_CODEC_CAP_SLICE_THREADS = (int)8192L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_MAIN 77
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_SLICE_THREADS 8192
      * }
      */
-    public static int FF_PROFILE_H264_MAIN() {
-        return (int)77L;
+    public static int AV_CODEC_CAP_SLICE_THREADS() {
+        return AV_CODEC_CAP_SLICE_THREADS;
     }
+    private static final int AV_CODEC_CAP_PARAM_CHANGE = (int)16384L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_EXTENDED 88
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_PARAM_CHANGE 16384
      * }
      */
-    public static int FF_PROFILE_H264_EXTENDED() {
-        return (int)88L;
+    public static int AV_CODEC_CAP_PARAM_CHANGE() {
+        return AV_CODEC_CAP_PARAM_CHANGE;
     }
+    private static final int AV_CODEC_CAP_OTHER_THREADS = (int)32768L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_HIGH 100
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_OTHER_THREADS 32768
      * }
      */
-    public static int FF_PROFILE_H264_HIGH() {
-        return (int)100L;
+    public static int AV_CODEC_CAP_OTHER_THREADS() {
+        return AV_CODEC_CAP_OTHER_THREADS;
     }
+    private static final int AV_CODEC_CAP_VARIABLE_FRAME_SIZE = (int)65536L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_HIGH_10 110
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_VARIABLE_FRAME_SIZE 65536
      * }
      */
-    public static int FF_PROFILE_H264_HIGH_10() {
-        return (int)110L;
+    public static int AV_CODEC_CAP_VARIABLE_FRAME_SIZE() {
+        return AV_CODEC_CAP_VARIABLE_FRAME_SIZE;
     }
+    private static final int AV_CODEC_CAP_AVOID_PROBING = (int)131072L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_MULTIVIEW_HIGH 118
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_AVOID_PROBING 131072
      * }
      */
-    public static int FF_PROFILE_H264_MULTIVIEW_HIGH() {
-        return (int)118L;
+    public static int AV_CODEC_CAP_AVOID_PROBING() {
+        return AV_CODEC_CAP_AVOID_PROBING;
     }
+    private static final int AV_CODEC_CAP_HARDWARE = (int)262144L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_HIGH_422 122
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_HARDWARE 262144
      * }
      */
-    public static int FF_PROFILE_H264_HIGH_422() {
-        return (int)122L;
+    public static int AV_CODEC_CAP_HARDWARE() {
+        return AV_CODEC_CAP_HARDWARE;
     }
+    private static final int AV_CODEC_CAP_HYBRID = (int)524288L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_STEREO_HIGH 128
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_HYBRID 524288
      * }
      */
-    public static int FF_PROFILE_H264_STEREO_HIGH() {
-        return (int)128L;
+    public static int AV_CODEC_CAP_HYBRID() {
+        return AV_CODEC_CAP_HYBRID;
     }
+    private static final int AV_CODEC_CAP_ENCODER_REORDERED_OPAQUE = (int)1048576L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_HIGH_444 144
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_ENCODER_REORDERED_OPAQUE 1048576
      * }
      */
-    public static int FF_PROFILE_H264_HIGH_444() {
-        return (int)144L;
+    public static int AV_CODEC_CAP_ENCODER_REORDERED_OPAQUE() {
+        return AV_CODEC_CAP_ENCODER_REORDERED_OPAQUE;
     }
+    private static final int AV_CODEC_CAP_ENCODER_FLUSH = (int)2097152L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_HIGH_444_PREDICTIVE 244
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_ENCODER_FLUSH 2097152
      * }
      */
-    public static int FF_PROFILE_H264_HIGH_444_PREDICTIVE() {
-        return (int)244L;
+    public static int AV_CODEC_CAP_ENCODER_FLUSH() {
+        return AV_CODEC_CAP_ENCODER_FLUSH;
     }
+    private static final int AV_CODEC_CAP_ENCODER_RECON_FRAME = (int)4194304L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_H264_CAVLC_444 44
+     * {@snippet lang=c :
+     * #define AV_CODEC_CAP_ENCODER_RECON_FRAME 4194304
      * }
      */
-    public static int FF_PROFILE_H264_CAVLC_444() {
-        return (int)44L;
+    public static int AV_CODEC_CAP_ENCODER_RECON_FRAME() {
+        return AV_CODEC_CAP_ENCODER_RECON_FRAME;
     }
+    private static final int AV_CODEC_PROP_INTRA_ONLY = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VC1_SIMPLE 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_PROP_INTRA_ONLY 1
      * }
      */
-    public static int FF_PROFILE_VC1_SIMPLE() {
-        return (int)0L;
+    public static int AV_CODEC_PROP_INTRA_ONLY() {
+        return AV_CODEC_PROP_INTRA_ONLY;
     }
+    private static final int AV_CODEC_PROP_LOSSY = (int)2L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VC1_MAIN 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_PROP_LOSSY 2
      * }
      */
-    public static int FF_PROFILE_VC1_MAIN() {
-        return (int)1L;
+    public static int AV_CODEC_PROP_LOSSY() {
+        return AV_CODEC_PROP_LOSSY;
     }
+    private static final int AV_CODEC_PROP_LOSSLESS = (int)4L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VC1_COMPLEX 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_PROP_LOSSLESS 4
      * }
      */
-    public static int FF_PROFILE_VC1_COMPLEX() {
-        return (int)2L;
+    public static int AV_CODEC_PROP_LOSSLESS() {
+        return AV_CODEC_PROP_LOSSLESS;
     }
+    private static final int AV_CODEC_PROP_REORDER = (int)8L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VC1_ADVANCED 3
+     * {@snippet lang=c :
+     * #define AV_CODEC_PROP_REORDER 8
      * }
      */
-    public static int FF_PROFILE_VC1_ADVANCED() {
-        return (int)3L;
+    public static int AV_CODEC_PROP_REORDER() {
+        return AV_CODEC_PROP_REORDER;
     }
+    private static final int AV_CODEC_PROP_BITMAP_SUB = (int)65536L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_SIMPLE 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_PROP_BITMAP_SUB 65536
      * }
      */
-    public static int FF_PROFILE_MPEG4_SIMPLE() {
-        return (int)0L;
+    public static int AV_CODEC_PROP_BITMAP_SUB() {
+        return AV_CODEC_PROP_BITMAP_SUB;
     }
+    private static final int AV_CODEC_PROP_TEXT_SUB = (int)131072L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_SIMPLE_SCALABLE 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_PROP_TEXT_SUB 131072
      * }
      */
-    public static int FF_PROFILE_MPEG4_SIMPLE_SCALABLE() {
-        return (int)1L;
+    public static int AV_CODEC_PROP_TEXT_SUB() {
+        return AV_CODEC_PROP_TEXT_SUB;
     }
+    private static final int AV_EF_CRCCHECK = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_CORE 2
+     * {@snippet lang=c :
+     * #define AV_EF_CRCCHECK 1
      * }
      */
-    public static int FF_PROFILE_MPEG4_CORE() {
-        return (int)2L;
+    public static int AV_EF_CRCCHECK() {
+        return AV_EF_CRCCHECK;
     }
+    private static final int AV_EF_BITSTREAM = (int)2L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_MAIN 3
+     * {@snippet lang=c :
+     * #define AV_EF_BITSTREAM 2
      * }
      */
-    public static int FF_PROFILE_MPEG4_MAIN() {
-        return (int)3L;
+    public static int AV_EF_BITSTREAM() {
+        return AV_EF_BITSTREAM;
     }
+    private static final int AV_EF_BUFFER = (int)4L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_N_BIT 4
+     * {@snippet lang=c :
+     * #define AV_EF_BUFFER 4
      * }
      */
-    public static int FF_PROFILE_MPEG4_N_BIT() {
-        return (int)4L;
+    public static int AV_EF_BUFFER() {
+        return AV_EF_BUFFER;
     }
+    private static final int AV_EF_EXPLODE = (int)8L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_SCALABLE_TEXTURE 5
+     * {@snippet lang=c :
+     * #define AV_EF_EXPLODE 8
      * }
      */
-    public static int FF_PROFILE_MPEG4_SCALABLE_TEXTURE() {
-        return (int)5L;
+    public static int AV_EF_EXPLODE() {
+        return AV_EF_EXPLODE;
     }
+    private static final int AV_EF_IGNORE_ERR = (int)32768L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_SIMPLE_FACE_ANIMATION 6
+     * {@snippet lang=c :
+     * #define AV_EF_IGNORE_ERR 32768
      * }
      */
-    public static int FF_PROFILE_MPEG4_SIMPLE_FACE_ANIMATION() {
-        return (int)6L;
+    public static int AV_EF_IGNORE_ERR() {
+        return AV_EF_IGNORE_ERR;
     }
+    private static final int AV_EF_CAREFUL = (int)65536L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_BASIC_ANIMATED_TEXTURE 7
+     * {@snippet lang=c :
+     * #define AV_EF_CAREFUL 65536
      * }
      */
-    public static int FF_PROFILE_MPEG4_BASIC_ANIMATED_TEXTURE() {
-        return (int)7L;
+    public static int AV_EF_CAREFUL() {
+        return AV_EF_CAREFUL;
     }
+    private static final int AV_EF_COMPLIANT = (int)131072L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_HYBRID 8
+     * {@snippet lang=c :
+     * #define AV_EF_COMPLIANT 131072
      * }
      */
-    public static int FF_PROFILE_MPEG4_HYBRID() {
-        return (int)8L;
+    public static int AV_EF_COMPLIANT() {
+        return AV_EF_COMPLIANT;
     }
+    private static final int AV_EF_AGGRESSIVE = (int)262144L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_ADVANCED_REAL_TIME 9
+     * {@snippet lang=c :
+     * #define AV_EF_AGGRESSIVE 262144
      * }
      */
-    public static int FF_PROFILE_MPEG4_ADVANCED_REAL_TIME() {
-        return (int)9L;
+    public static int AV_EF_AGGRESSIVE() {
+        return AV_EF_AGGRESSIVE;
     }
+    private static final int FF_COMPLIANCE_UNOFFICIAL = (int)-1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_CORE_SCALABLE 10
+     * {@snippet lang=c :
+     * #define FF_COMPLIANCE_UNOFFICIAL -1
      * }
      */
-    public static int FF_PROFILE_MPEG4_CORE_SCALABLE() {
-        return (int)10L;
+    public static int FF_COMPLIANCE_UNOFFICIAL() {
+        return FF_COMPLIANCE_UNOFFICIAL;
     }
+    private static final int FF_COMPLIANCE_EXPERIMENTAL = (int)-2L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_ADVANCED_CODING 11
+     * {@snippet lang=c :
+     * #define FF_COMPLIANCE_EXPERIMENTAL -2
      * }
      */
-    public static int FF_PROFILE_MPEG4_ADVANCED_CODING() {
-        return (int)11L;
+    public static int FF_COMPLIANCE_EXPERIMENTAL() {
+        return FF_COMPLIANCE_EXPERIMENTAL;
     }
+    private static final int AV_PKT_DATA_QUALITY_FACTOR = (int)8L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_ADVANCED_CORE 12
+     * {@snippet lang=c :
+     * #define AV_PKT_DATA_QUALITY_FACTOR 8
      * }
      */
-    public static int FF_PROFILE_MPEG4_ADVANCED_CORE() {
-        return (int)12L;
+    public static int AV_PKT_DATA_QUALITY_FACTOR() {
+        return AV_PKT_DATA_QUALITY_FACTOR;
     }
+    private static final int LIBAVCODEC_VERSION_INT = (int)3933028L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_ADVANCED_SCALABLE_TEXTURE 13
+     * {@snippet lang=c :
+     * #define LIBAVCODEC_VERSION_INT 3933028
      * }
      */
-    public static int FF_PROFILE_MPEG4_ADVANCED_SCALABLE_TEXTURE() {
-        return (int)13L;
+    public static int LIBAVCODEC_VERSION_INT() {
+        return LIBAVCODEC_VERSION_INT;
     }
+    private static final int LIBAVCODEC_BUILD = (int)3933028L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_SIMPLE_STUDIO 14
+     * {@snippet lang=c :
+     * #define LIBAVCODEC_BUILD 3933028
      * }
      */
-    public static int FF_PROFILE_MPEG4_SIMPLE_STUDIO() {
-        return (int)14L;
+    public static int LIBAVCODEC_BUILD() {
+        return LIBAVCODEC_BUILD;
     }
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MPEG4_ADVANCED_SIMPLE 15
+     * {@snippet lang=c :
+     * #define LIBAVCODEC_IDENT "Lavc60.3.100"
      * }
      */
-    public static int FF_PROFILE_MPEG4_ADVANCED_SIMPLE() {
-        return (int)15L;
+    public static MemorySegment LIBAVCODEC_IDENT() {
+        class Holder {
+            static final MemorySegment LIBAVCODEC_IDENT
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("Lavc60.3.100");
+        }
+        return Holder.LIBAVCODEC_IDENT;
     }
+    private static final int AV_CODEC_FLAG_UNALIGNED = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_JPEG2000_CSTREAM_RESTRICTION_0 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_UNALIGNED 1
      * }
      */
-    public static int FF_PROFILE_JPEG2000_CSTREAM_RESTRICTION_0() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG_UNALIGNED() {
+        return AV_CODEC_FLAG_UNALIGNED;
     }
+    private static final int AV_CODEC_FLAG_QSCALE = (int)2L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_JPEG2000_CSTREAM_RESTRICTION_1 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_QSCALE 2
      * }
      */
-    public static int FF_PROFILE_JPEG2000_CSTREAM_RESTRICTION_1() {
-        return (int)2L;
+    public static int AV_CODEC_FLAG_QSCALE() {
+        return AV_CODEC_FLAG_QSCALE;
     }
+    private static final int AV_CODEC_FLAG_4MV = (int)4L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_JPEG2000_CSTREAM_NO_RESTRICTION 32768
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_4MV 4
      * }
      */
-    public static int FF_PROFILE_JPEG2000_CSTREAM_NO_RESTRICTION() {
-        return (int)32768L;
+    public static int AV_CODEC_FLAG_4MV() {
+        return AV_CODEC_FLAG_4MV;
     }
+    private static final int AV_CODEC_FLAG_OUTPUT_CORRUPT = (int)8L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_JPEG2000_DCINEMA_2K 3
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_OUTPUT_CORRUPT 8
      * }
      */
-    public static int FF_PROFILE_JPEG2000_DCINEMA_2K() {
-        return (int)3L;
+    public static int AV_CODEC_FLAG_OUTPUT_CORRUPT() {
+        return AV_CODEC_FLAG_OUTPUT_CORRUPT;
     }
+    private static final int AV_CODEC_FLAG_QPEL = (int)16L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_JPEG2000_DCINEMA_4K 4
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_QPEL 16
      * }
      */
-    public static int FF_PROFILE_JPEG2000_DCINEMA_4K() {
-        return (int)4L;
+    public static int AV_CODEC_FLAG_QPEL() {
+        return AV_CODEC_FLAG_QPEL;
     }
+    private static final int AV_CODEC_FLAG_DROPCHANGED = (int)32L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VP9_0 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_DROPCHANGED 32
      * }
      */
-    public static int FF_PROFILE_VP9_0() {
-        return (int)0L;
+    public static int AV_CODEC_FLAG_DROPCHANGED() {
+        return AV_CODEC_FLAG_DROPCHANGED;
     }
+    private static final int AV_CODEC_FLAG_RECON_FRAME = (int)64L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VP9_1 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_RECON_FRAME 64
      * }
      */
-    public static int FF_PROFILE_VP9_1() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG_RECON_FRAME() {
+        return AV_CODEC_FLAG_RECON_FRAME;
     }
+    private static final int AV_CODEC_FLAG_COPY_OPAQUE = (int)128L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VP9_2 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_COPY_OPAQUE 128
      * }
      */
-    public static int FF_PROFILE_VP9_2() {
-        return (int)2L;
+    public static int AV_CODEC_FLAG_COPY_OPAQUE() {
+        return AV_CODEC_FLAG_COPY_OPAQUE;
     }
+    private static final int AV_CODEC_FLAG_FRAME_DURATION = (int)256L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VP9_3 3
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_FRAME_DURATION 256
      * }
      */
-    public static int FF_PROFILE_VP9_3() {
-        return (int)3L;
+    public static int AV_CODEC_FLAG_FRAME_DURATION() {
+        return AV_CODEC_FLAG_FRAME_DURATION;
     }
+    private static final int AV_CODEC_FLAG_PASS1 = (int)512L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_HEVC_MAIN 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_PASS1 512
      * }
      */
-    public static int FF_PROFILE_HEVC_MAIN() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG_PASS1() {
+        return AV_CODEC_FLAG_PASS1;
     }
+    private static final int AV_CODEC_FLAG_PASS2 = (int)1024L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_HEVC_MAIN_10 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_PASS2 1024
      * }
      */
-    public static int FF_PROFILE_HEVC_MAIN_10() {
-        return (int)2L;
+    public static int AV_CODEC_FLAG_PASS2() {
+        return AV_CODEC_FLAG_PASS2;
     }
+    private static final int AV_CODEC_FLAG_LOOP_FILTER = (int)2048L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_HEVC_MAIN_STILL_PICTURE 3
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_LOOP_FILTER 2048
      * }
      */
-    public static int FF_PROFILE_HEVC_MAIN_STILL_PICTURE() {
-        return (int)3L;
+    public static int AV_CODEC_FLAG_LOOP_FILTER() {
+        return AV_CODEC_FLAG_LOOP_FILTER;
     }
+    private static final int AV_CODEC_FLAG_GRAY = (int)8192L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_HEVC_REXT 4
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_GRAY 8192
      * }
      */
-    public static int FF_PROFILE_HEVC_REXT() {
-        return (int)4L;
+    public static int AV_CODEC_FLAG_GRAY() {
+        return AV_CODEC_FLAG_GRAY;
     }
+    private static final int AV_CODEC_FLAG_PSNR = (int)32768L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VVC_MAIN_10 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_PSNR 32768
      * }
      */
-    public static int FF_PROFILE_VVC_MAIN_10() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG_PSNR() {
+        return AV_CODEC_FLAG_PSNR;
     }
+    private static final int AV_CODEC_FLAG_INTERLACED_DCT = (int)262144L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_VVC_MAIN_10_444 33
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_INTERLACED_DCT 262144
      * }
      */
-    public static int FF_PROFILE_VVC_MAIN_10_444() {
-        return (int)33L;
+    public static int AV_CODEC_FLAG_INTERLACED_DCT() {
+        return AV_CODEC_FLAG_INTERLACED_DCT;
     }
+    private static final int AV_CODEC_FLAG_LOW_DELAY = (int)524288L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AV1_MAIN 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_LOW_DELAY 524288
      * }
      */
-    public static int FF_PROFILE_AV1_MAIN() {
-        return (int)0L;
+    public static int AV_CODEC_FLAG_LOW_DELAY() {
+        return AV_CODEC_FLAG_LOW_DELAY;
     }
+    private static final int AV_CODEC_FLAG_GLOBAL_HEADER = (int)4194304L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AV1_HIGH 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_GLOBAL_HEADER 4194304
      * }
      */
-    public static int FF_PROFILE_AV1_HIGH() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG_GLOBAL_HEADER() {
+        return AV_CODEC_FLAG_GLOBAL_HEADER;
     }
+    private static final int AV_CODEC_FLAG_BITEXACT = (int)8388608L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_AV1_PROFESSIONAL 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_BITEXACT 8388608
      * }
      */
-    public static int FF_PROFILE_AV1_PROFESSIONAL() {
-        return (int)2L;
+    public static int AV_CODEC_FLAG_BITEXACT() {
+        return AV_CODEC_FLAG_BITEXACT;
     }
+    private static final int AV_CODEC_FLAG_AC_PRED = (int)16777216L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MJPEG_HUFFMAN_BASELINE_DCT 192
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_AC_PRED 16777216
      * }
      */
-    public static int FF_PROFILE_MJPEG_HUFFMAN_BASELINE_DCT() {
-        return (int)192L;
+    public static int AV_CODEC_FLAG_AC_PRED() {
+        return AV_CODEC_FLAG_AC_PRED;
     }
+    private static final int AV_CODEC_FLAG_INTERLACED_ME = (int)536870912L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MJPEG_HUFFMAN_EXTENDED_SEQUENTIAL_DCT 193
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_INTERLACED_ME 536870912
      * }
      */
-    public static int FF_PROFILE_MJPEG_HUFFMAN_EXTENDED_SEQUENTIAL_DCT() {
-        return (int)193L;
+    public static int AV_CODEC_FLAG_INTERLACED_ME() {
+        return AV_CODEC_FLAG_INTERLACED_ME;
     }
+    private static final int AV_CODEC_FLAG_CLOSED_GOP = (int)2147483648L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MJPEG_HUFFMAN_PROGRESSIVE_DCT 194
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG_CLOSED_GOP 2147483648
      * }
      */
-    public static int FF_PROFILE_MJPEG_HUFFMAN_PROGRESSIVE_DCT() {
-        return (int)194L;
+    public static int AV_CODEC_FLAG_CLOSED_GOP() {
+        return AV_CODEC_FLAG_CLOSED_GOP;
     }
+    private static final int AV_CODEC_FLAG2_FAST = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MJPEG_HUFFMAN_LOSSLESS 195
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_FAST 1
      * }
      */
-    public static int FF_PROFILE_MJPEG_HUFFMAN_LOSSLESS() {
-        return (int)195L;
+    public static int AV_CODEC_FLAG2_FAST() {
+        return AV_CODEC_FLAG2_FAST;
     }
+    private static final int AV_CODEC_FLAG2_NO_OUTPUT = (int)4L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_MJPEG_JPEG_LS 247
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_NO_OUTPUT 4
      * }
      */
-    public static int FF_PROFILE_MJPEG_JPEG_LS() {
-        return (int)247L;
+    public static int AV_CODEC_FLAG2_NO_OUTPUT() {
+        return AV_CODEC_FLAG2_NO_OUTPUT;
     }
+    private static final int AV_CODEC_FLAG2_LOCAL_HEADER = (int)8L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_SBC_MSBC 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_LOCAL_HEADER 8
      * }
      */
-    public static int FF_PROFILE_SBC_MSBC() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG2_LOCAL_HEADER() {
+        return AV_CODEC_FLAG2_LOCAL_HEADER;
     }
+    private static final int AV_CODEC_FLAG2_CHUNKS = (int)32768L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_PRORES_PROXY 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_CHUNKS 32768
      * }
      */
-    public static int FF_PROFILE_PRORES_PROXY() {
-        return (int)0L;
+    public static int AV_CODEC_FLAG2_CHUNKS() {
+        return AV_CODEC_FLAG2_CHUNKS;
     }
+    private static final int AV_CODEC_FLAG2_IGNORE_CROP = (int)65536L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_PRORES_LT 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_IGNORE_CROP 65536
      * }
      */
-    public static int FF_PROFILE_PRORES_LT() {
-        return (int)1L;
+    public static int AV_CODEC_FLAG2_IGNORE_CROP() {
+        return AV_CODEC_FLAG2_IGNORE_CROP;
     }
+    private static final int AV_CODEC_FLAG2_SHOW_ALL = (int)4194304L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_PRORES_STANDARD 2
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_SHOW_ALL 4194304
      * }
      */
-    public static int FF_PROFILE_PRORES_STANDARD() {
-        return (int)2L;
+    public static int AV_CODEC_FLAG2_SHOW_ALL() {
+        return AV_CODEC_FLAG2_SHOW_ALL;
     }
+    private static final int AV_CODEC_FLAG2_EXPORT_MVS = (int)268435456L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_PRORES_HQ 3
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_EXPORT_MVS 268435456
      * }
      */
-    public static int FF_PROFILE_PRORES_HQ() {
-        return (int)3L;
+    public static int AV_CODEC_FLAG2_EXPORT_MVS() {
+        return AV_CODEC_FLAG2_EXPORT_MVS;
     }
+    private static final int AV_CODEC_FLAG2_SKIP_MANUAL = (int)536870912L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_PRORES_4444 4
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_SKIP_MANUAL 536870912
      * }
      */
-    public static int FF_PROFILE_PRORES_4444() {
-        return (int)4L;
+    public static int AV_CODEC_FLAG2_SKIP_MANUAL() {
+        return AV_CODEC_FLAG2_SKIP_MANUAL;
     }
+    private static final int AV_CODEC_FLAG2_RO_FLUSH_NOOP = (int)1073741824L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_PRORES_XQ 5
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_RO_FLUSH_NOOP 1073741824
      * }
      */
-    public static int FF_PROFILE_PRORES_XQ() {
-        return (int)5L;
+    public static int AV_CODEC_FLAG2_RO_FLUSH_NOOP() {
+        return AV_CODEC_FLAG2_RO_FLUSH_NOOP;
     }
+    private static final int AV_CODEC_FLAG2_ICC_PROFILES = (int)2147483648L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_ARIB_PROFILE_A 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_FLAG2_ICC_PROFILES 2147483648
      * }
      */
-    public static int FF_PROFILE_ARIB_PROFILE_A() {
-        return (int)0L;
+    public static int AV_CODEC_FLAG2_ICC_PROFILES() {
+        return AV_CODEC_FLAG2_ICC_PROFILES;
     }
+    private static final int AV_CODEC_EXPORT_DATA_MVS = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_ARIB_PROFILE_C 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_EXPORT_DATA_MVS 1
      * }
      */
-    public static int FF_PROFILE_ARIB_PROFILE_C() {
-        return (int)1L;
+    public static int AV_CODEC_EXPORT_DATA_MVS() {
+        return AV_CODEC_EXPORT_DATA_MVS;
     }
+    private static final int AV_CODEC_EXPORT_DATA_PRFT = (int)2L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_KLVA_SYNC 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_EXPORT_DATA_PRFT 2
      * }
      */
-    public static int FF_PROFILE_KLVA_SYNC() {
-        return (int)0L;
+    public static int AV_CODEC_EXPORT_DATA_PRFT() {
+        return AV_CODEC_EXPORT_DATA_PRFT;
     }
+    private static final int AV_CODEC_EXPORT_DATA_VIDEO_ENC_PARAMS = (int)4L;
     /**
-     * {@snippet :
-     * #define FF_PROFILE_KLVA_ASYNC 1
+     * {@snippet lang=c :
+     * #define AV_CODEC_EXPORT_DATA_VIDEO_ENC_PARAMS 4
      * }
      */
-    public static int FF_PROFILE_KLVA_ASYNC() {
-        return (int)1L;
+    public static int AV_CODEC_EXPORT_DATA_VIDEO_ENC_PARAMS() {
+        return AV_CODEC_EXPORT_DATA_VIDEO_ENC_PARAMS;
     }
+    private static final int AV_CODEC_EXPORT_DATA_FILM_GRAIN = (int)8L;
     /**
-     * {@snippet :
-     * #define FF_SUB_CHARENC_MODE_AUTOMATIC 0
+     * {@snippet lang=c :
+     * #define AV_CODEC_EXPORT_DATA_FILM_GRAIN 8
      * }
      */
-    public static int FF_SUB_CHARENC_MODE_AUTOMATIC() {
-        return (int)0L;
+    public static int AV_CODEC_EXPORT_DATA_FILM_GRAIN() {
+        return AV_CODEC_EXPORT_DATA_FILM_GRAIN;
     }
+    private static final int AV_GET_BUFFER_FLAG_REF = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_SUB_CHARENC_MODE_PRE_DECODER 1
+     * {@snippet lang=c :
+     * #define AV_GET_BUFFER_FLAG_REF 1
      * }
      */
-    public static int FF_SUB_CHARENC_MODE_PRE_DECODER() {
-        return (int)1L;
+    public static int AV_GET_BUFFER_FLAG_REF() {
+        return AV_GET_BUFFER_FLAG_REF;
     }
+    private static final int AV_GET_ENCODE_BUFFER_FLAG_REF = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_SUB_CHARENC_MODE_IGNORE 2
+     * {@snippet lang=c :
+     * #define AV_GET_ENCODE_BUFFER_FLAG_REF 1
      * }
      */
-    public static int FF_SUB_CHARENC_MODE_IGNORE() {
-        return (int)2L;
+    public static int AV_GET_ENCODE_BUFFER_FLAG_REF() {
+        return AV_GET_ENCODE_BUFFER_FLAG_REF;
     }
+    private static final int FF_COMPRESSION_DEFAULT = (int)-1L;
     /**
-     * {@snippet :
-     * #define FF_CODEC_PROPERTY_LOSSLESS 1
+     * {@snippet lang=c :
+     * #define FF_COMPRESSION_DEFAULT -1
      * }
      */
-    public static int FF_CODEC_PROPERTY_LOSSLESS() {
-        return (int)1L;
+    public static int FF_COMPRESSION_DEFAULT() {
+        return FF_COMPRESSION_DEFAULT;
     }
+    private static final int FF_PROFILE_UNKNOWN = (int)-99L;
     /**
-     * {@snippet :
-     * #define FF_CODEC_PROPERTY_CLOSED_CAPTIONS 2
+     * {@snippet lang=c :
+     * #define FF_PROFILE_UNKNOWN -99
      * }
      */
-    public static int FF_CODEC_PROPERTY_CLOSED_CAPTIONS() {
-        return (int)2L;
+    public static int FF_PROFILE_UNKNOWN() {
+        return FF_PROFILE_UNKNOWN;
     }
+    private static final int FF_PROFILE_RESERVED = (int)-100L;
     /**
-     * {@snippet :
-     * #define FF_CODEC_PROPERTY_FILM_GRAIN 4
+     * {@snippet lang=c :
+     * #define FF_PROFILE_RESERVED -100
      * }
      */
-    public static int FF_CODEC_PROPERTY_FILM_GRAIN() {
-        return (int)4L;
+    public static int FF_PROFILE_RESERVED() {
+        return FF_PROFILE_RESERVED;
     }
+    private static final int FF_PROFILE_H264_CONSTRAINED = (int)512L;
     /**
-     * {@snippet :
-     * #define AV_HWACCEL_CODEC_CAP_EXPERIMENTAL 512
+     * {@snippet lang=c :
+     * #define FF_PROFILE_H264_CONSTRAINED 512
      * }
      */
-    public static int AV_HWACCEL_CODEC_CAP_EXPERIMENTAL() {
-        return (int)512L;
+    public static int FF_PROFILE_H264_CONSTRAINED() {
+        return FF_PROFILE_H264_CONSTRAINED;
     }
+    private static final int FF_PROFILE_H264_INTRA = (int)2048L;
     /**
-     * {@snippet :
-     * #define AV_SUBTITLE_FLAG_FORCED 1
+     * {@snippet lang=c :
+     * #define FF_PROFILE_H264_INTRA 2048
      * }
      */
-    public static int AV_SUBTITLE_FLAG_FORCED() {
-        return (int)1L;
+    public static int FF_PROFILE_H264_INTRA() {
+        return FF_PROFILE_H264_INTRA;
     }
+    private static final int FF_PROFILE_H264_CONSTRAINED_BASELINE = (int)578L;
     /**
-     * {@snippet :
-     * #define AV_PARSER_PTS_NB 4
+     * {@snippet lang=c :
+     * #define FF_PROFILE_H264_CONSTRAINED_BASELINE 578
      * }
      */
-    public static int AV_PARSER_PTS_NB() {
-        return (int)4L;
+    public static int FF_PROFILE_H264_CONSTRAINED_BASELINE() {
+        return FF_PROFILE_H264_CONSTRAINED_BASELINE;
     }
+    private static final int FF_PROFILE_H264_HIGH_10_INTRA = (int)2158L;
     /**
-     * {@snippet :
-     * #define PARSER_FLAG_COMPLETE_FRAMES 1
+     * {@snippet lang=c :
+     * #define FF_PROFILE_H264_HIGH_10_INTRA 2158
      * }
      */
-    public static int PARSER_FLAG_COMPLETE_FRAMES() {
-        return (int)1L;
+    public static int FF_PROFILE_H264_HIGH_10_INTRA() {
+        return FF_PROFILE_H264_HIGH_10_INTRA;
     }
+    private static final int FF_PROFILE_H264_HIGH_422_INTRA = (int)2170L;
     /**
-     * {@snippet :
-     * #define PARSER_FLAG_ONCE 2
+     * {@snippet lang=c :
+     * #define FF_PROFILE_H264_HIGH_422_INTRA 2170
      * }
      */
-    public static int PARSER_FLAG_ONCE() {
-        return (int)2L;
+    public static int FF_PROFILE_H264_HIGH_422_INTRA() {
+        return FF_PROFILE_H264_HIGH_422_INTRA;
     }
+    private static final int FF_PROFILE_H264_HIGH_444_INTRA = (int)2292L;
     /**
-     * {@snippet :
-     * #define PARSER_FLAG_FETCHED_OFFSET 4
+     * {@snippet lang=c :
+     * #define FF_PROFILE_H264_HIGH_444_INTRA 2292
      * }
      */
-    public static int PARSER_FLAG_FETCHED_OFFSET() {
-        return (int)4L;
+    public static int FF_PROFILE_H264_HIGH_444_INTRA() {
+        return FF_PROFILE_H264_HIGH_444_INTRA;
     }
+    private static final int FF_LEVEL_UNKNOWN = (int)-99L;
     /**
-     * {@snippet :
-     * #define PARSER_FLAG_USE_CODEC_TS 4096
+     * {@snippet lang=c :
+     * #define FF_LEVEL_UNKNOWN -99
      * }
      */
-    public static int PARSER_FLAG_USE_CODEC_TS() {
-        return (int)4096L;
+    public static int FF_LEVEL_UNKNOWN() {
+        return FF_LEVEL_UNKNOWN;
     }
+    private static final int FF_SUB_CHARENC_MODE_DO_NOTHING = (int)-1L;
     /**
-     * {@snippet :
-     * #define _TIME_H 1
+     * {@snippet lang=c :
+     * #define FF_SUB_CHARENC_MODE_DO_NOTHING -1
      * }
      */
-    public static int _TIME_H() {
-        return (int)1L;
+    public static int FF_SUB_CHARENC_MODE_DO_NOTHING() {
+        return FF_SUB_CHARENC_MODE_DO_NOTHING;
     }
+    private static final int AV_HWACCEL_FLAG_IGNORE_LEVEL = (int)1L;
     /**
-     * {@snippet :
-     * #define _BITS_TIME_H 1
+     * {@snippet lang=c :
+     * #define AV_HWACCEL_FLAG_IGNORE_LEVEL 1
      * }
      */
-    public static int _BITS_TIME_H() {
-        return (int)1L;
+    public static int AV_HWACCEL_FLAG_IGNORE_LEVEL() {
+        return AV_HWACCEL_FLAG_IGNORE_LEVEL;
     }
+    private static final int AV_HWACCEL_FLAG_ALLOW_HIGH_DEPTH = (int)2L;
     /**
-     * {@snippet :
-     * #define CLOCK_REALTIME 0
+     * {@snippet lang=c :
+     * #define AV_HWACCEL_FLAG_ALLOW_HIGH_DEPTH 2
      * }
      */
-    public static int CLOCK_REALTIME() {
-        return (int)0L;
+    public static int AV_HWACCEL_FLAG_ALLOW_HIGH_DEPTH() {
+        return AV_HWACCEL_FLAG_ALLOW_HIGH_DEPTH;
     }
+    private static final int AV_HWACCEL_FLAG_ALLOW_PROFILE_MISMATCH = (int)4L;
     /**
-     * {@snippet :
-     * #define CLOCK_MONOTONIC 1
+     * {@snippet lang=c :
+     * #define AV_HWACCEL_FLAG_ALLOW_PROFILE_MISMATCH 4
      * }
      */
-    public static int CLOCK_MONOTONIC() {
-        return (int)1L;
+    public static int AV_HWACCEL_FLAG_ALLOW_PROFILE_MISMATCH() {
+        return AV_HWACCEL_FLAG_ALLOW_PROFILE_MISMATCH;
     }
+    private static final int AV_HWACCEL_FLAG_UNSAFE_OUTPUT = (int)8L;
     /**
-     * {@snippet :
-     * #define CLOCK_PROCESS_CPUTIME_ID 2
+     * {@snippet lang=c :
+     * #define AV_HWACCEL_FLAG_UNSAFE_OUTPUT 8
      * }
      */
-    public static int CLOCK_PROCESS_CPUTIME_ID() {
-        return (int)2L;
+    public static int AV_HWACCEL_FLAG_UNSAFE_OUTPUT() {
+        return AV_HWACCEL_FLAG_UNSAFE_OUTPUT;
     }
+    private static final long CLOCKS_PER_SEC = 1000000L;
     /**
-     * {@snippet :
-     * #define CLOCK_THREAD_CPUTIME_ID 3
+     * {@snippet lang=c :
+     * #define CLOCKS_PER_SEC 1000000
      * }
      */
-    public static int CLOCK_THREAD_CPUTIME_ID() {
-        return (int)3L;
+    public static long CLOCKS_PER_SEC() {
+        return CLOCKS_PER_SEC;
     }
+    private static final int FF_API_COMPUTE_PKT_FIELDS2 = (int)1L;
     /**
-     * {@snippet :
-     * #define CLOCK_MONOTONIC_RAW 4
+     * {@snippet lang=c :
+     * #define FF_API_COMPUTE_PKT_FIELDS2 1
      * }
      */
-    public static int CLOCK_MONOTONIC_RAW() {
-        return (int)4L;
+    public static int FF_API_COMPUTE_PKT_FIELDS2() {
+        return FF_API_COMPUTE_PKT_FIELDS2;
     }
+    private static final int FF_API_GET_END_PTS = (int)1L;
     /**
-     * {@snippet :
-     * #define CLOCK_REALTIME_COARSE 5
+     * {@snippet lang=c :
+     * #define FF_API_GET_END_PTS 1
      * }
      */
-    public static int CLOCK_REALTIME_COARSE() {
-        return (int)5L;
+    public static int FF_API_GET_END_PTS() {
+        return FF_API_GET_END_PTS;
     }
+    private static final int FF_API_AVIODIRCONTEXT = (int)1L;
     /**
-     * {@snippet :
-     * #define CLOCK_MONOTONIC_COARSE 6
+     * {@snippet lang=c :
+     * #define FF_API_AVIODIRCONTEXT 1
      * }
      */
-    public static int CLOCK_MONOTONIC_COARSE() {
-        return (int)6L;
+    public static int FF_API_AVIODIRCONTEXT() {
+        return FF_API_AVIODIRCONTEXT;
     }
+    private static final int FF_API_AVFORMAT_IO_CLOSE = (int)1L;
     /**
-     * {@snippet :
-     * #define CLOCK_BOOTTIME 7
+     * {@snippet lang=c :
+     * #define FF_API_AVFORMAT_IO_CLOSE 1
      * }
      */
-    public static int CLOCK_BOOTTIME() {
-        return (int)7L;
+    public static int FF_API_AVFORMAT_IO_CLOSE() {
+        return FF_API_AVFORMAT_IO_CLOSE;
     }
+    private static final int AVIO_SEEKABLE_NORMAL = (int)1L;
     /**
-     * {@snippet :
-     * #define CLOCK_REALTIME_ALARM 8
+     * {@snippet lang=c :
+     * #define AVIO_SEEKABLE_NORMAL 1
      * }
      */
-    public static int CLOCK_REALTIME_ALARM() {
-        return (int)8L;
+    public static int AVIO_SEEKABLE_NORMAL() {
+        return AVIO_SEEKABLE_NORMAL;
     }
+    private static final int AVIO_SEEKABLE_TIME = (int)2L;
     /**
-     * {@snippet :
-     * #define CLOCK_BOOTTIME_ALARM 9
+     * {@snippet lang=c :
+     * #define AVIO_SEEKABLE_TIME 2
      * }
      */
-    public static int CLOCK_BOOTTIME_ALARM() {
-        return (int)9L;
+    public static int AVIO_SEEKABLE_TIME() {
+        return AVIO_SEEKABLE_TIME;
     }
+    private static final int AVIO_FLAG_READ_WRITE = (int)3L;
     /**
-     * {@snippet :
-     * #define CLOCK_TAI 11
+     * {@snippet lang=c :
+     * #define AVIO_FLAG_READ_WRITE 3
      * }
      */
-    public static int CLOCK_TAI() {
-        return (int)11L;
+    public static int AVIO_FLAG_READ_WRITE() {
+        return AVIO_FLAG_READ_WRITE;
     }
+    private static final int LIBAVFORMAT_VERSION_INT = (int)3933028L;
     /**
-     * {@snippet :
-     * #define TIMER_ABSTIME 1
+     * {@snippet lang=c :
+     * #define LIBAVFORMAT_VERSION_INT 3933028
      * }
      */
-    public static int TIMER_ABSTIME() {
-        return (int)1L;
+    public static int LIBAVFORMAT_VERSION_INT() {
+        return LIBAVFORMAT_VERSION_INT;
     }
+    private static final int LIBAVFORMAT_BUILD = (int)3933028L;
     /**
-     * {@snippet :
-     * #define __struct_tm_defined 1
+     * {@snippet lang=c :
+     * #define LIBAVFORMAT_BUILD 3933028
      * }
      */
-    public static int __struct_tm_defined() {
-        return (int)1L;
+    public static int LIBAVFORMAT_BUILD() {
+        return LIBAVFORMAT_BUILD;
     }
     /**
-     * {@snippet :
-     * #define __itimerspec_defined 1
+     * {@snippet lang=c :
+     * #define LIBAVFORMAT_IDENT "Lavf60.3.100"
      * }
      */
-    public static int __itimerspec_defined() {
-        return (int)1L;
+    public static MemorySegment LIBAVFORMAT_IDENT() {
+        class Holder {
+            static final MemorySegment LIBAVFORMAT_IDENT
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("Lavf60.3.100");
+        }
+        return Holder.LIBAVFORMAT_IDENT;
     }
+    private static final int AVPROBE_SCORE_RETRY = (int)25L;
     /**
-     * {@snippet :
-     * #define TIME_UTC 1
+     * {@snippet lang=c :
+     * #define AVPROBE_SCORE_RETRY 25
      * }
      */
-    public static int TIME_UTC() {
-        return (int)1L;
+    public static int AVPROBE_SCORE_RETRY() {
+        return AVPROBE_SCORE_RETRY;
     }
+    private static final int AVPROBE_SCORE_STREAM_RETRY = (int)24L;
     /**
-     * {@snippet :
-     * #define LIBAVFORMAT_VERSION_MAJOR 60
+     * {@snippet lang=c :
+     * #define AVPROBE_SCORE_STREAM_RETRY 24
      * }
      */
-    public static int LIBAVFORMAT_VERSION_MAJOR() {
-        return (int)60L;
+    public static int AVPROBE_SCORE_STREAM_RETRY() {
+        return AVPROBE_SCORE_STREAM_RETRY;
     }
+    private static final int AV_DISPOSITION_DEFAULT = (int)1L;
     /**
-     * {@snippet :
-     * #define FF_API_R_FRAME_RATE 1
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_DEFAULT 1
      * }
      */
-    public static int FF_API_R_FRAME_RATE() {
-        return (int)1L;
+    public static int AV_DISPOSITION_DEFAULT() {
+        return AV_DISPOSITION_DEFAULT;
     }
+    private static final int AV_DISPOSITION_DUB = (int)2L;
     /**
-     * {@snippet :
-     * #define AVSEEK_SIZE 65536
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_DUB 2
      * }
      */
-    public static int AVSEEK_SIZE() {
-        return (int)65536L;
+    public static int AV_DISPOSITION_DUB() {
+        return AV_DISPOSITION_DUB;
     }
+    private static final int AV_DISPOSITION_ORIGINAL = (int)4L;
     /**
-     * {@snippet :
-     * #define AVSEEK_FORCE 131072
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_ORIGINAL 4
      * }
      */
-    public static int AVSEEK_FORCE() {
-        return (int)131072L;
+    public static int AV_DISPOSITION_ORIGINAL() {
+        return AV_DISPOSITION_ORIGINAL;
     }
+    private static final int AV_DISPOSITION_COMMENT = (int)8L;
     /**
-     * {@snippet :
-     * #define AVIO_FLAG_READ 1
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_COMMENT 8
      * }
      */
-    public static int AVIO_FLAG_READ() {
-        return (int)1L;
+    public static int AV_DISPOSITION_COMMENT() {
+        return AV_DISPOSITION_COMMENT;
     }
+    private static final int AV_DISPOSITION_LYRICS = (int)16L;
     /**
-     * {@snippet :
-     * #define AVIO_FLAG_WRITE 2
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_LYRICS 16
      * }
      */
-    public static int AVIO_FLAG_WRITE() {
-        return (int)2L;
+    public static int AV_DISPOSITION_LYRICS() {
+        return AV_DISPOSITION_LYRICS;
     }
+    private static final int AV_DISPOSITION_KARAOKE = (int)32L;
     /**
-     * {@snippet :
-     * #define AVIO_FLAG_NONBLOCK 8
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_KARAOKE 32
      * }
      */
-    public static int AVIO_FLAG_NONBLOCK() {
-        return (int)8L;
+    public static int AV_DISPOSITION_KARAOKE() {
+        return AV_DISPOSITION_KARAOKE;
     }
+    private static final int AV_DISPOSITION_FORCED = (int)64L;
     /**
-     * {@snippet :
-     * #define AVIO_FLAG_DIRECT 32768
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_FORCED 64
      * }
      */
-    public static int AVIO_FLAG_DIRECT() {
-        return (int)32768L;
+    public static int AV_DISPOSITION_FORCED() {
+        return AV_DISPOSITION_FORCED;
     }
+    private static final int AV_DISPOSITION_HEARING_IMPAIRED = (int)128L;
     /**
-     * {@snippet :
-     * #define LIBAVFORMAT_VERSION_MINOR 3
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_HEARING_IMPAIRED 128
      * }
      */
-    public static int LIBAVFORMAT_VERSION_MINOR() {
-        return (int)3L;
+    public static int AV_DISPOSITION_HEARING_IMPAIRED() {
+        return AV_DISPOSITION_HEARING_IMPAIRED;
     }
+    private static final int AV_DISPOSITION_VISUAL_IMPAIRED = (int)256L;
     /**
-     * {@snippet :
-     * #define LIBAVFORMAT_VERSION_MICRO 100
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_VISUAL_IMPAIRED 256
      * }
      */
-    public static int LIBAVFORMAT_VERSION_MICRO() {
-        return (int)100L;
+    public static int AV_DISPOSITION_VISUAL_IMPAIRED() {
+        return AV_DISPOSITION_VISUAL_IMPAIRED;
     }
+    private static final int AV_DISPOSITION_CLEAN_EFFECTS = (int)512L;
     /**
-     * {@snippet :
-     * #define AVPROBE_SCORE_EXTENSION 50
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_CLEAN_EFFECTS 512
      * }
      */
-    public static int AVPROBE_SCORE_EXTENSION() {
-        return (int)50L;
+    public static int AV_DISPOSITION_CLEAN_EFFECTS() {
+        return AV_DISPOSITION_CLEAN_EFFECTS;
     }
+    private static final int AV_DISPOSITION_ATTACHED_PIC = (int)1024L;
     /**
-     * {@snippet :
-     * #define AVPROBE_SCORE_MIME 75
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_ATTACHED_PIC 1024
      * }
      */
-    public static int AVPROBE_SCORE_MIME() {
-        return (int)75L;
+    public static int AV_DISPOSITION_ATTACHED_PIC() {
+        return AV_DISPOSITION_ATTACHED_PIC;
     }
+    private static final int AV_DISPOSITION_TIMED_THUMBNAILS = (int)2048L;
     /**
-     * {@snippet :
-     * #define AVPROBE_SCORE_MAX 100
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_TIMED_THUMBNAILS 2048
      * }
      */
-    public static int AVPROBE_SCORE_MAX() {
-        return (int)100L;
+    public static int AV_DISPOSITION_TIMED_THUMBNAILS() {
+        return AV_DISPOSITION_TIMED_THUMBNAILS;
     }
+    private static final int AV_DISPOSITION_NON_DIEGETIC = (int)4096L;
     /**
-     * {@snippet :
-     * #define AVPROBE_PADDING_SIZE 32
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_NON_DIEGETIC 4096
      * }
      */
-    public static int AVPROBE_PADDING_SIZE() {
-        return (int)32L;
+    public static int AV_DISPOSITION_NON_DIEGETIC() {
+        return AV_DISPOSITION_NON_DIEGETIC;
     }
+    private static final int AV_DISPOSITION_CAPTIONS = (int)65536L;
     /**
-     * {@snippet :
-     * #define AVFMT_NOFILE 1
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_CAPTIONS 65536
      * }
      */
-    public static int AVFMT_NOFILE() {
-        return (int)1L;
+    public static int AV_DISPOSITION_CAPTIONS() {
+        return AV_DISPOSITION_CAPTIONS;
     }
+    private static final int AV_DISPOSITION_DESCRIPTIONS = (int)131072L;
     /**
-     * {@snippet :
-     * #define AVFMT_NEEDNUMBER 2
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_DESCRIPTIONS 131072
      * }
      */
-    public static int AVFMT_NEEDNUMBER() {
-        return (int)2L;
+    public static int AV_DISPOSITION_DESCRIPTIONS() {
+        return AV_DISPOSITION_DESCRIPTIONS;
     }
+    private static final int AV_DISPOSITION_METADATA = (int)262144L;
     /**
-     * {@snippet :
-     * #define AVFMT_EXPERIMENTAL 4
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_METADATA 262144
      * }
      */
-    public static int AVFMT_EXPERIMENTAL() {
-        return (int)4L;
+    public static int AV_DISPOSITION_METADATA() {
+        return AV_DISPOSITION_METADATA;
     }
+    private static final int AV_DISPOSITION_DEPENDENT = (int)524288L;
     /**
-     * {@snippet :
-     * #define AVFMT_SHOW_IDS 8
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_DEPENDENT 524288
      * }
      */
-    public static int AVFMT_SHOW_IDS() {
-        return (int)8L;
+    public static int AV_DISPOSITION_DEPENDENT() {
+        return AV_DISPOSITION_DEPENDENT;
     }
+    private static final int AV_DISPOSITION_STILL_IMAGE = (int)1048576L;
     /**
-     * {@snippet :
-     * #define AVFMT_GLOBALHEADER 64
+     * {@snippet lang=c :
+     * #define AV_DISPOSITION_STILL_IMAGE 1048576
      * }
      */
-    public static int AVFMT_GLOBALHEADER() {
-        return (int)64L;
+    public static int AV_DISPOSITION_STILL_IMAGE() {
+        return AV_DISPOSITION_STILL_IMAGE;
     }
+    private static final int AV_PTS_WRAP_SUB_OFFSET = (int)-1L;
     /**
-     * {@snippet :
-     * #define AVFMT_NOTIMESTAMPS 128
+     * {@snippet lang=c :
+     * #define AV_PTS_WRAP_SUB_OFFSET -1
      * }
      */
-    public static int AVFMT_NOTIMESTAMPS() {
-        return (int)128L;
+    public static int AV_PTS_WRAP_SUB_OFFSET() {
+        return AV_PTS_WRAP_SUB_OFFSET;
     }
+    private static final int AVSTREAM_EVENT_FLAG_NEW_PACKETS = (int)2L;
     /**
-     * {@snippet :
-     * #define AVFMT_GENERIC_INDEX 256
+     * {@snippet lang=c :
+     * #define AVSTREAM_EVENT_FLAG_NEW_PACKETS 2
      * }
      */
-    public static int AVFMT_GENERIC_INDEX() {
-        return (int)256L;
+    public static int AVSTREAM_EVENT_FLAG_NEW_PACKETS() {
+        return AVSTREAM_EVENT_FLAG_NEW_PACKETS;
     }
+    private static final int AVFMT_AVOID_NEG_TS_AUTO = (int)-1L;
     /**
-     * {@snippet :
-     * #define AVFMT_TS_DISCONT 512
+     * {@snippet lang=c :
+     * #define AVFMT_AVOID_NEG_TS_AUTO -1
      * }
      */
-    public static int AVFMT_TS_DISCONT() {
-        return (int)512L;
+    public static int AVFMT_AVOID_NEG_TS_AUTO() {
+        return AVFMT_AVOID_NEG_TS_AUTO;
     }
+    private static final int AV_PIX_FMT_FLAG_BE = (int)1L;
     /**
-     * {@snippet :
-     * #define AVFMT_VARIABLE_FPS 1024
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_BE 1
      * }
      */
-    public static int AVFMT_VARIABLE_FPS() {
-        return (int)1024L;
+    public static int AV_PIX_FMT_FLAG_BE() {
+        return AV_PIX_FMT_FLAG_BE;
     }
+    private static final int AV_PIX_FMT_FLAG_PAL = (int)2L;
     /**
-     * {@snippet :
-     * #define AVFMT_NODIMENSIONS 2048
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_PAL 2
      * }
      */
-    public static int AVFMT_NODIMENSIONS() {
-        return (int)2048L;
+    public static int AV_PIX_FMT_FLAG_PAL() {
+        return AV_PIX_FMT_FLAG_PAL;
     }
+    private static final int AV_PIX_FMT_FLAG_BITSTREAM = (int)4L;
     /**
-     * {@snippet :
-     * #define AVFMT_NOSTREAMS 4096
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_BITSTREAM 4
      * }
      */
-    public static int AVFMT_NOSTREAMS() {
-        return (int)4096L;
+    public static int AV_PIX_FMT_FLAG_BITSTREAM() {
+        return AV_PIX_FMT_FLAG_BITSTREAM;
     }
+    private static final int AV_PIX_FMT_FLAG_HWACCEL = (int)8L;
     /**
-     * {@snippet :
-     * #define AVFMT_NOBINSEARCH 8192
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_HWACCEL 8
      * }
      */
-    public static int AVFMT_NOBINSEARCH() {
-        return (int)8192L;
+    public static int AV_PIX_FMT_FLAG_HWACCEL() {
+        return AV_PIX_FMT_FLAG_HWACCEL;
     }
+    private static final int AV_PIX_FMT_FLAG_PLANAR = (int)16L;
     /**
-     * {@snippet :
-     * #define AVFMT_NOGENSEARCH 16384
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_PLANAR 16
      * }
      */
-    public static int AVFMT_NOGENSEARCH() {
-        return (int)16384L;
+    public static int AV_PIX_FMT_FLAG_PLANAR() {
+        return AV_PIX_FMT_FLAG_PLANAR;
     }
+    private static final int AV_PIX_FMT_FLAG_RGB = (int)32L;
     /**
-     * {@snippet :
-     * #define AVFMT_NO_BYTE_SEEK 32768
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_RGB 32
      * }
      */
-    public static int AVFMT_NO_BYTE_SEEK() {
-        return (int)32768L;
+    public static int AV_PIX_FMT_FLAG_RGB() {
+        return AV_PIX_FMT_FLAG_RGB;
     }
+    private static final int AV_PIX_FMT_FLAG_ALPHA = (int)128L;
     /**
-     * {@snippet :
-     * #define AVFMT_ALLOW_FLUSH 65536
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_ALPHA 128
      * }
      */
-    public static int AVFMT_ALLOW_FLUSH() {
-        return (int)65536L;
+    public static int AV_PIX_FMT_FLAG_ALPHA() {
+        return AV_PIX_FMT_FLAG_ALPHA;
     }
+    private static final int AV_PIX_FMT_FLAG_BAYER = (int)256L;
     /**
-     * {@snippet :
-     * #define AVFMT_TS_NONSTRICT 131072
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_BAYER 256
      * }
      */
-    public static int AVFMT_TS_NONSTRICT() {
-        return (int)131072L;
+    public static int AV_PIX_FMT_FLAG_BAYER() {
+        return AV_PIX_FMT_FLAG_BAYER;
     }
+    private static final int AV_PIX_FMT_FLAG_FLOAT = (int)512L;
     /**
-     * {@snippet :
-     * #define AVFMT_TS_NEGATIVE 262144
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_FLOAT 512
      * }
      */
-    public static int AVFMT_TS_NEGATIVE() {
-        return (int)262144L;
+    public static int AV_PIX_FMT_FLAG_FLOAT() {
+        return AV_PIX_FMT_FLAG_FLOAT;
     }
+    private static final int LIBSWSCALE_VERSION_INT = (int)459108L;
     /**
-     * {@snippet :
-     * #define AVFMT_SEEK_TO_PTS 67108864
+     * {@snippet lang=c :
+     * #define LIBSWSCALE_VERSION_INT 459108
      * }
      */
-    public static int AVFMT_SEEK_TO_PTS() {
-        return (int)67108864L;
+    public static int LIBSWSCALE_VERSION_INT() {
+        return LIBSWSCALE_VERSION_INT;
     }
+    private static final int LIBSWSCALE_BUILD = (int)459108L;
     /**
-     * {@snippet :
-     * #define AVINDEX_KEYFRAME 1
+     * {@snippet lang=c :
+     * #define LIBSWSCALE_BUILD 459108
      * }
      */
-    public static int AVINDEX_KEYFRAME() {
-        return (int)1L;
+    public static int LIBSWSCALE_BUILD() {
+        return LIBSWSCALE_BUILD;
     }
     /**
-     * {@snippet :
-     * #define AVINDEX_DISCARD_FRAME 2
+     * {@snippet lang=c :
+     * #define LIBSWSCALE_IDENT "SwS7.1.100"
      * }
      */
-    public static int AVINDEX_DISCARD_FRAME() {
-        return (int)2L;
+    public static MemorySegment LIBSWSCALE_IDENT() {
+        class Holder {
+            static final MemorySegment LIBSWSCALE_IDENT
+                = FFmpeg.LIBRARY_ARENA.allocateFrom("SwS7.1.100");
+        }
+        return Holder.LIBSWSCALE_IDENT;
     }
+    private static final double SWS_MAX_REDUCE_CUTOFF = 0.002d;
     /**
-     * {@snippet :
-     * #define AV_PTS_WRAP_IGNORE 0
+     * {@snippet lang=c :
+     * #define SWS_MAX_REDUCE_CUTOFF 0.002
      * }
      */
-    public static int AV_PTS_WRAP_IGNORE() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define AV_PTS_WRAP_ADD_OFFSET 1
-     * }
-     */
-    public static int AV_PTS_WRAP_ADD_OFFSET() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSTREAM_EVENT_FLAG_METADATA_UPDATED 1
-     * }
-     */
-    public static int AVSTREAM_EVENT_FLAG_METADATA_UPDATED() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AV_PROGRAM_RUNNING 1
-     * }
-     */
-    public static int AV_PROGRAM_RUNNING() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMTCTX_NOHEADER 1
-     * }
-     */
-    public static int AVFMTCTX_NOHEADER() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMTCTX_UNSEEKABLE 2
-     * }
-     */
-    public static int AVFMTCTX_UNSEEKABLE() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_GENPTS 1
-     * }
-     */
-    public static int AVFMT_FLAG_GENPTS() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_IGNIDX 2
-     * }
-     */
-    public static int AVFMT_FLAG_IGNIDX() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_NONBLOCK 4
-     * }
-     */
-    public static int AVFMT_FLAG_NONBLOCK() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_IGNDTS 8
-     * }
-     */
-    public static int AVFMT_FLAG_IGNDTS() {
-        return (int)8L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_NOFILLIN 16
-     * }
-     */
-    public static int AVFMT_FLAG_NOFILLIN() {
-        return (int)16L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_NOPARSE 32
-     * }
-     */
-    public static int AVFMT_FLAG_NOPARSE() {
-        return (int)32L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_NOBUFFER 64
-     * }
-     */
-    public static int AVFMT_FLAG_NOBUFFER() {
-        return (int)64L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_CUSTOM_IO 128
-     * }
-     */
-    public static int AVFMT_FLAG_CUSTOM_IO() {
-        return (int)128L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_DISCARD_CORRUPT 256
-     * }
-     */
-    public static int AVFMT_FLAG_DISCARD_CORRUPT() {
-        return (int)256L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_FLUSH_PACKETS 512
-     * }
-     */
-    public static int AVFMT_FLAG_FLUSH_PACKETS() {
-        return (int)512L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_BITEXACT 1024
-     * }
-     */
-    public static int AVFMT_FLAG_BITEXACT() {
-        return (int)1024L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_SORT_DTS 65536
-     * }
-     */
-    public static int AVFMT_FLAG_SORT_DTS() {
-        return (int)65536L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_FAST_SEEK 524288
-     * }
-     */
-    public static int AVFMT_FLAG_FAST_SEEK() {
-        return (int)524288L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_SHORTEST 1048576
-     * }
-     */
-    public static int AVFMT_FLAG_SHORTEST() {
-        return (int)1048576L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_FLAG_AUTO_BSF 2097152
-     * }
-     */
-    public static int AVFMT_FLAG_AUTO_BSF() {
-        return (int)2097152L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_FDEBUG_TS 1
-     * }
-     */
-    public static int FF_FDEBUG_TS() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_EVENT_FLAG_METADATA_UPDATED 1
-     * }
-     */
-    public static int AVFMT_EVENT_FLAG_METADATA_UPDATED() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_AVOID_NEG_TS_DISABLED 0
-     * }
-     */
-    public static int AVFMT_AVOID_NEG_TS_DISABLED() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_AVOID_NEG_TS_MAKE_NON_NEGATIVE 1
-     * }
-     */
-    public static int AVFMT_AVOID_NEG_TS_MAKE_NON_NEGATIVE() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVFMT_AVOID_NEG_TS_MAKE_ZERO 2
-     * }
-     */
-    public static int AVFMT_AVOID_NEG_TS_MAKE_ZERO() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSEEK_FLAG_BACKWARD 1
-     * }
-     */
-    public static int AVSEEK_FLAG_BACKWARD() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSEEK_FLAG_BYTE 2
-     * }
-     */
-    public static int AVSEEK_FLAG_BYTE() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSEEK_FLAG_ANY 4
-     * }
-     */
-    public static int AVSEEK_FLAG_ANY() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSEEK_FLAG_FRAME 8
-     * }
-     */
-    public static int AVSEEK_FLAG_FRAME() {
-        return (int)8L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSTREAM_INIT_IN_WRITE_HEADER 0
-     * }
-     */
-    public static int AVSTREAM_INIT_IN_WRITE_HEADER() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define AVSTREAM_INIT_IN_INIT_OUTPUT 1
-     * }
-     */
-    public static int AVSTREAM_INIT_IN_INIT_OUTPUT() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define AV_FRAME_FILENAME_FLAGS_MULTIPLE 1
-     * }
-     */
-    public static int AV_FRAME_FILENAME_FLAGS_MULTIPLE() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_RESOLUTION 1
-     * }
-     */
-    public static int FF_LOSS_RESOLUTION() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_DEPTH 2
-     * }
-     */
-    public static int FF_LOSS_DEPTH() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_COLORSPACE 4
-     * }
-     */
-    public static int FF_LOSS_COLORSPACE() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_ALPHA 8
-     * }
-     */
-    public static int FF_LOSS_ALPHA() {
-        return (int)8L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_COLORQUANT 16
-     * }
-     */
-    public static int FF_LOSS_COLORQUANT() {
-        return (int)16L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_CHROMA 32
-     * }
-     */
-    public static int FF_LOSS_CHROMA() {
-        return (int)32L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_EXCESS_RESOLUTION 64
-     * }
-     */
-    public static int FF_LOSS_EXCESS_RESOLUTION() {
-        return (int)64L;
-    }
-    /**
-     * {@snippet :
-     * #define FF_LOSS_EXCESS_DEPTH 128
-     * }
-     */
-    public static int FF_LOSS_EXCESS_DEPTH() {
-        return (int)128L;
-    }
-    /**
-     * {@snippet :
-     * #define LIBSWSCALE_VERSION_MAJOR 7
-     * }
-     */
-    public static int LIBSWSCALE_VERSION_MAJOR() {
-        return (int)7L;
-    }
-    /**
-     * {@snippet :
-     * #define LIBSWSCALE_VERSION_MINOR 1
-     * }
-     */
-    public static int LIBSWSCALE_VERSION_MINOR() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define LIBSWSCALE_VERSION_MICRO 100
-     * }
-     */
-    public static int LIBSWSCALE_VERSION_MICRO() {
-        return (int)100L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_FAST_BILINEAR 1
-     * }
-     */
-    public static int SWS_FAST_BILINEAR() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_BILINEAR 2
-     * }
-     */
-    public static int SWS_BILINEAR() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_BICUBIC 4
-     * }
-     */
-    public static int SWS_BICUBIC() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_X 8
-     * }
-     */
-    public static int SWS_X() {
-        return (int)8L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_POINT 16
-     * }
-     */
-    public static int SWS_POINT() {
-        return (int)16L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_AREA 32
-     * }
-     */
-    public static int SWS_AREA() {
-        return (int)32L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_BICUBLIN 64
-     * }
-     */
-    public static int SWS_BICUBLIN() {
-        return (int)64L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_GAUSS 128
-     * }
-     */
-    public static int SWS_GAUSS() {
-        return (int)128L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_SINC 256
-     * }
-     */
-    public static int SWS_SINC() {
-        return (int)256L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_LANCZOS 512
-     * }
-     */
-    public static int SWS_LANCZOS() {
-        return (int)512L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_SPLINE 1024
-     * }
-     */
-    public static int SWS_SPLINE() {
-        return (int)1024L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_SRC_V_CHR_DROP_MASK 196608
-     * }
-     */
-    public static int SWS_SRC_V_CHR_DROP_MASK() {
-        return (int)196608L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_SRC_V_CHR_DROP_SHIFT 16
-     * }
-     */
-    public static int SWS_SRC_V_CHR_DROP_SHIFT() {
-        return (int)16L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_PARAM_DEFAULT 123456
-     * }
-     */
-    public static int SWS_PARAM_DEFAULT() {
-        return (int)123456L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_PRINT_INFO 4096
-     * }
-     */
-    public static int SWS_PRINT_INFO() {
-        return (int)4096L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_FULL_CHR_H_INT 8192
-     * }
-     */
-    public static int SWS_FULL_CHR_H_INT() {
-        return (int)8192L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_FULL_CHR_H_INP 16384
-     * }
-     */
-    public static int SWS_FULL_CHR_H_INP() {
-        return (int)16384L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_DIRECT_BGR 32768
-     * }
-     */
-    public static int SWS_DIRECT_BGR() {
-        return (int)32768L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_ACCURATE_RND 262144
-     * }
-     */
-    public static int SWS_ACCURATE_RND() {
-        return (int)262144L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_BITEXACT 524288
-     * }
-     */
-    public static int SWS_BITEXACT() {
-        return (int)524288L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_ERROR_DIFFUSION 8388608
-     * }
-     */
-    public static int SWS_ERROR_DIFFUSION() {
-        return (int)8388608L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_ITU709 1
-     * }
-     */
-    public static int SWS_CS_ITU709() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_FCC 4
-     * }
-     */
-    public static int SWS_CS_FCC() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_ITU601 5
-     * }
-     */
-    public static int SWS_CS_ITU601() {
-        return (int)5L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_ITU624 5
-     * }
-     */
-    public static int SWS_CS_ITU624() {
-        return (int)5L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_SMPTE170M 5
-     * }
-     */
-    public static int SWS_CS_SMPTE170M() {
-        return (int)5L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_SMPTE240M 7
-     * }
-     */
-    public static int SWS_CS_SMPTE240M() {
-        return (int)7L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_DEFAULT 5
-     * }
-     */
-    public static int SWS_CS_DEFAULT() {
-        return (int)5L;
-    }
-    /**
-     * {@snippet :
-     * #define SWS_CS_BT2020 9
-     * }
-     */
-    public static int SWS_CS_BT2020() {
-        return (int)9L;
-    }
-    /**
-     * {@snippet :
-     * typedef unsigned char __u_char;
-     * }
-     */
-    public static final OfByte __u_char = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef unsigned short __u_short;
-     * }
-     */
-    public static final OfShort __u_short = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __u_int;
-     * }
-     */
-    public static final OfInt __u_int = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __u_long;
-     * }
-     */
-    public static final OfLong __u_long = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef signed char __int8_t;
-     * }
-     */
-    public static final OfByte __int8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef unsigned char __uint8_t;
-     * }
-     */
-    public static final OfByte __uint8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef short __int16_t;
-     * }
-     */
-    public static final OfShort __int16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef unsigned short __uint16_t;
-     * }
-     */
-    public static final OfShort __uint16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef int __int32_t;
-     * }
-     */
-    public static final OfInt __int32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __uint32_t;
-     * }
-     */
-    public static final OfInt __uint32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long __int64_t;
-     * }
-     */
-    public static final OfLong __int64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __uint64_t;
-     * }
-     */
-    public static final OfLong __uint64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef signed char __int_least8_t;
-     * }
-     */
-    public static final OfByte __int_least8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef unsigned char __uint_least8_t;
-     * }
-     */
-    public static final OfByte __uint_least8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef short __int_least16_t;
-     * }
-     */
-    public static final OfShort __int_least16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef unsigned short __uint_least16_t;
-     * }
-     */
-    public static final OfShort __uint_least16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef int __int_least32_t;
-     * }
-     */
-    public static final OfInt __int_least32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __uint_least32_t;
-     * }
-     */
-    public static final OfInt __uint_least32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long __int_least64_t;
-     * }
-     */
-    public static final OfLong __int_least64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __uint_least64_t;
-     * }
-     */
-    public static final OfLong __uint_least64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __quad_t;
-     * }
-     */
-    public static final OfLong __quad_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __u_quad_t;
-     * }
-     */
-    public static final OfLong __u_quad_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __intmax_t;
-     * }
-     */
-    public static final OfLong __intmax_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __uintmax_t;
-     * }
-     */
-    public static final OfLong __uintmax_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __dev_t;
-     * }
-     */
-    public static final OfLong __dev_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned int __uid_t;
-     * }
-     */
-    public static final OfInt __uid_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __gid_t;
-     * }
-     */
-    public static final OfInt __gid_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __ino_t;
-     * }
-     */
-    public static final OfLong __ino_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __ino64_t;
-     * }
-     */
-    public static final OfLong __ino64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned int __mode_t;
-     * }
-     */
-    public static final OfInt __mode_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __nlink_t;
-     * }
-     */
-    public static final OfLong __nlink_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __off_t;
-     * }
-     */
-    public static final OfLong __off_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __off64_t;
-     * }
-     */
-    public static final OfLong __off64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef int __pid_t;
-     * }
-     */
-    public static final OfInt __pid_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long __clock_t;
-     * }
-     */
-    public static final OfLong __clock_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __rlim_t;
-     * }
-     */
-    public static final OfLong __rlim_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __rlim64_t;
-     * }
-     */
-    public static final OfLong __rlim64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned int __id_t;
-     * }
-     */
-    public static final OfInt __id_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long __time_t;
-     * }
-     */
-    public static final OfLong __time_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned int __useconds_t;
-     * }
-     */
-    public static final OfInt __useconds_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long __suseconds_t;
-     * }
-     */
-    public static final OfLong __suseconds_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __suseconds64_t;
-     * }
-     */
-    public static final OfLong __suseconds64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef int __daddr_t;
-     * }
-     */
-    public static final OfInt __daddr_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef int __key_t;
-     * }
-     */
-    public static final OfInt __key_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef int __clockid_t;
-     * }
-     */
-    public static final OfInt __clockid_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef void* __timer_t;
-     * }
-     */
-    public static final AddressLayout __timer_t = RuntimeHelper.POINTER;
-    /**
-     * {@snippet :
-     * typedef long __blksize_t;
-     * }
-     */
-    public static final OfLong __blksize_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __blkcnt_t;
-     * }
-     */
-    public static final OfLong __blkcnt_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __blkcnt64_t;
-     * }
-     */
-    public static final OfLong __blkcnt64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsblkcnt_t;
-     * }
-     */
-    public static final OfLong __fsblkcnt_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsblkcnt64_t;
-     * }
-     */
-    public static final OfLong __fsblkcnt64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsfilcnt_t;
-     * }
-     */
-    public static final OfLong __fsfilcnt_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsfilcnt64_t;
-     * }
-     */
-    public static final OfLong __fsfilcnt64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __fsword_t;
-     * }
-     */
-    public static final OfLong __fsword_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __ssize_t;
-     * }
-     */
-    public static final OfLong __ssize_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __syscall_slong_t;
-     * }
-     */
-    public static final OfLong __syscall_slong_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long __syscall_ulong_t;
-     * }
-     */
-    public static final OfLong __syscall_ulong_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long __loff_t;
-     * }
-     */
-    public static final OfLong __loff_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef char* __caddr_t;
-     * }
-     */
-    public static final AddressLayout __caddr_t = RuntimeHelper.POINTER;
-    /**
-     * {@snippet :
-     * typedef long __intptr_t;
-     * }
-     */
-    public static final OfLong __intptr_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned int __socklen_t;
-     * }
-     */
-    public static final OfInt __socklen_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef int __sig_atomic_t;
-     * }
-     */
-    public static final OfInt __sig_atomic_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef signed char int8_t;
-     * }
-     */
-    public static final OfByte int8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef short int16_t;
-     * }
-     */
-    public static final OfShort int16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef int int32_t;
-     * }
-     */
-    public static final OfInt int32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long int64_t;
-     * }
-     */
-    public static final OfLong int64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned char uint8_t;
-     * }
-     */
-    public static final OfByte uint8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef unsigned short uint16_t;
-     * }
-     */
-    public static final OfShort uint16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef unsigned int uint32_t;
-     * }
-     */
-    public static final OfInt uint32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint64_t;
-     * }
-     */
-    public static final OfLong uint64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef signed char int_least8_t;
-     * }
-     */
-    public static final OfByte int_least8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef short int_least16_t;
-     * }
-     */
-    public static final OfShort int_least16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef int int_least32_t;
-     * }
-     */
-    public static final OfInt int_least32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef long int_least64_t;
-     * }
-     */
-    public static final OfLong int_least64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned char uint_least8_t;
-     * }
-     */
-    public static final OfByte uint_least8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef unsigned short uint_least16_t;
-     * }
-     */
-    public static final OfShort uint_least16_t = JAVA_SHORT;
-    /**
-     * {@snippet :
-     * typedef unsigned int uint_least32_t;
-     * }
-     */
-    public static final OfInt uint_least32_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_least64_t;
-     * }
-     */
-    public static final OfLong uint_least64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef signed char int_fast8_t;
-     * }
-     */
-    public static final OfByte int_fast8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef long int_fast16_t;
-     * }
-     */
-    public static final OfLong int_fast16_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long int_fast32_t;
-     * }
-     */
-    public static final OfLong int_fast32_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long int_fast64_t;
-     * }
-     */
-    public static final OfLong int_fast64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned char uint_fast8_t;
-     * }
-     */
-    public static final OfByte uint_fast8_t = JAVA_BYTE;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_fast16_t;
-     * }
-     */
-    public static final OfLong uint_fast16_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_fast32_t;
-     * }
-     */
-    public static final OfLong uint_fast32_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_fast64_t;
-     * }
-     */
-    public static final OfLong uint_fast64_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long intptr_t;
-     * }
-     */
-    public static final OfLong intptr_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long uintptr_t;
-     * }
-     */
-    public static final OfLong uintptr_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef long intmax_t;
-     * }
-     */
-    public static final OfLong intmax_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * typedef unsigned long uintmax_t;
-     * }
-     */
-    public static final OfLong uintmax_t = JAVA_LONG;
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_NONE = -1;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_NONE() {
-        return (int)-1L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_U8 = 0;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_U8() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_S16 = 1;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_S16() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_S32 = 2;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_S32() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_FLT = 3;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_FLT() {
-        return (int)3L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_DBL = 4;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_DBL() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_U8P = 5;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_U8P() {
-        return (int)5L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_S16P = 6;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_S16P() {
-        return (int)6L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_S32P = 7;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_S32P() {
-        return (int)7L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_FLTP = 8;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_FLTP() {
-        return (int)8L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_DBLP = 9;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_DBLP() {
-        return (int)9L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_S64 = 10;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_S64() {
-        return (int)10L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_S64P = 11;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_S64P() {
-        return (int)11L;
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat.AV_SAMPLE_FMT_NB = 12;
-     * }
-     */
-    public static int AV_SAMPLE_FMT_NB() {
-        return (int)12L;
-    }
-    public static MethodHandle av_get_sample_fmt_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.const$2,"av_get_sample_fmt_name");
-    }
-    /**
-     * {@snippet :
-     * char* av_get_sample_fmt_name(enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static MemorySegment av_get_sample_fmt_name(int sample_fmt) {
-        var mh$ = av_get_sample_fmt_name$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_get_sample_fmt$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.const$4,"av_get_sample_fmt");
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat av_get_sample_fmt(char* name);
-     * }
-     */
-    public static int av_get_sample_fmt(MemorySegment name) {
-        var mh$ = av_get_sample_fmt$MH();
-        try {
-            return (int)mh$.invokeExact(name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_get_alt_sample_fmt$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.const$6,"av_get_alt_sample_fmt");
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat av_get_alt_sample_fmt(enum AVSampleFormat sample_fmt, int planar);
-     * }
-     */
-    public static int av_get_alt_sample_fmt(int sample_fmt, int planar) {
-        var mh$ = av_get_alt_sample_fmt$MH();
-        try {
-            return (int)mh$.invokeExact(sample_fmt, planar);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_get_packed_sample_fmt$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.const$1,"av_get_packed_sample_fmt");
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat av_get_packed_sample_fmt(enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static int av_get_packed_sample_fmt(int sample_fmt) {
-        var mh$ = av_get_packed_sample_fmt$MH();
-        try {
-            return (int)mh$.invokeExact(sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_get_planar_sample_fmt$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.const$2,"av_get_planar_sample_fmt");
-    }
-    /**
-     * {@snippet :
-     * enum AVSampleFormat av_get_planar_sample_fmt(enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static int av_get_planar_sample_fmt(int sample_fmt) {
-        var mh$ = av_get_planar_sample_fmt$MH();
-        try {
-            return (int)mh$.invokeExact(sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_get_sample_fmt_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.const$4,"av_get_sample_fmt_string");
-    }
-    /**
-     * {@snippet :
-     * char* av_get_sample_fmt_string(char* buf, int buf_size, enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static MemorySegment av_get_sample_fmt_string(MemorySegment buf, int buf_size, int sample_fmt) {
-        var mh$ = av_get_sample_fmt_string$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(buf, buf_size, sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_get_bytes_per_sample$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.const$5,"av_get_bytes_per_sample");
-    }
-    /**
-     * {@snippet :
-     * int av_get_bytes_per_sample(enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static int av_get_bytes_per_sample(int sample_fmt) {
-        var mh$ = av_get_bytes_per_sample$MH();
-        try {
-            return (int)mh$.invokeExact(sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_sample_fmt_is_planar$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.const$0,"av_sample_fmt_is_planar");
-    }
-    /**
-     * {@snippet :
-     * int av_sample_fmt_is_planar(enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static int av_sample_fmt_is_planar(int sample_fmt) {
-        var mh$ = av_sample_fmt_is_planar$MH();
-        try {
-            return (int)mh$.invokeExact(sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_samples_get_buffer_size$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.const$2,"av_samples_get_buffer_size");
-    }
-    /**
-     * {@snippet :
-     * int av_samples_get_buffer_size(int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
-     * }
-     */
-    public static int av_samples_get_buffer_size(MemorySegment linesize, int nb_channels, int nb_samples, int sample_fmt, int align) {
-        var mh$ = av_samples_get_buffer_size$MH();
-        try {
-            return (int)mh$.invokeExact(linesize, nb_channels, nb_samples, sample_fmt, align);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_samples_fill_arrays$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.const$4,"av_samples_fill_arrays");
-    }
-    /**
-     * {@snippet :
-     * int av_samples_fill_arrays(uint8_t** audio_data, int* linesize, const uint8_t* buf, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
-     * }
-     */
-    public static int av_samples_fill_arrays(MemorySegment audio_data, MemorySegment linesize, MemorySegment buf, int nb_channels, int nb_samples, int sample_fmt, int align) {
-        var mh$ = av_samples_fill_arrays$MH();
-        try {
-            return (int)mh$.invokeExact(audio_data, linesize, buf, nb_channels, nb_samples, sample_fmt, align);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_samples_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.const$6,"av_samples_alloc");
-    }
-    /**
-     * {@snippet :
-     * int av_samples_alloc(uint8_t** audio_data, int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
-     * }
-     */
-    public static int av_samples_alloc(MemorySegment audio_data, MemorySegment linesize, int nb_channels, int nb_samples, int sample_fmt, int align) {
-        var mh$ = av_samples_alloc$MH();
-        try {
-            return (int)mh$.invokeExact(audio_data, linesize, nb_channels, nb_samples, sample_fmt, align);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_samples_alloc_array_and_samples$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.const$0,"av_samples_alloc_array_and_samples");
-    }
-    /**
-     * {@snippet :
-     * int av_samples_alloc_array_and_samples(uint8_t*** audio_data, int* linesize, int nb_channels, int nb_samples, enum AVSampleFormat sample_fmt, int align);
-     * }
-     */
-    public static int av_samples_alloc_array_and_samples(MemorySegment audio_data, MemorySegment linesize, int nb_channels, int nb_samples, int sample_fmt, int align) {
-        var mh$ = av_samples_alloc_array_and_samples$MH();
-        try {
-            return (int)mh$.invokeExact(audio_data, linesize, nb_channels, nb_samples, sample_fmt, align);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_samples_copy$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.const$2,"av_samples_copy");
-    }
-    /**
-     * {@snippet :
-     * int av_samples_copy(uint8_t** dst, uint8_t** src, int dst_offset, int src_offset, int nb_samples, int nb_channels, enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static int av_samples_copy(MemorySegment dst, MemorySegment src, int dst_offset, int src_offset, int nb_samples, int nb_channels, int sample_fmt) {
-        var mh$ = av_samples_copy$MH();
-        try {
-            return (int)mh$.invokeExact(dst, src, dst_offset, src_offset, nb_samples, nb_channels, sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_samples_set_silence$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.const$3,"av_samples_set_silence");
-    }
-    /**
-     * {@snippet :
-     * int av_samples_set_silence(uint8_t** audio_data, int offset, int nb_samples, int nb_channels, enum AVSampleFormat sample_fmt);
-     * }
-     */
-    public static int av_samples_set_silence(MemorySegment audio_data, int offset, int nb_samples, int nb_channels, int sample_fmt) {
-        var mh$ = av_samples_set_silence$MH();
-        try {
-            return (int)mh$.invokeExact(audio_data, offset, nb_samples, nb_channels, sample_fmt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle avutil_version$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.const$5,"avutil_version");
-    }
-    /**
-     * {@snippet :
-     * unsigned int avutil_version();
-     * }
-     */
-    public static int avutil_version() {
-        var mh$ = avutil_version$MH();
-        try {
-            return (int)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle av_version_info$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.const$1,"av_version_info");
-    }
-    /**
-     * {@snippet :
-     * char* av_version_info();
-     * }
-     */
-    public static MemorySegment av_version_info() {
-        var mh$ = av_version_info$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle avutil_configuration$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.const$2,"avutil_configuration");
-    }
-    /**
-     * {@snippet :
-     * char* avutil_configuration();
-     * }
-     */
-    public static MemorySegment avutil_configuration() {
-        var mh$ = avutil_configuration$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle avutil_license$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.const$3,"avutil_license");
-    }
-    /**
-     * {@snippet :
-     * char* avutil_license();
-     * }
-     */
-    public static MemorySegment avutil_license() {
-        var mh$ = avutil_license$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_UNKNOWN = -1;
-     * }
-     */
-    public static int AVMEDIA_TYPE_UNKNOWN() {
-        return (int)-1L;
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_VIDEO = 0;
-     * }
-     */
-    public static int AVMEDIA_TYPE_VIDEO() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_AUDIO = 1;
-     * }
-     */
-    public static int AVMEDIA_TYPE_AUDIO() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_DATA = 2;
-     * }
-     */
-    public static int AVMEDIA_TYPE_DATA() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_SUBTITLE = 3;
-     * }
-     */
-    public static int AVMEDIA_TYPE_SUBTITLE() {
-        return (int)3L;
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_ATTACHMENT = 4;
-     * }
-     */
-    public static int AVMEDIA_TYPE_ATTACHMENT() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * enum AVMediaType.AVMEDIA_TYPE_NB = 5;
-     * }
-     */
-    public static int AVMEDIA_TYPE_NB() {
-        return (int)5L;
-    }
-    public static MethodHandle av_get_media_type_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.const$4,"av_get_media_type_string");
-    }
-    /**
-     * {@snippet :
-     * char* av_get_media_type_string(enum AVMediaType media_type);
-     * }
-     */
-    public static MemorySegment av_get_media_type_string(int media_type) {
-        var mh$ = av_get_media_type_string$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(media_type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_NONE = 0;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_NONE() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_I = 1;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_I() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_P = 2;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_P() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_B = 3;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_B() {
-        return (int)3L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_S = 4;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_S() {
-        return (int)4L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_SI = 5;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_SI() {
-        return (int)5L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_SP = 6;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_SP() {
-        return (int)6L;
-    }
-    /**
-     * {@snippet :
-     * enum AVPictureType.AV_PICTURE_TYPE_BI = 7;
-     * }
-     */
-    public static int AV_PICTURE_TYPE_BI() {
-        return (int)7L;
-    }
-    public static MethodHandle av_get_picture_type_char$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.const$6,"av_get_picture_type_char");
-    }
-    /**
-     * {@snippet :
-     * char av_get_picture_type_char(enum AVPictureType pict_type);
-     * }
-     */
-    public static byte av_get_picture_type_char(int pict_type) {
-        var mh$ = av_get_picture_type_char$MH();
-        try {
-            return (byte)mh$.invokeExact(pict_type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __errno_location$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.const$0,"__errno_location");
-    }
-    /**
-     * {@snippet :
-     * int* __errno_location();
-     * }
-     */
-    public static MemorySegment __errno_location() {
-        var mh$ = __errno_location$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * typedef int __gwchar_t;
-     * }
-     */
-    public static final OfInt __gwchar_t = JAVA_INT;
-    public static MethodHandle imaxabs$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.const$5,"imaxabs");
-    }
-    /**
-     * {@snippet :
-     * intmax_t imaxabs(intmax_t __n);
-     * }
-     */
-    public static long imaxabs(long __n) {
-        var mh$ = imaxabs$MH();
-        try {
-            return (long)mh$.invokeExact(__n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle imaxdiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.const$1,"imaxdiv");
-    }
-    /**
-     * {@snippet :
-     * imaxdiv_t imaxdiv(intmax_t __numer, intmax_t __denom);
-     * }
-     */
-    public static MemorySegment imaxdiv(SegmentAllocator allocator, long __numer, long __denom) {
-        var mh$ = imaxdiv$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strtoimax$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.const$3,"strtoimax");
-    }
-    /**
-     * {@snippet :
-     * intmax_t strtoimax(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtoimax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
-        var mh$ = strtoimax$MH();
-        try {
-            return (long)mh$.invokeExact(__nptr, __endptr, __base);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strtoumax$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.const$4,"strtoumax");
-    }
-    /**
-     * {@snippet :
-     * uintmax_t strtoumax(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtoumax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
-        var mh$ = strtoumax$MH();
-        try {
-            return (long)mh$.invokeExact(__nptr, __endptr, __base);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle wcstoimax$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.const$5,"wcstoimax");
-    }
-    /**
-     * {@snippet :
-     * intmax_t wcstoimax(const __gwchar_t* __nptr, __gwchar_t** __endptr, int __base);
-     * }
-     */
-    public static long wcstoimax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
-        var mh$ = wcstoimax$MH();
-        try {
-            return (long)mh$.invokeExact(__nptr, __endptr, __base);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle wcstoumax$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.const$0,"wcstoumax");
-    }
-    /**
-     * {@snippet :
-     * uintmax_t wcstoumax(const __gwchar_t* __nptr, __gwchar_t** __endptr, int __base);
-     * }
-     */
-    public static long wcstoumax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
-        var mh$ = wcstoumax$MH();
-        try {
-            return (long)mh$.invokeExact(__nptr, __endptr, __base);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * typedef float _Float32;
-     * }
-     */
-    public static final OfFloat _Float32 = JAVA_FLOAT;
-    /**
-     * {@snippet :
-     * typedef double _Float64;
-     * }
-     */
-    public static final OfDouble _Float64 = JAVA_DOUBLE;
-    /**
-     * {@snippet :
-     * typedef double _Float32x;
-     * }
-     */
-    public static final OfDouble _Float32x = JAVA_DOUBLE;
-    /**
-     * {@snippet :
-     * typedef float float_t;
-     * }
-     */
-    public static final OfFloat float_t = JAVA_FLOAT;
-    /**
-     * {@snippet :
-     * typedef double double_t;
-     * }
-     */
-    public static final OfDouble double_t = JAVA_DOUBLE;
-    public static MethodHandle __fpclassify$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.const$2,"__fpclassify");
-    }
-    /**
-     * {@snippet :
-     * int __fpclassify(double __value);
-     * }
-     */
-    public static int __fpclassify(double __value) {
-        var mh$ = __fpclassify$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __signbit$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.const$3,"__signbit");
-    }
-    /**
-     * {@snippet :
-     * int __signbit(double __value);
-     * }
-     */
-    public static int __signbit(double __value) {
-        var mh$ = __signbit$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __isinf$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.const$4,"__isinf");
-    }
-    /**
-     * {@snippet :
-     * int __isinf(double __value);
-     * }
-     */
-    public static int __isinf(double __value) {
-        var mh$ = __isinf$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __finite$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.const$5,"__finite");
-    }
-    /**
-     * {@snippet :
-     * int __finite(double __value);
-     * }
-     */
-    public static int __finite(double __value) {
-        var mh$ = __finite$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __isnan$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.const$0,"__isnan");
-    }
-    /**
-     * {@snippet :
-     * int __isnan(double __value);
-     * }
-     */
-    public static int __isnan(double __value) {
-        var mh$ = __isnan$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __iseqsig$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.const$2,"__iseqsig");
-    }
-    /**
-     * {@snippet :
-     * int __iseqsig(double __x, double __y);
-     * }
-     */
-    public static int __iseqsig(double __x, double __y) {
-        var mh$ = __iseqsig$MH();
-        try {
-            return (int)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __issignaling$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.const$3,"__issignaling");
-    }
-    /**
-     * {@snippet :
-     * int __issignaling(double __value);
-     * }
-     */
-    public static int __issignaling(double __value) {
-        var mh$ = __issignaling$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle acos$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.const$5,"acos");
-    }
-    /**
-     * {@snippet :
-     * double acos(double __x);
-     * }
-     */
-    public static double acos(double __x) {
-        var mh$ = acos$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __acos$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.const$0,"__acos");
-    }
-    /**
-     * {@snippet :
-     * double __acos(double __x);
-     * }
-     */
-    public static double __acos(double __x) {
-        var mh$ = __acos$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle asin$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.const$1,"asin");
-    }
-    /**
-     * {@snippet :
-     * double asin(double __x);
-     * }
-     */
-    public static double asin(double __x) {
-        var mh$ = asin$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __asin$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.const$2,"__asin");
-    }
-    /**
-     * {@snippet :
-     * double __asin(double __x);
-     * }
-     */
-    public static double __asin(double __x) {
-        var mh$ = __asin$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle atan$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.const$3,"atan");
-    }
-    /**
-     * {@snippet :
-     * double atan(double __x);
-     * }
-     */
-    public static double atan(double __x) {
-        var mh$ = atan$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __atan$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.const$4,"__atan");
-    }
-    /**
-     * {@snippet :
-     * double __atan(double __x);
-     * }
-     */
-    public static double __atan(double __x) {
-        var mh$ = __atan$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle atan2$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.const$6,"atan2");
-    }
-    /**
-     * {@snippet :
-     * double atan2(double __y, double __x);
-     * }
-     */
-    public static double atan2(double __y, double __x) {
-        var mh$ = atan2$MH();
-        try {
-            return (double)mh$.invokeExact(__y, __x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __atan2$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$0,"__atan2");
-    }
-    /**
-     * {@snippet :
-     * double __atan2(double __y, double __x);
-     * }
-     */
-    public static double __atan2(double __y, double __x) {
-        var mh$ = __atan2$MH();
-        try {
-            return (double)mh$.invokeExact(__y, __x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle cos$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$1,"cos");
-    }
-    /**
-     * {@snippet :
-     * double cos(double __x);
-     * }
-     */
-    public static double cos(double __x) {
-        var mh$ = cos$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __cos$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$2,"__cos");
-    }
-    /**
-     * {@snippet :
-     * double __cos(double __x);
-     * }
-     */
-    public static double __cos(double __x) {
-        var mh$ = __cos$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle sin$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$3,"sin");
-    }
-    /**
-     * {@snippet :
-     * double sin(double __x);
-     * }
-     */
-    public static double sin(double __x) {
-        var mh$ = sin$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __sin$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$4,"__sin");
-    }
-    /**
-     * {@snippet :
-     * double __sin(double __x);
-     * }
-     */
-    public static double __sin(double __x) {
-        var mh$ = __sin$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle tan$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$5,"tan");
-    }
-    /**
-     * {@snippet :
-     * double tan(double __x);
-     * }
-     */
-    public static double tan(double __x) {
-        var mh$ = tan$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __tan$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$0,"__tan");
-    }
-    /**
-     * {@snippet :
-     * double __tan(double __x);
-     * }
-     */
-    public static double __tan(double __x) {
-        var mh$ = __tan$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle cosh$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$1,"cosh");
-    }
-    /**
-     * {@snippet :
-     * double cosh(double __x);
-     * }
-     */
-    public static double cosh(double __x) {
-        var mh$ = cosh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __cosh$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$2,"__cosh");
-    }
-    /**
-     * {@snippet :
-     * double __cosh(double __x);
-     * }
-     */
-    public static double __cosh(double __x) {
-        var mh$ = __cosh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle sinh$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$3,"sinh");
-    }
-    /**
-     * {@snippet :
-     * double sinh(double __x);
-     * }
-     */
-    public static double sinh(double __x) {
-        var mh$ = sinh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __sinh$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$4,"__sinh");
-    }
-    /**
-     * {@snippet :
-     * double __sinh(double __x);
-     * }
-     */
-    public static double __sinh(double __x) {
-        var mh$ = __sinh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle tanh$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$5,"tanh");
-    }
-    /**
-     * {@snippet :
-     * double tanh(double __x);
-     * }
-     */
-    public static double tanh(double __x) {
-        var mh$ = tanh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __tanh$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$0,"__tanh");
-    }
-    /**
-     * {@snippet :
-     * double __tanh(double __x);
-     * }
-     */
-    public static double __tanh(double __x) {
-        var mh$ = __tanh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle acosh$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$1,"acosh");
-    }
-    /**
-     * {@snippet :
-     * double acosh(double __x);
-     * }
-     */
-    public static double acosh(double __x) {
-        var mh$ = acosh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __acosh$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$2,"__acosh");
-    }
-    /**
-     * {@snippet :
-     * double __acosh(double __x);
-     * }
-     */
-    public static double __acosh(double __x) {
-        var mh$ = __acosh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle asinh$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$3,"asinh");
-    }
-    /**
-     * {@snippet :
-     * double asinh(double __x);
-     * }
-     */
-    public static double asinh(double __x) {
-        var mh$ = asinh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __asinh$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$4,"__asinh");
-    }
-    /**
-     * {@snippet :
-     * double __asinh(double __x);
-     * }
-     */
-    public static double __asinh(double __x) {
-        var mh$ = __asinh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle atanh$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$5,"atanh");
-    }
-    /**
-     * {@snippet :
-     * double atanh(double __x);
-     * }
-     */
-    public static double atanh(double __x) {
-        var mh$ = atanh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __atanh$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$0,"__atanh");
-    }
-    /**
-     * {@snippet :
-     * double __atanh(double __x);
-     * }
-     */
-    public static double __atanh(double __x) {
-        var mh$ = __atanh$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle exp$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$1,"exp");
-    }
-    /**
-     * {@snippet :
-     * double exp(double __x);
-     * }
-     */
-    public static double exp(double __x) {
-        var mh$ = exp$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __exp$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$2,"__exp");
-    }
-    /**
-     * {@snippet :
-     * double __exp(double __x);
-     * }
-     */
-    public static double __exp(double __x) {
-        var mh$ = __exp$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle frexp$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$4,"frexp");
-    }
-    /**
-     * {@snippet :
-     * double frexp(double __x, int* __exponent);
-     * }
-     */
-    public static double frexp(double __x, MemorySegment __exponent) {
-        var mh$ = frexp$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __exponent);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __frexp$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$5,"__frexp");
-    }
-    /**
-     * {@snippet :
-     * double __frexp(double __x, int* __exponent);
-     * }
-     */
-    public static double __frexp(double __x, MemorySegment __exponent) {
-        var mh$ = __frexp$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __exponent);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ldexp$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$1,"ldexp");
-    }
-    /**
-     * {@snippet :
-     * double ldexp(double __x, int __exponent);
-     * }
-     */
-    public static double ldexp(double __x, int __exponent) {
-        var mh$ = ldexp$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __exponent);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __ldexp$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$2,"__ldexp");
-    }
-    /**
-     * {@snippet :
-     * double __ldexp(double __x, int __exponent);
-     * }
-     */
-    public static double __ldexp(double __x, int __exponent) {
-        var mh$ = __ldexp$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __exponent);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle log$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$3,"log");
-    }
-    /**
-     * {@snippet :
-     * double log(double __x);
-     * }
-     */
-    public static double log(double __x) {
-        var mh$ = log$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __log$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$4,"__log");
-    }
-    /**
-     * {@snippet :
-     * double __log(double __x);
-     * }
-     */
-    public static double __log(double __x) {
-        var mh$ = __log$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle log10$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$5,"log10");
-    }
-    /**
-     * {@snippet :
-     * double log10(double __x);
-     * }
-     */
-    public static double log10(double __x) {
-        var mh$ = log10$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __log10$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$0,"__log10");
-    }
-    /**
-     * {@snippet :
-     * double __log10(double __x);
-     * }
-     */
-    public static double __log10(double __x) {
-        var mh$ = __log10$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle modf$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$1,"modf");
-    }
-    /**
-     * {@snippet :
-     * double modf(double __x, double* __iptr);
-     * }
-     */
-    public static double modf(double __x, MemorySegment __iptr) {
-        var mh$ = modf$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __iptr);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __modf$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$2,"__modf");
-    }
-    /**
-     * {@snippet :
-     * double __modf(double __x, double* __iptr);
-     * }
-     */
-    public static double __modf(double __x, MemorySegment __iptr) {
-        var mh$ = __modf$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __iptr);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle expm1$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$3,"expm1");
-    }
-    /**
-     * {@snippet :
-     * double expm1(double __x);
-     * }
-     */
-    public static double expm1(double __x) {
-        var mh$ = expm1$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __expm1$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$4,"__expm1");
-    }
-    /**
-     * {@snippet :
-     * double __expm1(double __x);
-     * }
-     */
-    public static double __expm1(double __x) {
-        var mh$ = __expm1$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle log1p$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$5,"log1p");
-    }
-    /**
-     * {@snippet :
-     * double log1p(double __x);
-     * }
-     */
-    public static double log1p(double __x) {
-        var mh$ = log1p$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __log1p$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$0,"__log1p");
-    }
-    /**
-     * {@snippet :
-     * double __log1p(double __x);
-     * }
-     */
-    public static double __log1p(double __x) {
-        var mh$ = __log1p$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle logb$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$1,"logb");
-    }
-    /**
-     * {@snippet :
-     * double logb(double __x);
-     * }
-     */
-    public static double logb(double __x) {
-        var mh$ = logb$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __logb$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$2,"__logb");
-    }
-    /**
-     * {@snippet :
-     * double __logb(double __x);
-     * }
-     */
-    public static double __logb(double __x) {
-        var mh$ = __logb$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle exp2$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$3,"exp2");
-    }
-    /**
-     * {@snippet :
-     * double exp2(double __x);
-     * }
-     */
-    public static double exp2(double __x) {
-        var mh$ = exp2$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __exp2$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$4,"__exp2");
-    }
-    /**
-     * {@snippet :
-     * double __exp2(double __x);
-     * }
-     */
-    public static double __exp2(double __x) {
-        var mh$ = __exp2$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle log2$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$5,"log2");
-    }
-    /**
-     * {@snippet :
-     * double log2(double __x);
-     * }
-     */
-    public static double log2(double __x) {
-        var mh$ = log2$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __log2$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$0,"__log2");
-    }
-    /**
-     * {@snippet :
-     * double __log2(double __x);
-     * }
-     */
-    public static double __log2(double __x) {
-        var mh$ = __log2$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle pow$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$1,"pow");
-    }
-    /**
-     * {@snippet :
-     * double pow(double __x, double __y);
-     * }
-     */
-    public static double pow(double __x, double __y) {
-        var mh$ = pow$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __pow$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$2,"__pow");
-    }
-    /**
-     * {@snippet :
-     * double __pow(double __x, double __y);
-     * }
-     */
-    public static double __pow(double __x, double __y) {
-        var mh$ = __pow$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle sqrt$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$3,"sqrt");
-    }
-    /**
-     * {@snippet :
-     * double sqrt(double __x);
-     * }
-     */
-    public static double sqrt(double __x) {
-        var mh$ = sqrt$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __sqrt$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$4,"__sqrt");
-    }
-    /**
-     * {@snippet :
-     * double __sqrt(double __x);
-     * }
-     */
-    public static double __sqrt(double __x) {
-        var mh$ = __sqrt$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle hypot$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$5,"hypot");
-    }
-    /**
-     * {@snippet :
-     * double hypot(double __x, double __y);
-     * }
-     */
-    public static double hypot(double __x, double __y) {
-        var mh$ = hypot$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __hypot$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$0,"__hypot");
-    }
-    /**
-     * {@snippet :
-     * double __hypot(double __x, double __y);
-     * }
-     */
-    public static double __hypot(double __x, double __y) {
-        var mh$ = __hypot$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle cbrt$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$1,"cbrt");
-    }
-    /**
-     * {@snippet :
-     * double cbrt(double __x);
-     * }
-     */
-    public static double cbrt(double __x) {
-        var mh$ = cbrt$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __cbrt$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$2,"__cbrt");
-    }
-    /**
-     * {@snippet :
-     * double __cbrt(double __x);
-     * }
-     */
-    public static double __cbrt(double __x) {
-        var mh$ = __cbrt$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ceil$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$3,"ceil");
-    }
-    /**
-     * {@snippet :
-     * double ceil(double __x);
-     * }
-     */
-    public static double ceil(double __x) {
-        var mh$ = ceil$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __ceil$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$4,"__ceil");
-    }
-    /**
-     * {@snippet :
-     * double __ceil(double __x);
-     * }
-     */
-    public static double __ceil(double __x) {
-        var mh$ = __ceil$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle fabs$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$5,"fabs");
-    }
-    /**
-     * {@snippet :
-     * double fabs(double __x);
-     * }
-     */
-    public static double fabs(double __x) {
-        var mh$ = fabs$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __fabs$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$0,"__fabs");
-    }
-    /**
-     * {@snippet :
-     * double __fabs(double __x);
-     * }
-     */
-    public static double __fabs(double __x) {
-        var mh$ = __fabs$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle floor$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$1,"floor");
-    }
-    /**
-     * {@snippet :
-     * double floor(double __x);
-     * }
-     */
-    public static double floor(double __x) {
-        var mh$ = floor$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __floor$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$2,"__floor");
-    }
-    /**
-     * {@snippet :
-     * double __floor(double __x);
-     * }
-     */
-    public static double __floor(double __x) {
-        var mh$ = __floor$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle fmod$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$3,"fmod");
-    }
-    /**
-     * {@snippet :
-     * double fmod(double __x, double __y);
-     * }
-     */
-    public static double fmod(double __x, double __y) {
-        var mh$ = fmod$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __fmod$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$4,"__fmod");
-    }
-    /**
-     * {@snippet :
-     * double __fmod(double __x, double __y);
-     * }
-     */
-    public static double __fmod(double __x, double __y) {
-        var mh$ = __fmod$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle isinf$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$5,"isinf");
-    }
-    /**
-     * {@snippet :
-     * int isinf(double __value);
-     * }
-     */
-    public static int isinf(double __value) {
-        var mh$ = isinf$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle finite$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$0,"finite");
-    }
-    /**
-     * {@snippet :
-     * int finite(double __value);
-     * }
-     */
-    public static int finite(double __value) {
-        var mh$ = finite$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle drem$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$1,"drem");
-    }
-    /**
-     * {@snippet :
-     * double drem(double __x, double __y);
-     * }
-     */
-    public static double drem(double __x, double __y) {
-        var mh$ = drem$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __drem$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$2,"__drem");
-    }
-    /**
-     * {@snippet :
-     * double __drem(double __x, double __y);
-     * }
-     */
-    public static double __drem(double __x, double __y) {
-        var mh$ = __drem$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle significand$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$3,"significand");
-    }
-    /**
-     * {@snippet :
-     * double significand(double __x);
-     * }
-     */
-    public static double significand(double __x) {
-        var mh$ = significand$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __significand$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$4,"__significand");
-    }
-    /**
-     * {@snippet :
-     * double __significand(double __x);
-     * }
-     */
-    public static double __significand(double __x) {
-        var mh$ = __significand$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle copysign$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$5,"copysign");
-    }
-    /**
-     * {@snippet :
-     * double copysign(double __x, double __y);
-     * }
-     */
-    public static double copysign(double __x, double __y) {
-        var mh$ = copysign$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __copysign$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$0,"__copysign");
-    }
-    /**
-     * {@snippet :
-     * double __copysign(double __x, double __y);
-     * }
-     */
-    public static double __copysign(double __x, double __y) {
-        var mh$ = __copysign$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle nan$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$2,"nan");
-    }
-    /**
-     * {@snippet :
-     * double nan(char* __tagb);
-     * }
-     */
-    public static double nan(MemorySegment __tagb) {
-        var mh$ = nan$MH();
-        try {
-            return (double)mh$.invokeExact(__tagb);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __nan$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$3,"__nan");
-    }
-    /**
-     * {@snippet :
-     * double __nan(char* __tagb);
-     * }
-     */
-    public static double __nan(MemorySegment __tagb) {
-        var mh$ = __nan$MH();
-        try {
-            return (double)mh$.invokeExact(__tagb);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle isnan$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$4,"isnan");
-    }
-    /**
-     * {@snippet :
-     * int isnan(double __value);
-     * }
-     */
-    public static int isnan(double __value) {
-        var mh$ = isnan$MH();
-        try {
-            return (int)mh$.invokeExact(__value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle j0$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$5,"j0");
-    }
-    /**
-     * {@snippet :
-     * double j0(double);
-     * }
-     */
-    public static double j0(double x0) {
-        var mh$ = j0$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __j0$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$0,"__j0");
-    }
-    /**
-     * {@snippet :
-     * double __j0(double);
-     * }
-     */
-    public static double __j0(double x0) {
-        var mh$ = __j0$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle j1$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$1,"j1");
-    }
-    /**
-     * {@snippet :
-     * double j1(double);
-     * }
-     */
-    public static double j1(double x0) {
-        var mh$ = j1$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __j1$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$2,"__j1");
-    }
-    /**
-     * {@snippet :
-     * double __j1(double);
-     * }
-     */
-    public static double __j1(double x0) {
-        var mh$ = __j1$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle jn$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$4,"jn");
-    }
-    /**
-     * {@snippet :
-     * double jn(int, double);
-     * }
-     */
-    public static double jn(int x0, double x1) {
-        var mh$ = jn$MH();
-        try {
-            return (double)mh$.invokeExact(x0, x1);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __jn$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$5,"__jn");
-    }
-    /**
-     * {@snippet :
-     * double __jn(int, double);
-     * }
-     */
-    public static double __jn(int x0, double x1) {
-        var mh$ = __jn$MH();
-        try {
-            return (double)mh$.invokeExact(x0, x1);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle y0$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$0,"y0");
-    }
-    /**
-     * {@snippet :
-     * double y0(double);
-     * }
-     */
-    public static double y0(double x0) {
-        var mh$ = y0$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __y0$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$1,"__y0");
-    }
-    /**
-     * {@snippet :
-     * double __y0(double);
-     * }
-     */
-    public static double __y0(double x0) {
-        var mh$ = __y0$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle y1$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$2,"y1");
-    }
-    /**
-     * {@snippet :
-     * double y1(double);
-     * }
-     */
-    public static double y1(double x0) {
-        var mh$ = y1$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __y1$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$3,"__y1");
-    }
-    /**
-     * {@snippet :
-     * double __y1(double);
-     * }
-     */
-    public static double __y1(double x0) {
-        var mh$ = __y1$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle yn$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$4,"yn");
-    }
-    /**
-     * {@snippet :
-     * double yn(int, double);
-     * }
-     */
-    public static double yn(int x0, double x1) {
-        var mh$ = yn$MH();
-        try {
-            return (double)mh$.invokeExact(x0, x1);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __yn$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$5,"__yn");
-    }
-    /**
-     * {@snippet :
-     * double __yn(int, double);
-     * }
-     */
-    public static double __yn(int x0, double x1) {
-        var mh$ = __yn$MH();
-        try {
-            return (double)mh$.invokeExact(x0, x1);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle erf$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$0,"erf");
-    }
-    /**
-     * {@snippet :
-     * double erf(double);
-     * }
-     */
-    public static double erf(double x0) {
-        var mh$ = erf$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __erf$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$1,"__erf");
-    }
-    /**
-     * {@snippet :
-     * double __erf(double);
-     * }
-     */
-    public static double __erf(double x0) {
-        var mh$ = __erf$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle erfc$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$2,"erfc");
-    }
-    /**
-     * {@snippet :
-     * double erfc(double);
-     * }
-     */
-    public static double erfc(double x0) {
-        var mh$ = erfc$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __erfc$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$3,"__erfc");
-    }
-    /**
-     * {@snippet :
-     * double __erfc(double);
-     * }
-     */
-    public static double __erfc(double x0) {
-        var mh$ = __erfc$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle lgamma$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$4,"lgamma");
-    }
-    /**
-     * {@snippet :
-     * double lgamma(double);
-     * }
-     */
-    public static double lgamma(double x0) {
-        var mh$ = lgamma$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __lgamma$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$5,"__lgamma");
-    }
-    /**
-     * {@snippet :
-     * double __lgamma(double);
-     * }
-     */
-    public static double __lgamma(double x0) {
-        var mh$ = __lgamma$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle tgamma$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$0,"tgamma");
-    }
-    /**
-     * {@snippet :
-     * double tgamma(double);
-     * }
-     */
-    public static double tgamma(double x0) {
-        var mh$ = tgamma$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __tgamma$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$1,"__tgamma");
-    }
-    /**
-     * {@snippet :
-     * double __tgamma(double);
-     * }
-     */
-    public static double __tgamma(double x0) {
-        var mh$ = __tgamma$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle gamma$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$2,"gamma");
-    }
-    /**
-     * {@snippet :
-     * double gamma(double);
-     * }
-     */
-    public static double gamma(double x0) {
-        var mh$ = gamma$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __gamma$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$3,"__gamma");
-    }
-    /**
-     * {@snippet :
-     * double __gamma(double);
-     * }
-     */
-    public static double __gamma(double x0) {
-        var mh$ = __gamma$MH();
-        try {
-            return (double)mh$.invokeExact(x0);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle lgamma_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$4,"lgamma_r");
-    }
-    /**
-     * {@snippet :
-     * double lgamma_r(double, int* __signgamp);
-     * }
-     */
-    public static double lgamma_r(double x0, MemorySegment __signgamp) {
-        var mh$ = lgamma_r$MH();
-        try {
-            return (double)mh$.invokeExact(x0, __signgamp);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __lgamma_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$5,"__lgamma_r");
-    }
-    /**
-     * {@snippet :
-     * double __lgamma_r(double, int* __signgamp);
-     * }
-     */
-    public static double __lgamma_r(double x0, MemorySegment __signgamp) {
-        var mh$ = __lgamma_r$MH();
-        try {
-            return (double)mh$.invokeExact(x0, __signgamp);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle rint$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$0,"rint");
-    }
-    /**
-     * {@snippet :
-     * double rint(double __x);
-     * }
-     */
-    public static double rint(double __x) {
-        var mh$ = rint$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __rint$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$1,"__rint");
-    }
-    /**
-     * {@snippet :
-     * double __rint(double __x);
-     * }
-     */
-    public static double __rint(double __x) {
-        var mh$ = __rint$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle nextafter$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$2,"nextafter");
-    }
-    /**
-     * {@snippet :
-     * double nextafter(double __x, double __y);
-     * }
-     */
-    public static double nextafter(double __x, double __y) {
-        var mh$ = nextafter$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __nextafter$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$3,"__nextafter");
-    }
-    /**
-     * {@snippet :
-     * double __nextafter(double __x, double __y);
-     * }
-     */
-    public static double __nextafter(double __x, double __y) {
-        var mh$ = __nextafter$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle remainder$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$4,"remainder");
-    }
-    /**
-     * {@snippet :
-     * double remainder(double __x, double __y);
-     * }
-     */
-    public static double remainder(double __x, double __y) {
-        var mh$ = remainder$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __remainder$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$5,"__remainder");
-    }
-    /**
-     * {@snippet :
-     * double __remainder(double __x, double __y);
-     * }
-     */
-    public static double __remainder(double __x, double __y) {
-        var mh$ = __remainder$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle scalbn$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$0,"scalbn");
-    }
-    /**
-     * {@snippet :
-     * double scalbn(double __x, int __n);
-     * }
-     */
-    public static double scalbn(double __x, int __n) {
-        var mh$ = scalbn$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __scalbn$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$1,"__scalbn");
-    }
-    /**
-     * {@snippet :
-     * double __scalbn(double __x, int __n);
-     * }
-     */
-    public static double __scalbn(double __x, int __n) {
-        var mh$ = __scalbn$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ilogb$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$2,"ilogb");
-    }
-    /**
-     * {@snippet :
-     * int ilogb(double __x);
-     * }
-     */
-    public static int ilogb(double __x) {
-        var mh$ = ilogb$MH();
-        try {
-            return (int)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __ilogb$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$3,"__ilogb");
-    }
-    /**
-     * {@snippet :
-     * int __ilogb(double __x);
-     * }
-     */
-    public static int __ilogb(double __x) {
-        var mh$ = __ilogb$MH();
-        try {
-            return (int)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle scalbln$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$5,"scalbln");
-    }
-    /**
-     * {@snippet :
-     * double scalbln(double __x, long __n);
-     * }
-     */
-    public static double scalbln(double __x, long __n) {
-        var mh$ = scalbln$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __scalbln$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$0,"__scalbln");
-    }
-    /**
-     * {@snippet :
-     * double __scalbln(double __x, long __n);
-     * }
-     */
-    public static double __scalbln(double __x, long __n) {
-        var mh$ = __scalbln$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle nearbyint$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$1,"nearbyint");
-    }
-    /**
-     * {@snippet :
-     * double nearbyint(double __x);
-     * }
-     */
-    public static double nearbyint(double __x) {
-        var mh$ = nearbyint$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __nearbyint$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$2,"__nearbyint");
-    }
-    /**
-     * {@snippet :
-     * double __nearbyint(double __x);
-     * }
-     */
-    public static double __nearbyint(double __x) {
-        var mh$ = __nearbyint$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle round$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$3,"round");
-    }
-    /**
-     * {@snippet :
-     * double round(double __x);
-     * }
-     */
-    public static double round(double __x) {
-        var mh$ = round$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __round$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$4,"__round");
-    }
-    /**
-     * {@snippet :
-     * double __round(double __x);
-     * }
-     */
-    public static double __round(double __x) {
-        var mh$ = __round$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle trunc$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$5,"trunc");
-    }
-    /**
-     * {@snippet :
-     * double trunc(double __x);
-     * }
-     */
-    public static double trunc(double __x) {
-        var mh$ = trunc$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __trunc$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$0,"__trunc");
-    }
-    /**
-     * {@snippet :
-     * double __trunc(double __x);
-     * }
-     */
-    public static double __trunc(double __x) {
-        var mh$ = __trunc$MH();
-        try {
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle remquo$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$2,"remquo");
-    }
-    /**
-     * {@snippet :
-     * double remquo(double __x, double __y, int* __quo);
-     * }
-     */
-    public static double remquo(double __x, double __y, MemorySegment __quo) {
-        var mh$ = remquo$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y, __quo);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __remquo$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$3,"__remquo");
-    }
-    /**
-     * {@snippet :
-     * double __remquo(double __x, double __y, int* __quo);
-     * }
-     */
-    public static double __remquo(double __x, double __y, MemorySegment __quo) {
-        var mh$ = __remquo$MH();
-        try {
-            return (double)mh$.invokeExact(__x, __y, __quo);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle lrint$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$5,"lrint");
-    }
-    /**
-     * {@snippet :
-     * long lrint(double __x);
-     * }
-     */
-    public static long lrint(double __x) {
-        var mh$ = lrint$MH();
-        try {
-            return (long)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
+    public static double SWS_MAX_REDUCE_CUTOFF() {
+        return SWS_MAX_REDUCE_CUTOFF;
     }
 }
-
 

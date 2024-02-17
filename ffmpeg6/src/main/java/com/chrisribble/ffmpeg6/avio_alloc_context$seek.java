@@ -2,32 +2,65 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
- * int64_t (*avio_alloc_context$seek)(void*,int64_t,int);
+ * {@snippet lang=c :
+ * int64_t (*seek)(void *, int64_t, int)
  * }
  */
-public interface avio_alloc_context$seek {
+public class avio_alloc_context$seek {
 
-    long apply(java.lang.foreign.MemorySegment _x0, long _x1, int _x2);
-    static MemorySegment allocate(avio_alloc_context$seek fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$282.const$5, fi, constants$275.const$4, scope);
+    /**
+     * The function pointer signature, expressed as a functional interface
+     */
+    public interface Function {
+        long apply(MemorySegment _x0, long _x1, int _x2);
     }
-    static avio_alloc_context$seek ofAddress(MemorySegment addr, Arena arena) {
-        MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment __x0, long __x1, int __x2) -> {
-            try {
-                return (long)constants$276.const$0.invokeExact(symbol, __x0, __x1, __x2);
-            } catch (Throwable ex$) {
-                throw new AssertionError("should not reach here", ex$);
-            }
-        };
+
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+        FFmpeg.C_LONG,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_LONG,
+        FFmpeg.C_INT
+    );
+
+    /**
+     * The descriptor of this function pointer
+     */
+    public static FunctionDescriptor descriptor() {
+        return $DESC;
+    }
+
+    private static final MethodHandle UP$MH = FFmpeg.upcallHandle(avio_alloc_context$seek.Function.class, "apply", $DESC);
+
+    /**
+     * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+     * The lifetime of the returned segment is managed by {@code arena}
+     */
+    public static MemorySegment allocate(avio_alloc_context$seek.Function fi, Arena arena) {
+        return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+    }
+
+    private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+    /**
+     * Invoke the upcall stub {@code funcPtr}, with given parameters
+     */
+    public static long invoke(MemorySegment funcPtr,MemorySegment _x0, long _x1, int _x2) {
+        try {
+            return (long) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
     }
 }
-
 

@@ -2,32 +2,142 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
- * int (*AVOpenCallback)(struct AVFormatContext* s,struct AVIOContext** pb,char* url,int flags,struct AVIOInterruptCB* int_cb,struct AVDictionary** options);
+ * {@snippet lang=c :
+ * typedef int (*AVOpenCallback)(struct AVFormatContext {
+ *     const AVClass *av_class;
+ *     const struct AVInputFormat *iformat;
+ *     const struct AVOutputFormat *oformat;
+ *     void *priv_data;
+ *     AVIOContext *pb;
+ *     int ctx_flags;
+ *     unsigned int nb_streams;
+ *     AVStream **streams;
+ *     char *url;
+ *     int64_t start_time;
+ *     int64_t duration;
+ *     int64_t bit_rate;
+ *     unsigned int packet_size;
+ *     int max_delay;
+ *     int flags;
+ *     int64_t probesize;
+ *     int64_t max_analyze_duration;
+ *     const uint8_t *key;
+ *     int keylen;
+ *     unsigned int nb_programs;
+ *     AVProgram **programs;
+ *     enum AVCodecID video_codec_id;
+ *     enum AVCodecID audio_codec_id;
+ *     enum AVCodecID subtitle_codec_id;
+ *     unsigned int max_index_size;
+ *     unsigned int max_picture_buffer;
+ *     unsigned int nb_chapters;
+ *     AVChapter **chapters;
+ *     AVDictionary *metadata;
+ *     int64_t start_time_realtime;
+ *     int fps_probe_size;
+ *     int error_recognition;
+ *     AVIOInterruptCB interrupt_callback;
+ *     int debug;
+ *     int64_t max_interleave_delta;
+ *     int strict_std_compliance;
+ *     int event_flags;
+ *     int max_ts_probe;
+ *     int avoid_negative_ts;
+ *     int ts_id;
+ *     int audio_preload;
+ *     int max_chunk_duration;
+ *     int max_chunk_size;
+ *     int use_wallclock_as_timestamps;
+ *     int avio_flags;
+ *     enum AVDurationEstimationMethod duration_estimation_method;
+ *     int64_t skip_initial_bytes;
+ *     unsigned int correct_ts_overflow;
+ *     int seek2any;
+ *     int flush_packets;
+ *     int probe_score;
+ *     int format_probesize;
+ *     char *codec_whitelist;
+ *     char *format_whitelist;
+ *     int io_repositioned;
+ *     const AVCodec *video_codec;
+ *     const AVCodec *audio_codec;
+ *     const AVCodec *subtitle_codec;
+ *     const AVCodec *data_codec;
+ *     int metadata_header_padding;
+ *     void *opaque;
+ *     av_format_control_message control_message_cb;
+ *     int64_t output_ts_offset;
+ *     uint8_t *dump_separator;
+ *     enum AVCodecID data_codec_id;
+ *     char *protocol_whitelist;
+ *     int (*io_open)(struct AVFormatContext *, AVIOContext **, const char *, int, AVDictionary **);
+ *     void (*io_close)(struct AVFormatContext *, AVIOContext *);
+ *     char *protocol_blacklist;
+ *     int max_streams;
+ *     int skip_estimate_duration_from_pts;
+ *     int max_probe_packets;
+ *     int (*io_close2)(struct AVFormatContext *, AVIOContext *);
+ * } *, AVIOContext **, const char *, int, const AVIOInterruptCB *, AVDictionary **)
  * }
  */
-public interface AVOpenCallback {
+public class AVOpenCallback {
 
-    int apply(java.lang.foreign.MemorySegment s, java.lang.foreign.MemorySegment pb, java.lang.foreign.MemorySegment url, int flags, java.lang.foreign.MemorySegment int_cb, java.lang.foreign.MemorySegment options);
-    static MemorySegment allocate(AVOpenCallback fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$309.const$0, fi, constants$308.const$5, scope);
+    /**
+     * The function pointer signature, expressed as a functional interface
+     */
+    public interface Function {
+        int apply(MemorySegment s, MemorySegment pb, MemorySegment url, int flags, MemorySegment int_cb, MemorySegment options);
     }
-    static AVOpenCallback ofAddress(MemorySegment addr, Arena arena) {
-        MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment _s, java.lang.foreign.MemorySegment _pb, java.lang.foreign.MemorySegment _url, int _flags, java.lang.foreign.MemorySegment _int_cb, java.lang.foreign.MemorySegment _options) -> {
-            try {
-                return (int)constants$309.const$1.invokeExact(symbol, _s, _pb, _url, _flags, _int_cb, _options);
-            } catch (Throwable ex$) {
-                throw new AssertionError("should not reach here", ex$);
-            }
-        };
+
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+        FFmpeg.C_INT,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_INT,
+        FFmpeg.C_POINTER,
+        FFmpeg.C_POINTER
+    );
+
+    /**
+     * The descriptor of this function pointer
+     */
+    public static FunctionDescriptor descriptor() {
+        return $DESC;
+    }
+
+    private static final MethodHandle UP$MH = FFmpeg.upcallHandle(AVOpenCallback.Function.class, "apply", $DESC);
+
+    /**
+     * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
+     * The lifetime of the returned segment is managed by {@code arena}
+     */
+    public static MemorySegment allocate(AVOpenCallback.Function fi, Arena arena) {
+        return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
+    }
+
+    private static final MethodHandle DOWN$MH = Linker.nativeLinker().downcallHandle($DESC);
+
+    /**
+     * Invoke the upcall stub {@code funcPtr}, with given parameters
+     */
+    public static int invoke(MemorySegment funcPtr,MemorySegment s, MemorySegment pb, MemorySegment url, int flags, MemorySegment int_cb, MemorySegment options) {
+        try {
+            return (int) DOWN$MH.invokeExact(funcPtr, s, pb, url, flags, int_cb, options);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
     }
 }
-
 

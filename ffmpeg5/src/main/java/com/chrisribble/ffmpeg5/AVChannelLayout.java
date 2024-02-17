@@ -2,193 +2,438 @@
 
 package com.chrisribble.ffmpeg5;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVChannelLayout {
  *     enum AVChannelOrder order;
  *     int nb_channels;
- *     union  u;
- *     void* opaque;
- * };
+ *     union {
+ *         uint64_t mask;
+ *         AVChannelCustom *map;
+ *     } u;
+ *     void *opaque;
+ * }
  * }
  */
 public class AVChannelLayout {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$159.const$1;
+    AVChannelLayout() {
+        // Should not be called directly
     }
-    public static VarHandle order$VH() {
-        return constants$159.const$2;
+
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_INT.withName("order"),
+        FFmpeg.C_INT.withName("nb_channels"),
+        AVChannelLayout.u.layout().withName("u"),
+        FFmpeg.C_POINTER.withName("opaque")
+    ).withName("AVChannelLayout");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
     }
+
+    private static final OfInt order$LAYOUT = (OfInt)$LAYOUT.select(groupElement("order"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVChannelOrder order
+     * }
+     */
+    public static final OfInt order$layout() {
+        return order$LAYOUT;
+    }
+
+    private static final long order$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVChannelOrder order
+     * }
+     */
+    public static final long order$offset() {
+        return order$OFFSET;
+    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * enum AVChannelOrder order;
+     * {@snippet lang=c :
+     * enum AVChannelOrder order
      * }
      */
-    public static int order$get(MemorySegment seg) {
-        return (int)constants$159.const$2.get(seg);
+    public static int order(MemorySegment struct) {
+        return struct.get(order$LAYOUT, order$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * enum AVChannelOrder order;
+     * {@snippet lang=c :
+     * enum AVChannelOrder order
      * }
      */
-    public static void order$set(MemorySegment seg, int x) {
-        constants$159.const$2.set(seg, x);
+    public static void order(MemorySegment struct, int fieldValue) {
+        struct.set(order$LAYOUT, order$OFFSET, fieldValue);
     }
-    public static int order$get(MemorySegment seg, long index) {
-        return (int)constants$159.const$2.get(seg.asSlice(index*sizeof()));
+
+    private static final OfInt nb_channels$LAYOUT = (OfInt)$LAYOUT.select(groupElement("nb_channels"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int nb_channels
+     * }
+     */
+    public static final OfInt nb_channels$layout() {
+        return nb_channels$LAYOUT;
     }
-    public static void order$set(MemorySegment seg, long index, int x) {
-        constants$159.const$2.set(seg.asSlice(index*sizeof()), x);
+
+    private static final long nb_channels$OFFSET = 4;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int nb_channels
+     * }
+     */
+    public static final long nb_channels$offset() {
+        return nb_channels$OFFSET;
     }
-    public static VarHandle nb_channels$VH() {
-        return constants$159.const$3;
-    }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * int nb_channels;
+     * {@snippet lang=c :
+     * int nb_channels
      * }
      */
-    public static int nb_channels$get(MemorySegment seg) {
-        return (int)constants$159.const$3.get(seg);
+    public static int nb_channels(MemorySegment struct) {
+        return struct.get(nb_channels$LAYOUT, nb_channels$OFFSET);
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * int nb_channels;
+     * {@snippet lang=c :
+     * int nb_channels
      * }
      */
-    public static void nb_channels$set(MemorySegment seg, int x) {
-        constants$159.const$3.set(seg, x);
+    public static void nb_channels(MemorySegment struct, int fieldValue) {
+        struct.set(nb_channels$LAYOUT, nb_channels$OFFSET, fieldValue);
     }
-    public static int nb_channels$get(MemorySegment seg, long index) {
-        return (int)constants$159.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void nb_channels$set(MemorySegment seg, long index, int x) {
-        constants$159.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
+
     /**
-     * {@snippet :
+     * {@snippet lang=c :
      * union {
      *     uint64_t mask;
-     *     AVChannelCustom* map;
-     * };
+     *     AVChannelCustom *map;
+     * }
      * }
      */
-    public static final class u {
+    public static class u {
 
-        // Suppresses default constructor, ensuring non-instantiability.
-        private u() {}
-        public static MemoryLayout $LAYOUT() {
-            return constants$159.const$4;
+        u() {
+            // Should not be called directly
         }
-        public static VarHandle mask$VH() {
-            return constants$159.const$5;
+
+        private static final GroupLayout $LAYOUT = MemoryLayout.unionLayout(
+            FFmpeg.C_LONG.withName("mask"),
+            FFmpeg.C_POINTER.withName("map")
+        ).withName("$anon$307:5");
+
+        /**
+         * The layout of this union
+         */
+        public static final GroupLayout layout() {
+            return $LAYOUT;
         }
+
+        private static final OfLong mask$LAYOUT = (OfLong)$LAYOUT.select(groupElement("mask"));
+
+        /**
+         * Layout for field:
+         * {@snippet lang=c :
+         * uint64_t mask
+         * }
+         */
+        public static final OfLong mask$layout() {
+            return mask$LAYOUT;
+        }
+
+        private static final long mask$OFFSET = 0;
+
+        /**
+         * Offset for field:
+         * {@snippet lang=c :
+         * uint64_t mask
+         * }
+         */
+        public static final long mask$offset() {
+            return mask$OFFSET;
+        }
+
         /**
          * Getter for field:
-         * {@snippet :
-         * uint64_t mask;
+         * {@snippet lang=c :
+         * uint64_t mask
          * }
          */
-        public static long mask$get(MemorySegment seg) {
-            return (long)constants$159.const$5.get(seg);
+        public static long mask(MemorySegment union) {
+            return union.get(mask$LAYOUT, mask$OFFSET);
         }
+
         /**
          * Setter for field:
-         * {@snippet :
-         * uint64_t mask;
+         * {@snippet lang=c :
+         * uint64_t mask
          * }
          */
-        public static void mask$set(MemorySegment seg, long x) {
-            constants$159.const$5.set(seg, x);
+        public static void mask(MemorySegment union, long fieldValue) {
+            union.set(mask$LAYOUT, mask$OFFSET, fieldValue);
         }
-        public static long mask$get(MemorySegment seg, long index) {
-            return (long)constants$159.const$5.get(seg.asSlice(index*sizeof()));
+
+        private static final AddressLayout map$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("map"));
+
+        /**
+         * Layout for field:
+         * {@snippet lang=c :
+         * AVChannelCustom *map
+         * }
+         */
+        public static final AddressLayout map$layout() {
+            return map$LAYOUT;
         }
-        public static void mask$set(MemorySegment seg, long index, long x) {
-            constants$159.const$5.set(seg.asSlice(index*sizeof()), x);
+
+        private static final long map$OFFSET = 0;
+
+        /**
+         * Offset for field:
+         * {@snippet lang=c :
+         * AVChannelCustom *map
+         * }
+         */
+        public static final long map$offset() {
+            return map$OFFSET;
         }
-        public static VarHandle map$VH() {
-            return constants$160.const$0;
-        }
+
         /**
          * Getter for field:
-         * {@snippet :
-         * AVChannelCustom* map;
+         * {@snippet lang=c :
+         * AVChannelCustom *map
          * }
          */
-        public static MemorySegment map$get(MemorySegment seg) {
-            return (java.lang.foreign.MemorySegment)constants$160.const$0.get(seg);
+        public static MemorySegment map(MemorySegment union) {
+            return union.get(map$LAYOUT, map$OFFSET);
         }
+
         /**
          * Setter for field:
-         * {@snippet :
-         * AVChannelCustom* map;
+         * {@snippet lang=c :
+         * AVChannelCustom *map
          * }
          */
-        public static void map$set(MemorySegment seg, MemorySegment x) {
-            constants$160.const$0.set(seg, x);
+        public static void map(MemorySegment union, MemorySegment fieldValue) {
+            union.set(map$LAYOUT, map$OFFSET, fieldValue);
         }
-        public static MemorySegment map$get(MemorySegment seg, long index) {
-            return (java.lang.foreign.MemorySegment)constants$160.const$0.get(seg.asSlice(index*sizeof()));
+
+        /**
+         * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+         * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+         */
+        public static MemorySegment asSlice(MemorySegment array, long index) {
+            return array.asSlice(layout().byteSize() * index);
         }
-        public static void map$set(MemorySegment seg, long index, MemorySegment x) {
-            constants$160.const$0.set(seg.asSlice(index*sizeof()), x);
+
+        /**
+         * The size (in bytes) of this union
+         */
+        public static long sizeof() { return layout().byteSize(); }
+
+        /**
+         * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+         */
+        public static MemorySegment allocate(SegmentAllocator allocator) {
+            return allocator.allocate(layout());
         }
-        public static long sizeof() { return $LAYOUT().byteSize(); }
-        public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-            return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
+
+        /**
+         * Allocate an array of size {@code elementCount} using {@code allocator}.
+         * The returned segment has size {@code elementCount * layout().byteSize()}.
+         */
+        public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+            return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
         }
-        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
+
+        /**
+         * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+         * The returned segment has size {@code layout().byteSize()}
+         */
+        public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+            return reinterpret(addr, 1, arena, cleanup);
+        }
+
+        /**
+         * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+         * The returned segment has size {@code elementCount * layout().byteSize()}
+         */
+        public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+            return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+        }
     }
 
-    public static MemorySegment u$slice(MemorySegment seg) {
-        return seg.asSlice(8, 8);
+    private static final GroupLayout u$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("u"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * union {
+     *     uint64_t mask;
+     *     AVChannelCustom *map;
+     * } u
+     * }
+     */
+    public static final GroupLayout u$layout() {
+        return u$LAYOUT;
     }
-    public static VarHandle opaque$VH() {
-        return constants$160.const$1;
+
+    private static final long u$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * union {
+     *     uint64_t mask;
+     *     AVChannelCustom *map;
+     * } u
+     * }
+     */
+    public static final long u$offset() {
+        return u$OFFSET;
     }
+
     /**
      * Getter for field:
-     * {@snippet :
-     * void* opaque;
+     * {@snippet lang=c :
+     * union {
+     *     uint64_t mask;
+     *     AVChannelCustom *map;
+     * } u
      * }
      */
-    public static MemorySegment opaque$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$160.const$1.get(seg);
+    public static MemorySegment u(MemorySegment struct) {
+        return struct.asSlice(u$OFFSET, u$LAYOUT.byteSize());
     }
+
     /**
      * Setter for field:
-     * {@snippet :
-     * void* opaque;
+     * {@snippet lang=c :
+     * union {
+     *     uint64_t mask;
+     *     AVChannelCustom *map;
+     * } u
      * }
      */
-    public static void opaque$set(MemorySegment seg, MemorySegment x) {
-        constants$160.const$1.set(seg, x);
+    public static void u(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, u$OFFSET, u$LAYOUT.byteSize());
     }
-    public static MemorySegment opaque$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$160.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void opaque$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$160.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
-    }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
-}
 
+    private static final AddressLayout opaque$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("opaque"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * void *opaque
+     * }
+     */
+    public static final AddressLayout opaque$layout() {
+        return opaque$LAYOUT;
+    }
+
+    private static final long opaque$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * void *opaque
+     * }
+     */
+    public static final long opaque$offset() {
+        return opaque$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * void *opaque
+     * }
+     */
+    public static MemorySegment opaque(MemorySegment struct) {
+        return struct.get(opaque$LAYOUT, opaque$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * void *opaque
+     * }
+     */
+    public static void opaque(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(opaque$LAYOUT, opaque$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
+}
 

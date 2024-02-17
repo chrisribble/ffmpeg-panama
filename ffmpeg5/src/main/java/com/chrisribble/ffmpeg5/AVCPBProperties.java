@@ -2,168 +2,310 @@
 
 package com.chrisribble.ffmpeg5;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVCPBProperties {
  *     int64_t max_bitrate;
  *     int64_t min_bitrate;
  *     int64_t avg_bitrate;
  *     int64_t buffer_size;
  *     uint64_t vbv_delay;
- * };
+ * }
  * }
  */
 public class AVCPBProperties {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$201.const$5;
+    AVCPBProperties() {
+        // Should not be called directly
     }
-    public static VarHandle max_bitrate$VH() {
-        return constants$202.const$0;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t max_bitrate;
-     * }
-     */
-    public static long max_bitrate$get(MemorySegment seg) {
-        return (long)constants$202.const$0.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t max_bitrate;
-     * }
-     */
-    public static void max_bitrate$set(MemorySegment seg, long x) {
-        constants$202.const$0.set(seg, x);
-    }
-    public static long max_bitrate$get(MemorySegment seg, long index) {
-        return (long)constants$202.const$0.get(seg.asSlice(index*sizeof()));
-    }
-    public static void max_bitrate$set(MemorySegment seg, long index, long x) {
-        constants$202.const$0.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle min_bitrate$VH() {
-        return constants$202.const$1;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t min_bitrate;
-     * }
-     */
-    public static long min_bitrate$get(MemorySegment seg) {
-        return (long)constants$202.const$1.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t min_bitrate;
-     * }
-     */
-    public static void min_bitrate$set(MemorySegment seg, long x) {
-        constants$202.const$1.set(seg, x);
-    }
-    public static long min_bitrate$get(MemorySegment seg, long index) {
-        return (long)constants$202.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void min_bitrate$set(MemorySegment seg, long index, long x) {
-        constants$202.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle avg_bitrate$VH() {
-        return constants$202.const$2;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t avg_bitrate;
-     * }
-     */
-    public static long avg_bitrate$get(MemorySegment seg) {
-        return (long)constants$202.const$2.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t avg_bitrate;
-     * }
-     */
-    public static void avg_bitrate$set(MemorySegment seg, long x) {
-        constants$202.const$2.set(seg, x);
-    }
-    public static long avg_bitrate$get(MemorySegment seg, long index) {
-        return (long)constants$202.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void avg_bitrate$set(MemorySegment seg, long index, long x) {
-        constants$202.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle buffer_size$VH() {
-        return constants$202.const$3;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int64_t buffer_size;
-     * }
-     */
-    public static long buffer_size$get(MemorySegment seg) {
-        return (long)constants$202.const$3.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int64_t buffer_size;
-     * }
-     */
-    public static void buffer_size$set(MemorySegment seg, long x) {
-        constants$202.const$3.set(seg, x);
-    }
-    public static long buffer_size$get(MemorySegment seg, long index) {
-        return (long)constants$202.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void buffer_size$set(MemorySegment seg, long index, long x) {
-        constants$202.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle vbv_delay$VH() {
-        return constants$202.const$4;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * uint64_t vbv_delay;
-     * }
-     */
-    public static long vbv_delay$get(MemorySegment seg) {
-        return (long)constants$202.const$4.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * uint64_t vbv_delay;
-     * }
-     */
-    public static void vbv_delay$set(MemorySegment seg, long x) {
-        constants$202.const$4.set(seg, x);
-    }
-    public static long vbv_delay$get(MemorySegment seg, long index) {
-        return (long)constants$202.const$4.get(seg.asSlice(index*sizeof()));
-    }
-    public static void vbv_delay$set(MemorySegment seg, long index, long x) {
-        constants$202.const$4.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
-    }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
-}
 
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_LONG.withName("max_bitrate"),
+        FFmpeg.C_LONG.withName("min_bitrate"),
+        FFmpeg.C_LONG.withName("avg_bitrate"),
+        FFmpeg.C_LONG.withName("buffer_size"),
+        FFmpeg.C_LONG.withName("vbv_delay")
+    ).withName("AVCPBProperties");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
+    }
+
+    private static final OfLong max_bitrate$LAYOUT = (OfLong)$LAYOUT.select(groupElement("max_bitrate"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t max_bitrate
+     * }
+     */
+    public static final OfLong max_bitrate$layout() {
+        return max_bitrate$LAYOUT;
+    }
+
+    private static final long max_bitrate$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t max_bitrate
+     * }
+     */
+    public static final long max_bitrate$offset() {
+        return max_bitrate$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t max_bitrate
+     * }
+     */
+    public static long max_bitrate(MemorySegment struct) {
+        return struct.get(max_bitrate$LAYOUT, max_bitrate$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t max_bitrate
+     * }
+     */
+    public static void max_bitrate(MemorySegment struct, long fieldValue) {
+        struct.set(max_bitrate$LAYOUT, max_bitrate$OFFSET, fieldValue);
+    }
+
+    private static final OfLong min_bitrate$LAYOUT = (OfLong)$LAYOUT.select(groupElement("min_bitrate"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t min_bitrate
+     * }
+     */
+    public static final OfLong min_bitrate$layout() {
+        return min_bitrate$LAYOUT;
+    }
+
+    private static final long min_bitrate$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t min_bitrate
+     * }
+     */
+    public static final long min_bitrate$offset() {
+        return min_bitrate$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t min_bitrate
+     * }
+     */
+    public static long min_bitrate(MemorySegment struct) {
+        return struct.get(min_bitrate$LAYOUT, min_bitrate$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t min_bitrate
+     * }
+     */
+    public static void min_bitrate(MemorySegment struct, long fieldValue) {
+        struct.set(min_bitrate$LAYOUT, min_bitrate$OFFSET, fieldValue);
+    }
+
+    private static final OfLong avg_bitrate$LAYOUT = (OfLong)$LAYOUT.select(groupElement("avg_bitrate"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t avg_bitrate
+     * }
+     */
+    public static final OfLong avg_bitrate$layout() {
+        return avg_bitrate$LAYOUT;
+    }
+
+    private static final long avg_bitrate$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t avg_bitrate
+     * }
+     */
+    public static final long avg_bitrate$offset() {
+        return avg_bitrate$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t avg_bitrate
+     * }
+     */
+    public static long avg_bitrate(MemorySegment struct) {
+        return struct.get(avg_bitrate$LAYOUT, avg_bitrate$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t avg_bitrate
+     * }
+     */
+    public static void avg_bitrate(MemorySegment struct, long fieldValue) {
+        struct.set(avg_bitrate$LAYOUT, avg_bitrate$OFFSET, fieldValue);
+    }
+
+    private static final OfLong buffer_size$LAYOUT = (OfLong)$LAYOUT.select(groupElement("buffer_size"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int64_t buffer_size
+     * }
+     */
+    public static final OfLong buffer_size$layout() {
+        return buffer_size$LAYOUT;
+    }
+
+    private static final long buffer_size$OFFSET = 24;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int64_t buffer_size
+     * }
+     */
+    public static final long buffer_size$offset() {
+        return buffer_size$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int64_t buffer_size
+     * }
+     */
+    public static long buffer_size(MemorySegment struct) {
+        return struct.get(buffer_size$LAYOUT, buffer_size$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int64_t buffer_size
+     * }
+     */
+    public static void buffer_size(MemorySegment struct, long fieldValue) {
+        struct.set(buffer_size$LAYOUT, buffer_size$OFFSET, fieldValue);
+    }
+
+    private static final OfLong vbv_delay$LAYOUT = (OfLong)$LAYOUT.select(groupElement("vbv_delay"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * uint64_t vbv_delay
+     * }
+     */
+    public static final OfLong vbv_delay$layout() {
+        return vbv_delay$LAYOUT;
+    }
+
+    private static final long vbv_delay$OFFSET = 32;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * uint64_t vbv_delay
+     * }
+     */
+    public static final long vbv_delay$offset() {
+        return vbv_delay$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * uint64_t vbv_delay
+     * }
+     */
+    public static long vbv_delay(MemorySegment struct) {
+        return struct.get(vbv_delay$LAYOUT, vbv_delay$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * uint64_t vbv_delay
+     * }
+     */
+    public static void vbv_delay(MemorySegment struct, long fieldValue) {
+        struct.set(vbv_delay$LAYOUT, vbv_delay$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
+}
 

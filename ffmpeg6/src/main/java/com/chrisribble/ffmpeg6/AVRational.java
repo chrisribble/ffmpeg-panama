@@ -2,84 +2,172 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVRational {
  *     int num;
  *     int den;
- * };
+ * }
  * }
  */
 public class AVRational {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$136.const$2;
+    AVRational() {
+        // Should not be called directly
     }
-    public static VarHandle num$VH() {
-        return constants$136.const$3;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int num;
-     * }
-     */
-    public static int num$get(MemorySegment seg) {
-        return (int)constants$136.const$3.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int num;
-     * }
-     */
-    public static void num$set(MemorySegment seg, int x) {
-        constants$136.const$3.set(seg, x);
-    }
-    public static int num$get(MemorySegment seg, long index) {
-        return (int)constants$136.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void num$set(MemorySegment seg, long index, int x) {
-        constants$136.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle den$VH() {
-        return constants$136.const$4;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int den;
-     * }
-     */
-    public static int den$get(MemorySegment seg) {
-        return (int)constants$136.const$4.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int den;
-     * }
-     */
-    public static void den$set(MemorySegment seg, int x) {
-        constants$136.const$4.set(seg, x);
-    }
-    public static int den$get(MemorySegment seg, long index) {
-        return (int)constants$136.const$4.get(seg.asSlice(index*sizeof()));
-    }
-    public static void den$set(MemorySegment seg, long index, int x) {
-        constants$136.const$4.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
-    }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
-}
 
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_INT.withName("num"),
+        FFmpeg.C_INT.withName("den")
+    ).withName("AVRational");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
+    }
+
+    private static final OfInt num$LAYOUT = (OfInt)$LAYOUT.select(groupElement("num"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int num
+     * }
+     */
+    public static final OfInt num$layout() {
+        return num$LAYOUT;
+    }
+
+    private static final long num$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int num
+     * }
+     */
+    public static final long num$offset() {
+        return num$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int num
+     * }
+     */
+    public static int num(MemorySegment struct) {
+        return struct.get(num$LAYOUT, num$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int num
+     * }
+     */
+    public static void num(MemorySegment struct, int fieldValue) {
+        struct.set(num$LAYOUT, num$OFFSET, fieldValue);
+    }
+
+    private static final OfInt den$LAYOUT = (OfInt)$LAYOUT.select(groupElement("den"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int den
+     * }
+     */
+    public static final OfInt den$layout() {
+        return den$LAYOUT;
+    }
+
+    private static final long den$OFFSET = 4;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int den
+     * }
+     */
+    public static final long den$offset() {
+        return den$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int den
+     * }
+     */
+    public static int den(MemorySegment struct) {
+        return struct.get(den$LAYOUT, den$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int den
+     * }
+     */
+    public static void den(MemorySegment struct, int fieldValue) {
+        struct.set(den$LAYOUT, den$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
+}
 

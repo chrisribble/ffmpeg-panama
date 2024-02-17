@@ -24,11 +24,11 @@ subprojects {
 	//apply plugin: 'com.github.spotbugs'
 
 	java {
-		sourceCompatibility = 21
-		targetCompatibility = 21
+		sourceCompatibility = 22
+		targetCompatibility = 22
 
 		toolchain {
-			languageVersion = JavaLanguageVersion.of(21)
+			languageVersion = JavaLanguageVersion.of(22)
 		}
 	}
 
@@ -46,6 +46,7 @@ subprojects {
 			options.compilerArgs.add('-Xlint:all')
 			options.compilerArgs.add('-Xlint:-processing')
 			options.compilerArgs.add('-Xlint:-preview')
+			options.compilerArgs.add('-Xlint:-restricted')
 			options.compilerArgs.add('--enable-preview')
 		}
 		tasks.withType(VerificationTask) { task ->

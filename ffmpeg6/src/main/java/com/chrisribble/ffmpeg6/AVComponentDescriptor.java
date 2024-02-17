@@ -2,168 +2,310 @@
 
 package com.chrisribble.ffmpeg6;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+import java.lang.invoke.*;
 import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
+
 /**
- * {@snippet :
+ * {@snippet lang=c :
  * struct AVComponentDescriptor {
  *     int plane;
  *     int step;
  *     int offset;
  *     int shift;
  *     int depth;
- * };
+ * }
  * }
  */
 public class AVComponentDescriptor {
 
-    public static MemoryLayout $LAYOUT() {
-        return constants$337.const$0;
+    AVComponentDescriptor() {
+        // Should not be called directly
     }
-    public static VarHandle plane$VH() {
-        return constants$337.const$1;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int plane;
-     * }
-     */
-    public static int plane$get(MemorySegment seg) {
-        return (int)constants$337.const$1.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int plane;
-     * }
-     */
-    public static void plane$set(MemorySegment seg, int x) {
-        constants$337.const$1.set(seg, x);
-    }
-    public static int plane$get(MemorySegment seg, long index) {
-        return (int)constants$337.const$1.get(seg.asSlice(index*sizeof()));
-    }
-    public static void plane$set(MemorySegment seg, long index, int x) {
-        constants$337.const$1.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle step$VH() {
-        return constants$337.const$2;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int step;
-     * }
-     */
-    public static int step$get(MemorySegment seg) {
-        return (int)constants$337.const$2.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int step;
-     * }
-     */
-    public static void step$set(MemorySegment seg, int x) {
-        constants$337.const$2.set(seg, x);
-    }
-    public static int step$get(MemorySegment seg, long index) {
-        return (int)constants$337.const$2.get(seg.asSlice(index*sizeof()));
-    }
-    public static void step$set(MemorySegment seg, long index, int x) {
-        constants$337.const$2.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle offset$VH() {
-        return constants$337.const$3;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int offset;
-     * }
-     */
-    public static int offset$get(MemorySegment seg) {
-        return (int)constants$337.const$3.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int offset;
-     * }
-     */
-    public static void offset$set(MemorySegment seg, int x) {
-        constants$337.const$3.set(seg, x);
-    }
-    public static int offset$get(MemorySegment seg, long index) {
-        return (int)constants$337.const$3.get(seg.asSlice(index*sizeof()));
-    }
-    public static void offset$set(MemorySegment seg, long index, int x) {
-        constants$337.const$3.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle shift$VH() {
-        return constants$337.const$4;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int shift;
-     * }
-     */
-    public static int shift$get(MemorySegment seg) {
-        return (int)constants$337.const$4.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int shift;
-     * }
-     */
-    public static void shift$set(MemorySegment seg, int x) {
-        constants$337.const$4.set(seg, x);
-    }
-    public static int shift$get(MemorySegment seg, long index) {
-        return (int)constants$337.const$4.get(seg.asSlice(index*sizeof()));
-    }
-    public static void shift$set(MemorySegment seg, long index, int x) {
-        constants$337.const$4.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static VarHandle depth$VH() {
-        return constants$337.const$5;
-    }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * int depth;
-     * }
-     */
-    public static int depth$get(MemorySegment seg) {
-        return (int)constants$337.const$5.get(seg);
-    }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * int depth;
-     * }
-     */
-    public static void depth$set(MemorySegment seg, int x) {
-        constants$337.const$5.set(seg, x);
-    }
-    public static int depth$get(MemorySegment seg, long index) {
-        return (int)constants$337.const$5.get(seg.asSlice(index*sizeof()));
-    }
-    public static void depth$set(MemorySegment seg, long index, int x) {
-        constants$337.const$5.set(seg.asSlice(index*sizeof()), x);
-    }
-    public static long sizeof() { return $LAYOUT().byteSize(); }
-    public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
-        return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
-    }
-    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
-}
 
+    private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
+        FFmpeg.C_INT.withName("plane"),
+        FFmpeg.C_INT.withName("step"),
+        FFmpeg.C_INT.withName("offset"),
+        FFmpeg.C_INT.withName("shift"),
+        FFmpeg.C_INT.withName("depth")
+    ).withName("AVComponentDescriptor");
+
+    /**
+     * The layout of this struct
+     */
+    public static final GroupLayout layout() {
+        return $LAYOUT;
+    }
+
+    private static final OfInt plane$LAYOUT = (OfInt)$LAYOUT.select(groupElement("plane"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int plane
+     * }
+     */
+    public static final OfInt plane$layout() {
+        return plane$LAYOUT;
+    }
+
+    private static final long plane$OFFSET = 0;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int plane
+     * }
+     */
+    public static final long plane$offset() {
+        return plane$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int plane
+     * }
+     */
+    public static int plane(MemorySegment struct) {
+        return struct.get(plane$LAYOUT, plane$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int plane
+     * }
+     */
+    public static void plane(MemorySegment struct, int fieldValue) {
+        struct.set(plane$LAYOUT, plane$OFFSET, fieldValue);
+    }
+
+    private static final OfInt step$LAYOUT = (OfInt)$LAYOUT.select(groupElement("step"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int step
+     * }
+     */
+    public static final OfInt step$layout() {
+        return step$LAYOUT;
+    }
+
+    private static final long step$OFFSET = 4;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int step
+     * }
+     */
+    public static final long step$offset() {
+        return step$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int step
+     * }
+     */
+    public static int step(MemorySegment struct) {
+        return struct.get(step$LAYOUT, step$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int step
+     * }
+     */
+    public static void step(MemorySegment struct, int fieldValue) {
+        struct.set(step$LAYOUT, step$OFFSET, fieldValue);
+    }
+
+    private static final OfInt offset$LAYOUT = (OfInt)$LAYOUT.select(groupElement("offset"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int offset
+     * }
+     */
+    public static final OfInt offset$layout() {
+        return offset$LAYOUT;
+    }
+
+    private static final long offset$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int offset
+     * }
+     */
+    public static final long offset$offset() {
+        return offset$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int offset
+     * }
+     */
+    public static int offset(MemorySegment struct) {
+        return struct.get(offset$LAYOUT, offset$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int offset
+     * }
+     */
+    public static void offset(MemorySegment struct, int fieldValue) {
+        struct.set(offset$LAYOUT, offset$OFFSET, fieldValue);
+    }
+
+    private static final OfInt shift$LAYOUT = (OfInt)$LAYOUT.select(groupElement("shift"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int shift
+     * }
+     */
+    public static final OfInt shift$layout() {
+        return shift$LAYOUT;
+    }
+
+    private static final long shift$OFFSET = 12;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int shift
+     * }
+     */
+    public static final long shift$offset() {
+        return shift$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int shift
+     * }
+     */
+    public static int shift(MemorySegment struct) {
+        return struct.get(shift$LAYOUT, shift$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int shift
+     * }
+     */
+    public static void shift(MemorySegment struct, int fieldValue) {
+        struct.set(shift$LAYOUT, shift$OFFSET, fieldValue);
+    }
+
+    private static final OfInt depth$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depth"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int depth
+     * }
+     */
+    public static final OfInt depth$layout() {
+        return depth$LAYOUT;
+    }
+
+    private static final long depth$OFFSET = 16;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int depth
+     * }
+     */
+    public static final long depth$offset() {
+        return depth$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int depth
+     * }
+     */
+    public static int depth(MemorySegment struct) {
+        return struct.get(depth$LAYOUT, depth$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int depth
+     * }
+     */
+    public static void depth(MemorySegment struct, int fieldValue) {
+        struct.set(depth$LAYOUT, depth$OFFSET, fieldValue);
+    }
+
+    /**
+     * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
+     * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
+     */
+    public static MemorySegment asSlice(MemorySegment array, long index) {
+        return array.asSlice(layout().byteSize() * index);
+    }
+
+    /**
+     * The size (in bytes) of this struct
+     */
+    public static long sizeof() { return layout().byteSize(); }
+
+    /**
+     * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
+     */
+    public static MemorySegment allocate(SegmentAllocator allocator) {
+        return allocator.allocate(layout());
+    }
+
+    /**
+     * Allocate an array of size {@code elementCount} using {@code allocator}.
+     * The returned segment has size {@code elementCount * layout().byteSize()}.
+     */
+    public static MemorySegment allocateArray(long elementCount, SegmentAllocator allocator) {
+        return allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout()));
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, Arena arena, Consumer<MemorySegment> cleanup) {
+        return reinterpret(addr, 1, arena, cleanup);
+    }
+
+    /**
+     * Reinterprets {@code addr} using target {@code arena} and {@code cleanupAction) (if any).
+     * The returned segment has size {@code elementCount * layout().byteSize()}
+     */
+    public static MemorySegment reinterpret(MemorySegment addr, long elementCount, Arena arena, Consumer<MemorySegment> cleanup) {
+        return addr.reinterpret(layout().byteSize() * elementCount, arena, cleanup);
+    }
+}
 
