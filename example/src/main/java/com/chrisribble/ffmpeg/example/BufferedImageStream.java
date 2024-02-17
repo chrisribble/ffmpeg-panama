@@ -32,12 +32,13 @@ import java.util.stream.StreamSupport;
 
 public class BufferedImageStream implements Stream<BufferedImage> {
 	private final Arena arena;
+	private final BufferedImageStreamSpliterator splitr;
 	private final Stream<BufferedImage> delegate;
 
 	private BufferedImageStream(final Builder builder) throws FileNotFoundException {
 		arena = Arena.ofConfined();
 		try {
-			Spliterator<BufferedImage> splitr = BufferedImageStreamSpliterator.builder()
+			splitr = BufferedImageStreamSpliterator.builder()
 					.mp4(builder.mp4)
 					.modFrames(builder.modFrames)
 					.pixelFormat(builder.pixelFormat)
@@ -52,10 +53,8 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 
 	@Override
 	public void close() {
-		try {
-			delegate.close();
-		} finally {
-			arena.close();
+		try (arena; delegate; splitr) {
+			// automatically-managed, reverse-order close
 		}
 	}
 

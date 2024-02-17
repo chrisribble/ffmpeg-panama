@@ -61,7 +61,7 @@ import com.chrisribble.ffmpeg6.AVFrame;
 import com.chrisribble.ffmpeg6.AVPacket;
 import com.chrisribble.ffmpeg6.AVStream;
 
-public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage> {
+public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage>, AutoCloseable {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	// TODO: Should this be 1, 16, 32?
@@ -139,6 +139,20 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		} catch (RuntimeException e) {
 			close();
 			throw e;
+		}
+	}
+
+	@Override
+	public void close() {
+		try {
+			avFreeNonNull(buffer);
+			avFreeNonNull(outputFrame);
+			avFreeNonNull(decodedFrame);
+			swsFreeNonNull(swScaleCtx);
+			avCodecCloseNonNull(avCodecCtx);
+			avFormatCloseNonNull(ppFormatCtx);
+		} finally {
+			closed = true;
 		}
 	}
 
@@ -311,19 +325,6 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 			// Swap red byte
 			pixels[i + 2] = red;
-		}
-	}
-
-	private void close() {
-		try {
-			avFreeNonNull(buffer);
-			avFreeNonNull(outputFrame);
-			avFreeNonNull(decodedFrame);
-			swsFreeNonNull(swScaleCtx);
-			avCodecCloseNonNull(avCodecCtx);
-			avFormatCloseNonNull(ppFormatCtx);
-		} finally {
-			closed = true;
 		}
 	}
 
