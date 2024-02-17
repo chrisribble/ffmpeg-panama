@@ -26,74 +26,173 @@ public class BufferedImageStreamTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static final Resolution OUTPUT_RESOLUTION = new Resolution(960, 540);
+	private static final int MOD_FRAMES = 50;
 
-	@Test
-	public void testStreamRgb() throws IOException {
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-
+	static {
 		//av_log_set_level(AV_LOG_TRACE());
 		av_log_set_level(AV_LOG_WARNING());
+	}
 
+	@Test
+	public void testStreamModFramesRgb() throws IOException {
+		var format = PixelFormat.RGB;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(100)
-				.pixelFormat(PixelFormat.RGB)
+				.modFrames(MOD_FRAMES)
+				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), 3);
+			assertEquals(images.size(), 5);
 
 			// TODO: Assert on some more stuff
-			int frameNumber = 0;
-			for (var image : images) {
-				writeImage(tmpDir, image, ++frameNumber);
-			}
-
-			long totalNanos = System.nanoTime() - startNanos;
-			LOG.info("Sampled {} images in {}ms", images.size(), TimeUnit.NANOSECONDS.toMillis(totalNanos));
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
-			Files.walk(tmpDir)
-					.sorted(Comparator.reverseOrder())
-					.map(Path::toFile)
-					.forEach(File::delete);
+			delete(tmpDir);
 		}
 	}
 
 	@Test
-	public void testStreamGray() throws IOException {
+	public void testStreamModFramesGray() throws IOException {
+		var format = PixelFormat.GRAY;
+
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-
-		// av_log_set_level(AV_LOG_TRACE());
-		av_log_set_level(AV_LOG_WARNING());
-
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(100)
-				.pixelFormat(PixelFormat.GRAY)
+				.modFrames(MOD_FRAMES)
+				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), 3);
+			assertEquals(images.size(), 5);
 
 			// TODO: Assert on some more stuff
-			int frameNumber = 0;
-			for (var image : images) {
-				writeImage(tmpDir, image, ++frameNumber);
-			}
-
-			long totalNanos = System.nanoTime() - startNanos;
-			LOG.info("Sampled {} images in {}ms", images.size(), TimeUnit.NANOSECONDS.toMillis(totalNanos));
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
-			Files.walk(tmpDir)
-					.sorted(Comparator.reverseOrder())
-					.map(Path::toFile)
-					.forEach(File::delete);
+			delete(tmpDir);
+		}
+	}
+
+	@Test
+	public void testStreamModFramesLimitRgb() throws IOException {
+		var format = PixelFormat.RGB;
+		int limit = 2;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.modFrames(MOD_FRAMES)
+				.limit(limit)
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test
+	public void testStreamModFramesLimitGray() throws IOException {
+		var format = PixelFormat.GRAY;
+		int limit = 2;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.modFrames(MOD_FRAMES)
+				.limit(limit)
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test
+	public void testStreamLimitRgb() throws IOException {
+		var format = PixelFormat.RGB;
+		int limit = 1;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.limit(limit)
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test
+	public void testStreamLimitGray() throws IOException {
+		var format = PixelFormat.GRAY;
+		int limit = 1;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.limit(limit)
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	private void writeImages(final Path dir, final List<BufferedImage> images) {
+		int frameNumber = 0;
+		for (var image : images) {
+			writeImage(dir, image, ++frameNumber);
 		}
 	}
 
@@ -107,5 +206,16 @@ public class BufferedImageStreamTest {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	private void logSampled(final int count, final PixelFormat format, final long totalNanos) {
+		LOG.info("Sampled {} {} images in {}ms", count, format, TimeUnit.NANOSECONDS.toMillis(totalNanos));
+	}
+
+	private void delete(final Path tmpDir) throws IOException {
+		Files.walk(tmpDir)
+				.sorted(Comparator.reverseOrder())
+				.map(Path::toFile)
+				.forEach(File::delete);
 	}
 }

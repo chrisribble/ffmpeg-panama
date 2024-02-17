@@ -61,7 +61,7 @@ import com.chrisribble.ffmpeg6.AVFrame;
 import com.chrisribble.ffmpeg6.AVPacket;
 import com.chrisribble.ffmpeg6.AVStream;
 
-public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage>, AutoCloseable {
+public final class BufferedImageStreamSpliterator implements Spliterator<BufferedImage>, AutoCloseable {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	// TODO: Should this be 1, 16, 32?
@@ -70,6 +70,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 	private final Arena arena;
 	private final Path mp4;
 	private final int modFrames;
+	private final Integer limit;
 	private final int pixelFormat;
 
 	private MemorySegment ppFormatCtx;
@@ -87,6 +88,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 	private Resolution dstResolution;
 
 	private int frameNumber;
+	private int images;
 
 	private boolean opened;
 	private boolean closed;
@@ -99,6 +101,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		arena = builder.arena;
 		mp4 = builder.mp4;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
+		limit = builder.limit;
 		pixelFormat = builder.pixelFormat == PixelFormat.RGB
 				? AV_PIX_FMT_RGB24()
 				: AV_PIX_FMT_GRAY8();
@@ -132,7 +135,9 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		if (closed) {
 			throw new IllegalStateException("tryAdvance must not be called after closed");
 		}
-
+		if (limit != null && images == limit) {
+			return false;
+		}
 		try {
 			init();
 			return tryReadFrame(action);
@@ -308,6 +313,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		BufferedImage image = new BufferedImage(width, height, bufferedImageType);
 		image.setData(Raster.createRaster(image.getSampleModel(), new DataBufferByte(pixelBuf, pixelBuf.length), new Point()));
 
+		++images;
 		return image;
 	}
 
@@ -350,7 +356,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		return ctx;
 	}
 
-	private VideoStream getFirstVideoStream(final MemorySegment pFormatCtx) {
+	private static VideoStream getFirstVideoStream(final MemorySegment pFormatCtx) {
 		// Find the first video stream
 		int streams = AVFormatContext.nb_streams(pFormatCtx);
 		var pStreams = AVFormatContext.streams(pFormatCtx);
@@ -369,7 +375,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		return null;
 	}
 
-	private DecoderContext getDecoderContext(final MemorySegment avFormatContext) {
+	private static DecoderContext getDecoderContext(final MemorySegment avFormatContext) {
 		var decoderCtx = NULL;
 		try {
 			// Find the first video stream
@@ -439,7 +445,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 	 * @return MemorySegment which contains an AVCodec*
 	 * @throws AVAllocateException
 	 */
-	private MemorySegment getAVCodec(final VideoStream videoStream) throws AVAllocateException {
+	private static MemorySegment getAVCodec(final VideoStream videoStream) throws AVAllocateException {
 		// Find the AVCodec* decoder for the video stream
 		int codecId = AVCodecParameters.codec_id(videoStream.avCodecParams());
 		var pCodec = avcodec_find_decoder(codecId);
@@ -480,6 +486,7 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 		private Arena arena;
 		private Path mp4;
 		private Integer modFrames;
+		private Integer limit;
 		private PixelFormat pixelFormat;
 		private Resolution resolution;
 
@@ -492,6 +499,11 @@ public class BufferedImageStreamSpliterator implements Spliterator<BufferedImage
 
 		public Builder modFrames(final Integer modFrames) {
 			this.modFrames = modFrames;
+			return this;
+		}
+
+		public Builder limit(final Integer limit) {
+			this.limit = limit;
 			return this;
 		}
 

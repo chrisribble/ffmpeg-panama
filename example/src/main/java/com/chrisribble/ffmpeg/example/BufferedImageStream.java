@@ -30,7 +30,7 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-public class BufferedImageStream implements Stream<BufferedImage> {
+public final class BufferedImageStream implements Stream<BufferedImage> {
 	private final Arena arena;
 	private final BufferedImageStreamSpliterator splitr;
 	private final Stream<BufferedImage> delegate;
@@ -41,6 +41,7 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 			splitr = BufferedImageStreamSpliterator.builder()
 					.mp4(builder.mp4)
 					.modFrames(builder.modFrames)
+					.limit(builder.limit)
 					.pixelFormat(builder.pixelFormat)
 					.resolution(builder.resolution)
 					.build(arena);
@@ -295,6 +296,7 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 	public static final class Builder {
 		private Path mp4;
 		private Integer modFrames;
+		private Integer limit;
 		private PixelFormat pixelFormat;
 		private Resolution resolution;
 
@@ -307,6 +309,11 @@ public class BufferedImageStream implements Stream<BufferedImage> {
 
 		public Builder modFrames(final Integer modFrames) {
 			this.modFrames = modFrames;
+			return this;
+		}
+
+		public Builder limit(final Integer limit) {
+			this.limit = limit;
 			return this;
 		}
 

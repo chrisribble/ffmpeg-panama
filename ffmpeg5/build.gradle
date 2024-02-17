@@ -6,3 +6,7 @@ tasks.named('test') {
 	useTestNG()
 	jvmArgs(['--enable-preview'])
 }
+
+sonarlintMain {
+	enabled = false
+}

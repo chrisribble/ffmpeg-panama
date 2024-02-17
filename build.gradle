@@ -1,8 +1,8 @@
 plugins {
-	id 'com.github.ben-manes.versions' version '0.48.0'
+	id 'com.github.ben-manes.versions' version '0.51.0'
 	id 'com.google.osdetector' version '1.7.3'
-	id 'se.solrike.sonarlint' version '1.0.0-beta.15' apply false
-	id 'com.github.spotbugs' version '5.1.3' apply false
+	id 'se.solrike.sonarlint' version '2.0.0' apply false
+	id 'com.github.spotbugs' version '6.0.7' apply false
 }
 
 
@@ -45,7 +45,6 @@ subprojects {
 			options.compilerArgs.add('-Werror')
 			options.compilerArgs.add('-Xlint:all')
 			options.compilerArgs.add('-Xlint:-processing')
-			options.compilerArgs.add('-Xlint:-preview')
 			options.compilerArgs.add('-Xlint:-restricted')
 			options.compilerArgs.add('--enable-preview')
 		}
@@ -56,5 +55,15 @@ subprojects {
 				}
 			}
 		}
+	}
+
+	sonarlint {
+		excludeRules = [
+			'java:S100',   // Method name pattern for C type congruence
+			'java:S125',   // Commented-out code false positives for C type info
+			'java:S1135',  // TODO
+			'java:S3864',  // peek in Stream delegate
+			'java:S3516',  // false positive for method return invariance
+		]
 	}
 }
