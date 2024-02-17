@@ -19,7 +19,6 @@ export FFMPEG_VERSION=5.1.4
 wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
 tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
 ${JEXTRACT} \
-  --source \
   -I ./ffmpeg-${FFMPEG_VERSION} \
   -l avcodec -l avformat -l avutil -l swscale \
   --output ffmpeg5/src/main/java --target-package com.chrisribble.ffmpeg5 --header-class-name FFmpeg \
@@ -29,7 +28,6 @@ export FFMPEG_VERSION=6.0.1
 wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
 tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
 ${JEXTRACT} \
-  --source \
   -I ./ffmpeg-${FFMPEG_VERSION} \
   -l avcodec -l avformat -l avutil -l swscale \
   --output ffmpeg6/src/main/java --target-package com.chrisribble.ffmpeg6 --header-class-name FFmpeg \
