@@ -1,7 +1,7 @@
 package com.chrisribble.ffmpeg.example;
 
-import static com.chrisribble.ffmpeg6.FFmpeg.AV_LOG_WARNING;
-import static com.chrisribble.ffmpeg6.FFmpeg_1.av_log_set_level;
+import static com.chrisribble.ffmpeg6.FFmpeg_2.av_log_set_level;
+import static com.chrisribble.ffmpeg6.FFmpeg_3.AV_LOG_WARNING;
 import static org.testng.Assert.assertEquals;
 
 import java.awt.image.BufferedImage;
@@ -28,7 +28,42 @@ public class BufferedImageStreamTest {
 	private static final Resolution OUTPUT_RESOLUTION = new Resolution(960, 540);
 
 	@Test
-	public void testStream() throws IOException {
+	public void testStreamRgb() throws IOException {
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+
+		//av_log_set_level(AV_LOG_TRACE());
+		av_log_set_level(AV_LOG_WARNING());
+
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.modFrames(100)
+				.pixelFormat(PixelFormat.RGB)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 3);
+
+			// TODO: Assert on some more stuff
+			int frameNumber = 0;
+			for (var image : images) {
+				writeImage(tmpDir, image, ++frameNumber);
+			}
+
+			long totalNanos = System.nanoTime() - startNanos;
+			LOG.info("Sampled {} images in {}ms", images.size(), TimeUnit.NANOSECONDS.toMillis(totalNanos));
+		} finally {
+			Files.walk(tmpDir)
+					.sorted(Comparator.reverseOrder())
+					.map(Path::toFile)
+					.forEach(File::delete);
+		}
+	}
+
+	@Test
+	public void testStreamGray() throws IOException {
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 
 		// av_log_set_level(AV_LOG_TRACE());
@@ -39,7 +74,7 @@ public class BufferedImageStreamTest {
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(100)
-				.pixelFormat(PixelFormat.RGB)
+				.pixelFormat(PixelFormat.GRAY)
 				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
 
