@@ -189,6 +189,58 @@ public class BufferedImageStreamTest {
 		}
 	}
 
+	@Test
+	public void testStreamNativeLimitRgb() throws IOException {
+		var format = PixelFormat.RGB;
+		int limit = 1;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.limit(limit)
+					.toList();
+			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test
+	public void testStreamNativeLimitGray() throws IOException {
+		var format = PixelFormat.GRAY;
+		int limit = 1;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.limit(limit)
+					.toList();
+			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
 	private void writeImages(final Path dir, final List<BufferedImage> images) {
 		int frameNumber = 0;
 		for (var image : images) {
