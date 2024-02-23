@@ -618,7 +618,11 @@ public class AVOutputFormat {
      * int (*write_header)(struct AVFormatContext *)
      * }
      */
-    public class write_header {
+    public static class write_header {
+
+        write_header() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -712,7 +716,11 @@ public class AVOutputFormat {
      * int (*write_packet)(struct AVFormatContext *, AVPacket *)
      * }
      */
-    public class write_packet {
+    public static class write_packet {
+
+        write_packet() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -807,7 +815,11 @@ public class AVOutputFormat {
      * int (*write_trailer)(struct AVFormatContext *)
      * }
      */
-    public class write_trailer {
+    public static class write_trailer {
+
+        write_trailer() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -901,7 +913,11 @@ public class AVOutputFormat {
      * int (*interleave_packet)(struct AVFormatContext *, AVPacket *, int, int)
      * }
      */
-    public class interleave_packet {
+    public static class interleave_packet {
+
+        interleave_packet() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -998,7 +1014,11 @@ public class AVOutputFormat {
      * int (*query_codec)(enum AVCodecID, int)
      * }
      */
-    public class query_codec {
+    public static class query_codec {
+
+        query_codec() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1093,7 +1113,11 @@ public class AVOutputFormat {
      * void (*get_output_timestamp)(struct AVFormatContext *, int, int64_t *, int64_t *)
      * }
      */
-    public class get_output_timestamp {
+    public static class get_output_timestamp {
+
+        get_output_timestamp() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1189,7 +1213,11 @@ public class AVOutputFormat {
      * int (*control_message)(struct AVFormatContext *, int, void *, size_t)
      * }
      */
-    public class control_message {
+    public static class control_message {
+
+        control_message() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1286,7 +1314,11 @@ public class AVOutputFormat {
      * int (*write_uncoded_frame)(struct AVFormatContext *, int, AVFrame **, unsigned int)
      * }
      */
-    public class write_uncoded_frame {
+    public static class write_uncoded_frame {
+
+        write_uncoded_frame() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1383,7 +1415,11 @@ public class AVOutputFormat {
      * int (*get_device_list)(struct AVFormatContext *, struct AVDeviceInfoList *)
      * }
      */
-    public class get_device_list {
+    public static class get_device_list {
+
+        get_device_list() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1522,7 +1558,11 @@ public class AVOutputFormat {
      * int (*init)(struct AVFormatContext *)
      * }
      */
-    public class init {
+    public static class init {
+
+        init() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1616,7 +1656,11 @@ public class AVOutputFormat {
      * void (*deinit)(struct AVFormatContext *)
      * }
      */
-    public class deinit {
+    public static class deinit {
+
+        deinit() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1709,7 +1753,11 @@ public class AVOutputFormat {
      * int (*check_bitstream)(struct AVFormatContext *, struct AVStream *, const AVPacket *)
      * }
      */
-    public class check_bitstream {
+    public static class check_bitstream {
+
+        check_bitstream() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

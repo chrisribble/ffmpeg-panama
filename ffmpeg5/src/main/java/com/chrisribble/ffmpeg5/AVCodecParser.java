@@ -172,7 +172,11 @@ public class AVCodecParser {
      * int (*parser_init)(AVCodecParserContext *)
      * }
      */
-    public class parser_init {
+    public static class parser_init {
+
+        parser_init() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -266,7 +270,11 @@ public class AVCodecParser {
      * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
      * }
      */
-    public class parser_parse {
+    public static class parser_parse {
+
+        parser_parse() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -365,7 +373,11 @@ public class AVCodecParser {
      * void (*parser_close)(AVCodecParserContext *)
      * }
      */
-    public class parser_close {
+    public static class parser_close {
+
+        parser_close() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -458,7 +470,11 @@ public class AVCodecParser {
      * int (*split)(AVCodecContext *, const uint8_t *, int)
      * }
      */
-    public class split {
+    public static class split {
+
+        split() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

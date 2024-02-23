@@ -93,6 +93,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  */
 public class av_format_control_message {
 
+    av_format_control_message() {
+        // Should not be called directly
+    }
+
     /**
      * The function pointer signature, expressed as a functional interface
      */

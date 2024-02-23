@@ -19,6 +19,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  */
 public class on_exit$__func {
 
+    on_exit$__func() {
+        // Should not be called directly
+    }
+
     /**
      * The function pointer signature, expressed as a functional interface
      */

@@ -19,6 +19,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  */
 public class av_buffer_pool_init2$alloc {
 
+    av_buffer_pool_init2$alloc() {
+        // Should not be called directly
+    }
+
     /**
      * The function pointer signature, expressed as a functional interface
      */

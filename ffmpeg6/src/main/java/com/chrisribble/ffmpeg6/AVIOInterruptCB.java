@@ -43,7 +43,11 @@ public class AVIOInterruptCB {
      * int (*callback)(void *)
      * }
      */
-    public class callback {
+    public static class callback {
+
+        callback() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

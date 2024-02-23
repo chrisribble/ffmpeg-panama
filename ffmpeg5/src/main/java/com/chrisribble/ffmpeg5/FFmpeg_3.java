@@ -41,6 +41,20 @@ public class FFmpeg_3 {
         }
     }
 
+    static MemoryLayout align(MemoryLayout layout, long align) {
+        return switch (layout) {
+            case PaddingLayout p -> p;
+            case ValueLayout v -> v.withByteAlignment(align);
+            case GroupLayout g -> {
+                MemoryLayout[] alignedMembers = g.memberLayouts().stream()
+                        .map(m -> align(m, align)).toArray(MemoryLayout[]::new);
+                yield g instanceof StructLayout ?
+                        MemoryLayout.structLayout(alignedMembers) : MemoryLayout.unionLayout(alignedMembers);
+            }
+            case SequenceLayout s -> MemoryLayout.sequenceLayout(s.elementCount(), align(s.elementLayout(), align));
+        };
+    }
+
     static final SymbolLookup SYMBOL_LOOKUP = SymbolLookup.libraryLookup(System.mapLibraryName("avcodec"), LIBRARY_ARENA)
             .or(SymbolLookup.libraryLookup(System.mapLibraryName("avformat"), LIBRARY_ARENA))
             .or(SymbolLookup.libraryLookup(System.mapLibraryName("avutil"), LIBRARY_ARENA))

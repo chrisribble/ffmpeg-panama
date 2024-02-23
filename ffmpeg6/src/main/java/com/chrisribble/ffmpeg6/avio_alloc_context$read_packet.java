@@ -19,6 +19,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  */
 public class avio_alloc_context$read_packet {
 
+    avio_alloc_context$read_packet() {
+        // Should not be called directly
+    }
+
     /**
      * The function pointer signature, expressed as a functional interface
      */

@@ -521,7 +521,11 @@ public class AVInputFormat {
      * int (*read_probe)(const AVProbeData *)
      * }
      */
-    public class read_probe {
+    public static class read_probe {
+
+        read_probe() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -615,7 +619,11 @@ public class AVInputFormat {
      * int (*read_header)(struct AVFormatContext *)
      * }
      */
-    public class read_header {
+    public static class read_header {
+
+        read_header() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -709,7 +717,11 @@ public class AVInputFormat {
      * int (*read_packet)(struct AVFormatContext *, AVPacket *)
      * }
      */
-    public class read_packet {
+    public static class read_packet {
+
+        read_packet() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -804,7 +816,11 @@ public class AVInputFormat {
      * int (*read_close)(struct AVFormatContext *)
      * }
      */
-    public class read_close {
+    public static class read_close {
+
+        read_close() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -898,7 +914,11 @@ public class AVInputFormat {
      * int (*read_seek)(struct AVFormatContext *, int, int64_t, int)
      * }
      */
-    public class read_seek {
+    public static class read_seek {
+
+        read_seek() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -995,7 +1015,11 @@ public class AVInputFormat {
      * int64_t (*read_timestamp)(struct AVFormatContext *, int, int64_t *, int64_t)
      * }
      */
-    public class read_timestamp {
+    public static class read_timestamp {
+
+        read_timestamp() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1092,7 +1116,11 @@ public class AVInputFormat {
      * int (*read_play)(struct AVFormatContext *)
      * }
      */
-    public class read_play {
+    public static class read_play {
+
+        read_play() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1186,7 +1214,11 @@ public class AVInputFormat {
      * int (*read_pause)(struct AVFormatContext *)
      * }
      */
-    public class read_pause {
+    public static class read_pause {
+
+        read_pause() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1280,7 +1312,11 @@ public class AVInputFormat {
      * int (*read_seek2)(struct AVFormatContext *, int, int64_t, int64_t, int64_t, int)
      * }
      */
-    public class read_seek2 {
+    public static class read_seek2 {
+
+        read_seek2() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1379,7 +1415,11 @@ public class AVInputFormat {
      * int (*get_device_list)(struct AVFormatContext *, struct AVDeviceInfoList *)
      * }
      */
-    public class get_device_list {
+    public static class get_device_list {
+
+        get_device_list() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

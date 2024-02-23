@@ -105,7 +105,11 @@ public class AVClass {
      * const char *(*item_name)(void *)
      * }
      */
-    public class item_name {
+    public static class item_name {
+
+        item_name() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -419,7 +423,11 @@ public class AVClass {
      * AVClassCategory (*get_category)(void *)
      * }
      */
-    public class get_category {
+    public static class get_category {
+
+        get_category() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -513,7 +521,11 @@ public class AVClass {
      * int (*query_ranges)(struct AVOptionRanges **, void *, const char *, int)
      * }
      */
-    public class query_ranges {
+    public static class query_ranges {
+
+        query_ranges() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -610,7 +622,11 @@ public class AVClass {
      * void *(*child_next)(void *, void *)
      * }
      */
-    public class child_next {
+    public static class child_next {
+
+        child_next() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -705,7 +721,11 @@ public class AVClass {
      * const struct AVClass *(*child_class_iterate)(void **)
      * }
      */
-    public class child_class_iterate {
+    public static class child_class_iterate {
+
+        child_class_iterate() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

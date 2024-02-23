@@ -19,6 +19,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  */
 public class cookie_read_function_t {
 
+    cookie_read_function_t() {
+        // Should not be called directly
+    }
+
     /**
      * The function pointer signature, expressed as a functional interface
      */

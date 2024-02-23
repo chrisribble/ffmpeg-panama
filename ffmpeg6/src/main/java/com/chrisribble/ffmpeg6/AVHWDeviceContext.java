@@ -228,7 +228,11 @@ public class AVHWDeviceContext {
      * void (*free)(struct AVHWDeviceContext *)
      * }
      */
-    public class free {
+    public static class free {
+
+        free() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

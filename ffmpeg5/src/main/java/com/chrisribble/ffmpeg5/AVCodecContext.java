@@ -1515,7 +1515,11 @@ public class AVCodecContext {
      * void (*draw_horiz_band)(struct AVCodecContext *, const AVFrame *, int *, int, int, int)
      * }
      */
-    public class draw_horiz_band {
+    public static class draw_horiz_band {
+
+        draw_horiz_band() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1613,7 +1617,11 @@ public class AVCodecContext {
      * enum AVPixelFormat (*get_format)(struct AVCodecContext *, const enum AVPixelFormat *)
      * }
      */
-    public class get_format {
+    public static class get_format {
+
+        get_format() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -4128,7 +4136,11 @@ public class AVCodecContext {
      * int (*get_buffer2)(struct AVCodecContext *, AVFrame *, int)
      * }
      */
-    public class get_buffer2 {
+    public static class get_buffer2 {
+
+        get_buffer2() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -5753,7 +5765,11 @@ public class AVCodecContext {
      * int (*execute)(struct AVCodecContext *, int (*)(struct AVCodecContext *, void *), void *, int *, int, int)
      * }
      */
-    public class execute {
+    public static class execute {
+
+        execute() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -5852,7 +5868,11 @@ public class AVCodecContext {
      * int (*execute2)(struct AVCodecContext *, int (*)(struct AVCodecContext *, void *, int, int), void *, int *, int)
      * }
      */
-    public class execute2 {
+    public static class execute2 {
+
+        execute2() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -7666,7 +7686,11 @@ public class AVCodecContext {
      * int (*get_encode_buffer)(struct AVCodecContext *, AVPacket *, int)
      * }
      */
-    public class get_encode_buffer {
+    public static class get_encode_buffer {
+
+        get_encode_buffer() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

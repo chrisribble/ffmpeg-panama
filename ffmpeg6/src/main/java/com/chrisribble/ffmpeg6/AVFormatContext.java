@@ -3097,7 +3097,11 @@ public class AVFormatContext {
      * int (*io_open)(struct AVFormatContext *, AVIOContext **, const char *, int, AVDictionary **)
      * }
      */
-    public class io_open {
+    public static class io_open {
+
+        io_open() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -3195,7 +3199,11 @@ public class AVFormatContext {
      * void (*io_close)(struct AVFormatContext *, AVIOContext *)
      * }
      */
-    public class io_close {
+    public static class io_close {
+
+        io_close() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -3465,7 +3473,11 @@ public class AVFormatContext {
      * int (*io_close2)(struct AVFormatContext *, AVIOContext *)
      * }
      */
-    public class io_close2 {
+    public static class io_close2 {
+
+        io_close2() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

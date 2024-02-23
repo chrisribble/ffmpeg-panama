@@ -19,6 +19,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  */
 public class avcodec_default_execute$func {
 
+    avcodec_default_execute$func() {
+        // Should not be called directly
+    }
+
     /**
      * The function pointer signature, expressed as a functional interface
      */

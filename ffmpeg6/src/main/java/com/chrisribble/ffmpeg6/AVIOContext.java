@@ -364,7 +364,11 @@ public class AVIOContext {
      * int (*read_packet)(void *, uint8_t *, int)
      * }
      */
-    public class read_packet {
+    public static class read_packet {
+
+        read_packet() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -460,7 +464,11 @@ public class AVIOContext {
      * int (*write_packet)(void *, uint8_t *, int)
      * }
      */
-    public class write_packet {
+    public static class write_packet {
+
+        write_packet() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -556,7 +564,11 @@ public class AVIOContext {
      * int64_t (*seek)(void *, int64_t, int)
      * }
      */
-    public class seek {
+    public static class seek {
+
+        seek() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1004,7 +1016,11 @@ public class AVIOContext {
      * unsigned long (*update_checksum)(unsigned long, const uint8_t *, unsigned int)
      * }
      */
-    public class update_checksum {
+    public static class update_checksum {
+
+        update_checksum() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1100,7 +1116,11 @@ public class AVIOContext {
      * int (*read_pause)(void *, int)
      * }
      */
-    public class read_pause {
+    public static class read_pause {
+
+        read_pause() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1195,7 +1215,11 @@ public class AVIOContext {
      * int64_t (*read_seek)(void *, int, int64_t, int)
      * }
      */
-    public class read_seek {
+    public static class read_seek {
+
+        read_seek() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1468,7 +1492,11 @@ public class AVIOContext {
      * int (*write_data_type)(void *, uint8_t *, int, enum AVIODataMarkerType, int64_t)
      * }
      */
-    public class write_data_type {
+    public static class write_data_type {
+
+        write_data_type() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface

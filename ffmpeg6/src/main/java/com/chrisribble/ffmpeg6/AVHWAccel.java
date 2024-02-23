@@ -292,7 +292,11 @@ public class AVHWAccel {
      * int (*alloc_frame)(AVCodecContext *, AVFrame *)
      * }
      */
-    public class alloc_frame {
+    public static class alloc_frame {
+
+        alloc_frame() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -387,7 +391,11 @@ public class AVHWAccel {
      * int (*start_frame)(AVCodecContext *, const uint8_t *, uint32_t)
      * }
      */
-    public class start_frame {
+    public static class start_frame {
+
+        start_frame() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -483,7 +491,11 @@ public class AVHWAccel {
      * int (*decode_params)(AVCodecContext *, int, const uint8_t *, uint32_t)
      * }
      */
-    public class decode_params {
+    public static class decode_params {
+
+        decode_params() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -580,7 +592,11 @@ public class AVHWAccel {
      * int (*decode_slice)(AVCodecContext *, const uint8_t *, uint32_t)
      * }
      */
-    public class decode_slice {
+    public static class decode_slice {
+
+        decode_slice() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -676,7 +692,11 @@ public class AVHWAccel {
      * int (*end_frame)(AVCodecContext *)
      * }
      */
-    public class end_frame {
+    public static class end_frame {
+
+        end_frame() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -814,7 +834,11 @@ public class AVHWAccel {
      * int (*init)(AVCodecContext *)
      * }
      */
-    public class init {
+    public static class init {
+
+        init() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -908,7 +932,11 @@ public class AVHWAccel {
      * int (*uninit)(AVCodecContext *)
      * }
      */
-    public class uninit {
+    public static class uninit {
+
+        uninit() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
@@ -1090,7 +1118,11 @@ public class AVHWAccel {
      * int (*frame_params)(AVCodecContext *, AVBufferRef *)
      * }
      */
-    public class frame_params {
+    public static class frame_params {
+
+        frame_params() {
+            // Should not be called directly
+        }
 
         /**
          * The function pointer signature, expressed as a functional interface
