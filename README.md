@@ -21,7 +21,7 @@ tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
 ${JEXTRACT} \
   -I ./ffmpeg-${FFMPEG_VERSION} \
   -l avcodec -l avformat -l avutil -l swscale \
-  --output ffmpeg5/src/main/java --target-package com.chrisribble.ffmpeg5 --header-class-name FFmpeg \
+  --output ffmpeg5/src/main/java --target-package io.github.chrisribble.ffmpeg5 --header-class-name FFmpeg \
   ffmpeg5/ffmpeg.h
 
 export FFMPEG_VERSION=6.0.1
@@ -30,6 +30,6 @@ tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
 ${JEXTRACT} \
   -I ./ffmpeg-${FFMPEG_VERSION} \
   -l avcodec -l avformat -l avutil -l swscale \
-  --output ffmpeg6/src/main/java --target-package com.chrisribble.ffmpeg6 --header-class-name FFmpeg \
+  --output ffmpeg6/src/main/java --target-package io.github.chrisribble.ffmpeg6 --header-class-name FFmpeg \
   ffmpeg6/ffmpeg.h
 ```
