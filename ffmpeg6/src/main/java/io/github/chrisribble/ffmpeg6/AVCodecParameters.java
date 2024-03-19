@@ -45,6 +45,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     int trailing_padding;
  *     int seek_preroll;
  *     AVChannelLayout ch_layout;
+ *     AVRational framerate;
+ *     AVPacketSideData *coded_side_data;
+ *     int nb_coded_side_data;
  * }
  * }
  */
@@ -87,7 +90,11 @@ public class AVCodecParameters {
         FFmpeg.C_INT.withName("trailing_padding"),
         FFmpeg.C_INT.withName("seek_preroll"),
         MemoryLayout.paddingLayout(4),
-        AVChannelLayout.layout().withName("ch_layout")
+        AVChannelLayout.layout().withName("ch_layout"),
+        AVRational.layout().withName("framerate"),
+        FFmpeg.C_POINTER.withName("coded_side_data"),
+        FFmpeg.C_INT.withName("nb_coded_side_data"),
+        MemoryLayout.paddingLayout(4)
     ).withName("AVCodecParameters");
 
     /**
@@ -1415,6 +1422,138 @@ public class AVCodecParameters {
      */
     public static void ch_layout(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, ch_layout$OFFSET, ch_layout$LAYOUT.byteSize());
+    }
+
+    private static final GroupLayout framerate$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("framerate"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * AVRational framerate
+     * }
+     */
+    public static final GroupLayout framerate$layout() {
+        return framerate$LAYOUT;
+    }
+
+    private static final long framerate$OFFSET = 168;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * AVRational framerate
+     * }
+     */
+    public static final long framerate$offset() {
+        return framerate$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * AVRational framerate
+     * }
+     */
+    public static MemorySegment framerate(MemorySegment struct) {
+        return struct.asSlice(framerate$OFFSET, framerate$LAYOUT.byteSize());
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * AVRational framerate
+     * }
+     */
+    public static void framerate(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, framerate$OFFSET, framerate$LAYOUT.byteSize());
+    }
+
+    private static final AddressLayout coded_side_data$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("coded_side_data"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * AVPacketSideData *coded_side_data
+     * }
+     */
+    public static final AddressLayout coded_side_data$layout() {
+        return coded_side_data$LAYOUT;
+    }
+
+    private static final long coded_side_data$OFFSET = 176;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * AVPacketSideData *coded_side_data
+     * }
+     */
+    public static final long coded_side_data$offset() {
+        return coded_side_data$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * AVPacketSideData *coded_side_data
+     * }
+     */
+    public static MemorySegment coded_side_data(MemorySegment struct) {
+        return struct.get(coded_side_data$LAYOUT, coded_side_data$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * AVPacketSideData *coded_side_data
+     * }
+     */
+    public static void coded_side_data(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(coded_side_data$LAYOUT, coded_side_data$OFFSET, fieldValue);
+    }
+
+    private static final OfInt nb_coded_side_data$LAYOUT = (OfInt)$LAYOUT.select(groupElement("nb_coded_side_data"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * int nb_coded_side_data
+     * }
+     */
+    public static final OfInt nb_coded_side_data$layout() {
+        return nb_coded_side_data$LAYOUT;
+    }
+
+    private static final long nb_coded_side_data$OFFSET = 184;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * int nb_coded_side_data
+     * }
+     */
+    public static final long nb_coded_side_data$offset() {
+        return nb_coded_side_data$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * int nb_coded_side_data
+     * }
+     */
+    public static int nb_coded_side_data(MemorySegment struct) {
+        return struct.get(nb_coded_side_data$LAYOUT, nb_coded_side_data$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * int nb_coded_side_data
+     * }
+     */
+    public static void nb_coded_side_data(MemorySegment struct, int fieldValue) {
+        struct.set(nb_coded_side_data$LAYOUT, nb_coded_side_data$OFFSET, fieldValue);
     }
 
     /**

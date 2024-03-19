@@ -70,10 +70,10 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     char *codec_whitelist;
  *     char *format_whitelist;
  *     int io_repositioned;
- *     const AVCodec *video_codec;
- *     const AVCodec *audio_codec;
- *     const AVCodec *subtitle_codec;
- *     const AVCodec *data_codec;
+ *     const struct AVCodec *video_codec;
+ *     const struct AVCodec *audio_codec;
+ *     const struct AVCodec *subtitle_codec;
+ *     const struct AVCodec *data_codec;
  *     int metadata_header_padding;
  *     void *opaque;
  *     av_format_control_message control_message_cb;
@@ -2613,7 +2613,7 @@ public class AVFormatContext {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const AVCodec *video_codec
+     * const struct AVCodec *video_codec
      * }
      */
     public static final AddressLayout video_codec$layout() {
@@ -2625,7 +2625,7 @@ public class AVFormatContext {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const AVCodec *video_codec
+     * const struct AVCodec *video_codec
      * }
      */
     public static final long video_codec$offset() {
@@ -2635,7 +2635,7 @@ public class AVFormatContext {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const AVCodec *video_codec
+     * const struct AVCodec *video_codec
      * }
      */
     public static MemorySegment video_codec(MemorySegment struct) {
@@ -2645,7 +2645,7 @@ public class AVFormatContext {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const AVCodec *video_codec
+     * const struct AVCodec *video_codec
      * }
      */
     public static void video_codec(MemorySegment struct, MemorySegment fieldValue) {
@@ -2657,7 +2657,7 @@ public class AVFormatContext {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const AVCodec *audio_codec
+     * const struct AVCodec *audio_codec
      * }
      */
     public static final AddressLayout audio_codec$layout() {
@@ -2669,7 +2669,7 @@ public class AVFormatContext {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const AVCodec *audio_codec
+     * const struct AVCodec *audio_codec
      * }
      */
     public static final long audio_codec$offset() {
@@ -2679,7 +2679,7 @@ public class AVFormatContext {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const AVCodec *audio_codec
+     * const struct AVCodec *audio_codec
      * }
      */
     public static MemorySegment audio_codec(MemorySegment struct) {
@@ -2689,7 +2689,7 @@ public class AVFormatContext {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const AVCodec *audio_codec
+     * const struct AVCodec *audio_codec
      * }
      */
     public static void audio_codec(MemorySegment struct, MemorySegment fieldValue) {
@@ -2701,7 +2701,7 @@ public class AVFormatContext {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const AVCodec *subtitle_codec
+     * const struct AVCodec *subtitle_codec
      * }
      */
     public static final AddressLayout subtitle_codec$layout() {
@@ -2713,7 +2713,7 @@ public class AVFormatContext {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const AVCodec *subtitle_codec
+     * const struct AVCodec *subtitle_codec
      * }
      */
     public static final long subtitle_codec$offset() {
@@ -2723,7 +2723,7 @@ public class AVFormatContext {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const AVCodec *subtitle_codec
+     * const struct AVCodec *subtitle_codec
      * }
      */
     public static MemorySegment subtitle_codec(MemorySegment struct) {
@@ -2733,7 +2733,7 @@ public class AVFormatContext {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const AVCodec *subtitle_codec
+     * const struct AVCodec *subtitle_codec
      * }
      */
     public static void subtitle_codec(MemorySegment struct, MemorySegment fieldValue) {
@@ -2745,7 +2745,7 @@ public class AVFormatContext {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const AVCodec *data_codec
+     * const struct AVCodec *data_codec
      * }
      */
     public static final AddressLayout data_codec$layout() {
@@ -2757,7 +2757,7 @@ public class AVFormatContext {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const AVCodec *data_codec
+     * const struct AVCodec *data_codec
      * }
      */
     public static final long data_codec$offset() {
@@ -2767,7 +2767,7 @@ public class AVFormatContext {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const AVCodec *data_codec
+     * const struct AVCodec *data_codec
      * }
      */
     public static MemorySegment data_codec(MemorySegment struct) {
@@ -2777,7 +2777,7 @@ public class AVFormatContext {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const AVCodec *data_codec
+     * const struct AVCodec *data_codec
      * }
      */
     public static void data_codec(MemorySegment struct, MemorySegment fieldValue) {

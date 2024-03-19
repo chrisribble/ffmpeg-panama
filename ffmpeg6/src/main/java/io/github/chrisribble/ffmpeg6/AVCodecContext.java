@@ -146,7 +146,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     AVRational framerate;
  *     enum AVPixelFormat sw_pix_fmt;
  *     AVRational pkt_timebase;
- *     const AVCodecDescriptor *codec_descriptor;
+ *     const struct AVCodecDescriptor *codec_descriptor;
  *     int64_t pts_correction_num_faulty_pts;
  *     int64_t pts_correction_num_faulty_dts;
  *     int64_t pts_correction_last_pts;
@@ -6451,7 +6451,7 @@ public class AVCodecContext {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const AVCodecDescriptor *codec_descriptor
+     * const struct AVCodecDescriptor *codec_descriptor
      * }
      */
     public static final AddressLayout codec_descriptor$layout() {
@@ -6463,7 +6463,7 @@ public class AVCodecContext {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const AVCodecDescriptor *codec_descriptor
+     * const struct AVCodecDescriptor *codec_descriptor
      * }
      */
     public static final long codec_descriptor$offset() {
@@ -6473,7 +6473,7 @@ public class AVCodecContext {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const AVCodecDescriptor *codec_descriptor
+     * const struct AVCodecDescriptor *codec_descriptor
      * }
      */
     public static MemorySegment codec_descriptor(MemorySegment struct) {
@@ -6483,7 +6483,7 @@ public class AVCodecContext {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const AVCodecDescriptor *codec_descriptor
+     * const struct AVCodecDescriptor *codec_descriptor
      * }
      */
     public static void codec_descriptor(MemorySegment struct, MemorySegment fieldValue) {
