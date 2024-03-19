@@ -3,11 +3,6 @@ FFmpeg Java (Panama) bindings
 
 # Building
 - Download/install jextract 22 from https://jdk.java.net/jextract
-- Download/install JDK 22 from https://jdk.java.net/22/
-- Tell gradle about JDK 22 toolchain
-```
-echo "org.gradle.java.installations.paths=PATH_TO_JDK_22" >> ~/.gradle/gradle.properties
-```
 
 # Generate FFmpeg bindings
 ## Run jextract on FFmpeg tarballs
