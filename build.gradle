@@ -2,7 +2,7 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.51.0'
 	id 'com.google.osdetector' version '1.7.3'
 	id 'se.solrike.sonarlint' version '2.0.0' apply false
-	id 'com.github.spotbugs' version '6.0.7' apply false
+	id 'com.github.spotbugs' version '6.0.9' apply false
 }
 
 
@@ -21,7 +21,6 @@ subprojects {
 	apply plugin: 'jacoco'
 	apply plugin: 'maven-publish'
 	apply plugin: "se.solrike.sonarlint"
-	//apply plugin: 'com.github.spotbugs'
 
 	java {
 		sourceCompatibility = 22
@@ -46,7 +45,6 @@ subprojects {
 			options.compilerArgs.add('-Xlint:all')
 			options.compilerArgs.add('-Xlint:-processing')
 			options.compilerArgs.add('-Xlint:-restricted')
-			options.compilerArgs.add('--enable-preview')
 		}
 		tasks.withType(VerificationTask) { task ->
 			if (task.name.startsWith("spotbugs")) {
@@ -63,7 +61,6 @@ subprojects {
 			'java:S125',   // Commented-out code false positives for C type info
 			'java:S1135',  // TODO
 			'java:S3864',  // peek in Stream delegate
-			'java:S3516',  // false positive for method return invariance
 		]
 	}
 }

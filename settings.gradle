@@ -14,7 +14,7 @@ plugins {
 dependencyResolutionManagement {
 	versionCatalogs {
 		libs {
-			def slf4j = version('slf4j', '2.0.11')
+			def slf4j = version('slf4j', '2.0.12')
 
 			library('slf4j-api', 'org.slf4j', 'slf4j-api').versionRef(slf4j)
 			library('slf4j-simple', 'org.slf4j', 'slf4j-simple').versionRef(slf4j)
