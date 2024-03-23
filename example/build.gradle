@@ -16,7 +16,7 @@ tasks.named('test') {
 		showStandardStreams = true
 		exceptionFormat = 'full'
 	}
-	jvmArgs(['--enable-preview', '--enable-native-access=ALL-UNNAMED'])
+	jvmArgs(['--enable-native-access=ALL-UNNAMED'])
 	systemProperty 'java.library.path', '/usr/lib64:/usr/lib:/usr/local/lib'
 }
 
