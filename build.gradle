@@ -6,7 +6,7 @@ plugins {
 }
 
 
-group = 'com.chrisribble.ffmpeg'
+group = 'io.github.chrisribble.ffmpeg'
 version = '0.1-SNAPSHOT'
 
 wrapper {
