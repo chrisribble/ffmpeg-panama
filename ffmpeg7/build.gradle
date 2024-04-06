@@ -1,0 +1,11 @@
+dependencies {
+	testImplementation libs.testng
+}
+
+tasks.named('test') {
+	useTestNG()
+}
+
+sonarlintMain {
+	enabled = false
+}
