@@ -24,9 +24,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwdevice_ctx_init"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_init");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -48,6 +48,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwdevice_ctx_init$handle() {
         return av_hwdevice_ctx_init.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwdevice_ctx_init(AVBufferRef *ref)
+     * }
+     */
+    public static MemorySegment av_hwdevice_ctx_init$address() {
+        return av_hwdevice_ctx_init.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwdevice_ctx_init(AVBufferRef *ref)
@@ -75,9 +86,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwdevice_ctx_create"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_create");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -99,6 +110,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwdevice_ctx_create$handle() {
         return av_hwdevice_ctx_create.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwdevice_ctx_create(AVBufferRef **device_ctx, enum AVHWDeviceType type, const char *device, AVDictionary *opts, int flags)
+     * }
+     */
+    public static MemorySegment av_hwdevice_ctx_create$address() {
+        return av_hwdevice_ctx_create.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwdevice_ctx_create(AVBufferRef **device_ctx, enum AVHWDeviceType type, const char *device, AVDictionary *opts, int flags)
@@ -125,9 +147,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwdevice_ctx_create_derived"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_create_derived");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -149,6 +171,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwdevice_ctx_create_derived$handle() {
         return av_hwdevice_ctx_create_derived.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwdevice_ctx_create_derived(AVBufferRef **dst_ctx, enum AVHWDeviceType type, AVBufferRef *src_ctx, int flags)
+     * }
+     */
+    public static MemorySegment av_hwdevice_ctx_create_derived$address() {
+        return av_hwdevice_ctx_create_derived.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwdevice_ctx_create_derived(AVBufferRef **dst_ctx, enum AVHWDeviceType type, AVBufferRef *src_ctx, int flags)
@@ -176,9 +209,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwdevice_ctx_create_derived_opts"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_create_derived_opts");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -200,6 +233,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwdevice_ctx_create_derived_opts$handle() {
         return av_hwdevice_ctx_create_derived_opts.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwdevice_ctx_create_derived_opts(AVBufferRef **dst_ctx, enum AVHWDeviceType type, AVBufferRef *src_ctx, AVDictionary *options, int flags)
+     * }
+     */
+    public static MemorySegment av_hwdevice_ctx_create_derived_opts$address() {
+        return av_hwdevice_ctx_create_derived_opts.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwdevice_ctx_create_derived_opts(AVBufferRef **dst_ctx, enum AVHWDeviceType type, AVBufferRef *src_ctx, AVDictionary *options, int flags)
@@ -223,9 +267,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_ctx_alloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_ctx_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -247,6 +291,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_ctx_alloc$handle() {
         return av_hwframe_ctx_alloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVBufferRef *av_hwframe_ctx_alloc(AVBufferRef *device_ctx)
+     * }
+     */
+    public static MemorySegment av_hwframe_ctx_alloc$address() {
+        return av_hwframe_ctx_alloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVBufferRef *av_hwframe_ctx_alloc(AVBufferRef *device_ctx)
@@ -270,9 +325,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_ctx_init"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_ctx_init");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -294,6 +349,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_ctx_init$handle() {
         return av_hwframe_ctx_init.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwframe_ctx_init(AVBufferRef *ref)
+     * }
+     */
+    public static MemorySegment av_hwframe_ctx_init$address() {
+        return av_hwframe_ctx_init.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwframe_ctx_init(AVBufferRef *ref)
@@ -319,9 +385,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_get_buffer"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_get_buffer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -343,6 +409,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_get_buffer$handle() {
         return av_hwframe_get_buffer.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwframe_get_buffer(AVBufferRef *hwframe_ctx, AVFrame *frame, int flags)
+     * }
+     */
+    public static MemorySegment av_hwframe_get_buffer$address() {
+        return av_hwframe_get_buffer.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwframe_get_buffer(AVBufferRef *hwframe_ctx, AVFrame *frame, int flags)
@@ -368,9 +445,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_transfer_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_transfer_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -392,6 +469,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_transfer_data$handle() {
         return av_hwframe_transfer_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwframe_transfer_data(AVFrame *dst, const AVFrame *src, int flags)
+     * }
+     */
+    public static MemorySegment av_hwframe_transfer_data$address() {
+        return av_hwframe_transfer_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwframe_transfer_data(AVFrame *dst, const AVFrame *src, int flags)
@@ -436,9 +524,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_transfer_get_formats"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_transfer_get_formats");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -460,6 +548,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_transfer_get_formats$handle() {
         return av_hwframe_transfer_get_formats.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwframe_transfer_get_formats(AVBufferRef *hwframe_ctx, enum AVHWFrameTransferDirection dir, enum AVPixelFormat **formats, int flags)
+     * }
+     */
+    public static MemorySegment av_hwframe_transfer_get_formats$address() {
+        return av_hwframe_transfer_get_formats.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwframe_transfer_get_formats(AVBufferRef *hwframe_ctx, enum AVHWFrameTransferDirection dir, enum AVPixelFormat **formats, int flags)
@@ -483,9 +582,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwdevice_hwconfig_alloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_hwconfig_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -507,6 +606,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwdevice_hwconfig_alloc$handle() {
         return av_hwdevice_hwconfig_alloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void *av_hwdevice_hwconfig_alloc(AVBufferRef *device_ctx)
+     * }
+     */
+    public static MemorySegment av_hwdevice_hwconfig_alloc$address() {
+        return av_hwdevice_hwconfig_alloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void *av_hwdevice_hwconfig_alloc(AVBufferRef *device_ctx)
@@ -531,9 +641,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwdevice_get_hwframe_constraints"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_get_hwframe_constraints");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -555,6 +665,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwdevice_get_hwframe_constraints$handle() {
         return av_hwdevice_get_hwframe_constraints.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVHWFramesConstraints *av_hwdevice_get_hwframe_constraints(AVBufferRef *ref, const void *hwconfig)
+     * }
+     */
+    public static MemorySegment av_hwdevice_get_hwframe_constraints$address() {
+        return av_hwdevice_get_hwframe_constraints.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVHWFramesConstraints *av_hwdevice_get_hwframe_constraints(AVBufferRef *ref, const void *hwconfig)
@@ -577,9 +698,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_constraints_free"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_constraints_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -601,6 +722,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_constraints_free$handle() {
         return av_hwframe_constraints_free.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_hwframe_constraints_free(AVHWFramesConstraints **constraints)
+     * }
+     */
+    public static MemorySegment av_hwframe_constraints_free$address() {
+        return av_hwframe_constraints_free.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_hwframe_constraints_free(AVHWFramesConstraints **constraints)
@@ -662,9 +794,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_map"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_map");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -686,6 +818,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_map$handle() {
         return av_hwframe_map.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwframe_map(AVFrame *dst, const AVFrame *src, int flags)
+     * }
+     */
+    public static MemorySegment av_hwframe_map$address() {
+        return av_hwframe_map.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwframe_map(AVFrame *dst, const AVFrame *src, int flags)
@@ -713,9 +856,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hwframe_ctx_create_derived"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_ctx_create_derived");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -737,6 +880,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hwframe_ctx_create_derived$handle() {
         return av_hwframe_ctx_create_derived.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_hwframe_ctx_create_derived(AVBufferRef **derived_frame_ctx, enum AVPixelFormat format, AVBufferRef *derived_device_ctx, AVBufferRef *source_frame_ctx, int flags)
+     * }
+     */
+    public static MemorySegment av_hwframe_ctx_create_derived$address() {
+        return av_hwframe_ctx_create_derived.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_hwframe_ctx_create_derived(AVBufferRef **derived_frame_ctx, enum AVPixelFormat format, AVBufferRef *derived_device_ctx, AVBufferRef *source_frame_ctx, int flags)
@@ -5287,9 +5441,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_type"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_type");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5311,6 +5465,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_type$handle() {
         return avcodec_get_type.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVMediaType avcodec_get_type(enum AVCodecID codec_id)
+     * }
+     */
+    public static MemorySegment avcodec_get_type$address() {
+        return avcodec_get_type.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVMediaType avcodec_get_type(enum AVCodecID codec_id)
@@ -5334,9 +5499,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5358,6 +5523,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_name$handle() {
         return avcodec_get_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avcodec_get_name(enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment avcodec_get_name$address() {
+        return avcodec_get_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avcodec_get_name(enum AVCodecID id)
@@ -5381,9 +5557,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_bits_per_sample"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_bits_per_sample");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5405,6 +5581,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_bits_per_sample$handle() {
         return av_get_bits_per_sample.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_sample(enum AVCodecID codec_id)
+     * }
+     */
+    public static MemorySegment av_get_bits_per_sample$address() {
+        return av_get_bits_per_sample.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_bits_per_sample(enum AVCodecID codec_id)
@@ -5428,9 +5615,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_exact_bits_per_sample"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_exact_bits_per_sample");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5452,6 +5639,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_exact_bits_per_sample$handle() {
         return av_get_exact_bits_per_sample.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_exact_bits_per_sample(enum AVCodecID codec_id)
+     * }
+     */
+    public static MemorySegment av_get_exact_bits_per_sample$address() {
+        return av_get_exact_bits_per_sample.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_exact_bits_per_sample(enum AVCodecID codec_id)
@@ -5476,9 +5674,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_profile_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_profile_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5500,6 +5698,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_profile_name$handle() {
         return avcodec_profile_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avcodec_profile_name(enum AVCodecID codec_id, int profile)
+     * }
+     */
+    public static MemorySegment avcodec_profile_name$address() {
+        return avcodec_profile_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avcodec_profile_name(enum AVCodecID codec_id, int profile)
@@ -5524,9 +5733,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_pcm_codec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pcm_codec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5548,6 +5757,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_pcm_codec$handle() {
         return av_get_pcm_codec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVCodecID av_get_pcm_codec(enum AVSampleFormat fmt, int be)
+     * }
+     */
+    public static MemorySegment av_get_pcm_codec$address() {
+        return av_get_pcm_codec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVCodecID av_get_pcm_codec(enum AVSampleFormat fmt, int be)
@@ -5571,9 +5791,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_codec_iterate"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_iterate");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5595,6 +5815,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_codec_iterate$handle() {
         return av_codec_iterate.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodec *av_codec_iterate(void **opaque)
+     * }
+     */
+    public static MemorySegment av_codec_iterate$address() {
+        return av_codec_iterate.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodec *av_codec_iterate(void **opaque)
@@ -5618,9 +5849,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_find_decoder"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_decoder");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5642,6 +5873,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_find_decoder$handle() {
         return avcodec_find_decoder.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodec *avcodec_find_decoder(enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment avcodec_find_decoder$address() {
+        return avcodec_find_decoder.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodec *avcodec_find_decoder(enum AVCodecID id)
@@ -5665,9 +5907,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_find_decoder_by_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_decoder_by_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5689,6 +5931,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_find_decoder_by_name$handle() {
         return avcodec_find_decoder_by_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodec *avcodec_find_decoder_by_name(const char *name)
+     * }
+     */
+    public static MemorySegment avcodec_find_decoder_by_name$address() {
+        return avcodec_find_decoder_by_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodec *avcodec_find_decoder_by_name(const char *name)
@@ -5712,9 +5965,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_find_encoder"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_encoder");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5736,6 +5989,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_find_encoder$handle() {
         return avcodec_find_encoder.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodec *avcodec_find_encoder(enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment avcodec_find_encoder$address() {
+        return avcodec_find_encoder.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodec *avcodec_find_encoder(enum AVCodecID id)
@@ -5759,9 +6023,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_find_encoder_by_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_encoder_by_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5783,6 +6047,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_find_encoder_by_name$handle() {
         return avcodec_find_encoder_by_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodec *avcodec_find_encoder_by_name(const char *name)
+     * }
+     */
+    public static MemorySegment avcodec_find_encoder_by_name$address() {
+        return avcodec_find_encoder_by_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodec *avcodec_find_encoder_by_name(const char *name)
@@ -5806,9 +6081,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_codec_is_encoder"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_is_encoder");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5830,6 +6105,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_codec_is_encoder$handle() {
         return av_codec_is_encoder.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_codec_is_encoder(const AVCodec *codec)
+     * }
+     */
+    public static MemorySegment av_codec_is_encoder$address() {
+        return av_codec_is_encoder.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_codec_is_encoder(const AVCodec *codec)
@@ -5853,9 +6139,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_codec_is_decoder"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_is_decoder");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5877,6 +6163,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_codec_is_decoder$handle() {
         return av_codec_is_decoder.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_codec_is_decoder(const AVCodec *codec)
+     * }
+     */
+    public static MemorySegment av_codec_is_decoder$address() {
+        return av_codec_is_decoder.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_codec_is_decoder(const AVCodec *codec)
@@ -5901,9 +6198,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_profile_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_profile_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -5925,6 +6222,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_profile_name$handle() {
         return av_get_profile_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_get_profile_name(const AVCodec *codec, int profile)
+     * }
+     */
+    public static MemorySegment av_get_profile_name$address() {
+        return av_get_profile_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_get_profile_name(const AVCodec *codec, int profile)
@@ -5985,9 +6293,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_hw_config"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_hw_config");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6009,6 +6317,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_hw_config$handle() {
         return avcodec_get_hw_config.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodecHWConfig *avcodec_get_hw_config(const AVCodec *codec, int index)
+     * }
+     */
+    public static MemorySegment avcodec_get_hw_config$address() {
+        return avcodec_get_hw_config.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodecHWConfig *avcodec_get_hw_config(const AVCodec *codec, int index)
@@ -6032,9 +6351,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_descriptor_get"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_descriptor_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6056,6 +6375,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_descriptor_get$handle() {
         return avcodec_descriptor_get.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodecDescriptor *avcodec_descriptor_get(enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment avcodec_descriptor_get$address() {
+        return avcodec_descriptor_get.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodecDescriptor *avcodec_descriptor_get(enum AVCodecID id)
@@ -6079,9 +6409,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_descriptor_next"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_descriptor_next");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6103,6 +6433,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_descriptor_next$handle() {
         return avcodec_descriptor_next.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodecDescriptor *avcodec_descriptor_next(const AVCodecDescriptor *prev)
+     * }
+     */
+    public static MemorySegment avcodec_descriptor_next$address() {
+        return avcodec_descriptor_next.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodecDescriptor *avcodec_descriptor_next(const AVCodecDescriptor *prev)
@@ -6126,9 +6467,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_descriptor_get_by_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_descriptor_get_by_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6150,6 +6491,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_descriptor_get_by_name$handle() {
         return avcodec_descriptor_get_by_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodecDescriptor *avcodec_descriptor_get_by_name(const char *name)
+     * }
+     */
+    public static MemorySegment avcodec_descriptor_get_by_name$address() {
+        return avcodec_descriptor_get_by_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodecDescriptor *avcodec_descriptor_get_by_name(const char *name)
@@ -6225,9 +6577,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_parameters_alloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6249,6 +6601,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_parameters_alloc$handle() {
         return avcodec_parameters_alloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVCodecParameters *avcodec_parameters_alloc()
+     * }
+     */
+    public static MemorySegment avcodec_parameters_alloc$address() {
+        return avcodec_parameters_alloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVCodecParameters *avcodec_parameters_alloc()
@@ -6271,9 +6634,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_parameters_free"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6295,6 +6658,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_parameters_free$handle() {
         return avcodec_parameters_free.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avcodec_parameters_free(AVCodecParameters **par)
+     * }
+     */
+    public static MemorySegment avcodec_parameters_free$address() {
+        return avcodec_parameters_free.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avcodec_parameters_free(AVCodecParameters **par)
@@ -6319,9 +6693,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_parameters_copy"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_copy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6343,6 +6717,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_parameters_copy$handle() {
         return avcodec_parameters_copy.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_parameters_copy(AVCodecParameters *dst, const AVCodecParameters *src)
+     * }
+     */
+    public static MemorySegment avcodec_parameters_copy$address() {
+        return avcodec_parameters_copy.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_parameters_copy(AVCodecParameters *dst, const AVCodecParameters *src)
@@ -6367,9 +6752,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_audio_frame_duration2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_audio_frame_duration2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6391,6 +6776,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_audio_frame_duration2$handle() {
         return av_get_audio_frame_duration2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_audio_frame_duration2(AVCodecParameters *par, int frame_bytes)
+     * }
+     */
+    public static MemorySegment av_get_audio_frame_duration2$address() {
+        return av_get_audio_frame_duration2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_audio_frame_duration2(AVCodecParameters *par, int frame_bytes)
@@ -6567,9 +6963,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_cpb_properties_alloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_cpb_properties_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6591,6 +6987,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_cpb_properties_alloc$handle() {
         return av_cpb_properties_alloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVCPBProperties *av_cpb_properties_alloc(size_t *size)
+     * }
+     */
+    public static MemorySegment av_cpb_properties_alloc$address() {
+        return av_cpb_properties_alloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVCPBProperties *av_cpb_properties_alloc(size_t *size)
@@ -6615,9 +7022,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_xiphlacing"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_xiphlacing");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -6639,6 +7046,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_xiphlacing$handle() {
         return av_xiphlacing.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int av_xiphlacing(unsigned char *s, unsigned int v)
+     * }
+     */
+    public static MemorySegment av_xiphlacing$address() {
+        return av_xiphlacing.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int av_xiphlacing(unsigned char *s, unsigned int v)
@@ -6993,9 +7411,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_alloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7017,6 +7435,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_alloc$handle() {
         return av_packet_alloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVPacket *av_packet_alloc()
+     * }
+     */
+    public static MemorySegment av_packet_alloc$address() {
+        return av_packet_alloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVPacket *av_packet_alloc()
@@ -7040,9 +7469,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_clone"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_clone");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7064,6 +7493,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_clone$handle() {
         return av_packet_clone.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVPacket *av_packet_clone(const AVPacket *src)
+     * }
+     */
+    public static MemorySegment av_packet_clone$address() {
+        return av_packet_clone.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVPacket *av_packet_clone(const AVPacket *src)
@@ -7086,9 +7526,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_free"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7110,6 +7550,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_free$handle() {
         return av_packet_free.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_packet_free(AVPacket **pkt)
+     * }
+     */
+    public static MemorySegment av_packet_free$address() {
+        return av_packet_free.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_packet_free(AVPacket **pkt)
@@ -7132,9 +7583,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_init_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_init_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7156,6 +7607,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_init_packet$handle() {
         return av_init_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_init_packet(AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_init_packet$address() {
+        return av_init_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_init_packet(AVPacket *pkt)
@@ -7180,9 +7642,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_new_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_new_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7204,6 +7666,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_new_packet$handle() {
         return av_new_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_new_packet(AVPacket *pkt, int size)
+     * }
+     */
+    public static MemorySegment av_new_packet$address() {
+        return av_new_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_new_packet(AVPacket *pkt, int size)
@@ -7227,9 +7700,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_shrink_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_shrink_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7251,6 +7724,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_shrink_packet$handle() {
         return av_shrink_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_shrink_packet(AVPacket *pkt, int size)
+     * }
+     */
+    public static MemorySegment av_shrink_packet$address() {
+        return av_shrink_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_shrink_packet(AVPacket *pkt, int size)
@@ -7275,9 +7759,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_grow_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_grow_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7299,6 +7783,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_grow_packet$handle() {
         return av_grow_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_grow_packet(AVPacket *pkt, int grow_by)
+     * }
+     */
+    public static MemorySegment av_grow_packet$address() {
+        return av_grow_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_grow_packet(AVPacket *pkt, int grow_by)
@@ -7324,9 +7819,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_from_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_from_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7348,6 +7843,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_from_data$handle() {
         return av_packet_from_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_from_data(AVPacket *pkt, uint8_t *data, int size)
+     * }
+     */
+    public static MemorySegment av_packet_from_data$address() {
+        return av_packet_from_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_from_data(AVPacket *pkt, uint8_t *data, int size)
@@ -7373,9 +7879,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_new_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_new_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7397,6 +7903,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_new_side_data$handle() {
         return av_packet_new_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint8_t *av_packet_new_side_data(AVPacket *pkt, enum AVPacketSideDataType type, size_t size)
+     * }
+     */
+    public static MemorySegment av_packet_new_side_data$address() {
+        return av_packet_new_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint8_t *av_packet_new_side_data(AVPacket *pkt, enum AVPacketSideDataType type, size_t size)
@@ -7423,9 +7940,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_add_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_add_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7447,6 +7964,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_add_side_data$handle() {
         return av_packet_add_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_add_side_data(AVPacket *pkt, enum AVPacketSideDataType type, uint8_t *data, size_t size)
+     * }
+     */
+    public static MemorySegment av_packet_add_side_data$address() {
+        return av_packet_add_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_add_side_data(AVPacket *pkt, enum AVPacketSideDataType type, uint8_t *data, size_t size)
@@ -7472,9 +8000,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_shrink_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_shrink_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7496,6 +8024,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_shrink_side_data$handle() {
         return av_packet_shrink_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_shrink_side_data(AVPacket *pkt, enum AVPacketSideDataType type, size_t size)
+     * }
+     */
+    public static MemorySegment av_packet_shrink_side_data$address() {
+        return av_packet_shrink_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_shrink_side_data(AVPacket *pkt, enum AVPacketSideDataType type, size_t size)
@@ -7521,9 +8060,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_get_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_get_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7545,6 +8084,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_get_side_data$handle() {
         return av_packet_get_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint8_t *av_packet_get_side_data(const AVPacket *pkt, enum AVPacketSideDataType type, size_t *size)
+     * }
+     */
+    public static MemorySegment av_packet_get_side_data$address() {
+        return av_packet_get_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint8_t *av_packet_get_side_data(const AVPacket *pkt, enum AVPacketSideDataType type, size_t *size)
@@ -7568,9 +8118,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_side_data_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7592,6 +8142,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_side_data_name$handle() {
         return av_packet_side_data_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_packet_side_data_name(enum AVPacketSideDataType type)
+     * }
+     */
+    public static MemorySegment av_packet_side_data_name$address() {
+        return av_packet_side_data_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_packet_side_data_name(enum AVPacketSideDataType type)
@@ -7616,9 +8177,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_pack_dictionary"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_pack_dictionary");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7640,6 +8201,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_pack_dictionary$handle() {
         return av_packet_pack_dictionary.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size)
+     * }
+     */
+    public static MemorySegment av_packet_pack_dictionary$address() {
+        return av_packet_pack_dictionary.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size)
@@ -7665,9 +8237,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_unpack_dictionary"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_unpack_dictionary");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7689,6 +8261,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_unpack_dictionary$handle() {
         return av_packet_unpack_dictionary.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_unpack_dictionary(const uint8_t *data, size_t size, AVDictionary **dict)
+     * }
+     */
+    public static MemorySegment av_packet_unpack_dictionary$address() {
+        return av_packet_unpack_dictionary.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_unpack_dictionary(const uint8_t *data, size_t size, AVDictionary **dict)
@@ -7711,9 +8294,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_free_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_free_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7735,6 +8318,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_free_side_data$handle() {
         return av_packet_free_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_packet_free_side_data(AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_packet_free_side_data$address() {
+        return av_packet_free_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_packet_free_side_data(AVPacket *pkt)
@@ -7759,9 +8353,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_ref"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_ref");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7783,6 +8377,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_ref$handle() {
         return av_packet_ref.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_ref(AVPacket *dst, const AVPacket *src)
+     * }
+     */
+    public static MemorySegment av_packet_ref$address() {
+        return av_packet_ref.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_ref(AVPacket *dst, const AVPacket *src)
@@ -7805,9 +8410,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_unref"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_unref");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7829,6 +8434,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_unref$handle() {
         return av_packet_unref.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_packet_unref(AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_packet_unref$address() {
+        return av_packet_unref.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_packet_unref(AVPacket *pkt)
@@ -7852,9 +8468,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_move_ref"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_move_ref");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7876,6 +8492,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_move_ref$handle() {
         return av_packet_move_ref.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_packet_move_ref(AVPacket *dst, AVPacket *src)
+     * }
+     */
+    public static MemorySegment av_packet_move_ref$address() {
+        return av_packet_move_ref.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_packet_move_ref(AVPacket *dst, AVPacket *src)
@@ -7900,9 +8527,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_copy_props"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_copy_props");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7924,6 +8551,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_copy_props$handle() {
         return av_packet_copy_props.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_copy_props(AVPacket *dst, const AVPacket *src)
+     * }
+     */
+    public static MemorySegment av_packet_copy_props$address() {
+        return av_packet_copy_props.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_copy_props(AVPacket *dst, const AVPacket *src)
@@ -7947,9 +8585,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_make_refcounted"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_make_refcounted");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -7971,6 +8609,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_make_refcounted$handle() {
         return av_packet_make_refcounted.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_make_refcounted(AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_packet_make_refcounted$address() {
+        return av_packet_make_refcounted.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_make_refcounted(AVPacket *pkt)
@@ -7994,9 +8643,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_make_writable"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_make_writable");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8018,6 +8667,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_make_writable$handle() {
         return av_packet_make_writable.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_packet_make_writable(AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_packet_make_writable$address() {
+        return av_packet_make_writable.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_packet_make_writable(AVPacket *pkt)
@@ -8042,9 +8702,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             AVRational.layout()
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_packet_rescale_ts"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_rescale_ts");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8066,6 +8726,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_packet_rescale_ts$handle() {
         return av_packet_rescale_ts.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_packet_rescale_ts(AVPacket *pkt, AVRational tb_src, AVRational tb_dst)
+     * }
+     */
+    public static MemorySegment av_packet_rescale_ts$address() {
+        return av_packet_rescale_ts.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_packet_rescale_ts(AVPacket *pkt, AVRational tb_src, AVRational tb_dst)
@@ -8123,9 +8794,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_version"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_version");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8147,6 +8818,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_version$handle() {
         return avcodec_version.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avcodec_version()
+     * }
+     */
+    public static MemorySegment avcodec_version$address() {
+        return avcodec_version.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avcodec_version()
@@ -8168,9 +8850,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_configuration"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_configuration");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8192,6 +8874,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_configuration$handle() {
         return avcodec_configuration.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avcodec_configuration()
+     * }
+     */
+    public static MemorySegment avcodec_configuration$address() {
+        return avcodec_configuration.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avcodec_configuration()
@@ -8213,9 +8906,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_license"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_license");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8237,6 +8930,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_license$handle() {
         return avcodec_license.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avcodec_license()
+     * }
+     */
+    public static MemorySegment avcodec_license$address() {
+        return avcodec_license.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avcodec_license()
@@ -8260,9 +8964,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_alloc_context3"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_alloc_context3");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8284,6 +8988,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_alloc_context3$handle() {
         return avcodec_alloc_context3.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVCodecContext *avcodec_alloc_context3(const AVCodec *codec)
+     * }
+     */
+    public static MemorySegment avcodec_alloc_context3$address() {
+        return avcodec_alloc_context3.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVCodecContext *avcodec_alloc_context3(const AVCodec *codec)
@@ -8306,9 +9021,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_free_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_free_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8330,6 +9045,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_free_context$handle() {
         return avcodec_free_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avcodec_free_context(AVCodecContext **avctx)
+     * }
+     */
+    public static MemorySegment avcodec_free_context$address() {
+        return avcodec_free_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avcodec_free_context(AVCodecContext **avctx)
@@ -8351,9 +9077,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8375,6 +9101,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_class$handle() {
         return avcodec_get_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *avcodec_get_class()
+     * }
+     */
+    public static MemorySegment avcodec_get_class$address() {
+        return avcodec_get_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *avcodec_get_class()
@@ -8396,9 +9133,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_frame_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_frame_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8420,6 +9157,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_frame_class$handle() {
         return avcodec_get_frame_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *avcodec_get_frame_class()
+     * }
+     */
+    public static MemorySegment avcodec_get_frame_class$address() {
+        return avcodec_get_frame_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *avcodec_get_frame_class()
@@ -8441,9 +9189,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_subtitle_rect_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_subtitle_rect_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8465,6 +9213,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_subtitle_rect_class$handle() {
         return avcodec_get_subtitle_rect_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *avcodec_get_subtitle_rect_class()
+     * }
+     */
+    public static MemorySegment avcodec_get_subtitle_rect_class$address() {
+        return avcodec_get_subtitle_rect_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *avcodec_get_subtitle_rect_class()
@@ -8489,9 +9248,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_parameters_from_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_from_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8513,6 +9272,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_parameters_from_context$handle() {
         return avcodec_parameters_from_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_parameters_from_context(AVCodecParameters *par, const AVCodecContext *codec)
+     * }
+     */
+    public static MemorySegment avcodec_parameters_from_context$address() {
+        return avcodec_parameters_from_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_parameters_from_context(AVCodecParameters *par, const AVCodecContext *codec)
@@ -8537,9 +9307,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_parameters_to_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_to_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8561,6 +9331,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_parameters_to_context$handle() {
         return avcodec_parameters_to_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_parameters_to_context(AVCodecContext *codec, const AVCodecParameters *par)
+     * }
+     */
+    public static MemorySegment avcodec_parameters_to_context$address() {
+        return avcodec_parameters_to_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_parameters_to_context(AVCodecContext *codec, const AVCodecParameters *par)
@@ -8586,9 +9367,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_open2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_open2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8610,6 +9391,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_open2$handle() {
         return avcodec_open2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_open2(AVCodecContext *avctx, const AVCodec *codec, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avcodec_open2$address() {
+        return avcodec_open2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_open2(AVCodecContext *avctx, const AVCodec *codec, AVDictionary **options)
@@ -8633,9 +9425,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_close"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_close");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8657,6 +9449,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_close$handle() {
         return avcodec_close.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_close(AVCodecContext *avctx)
+     * }
+     */
+    public static MemorySegment avcodec_close$address() {
+        return avcodec_close.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_close(AVCodecContext *avctx)
@@ -8679,9 +9482,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avsubtitle_free"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avsubtitle_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8703,6 +9506,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avsubtitle_free$handle() {
         return avsubtitle_free.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avsubtitle_free(AVSubtitle *sub)
+     * }
+     */
+    public static MemorySegment avsubtitle_free$address() {
+        return avsubtitle_free.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avsubtitle_free(AVSubtitle *sub)
@@ -8728,9 +9542,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_default_get_buffer2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_get_buffer2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8752,6 +9566,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_default_get_buffer2$handle() {
         return avcodec_default_get_buffer2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_default_get_buffer2(AVCodecContext *s, AVFrame *frame, int flags)
+     * }
+     */
+    public static MemorySegment avcodec_default_get_buffer2$address() {
+        return avcodec_default_get_buffer2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_default_get_buffer2(AVCodecContext *s, AVFrame *frame, int flags)
@@ -8777,9 +9602,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_default_get_encode_buffer"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_get_encode_buffer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8801,6 +9626,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_default_get_encode_buffer$handle() {
         return avcodec_default_get_encode_buffer.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_default_get_encode_buffer(AVCodecContext *s, AVPacket *pkt, int flags)
+     * }
+     */
+    public static MemorySegment avcodec_default_get_encode_buffer$address() {
+        return avcodec_default_get_encode_buffer.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_default_get_encode_buffer(AVCodecContext *s, AVPacket *pkt, int flags)
@@ -8825,9 +9661,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_align_dimensions"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_align_dimensions");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8849,6 +9685,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_align_dimensions$handle() {
         return avcodec_align_dimensions.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avcodec_align_dimensions(AVCodecContext *s, int *width, int *height)
+     * }
+     */
+    public static MemorySegment avcodec_align_dimensions$address() {
+        return avcodec_align_dimensions.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avcodec_align_dimensions(AVCodecContext *s, int *width, int *height)
@@ -8874,9 +9721,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_align_dimensions2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_align_dimensions2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8898,6 +9745,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_align_dimensions2$handle() {
         return avcodec_align_dimensions2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avcodec_align_dimensions2(AVCodecContext *s, int *width, int *height, int linesize_align[8])
+     * }
+     */
+    public static MemorySegment avcodec_align_dimensions2$address() {
+        return avcodec_align_dimensions2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avcodec_align_dimensions2(AVCodecContext *s, int *width, int *height, int linesize_align[8])
@@ -8923,9 +9781,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_enum_to_chroma_pos"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_enum_to_chroma_pos");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8947,6 +9805,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_enum_to_chroma_pos$handle() {
         return avcodec_enum_to_chroma_pos.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_enum_to_chroma_pos(int *xpos, int *ypos, enum AVChromaLocation pos)
+     * }
+     */
+    public static MemorySegment avcodec_enum_to_chroma_pos$address() {
+        return avcodec_enum_to_chroma_pos.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_enum_to_chroma_pos(int *xpos, int *ypos, enum AVChromaLocation pos)
@@ -8971,9 +9840,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_chroma_pos_to_enum"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_chroma_pos_to_enum");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -8995,6 +9864,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_chroma_pos_to_enum$handle() {
         return avcodec_chroma_pos_to_enum.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVChromaLocation avcodec_chroma_pos_to_enum(int xpos, int ypos)
+     * }
+     */
+    public static MemorySegment avcodec_chroma_pos_to_enum$address() {
+        return avcodec_chroma_pos_to_enum.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVChromaLocation avcodec_chroma_pos_to_enum(int xpos, int ypos)
@@ -9021,9 +9901,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_decode_subtitle2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_decode_subtitle2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9045,6 +9925,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_decode_subtitle2$handle() {
         return avcodec_decode_subtitle2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_decode_subtitle2(AVCodecContext *avctx, AVSubtitle *sub, int *got_sub_ptr, AVPacket *avpkt)
+     * }
+     */
+    public static MemorySegment avcodec_decode_subtitle2$address() {
+        return avcodec_decode_subtitle2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_decode_subtitle2(AVCodecContext *avctx, AVSubtitle *sub, int *got_sub_ptr, AVPacket *avpkt)
@@ -9069,9 +9960,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_send_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_send_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9093,6 +9984,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_send_packet$handle() {
         return avcodec_send_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_send_packet(AVCodecContext *avctx, const AVPacket *avpkt)
+     * }
+     */
+    public static MemorySegment avcodec_send_packet$address() {
+        return avcodec_send_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_send_packet(AVCodecContext *avctx, const AVPacket *avpkt)
@@ -9117,9 +10019,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_receive_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_receive_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9141,6 +10043,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_receive_frame$handle() {
         return avcodec_receive_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_receive_frame(AVCodecContext *avctx, AVFrame *frame)
+     * }
+     */
+    public static MemorySegment avcodec_receive_frame$address() {
+        return avcodec_receive_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_receive_frame(AVCodecContext *avctx, AVFrame *frame)
@@ -9165,9 +10078,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_send_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_send_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9189,6 +10102,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_send_frame$handle() {
         return avcodec_send_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_send_frame(AVCodecContext *avctx, const AVFrame *frame)
+     * }
+     */
+    public static MemorySegment avcodec_send_frame$address() {
+        return avcodec_send_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_send_frame(AVCodecContext *avctx, const AVFrame *frame)
@@ -9213,9 +10137,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_receive_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_receive_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9237,6 +10161,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_receive_packet$handle() {
         return avcodec_receive_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_receive_packet(AVCodecContext *avctx, AVPacket *avpkt)
+     * }
+     */
+    public static MemorySegment avcodec_receive_packet$address() {
+        return avcodec_receive_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_receive_packet(AVCodecContext *avctx, AVPacket *avpkt)
@@ -9263,9 +10198,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_get_hw_frames_parameters"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_hw_frames_parameters");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9287,6 +10222,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_get_hw_frames_parameters$handle() {
         return avcodec_get_hw_frames_parameters.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_get_hw_frames_parameters(AVCodecContext *avctx, AVBufferRef *device_ref, enum AVPixelFormat hw_pix_fmt, AVBufferRef **out_frames_ref)
+     * }
+     */
+    public static MemorySegment avcodec_get_hw_frames_parameters$address() {
+        return avcodec_get_hw_frames_parameters.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_get_hw_frames_parameters(AVCodecContext *avctx, AVBufferRef *device_ref, enum AVPixelFormat hw_pix_fmt, AVBufferRef **out_frames_ref)
@@ -9346,9 +10292,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_parser_iterate"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_iterate");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9370,6 +10316,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_parser_iterate$handle() {
         return av_parser_iterate.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVCodecParser *av_parser_iterate(void **opaque)
+     * }
+     */
+    public static MemorySegment av_parser_iterate$address() {
+        return av_parser_iterate.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVCodecParser *av_parser_iterate(void **opaque)
@@ -9393,9 +10350,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_parser_init"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_init");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9417,6 +10374,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_parser_init$handle() {
         return av_parser_init.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVCodecParserContext *av_parser_init(int codec_id)
+     * }
+     */
+    public static MemorySegment av_parser_init$address() {
+        return av_parser_init.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVCodecParserContext *av_parser_init(int codec_id)
@@ -9448,9 +10416,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_parser_parse2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_parse2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9472,6 +10440,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_parser_parse2$handle() {
         return av_parser_parse2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_parser_parse2(AVCodecParserContext *s, AVCodecContext *avctx, uint8_t **poutbuf, int *poutbuf_size, const uint8_t *buf, int buf_size, int64_t pts, int64_t dts, int64_t pos)
+     * }
+     */
+    public static MemorySegment av_parser_parse2$address() {
+        return av_parser_parse2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_parser_parse2(AVCodecParserContext *s, AVCodecContext *avctx, uint8_t **poutbuf, int *poutbuf_size, const uint8_t *buf, int buf_size, int64_t pts, int64_t dts, int64_t pos)
@@ -9494,9 +10473,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_parser_close"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_close");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9518,6 +10497,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_parser_close$handle() {
         return av_parser_close.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_parser_close(AVCodecParserContext *s)
+     * }
+     */
+    public static MemorySegment av_parser_close$address() {
+        return av_parser_close.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_parser_close(AVCodecParserContext *s)
@@ -9544,9 +10534,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_encode_subtitle"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_encode_subtitle");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9568,6 +10558,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_encode_subtitle$handle() {
         return avcodec_encode_subtitle.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_encode_subtitle(AVCodecContext *avctx, uint8_t *buf, int buf_size, const AVSubtitle *sub)
+     * }
+     */
+    public static MemorySegment avcodec_encode_subtitle$address() {
+        return avcodec_encode_subtitle.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_encode_subtitle(AVCodecContext *avctx, uint8_t *buf, int buf_size, const AVSubtitle *sub)
@@ -9591,9 +10592,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_pix_fmt_to_codec_tag"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_pix_fmt_to_codec_tag");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9615,6 +10616,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_pix_fmt_to_codec_tag$handle() {
         return avcodec_pix_fmt_to_codec_tag.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avcodec_pix_fmt_to_codec_tag(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment avcodec_pix_fmt_to_codec_tag$address() {
+        return avcodec_pix_fmt_to_codec_tag.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avcodec_pix_fmt_to_codec_tag(enum AVPixelFormat pix_fmt)
@@ -9641,9 +10653,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_find_best_pix_fmt_of_list"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_best_pix_fmt_of_list");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9665,6 +10677,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_find_best_pix_fmt_of_list$handle() {
         return avcodec_find_best_pix_fmt_of_list.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat avcodec_find_best_pix_fmt_of_list(const enum AVPixelFormat *pix_fmt_list, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
+     * }
+     */
+    public static MemorySegment avcodec_find_best_pix_fmt_of_list$address() {
+        return avcodec_find_best_pix_fmt_of_list.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVPixelFormat avcodec_find_best_pix_fmt_of_list(const enum AVPixelFormat *pix_fmt_list, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
@@ -9689,9 +10712,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_default_get_format"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_get_format");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9713,6 +10736,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_default_get_format$handle() {
         return avcodec_default_get_format.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat avcodec_default_get_format(struct AVCodecContext *s, const enum AVPixelFormat *fmt)
+     * }
+     */
+    public static MemorySegment avcodec_default_get_format$address() {
+        return avcodec_default_get_format.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVPixelFormat avcodec_default_get_format(struct AVCodecContext *s, const enum AVPixelFormat *fmt)
@@ -9738,9 +10772,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_string"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9762,6 +10796,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_string$handle() {
         return avcodec_string.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avcodec_string(char *buf, int buf_size, AVCodecContext *enc, int encode)
+     * }
+     */
+    public static MemorySegment avcodec_string$address() {
+        return avcodec_string.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avcodec_string(char *buf, int buf_size, AVCodecContext *enc, int encode)
@@ -9790,9 +10835,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_default_execute"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_execute");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9814,6 +10859,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_default_execute$handle() {
         return avcodec_default_execute.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_default_execute(AVCodecContext *c, int (*func)(AVCodecContext *, void *), void *arg, int *ret, int count, int size)
+     * }
+     */
+    public static MemorySegment avcodec_default_execute$address() {
+        return avcodec_default_execute.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_default_execute(AVCodecContext *c, int (*func)(AVCodecContext *, void *), void *arg, int *ret, int count, int size)
@@ -9841,9 +10897,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_default_execute2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_execute2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9865,6 +10921,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_default_execute2$handle() {
         return avcodec_default_execute2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_default_execute2(AVCodecContext *c, int (*func)(AVCodecContext *, void *, int, int), void *arg, int *ret, int count)
+     * }
+     */
+    public static MemorySegment avcodec_default_execute2$address() {
+        return avcodec_default_execute2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_default_execute2(AVCodecContext *c, int (*func)(AVCodecContext *, void *, int, int), void *arg, int *ret, int count)
@@ -9893,9 +10960,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_fill_audio_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_fill_audio_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9917,6 +10984,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_fill_audio_frame$handle() {
         return avcodec_fill_audio_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_fill_audio_frame(AVFrame *frame, int nb_channels, enum AVSampleFormat sample_fmt, const uint8_t *buf, int buf_size, int align)
+     * }
+     */
+    public static MemorySegment avcodec_fill_audio_frame$address() {
+        return avcodec_fill_audio_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_fill_audio_frame(AVFrame *frame, int nb_channels, enum AVSampleFormat sample_fmt, const uint8_t *buf, int buf_size, int align)
@@ -9939,9 +11017,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_flush_buffers"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_flush_buffers");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -9963,6 +11041,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_flush_buffers$handle() {
         return avcodec_flush_buffers.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avcodec_flush_buffers(AVCodecContext *avctx)
+     * }
+     */
+    public static MemorySegment avcodec_flush_buffers$address() {
+        return avcodec_flush_buffers.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avcodec_flush_buffers(AVCodecContext *avctx)
@@ -9987,9 +11076,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_audio_frame_duration"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_audio_frame_duration");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10011,6 +11100,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_audio_frame_duration$handle() {
         return av_get_audio_frame_duration.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_audio_frame_duration(AVCodecContext *avctx, int frame_bytes)
+     * }
+     */
+    public static MemorySegment av_get_audio_frame_duration$address() {
+        return av_get_audio_frame_duration.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_audio_frame_duration(AVCodecContext *avctx, int frame_bytes)
@@ -10035,9 +11135,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_fast_padded_malloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_fast_padded_malloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10059,6 +11159,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_fast_padded_malloc$handle() {
         return av_fast_padded_malloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_fast_padded_malloc(void *ptr, unsigned int *size, size_t min_size)
+     * }
+     */
+    public static MemorySegment av_fast_padded_malloc$address() {
+        return av_fast_padded_malloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_fast_padded_malloc(void *ptr, unsigned int *size, size_t min_size)
@@ -10083,9 +11194,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_fast_padded_mallocz"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_fast_padded_mallocz");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10107,6 +11218,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_fast_padded_mallocz$handle() {
         return av_fast_padded_mallocz.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_fast_padded_mallocz(void *ptr, unsigned int *size, size_t min_size)
+     * }
+     */
+    public static MemorySegment av_fast_padded_mallocz$address() {
+        return av_fast_padded_mallocz.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_fast_padded_mallocz(void *ptr, unsigned int *size, size_t min_size)
@@ -10130,9 +11252,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avcodec_is_open"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_is_open");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10154,6 +11276,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avcodec_is_open$handle() {
         return avcodec_is_open.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avcodec_is_open(AVCodecContext *s)
+     * }
+     */
+    public static MemorySegment avcodec_is_open$address() {
+        return avcodec_is_open.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avcodec_is_open(AVCodecContext *s)
@@ -10175,9 +11308,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_LONG    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("clock"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("clock");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10199,6 +11332,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle clock$handle() {
         return clock.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern clock_t clock()
+     * }
+     */
+    public static MemorySegment clock$address() {
+        return clock.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern clock_t clock()
@@ -10222,9 +11366,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("time"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("time");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10246,6 +11390,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle time$handle() {
         return time.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern time_t time(time_t *__timer)
+     * }
+     */
+    public static MemorySegment time$address() {
+        return time.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern time_t time(time_t *__timer)
@@ -10270,9 +11425,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("difftime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("difftime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10294,6 +11449,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle difftime$handle() {
         return difftime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double difftime(time_t __time1, time_t __time0)
+     * }
+     */
+    public static MemorySegment difftime$address() {
+        return difftime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern double difftime(time_t __time1, time_t __time0)
@@ -10317,9 +11483,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("mktime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("mktime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10341,6 +11507,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle mktime$handle() {
         return mktime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern time_t mktime(struct tm *__tp)
+     * }
+     */
+    public static MemorySegment mktime$address() {
+        return mktime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern time_t mktime(struct tm *__tp)
@@ -10367,9 +11544,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("strftime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("strftime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10391,6 +11568,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle strftime$handle() {
         return strftime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern size_t strftime(char *restrict __s, size_t __maxsize, const char *restrict __format, const struct tm *restrict __tp)
+     * }
+     */
+    public static MemorySegment strftime$address() {
+        return strftime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern size_t strftime(char *restrict __s, size_t __maxsize, const char *restrict __format, const struct tm *restrict __tp)
@@ -10418,9 +11606,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("strftime_l"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("strftime_l");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10442,6 +11630,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle strftime_l$handle() {
         return strftime_l.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern size_t strftime_l(char *restrict __s, size_t __maxsize, const char *restrict __format, const struct tm *restrict __tp, locale_t __loc)
+     * }
+     */
+    public static MemorySegment strftime_l$address() {
+        return strftime_l.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern size_t strftime_l(char *restrict __s, size_t __maxsize, const char *restrict __format, const struct tm *restrict __tp, locale_t __loc)
@@ -10465,9 +11664,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("gmtime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("gmtime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10489,6 +11688,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle gmtime$handle() {
         return gmtime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern struct tm *gmtime(const time_t *__timer)
+     * }
+     */
+    public static MemorySegment gmtime$address() {
+        return gmtime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern struct tm *gmtime(const time_t *__timer)
@@ -10512,9 +11722,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("localtime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("localtime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10536,6 +11746,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle localtime$handle() {
         return localtime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern struct tm *localtime(const time_t *__timer)
+     * }
+     */
+    public static MemorySegment localtime$address() {
+        return localtime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern struct tm *localtime(const time_t *__timer)
@@ -10560,9 +11781,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("gmtime_r"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("gmtime_r");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10584,6 +11805,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle gmtime_r$handle() {
         return gmtime_r.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern struct tm *gmtime_r(const time_t *restrict __timer, struct tm *restrict __tp)
+     * }
+     */
+    public static MemorySegment gmtime_r$address() {
+        return gmtime_r.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern struct tm *gmtime_r(const time_t *restrict __timer, struct tm *restrict __tp)
@@ -10608,9 +11840,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("localtime_r"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("localtime_r");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10632,6 +11864,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle localtime_r$handle() {
         return localtime_r.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern struct tm *localtime_r(const time_t *restrict __timer, struct tm *restrict __tp)
+     * }
+     */
+    public static MemorySegment localtime_r$address() {
+        return localtime_r.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern struct tm *localtime_r(const time_t *restrict __timer, struct tm *restrict __tp)
@@ -10655,9 +11898,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("asctime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("asctime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10679,6 +11922,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle asctime$handle() {
         return asctime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *asctime(const struct tm *__tp)
+     * }
+     */
+    public static MemorySegment asctime$address() {
+        return asctime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern char *asctime(const struct tm *__tp)
@@ -10702,9 +11956,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("ctime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("ctime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10726,6 +11980,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle ctime$handle() {
         return ctime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *ctime(const time_t *__timer)
+     * }
+     */
+    public static MemorySegment ctime$address() {
+        return ctime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern char *ctime(const time_t *__timer)
@@ -10750,9 +12015,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("asctime_r"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("asctime_r");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10774,6 +12039,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle asctime_r$handle() {
         return asctime_r.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *asctime_r(const struct tm *restrict __tp, char *restrict __buf)
+     * }
+     */
+    public static MemorySegment asctime_r$address() {
+        return asctime_r.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern char *asctime_r(const struct tm *restrict __tp, char *restrict __buf)
@@ -10798,9 +12074,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("ctime_r"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("ctime_r");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -10822,6 +12098,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle ctime_r$handle() {
         return ctime_r.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern char *ctime_r(const time_t *restrict __timer, char *restrict __buf)
+     * }
+     */
+    public static MemorySegment ctime_r$address() {
+        return ctime_r.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern char *ctime_r(const time_t *restrict __timer, char *restrict __buf)
@@ -11068,9 +12355,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
     private static class tzset {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("tzset"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("tzset");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11092,6 +12379,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle tzset$handle() {
         return tzset.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern void tzset()
+     * }
+     */
+    public static MemorySegment tzset$address() {
+        return tzset.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern void tzset()
@@ -11205,9 +12503,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timegm"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timegm");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11229,6 +12527,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timegm$handle() {
         return timegm.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern time_t timegm(struct tm *__tp)
+     * }
+     */
+    public static MemorySegment timegm$address() {
+        return timegm.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern time_t timegm(struct tm *__tp)
@@ -11252,9 +12561,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timelocal"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timelocal");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11276,6 +12585,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timelocal$handle() {
         return timelocal.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern time_t timelocal(struct tm *__tp)
+     * }
+     */
+    public static MemorySegment timelocal$address() {
+        return timelocal.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern time_t timelocal(struct tm *__tp)
@@ -11299,9 +12619,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("dysize"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("dysize");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11323,6 +12643,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle dysize$handle() {
         return dysize.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int dysize(int __year)
+     * }
+     */
+    public static MemorySegment dysize$address() {
+        return dysize.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int dysize(int __year)
@@ -11347,9 +12678,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("nanosleep"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("nanosleep");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11371,6 +12702,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle nanosleep$handle() {
         return nanosleep.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int nanosleep(const struct timespec *__requested_time, struct timespec *__remaining)
+     * }
+     */
+    public static MemorySegment nanosleep$address() {
+        return nanosleep.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int nanosleep(const struct timespec *__requested_time, struct timespec *__remaining)
@@ -11395,9 +12737,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("clock_getres"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("clock_getres");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11419,6 +12761,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle clock_getres$handle() {
         return clock_getres.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int clock_getres(clockid_t __clock_id, struct timespec *__res)
+     * }
+     */
+    public static MemorySegment clock_getres$address() {
+        return clock_getres.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int clock_getres(clockid_t __clock_id, struct timespec *__res)
@@ -11443,9 +12796,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("clock_gettime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("clock_gettime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11467,6 +12820,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle clock_gettime$handle() {
         return clock_gettime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int clock_gettime(clockid_t __clock_id, struct timespec *__tp)
+     * }
+     */
+    public static MemorySegment clock_gettime$address() {
+        return clock_gettime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int clock_gettime(clockid_t __clock_id, struct timespec *__tp)
@@ -11491,9 +12855,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("clock_settime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("clock_settime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11515,6 +12879,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle clock_settime$handle() {
         return clock_settime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int clock_settime(clockid_t __clock_id, const struct timespec *__tp)
+     * }
+     */
+    public static MemorySegment clock_settime$address() {
+        return clock_settime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int clock_settime(clockid_t __clock_id, const struct timespec *__tp)
@@ -11541,9 +12916,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("clock_nanosleep"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("clock_nanosleep");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11565,6 +12940,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle clock_nanosleep$handle() {
         return clock_nanosleep.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int clock_nanosleep(clockid_t __clock_id, int __flags, const struct timespec *__req, struct timespec *__rem)
+     * }
+     */
+    public static MemorySegment clock_nanosleep$address() {
+        return clock_nanosleep.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int clock_nanosleep(clockid_t __clock_id, int __flags, const struct timespec *__req, struct timespec *__rem)
@@ -11589,9 +12975,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("clock_getcpuclockid"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("clock_getcpuclockid");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11613,6 +12999,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle clock_getcpuclockid$handle() {
         return clock_getcpuclockid.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int clock_getcpuclockid(pid_t __pid, clockid_t *__clock_id)
+     * }
+     */
+    public static MemorySegment clock_getcpuclockid$address() {
+        return clock_getcpuclockid.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int clock_getcpuclockid(pid_t __pid, clockid_t *__clock_id)
@@ -11638,9 +13035,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timer_create"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timer_create");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11662,6 +13059,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timer_create$handle() {
         return timer_create.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int timer_create(clockid_t __clock_id, struct sigevent *restrict __evp, timer_t *restrict __timerid)
+     * }
+     */
+    public static MemorySegment timer_create$address() {
+        return timer_create.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int timer_create(clockid_t __clock_id, struct sigevent *restrict __evp, timer_t *restrict __timerid)
@@ -11685,9 +13093,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timer_delete"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timer_delete");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11709,6 +13117,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timer_delete$handle() {
         return timer_delete.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int timer_delete(timer_t __timerid)
+     * }
+     */
+    public static MemorySegment timer_delete$address() {
+        return timer_delete.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int timer_delete(timer_t __timerid)
@@ -11735,9 +13154,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timer_settime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timer_settime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11759,6 +13178,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timer_settime$handle() {
         return timer_settime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int timer_settime(timer_t __timerid, int __flags, const struct itimerspec *restrict __value, struct itimerspec *restrict __ovalue)
+     * }
+     */
+    public static MemorySegment timer_settime$address() {
+        return timer_settime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int timer_settime(timer_t __timerid, int __flags, const struct itimerspec *restrict __value, struct itimerspec *restrict __ovalue)
@@ -11783,9 +13213,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timer_gettime"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timer_gettime");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11807,6 +13237,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timer_gettime$handle() {
         return timer_gettime.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int timer_gettime(timer_t __timerid, struct itimerspec *__value)
+     * }
+     */
+    public static MemorySegment timer_gettime$address() {
+        return timer_gettime.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int timer_gettime(timer_t __timerid, struct itimerspec *__value)
@@ -11830,9 +13271,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timer_getoverrun"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timer_getoverrun");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11854,6 +13295,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timer_getoverrun$handle() {
         return timer_getoverrun.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int timer_getoverrun(timer_t __timerid)
+     * }
+     */
+    public static MemorySegment timer_getoverrun$address() {
+        return timer_getoverrun.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int timer_getoverrun(timer_t __timerid)
@@ -11878,9 +13330,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("timespec_get"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("timespec_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -11902,6 +13354,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle timespec_get$handle() {
         return timespec_get.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern int timespec_get(struct timespec *__ts, int __base)
+     * }
+     */
+    public static MemorySegment timespec_get$address() {
+        return timespec_get.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * extern int timespec_get(struct timespec *__ts, int __base)
@@ -12078,9 +13541,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_find_protocol_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_find_protocol_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12102,6 +13565,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_find_protocol_name$handle() {
         return avio_find_protocol_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avio_find_protocol_name(const char *url)
+     * }
+     */
+    public static MemorySegment avio_find_protocol_name$address() {
+        return avio_find_protocol_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avio_find_protocol_name(const char *url)
@@ -12126,9 +13600,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_check"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_check");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12150,6 +13624,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_check$handle() {
         return avio_check.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_check(const char *url, int flags)
+     * }
+     */
+    public static MemorySegment avio_check$address() {
+        return avio_check.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_check(const char *url, int flags)
@@ -12175,9 +13660,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_open_dir"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open_dir");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12199,6 +13684,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_open_dir$handle() {
         return avio_open_dir.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_open_dir(AVIODirContext **s, const char *url, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avio_open_dir$address() {
+        return avio_open_dir.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_open_dir(AVIODirContext **s, const char *url, AVDictionary **options)
@@ -12223,9 +13719,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_read_dir"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read_dir");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12247,6 +13743,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_read_dir$handle() {
         return avio_read_dir.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_read_dir(AVIODirContext *s, AVIODirEntry **next)
+     * }
+     */
+    public static MemorySegment avio_read_dir$address() {
+        return avio_read_dir.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_read_dir(AVIODirContext *s, AVIODirEntry **next)
@@ -12270,9 +13777,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_close_dir"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_close_dir");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12294,6 +13801,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_close_dir$handle() {
         return avio_close_dir.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_close_dir(AVIODirContext **s)
+     * }
+     */
+    public static MemorySegment avio_close_dir$address() {
+        return avio_close_dir.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_close_dir(AVIODirContext **s)
@@ -12316,9 +13834,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_free_directory_entry"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_free_directory_entry");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12340,6 +13858,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_free_directory_entry$handle() {
         return avio_free_directory_entry.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_free_directory_entry(AVIODirEntry **entry)
+     * }
+     */
+    public static MemorySegment avio_free_directory_entry$address() {
+        return avio_free_directory_entry.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_free_directory_entry(AVIODirEntry **entry)
@@ -12369,9 +13898,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_alloc_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_alloc_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12393,6 +13922,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_alloc_context$handle() {
         return avio_alloc_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVIOContext *avio_alloc_context(unsigned char *buffer, int buffer_size, int write_flag, void *opaque, int (*read_packet)(void *, uint8_t *, int), int (*write_packet)(void *, uint8_t *, int), int64_t (*seek)(void *, int64_t, int))
+     * }
+     */
+    public static MemorySegment avio_alloc_context$address() {
+        return avio_alloc_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVIOContext *avio_alloc_context(unsigned char *buffer, int buffer_size, int write_flag, void *opaque, int (*read_packet)(void *, uint8_t *, int), int (*write_packet)(void *, uint8_t *, int), int64_t (*seek)(void *, int64_t, int))
@@ -12415,9 +13955,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_context_free"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_context_free");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12439,6 +13979,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_context_free$handle() {
         return avio_context_free.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_context_free(AVIOContext **s)
+     * }
+     */
+    public static MemorySegment avio_context_free$address() {
+        return avio_context_free.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_context_free(AVIOContext **s)
@@ -12462,9 +14013,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_w8"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_w8");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12486,6 +14037,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_w8$handle() {
         return avio_w8.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_w8(AVIOContext *s, int b)
+     * }
+     */
+    public static MemorySegment avio_w8$address() {
+        return avio_w8.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_w8(AVIOContext *s, int b)
@@ -12510,9 +14072,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_write"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_write");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12534,6 +14096,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_write$handle() {
         return avio_write.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_write(AVIOContext *s, const unsigned char *buf, int size)
+     * }
+     */
+    public static MemorySegment avio_write$address() {
+        return avio_write.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_write(AVIOContext *s, const unsigned char *buf, int size)
@@ -12557,9 +14130,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wl64"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl64");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12581,6 +14154,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wl64$handle() {
         return avio_wl64.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wl64(AVIOContext *s, uint64_t val)
+     * }
+     */
+    public static MemorySegment avio_wl64$address() {
+        return avio_wl64.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wl64(AVIOContext *s, uint64_t val)
@@ -12604,9 +14188,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wb64"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb64");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12628,6 +14212,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wb64$handle() {
         return avio_wb64.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wb64(AVIOContext *s, uint64_t val)
+     * }
+     */
+    public static MemorySegment avio_wb64$address() {
+        return avio_wb64.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wb64(AVIOContext *s, uint64_t val)
@@ -12651,9 +14246,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wl32"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl32");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12675,6 +14270,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wl32$handle() {
         return avio_wl32.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wl32(AVIOContext *s, unsigned int val)
+     * }
+     */
+    public static MemorySegment avio_wl32$address() {
+        return avio_wl32.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wl32(AVIOContext *s, unsigned int val)
@@ -12698,9 +14304,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wb32"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb32");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12722,6 +14328,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wb32$handle() {
         return avio_wb32.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wb32(AVIOContext *s, unsigned int val)
+     * }
+     */
+    public static MemorySegment avio_wb32$address() {
+        return avio_wb32.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wb32(AVIOContext *s, unsigned int val)
@@ -12745,9 +14362,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wl24"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl24");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12769,6 +14386,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wl24$handle() {
         return avio_wl24.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wl24(AVIOContext *s, unsigned int val)
+     * }
+     */
+    public static MemorySegment avio_wl24$address() {
+        return avio_wl24.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wl24(AVIOContext *s, unsigned int val)
@@ -12792,9 +14420,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wb24"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb24");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12816,6 +14444,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wb24$handle() {
         return avio_wb24.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wb24(AVIOContext *s, unsigned int val)
+     * }
+     */
+    public static MemorySegment avio_wb24$address() {
+        return avio_wb24.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wb24(AVIOContext *s, unsigned int val)
@@ -12839,9 +14478,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wl16"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl16");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12863,6 +14502,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wl16$handle() {
         return avio_wl16.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wl16(AVIOContext *s, unsigned int val)
+     * }
+     */
+    public static MemorySegment avio_wl16$address() {
+        return avio_wl16.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wl16(AVIOContext *s, unsigned int val)
@@ -12886,9 +14536,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_wb16"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb16");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12910,6 +14560,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_wb16$handle() {
         return avio_wb16.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_wb16(AVIOContext *s, unsigned int val)
+     * }
+     */
+    public static MemorySegment avio_wb16$address() {
+        return avio_wb16.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_wb16(AVIOContext *s, unsigned int val)
@@ -12934,9 +14595,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_put_str"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_put_str");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -12958,6 +14619,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_put_str$handle() {
         return avio_put_str.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_put_str(AVIOContext *s, const char *str)
+     * }
+     */
+    public static MemorySegment avio_put_str$address() {
+        return avio_put_str.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_put_str(AVIOContext *s, const char *str)
@@ -12982,9 +14654,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_put_str16le"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_put_str16le");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13006,6 +14678,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_put_str16le$handle() {
         return avio_put_str16le.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_put_str16le(AVIOContext *s, const char *str)
+     * }
+     */
+    public static MemorySegment avio_put_str16le$address() {
+        return avio_put_str16le.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_put_str16le(AVIOContext *s, const char *str)
@@ -13030,9 +14713,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_put_str16be"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_put_str16be");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13054,6 +14737,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_put_str16be$handle() {
         return avio_put_str16be.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_put_str16be(AVIOContext *s, const char *str)
+     * }
+     */
+    public static MemorySegment avio_put_str16be$address() {
+        return avio_put_str16be.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_put_str16be(AVIOContext *s, const char *str)
@@ -13078,9 +14772,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_write_marker"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_write_marker");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13102,6 +14796,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_write_marker$handle() {
         return avio_write_marker.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_write_marker(AVIOContext *s, int64_t time, enum AVIODataMarkerType type)
+     * }
+     */
+    public static MemorySegment avio_write_marker$address() {
+        return avio_write_marker.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_write_marker(AVIOContext *s, int64_t time, enum AVIODataMarkerType type)
@@ -13127,9 +14832,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_seek"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_seek");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13151,6 +14856,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_seek$handle() {
         return avio_seek.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int64_t avio_seek(AVIOContext *s, int64_t offset, int whence)
+     * }
+     */
+    public static MemorySegment avio_seek$address() {
+        return avio_seek.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int64_t avio_seek(AVIOContext *s, int64_t offset, int whence)
@@ -13175,9 +14891,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_skip"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_skip");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13199,6 +14915,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_skip$handle() {
         return avio_skip.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int64_t avio_skip(AVIOContext *s, int64_t offset)
+     * }
+     */
+    public static MemorySegment avio_skip$address() {
+        return avio_skip.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int64_t avio_skip(AVIOContext *s, int64_t offset)
@@ -13222,9 +14949,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_size"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_size");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13246,6 +14973,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_size$handle() {
         return avio_size.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int64_t avio_size(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_size$address() {
+        return avio_size.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int64_t avio_size(AVIOContext *s)
@@ -13269,9 +15007,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_feof"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_feof");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13293,6 +15031,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_feof$handle() {
         return avio_feof.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_feof(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_feof$address() {
+        return avio_feof.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_feof(AVIOContext *s)
@@ -13318,9 +15067,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_vprintf"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_vprintf");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13342,6 +15091,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_vprintf$handle() {
         return avio_vprintf.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_vprintf(AVIOContext *s, const char *fmt, va_list ap)
+     * }
+     */
+    public static MemorySegment avio_vprintf$address() {
+        return avio_vprintf.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_vprintf(AVIOContext *s, const char *fmt, va_list ap)
@@ -13398,6 +15158,13 @@ public class FFmpeg_1 extends FFmpeg_2 {
         }
 
         /**
+         * {@return the address}
+         */
+        public static MemorySegment address() {
+            return ADDR;
+        }
+
+        /**
          * {@return the specialized method handle}
          */
         public MethodHandle handle() {
@@ -13431,9 +15198,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_print_string_array"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_print_string_array");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13455,6 +15222,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_print_string_array$handle() {
         return avio_print_string_array.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_print_string_array(AVIOContext *s, const char *strings[])
+     * }
+     */
+    public static MemorySegment avio_print_string_array$address() {
+        return avio_print_string_array.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_print_string_array(AVIOContext *s, const char *strings[])
@@ -13477,9 +15255,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_flush"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_flush");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13501,6 +15279,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_flush$handle() {
         return avio_flush.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avio_flush(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_flush$address() {
+        return avio_flush.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avio_flush(AVIOContext *s)
@@ -13526,9 +15315,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_read"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13550,6 +15339,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_read$handle() {
         return avio_read.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_read(AVIOContext *s, unsigned char *buf, int size)
+     * }
+     */
+    public static MemorySegment avio_read$address() {
+        return avio_read.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_read(AVIOContext *s, unsigned char *buf, int size)
@@ -13575,9 +15375,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_read_partial"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read_partial");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13599,6 +15399,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_read_partial$handle() {
         return avio_read_partial.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_read_partial(AVIOContext *s, unsigned char *buf, int size)
+     * }
+     */
+    public static MemorySegment avio_read_partial$address() {
+        return avio_read_partial.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_read_partial(AVIOContext *s, unsigned char *buf, int size)
@@ -13622,9 +15433,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_r8"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_r8");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13646,6 +15457,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_r8$handle() {
         return avio_r8.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_r8(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_r8$address() {
+        return avio_r8.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_r8(AVIOContext *s)
@@ -13669,9 +15491,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rl16"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl16");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13693,6 +15515,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rl16$handle() {
         return avio_rl16.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avio_rl16(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rl16$address() {
+        return avio_rl16.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avio_rl16(AVIOContext *s)
@@ -13716,9 +15549,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rl24"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl24");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13740,6 +15573,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rl24$handle() {
         return avio_rl24.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avio_rl24(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rl24$address() {
+        return avio_rl24.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avio_rl24(AVIOContext *s)
@@ -13763,9 +15607,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rl32"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl32");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13787,6 +15631,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rl32$handle() {
         return avio_rl32.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avio_rl32(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rl32$address() {
+        return avio_rl32.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avio_rl32(AVIOContext *s)
@@ -13810,9 +15665,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rl64"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl64");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13834,6 +15689,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rl64$handle() {
         return avio_rl64.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint64_t avio_rl64(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rl64$address() {
+        return avio_rl64.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint64_t avio_rl64(AVIOContext *s)
@@ -13857,9 +15723,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rb16"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb16");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13881,6 +15747,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rb16$handle() {
         return avio_rb16.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avio_rb16(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rb16$address() {
+        return avio_rb16.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avio_rb16(AVIOContext *s)
@@ -13904,9 +15781,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rb24"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb24");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13928,6 +15805,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rb24$handle() {
         return avio_rb24.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avio_rb24(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rb24$address() {
+        return avio_rb24.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avio_rb24(AVIOContext *s)
@@ -13951,9 +15839,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rb32"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb32");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -13975,6 +15863,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rb32$handle() {
         return avio_rb32.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avio_rb32(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rb32$address() {
+        return avio_rb32.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avio_rb32(AVIOContext *s)
@@ -13998,9 +15897,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_rb64"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb64");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14022,6 +15921,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_rb64$handle() {
         return avio_rb64.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint64_t avio_rb64(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_rb64$address() {
+        return avio_rb64.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint64_t avio_rb64(AVIOContext *s)
@@ -14048,9 +15958,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_get_str"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_str");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14072,6 +15982,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_get_str$handle() {
         return avio_get_str.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_get_str(AVIOContext *pb, int maxlen, char *buf, int buflen)
+     * }
+     */
+    public static MemorySegment avio_get_str$address() {
+        return avio_get_str.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_get_str(AVIOContext *pb, int maxlen, char *buf, int buflen)
@@ -14098,9 +16019,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_get_str16le"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_str16le");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14122,6 +16043,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_get_str16le$handle() {
         return avio_get_str16le.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_get_str16le(AVIOContext *pb, int maxlen, char *buf, int buflen)
+     * }
+     */
+    public static MemorySegment avio_get_str16le$address() {
+        return avio_get_str16le.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_get_str16le(AVIOContext *pb, int maxlen, char *buf, int buflen)
@@ -14148,9 +16080,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_get_str16be"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_str16be");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14172,6 +16104,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_get_str16be$handle() {
         return avio_get_str16be.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_get_str16be(AVIOContext *pb, int maxlen, char *buf, int buflen)
+     * }
+     */
+    public static MemorySegment avio_get_str16be$address() {
+        return avio_get_str16be.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_get_str16be(AVIOContext *pb, int maxlen, char *buf, int buflen)
@@ -14197,9 +16140,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_open"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14221,6 +16164,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_open$handle() {
         return avio_open.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_open(AVIOContext **s, const char *url, int flags)
+     * }
+     */
+    public static MemorySegment avio_open$address() {
+        return avio_open.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_open(AVIOContext **s, const char *url, int flags)
@@ -14248,9 +16202,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_open2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14272,6 +16226,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_open2$handle() {
         return avio_open2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_open2(AVIOContext **s, const char *url, int flags, const AVIOInterruptCB *int_cb, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avio_open2$address() {
+        return avio_open2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_open2(AVIOContext **s, const char *url, int flags, const AVIOInterruptCB *int_cb, AVDictionary **options)
@@ -14295,9 +16260,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_close"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_close");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14319,6 +16284,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_close$handle() {
         return avio_close.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_close(AVIOContext *s)
+     * }
+     */
+    public static MemorySegment avio_close$address() {
+        return avio_close.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_close(AVIOContext *s)
@@ -14342,9 +16318,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_closep"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_closep");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14366,6 +16342,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_closep$handle() {
         return avio_closep.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_closep(AVIOContext **s)
+     * }
+     */
+    public static MemorySegment avio_closep$address() {
+        return avio_closep.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_closep(AVIOContext **s)
@@ -14389,9 +16376,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_open_dyn_buf"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open_dyn_buf");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14413,6 +16400,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_open_dyn_buf$handle() {
         return avio_open_dyn_buf.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_open_dyn_buf(AVIOContext **s)
+     * }
+     */
+    public static MemorySegment avio_open_dyn_buf$address() {
+        return avio_open_dyn_buf.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_open_dyn_buf(AVIOContext **s)
@@ -14437,9 +16435,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_get_dyn_buf"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_dyn_buf");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14461,6 +16459,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_get_dyn_buf$handle() {
         return avio_get_dyn_buf.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_get_dyn_buf(AVIOContext *s, uint8_t **pbuffer)
+     * }
+     */
+    public static MemorySegment avio_get_dyn_buf$address() {
+        return avio_get_dyn_buf.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_get_dyn_buf(AVIOContext *s, uint8_t **pbuffer)
@@ -14485,9 +16494,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_close_dyn_buf"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_close_dyn_buf");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14509,6 +16518,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_close_dyn_buf$handle() {
         return avio_close_dyn_buf.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_close_dyn_buf(AVIOContext *s, uint8_t **pbuffer)
+     * }
+     */
+    public static MemorySegment avio_close_dyn_buf$address() {
+        return avio_close_dyn_buf.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_close_dyn_buf(AVIOContext *s, uint8_t **pbuffer)
@@ -14533,9 +16553,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_enum_protocols"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_enum_protocols");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14557,6 +16577,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_enum_protocols$handle() {
         return avio_enum_protocols.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avio_enum_protocols(void **opaque, int output)
+     * }
+     */
+    public static MemorySegment avio_enum_protocols$address() {
+        return avio_enum_protocols.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avio_enum_protocols(void **opaque, int output)
@@ -14580,9 +16611,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_protocol_get_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_protocol_get_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14604,6 +16635,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_protocol_get_class$handle() {
         return avio_protocol_get_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *avio_protocol_get_class(const char *name)
+     * }
+     */
+    public static MemorySegment avio_protocol_get_class$address() {
+        return avio_protocol_get_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *avio_protocol_get_class(const char *name)
@@ -14628,9 +16670,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_pause"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_pause");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14652,6 +16694,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_pause$handle() {
         return avio_pause.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_pause(AVIOContext *h, int pause)
+     * }
+     */
+    public static MemorySegment avio_pause$address() {
+        return avio_pause.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_pause(AVIOContext *h, int pause)
@@ -14678,9 +16731,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_seek_time"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_seek_time");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14702,6 +16755,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_seek_time$handle() {
         return avio_seek_time.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int64_t avio_seek_time(AVIOContext *h, int stream_index, int64_t timestamp, int flags)
+     * }
+     */
+    public static MemorySegment avio_seek_time$address() {
+        return avio_seek_time.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int64_t avio_seek_time(AVIOContext *h, int stream_index, int64_t timestamp, int flags)
@@ -14727,9 +16791,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_read_to_bprint"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read_to_bprint");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14751,6 +16815,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_read_to_bprint$handle() {
         return avio_read_to_bprint.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_read_to_bprint(AVIOContext *h, struct AVBPrint *pb, size_t max_size)
+     * }
+     */
+    public static MemorySegment avio_read_to_bprint$address() {
+        return avio_read_to_bprint.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_read_to_bprint(AVIOContext *h, struct AVBPrint *pb, size_t max_size)
@@ -14775,9 +16850,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_accept"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_accept");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14799,6 +16874,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_accept$handle() {
         return avio_accept.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_accept(AVIOContext *s, AVIOContext **c)
+     * }
+     */
+    public static MemorySegment avio_accept$address() {
+        return avio_accept.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_accept(AVIOContext *s, AVIOContext **c)
@@ -14822,9 +16908,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avio_handshake"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_handshake");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14846,6 +16932,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avio_handshake$handle() {
         return avio_handshake.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avio_handshake(AVIOContext *c)
+     * }
+     */
+    public static MemorySegment avio_handshake$address() {
+        return avio_handshake.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avio_handshake(AVIOContext *c)
@@ -14871,9 +16968,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14895,6 +16992,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_packet$handle() {
         return av_get_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_packet(AVIOContext *s, AVPacket *pkt, int size)
+     * }
+     */
+    public static MemorySegment av_get_packet$address() {
+        return av_get_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_packet(AVIOContext *s, AVPacket *pkt, int size)
@@ -14920,9 +17028,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_append_packet"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_append_packet");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -14944,6 +17052,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_append_packet$handle() {
         return av_append_packet.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_append_packet(AVIOContext *s, AVPacket *pkt, int size)
+     * }
+     */
+    public static MemorySegment av_append_packet$address() {
+        return av_append_packet.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_append_packet(AVIOContext *s, AVPacket *pkt, int size)
@@ -15021,9 +17140,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_disposition_from_string"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_disposition_from_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15045,6 +17164,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_disposition_from_string$handle() {
         return av_disposition_from_string.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_disposition_from_string(const char *disp)
+     * }
+     */
+    public static MemorySegment av_disposition_from_string$address() {
+        return av_disposition_from_string.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_disposition_from_string(const char *disp)
@@ -15068,9 +17198,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_disposition_to_string"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_disposition_to_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15092,6 +17222,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_disposition_to_string$handle() {
         return av_disposition_to_string.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_disposition_to_string(int disposition)
+     * }
+     */
+    public static MemorySegment av_disposition_to_string$address() {
+        return av_disposition_to_string.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_disposition_to_string(int disposition)
@@ -15115,9 +17256,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_get_parser"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_parser");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15139,6 +17280,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_get_parser$handle() {
         return av_stream_get_parser.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * struct AVCodecParserContext *av_stream_get_parser(const AVStream *s)
+     * }
+     */
+    public static MemorySegment av_stream_get_parser$address() {
+        return av_stream_get_parser.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * struct AVCodecParserContext *av_stream_get_parser(const AVStream *s)
@@ -15162,9 +17314,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_get_end_pts"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_end_pts");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15186,6 +17338,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_get_end_pts$handle() {
         return av_stream_get_end_pts.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int64_t av_stream_get_end_pts(const AVStream *st)
+     * }
+     */
+    public static MemorySegment av_stream_get_end_pts$address() {
+        return av_stream_get_end_pts.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int64_t av_stream_get_end_pts(const AVStream *st)
@@ -15235,9 +17398,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_format_inject_global_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_format_inject_global_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15259,6 +17422,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_format_inject_global_side_data$handle() {
         return av_format_inject_global_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_format_inject_global_side_data(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment av_format_inject_global_side_data$address() {
+        return av_format_inject_global_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_format_inject_global_side_data(AVFormatContext *s)
@@ -15282,9 +17456,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_fmt_ctx_get_duration_estimation_method"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_fmt_ctx_get_duration_estimation_method");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15306,6 +17480,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_fmt_ctx_get_duration_estimation_method$handle() {
         return av_fmt_ctx_get_duration_estimation_method.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVDurationEstimationMethod av_fmt_ctx_get_duration_estimation_method(const AVFormatContext *ctx)
+     * }
+     */
+    public static MemorySegment av_fmt_ctx_get_duration_estimation_method$address() {
+        return av_fmt_ctx_get_duration_estimation_method.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVDurationEstimationMethod av_fmt_ctx_get_duration_estimation_method(const AVFormatContext *ctx)
@@ -15327,9 +17512,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_version"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_version");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15351,6 +17536,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_version$handle() {
         return avformat_version.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int avformat_version()
+     * }
+     */
+    public static MemorySegment avformat_version$address() {
+        return avformat_version.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int avformat_version()
@@ -15372,9 +17568,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_configuration"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_configuration");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15396,6 +17592,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_configuration$handle() {
         return avformat_configuration.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avformat_configuration()
+     * }
+     */
+    public static MemorySegment avformat_configuration$address() {
+        return avformat_configuration.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avformat_configuration()
@@ -15417,9 +17624,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_license"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_license");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15441,6 +17648,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_license$handle() {
         return avformat_license.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avformat_license()
+     * }
+     */
+    public static MemorySegment avformat_license$address() {
+        return avformat_license.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *avformat_license()
@@ -15462,9 +17680,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_network_init"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_network_init");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15486,6 +17704,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_network_init$handle() {
         return avformat_network_init.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_network_init()
+     * }
+     */
+    public static MemorySegment avformat_network_init$address() {
+        return avformat_network_init.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_network_init()
@@ -15507,9 +17736,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_network_deinit"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_network_deinit");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15531,6 +17760,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_network_deinit$handle() {
         return avformat_network_deinit.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_network_deinit()
+     * }
+     */
+    public static MemorySegment avformat_network_deinit$address() {
+        return avformat_network_deinit.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_network_deinit()
@@ -15554,9 +17794,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_muxer_iterate"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_muxer_iterate");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15578,6 +17818,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_muxer_iterate$handle() {
         return av_muxer_iterate.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVOutputFormat *av_muxer_iterate(void **opaque)
+     * }
+     */
+    public static MemorySegment av_muxer_iterate$address() {
+        return av_muxer_iterate.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVOutputFormat *av_muxer_iterate(void **opaque)
@@ -15601,9 +17852,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_demuxer_iterate"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_demuxer_iterate");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15625,6 +17876,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_demuxer_iterate$handle() {
         return av_demuxer_iterate.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVInputFormat *av_demuxer_iterate(void **opaque)
+     * }
+     */
+    public static MemorySegment av_demuxer_iterate$address() {
+        return av_demuxer_iterate.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVInputFormat *av_demuxer_iterate(void **opaque)
@@ -15646,9 +17908,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_alloc_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_alloc_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15670,6 +17932,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_alloc_context$handle() {
         return avformat_alloc_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVFormatContext *avformat_alloc_context()
+     * }
+     */
+    public static MemorySegment avformat_alloc_context$address() {
+        return avformat_alloc_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVFormatContext *avformat_alloc_context()
@@ -15692,9 +17965,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_free_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_free_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15716,6 +17989,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_free_context$handle() {
         return avformat_free_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avformat_free_context(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment avformat_free_context$address() {
+        return avformat_free_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avformat_free_context(AVFormatContext *s)
@@ -15737,9 +18021,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_get_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15761,6 +18045,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_get_class$handle() {
         return avformat_get_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *avformat_get_class()
+     * }
+     */
+    public static MemorySegment avformat_get_class$address() {
+        return avformat_get_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *avformat_get_class()
@@ -15782,9 +18077,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_get_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15806,6 +18101,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_get_class$handle() {
         return av_stream_get_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *av_stream_get_class()
+     * }
+     */
+    public static MemorySegment av_stream_get_class$address() {
+        return av_stream_get_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *av_stream_get_class()
@@ -15830,9 +18136,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_new_stream"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_new_stream");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15854,6 +18160,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_new_stream$handle() {
         return avformat_new_stream.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVStream *avformat_new_stream(AVFormatContext *s, const AVCodec *c)
+     * }
+     */
+    public static MemorySegment avformat_new_stream$address() {
+        return avformat_new_stream.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVStream *avformat_new_stream(AVFormatContext *s, const AVCodec *c)
@@ -15880,9 +18197,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_add_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_add_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15904,6 +18221,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_add_side_data$handle() {
         return av_stream_add_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_stream_add_side_data(AVStream *st, enum AVPacketSideDataType type, uint8_t *data, size_t size)
+     * }
+     */
+    public static MemorySegment av_stream_add_side_data$address() {
+        return av_stream_add_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_stream_add_side_data(AVStream *st, enum AVPacketSideDataType type, uint8_t *data, size_t size)
@@ -15929,9 +18257,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_new_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_new_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -15953,6 +18281,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_new_side_data$handle() {
         return av_stream_new_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint8_t *av_stream_new_side_data(AVStream *stream, enum AVPacketSideDataType type, size_t size)
+     * }
+     */
+    public static MemorySegment av_stream_new_side_data$address() {
+        return av_stream_new_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint8_t *av_stream_new_side_data(AVStream *stream, enum AVPacketSideDataType type, size_t size)
@@ -15978,9 +18317,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_get_side_data"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_side_data");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16002,6 +18341,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_get_side_data$handle() {
         return av_stream_get_side_data.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * uint8_t *av_stream_get_side_data(const AVStream *stream, enum AVPacketSideDataType type, size_t *size)
+     * }
+     */
+    public static MemorySegment av_stream_get_side_data$address() {
+        return av_stream_get_side_data.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * uint8_t *av_stream_get_side_data(const AVStream *stream, enum AVPacketSideDataType type, size_t *size)
@@ -16026,9 +18376,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_new_program"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_new_program");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16050,6 +18400,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_new_program$handle() {
         return av_new_program.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVProgram *av_new_program(AVFormatContext *s, int id)
+     * }
+     */
+    public static MemorySegment av_new_program$address() {
+        return av_new_program.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVProgram *av_new_program(AVFormatContext *s, int id)
@@ -16076,9 +18437,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_alloc_output_context2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_alloc_output_context2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16100,6 +18461,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_alloc_output_context2$handle() {
         return avformat_alloc_output_context2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_alloc_output_context2(AVFormatContext **ctx, const AVOutputFormat *oformat, const char *format_name, const char *filename)
+     * }
+     */
+    public static MemorySegment avformat_alloc_output_context2$address() {
+        return avformat_alloc_output_context2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_alloc_output_context2(AVFormatContext **ctx, const AVOutputFormat *oformat, const char *format_name, const char *filename)
@@ -16123,9 +18495,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_find_input_format"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_input_format");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16147,6 +18519,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_find_input_format$handle() {
         return av_find_input_format.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVInputFormat *av_find_input_format(const char *short_name)
+     * }
+     */
+    public static MemorySegment av_find_input_format$address() {
+        return av_find_input_format.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVInputFormat *av_find_input_format(const char *short_name)
@@ -16171,9 +18554,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_probe_input_format"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_format");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16195,6 +18578,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_probe_input_format$handle() {
         return av_probe_input_format.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVInputFormat *av_probe_input_format(const AVProbeData *pd, int is_opened)
+     * }
+     */
+    public static MemorySegment av_probe_input_format$address() {
+        return av_probe_input_format.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVInputFormat *av_probe_input_format(const AVProbeData *pd, int is_opened)
@@ -16220,9 +18614,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_probe_input_format2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_format2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16244,6 +18638,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_probe_input_format2$handle() {
         return av_probe_input_format2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVInputFormat *av_probe_input_format2(const AVProbeData *pd, int is_opened, int *score_max)
+     * }
+     */
+    public static MemorySegment av_probe_input_format2$address() {
+        return av_probe_input_format2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVInputFormat *av_probe_input_format2(const AVProbeData *pd, int is_opened, int *score_max)
@@ -16269,9 +18674,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_probe_input_format3"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_format3");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16293,6 +18698,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_probe_input_format3$handle() {
         return av_probe_input_format3.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVInputFormat *av_probe_input_format3(const AVProbeData *pd, int is_opened, int *score_ret)
+     * }
+     */
+    public static MemorySegment av_probe_input_format3$address() {
+        return av_probe_input_format3.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVInputFormat *av_probe_input_format3(const AVProbeData *pd, int is_opened, int *score_ret)
@@ -16321,9 +18737,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_probe_input_buffer2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_buffer2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16345,6 +18761,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_probe_input_buffer2$handle() {
         return av_probe_input_buffer2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_probe_input_buffer2(AVIOContext *pb, const AVInputFormat **fmt, const char *url, void *logctx, unsigned int offset, unsigned int max_probe_size)
+     * }
+     */
+    public static MemorySegment av_probe_input_buffer2$address() {
+        return av_probe_input_buffer2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_probe_input_buffer2(AVIOContext *pb, const AVInputFormat **fmt, const char *url, void *logctx, unsigned int offset, unsigned int max_probe_size)
@@ -16373,9 +18800,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_probe_input_buffer"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_buffer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16397,6 +18824,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_probe_input_buffer$handle() {
         return av_probe_input_buffer.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_probe_input_buffer(AVIOContext *pb, const AVInputFormat **fmt, const char *url, void *logctx, unsigned int offset, unsigned int max_probe_size)
+     * }
+     */
+    public static MemorySegment av_probe_input_buffer$address() {
+        return av_probe_input_buffer.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_probe_input_buffer(AVIOContext *pb, const AVInputFormat **fmt, const char *url, void *logctx, unsigned int offset, unsigned int max_probe_size)
@@ -16423,9 +18861,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_open_input"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_open_input");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16447,6 +18885,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_open_input$handle() {
         return avformat_open_input.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_open_input(AVFormatContext **ps, const char *url, const AVInputFormat *fmt, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avformat_open_input$address() {
+        return avformat_open_input.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_open_input(AVFormatContext **ps, const char *url, const AVInputFormat *fmt, AVDictionary **options)
@@ -16471,9 +18920,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_find_stream_info"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_find_stream_info");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16495,6 +18944,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_find_stream_info$handle() {
         return avformat_find_stream_info.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_find_stream_info(AVFormatContext *ic, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avformat_find_stream_info$address() {
+        return avformat_find_stream_info.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_find_stream_info(AVFormatContext *ic, AVDictionary **options)
@@ -16520,9 +18980,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_find_program_from_stream"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_program_from_stream");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16544,6 +19004,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_find_program_from_stream$handle() {
         return av_find_program_from_stream.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVProgram *av_find_program_from_stream(AVFormatContext *ic, AVProgram *last, int s)
+     * }
+     */
+    public static MemorySegment av_find_program_from_stream$address() {
+        return av_find_program_from_stream.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVProgram *av_find_program_from_stream(AVFormatContext *ic, AVProgram *last, int s)
@@ -16568,9 +19039,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_program_add_stream_index"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_program_add_stream_index");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16592,6 +19063,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_program_add_stream_index$handle() {
         return av_program_add_stream_index.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_program_add_stream_index(AVFormatContext *ac, int progid, unsigned int idx)
+     * }
+     */
+    public static MemorySegment av_program_add_stream_index$address() {
+        return av_program_add_stream_index.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_program_add_stream_index(AVFormatContext *ac, int progid, unsigned int idx)
@@ -16620,9 +19102,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_find_best_stream"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_best_stream");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16644,6 +19126,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_find_best_stream$handle() {
         return av_find_best_stream.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_find_best_stream(AVFormatContext *ic, enum AVMediaType type, int wanted_stream_nb, int related_stream, const AVCodec **decoder_ret, int flags)
+     * }
+     */
+    public static MemorySegment av_find_best_stream$address() {
+        return av_find_best_stream.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_find_best_stream(AVFormatContext *ic, enum AVMediaType type, int wanted_stream_nb, int related_stream, const AVCodec **decoder_ret, int flags)
@@ -16668,9 +19161,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_read_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16692,6 +19185,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_read_frame$handle() {
         return av_read_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_read_frame(AVFormatContext *s, AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_read_frame$address() {
+        return av_read_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_read_frame(AVFormatContext *s, AVPacket *pkt)
@@ -16718,9 +19222,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_seek_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_seek_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16742,6 +19246,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_seek_frame$handle() {
         return av_seek_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_seek_frame(AVFormatContext *s, int stream_index, int64_t timestamp, int flags)
+     * }
+     */
+    public static MemorySegment av_seek_frame$address() {
+        return av_seek_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_seek_frame(AVFormatContext *s, int stream_index, int64_t timestamp, int flags)
@@ -16770,9 +19285,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_seek_file"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_seek_file");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16794,6 +19309,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_seek_file$handle() {
         return avformat_seek_file.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_seek_file(AVFormatContext *s, int stream_index, int64_t min_ts, int64_t ts, int64_t max_ts, int flags)
+     * }
+     */
+    public static MemorySegment avformat_seek_file$address() {
+        return avformat_seek_file.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_seek_file(AVFormatContext *s, int stream_index, int64_t min_ts, int64_t ts, int64_t max_ts, int flags)
@@ -16817,9 +19343,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_flush"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_flush");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16841,6 +19367,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_flush$handle() {
         return avformat_flush.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_flush(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment avformat_flush$address() {
+        return avformat_flush.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_flush(AVFormatContext *s)
@@ -16864,9 +19401,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_read_play"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_play");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16888,6 +19425,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_read_play$handle() {
         return av_read_play.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_read_play(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment av_read_play$address() {
+        return av_read_play.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_read_play(AVFormatContext *s)
@@ -16911,9 +19459,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_read_pause"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_pause");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16935,6 +19483,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_read_pause$handle() {
         return av_read_pause.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_read_pause(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment av_read_pause$address() {
+        return av_read_pause.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_read_pause(AVFormatContext *s)
@@ -16957,9 +19516,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_close_input"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_close_input");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -16981,6 +19540,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_close_input$handle() {
         return avformat_close_input.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void avformat_close_input(AVFormatContext **s)
+     * }
+     */
+    public static MemorySegment avformat_close_input$address() {
+        return avformat_close_input.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void avformat_close_input(AVFormatContext **s)
@@ -17005,9 +19575,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_write_header"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_write_header");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17029,6 +19599,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_write_header$handle() {
         return avformat_write_header.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_write_header(AVFormatContext *s, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avformat_write_header$address() {
+        return avformat_write_header.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_write_header(AVFormatContext *s, AVDictionary **options)
@@ -17053,9 +19634,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_init_output"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_init_output");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17077,6 +19658,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_init_output$handle() {
         return avformat_init_output.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_init_output(AVFormatContext *s, AVDictionary **options)
+     * }
+     */
+    public static MemorySegment avformat_init_output$address() {
+        return avformat_init_output.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_init_output(AVFormatContext *s, AVDictionary **options)
@@ -17101,9 +19693,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_write_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17125,6 +19717,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_write_frame$handle() {
         return av_write_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_write_frame(AVFormatContext *s, AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_write_frame$address() {
+        return av_write_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_write_frame(AVFormatContext *s, AVPacket *pkt)
@@ -17149,9 +19752,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_interleaved_write_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_interleaved_write_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17173,6 +19776,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_interleaved_write_frame$handle() {
         return av_interleaved_write_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_interleaved_write_frame(AVFormatContext *s, AVPacket *pkt)
+     * }
+     */
+    public static MemorySegment av_interleaved_write_frame$address() {
+        return av_interleaved_write_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_interleaved_write_frame(AVFormatContext *s, AVPacket *pkt)
@@ -17198,9 +19812,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_write_uncoded_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_uncoded_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17222,6 +19836,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_write_uncoded_frame$handle() {
         return av_write_uncoded_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_write_uncoded_frame(AVFormatContext *s, int stream_index, AVFrame *frame)
+     * }
+     */
+    public static MemorySegment av_write_uncoded_frame$address() {
+        return av_write_uncoded_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_write_uncoded_frame(AVFormatContext *s, int stream_index, AVFrame *frame)
@@ -17247,9 +19872,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_interleaved_write_uncoded_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_interleaved_write_uncoded_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17271,6 +19896,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_interleaved_write_uncoded_frame$handle() {
         return av_interleaved_write_uncoded_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_interleaved_write_uncoded_frame(AVFormatContext *s, int stream_index, AVFrame *frame)
+     * }
+     */
+    public static MemorySegment av_interleaved_write_uncoded_frame$address() {
+        return av_interleaved_write_uncoded_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_interleaved_write_uncoded_frame(AVFormatContext *s, int stream_index, AVFrame *frame)
@@ -17295,9 +19931,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_write_uncoded_frame_query"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_uncoded_frame_query");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17319,6 +19955,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_write_uncoded_frame_query$handle() {
         return av_write_uncoded_frame_query.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_write_uncoded_frame_query(AVFormatContext *s, int stream_index)
+     * }
+     */
+    public static MemorySegment av_write_uncoded_frame_query$address() {
+        return av_write_uncoded_frame_query.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_write_uncoded_frame_query(AVFormatContext *s, int stream_index)
@@ -17342,9 +19989,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_write_trailer"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_trailer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17366,6 +20013,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_write_trailer$handle() {
         return av_write_trailer.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_write_trailer(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment av_write_trailer$address() {
+        return av_write_trailer.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_write_trailer(AVFormatContext *s)
@@ -17391,9 +20049,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_guess_format"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_format");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17415,6 +20073,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_guess_format$handle() {
         return av_guess_format.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVOutputFormat *av_guess_format(const char *short_name, const char *filename, const char *mime_type)
+     * }
+     */
+    public static MemorySegment av_guess_format$address() {
+        return av_guess_format.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVOutputFormat *av_guess_format(const char *short_name, const char *filename, const char *mime_type)
@@ -17442,9 +20111,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_guess_codec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_codec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17466,6 +20135,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_guess_codec$handle() {
         return av_guess_codec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVCodecID av_guess_codec(const AVOutputFormat *fmt, const char *short_name, const char *filename, const char *mime_type, enum AVMediaType type)
+     * }
+     */
+    public static MemorySegment av_guess_codec$address() {
+        return av_guess_codec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVCodecID av_guess_codec(const AVOutputFormat *fmt, const char *short_name, const char *filename, const char *mime_type, enum AVMediaType type)
@@ -17492,9 +20172,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_output_timestamp"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_output_timestamp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17516,6 +20196,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_output_timestamp$handle() {
         return av_get_output_timestamp.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_output_timestamp(struct AVFormatContext *s, int stream, int64_t *dts, int64_t *wall)
+     * }
+     */
+    public static MemorySegment av_get_output_timestamp$address() {
+        return av_get_output_timestamp.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_output_timestamp(struct AVFormatContext *s, int stream, int64_t *dts, int64_t *wall)
@@ -17540,9 +20231,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hex_dump"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hex_dump");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17564,6 +20255,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hex_dump$handle() {
         return av_hex_dump.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_hex_dump(FILE *f, const uint8_t *buf, int size)
+     * }
+     */
+    public static MemorySegment av_hex_dump$address() {
+        return av_hex_dump.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_hex_dump(FILE *f, const uint8_t *buf, int size)
@@ -17589,9 +20291,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_hex_dump_log"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hex_dump_log");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17613,6 +20315,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_hex_dump_log$handle() {
         return av_hex_dump_log.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_hex_dump_log(void *avcl, int level, const uint8_t *buf, int size)
+     * }
+     */
+    public static MemorySegment av_hex_dump_log$address() {
+        return av_hex_dump_log.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_hex_dump_log(void *avcl, int level, const uint8_t *buf, int size)
@@ -17638,9 +20351,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pkt_dump2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pkt_dump2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17662,6 +20375,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pkt_dump2$handle() {
         return av_pkt_dump2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_pkt_dump2(FILE *f, const AVPacket *pkt, int dump_payload, const AVStream *st)
+     * }
+     */
+    public static MemorySegment av_pkt_dump2$address() {
+        return av_pkt_dump2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_pkt_dump2(FILE *f, const AVPacket *pkt, int dump_payload, const AVStream *st)
@@ -17688,9 +20412,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pkt_dump_log2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pkt_dump_log2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17712,6 +20436,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pkt_dump_log2$handle() {
         return av_pkt_dump_log2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_pkt_dump_log2(void *avcl, int level, const AVPacket *pkt, int dump_payload, const AVStream *st)
+     * }
+     */
+    public static MemorySegment av_pkt_dump_log2$address() {
+        return av_pkt_dump_log2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_pkt_dump_log2(void *avcl, int level, const AVPacket *pkt, int dump_payload, const AVStream *st)
@@ -17736,9 +20471,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_codec_get_id"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_get_id");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17760,6 +20495,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_codec_get_id$handle() {
         return av_codec_get_id.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVCodecID av_codec_get_id(const struct AVCodecTag *const *tags, unsigned int tag)
+     * }
+     */
+    public static MemorySegment av_codec_get_id$address() {
+        return av_codec_get_id.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVCodecID av_codec_get_id(const struct AVCodecTag *const *tags, unsigned int tag)
@@ -17784,9 +20530,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_codec_get_tag"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_get_tag");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17808,6 +20554,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_codec_get_tag$handle() {
         return av_codec_get_tag.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int av_codec_get_tag(const struct AVCodecTag *const *tags, enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment av_codec_get_tag$address() {
+        return av_codec_get_tag.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int av_codec_get_tag(const struct AVCodecTag *const *tags, enum AVCodecID id)
@@ -17833,9 +20590,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_codec_get_tag2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_get_tag2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17857,6 +20614,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_codec_get_tag2$handle() {
         return av_codec_get_tag2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_codec_get_tag2(const struct AVCodecTag *const *tags, enum AVCodecID id, unsigned int *tag)
+     * }
+     */
+    public static MemorySegment av_codec_get_tag2$address() {
+        return av_codec_get_tag2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_codec_get_tag2(const struct AVCodecTag *const *tags, enum AVCodecID id, unsigned int *tag)
@@ -17880,9 +20648,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_find_default_stream_index"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_default_stream_index");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17904,6 +20672,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_find_default_stream_index$handle() {
         return av_find_default_stream_index.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_find_default_stream_index(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment av_find_default_stream_index$address() {
+        return av_find_default_stream_index.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_find_default_stream_index(AVFormatContext *s)
@@ -17929,9 +20708,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_index_search_timestamp"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_index_search_timestamp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -17953,6 +20732,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_index_search_timestamp$handle() {
         return av_index_search_timestamp.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_index_search_timestamp(AVStream *st, int64_t timestamp, int flags)
+     * }
+     */
+    public static MemorySegment av_index_search_timestamp$address() {
+        return av_index_search_timestamp.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_index_search_timestamp(AVStream *st, int64_t timestamp, int flags)
@@ -17976,9 +20766,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_index_get_entries_count"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_index_get_entries_count");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18000,6 +20790,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_index_get_entries_count$handle() {
         return avformat_index_get_entries_count.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_index_get_entries_count(const AVStream *st)
+     * }
+     */
+    public static MemorySegment avformat_index_get_entries_count$address() {
+        return avformat_index_get_entries_count.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_index_get_entries_count(const AVStream *st)
@@ -18024,9 +20825,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_index_get_entry"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_index_get_entry");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18048,6 +20849,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_index_get_entry$handle() {
         return avformat_index_get_entry.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVIndexEntry *avformat_index_get_entry(AVStream *st, int idx)
+     * }
+     */
+    public static MemorySegment avformat_index_get_entry$address() {
+        return avformat_index_get_entry.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVIndexEntry *avformat_index_get_entry(AVStream *st, int idx)
@@ -18073,9 +20885,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_index_get_entry_from_timestamp"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_index_get_entry_from_timestamp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18097,6 +20909,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_index_get_entry_from_timestamp$handle() {
         return avformat_index_get_entry_from_timestamp.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVIndexEntry *avformat_index_get_entry_from_timestamp(AVStream *st, int64_t wanted_timestamp, int flags)
+     * }
+     */
+    public static MemorySegment avformat_index_get_entry_from_timestamp$address() {
+        return avformat_index_get_entry_from_timestamp.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVIndexEntry *avformat_index_get_entry_from_timestamp(AVStream *st, int64_t wanted_timestamp, int flags)
@@ -18125,9 +20948,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_add_index_entry"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_add_index_entry");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18149,6 +20972,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_add_index_entry$handle() {
         return av_add_index_entry.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_add_index_entry(AVStream *st, int64_t pos, int64_t timestamp, int size, int distance, int flags)
+     * }
+     */
+    public static MemorySegment av_add_index_entry$address() {
+        return av_add_index_entry.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_add_index_entry(AVStream *st, int64_t pos, int64_t timestamp, int size, int distance, int flags)
@@ -18180,9 +21014,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_url_split"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_url_split");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18204,6 +21038,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_url_split$handle() {
         return av_url_split.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_url_split(char *proto, int proto_size, char *authorization, int authorization_size, char *hostname, int hostname_size, int *port_ptr, char *path, int path_size, const char *url)
+     * }
+     */
+    public static MemorySegment av_url_split$address() {
+        return av_url_split.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_url_split(char *proto, int proto_size, char *authorization, int authorization_size, char *hostname, int hostname_size, int *port_ptr, char *path, int path_size, const char *url)
@@ -18229,9 +21074,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_dump_format"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_dump_format");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18253,6 +21098,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_dump_format$handle() {
         return av_dump_format.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_dump_format(AVFormatContext *ic, int index, const char *url, int is_output)
+     * }
+     */
+    public static MemorySegment av_dump_format$address() {
+        return av_dump_format.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_dump_format(AVFormatContext *ic, int index, const char *url, int is_output)
@@ -18280,9 +21136,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_frame_filename2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_frame_filename2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18304,6 +21160,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_frame_filename2$handle() {
         return av_get_frame_filename2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_frame_filename2(char *buf, int buf_size, const char *path, int number, int flags)
+     * }
+     */
+    public static MemorySegment av_get_frame_filename2$address() {
+        return av_get_frame_filename2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_frame_filename2(char *buf, int buf_size, const char *path, int number, int flags)
@@ -18330,9 +21197,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_frame_filename"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_frame_filename");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18354,6 +21221,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_frame_filename$handle() {
         return av_get_frame_filename.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_frame_filename(char *buf, int buf_size, const char *path, int number)
+     * }
+     */
+    public static MemorySegment av_get_frame_filename$address() {
+        return av_get_frame_filename.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_frame_filename(char *buf, int buf_size, const char *path, int number)
@@ -18377,9 +21255,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_filename_number_test"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_filename_number_test");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18401,6 +21279,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_filename_number_test$handle() {
         return av_filename_number_test.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_filename_number_test(const char *filename)
+     * }
+     */
+    public static MemorySegment av_filename_number_test$address() {
+        return av_filename_number_test.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_filename_number_test(const char *filename)
@@ -18427,9 +21316,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_sdp_create"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_sdp_create");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18451,6 +21340,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_sdp_create$handle() {
         return av_sdp_create.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_sdp_create(AVFormatContext *ac[], int n_files, char *buf, int size)
+     * }
+     */
+    public static MemorySegment av_sdp_create$address() {
+        return av_sdp_create.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_sdp_create(AVFormatContext *ac[], int n_files, char *buf, int size)
@@ -18475,9 +21375,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_match_ext"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_match_ext");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18499,6 +21399,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_match_ext$handle() {
         return av_match_ext.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_match_ext(const char *filename, const char *extensions)
+     * }
+     */
+    public static MemorySegment av_match_ext$address() {
+        return av_match_ext.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_match_ext(const char *filename, const char *extensions)
@@ -18524,9 +21435,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_query_codec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_query_codec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18548,6 +21459,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_query_codec$handle() {
         return avformat_query_codec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_query_codec(const AVOutputFormat *ofmt, enum AVCodecID codec_id, int std_compliance)
+     * }
+     */
+    public static MemorySegment avformat_query_codec$address() {
+        return avformat_query_codec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_query_codec(const AVOutputFormat *ofmt, enum AVCodecID codec_id, int std_compliance)
@@ -18569,9 +21491,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_get_riff_video_tags"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_riff_video_tags");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18593,6 +21515,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_get_riff_video_tags$handle() {
         return avformat_get_riff_video_tags.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const struct AVCodecTag *avformat_get_riff_video_tags()
+     * }
+     */
+    public static MemorySegment avformat_get_riff_video_tags$address() {
+        return avformat_get_riff_video_tags.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const struct AVCodecTag *avformat_get_riff_video_tags()
@@ -18614,9 +21547,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_get_riff_audio_tags"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_riff_audio_tags");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18638,6 +21571,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_get_riff_audio_tags$handle() {
         return avformat_get_riff_audio_tags.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const struct AVCodecTag *avformat_get_riff_audio_tags()
+     * }
+     */
+    public static MemorySegment avformat_get_riff_audio_tags$address() {
+        return avformat_get_riff_audio_tags.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const struct AVCodecTag *avformat_get_riff_audio_tags()
@@ -18659,9 +21603,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_get_mov_video_tags"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_mov_video_tags");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18683,6 +21627,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_get_mov_video_tags$handle() {
         return avformat_get_mov_video_tags.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const struct AVCodecTag *avformat_get_mov_video_tags()
+     * }
+     */
+    public static MemorySegment avformat_get_mov_video_tags$address() {
+        return avformat_get_mov_video_tags.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const struct AVCodecTag *avformat_get_mov_video_tags()
@@ -18704,9 +21659,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_get_mov_audio_tags"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_mov_audio_tags");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18728,6 +21683,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_get_mov_audio_tags$handle() {
         return avformat_get_mov_audio_tags.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const struct AVCodecTag *avformat_get_mov_audio_tags()
+     * }
+     */
+    public static MemorySegment avformat_get_mov_audio_tags$address() {
+        return avformat_get_mov_audio_tags.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const struct AVCodecTag *avformat_get_mov_audio_tags()
@@ -18753,9 +21719,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_guess_sample_aspect_ratio"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_sample_aspect_ratio");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18777,6 +21743,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_guess_sample_aspect_ratio$handle() {
         return av_guess_sample_aspect_ratio.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVRational av_guess_sample_aspect_ratio(AVFormatContext *format, AVStream *stream, AVFrame *frame)
+     * }
+     */
+    public static MemorySegment av_guess_sample_aspect_ratio$address() {
+        return av_guess_sample_aspect_ratio.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVRational av_guess_sample_aspect_ratio(AVFormatContext *format, AVStream *stream, AVFrame *frame)
@@ -18802,9 +21779,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_guess_frame_rate"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_frame_rate");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18826,6 +21803,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_guess_frame_rate$handle() {
         return av_guess_frame_rate.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVRational av_guess_frame_rate(AVFormatContext *ctx, AVStream *stream, AVFrame *frame)
+     * }
+     */
+    public static MemorySegment av_guess_frame_rate$address() {
+        return av_guess_frame_rate.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVRational av_guess_frame_rate(AVFormatContext *ctx, AVStream *stream, AVFrame *frame)
@@ -18851,9 +21839,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_match_stream_specifier"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_match_stream_specifier");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18875,6 +21863,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_match_stream_specifier$handle() {
         return avformat_match_stream_specifier.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_match_stream_specifier(AVFormatContext *s, AVStream *st, const char *spec)
+     * }
+     */
+    public static MemorySegment avformat_match_stream_specifier$address() {
+        return avformat_match_stream_specifier.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_match_stream_specifier(AVFormatContext *s, AVStream *st, const char *spec)
@@ -18898,9 +21897,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_queue_attached_pictures"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_queue_attached_pictures");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -18922,6 +21921,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_queue_attached_pictures$handle() {
         return avformat_queue_attached_pictures.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_queue_attached_pictures(AVFormatContext *s)
+     * }
+     */
+    public static MemorySegment avformat_queue_attached_pictures$address() {
+        return avformat_queue_attached_pictures.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_queue_attached_pictures(AVFormatContext *s)
@@ -18984,9 +21994,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("avformat_transfer_internal_stream_timing_info"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_transfer_internal_stream_timing_info");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19008,6 +22018,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle avformat_transfer_internal_stream_timing_info$handle() {
         return avformat_transfer_internal_stream_timing_info.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt, AVStream *ost, const AVStream *ist, enum AVTimebaseSource copy_tb)
+     * }
+     */
+    public static MemorySegment avformat_transfer_internal_stream_timing_info$address() {
+        return avformat_transfer_internal_stream_timing_info.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt, AVStream *ost, const AVStream *ist, enum AVTimebaseSource copy_tb)
@@ -19031,9 +22052,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_stream_get_codec_timebase"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_codec_timebase");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19055,6 +22076,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_stream_get_codec_timebase$handle() {
         return av_stream_get_codec_timebase.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVRational av_stream_get_codec_timebase(const AVStream *st)
+     * }
+     */
+    public static MemorySegment av_stream_get_codec_timebase$address() {
+        return av_stream_get_codec_timebase.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * AVRational av_stream_get_codec_timebase(const AVStream *st)
@@ -19078,9 +22110,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_bits_per_pixel"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_bits_per_pixel");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19102,6 +22134,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_bits_per_pixel$handle() {
         return av_get_bits_per_pixel.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MemorySegment av_get_bits_per_pixel$address() {
+        return av_get_bits_per_pixel.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
@@ -19125,9 +22168,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_padded_bits_per_pixel"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_padded_bits_per_pixel");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19149,6 +22192,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_padded_bits_per_pixel$handle() {
         return av_get_padded_bits_per_pixel.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MemorySegment av_get_padded_bits_per_pixel$address() {
+        return av_get_padded_bits_per_pixel.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
@@ -19172,9 +22226,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pix_fmt_desc_get"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19196,6 +22250,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pix_fmt_desc_get$handle() {
         return av_pix_fmt_desc_get.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get$address() {
+        return av_pix_fmt_desc_get.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
@@ -19219,9 +22284,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pix_fmt_desc_next"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_next");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19243,6 +22308,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pix_fmt_desc_next$handle() {
         return av_pix_fmt_desc_next.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_next$address() {
+        return av_pix_fmt_desc_next.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev)
@@ -19266,9 +22342,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pix_fmt_desc_get_id"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_get_id");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19290,6 +22366,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pix_fmt_desc_get_id$handle() {
         return av_pix_fmt_desc_get_id.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get_id$address() {
+        return av_pix_fmt_desc_get_id.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
@@ -19315,9 +22402,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pix_fmt_get_chroma_sub_sample"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_get_chroma_sub_sample");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19339,6 +22426,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pix_fmt_get_chroma_sub_sample$handle() {
         return av_pix_fmt_get_chroma_sub_sample.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_get_chroma_sub_sample$address() {
+        return av_pix_fmt_get_chroma_sub_sample.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
@@ -19362,9 +22460,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pix_fmt_count_planes"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_count_planes");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19386,6 +22484,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pix_fmt_count_planes$handle() {
         return av_pix_fmt_count_planes.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_count_planes$address() {
+        return av_pix_fmt_count_planes.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt)
@@ -19409,9 +22518,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_range_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_range_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19433,6 +22542,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_range_name$handle() {
         return av_color_range_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MemorySegment av_color_range_name$address() {
+        return av_color_range_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_color_range_name(enum AVColorRange range)
@@ -19456,9 +22576,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_range_from_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_range_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19480,6 +22600,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_range_from_name$handle() {
         return av_color_range_from_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_range_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_range_from_name$address() {
+        return av_color_range_from_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_color_range_from_name(const char *name)
@@ -19503,9 +22634,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_primaries_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_primaries_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19527,6 +22658,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_primaries_name$handle() {
         return av_color_primaries_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MemorySegment av_color_primaries_name$address() {
+        return av_color_primaries_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
@@ -19550,9 +22692,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_primaries_from_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_primaries_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19574,6 +22716,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_primaries_from_name$handle() {
         return av_color_primaries_from_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_primaries_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_primaries_from_name$address() {
+        return av_color_primaries_from_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_color_primaries_from_name(const char *name)
@@ -19597,9 +22750,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_transfer_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_transfer_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19621,6 +22774,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_transfer_name$handle() {
         return av_color_transfer_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MemorySegment av_color_transfer_name$address() {
+        return av_color_transfer_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
@@ -19644,9 +22808,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_transfer_from_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_transfer_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19668,6 +22832,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_transfer_from_name$handle() {
         return av_color_transfer_from_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_transfer_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_transfer_from_name$address() {
+        return av_color_transfer_from_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_color_transfer_from_name(const char *name)
@@ -19691,9 +22866,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_space_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_space_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19715,6 +22890,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_space_name$handle() {
         return av_color_space_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MemorySegment av_color_space_name$address() {
+        return av_color_space_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_color_space_name(enum AVColorSpace space)
@@ -19738,9 +22924,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_color_space_from_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_space_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19762,6 +22948,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_color_space_from_name$handle() {
         return av_color_space_from_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_space_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_space_from_name$address() {
+        return av_color_space_from_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_color_space_from_name(const char *name)
@@ -19785,9 +22982,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_chroma_location_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_chroma_location_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19809,6 +23006,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_chroma_location_name$handle() {
         return av_chroma_location_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_chroma_location_name(enum AVChromaLocation location)
+     * }
+     */
+    public static MemorySegment av_chroma_location_name$address() {
+        return av_chroma_location_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_chroma_location_name(enum AVChromaLocation location)
@@ -19832,9 +23040,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_chroma_location_from_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_chroma_location_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19856,6 +23064,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_chroma_location_from_name$handle() {
         return av_chroma_location_from_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_chroma_location_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_chroma_location_from_name$address() {
+        return av_chroma_location_from_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_chroma_location_from_name(const char *name)
@@ -19879,9 +23098,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_pix_fmt"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19903,6 +23122,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_pix_fmt$handle() {
         return av_get_pix_fmt.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_get_pix_fmt(const char *name)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt$address() {
+        return av_get_pix_fmt.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVPixelFormat av_get_pix_fmt(const char *name)
@@ -19926,9 +23156,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_pix_fmt_name"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19950,6 +23180,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_pix_fmt_name$handle() {
         return av_get_pix_fmt_name.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_name$address() {
+        return av_get_pix_fmt_name.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
@@ -19975,9 +23216,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_pix_fmt_string"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -19999,6 +23240,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_pix_fmt_string$handle() {
         return av_get_pix_fmt_string.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * char *av_get_pix_fmt_string(char *buf, int buf_size, enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_string$address() {
+        return av_get_pix_fmt_string.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * char *av_get_pix_fmt_string(char *buf, int buf_size, enum AVPixelFormat pix_fmt)
@@ -20030,9 +23282,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_read_image_line2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_image_line2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20054,6 +23306,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_read_image_line2$handle() {
         return av_read_image_line2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_read_image_line2(void *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size)
+     * }
+     */
+    public static MemorySegment av_read_image_line2$address() {
+        return av_read_image_line2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_read_image_line2(void *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size)
@@ -20084,9 +23347,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_read_image_line"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_image_line");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20108,6 +23371,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_read_image_line$handle() {
         return av_read_image_line.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_read_image_line(uint16_t *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component)
+     * }
+     */
+    public static MemorySegment av_read_image_line$address() {
+        return av_read_image_line.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_read_image_line(uint16_t *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component)
@@ -20138,9 +23412,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_write_image_line2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_image_line2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20162,6 +23436,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_write_image_line2$handle() {
         return av_write_image_line2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_write_image_line2(const void *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int src_element_size)
+     * }
+     */
+    public static MemorySegment av_write_image_line2$address() {
+        return av_write_image_line2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_write_image_line2(const void *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int src_element_size)
@@ -20191,9 +23476,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_write_image_line"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_image_line");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20215,6 +23500,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_write_image_line$handle() {
         return av_write_image_line.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_write_image_line(const uint16_t *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w)
+     * }
+     */
+    public static MemorySegment av_write_image_line$address() {
+        return av_write_image_line.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_write_image_line(const uint16_t *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w)
@@ -20238,9 +23534,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_pix_fmt_swap_endianness"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_swap_endianness");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20262,6 +23558,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_pix_fmt_swap_endianness$handle() {
         return av_pix_fmt_swap_endianness.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_swap_endianness$address() {
+        return av_pix_fmt_swap_endianness.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt)
@@ -20287,9 +23594,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_get_pix_fmt_loss"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt_loss");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20311,6 +23618,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_get_pix_fmt_loss$handle() {
         return av_get_pix_fmt_loss.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt, int has_alpha)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_loss$address() {
+        return av_get_pix_fmt_loss.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt, int has_alpha)
@@ -20338,9 +23656,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_find_best_pix_fmt_of_2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_best_pix_fmt_of_2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20362,6 +23680,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_find_best_pix_fmt_of_2$handle() {
         return av_find_best_pix_fmt_of_2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
+     * }
+     */
+    public static MemorySegment av_find_best_pix_fmt_of_2$address() {
+        return av_find_best_pix_fmt_of_2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
@@ -20386,9 +23715,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_fill_max_pixsteps"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_max_pixsteps");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20410,6 +23739,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_fill_max_pixsteps$handle() {
         return av_image_fill_max_pixsteps.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_image_fill_max_pixsteps(int max_pixsteps[4], int max_pixstep_comps[4], const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MemorySegment av_image_fill_max_pixsteps$address() {
+        return av_image_fill_max_pixsteps.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_image_fill_max_pixsteps(int max_pixsteps[4], int max_pixstep_comps[4], const AVPixFmtDescriptor *pixdesc)
@@ -20435,9 +23775,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_get_linesize"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_get_linesize");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20459,6 +23799,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_get_linesize$handle() {
         return av_image_get_linesize.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_get_linesize(enum AVPixelFormat pix_fmt, int width, int plane)
+     * }
+     */
+    public static MemorySegment av_image_get_linesize$address() {
+        return av_image_get_linesize.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_get_linesize(enum AVPixelFormat pix_fmt, int width, int plane)
@@ -20484,9 +23835,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_fill_linesizes"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_linesizes");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20508,6 +23859,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_fill_linesizes$handle() {
         return av_image_fill_linesizes.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_fill_linesizes(int linesizes[4], enum AVPixelFormat pix_fmt, int width)
+     * }
+     */
+    public static MemorySegment av_image_fill_linesizes$address() {
+        return av_image_fill_linesizes.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_fill_linesizes(int linesizes[4], enum AVPixelFormat pix_fmt, int width)
@@ -20534,9 +23896,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_fill_plane_sizes"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_plane_sizes");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20558,6 +23920,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_fill_plane_sizes$handle() {
         return av_image_fill_plane_sizes.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_fill_plane_sizes(size_t size[4], enum AVPixelFormat pix_fmt, int height, const ptrdiff_t linesizes[4])
+     * }
+     */
+    public static MemorySegment av_image_fill_plane_sizes$address() {
+        return av_image_fill_plane_sizes.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_fill_plane_sizes(size_t size[4], enum AVPixelFormat pix_fmt, int height, const ptrdiff_t linesizes[4])
@@ -20585,9 +23958,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_fill_pointers"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_pointers");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20609,6 +23982,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_fill_pointers$handle() {
         return av_image_fill_pointers.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int height, uint8_t *ptr, const int linesizes[4])
+     * }
+     */
+    public static MemorySegment av_image_fill_pointers$address() {
+        return av_image_fill_pointers.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int height, uint8_t *ptr, const int linesizes[4])
@@ -20637,9 +24021,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_alloc"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20661,6 +24045,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_alloc$handle() {
         return av_image_alloc.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_alloc(uint8_t *pointers[4], int linesizes[4], int w, int h, enum AVPixelFormat pix_fmt, int align)
+     * }
+     */
+    public static MemorySegment av_image_alloc$address() {
+        return av_image_alloc.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_alloc(uint8_t *pointers[4], int linesizes[4], int w, int h, enum AVPixelFormat pix_fmt, int align)
@@ -20688,9 +24083,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_copy_plane"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_copy_plane");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20712,6 +24107,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_copy_plane$handle() {
         return av_image_copy_plane.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_image_copy_plane(uint8_t *dst, int dst_linesize, const uint8_t *src, int src_linesize, int bytewidth, int height)
+     * }
+     */
+    public static MemorySegment av_image_copy_plane$address() {
+        return av_image_copy_plane.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_image_copy_plane(uint8_t *dst, int dst_linesize, const uint8_t *src, int src_linesize, int bytewidth, int height)
@@ -20739,9 +24145,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_copy_plane_uc_from"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_copy_plane_uc_from");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20763,6 +24169,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_copy_plane_uc_from$handle() {
         return av_image_copy_plane_uc_from.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_image_copy_plane_uc_from(uint8_t *dst, ptrdiff_t dst_linesize, const uint8_t *src, ptrdiff_t src_linesize, ptrdiff_t bytewidth, int height)
+     * }
+     */
+    public static MemorySegment av_image_copy_plane_uc_from$address() {
+        return av_image_copy_plane_uc_from.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_image_copy_plane_uc_from(uint8_t *dst, ptrdiff_t dst_linesize, const uint8_t *src, ptrdiff_t src_linesize, ptrdiff_t bytewidth, int height)
@@ -20791,9 +24208,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_copy"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_copy");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20815,6 +24232,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_copy$handle() {
         return av_image_copy.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_image_copy(uint8_t *dst_data[4], int dst_linesizes[4], const uint8_t *src_data[4], const int src_linesizes[4], enum AVPixelFormat pix_fmt, int width, int height)
+     * }
+     */
+    public static MemorySegment av_image_copy$address() {
+        return av_image_copy.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_image_copy(uint8_t *dst_data[4], int dst_linesizes[4], const uint8_t *src_data[4], const int src_linesizes[4], enum AVPixelFormat pix_fmt, int width, int height)
@@ -20843,9 +24271,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_copy_uc_from"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_copy_uc_from");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20867,6 +24295,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_copy_uc_from$handle() {
         return av_image_copy_uc_from.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_image_copy_uc_from(uint8_t *dst_data[4], const ptrdiff_t dst_linesizes[4], const uint8_t *src_data[4], const ptrdiff_t src_linesizes[4], enum AVPixelFormat pix_fmt, int width, int height)
+     * }
+     */
+    public static MemorySegment av_image_copy_uc_from$address() {
+        return av_image_copy_uc_from.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void av_image_copy_uc_from(uint8_t *dst_data[4], const ptrdiff_t dst_linesizes[4], const uint8_t *src_data[4], const ptrdiff_t src_linesizes[4], enum AVPixelFormat pix_fmt, int width, int height)
@@ -20896,9 +24335,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_fill_arrays"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_arrays");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20920,6 +24359,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_fill_arrays$handle() {
         return av_image_fill_arrays.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_fill_arrays(uint8_t *dst_data[4], int dst_linesize[4], const uint8_t *src, enum AVPixelFormat pix_fmt, int width, int height, int align)
+     * }
+     */
+    public static MemorySegment av_image_fill_arrays$address() {
+        return av_image_fill_arrays.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_fill_arrays(uint8_t *dst_data[4], int dst_linesize[4], const uint8_t *src, enum AVPixelFormat pix_fmt, int width, int height, int align)
@@ -20946,9 +24396,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_get_buffer_size"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_get_buffer_size");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -20970,6 +24420,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_get_buffer_size$handle() {
         return av_image_get_buffer_size.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_get_buffer_size(enum AVPixelFormat pix_fmt, int width, int height, int align)
+     * }
+     */
+    public static MemorySegment av_image_get_buffer_size$address() {
+        return av_image_get_buffer_size.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_get_buffer_size(enum AVPixelFormat pix_fmt, int width, int height, int align)
@@ -21000,9 +24461,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_copy_to_buffer"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_copy_to_buffer");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21024,6 +24485,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_copy_to_buffer$handle() {
         return av_image_copy_to_buffer.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_copy_to_buffer(uint8_t *dst, int dst_size, const uint8_t *const src_data[4], const int src_linesize[4], enum AVPixelFormat pix_fmt, int width, int height, int align)
+     * }
+     */
+    public static MemorySegment av_image_copy_to_buffer$address() {
+        return av_image_copy_to_buffer.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_copy_to_buffer(uint8_t *dst, int dst_size, const uint8_t *const src_data[4], const int src_linesize[4], enum AVPixelFormat pix_fmt, int width, int height, int align)
@@ -21050,9 +24522,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_check_size"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_check_size");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21074,6 +24546,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_check_size$handle() {
         return av_image_check_size.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_check_size(unsigned int w, unsigned int h, int log_offset, void *log_ctx)
+     * }
+     */
+    public static MemorySegment av_image_check_size$address() {
+        return av_image_check_size.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_check_size(unsigned int w, unsigned int h, int log_offset, void *log_ctx)
@@ -21102,9 +24585,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_check_size2"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_check_size2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21126,6 +24609,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_check_size2$handle() {
         return av_image_check_size2.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_check_size2(unsigned int w, unsigned int h, int64_t max_pixels, enum AVPixelFormat pix_fmt, int log_offset, void *log_ctx)
+     * }
+     */
+    public static MemorySegment av_image_check_size2$address() {
+        return av_image_check_size2.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_check_size2(unsigned int w, unsigned int h, int64_t max_pixels, enum AVPixelFormat pix_fmt, int log_offset, void *log_ctx)
@@ -21151,9 +24645,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             AVRational.layout()
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_check_sar"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_check_sar");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21175,6 +24669,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_check_sar$handle() {
         return av_image_check_sar.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_check_sar(unsigned int w, unsigned int h, AVRational sar)
+     * }
+     */
+    public static MemorySegment av_image_check_sar$address() {
+        return av_image_check_sar.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_check_sar(unsigned int w, unsigned int h, AVRational sar)
@@ -21203,9 +24708,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("av_image_fill_black"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_black");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21227,6 +24732,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle av_image_fill_black$handle() {
         return av_image_fill_black.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_image_fill_black(uint8_t *dst_data[4], const ptrdiff_t dst_linesize[4], enum AVPixelFormat pix_fmt, enum AVColorRange range, int width, int height)
+     * }
+     */
+    public static MemorySegment av_image_fill_black$address() {
+        return av_image_fill_black.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int av_image_fill_black(uint8_t *dst_data[4], const ptrdiff_t dst_linesize[4], enum AVPixelFormat pix_fmt, enum AVColorRange range, int width, int height)
@@ -21248,9 +24764,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("swscale_version"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("swscale_version");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21272,6 +24788,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle swscale_version$handle() {
         return swscale_version.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int swscale_version()
+     * }
+     */
+    public static MemorySegment swscale_version$address() {
+        return swscale_version.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int swscale_version()
@@ -21293,9 +24820,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("swscale_configuration"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("swscale_configuration");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21317,6 +24844,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle swscale_configuration$handle() {
         return swscale_configuration.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *swscale_configuration()
+     * }
+     */
+    public static MemorySegment swscale_configuration$address() {
+        return swscale_configuration.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *swscale_configuration()
@@ -21338,9 +24876,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("swscale_license"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("swscale_license");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21362,6 +24900,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle swscale_license$handle() {
         return swscale_license.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *swscale_license()
+     * }
+     */
+    public static MemorySegment swscale_license$address() {
+        return swscale_license.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const char *swscale_license()
@@ -21385,9 +24934,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_getCoefficients"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_getCoefficients");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21409,6 +24958,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_getCoefficients$handle() {
         return sws_getCoefficients.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const int *sws_getCoefficients(int colorspace)
+     * }
+     */
+    public static MemorySegment sws_getCoefficients$address() {
+        return sws_getCoefficients.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const int *sws_getCoefficients(int colorspace)
@@ -21432,9 +24992,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_isSupportedInput"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_isSupportedInput");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21456,6 +25016,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_isSupportedInput$handle() {
         return sws_isSupportedInput.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_isSupportedInput(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment sws_isSupportedInput$address() {
+        return sws_isSupportedInput.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_isSupportedInput(enum AVPixelFormat pix_fmt)
@@ -21479,9 +25050,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_isSupportedOutput"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_isSupportedOutput");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21503,6 +25074,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_isSupportedOutput$handle() {
         return sws_isSupportedOutput.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_isSupportedOutput(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment sws_isSupportedOutput$address() {
+        return sws_isSupportedOutput.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_isSupportedOutput(enum AVPixelFormat pix_fmt)
@@ -21526,9 +25108,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_isSupportedEndiannessConversion"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_isSupportedEndiannessConversion");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21550,6 +25132,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_isSupportedEndiannessConversion$handle() {
         return sws_isSupportedEndiannessConversion.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_isSupportedEndiannessConversion(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment sws_isSupportedEndiannessConversion$address() {
+        return sws_isSupportedEndiannessConversion.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_isSupportedEndiannessConversion(enum AVPixelFormat pix_fmt)
@@ -21571,9 +25164,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_alloc_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_alloc_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21595,6 +25188,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_alloc_context$handle() {
         return sws_alloc_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * struct SwsContext *sws_alloc_context()
+     * }
+     */
+    public static MemorySegment sws_alloc_context$address() {
+        return sws_alloc_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * struct SwsContext *sws_alloc_context()
@@ -21620,9 +25224,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_init_context"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_init_context");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21644,6 +25248,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_init_context$handle() {
         return sws_init_context.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_init_context(struct SwsContext *sws_context, SwsFilter *srcFilter, SwsFilter *dstFilter)
+     * }
+     */
+    public static MemorySegment sws_init_context$address() {
+        return sws_init_context.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_init_context(struct SwsContext *sws_context, SwsFilter *srcFilter, SwsFilter *dstFilter)
@@ -21666,9 +25281,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_freeContext"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_freeContext");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21690,6 +25305,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_freeContext$handle() {
         return sws_freeContext.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_freeContext(struct SwsContext *swsContext)
+     * }
+     */
+    public static MemorySegment sws_freeContext$address() {
+        return sws_freeContext.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_freeContext(struct SwsContext *swsContext)
@@ -21722,9 +25348,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_getContext"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_getContext");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21746,6 +25372,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_getContext$handle() {
         return sws_getContext.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * struct SwsContext *sws_getContext(int srcW, int srcH, enum AVPixelFormat srcFormat, int dstW, int dstH, enum AVPixelFormat dstFormat, int flags, SwsFilter *srcFilter, SwsFilter *dstFilter, const double *param)
+     * }
+     */
+    public static MemorySegment sws_getContext$address() {
+        return sws_getContext.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * struct SwsContext *sws_getContext(int srcW, int srcH, enum AVPixelFormat srcFormat, int dstW, int dstH, enum AVPixelFormat dstFormat, int flags, SwsFilter *srcFilter, SwsFilter *dstFilter, const double *param)
@@ -21775,9 +25412,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_scale"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_scale");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21799,6 +25436,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_scale$handle() {
         return sws_scale.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_scale(struct SwsContext *c, const uint8_t *const srcSlice[], const int srcStride[], int srcSliceY, int srcSliceH, uint8_t *const dst[], const int dstStride[])
+     * }
+     */
+    public static MemorySegment sws_scale$address() {
+        return sws_scale.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_scale(struct SwsContext *c, const uint8_t *const srcSlice[], const int srcStride[], int srcSliceY, int srcSliceH, uint8_t *const dst[], const int dstStride[])
@@ -21824,9 +25472,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_scale_frame"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_scale_frame");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21848,6 +25496,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_scale_frame$handle() {
         return sws_scale_frame.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_scale_frame(struct SwsContext *c, AVFrame *dst, const AVFrame *src)
+     * }
+     */
+    public static MemorySegment sws_scale_frame$address() {
+        return sws_scale_frame.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_scale_frame(struct SwsContext *c, AVFrame *dst, const AVFrame *src)
@@ -21873,9 +25532,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_frame_start"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_frame_start");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21897,6 +25556,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_frame_start$handle() {
         return sws_frame_start.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_frame_start(struct SwsContext *c, AVFrame *dst, const AVFrame *src)
+     * }
+     */
+    public static MemorySegment sws_frame_start$address() {
+        return sws_frame_start.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_frame_start(struct SwsContext *c, AVFrame *dst, const AVFrame *src)
@@ -21919,9 +25589,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_frame_end"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_frame_end");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21943,6 +25613,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_frame_end$handle() {
         return sws_frame_end.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_frame_end(struct SwsContext *c)
+     * }
+     */
+    public static MemorySegment sws_frame_end$address() {
+        return sws_frame_end.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_frame_end(struct SwsContext *c)
@@ -21968,9 +25649,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_send_slice"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_send_slice");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -21992,6 +25673,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_send_slice$handle() {
         return sws_send_slice.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_send_slice(struct SwsContext *c, unsigned int slice_start, unsigned int slice_height)
+     * }
+     */
+    public static MemorySegment sws_send_slice$address() {
+        return sws_send_slice.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_send_slice(struct SwsContext *c, unsigned int slice_start, unsigned int slice_height)
@@ -22017,9 +25709,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_receive_slice"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_receive_slice");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22041,6 +25733,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_receive_slice$handle() {
         return sws_receive_slice.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_receive_slice(struct SwsContext *c, unsigned int slice_start, unsigned int slice_height)
+     * }
+     */
+    public static MemorySegment sws_receive_slice$address() {
+        return sws_receive_slice.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_receive_slice(struct SwsContext *c, unsigned int slice_start, unsigned int slice_height)
@@ -22064,9 +25767,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_receive_slice_alignment"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_receive_slice_alignment");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22088,6 +25791,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_receive_slice_alignment$handle() {
         return sws_receive_slice_alignment.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * unsigned int sws_receive_slice_alignment(const struct SwsContext *c)
+     * }
+     */
+    public static MemorySegment sws_receive_slice_alignment$address() {
+        return sws_receive_slice_alignment.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * unsigned int sws_receive_slice_alignment(const struct SwsContext *c)
@@ -22118,9 +25832,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_setColorspaceDetails"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_setColorspaceDetails");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22142,6 +25856,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_setColorspaceDetails$handle() {
         return sws_setColorspaceDetails.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_setColorspaceDetails(struct SwsContext *c, const int inv_table[4], int srcRange, const int table[4], int dstRange, int brightness, int contrast, int saturation)
+     * }
+     */
+    public static MemorySegment sws_setColorspaceDetails$address() {
+        return sws_setColorspaceDetails.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_setColorspaceDetails(struct SwsContext *c, const int inv_table[4], int srcRange, const int table[4], int dstRange, int brightness, int contrast, int saturation)
@@ -22172,9 +25897,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_getColorspaceDetails"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_getColorspaceDetails");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22196,6 +25921,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_getColorspaceDetails$handle() {
         return sws_getColorspaceDetails.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int sws_getColorspaceDetails(struct SwsContext *c, int **inv_table, int *srcRange, int **table, int *dstRange, int *brightness, int *contrast, int *saturation)
+     * }
+     */
+    public static MemorySegment sws_getColorspaceDetails$address() {
+        return sws_getColorspaceDetails.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * int sws_getColorspaceDetails(struct SwsContext *c, int **inv_table, int *srcRange, int **table, int *dstRange, int *brightness, int *contrast, int *saturation)
@@ -22219,9 +25955,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_allocVec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_allocVec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22243,6 +25979,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_allocVec$handle() {
         return sws_allocVec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * SwsVector *sws_allocVec(int length)
+     * }
+     */
+    public static MemorySegment sws_allocVec$address() {
+        return sws_allocVec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * SwsVector *sws_allocVec(int length)
@@ -22267,9 +26014,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_DOUBLE
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_getGaussianVec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_getGaussianVec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22291,6 +26038,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_getGaussianVec$handle() {
         return sws_getGaussianVec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * SwsVector *sws_getGaussianVec(double variance, double quality)
+     * }
+     */
+    public static MemorySegment sws_getGaussianVec$address() {
+        return sws_getGaussianVec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * SwsVector *sws_getGaussianVec(double variance, double quality)
@@ -22314,9 +26072,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_DOUBLE
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_scaleVec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_scaleVec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22338,6 +26096,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_scaleVec$handle() {
         return sws_scaleVec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_scaleVec(SwsVector *a, double scalar)
+     * }
+     */
+    public static MemorySegment sws_scaleVec$address() {
+        return sws_scaleVec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_scaleVec(SwsVector *a, double scalar)
@@ -22361,9 +26130,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_DOUBLE
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_normalizeVec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_normalizeVec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22385,6 +26154,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_normalizeVec$handle() {
         return sws_normalizeVec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_normalizeVec(SwsVector *a, double height)
+     * }
+     */
+    public static MemorySegment sws_normalizeVec$address() {
+        return sws_normalizeVec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_normalizeVec(SwsVector *a, double height)
@@ -22407,9 +26187,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_freeVec"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_freeVec");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22431,6 +26211,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_freeVec$handle() {
         return sws_freeVec.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_freeVec(SwsVector *a)
+     * }
+     */
+    public static MemorySegment sws_freeVec$address() {
+        return sws_freeVec.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_freeVec(SwsVector *a)
@@ -22460,9 +26251,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_getDefaultFilter"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_getDefaultFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22484,6 +26275,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_getDefaultFilter$handle() {
         return sws_getDefaultFilter.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * SwsFilter *sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose)
+     * }
+     */
+    public static MemorySegment sws_getDefaultFilter$address() {
+        return sws_getDefaultFilter.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * SwsFilter *sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose)
@@ -22506,9 +26308,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_freeFilter"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_freeFilter");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22530,6 +26332,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_freeFilter$handle() {
         return sws_freeFilter.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_freeFilter(SwsFilter *filter)
+     * }
+     */
+    public static MemorySegment sws_freeFilter$address() {
+        return sws_freeFilter.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_freeFilter(SwsFilter *filter)
@@ -22563,9 +26376,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_getCachedContext"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_getCachedContext");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22587,6 +26400,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_getCachedContext$handle() {
         return sws_getCachedContext.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * struct SwsContext *sws_getCachedContext(struct SwsContext *context, int srcW, int srcH, enum AVPixelFormat srcFormat, int dstW, int dstH, enum AVPixelFormat dstFormat, int flags, SwsFilter *srcFilter, SwsFilter *dstFilter, const double *param)
+     * }
+     */
+    public static MemorySegment sws_getCachedContext$address() {
+        return sws_getCachedContext.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * struct SwsContext *sws_getCachedContext(struct SwsContext *context, int srcW, int srcH, enum AVPixelFormat srcFormat, int dstW, int dstH, enum AVPixelFormat dstFormat, int flags, SwsFilter *srcFilter, SwsFilter *dstFilter, const double *param)
@@ -22612,9 +26436,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_convertPalette8ToPacked32"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_convertPalette8ToPacked32");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22636,6 +26460,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_convertPalette8ToPacked32$handle() {
         return sws_convertPalette8ToPacked32.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_convertPalette8ToPacked32(const uint8_t *src, uint8_t *dst, int num_pixels, const uint8_t *palette)
+     * }
+     */
+    public static MemorySegment sws_convertPalette8ToPacked32$address() {
+        return sws_convertPalette8ToPacked32.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_convertPalette8ToPacked32(const uint8_t *src, uint8_t *dst, int num_pixels, const uint8_t *palette)
@@ -22661,9 +26496,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_convertPalette8ToPacked24"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_convertPalette8ToPacked24");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22685,6 +26520,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_convertPalette8ToPacked24$handle() {
         return sws_convertPalette8ToPacked24.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void sws_convertPalette8ToPacked24(const uint8_t *src, uint8_t *dst, int num_pixels, const uint8_t *palette)
+     * }
+     */
+    public static MemorySegment sws_convertPalette8ToPacked24$address() {
+        return sws_convertPalette8ToPacked24.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * void sws_convertPalette8ToPacked24(const uint8_t *src, uint8_t *dst, int num_pixels, const uint8_t *palette)
@@ -22706,9 +26552,9 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(
-                    FFmpeg.findOrThrow("sws_get_class"),
-                    DESC);
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("sws_get_class");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     /**
@@ -22730,6 +26576,17 @@ public class FFmpeg_1 extends FFmpeg_2 {
     public static MethodHandle sws_get_class$handle() {
         return sws_get_class.HANDLE;
     }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVClass *sws_get_class()
+     * }
+     */
+    public static MemorySegment sws_get_class$address() {
+        return sws_get_class.ADDR;
+    }
+
     /**
      * {@snippet lang=c :
      * const AVClass *sws_get_class()
