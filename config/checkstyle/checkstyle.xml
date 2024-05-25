@@ -5,7 +5,9 @@
 <module name="Checker">
 	<module name="TreeWalker">
 		<module name="ConstantName"/>
-		<!--<module name="EmptyBlock"/>-->
+		<module name="EmptyBlock">
+			<property name="tokens" value="LITERAL_FINALLY, LITERAL_DO, LITERAL_IF, LITERAL_ELSE, LITERAL_FOR, INSTANCE_INIT, STATIC_INIT, LITERAL_SWITCH, LITERAL_SYNCHRONIZED"/>
+		</module>
 		<module name="AvoidStarImport"/>
 		<module name="UnusedImports"/>
 		<module name="FinalParameters"/>
@@ -15,6 +17,13 @@
 			<property name="separated" value="true"/>
 			<property name="option" value="top"/>
 			<property name="sortStaticImportsAlphabetically" value="true"/>
+		</module>
+		<module name="WhitespaceAround">
+			<property name="allowEmptyConstructors" value="true"/>
+			<property name="allowEmptyLambdas" value="true"/>
+			<property name="allowEmptyLoops" value="true"/>
+			<property name="allowEmptyMethods" value="true"/>
+			<property name="allowEmptyTypes" value="true"/>
 		</module>
 	</module>
 </module>
