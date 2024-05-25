@@ -304,34 +304,25 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 
 			byte[] linePixelBytes = pixelArray.toArray(C_CHAR);
 			if (pixelFormat == AV_PIX_FMT_RGB24()) {
-				convertRgbToBgr(linePixelBytes);
+				/*
+				 * FFmpeg supports RGB24, but BufferedImage only supports:
+				 * - TYPE_3BYTE_BGR (blue and red bytes are swapped)
+				 * - TYPE_INT_RGB (4-byte integer encoding with alpha)
+				 * Simple/naive solution is to just swap B <-> R.
+				 * There is likely a more elegant way to do this.
+				 */
+				PixelFormatConverter.rgbToBgr(linePixelBytes);
 			}
 
 			System.arraycopy(linePixelBytes, 0, pixelBuf, y * width * bytesPerPixel, linePixelBytes.length);
 		}
 
-		BufferedImage image = new BufferedImage(width, height, bufferedImageType);
-		image.setData(Raster.createRaster(image.getSampleModel(), new DataBufferByte(pixelBuf, pixelBuf.length), new Point()));
+		var image = new BufferedImage(width, height, bufferedImageType);
+		var dataBuffer = new DataBufferByte(pixelBuf, pixelBuf.length);
+		image.setData(Raster.createRaster(image.getSampleModel(), dataBuffer, new Point()));
 
 		++images;
 		return image;
-	}
-
-	/**
-	 * naive RGB to BGR conversion implemented with byte swapping
-	 *
-	 * @param pixels
-	 */
-	private void convertRgbToBgr(final byte[] pixels) {
-		for (int i = 0; i < pixels.length; i += 3) {
-			byte red = pixels[i];
-
-			// Swap blue byte
-			pixels[i] = pixels[i + 2];
-
-			// Swap red byte
-			pixels[i + 2] = red;
-		}
 	}
 
 	private MemorySegment openFile(final MemorySegment ppFormatCtx, final String file) {
@@ -405,10 +396,11 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 	}
 
-	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution, final int outputPixelFormat) {
+	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution, final int dstPixFmt) {
 		int pixFmt = AVCodecContext.pix_fmt(avCodecContext);
-		return sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt, dstResolution.width(), dstResolution.height(),
-				outputPixelFormat, SWS_BILINEAR(), NULL, NULL, NULL);
+		return sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt,
+				dstResolution.width(), dstResolution.height(), dstPixFmt,
+				SWS_BILINEAR(), NULL, NULL, NULL);
 	}
 
 	private static void requireNonNull(final MemorySegment segment, final String message) throws AVAllocateException {
