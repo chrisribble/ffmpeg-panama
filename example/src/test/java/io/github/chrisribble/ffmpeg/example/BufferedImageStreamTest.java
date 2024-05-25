@@ -1,4 +1,4 @@
-package io.github.chrisribble.ffmpeg.example.test;
+package io.github.chrisribble.ffmpeg.example;
 
 import static io.github.chrisribble.ffmpeg6.FFmpeg_2.av_log_set_level;
 import static io.github.chrisribble.ffmpeg6.FFmpeg_3.AV_LOG_WARNING;
@@ -21,10 +21,6 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-
-import io.github.chrisribble.ffmpeg.example.BufferedImageStream;
-import io.github.chrisribble.ffmpeg.example.PixelFormat;
-import io.github.chrisribble.ffmpeg.example.Resolution;
 
 public class BufferedImageStreamTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

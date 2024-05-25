@@ -6,7 +6,7 @@ package io.github.chrisribble.ffmpeg.example;
  * This only exists because jextract does not support generating Java
  * classes for function-style macros.
  */
-public final class Macros {
+final class Macros {
 	private Macros() {}
 
 	/**

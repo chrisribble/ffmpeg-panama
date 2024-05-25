@@ -1,6 +1,6 @@
 package io.github.chrisribble.ffmpeg.example;
 
-public enum FrameReceiveResult {
+enum FrameReceiveResult {
 	READ,
 	SKIP,
 	AGAIN,

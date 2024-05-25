@@ -1,6 +1,6 @@
 package io.github.chrisribble.ffmpeg.example;
 
-public final class PixelFormatConverter {
+final class PixelFormatConverter {
 	private PixelFormatConverter() {}
 
 	/**

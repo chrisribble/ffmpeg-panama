@@ -3,7 +3,7 @@ package io.github.chrisribble.ffmpeg.example;
 /**
  * Look up POSIX errno.h values for the current runtime platform
  */
-public final class RuntimeErrno {
+final class RuntimeErrno {
 	private RuntimeErrno() {}
 
 	public static int EAGAIN() {

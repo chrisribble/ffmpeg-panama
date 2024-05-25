@@ -1,4 +1,4 @@
-package io.github.chrisribble.ffmpeg.example.test;
+package io.github.chrisribble.ffmpeg.example;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
