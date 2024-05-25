@@ -64,7 +64,6 @@ import io.github.chrisribble.ffmpeg6.AVStream;
 public final class BufferedImageStreamSpliterator implements Spliterator<BufferedImage>, AutoCloseable {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	// TODO: Should this be 1, 16, 32?
 	private static final int SIMD_ALIGN_BYTES = 32;
 
 	private final Arena arena;
