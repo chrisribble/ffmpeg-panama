@@ -342,10 +342,10 @@ public class FFmpeg_3 {
     public static int __GLIBC__() {
         return __GLIBC__;
     }
-    private static final int __GLIBC_MINOR__ = (int)38L;
+    private static final int __GLIBC_MINOR__ = (int)39L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_MINOR__ 38
+     * #define __GLIBC_MINOR__ 39
      * }
      */
     public static int __GLIBC_MINOR__() {
@@ -557,6 +557,15 @@ public class FFmpeg_3 {
      */
     public static int _BITS_STDINT_UINTN_H() {
         return _BITS_STDINT_UINTN_H;
+    }
+    private static final int _BITS_STDINT_LEAST_H = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define _BITS_STDINT_LEAST_H 1
+     * }
+     */
+    public static int _BITS_STDINT_LEAST_H() {
+        return _BITS_STDINT_LEAST_H;
     }
     private static final int FF_LAMBDA_SHIFT = (int)7L;
     /**
@@ -11942,65 +11951,6 @@ public class FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("__frexp", __x, __exponent);
-            }
-            return (double)mh$.invokeExact(__x, __exponent);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class ldexp {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("ldexp");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double ldexp(double __x, int __exponent)
-     * }
-     */
-    public static FunctionDescriptor ldexp$descriptor() {
-        return ldexp.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double ldexp(double __x, int __exponent)
-     * }
-     */
-    public static MethodHandle ldexp$handle() {
-        return ldexp.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double ldexp(double __x, int __exponent)
-     * }
-     */
-    public static MemorySegment ldexp$address() {
-        return ldexp.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double ldexp(double __x, int __exponent)
-     * }
-     */
-    public static double ldexp(double __x, int __exponent) {
-        var mh$ = ldexp.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("ldexp", __x, __exponent);
             }
             return (double)mh$.invokeExact(__x, __exponent);
         } catch (Throwable ex$) {

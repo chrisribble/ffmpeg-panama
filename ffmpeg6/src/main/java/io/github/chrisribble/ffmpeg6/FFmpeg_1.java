@@ -17,6 +17,15 @@ public class FFmpeg_1 extends FFmpeg_2 {
     FFmpeg_1() {
         // Should not be called directly
     }
+    private static final int AV_MATRIX_ENCODING_NB = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_NB = 7
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_NB() {
+        return AV_MATRIX_ENCODING_NB;
+    }
 
     private static class av_get_channel_layout {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
@@ -24891,66 +24900,6 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_desc_get_id", desc);
             }
             return (int)mh$.invokeExact(desc);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class av_pix_fmt_get_chroma_sub_sample {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_INT,
-            FFmpeg.C_INT,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_get_chroma_sub_sample");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
-     * }
-     */
-    public static FunctionDescriptor av_pix_fmt_get_chroma_sub_sample$descriptor() {
-        return av_pix_fmt_get_chroma_sub_sample.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
-     * }
-     */
-    public static MethodHandle av_pix_fmt_get_chroma_sub_sample$handle() {
-        return av_pix_fmt_get_chroma_sub_sample.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
-     * }
-     */
-    public static MemorySegment av_pix_fmt_get_chroma_sub_sample$address() {
-        return av_pix_fmt_get_chroma_sub_sample.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
-     * }
-     */
-    public static int av_pix_fmt_get_chroma_sub_sample(int pix_fmt, MemorySegment h_shift, MemorySegment v_shift) {
-        var mh$ = av_pix_fmt_get_chroma_sub_sample.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_pix_fmt_get_chroma_sub_sample", pix_fmt, h_shift, v_shift);
-            }
-            return (int)mh$.invokeExact(pix_fmt, h_shift, v_shift);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }

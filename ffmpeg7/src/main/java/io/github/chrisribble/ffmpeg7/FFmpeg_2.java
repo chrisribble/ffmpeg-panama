@@ -18,6 +18,65 @@ public class FFmpeg_2 extends FFmpeg_3 {
         // Should not be called directly
     }
 
+    private static class ldexp {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("ldexp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double ldexp(double __x, int __exponent)
+     * }
+     */
+    public static FunctionDescriptor ldexp$descriptor() {
+        return ldexp.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double ldexp(double __x, int __exponent)
+     * }
+     */
+    public static MethodHandle ldexp$handle() {
+        return ldexp.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double ldexp(double __x, int __exponent)
+     * }
+     */
+    public static MemorySegment ldexp$address() {
+        return ldexp.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double ldexp(double __x, int __exponent)
+     * }
+     */
+    public static double ldexp(double __x, int __exponent) {
+        var mh$ = ldexp.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("ldexp", __x, __exponent);
+            }
+            return (double)mh$.invokeExact(__x, __exponent);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class __ldexp {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -37643,15 +37702,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
      */
     public static int AV_MATRIX_ENCODING_DOLBYHEADPHONE() {
         return AV_MATRIX_ENCODING_DOLBYHEADPHONE;
-    }
-    private static final int AV_MATRIX_ENCODING_NB = (int)7L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_NB = 7
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_NB() {
-        return AV_MATRIX_ENCODING_NB;
     }
 }
 

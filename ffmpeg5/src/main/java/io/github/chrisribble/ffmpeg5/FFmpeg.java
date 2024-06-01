@@ -17,6 +17,15 @@ public class FFmpeg extends FFmpeg_1 {
     FFmpeg() {
         // Should not be called directly
     }
+    private static final int INT_FAST8_MIN = (int)-128L;
+    /**
+     * {@snippet lang=c :
+     * #define INT_FAST8_MIN -128
+     * }
+     */
+    public static int INT_FAST8_MIN() {
+        return INT_FAST8_MIN;
+    }
     private static final long INT_FAST16_MIN = -9223372036854775808L;
     /**
      * {@snippet lang=c :

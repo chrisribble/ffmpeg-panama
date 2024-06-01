@@ -18,6 +18,64 @@ public class FFmpeg_1 extends FFmpeg_2 {
         // Should not be called directly
     }
 
+    private static class av_hwdevice_ctx_alloc {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_alloc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * AVBufferRef *av_hwdevice_ctx_alloc(enum AVHWDeviceType type)
+     * }
+     */
+    public static FunctionDescriptor av_hwdevice_ctx_alloc$descriptor() {
+        return av_hwdevice_ctx_alloc.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * AVBufferRef *av_hwdevice_ctx_alloc(enum AVHWDeviceType type)
+     * }
+     */
+    public static MethodHandle av_hwdevice_ctx_alloc$handle() {
+        return av_hwdevice_ctx_alloc.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVBufferRef *av_hwdevice_ctx_alloc(enum AVHWDeviceType type)
+     * }
+     */
+    public static MemorySegment av_hwdevice_ctx_alloc$address() {
+        return av_hwdevice_ctx_alloc.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * AVBufferRef *av_hwdevice_ctx_alloc(enum AVHWDeviceType type)
+     * }
+     */
+    public static MemorySegment av_hwdevice_ctx_alloc(int type) {
+        var mh$ = av_hwdevice_ctx_alloc.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_hwdevice_ctx_alloc", type);
+            }
+            return (MemorySegment)mh$.invokeExact(type);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_hwdevice_ctx_init {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
@@ -26881,15 +26939,6 @@ public class FFmpeg_1 extends FFmpeg_2 {
      */
     public static long UINT_LEAST64_MAX() {
         return UINT_LEAST64_MAX;
-    }
-    private static final int INT_FAST8_MIN = (int)-128L;
-    /**
-     * {@snippet lang=c :
-     * #define INT_FAST8_MIN -128
-     * }
-     */
-    public static int INT_FAST8_MIN() {
-        return INT_FAST8_MIN;
     }
 }
 

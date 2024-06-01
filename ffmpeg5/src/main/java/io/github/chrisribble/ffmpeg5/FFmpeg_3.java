@@ -342,10 +342,10 @@ public class FFmpeg_3 {
     public static int __GLIBC__() {
         return __GLIBC__;
     }
-    private static final int __GLIBC_MINOR__ = (int)38L;
+    private static final int __GLIBC_MINOR__ = (int)39L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_MINOR__ 38
+     * #define __GLIBC_MINOR__ 39
      * }
      */
     public static int __GLIBC_MINOR__() {
@@ -557,6 +557,15 @@ public class FFmpeg_3 {
      */
     public static int _BITS_STDINT_UINTN_H() {
         return _BITS_STDINT_UINTN_H;
+    }
+    private static final int _BITS_STDINT_LEAST_H = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define _BITS_STDINT_LEAST_H 1
+     * }
+     */
+    public static int _BITS_STDINT_LEAST_H() {
+        return _BITS_STDINT_LEAST_H;
     }
     private static final int FF_LAMBDA_SHIFT = (int)7L;
     /**
@@ -16184,64 +16193,6 @@ public class FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("trunc", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __trunc {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__trunc");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static FunctionDescriptor __trunc$descriptor() {
-        return __trunc.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static MethodHandle __trunc$handle() {
-        return __trunc.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static MemorySegment __trunc$address() {
-        return __trunc.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static double __trunc(double __x) {
-        var mh$ = __trunc.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__trunc", __x);
             }
             return (double)mh$.invokeExact(__x);
         } catch (Throwable ex$) {
