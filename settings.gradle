@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 			library('slf4j-api', 'org.slf4j', 'slf4j-api').versionRef(slf4j)
 			library('slf4j-simple', 'org.slf4j', 'slf4j-simple').versionRef(slf4j)
 			library('testng', 'org.testng:testng:7.10.2')
-			library('sonar-java-plugin', 'org.sonarsource.java:sonar-java-plugin:7.34.0.35958')
+			library('sonar-java-plugin', 'org.sonarsource.java:sonar-java-plugin:8.1.0.36477')
 		}
 	}
 }

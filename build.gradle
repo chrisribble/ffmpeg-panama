@@ -2,7 +2,7 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.51.0'
 	id 'com.google.osdetector' version '1.7.3'
 	id 'se.solrike.sonarlint' version '2.0.0' apply false
-	id 'com.github.spotbugs' version '6.0.15' apply false
+	id 'com.github.spotbugs' version '6.0.19' apply false
 }
 
 
@@ -10,7 +10,7 @@ group = 'io.github.chrisribble.ffmpeg'
 version = '0.1-SNAPSHOT'
 
 wrapper {
-	gradleVersion = '8.7'
+	gradleVersion = '8.9'
 }
 
 subprojects {
