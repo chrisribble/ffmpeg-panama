@@ -474,6 +474,8 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	}
 
 	public static final class Builder {
+		private static final LibavVersion LIBAV_VERSION = LibavVersion.getInstance();
+
 		private Arena arena;
 		private Path mp4;
 		private Integer modFrames;
@@ -481,7 +483,11 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		private PixelFormat pixelFormat;
 		private Resolution resolution;
 
-		private Builder() {}
+		private Builder() {
+			if (!LIBAV_VERSION.isCompatible()) {
+				throw new UnsupportedOperationException("Runtime FFmpeg version (" + LibavVersion.getVersionInfo() + ") is not compatible with bindings");
+			}
+		}
 
 		public Builder mp4(final Path mp4) {
 			this.mp4 = mp4;

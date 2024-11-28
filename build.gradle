@@ -61,6 +61,7 @@ subprojects {
 			'java:S125',   // Commented-out code false positives for C type info
 			'java:S1135',  // TODO
 			'java:S3864',  // peek in Stream delegate
+			'java:S6548',	// Singleton
 		]
 	}
 }
