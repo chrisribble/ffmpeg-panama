@@ -99,14 +99,14 @@ public class FFmpeg_3 {
     public static int _DEFAULT_SOURCE() {
         return _DEFAULT_SOURCE;
     }
-    private static final int __GLIBC_USE_ISOC2X = (int)0L;
+    private static final int __GLIBC_USE_ISOC23 = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_USE_ISOC2X 0
+     * #define __GLIBC_USE_ISOC23 0
      * }
      */
-    public static int __GLIBC_USE_ISOC2X() {
-        return __GLIBC_USE_ISOC2X;
+    public static int __GLIBC_USE_ISOC23() {
+        return __GLIBC_USE_ISOC23;
     }
     private static final int __USE_ISOC11 = (int)1L;
     /**
@@ -243,6 +243,15 @@ public class FFmpeg_3 {
     public static int __SYSCALL_WORDSIZE() {
         return __SYSCALL_WORDSIZE;
     }
+    private static final int __USE_TIME_BITS64 = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define __USE_TIME_BITS64 1
+     * }
+     */
+    public static int __USE_TIME_BITS64() {
+        return __USE_TIME_BITS64;
+    }
     private static final int __USE_MISC = (int)1L;
     /**
      * {@snippet lang=c :
@@ -288,14 +297,14 @@ public class FFmpeg_3 {
     public static int __GLIBC_USE_DEPRECATED_SCANF() {
         return __GLIBC_USE_DEPRECATED_SCANF;
     }
-    private static final int __GLIBC_USE_C2X_STRTOL = (int)0L;
+    private static final int __GLIBC_USE_C23_STRTOL = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_USE_C2X_STRTOL 0
+     * #define __GLIBC_USE_C23_STRTOL 0
      * }
      */
-    public static int __GLIBC_USE_C2X_STRTOL() {
-        return __GLIBC_USE_C2X_STRTOL;
+    public static int __GLIBC_USE_C23_STRTOL() {
+        return __GLIBC_USE_C23_STRTOL;
     }
     private static final int _STDC_PREDEF_H = (int)1L;
     /**
@@ -342,10 +351,10 @@ public class FFmpeg_3 {
     public static int __GLIBC__() {
         return __GLIBC__;
     }
-    private static final int __GLIBC_MINOR__ = (int)39L;
+    private static final int __GLIBC_MINOR__ = (int)40L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_MINOR__ 39
+     * #define __GLIBC_MINOR__ 40
      * }
      */
     public static int __GLIBC_MINOR__() {
@@ -405,14 +414,14 @@ public class FFmpeg_3 {
     public static int __GLIBC_USE_IEC_60559_BFP_EXT() {
         return __GLIBC_USE_IEC_60559_BFP_EXT;
     }
-    private static final int __GLIBC_USE_IEC_60559_BFP_EXT_C2X = (int)0L;
+    private static final int __GLIBC_USE_IEC_60559_BFP_EXT_C23 = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_USE_IEC_60559_BFP_EXT_C2X 0
+     * #define __GLIBC_USE_IEC_60559_BFP_EXT_C23 0
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_BFP_EXT_C2X() {
-        return __GLIBC_USE_IEC_60559_BFP_EXT_C2X;
+    public static int __GLIBC_USE_IEC_60559_BFP_EXT_C23() {
+        return __GLIBC_USE_IEC_60559_BFP_EXT_C23;
     }
     private static final int __GLIBC_USE_IEC_60559_EXT = (int)0L;
     /**
@@ -432,14 +441,14 @@ public class FFmpeg_3 {
     public static int __GLIBC_USE_IEC_60559_FUNCS_EXT() {
         return __GLIBC_USE_IEC_60559_FUNCS_EXT;
     }
-    private static final int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X = (int)0L;
+    private static final int __GLIBC_USE_IEC_60559_FUNCS_EXT_C23 = (int)0L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X 0
+     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT_C23 0
      * }
      */
-    public static int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X() {
-        return __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X;
+    public static int __GLIBC_USE_IEC_60559_FUNCS_EXT_C23() {
+        return __GLIBC_USE_IEC_60559_FUNCS_EXT_C23;
     }
     private static final int __GLIBC_USE_IEC_60559_TYPES_EXT = (int)0L;
     /**
@@ -16135,64 +16144,6 @@ public class FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("__round", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class trunc {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("trunc");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double trunc(double __x)
-     * }
-     */
-    public static FunctionDescriptor trunc$descriptor() {
-        return trunc.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double trunc(double __x)
-     * }
-     */
-    public static MethodHandle trunc$handle() {
-        return trunc.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double trunc(double __x)
-     * }
-     */
-    public static MemorySegment trunc$address() {
-        return trunc.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double trunc(double __x)
-     * }
-     */
-    public static double trunc(double __x) {
-        var mh$ = trunc.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("trunc", __x);
             }
             return (double)mh$.invokeExact(__x);
         } catch (Throwable ex$) {

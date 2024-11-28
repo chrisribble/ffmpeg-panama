@@ -17,6 +17,15 @@ public class FFmpeg extends FFmpeg_1 {
     FFmpeg() {
         // Should not be called directly
     }
+    private static final long UINT_LEAST64_MAX = -1L;
+    /**
+     * {@snippet lang=c :
+     * #define UINT_LEAST64_MAX -1
+     * }
+     */
+    public static long UINT_LEAST64_MAX() {
+        return UINT_LEAST64_MAX;
+    }
     private static final int INT_FAST8_MIN = (int)-128L;
     /**
      * {@snippet lang=c :

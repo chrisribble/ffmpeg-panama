@@ -41,7 +41,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     struct _IO_wide_data *_wide_data;
  *     struct _IO_FILE *_freeres_list;
  *     void *_freeres_buf;
- *     size_t __pad5;
+ *     struct _IO_FILE **_prevchain;
  *     int _mode;
  *     char _unused2[20];
  * } __FILE

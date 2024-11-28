@@ -18,6 +18,64 @@ public class FFmpeg_1 extends FFmpeg_2 {
         // Should not be called directly
     }
 
+    private static class av_hwdevice_iterate_types {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_iterate_types");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
+     * }
+     */
+    public static FunctionDescriptor av_hwdevice_iterate_types$descriptor() {
+        return av_hwdevice_iterate_types.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
+     * }
+     */
+    public static MethodHandle av_hwdevice_iterate_types$handle() {
+        return av_hwdevice_iterate_types.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
+     * }
+     */
+    public static MemorySegment av_hwdevice_iterate_types$address() {
+        return av_hwdevice_iterate_types.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
+     * }
+     */
+    public static int av_hwdevice_iterate_types(int prev) {
+        var mh$ = av_hwdevice_iterate_types.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_hwdevice_iterate_types", prev);
+            }
+            return (int)mh$.invokeExact(prev);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_hwdevice_ctx_alloc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER,
@@ -12187,7 +12245,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
     private static class __tzname$constants {
         public static final SequenceLayout LAYOUT = MemoryLayout.sequenceLayout(2, FFmpeg.C_POINTER);
         public static final MemorySegment SEGMENT = FFmpeg.findOrThrow("__tzname").reinterpret(LAYOUT.byteSize());
-        public static final VarHandle HANDLE = LAYOUT.varHandle(sequenceElement());
+    public static final VarHandle HANDLE = LAYOUT.varHandle(sequenceElement());
 
         public static final long[] DIMS = { 2 };
     }
@@ -12345,7 +12403,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
     private static class tzname$constants {
         public static final SequenceLayout LAYOUT = MemoryLayout.sequenceLayout(2, FFmpeg.C_POINTER);
         public static final MemorySegment SEGMENT = FFmpeg.findOrThrow("tzname").reinterpret(LAYOUT.byteSize());
-        public static final VarHandle HANDLE = LAYOUT.varHandle(sequenceElement());
+    public static final VarHandle HANDLE = LAYOUT.varHandle(sequenceElement());
 
         public static final long[] DIMS = { 2 };
     }
@@ -15241,7 +15299,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("avio_printf", s, fmt, x2);
                 }
-                return (int)spreader.invokeExact(s, fmt, x2);
+                return (int) spreader.invokeExact(s, fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -26930,15 +26988,6 @@ public class FFmpeg_1 extends FFmpeg_2 {
      */
     public static int UINT_LEAST32_MAX() {
         return UINT_LEAST32_MAX;
-    }
-    private static final long UINT_LEAST64_MAX = -1L;
-    /**
-     * {@snippet lang=c :
-     * #define UINT_LEAST64_MAX -1
-     * }
-     */
-    public static long UINT_LEAST64_MAX() {
-        return UINT_LEAST64_MAX;
     }
 }
 

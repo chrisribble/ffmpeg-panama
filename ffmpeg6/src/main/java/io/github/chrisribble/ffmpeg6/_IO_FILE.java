@@ -41,7 +41,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     struct _IO_wide_data *_wide_data;
  *     struct _IO_FILE *_freeres_list;
  *     void *_freeres_buf;
- *     size_t __pad5;
+ *     struct _IO_FILE **_prevchain;
  *     int _mode;
  *     char _unused2[20];
  * }
@@ -82,7 +82,7 @@ public class _IO_FILE {
         FFmpeg.C_POINTER.withName("_wide_data"),
         FFmpeg.C_POINTER.withName("_freeres_list"),
         FFmpeg.C_POINTER.withName("_freeres_buf"),
-        FFmpeg.C_LONG.withName("__pad5"),
+        FFmpeg.C_POINTER.withName("_prevchain"),
         FFmpeg.C_INT.withName("_mode"),
         MemoryLayout.sequenceLayout(20, FFmpeg.C_CHAR).withName("_unused2")
     ).withName("_IO_FILE");
@@ -1271,48 +1271,48 @@ public class _IO_FILE {
         struct.set(_freeres_buf$LAYOUT, _freeres_buf$OFFSET, fieldValue);
     }
 
-    private static final OfLong __pad5$LAYOUT = (OfLong)$LAYOUT.select(groupElement("__pad5"));
+    private static final AddressLayout _prevchain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("_prevchain"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * size_t __pad5
+     * struct _IO_FILE **_prevchain
      * }
      */
-    public static final OfLong __pad5$layout() {
-        return __pad5$LAYOUT;
+    public static final AddressLayout _prevchain$layout() {
+        return _prevchain$LAYOUT;
     }
 
-    private static final long __pad5$OFFSET = 184;
+    private static final long _prevchain$OFFSET = 184;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * size_t __pad5
+     * struct _IO_FILE **_prevchain
      * }
      */
-    public static final long __pad5$offset() {
-        return __pad5$OFFSET;
+    public static final long _prevchain$offset() {
+        return _prevchain$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * size_t __pad5
+     * struct _IO_FILE **_prevchain
      * }
      */
-    public static long __pad5(MemorySegment struct) {
-        return struct.get(__pad5$LAYOUT, __pad5$OFFSET);
+    public static MemorySegment _prevchain(MemorySegment struct) {
+        return struct.get(_prevchain$LAYOUT, _prevchain$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * size_t __pad5
+     * struct _IO_FILE **_prevchain
      * }
      */
-    public static void __pad5(MemorySegment struct, long fieldValue) {
-        struct.set(__pad5$LAYOUT, __pad5$OFFSET, fieldValue);
+    public static void _prevchain(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(_prevchain$LAYOUT, _prevchain$OFFSET, fieldValue);
     }
 
     private static final OfInt _mode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("_mode"));

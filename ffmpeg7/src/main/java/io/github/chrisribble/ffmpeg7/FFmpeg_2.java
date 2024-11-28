@@ -18,6 +18,65 @@ public class FFmpeg_2 extends FFmpeg_3 {
         // Should not be called directly
     }
 
+    private static class __frexp {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__frexp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double __frexp(double __x, int *__exponent)
+     * }
+     */
+    public static FunctionDescriptor __frexp$descriptor() {
+        return __frexp.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double __frexp(double __x, int *__exponent)
+     * }
+     */
+    public static MethodHandle __frexp$handle() {
+        return __frexp.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double __frexp(double __x, int *__exponent)
+     * }
+     */
+    public static MemorySegment __frexp$address() {
+        return __frexp.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double __frexp(double __x, int *__exponent)
+     * }
+     */
+    public static double __frexp(double __x, MemorySegment __exponent) {
+        var mh$ = __frexp.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("__frexp", __x, __exponent);
+            }
+            return (double)mh$.invokeExact(__x, __exponent);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class ldexp {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -16106,7 +16165,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("fprintf", __stream, __format, x2);
                 }
-                return (int)spreader.invokeExact(__stream, __format, x2);
+                return (int) spreader.invokeExact(__stream, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16178,7 +16237,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("printf", __format, x1);
                 }
-                return (int)spreader.invokeExact(__format, x1);
+                return (int) spreader.invokeExact(__format, x1);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16251,7 +16310,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("sprintf", __s, __format, x2);
                 }
-                return (int)spreader.invokeExact(__s, __format, x2);
+                return (int) spreader.invokeExact(__s, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16504,7 +16563,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("snprintf", __s, __maxlen, __format, x3);
                 }
-                return (int)spreader.invokeExact(__s, __maxlen, __format, x3);
+                return (int) spreader.invokeExact(__s, __maxlen, __format, x3);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16698,7 +16757,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("__asprintf", __ptr, __fmt, x2);
                 }
-                return (int)spreader.invokeExact(__ptr, __fmt, x2);
+                return (int) spreader.invokeExact(__ptr, __fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16771,7 +16830,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("asprintf", __ptr, __fmt, x2);
                 }
-                return (int)spreader.invokeExact(__ptr, __fmt, x2);
+                return (int) spreader.invokeExact(__ptr, __fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16904,7 +16963,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("dprintf", __fd, __fmt, x2);
                 }
-                return (int)spreader.invokeExact(__fd, __fmt, x2);
+                return (int) spreader.invokeExact(__fd, __fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -16977,7 +17036,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("fscanf", __stream, __format, x2);
                 }
-                return (int)spreader.invokeExact(__stream, __format, x2);
+                return (int) spreader.invokeExact(__stream, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -17049,7 +17108,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("scanf", __format, x1);
                 }
-                return (int)spreader.invokeExact(__format, x1);
+                return (int) spreader.invokeExact(__format, x1);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -17122,7 +17181,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("sscanf", __s, __format, x2);
                 }
-                return (int)spreader.invokeExact(__s, __format, x2);
+                return (int) spreader.invokeExact(__s, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -32673,7 +32732,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("av_log", avcl, level, fmt, x3);
                 }
-                spreader.invokeExact(avcl, level, fmt, x3);
+                 spreader.invokeExact(avcl, level, fmt, x3);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -32748,7 +32807,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("av_log_once", avcl, initial_level, subsequent_level, state, fmt, x5);
                 }
-                spreader.invokeExact(avcl, initial_level, subsequent_level, state, fmt, x5);
+                 spreader.invokeExact(avcl, initial_level, subsequent_level, state, fmt, x5);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -37693,15 +37752,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
      */
     public static int AV_MATRIX_ENCODING_DOLBYEX() {
         return AV_MATRIX_ENCODING_DOLBYEX;
-    }
-    private static final int AV_MATRIX_ENCODING_DOLBYHEADPHONE = (int)6L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DOLBYHEADPHONE = 6
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_DOLBYHEADPHONE() {
-        return AV_MATRIX_ENCODING_DOLBYHEADPHONE;
     }
 }
 

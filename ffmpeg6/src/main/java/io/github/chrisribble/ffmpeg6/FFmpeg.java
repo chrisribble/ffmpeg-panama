@@ -18,6 +18,64 @@ public class FFmpeg extends FFmpeg_1 {
         // Should not be called directly
     }
 
+    private static class av_pix_fmt_desc_get_id {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_get_id");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_desc_get_id$descriptor() {
+        return av_pix_fmt_desc_get_id.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_desc_get_id$handle() {
+        return av_pix_fmt_desc_get_id.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get_id$address() {
+        return av_pix_fmt_desc_get_id.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static int av_pix_fmt_desc_get_id(MemorySegment desc) {
+        var mh$ = av_pix_fmt_desc_get_id.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_desc_get_id", desc);
+            }
+            return (int)mh$.invokeExact(desc);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_pix_fmt_get_chroma_sub_sample {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,

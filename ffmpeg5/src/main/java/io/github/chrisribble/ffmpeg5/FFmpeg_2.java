@@ -18,6 +18,64 @@ public class FFmpeg_2 extends FFmpeg_3 {
         // Should not be called directly
     }
 
+    private static class trunc {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("trunc");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double trunc(double __x)
+     * }
+     */
+    public static FunctionDescriptor trunc$descriptor() {
+        return trunc.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double trunc(double __x)
+     * }
+     */
+    public static MethodHandle trunc$handle() {
+        return trunc.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double trunc(double __x)
+     * }
+     */
+    public static MemorySegment trunc$address() {
+        return trunc.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double trunc(double __x)
+     * }
+     */
+    public static double trunc(double __x) {
+        var mh$ = trunc.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("trunc", __x);
+            }
+            return (double)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class __trunc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -11090,7 +11148,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("fprintf", __stream, __format, x2);
                 }
-                return (int)spreader.invokeExact(__stream, __format, x2);
+                return (int) spreader.invokeExact(__stream, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11162,7 +11220,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("printf", __format, x1);
                 }
-                return (int)spreader.invokeExact(__format, x1);
+                return (int) spreader.invokeExact(__format, x1);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11235,7 +11293,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("sprintf", __s, __format, x2);
                 }
-                return (int)spreader.invokeExact(__s, __format, x2);
+                return (int) spreader.invokeExact(__s, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11488,7 +11546,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("snprintf", __s, __maxlen, __format, x3);
                 }
-                return (int)spreader.invokeExact(__s, __maxlen, __format, x3);
+                return (int) spreader.invokeExact(__s, __maxlen, __format, x3);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11682,7 +11740,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("__asprintf", __ptr, __fmt, x2);
                 }
-                return (int)spreader.invokeExact(__ptr, __fmt, x2);
+                return (int) spreader.invokeExact(__ptr, __fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11755,7 +11813,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("asprintf", __ptr, __fmt, x2);
                 }
-                return (int)spreader.invokeExact(__ptr, __fmt, x2);
+                return (int) spreader.invokeExact(__ptr, __fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11888,7 +11946,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("dprintf", __fd, __fmt, x2);
                 }
-                return (int)spreader.invokeExact(__fd, __fmt, x2);
+                return (int) spreader.invokeExact(__fd, __fmt, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -11961,7 +12019,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("fscanf", __stream, __format, x2);
                 }
-                return (int)spreader.invokeExact(__stream, __format, x2);
+                return (int) spreader.invokeExact(__stream, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -12033,7 +12091,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("scanf", __format, x1);
                 }
-                return (int)spreader.invokeExact(__format, x1);
+                return (int) spreader.invokeExact(__format, x1);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -12106,7 +12164,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("sscanf", __s, __format, x2);
                 }
-                return (int)spreader.invokeExact(__s, __format, x2);
+                return (int) spreader.invokeExact(__s, __format, x2);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -27658,7 +27716,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("av_log", avcl, level, fmt, x3);
                 }
-                spreader.invokeExact(avcl, level, fmt, x3);
+                 spreader.invokeExact(avcl, level, fmt, x3);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -27733,7 +27791,7 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 if (TRACE_DOWNCALLS) {
                     traceDowncall("av_log_once", avcl, initial_level, subsequent_level, state, fmt, x5);
                 }
-                spreader.invokeExact(avcl, initial_level, subsequent_level, state, fmt, x5);
+                 spreader.invokeExact(avcl, initial_level, subsequent_level, state, fmt, x5);
             } catch(IllegalArgumentException | ClassCastException ex$)  {
                 throw ex$; // rethrow IAE from passing wrong number/type of args
             } catch (Throwable ex$) {
@@ -36487,64 +36545,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
                 traceDowncall("av_hwdevice_get_type_name", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class av_hwdevice_iterate_types {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_INT,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_iterate_types");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
-     * }
-     */
-    public static FunctionDescriptor av_hwdevice_iterate_types$descriptor() {
-        return av_hwdevice_iterate_types.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
-     * }
-     */
-    public static MethodHandle av_hwdevice_iterate_types$handle() {
-        return av_hwdevice_iterate_types.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
-     * }
-     */
-    public static MemorySegment av_hwdevice_iterate_types$address() {
-        return av_hwdevice_iterate_types.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * enum AVHWDeviceType av_hwdevice_iterate_types(enum AVHWDeviceType prev)
-     * }
-     */
-    public static int av_hwdevice_iterate_types(int prev) {
-        var mh$ = av_hwdevice_iterate_types.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_hwdevice_iterate_types", prev);
-            }
-            return (int)mh$.invokeExact(prev);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }

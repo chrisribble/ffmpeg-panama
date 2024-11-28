@@ -18,6 +18,64 @@ public class FFmpeg extends FFmpeg_1 {
         // Should not be called directly
     }
 
+    private static class av_get_bits_per_pixel {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_bits_per_pixel");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static FunctionDescriptor av_get_bits_per_pixel$descriptor() {
+        return av_get_bits_per_pixel.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MethodHandle av_get_bits_per_pixel$handle() {
+        return av_get_bits_per_pixel.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MemorySegment av_get_bits_per_pixel$address() {
+        return av_get_bits_per_pixel.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static int av_get_bits_per_pixel(MemorySegment pixdesc) {
+        var mh$ = av_get_bits_per_pixel.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_bits_per_pixel", pixdesc);
+            }
+            return (int)mh$.invokeExact(pixdesc);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_get_padded_bits_per_pixel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
