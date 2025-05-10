@@ -21,9 +21,6 @@ import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avcodec_send_packet;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avformat_close_input;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avformat_find_stream_info;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avformat_open_input;
-import static io.github.chrisribble.ffmpeg7.FFmpeg_2.AV_PIX_FMT_BGR24;
-import static io.github.chrisribble.ffmpeg7.FFmpeg_2.AV_PIX_FMT_GRAY8;
-import static io.github.chrisribble.ffmpeg7.FFmpeg_2.AV_PIX_FMT_RGB24;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_2.av_free;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_2.av_malloc;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_3.AVMEDIA_TYPE_VIDEO;
@@ -67,17 +64,11 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 
 	private static final int SIMD_ALIGN_BYTES = 32;
 
-	private static final int PIX_FMT_GRAY8 = AV_PIX_FMT_GRAY8();
-	private static final int PIX_FMT_BGR24 = AV_PIX_FMT_BGR24();
-	private static final int PIX_FMT_RGB24 = AV_PIX_FMT_RGB24();
-
 	private final Arena arena;
 	private final Path mp4;
 	private final int modFrames;
 	private final Integer limit;
-	private final int pixelFormat;
-	private final int bytesPerPixel;
-	private final int bufferedImageType;
+	private final PixelFormat pixelFormat;
 
 	private MemorySegment ppFormatCtx;
 	private MemorySegment pFormatCtx;
@@ -108,19 +99,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		mp4 = builder.mp4;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
 		limit = builder.limit;
-		pixelFormat = switch (builder.pixelFormat) {
-		case RGB -> PIX_FMT_RGB24;
-		case BGR -> PIX_FMT_BGR24;
-		case GRAY -> PIX_FMT_GRAY8;
-		};
-		bytesPerPixel = switch (builder.pixelFormat) {
-		case RGB, BGR -> 3;
-		case GRAY -> 1;
-		};
-		bufferedImageType = switch (builder.pixelFormat) {
-		case RGB, BGR -> BufferedImage.TYPE_3BYTE_BGR;
-		case GRAY -> BufferedImage.TYPE_BYTE_GRAY;
-		};
+		pixelFormat = builder.pixelFormat;
 		dstResolution = builder.resolution;
 	}
 
@@ -276,7 +255,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 
 		// Determine required buffer size and allocate
-		buffer = allocateRgb24Buffer(srcResolution);
+		buffer = allocateBuffer(srcResolution);
 
 		// Allocate input/output AVFrame*
 		decodedFrame = allocateFrame();
@@ -285,10 +264,10 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		// Assign appropriate parts of buffer to image planes in outputFrame
 		av_image_fill_arrays(
 				AVFrame.data(outputFrame), AVFrame.linesize(outputFrame), buffer,
-				pixelFormat, dstResolution.width(), dstResolution.height(), SIMD_ALIGN_BYTES);
+				pixelFormat.ffmpegType(), dstResolution.width(), dstResolution.height(), SIMD_ALIGN_BYTES);
 
 		// initialize SWS context for software scaling
-		swScaleCtx = getSwScaleContext(decoderContext.avCodecContext(), dstResolution, pixelFormat);
+		swScaleCtx = getSwScaleContext(decoderContext.avCodecContext(), dstResolution);
 
 		// AVPacket*
 		packet = AVPacket.allocate(arena);
@@ -300,6 +279,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		int width = resolution.width();
 		int height = resolution.height();
 
+		int bytesPerPixel = pixelFormat.bytesPerPixel();
 		byte[] pixelBuf = new byte[width * height * bytesPerPixel];
 
 		var data = AVFrame.data(frame);
@@ -314,7 +294,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 					.reinterpret((long) width * bytesPerPixel, arena, null);
 
 			byte[] linePixelBytes = pixelArray.toArray(C_CHAR);
-			if (pixelFormat == PIX_FMT_RGB24) {
+			if (pixelFormat == PixelFormat.RGB) {
 				/*
 				 * FFmpeg supports RGB24, but BufferedImage only supports:
 				 * - TYPE_3BYTE_BGR (blue and red bytes are swapped)
@@ -328,7 +308,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			System.arraycopy(linePixelBytes, 0, pixelBuf, y * width * bytesPerPixel, linePixelBytes.length);
 		}
 
-		var image = new BufferedImage(width, height, bufferedImageType);
+		var image = new BufferedImage(width, height, pixelFormat.bufferedImageType());
 		var dataBuffer = new DataBufferByte(pixelBuf, pixelBuf.length);
 		image.setData(Raster.createRaster(image.getSampleModel(), dataBuffer, new Point()));
 
@@ -407,10 +387,10 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 	}
 
-	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution, final int dstPixFmt) {
+	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution) {
 		int pixFmt = AVCodecContext.pix_fmt(avCodecContext);
 		return sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt,
-				dstResolution.width(), dstResolution.height(), dstPixFmt,
+				dstResolution.width(), dstResolution.height(), pixelFormat.ffmpegType(),
 				SWS_BILINEAR(), NULL, NULL, NULL);
 	}
 
@@ -423,11 +403,11 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 	}
 
-	private MemorySegment allocateRgb24Buffer(final Resolution resolution) {
+	private MemorySegment allocateBuffer(final Resolution resolution) {
 		int width = resolution.width();
 		int height = resolution.height();
 
-		int bufferBytes = av_image_get_buffer_size(PIX_FMT_RGB24, width, height, SIMD_ALIGN_BYTES);
+		int bufferBytes = av_image_get_buffer_size(pixelFormat.ffmpegType(), width, height, SIMD_ALIGN_BYTES);
 		var buf = av_malloc(bufferBytes * C_CHAR.byteSize());
 		requireNonNull(buf, "Cannot allocate buffer");
 
