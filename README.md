@@ -19,7 +19,7 @@ ${JEXTRACT} \
   --output ffmpeg6/src/main/java --target-package io.github.chrisribble.ffmpeg6 --header-class-name FFmpeg \
   ffmpeg6/ffmpeg.h
 
-export FFMPEG_VERSION=7.0.2
+export FFMPEG_VERSION=7.1.1
 wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
 tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
 ${JEXTRACT} \

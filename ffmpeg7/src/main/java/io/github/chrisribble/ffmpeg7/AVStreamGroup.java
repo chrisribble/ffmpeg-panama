@@ -24,6 +24,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *         struct AVIAMFAudioElement *iamf_audio_element;
  *         struct AVIAMFMixPresentation *iamf_mix_presentation;
  *         struct AVStreamGroupTileGrid *tile_grid;
+ *         struct AVStreamGroupLCEVC *lcevc;
  *     } params;
  *     AVDictionary *metadata;
  *     unsigned int nb_streams;
@@ -288,6 +289,7 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
+     *     struct AVStreamGroupLCEVC *lcevc;
      * }
      * }
      */
@@ -300,8 +302,9 @@ public class AVStreamGroup {
         private static final GroupLayout $LAYOUT = MemoryLayout.unionLayout(
             FFmpeg.C_POINTER.withName("iamf_audio_element"),
             FFmpeg.C_POINTER.withName("iamf_mix_presentation"),
-            FFmpeg.C_POINTER.withName("tile_grid")
-        ).withName("$anon$1124:5");
+            FFmpeg.C_POINTER.withName("tile_grid"),
+            FFmpeg.C_POINTER.withName("lcevc")
+        ).withName("$anon$1155:5");
 
         /**
          * The layout of this union
@@ -442,6 +445,50 @@ public class AVStreamGroup {
             union.set(tile_grid$LAYOUT, tile_grid$OFFSET, fieldValue);
         }
 
+        private static final AddressLayout lcevc$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("lcevc"));
+
+        /**
+         * Layout for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLCEVC *lcevc
+         * }
+         */
+        public static final AddressLayout lcevc$layout() {
+            return lcevc$LAYOUT;
+        }
+
+        private static final long lcevc$OFFSET = 0;
+
+        /**
+         * Offset for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLCEVC *lcevc
+         * }
+         */
+        public static final long lcevc$offset() {
+            return lcevc$OFFSET;
+        }
+
+        /**
+         * Getter for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLCEVC *lcevc
+         * }
+         */
+        public static MemorySegment lcevc(MemorySegment union) {
+            return union.get(lcevc$LAYOUT, lcevc$OFFSET);
+        }
+
+        /**
+         * Setter for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLCEVC *lcevc
+         * }
+         */
+        public static void lcevc(MemorySegment union, MemorySegment fieldValue) {
+            union.set(lcevc$LAYOUT, lcevc$OFFSET, fieldValue);
+        }
+
         /**
          * Obtains a slice of {@code arrayParam} which selects the array element at {@code index}.
          * The returned segment has address {@code arrayParam.address() + index * layout().byteSize()}
@@ -496,6 +543,7 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
+     *     struct AVStreamGroupLCEVC *lcevc;
      * } params
      * }
      */
@@ -512,6 +560,7 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
+     *     struct AVStreamGroupLCEVC *lcevc;
      * } params
      * }
      */
@@ -526,6 +575,7 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
+     *     struct AVStreamGroupLCEVC *lcevc;
      * } params
      * }
      */
@@ -540,6 +590,7 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
+     *     struct AVStreamGroupLCEVC *lcevc;
      * } params
      * }
      */

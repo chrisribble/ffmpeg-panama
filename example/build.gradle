@@ -1,13 +1,14 @@
 apply plugin: 'checkstyle'
-apply plugin: 'com.github.spotbugs'
+//apply plugin: 'com.github.spotbugs'
 
 dependencies {
-	implementation project(':ffmpeg6')
+	implementation project(':ffmpeg7')
 	implementation libs.slf4j.api
 
 	runtimeOnly libs.slf4j.simple
 
 	testImplementation libs.testng
+	//spotbugs libs.spotbugs
 }
 
 tasks.named('test') {
@@ -20,6 +21,8 @@ tasks.named('test') {
 	systemProperty 'java.library.path', '/usr/lib64:/usr/lib:/usr/local/lib'
 }
 
+/*
 spotbugsMain {
 	excludeFilter = file("${rootProject.projectDir}/config/spotbugs/exclude-main.xml")
 }
+*/

@@ -3438,10 +3438,10 @@ public class FFmpeg_3 {
     public static int LIBAVUTIL_VERSION_MAJOR() {
         return LIBAVUTIL_VERSION_MAJOR;
     }
-    private static final int LIBAVUTIL_VERSION_MINOR = (int)8L;
+    private static final int LIBAVUTIL_VERSION_MINOR = (int)39L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVUTIL_VERSION_MINOR 8
+     * #define LIBAVUTIL_VERSION_MINOR 39
      * }
      */
     public static int LIBAVUTIL_VERSION_MINOR() {
@@ -3806,6 +3806,15 @@ public class FFmpeg_3 {
      */
     public static int AV_PROFILE_AAC_ELD() {
         return AV_PROFILE_AAC_ELD;
+    }
+    private static final int AV_PROFILE_AAC_USAC = (int)41L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PROFILE_AAC_USAC 41
+     * }
+     */
+    public static int AV_PROFILE_AAC_USAC() {
+        return AV_PROFILE_AAC_USAC;
     }
     private static final int AV_PROFILE_MPEG2_AAC_LOW = (int)128L;
     /**
@@ -4419,6 +4428,15 @@ public class FFmpeg_3 {
     public static int AV_PROFILE_HEVC_REXT() {
         return AV_PROFILE_HEVC_REXT;
     }
+    private static final int AV_PROFILE_HEVC_MULTIVIEW_MAIN = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PROFILE_HEVC_MULTIVIEW_MAIN 6
+     * }
+     */
+    public static int AV_PROFILE_HEVC_MULTIVIEW_MAIN() {
+        return AV_PROFILE_HEVC_MULTIVIEW_MAIN;
+    }
     private static final int AV_PROFILE_HEVC_SCC = (int)9L;
     /**
      * {@snippet lang=c :
@@ -4680,19 +4698,19 @@ public class FFmpeg_3 {
     public static int AV_PKT_FLAG_DISPOSABLE() {
         return AV_PKT_FLAG_DISPOSABLE;
     }
-    private static final int LIBAVCODEC_VERSION_MINOR = (int)3L;
+    private static final int LIBAVCODEC_VERSION_MINOR = (int)19L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVCODEC_VERSION_MINOR 3
+     * #define LIBAVCODEC_VERSION_MINOR 19
      * }
      */
     public static int LIBAVCODEC_VERSION_MINOR() {
         return LIBAVCODEC_VERSION_MINOR;
     }
-    private static final int LIBAVCODEC_VERSION_MICRO = (int)100L;
+    private static final int LIBAVCODEC_VERSION_MICRO = (int)101L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVCODEC_VERSION_MICRO 100
+     * #define LIBAVCODEC_VERSION_MICRO 101
      * }
      */
     public static int LIBAVCODEC_VERSION_MICRO() {
@@ -5264,6 +5282,15 @@ public class FFmpeg_3 {
      */
     public static int FF_DCT_FAAN() {
         return FF_DCT_FAAN;
+    }
+    private static final int FF_DCT_NEON = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_DCT_NEON 7
+     * }
+     */
+    public static int FF_DCT_NEON() {
+        return FF_DCT_NEON;
     }
     private static final int FF_IDCT_AUTO = (int)0L;
     /**
@@ -6489,10 +6516,10 @@ public class FFmpeg_3 {
     public static int AVIO_FLAG_DIRECT() {
         return AVIO_FLAG_DIRECT;
     }
-    private static final int LIBAVFORMAT_VERSION_MINOR = (int)1L;
+    private static final int LIBAVFORMAT_VERSION_MINOR = (int)7L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVFORMAT_VERSION_MINOR 1
+     * #define LIBAVFORMAT_VERSION_MINOR 7
      * }
      */
     public static int LIBAVFORMAT_VERSION_MINOR() {
@@ -7101,10 +7128,10 @@ public class FFmpeg_3 {
     public static int LIBSWSCALE_VERSION_MAJOR() {
         return LIBSWSCALE_VERSION_MAJOR;
     }
-    private static final int LIBSWSCALE_VERSION_MINOR = (int)1L;
+    private static final int LIBSWSCALE_VERSION_MINOR = (int)3L;
     /**
      * {@snippet lang=c :
-     * #define LIBSWSCALE_VERSION_MINOR 1
+     * #define LIBSWSCALE_VERSION_MINOR 3
      * }
      */
     public static int LIBSWSCALE_VERSION_MINOR() {
@@ -11728,181 +11755,6 @@ public class FFmpeg_3 {
                 traceDowncall("__atanh", __x);
             }
             return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class exp {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("exp");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double exp(double __x)
-     * }
-     */
-    public static FunctionDescriptor exp$descriptor() {
-        return exp.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double exp(double __x)
-     * }
-     */
-    public static MethodHandle exp$handle() {
-        return exp.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double exp(double __x)
-     * }
-     */
-    public static MemorySegment exp$address() {
-        return exp.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double exp(double __x)
-     * }
-     */
-    public static double exp(double __x) {
-        var mh$ = exp.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("exp", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __exp {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__exp");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __exp(double __x)
-     * }
-     */
-    public static FunctionDescriptor __exp$descriptor() {
-        return __exp.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __exp(double __x)
-     * }
-     */
-    public static MethodHandle __exp$handle() {
-        return __exp.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __exp(double __x)
-     * }
-     */
-    public static MemorySegment __exp$address() {
-        return __exp.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __exp(double __x)
-     * }
-     */
-    public static double __exp(double __x) {
-        var mh$ = __exp.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__exp", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class frexp {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("frexp");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double frexp(double __x, int *__exponent)
-     * }
-     */
-    public static FunctionDescriptor frexp$descriptor() {
-        return frexp.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double frexp(double __x, int *__exponent)
-     * }
-     */
-    public static MethodHandle frexp$handle() {
-        return frexp.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double frexp(double __x, int *__exponent)
-     * }
-     */
-    public static MemorySegment frexp$address() {
-        return frexp.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double frexp(double __x, int *__exponent)
-     * }
-     */
-    public static double frexp(double __x, MemorySegment __exponent) {
-        var mh$ = frexp.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("frexp", __x, __exponent);
-            }
-            return (double)mh$.invokeExact(__x, __exponent);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }

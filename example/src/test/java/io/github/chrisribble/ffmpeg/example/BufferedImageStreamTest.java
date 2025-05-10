@@ -1,7 +1,7 @@
 package io.github.chrisribble.ffmpeg.example;
 
-import static io.github.chrisribble.ffmpeg6.FFmpeg_2.av_log_set_level;
-import static io.github.chrisribble.ffmpeg6.FFmpeg_3.AV_LOG_WARNING;
+import static io.github.chrisribble.ffmpeg7.FFmpeg_2.av_log_set_level;
+import static io.github.chrisribble.ffmpeg7.FFmpeg_3.AV_LOG_WARNING;
 import static org.testng.Assert.assertEquals;
 
 import java.awt.image.BufferedImage;

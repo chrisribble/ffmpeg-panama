@@ -18,6 +18,181 @@ public class FFmpeg_2 extends FFmpeg_3 {
         // Should not be called directly
     }
 
+    private static class exp {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("exp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double exp(double __x)
+     * }
+     */
+    public static FunctionDescriptor exp$descriptor() {
+        return exp.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double exp(double __x)
+     * }
+     */
+    public static MethodHandle exp$handle() {
+        return exp.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double exp(double __x)
+     * }
+     */
+    public static MemorySegment exp$address() {
+        return exp.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double exp(double __x)
+     * }
+     */
+    public static double exp(double __x) {
+        var mh$ = exp.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("exp", __x);
+            }
+            return (double)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class __exp {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__exp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double __exp(double __x)
+     * }
+     */
+    public static FunctionDescriptor __exp$descriptor() {
+        return __exp.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double __exp(double __x)
+     * }
+     */
+    public static MethodHandle __exp$handle() {
+        return __exp.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double __exp(double __x)
+     * }
+     */
+    public static MemorySegment __exp$address() {
+        return __exp.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double __exp(double __x)
+     * }
+     */
+    public static double __exp(double __x) {
+        var mh$ = __exp.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("__exp", __x);
+            }
+            return (double)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class frexp {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("frexp");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double frexp(double __x, int *__exponent)
+     * }
+     */
+    public static FunctionDescriptor frexp$descriptor() {
+        return frexp.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double frexp(double __x, int *__exponent)
+     * }
+     */
+    public static MethodHandle frexp$handle() {
+        return frexp.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double frexp(double __x, int *__exponent)
+     * }
+     */
+    public static MemorySegment frexp$address() {
+        return frexp.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double frexp(double __x, int *__exponent)
+     * }
+     */
+    public static double frexp(double __x, MemorySegment __exponent) {
+        var mh$ = frexp.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("frexp", __x, __exponent);
+            }
+            return (double)mh$.invokeExact(__x, __exponent);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class __frexp {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -36053,10 +36228,37 @@ public class FFmpeg_2 extends FFmpeg_3 {
     public static int AVCOL_SPC_ICTCP() {
         return AVCOL_SPC_ICTCP;
     }
-    private static final int AVCOL_SPC_NB = (int)15L;
+    private static final int AVCOL_SPC_IPT_C2 = (int)15L;
     /**
      * {@snippet lang=c :
-     * enum AVColorSpace.AVCOL_SPC_NB = 15
+     * enum AVColorSpace.AVCOL_SPC_IPT_C2 = 15
+     * }
+     */
+    public static int AVCOL_SPC_IPT_C2() {
+        return AVCOL_SPC_IPT_C2;
+    }
+    private static final int AVCOL_SPC_YCGCO_RE = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * enum AVColorSpace.AVCOL_SPC_YCGCO_RE = 16
+     * }
+     */
+    public static int AVCOL_SPC_YCGCO_RE() {
+        return AVCOL_SPC_YCGCO_RE;
+    }
+    private static final int AVCOL_SPC_YCGCO_RO = (int)17L;
+    /**
+     * {@snippet lang=c :
+     * enum AVColorSpace.AVCOL_SPC_YCGCO_RO = 17
+     * }
+     */
+    public static int AVCOL_SPC_YCGCO_RO() {
+        return AVCOL_SPC_YCGCO_RO;
+    }
+    private static final int AVCOL_SPC_NB = (int)18L;
+    /**
+     * {@snippet lang=c :
+     * enum AVColorSpace.AVCOL_SPC_NB = 18
      * }
      */
     public static int AVCOL_SPC_NB() {
@@ -37618,6 +37820,42 @@ public class FFmpeg_2 extends FFmpeg_3 {
     public static int AV_CHAN_BOTTOM_FRONT_RIGHT() {
         return AV_CHAN_BOTTOM_FRONT_RIGHT;
     }
+    private static final int AV_CHAN_SIDE_SURROUND_LEFT = (int)41L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannel.AV_CHAN_SIDE_SURROUND_LEFT = 41
+     * }
+     */
+    public static int AV_CHAN_SIDE_SURROUND_LEFT() {
+        return AV_CHAN_SIDE_SURROUND_LEFT;
+    }
+    private static final int AV_CHAN_SIDE_SURROUND_RIGHT = (int)42L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannel.AV_CHAN_SIDE_SURROUND_RIGHT = 42
+     * }
+     */
+    public static int AV_CHAN_SIDE_SURROUND_RIGHT() {
+        return AV_CHAN_SIDE_SURROUND_RIGHT;
+    }
+    private static final int AV_CHAN_TOP_SURROUND_LEFT = (int)43L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannel.AV_CHAN_TOP_SURROUND_LEFT = 43
+     * }
+     */
+    public static int AV_CHAN_TOP_SURROUND_LEFT() {
+        return AV_CHAN_TOP_SURROUND_LEFT;
+    }
+    private static final int AV_CHAN_TOP_SURROUND_RIGHT = (int)44L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannel.AV_CHAN_TOP_SURROUND_RIGHT = 44
+     * }
+     */
+    public static int AV_CHAN_TOP_SURROUND_RIGHT() {
+        return AV_CHAN_TOP_SURROUND_RIGHT;
+    }
     private static final int AV_CHAN_UNUSED = (int)512L;
     /**
      * {@snippet lang=c :
@@ -37662,96 +37900,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
      */
     public static int AV_CHANNEL_ORDER_UNSPEC() {
         return AV_CHANNEL_ORDER_UNSPEC;
-    }
-    private static final int AV_CHANNEL_ORDER_NATIVE = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum AVChannelOrder.AV_CHANNEL_ORDER_NATIVE = 1
-     * }
-     */
-    public static int AV_CHANNEL_ORDER_NATIVE() {
-        return AV_CHANNEL_ORDER_NATIVE;
-    }
-    private static final int AV_CHANNEL_ORDER_CUSTOM = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum AVChannelOrder.AV_CHANNEL_ORDER_CUSTOM = 2
-     * }
-     */
-    public static int AV_CHANNEL_ORDER_CUSTOM() {
-        return AV_CHANNEL_ORDER_CUSTOM;
-    }
-    private static final int AV_CHANNEL_ORDER_AMBISONIC = (int)3L;
-    /**
-     * {@snippet lang=c :
-     * enum AVChannelOrder.AV_CHANNEL_ORDER_AMBISONIC = 3
-     * }
-     */
-    public static int AV_CHANNEL_ORDER_AMBISONIC() {
-        return AV_CHANNEL_ORDER_AMBISONIC;
-    }
-    private static final int FF_CHANNEL_ORDER_NB = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum AVChannelOrder.FF_CHANNEL_ORDER_NB = 4
-     * }
-     */
-    public static int FF_CHANNEL_ORDER_NB() {
-        return FF_CHANNEL_ORDER_NB;
-    }
-    private static final int AV_MATRIX_ENCODING_NONE = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_NONE = 0
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_NONE() {
-        return AV_MATRIX_ENCODING_NONE;
-    }
-    private static final int AV_MATRIX_ENCODING_DOLBY = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DOLBY = 1
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_DOLBY() {
-        return AV_MATRIX_ENCODING_DOLBY;
-    }
-    private static final int AV_MATRIX_ENCODING_DPLII = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DPLII = 2
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_DPLII() {
-        return AV_MATRIX_ENCODING_DPLII;
-    }
-    private static final int AV_MATRIX_ENCODING_DPLIIX = (int)3L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DPLIIX = 3
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_DPLIIX() {
-        return AV_MATRIX_ENCODING_DPLIIX;
-    }
-    private static final int AV_MATRIX_ENCODING_DPLIIZ = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DPLIIZ = 4
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_DPLIIZ() {
-        return AV_MATRIX_ENCODING_DPLIIZ;
-    }
-    private static final int AV_MATRIX_ENCODING_DOLBYEX = (int)5L;
-    /**
-     * {@snippet lang=c :
-     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DOLBYEX = 5
-     * }
-     */
-    public static int AV_MATRIX_ENCODING_DOLBYEX() {
-        return AV_MATRIX_ENCODING_DOLBYEX;
     }
 }
 
