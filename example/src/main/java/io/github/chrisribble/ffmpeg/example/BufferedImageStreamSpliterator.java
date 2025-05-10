@@ -21,6 +21,7 @@ import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avcodec_send_packet;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avformat_close_input;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avformat_find_stream_info;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_1.avformat_open_input;
+import static io.github.chrisribble.ffmpeg7.FFmpeg_2.AV_PIX_FMT_BGR24;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_2.AV_PIX_FMT_GRAY8;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_2.AV_PIX_FMT_RGB24;
 import static io.github.chrisribble.ffmpeg7.FFmpeg_2.av_free;
@@ -66,11 +67,17 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 
 	private static final int SIMD_ALIGN_BYTES = 32;
 
+	private static final int PIX_FMT_GRAY8 = AV_PIX_FMT_GRAY8();
+	private static final int PIX_FMT_BGR24 = AV_PIX_FMT_BGR24();
+	private static final int PIX_FMT_RGB24 = AV_PIX_FMT_RGB24();
+
 	private final Arena arena;
 	private final Path mp4;
 	private final int modFrames;
 	private final Integer limit;
 	private final int pixelFormat;
+	private final int bytesPerPixel;
+	private final int bufferedImageType;
 
 	private MemorySegment ppFormatCtx;
 	private MemorySegment pFormatCtx;
@@ -101,9 +108,19 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		mp4 = builder.mp4;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
 		limit = builder.limit;
-		pixelFormat = builder.pixelFormat == PixelFormat.RGB
-				? AV_PIX_FMT_RGB24()
-				: AV_PIX_FMT_GRAY8();
+		pixelFormat = switch (builder.pixelFormat) {
+		case RGB -> PIX_FMT_RGB24;
+		case BGR -> PIX_FMT_BGR24;
+		case GRAY -> PIX_FMT_GRAY8;
+		};
+		bytesPerPixel = switch (builder.pixelFormat) {
+		case RGB, BGR -> 3;
+		case GRAY -> 1;
+		};
+		bufferedImageType = switch (builder.pixelFormat) {
+		case RGB, BGR -> BufferedImage.TYPE_3BYTE_BGR;
+		case GRAY -> BufferedImage.TYPE_BYTE_GRAY;
+		};
 		dstResolution = builder.resolution;
 	}
 
@@ -283,11 +300,6 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		int width = resolution.width();
 		int height = resolution.height();
 
-		int bytesPerPixel = pixelFormat == AV_PIX_FMT_RGB24() ? 3 : 1;
-		int bufferedImageType = pixelFormat == AV_PIX_FMT_RGB24()
-				? BufferedImage.TYPE_3BYTE_BGR
-				: BufferedImage.TYPE_BYTE_GRAY;
-
 		byte[] pixelBuf = new byte[width * height * bytesPerPixel];
 
 		var data = AVFrame.data(frame);
@@ -302,7 +314,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 					.reinterpret((long) width * bytesPerPixel, arena, null);
 
 			byte[] linePixelBytes = pixelArray.toArray(C_CHAR);
-			if (pixelFormat == AV_PIX_FMT_RGB24()) {
+			if (pixelFormat == PIX_FMT_RGB24) {
 				/*
 				 * FFmpeg supports RGB24, but BufferedImage only supports:
 				 * - TYPE_3BYTE_BGR (blue and red bytes are swapped)
@@ -415,7 +427,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		int width = resolution.width();
 		int height = resolution.height();
 
-		int bufferBytes = av_image_get_buffer_size(AV_PIX_FMT_RGB24(), width, height, SIMD_ALIGN_BYTES);
+		int bufferBytes = av_image_get_buffer_size(PIX_FMT_RGB24, width, height, SIMD_ALIGN_BYTES);
 		var buf = av_malloc(bufferBytes * C_CHAR.byteSize());
 		requireNonNull(buf, "Cannot allocate buffer");
 
