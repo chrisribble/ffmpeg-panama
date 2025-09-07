@@ -16,11 +16,14 @@ if [ -z "${BINDINGS}" ]; then
 fi
 
 BINDINGS_SRC="${BINDINGS}/src/main/java"
-
 echo "Generating bindings for FFmpeg ${FFMPEG_VERSION} in ${BINDINGS_SRC}"
 
-#wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
-tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
+FFMPEG_TARBALL="ffmpeg-${FFMPEG_VERSION}.tar.gz"
+if [ ! -f "${FFMPEG_TARBALL}" ]; then
+	wget http://ffmpeg.org/releases/${FFMPEG_TARBALL}
+fi
+
+tar xzvf ${FFMPEG_TARBALL}
 rm -rf ${BINDINGS_SRC}
 jextract \
   --include-dir ./ffmpeg-${FFMPEG_VERSION} \
