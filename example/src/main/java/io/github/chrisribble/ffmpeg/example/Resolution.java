@@ -6,7 +6,7 @@ import io.github.chrisribble.ffmpeg7.AVCodecContext;
 
 record Resolution(int width, int height) {
 	Resolution(final DecoderContext context) {
-		this(context.avCodecContext());
+		this(context.pAvCodecContext());
 	}
 
 	Resolution(final MemorySegment avCodecContext) {

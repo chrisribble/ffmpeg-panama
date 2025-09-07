@@ -9,7 +9,7 @@ group = 'io.github.chrisribble.ffmpeg'
 version = '0.1-SNAPSHOT'
 
 wrapper {
-	gradleVersion = '8.14'
+	gradleVersion = '9.0'
 }
 
 subprojects {
