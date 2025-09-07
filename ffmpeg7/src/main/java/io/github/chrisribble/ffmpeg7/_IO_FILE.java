@@ -30,7 +30,8 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     struct _IO_marker *_markers;
  *     struct _IO_FILE *_chain;
  *     int _fileno;
- *     int _flags2;
+ *     int _flags2 : 24;
+ *     char _short_backupbuf[1];
  *     __off_t _old_offset;
  *     unsigned short _cur_column;
  *     signed char _vtable_offset;
@@ -70,7 +71,8 @@ public class _IO_FILE {
         FFmpeg.C_POINTER.withName("_markers"),
         FFmpeg.C_POINTER.withName("_chain"),
         FFmpeg.C_INT.withName("_fileno"),
-        FFmpeg.C_INT.withName("_flags2"),
+        MemoryLayout.paddingLayout(3),
+        MemoryLayout.sequenceLayout(1, FFmpeg.C_CHAR).withName("_short_backupbuf"),
         FFmpeg.C_LONG.withName("_old_offset"),
         FFmpeg.C_SHORT.withName("_cur_column"),
         FFmpeg.C_CHAR.withName("_vtable_offset"),
@@ -754,48 +756,81 @@ public class _IO_FILE {
         struct.set(_fileno$LAYOUT, _fileno$OFFSET, fieldValue);
     }
 
-    private static final OfInt _flags2$LAYOUT = (OfInt)$LAYOUT.select(groupElement("_flags2"));
+    private static final SequenceLayout _short_backupbuf$LAYOUT = (SequenceLayout)$LAYOUT.select(groupElement("_short_backupbuf"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * int _flags2
+     * char _short_backupbuf[1]
      * }
      */
-    public static final OfInt _flags2$layout() {
-        return _flags2$LAYOUT;
+    public static final SequenceLayout _short_backupbuf$layout() {
+        return _short_backupbuf$LAYOUT;
     }
 
-    private static final long _flags2$OFFSET = 116;
+    private static final long _short_backupbuf$OFFSET = 119;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * int _flags2
+     * char _short_backupbuf[1]
      * }
      */
-    public static final long _flags2$offset() {
-        return _flags2$OFFSET;
+    public static final long _short_backupbuf$offset() {
+        return _short_backupbuf$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * int _flags2
+     * char _short_backupbuf[1]
      * }
      */
-    public static int _flags2(MemorySegment struct) {
-        return struct.get(_flags2$LAYOUT, _flags2$OFFSET);
+    public static MemorySegment _short_backupbuf(MemorySegment struct) {
+        return struct.asSlice(_short_backupbuf$OFFSET, _short_backupbuf$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * int _flags2
+     * char _short_backupbuf[1]
      * }
      */
-    public static void _flags2(MemorySegment struct, int fieldValue) {
-        struct.set(_flags2$LAYOUT, _flags2$OFFSET, fieldValue);
+    public static void _short_backupbuf(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, _short_backupbuf$OFFSET, _short_backupbuf$LAYOUT.byteSize());
+    }
+
+    private static long[] _short_backupbuf$DIMS = { 1 };
+
+    /**
+     * Dimensions for array field:
+     * {@snippet lang=c :
+     * char _short_backupbuf[1]
+     * }
+     */
+    public static long[] _short_backupbuf$dimensions() {
+        return _short_backupbuf$DIMS;
+    }
+    private static final VarHandle _short_backupbuf$ELEM_HANDLE = _short_backupbuf$LAYOUT.varHandle(sequenceElement());
+
+    /**
+     * Indexed getter for field:
+     * {@snippet lang=c :
+     * char _short_backupbuf[1]
+     * }
+     */
+    public static byte _short_backupbuf(MemorySegment struct, long index0) {
+        return (byte)_short_backupbuf$ELEM_HANDLE.get(struct, 0L, index0);
+    }
+
+    /**
+     * Indexed setter for field:
+     * {@snippet lang=c :
+     * char _short_backupbuf[1]
+     * }
+     */
+    public static void _short_backupbuf(MemorySegment struct, long index0, byte fieldValue) {
+        _short_backupbuf$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
     }
 
     private static final OfLong _old_offset$LAYOUT = (OfLong)$LAYOUT.select(groupElement("_old_offset"));

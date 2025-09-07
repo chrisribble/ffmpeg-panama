@@ -99,6 +99,15 @@ public class FFmpeg_3 {
     public static int _DEFAULT_SOURCE() {
         return _DEFAULT_SOURCE;
     }
+    private static final int __GLIBC_USE_ISOC2Y = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * #define __GLIBC_USE_ISOC2Y 0
+     * }
+     */
+    public static int __GLIBC_USE_ISOC2Y() {
+        return __GLIBC_USE_ISOC2Y;
+    }
     private static final int __GLIBC_USE_ISOC23 = (int)0L;
     /**
      * {@snippet lang=c :
@@ -351,10 +360,10 @@ public class FFmpeg_3 {
     public static int __GLIBC__() {
         return __GLIBC__;
     }
-    private static final int __GLIBC_MINOR__ = (int)40L;
+    private static final int __GLIBC_MINOR__ = (int)41L;
     /**
      * {@snippet lang=c :
-     * #define __GLIBC_MINOR__ 40
+     * #define __GLIBC_MINOR__ 41
      * }
      */
     public static int __GLIBC_MINOR__() {
@@ -2457,19 +2466,19 @@ public class FFmpeg_3 {
     public static int _BITS_LIBM_SIMD_DECL_STUBS_H() {
         return _BITS_LIBM_SIMD_DECL_STUBS_H;
     }
-    private static final int __HAVE_FLOAT128 = (int)0L;
+    private static final int __HAVE_FLOAT128 = (int)1L;
     /**
      * {@snippet lang=c :
-     * #define __HAVE_FLOAT128 0
+     * #define __HAVE_FLOAT128 1
      * }
      */
     public static int __HAVE_FLOAT128() {
         return __HAVE_FLOAT128;
     }
-    private static final int __HAVE_DISTINCT_FLOAT128 = (int)0L;
+    private static final int __HAVE_DISTINCT_FLOAT128 = (int)1L;
     /**
      * {@snippet lang=c :
-     * #define __HAVE_DISTINCT_FLOAT128 0
+     * #define __HAVE_DISTINCT_FLOAT128 1
      * }
      */
     public static int __HAVE_DISTINCT_FLOAT128() {
@@ -11695,64 +11704,6 @@ public class FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("atanh", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __atanh {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__atanh");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __atanh(double __x)
-     * }
-     */
-    public static FunctionDescriptor __atanh$descriptor() {
-        return __atanh.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __atanh(double __x)
-     * }
-     */
-    public static MethodHandle __atanh$handle() {
-        return __atanh.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __atanh(double __x)
-     * }
-     */
-    public static MemorySegment __atanh$address() {
-        return __atanh.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __atanh(double __x)
-     * }
-     */
-    public static double __atanh(double __x) {
-        var mh$ = __atanh.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__atanh", __x);
             }
             return (double)mh$.invokeExact(__x);
         } catch (Throwable ex$) {

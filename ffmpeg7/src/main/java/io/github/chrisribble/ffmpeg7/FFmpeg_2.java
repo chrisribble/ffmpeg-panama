@@ -18,6 +18,64 @@ public class FFmpeg_2 extends FFmpeg_3 {
         // Should not be called directly
     }
 
+    private static class __atanh {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_DOUBLE
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__atanh");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * extern double __atanh(double __x)
+     * }
+     */
+    public static FunctionDescriptor __atanh$descriptor() {
+        return __atanh.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * extern double __atanh(double __x)
+     * }
+     */
+    public static MethodHandle __atanh$handle() {
+        return __atanh.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * extern double __atanh(double __x)
+     * }
+     */
+    public static MemorySegment __atanh$address() {
+        return __atanh.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * extern double __atanh(double __x)
+     * }
+     */
+    public static double __atanh(double __x) {
+        var mh$ = __atanh.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("__atanh", __x);
+            }
+            return (double)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class exp {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -1826,64 +1884,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __ceil {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__ceil");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __ceil(double __x)
-     * }
-     */
-    public static FunctionDescriptor __ceil$descriptor() {
-        return __ceil.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __ceil(double __x)
-     * }
-     */
-    public static MethodHandle __ceil$handle() {
-        return __ceil.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __ceil(double __x)
-     * }
-     */
-    public static MemorySegment __ceil$address() {
-        return __ceil.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __ceil(double __x)
-     * }
-     */
-    public static double __ceil(double __x) {
-        var mh$ = __ceil.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__ceil", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class fabs {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -1942,64 +1942,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __fabs {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__fabs");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __fabs(double __x)
-     * }
-     */
-    public static FunctionDescriptor __fabs$descriptor() {
-        return __fabs.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __fabs(double __x)
-     * }
-     */
-    public static MethodHandle __fabs$handle() {
-        return __fabs.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __fabs(double __x)
-     * }
-     */
-    public static MemorySegment __fabs$address() {
-        return __fabs.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __fabs(double __x)
-     * }
-     */
-    public static double __fabs(double __x) {
-        var mh$ = __fabs.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__fabs", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class floor {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -2051,64 +1993,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("floor", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __floor {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__floor");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __floor(double __x)
-     * }
-     */
-    public static FunctionDescriptor __floor$descriptor() {
-        return __floor.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __floor(double __x)
-     * }
-     */
-    public static MethodHandle __floor$handle() {
-        return __floor.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __floor(double __x)
-     * }
-     */
-    public static MemorySegment __floor$address() {
-        return __floor.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __floor(double __x)
-     * }
-     */
-    public static double __floor(double __x) {
-        var mh$ = __floor.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__floor", __x);
             }
             return (double)mh$.invokeExact(__x);
         } catch (Throwable ex$) {
@@ -2636,65 +2520,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("copysign", __x, __y);
-            }
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __copysign {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__copysign");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __copysign(double __x, double __y)
-     * }
-     */
-    public static FunctionDescriptor __copysign$descriptor() {
-        return __copysign.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __copysign(double __x, double __y)
-     * }
-     */
-    public static MethodHandle __copysign$handle() {
-        return __copysign.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __copysign(double __x, double __y)
-     * }
-     */
-    public static MemorySegment __copysign$address() {
-        return __copysign.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __copysign(double __x, double __y)
-     * }
-     */
-    public static double __copysign(double __x, double __y) {
-        var mh$ = __copysign.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__copysign", __x, __y);
             }
             return (double)mh$.invokeExact(__x, __y);
         } catch (Throwable ex$) {
@@ -5152,64 +4977,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __round {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__round");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __round(double __x)
-     * }
-     */
-    public static FunctionDescriptor __round$descriptor() {
-        return __round.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __round(double __x)
-     * }
-     */
-    public static MethodHandle __round$handle() {
-        return __round.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __round(double __x)
-     * }
-     */
-    public static MemorySegment __round$address() {
-        return __round.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __round(double __x)
-     * }
-     */
-    public static double __round(double __x) {
-        var mh$ = __round.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__round", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class trunc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -5261,64 +5028,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("trunc", __x);
-            }
-            return (double)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __trunc {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__trunc");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static FunctionDescriptor __trunc$descriptor() {
-        return __trunc.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static MethodHandle __trunc$handle() {
-        return __trunc.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static MemorySegment __trunc$address() {
-        return __trunc.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __trunc(double __x)
-     * }
-     */
-    public static double __trunc(double __x) {
-        var mh$ = __trunc.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__trunc", __x);
             }
             return (double)mh$.invokeExact(__x);
         } catch (Throwable ex$) {
@@ -6087,65 +5796,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __fmax {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__fmax");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __fmax(double __x, double __y)
-     * }
-     */
-    public static FunctionDescriptor __fmax$descriptor() {
-        return __fmax.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __fmax(double __x, double __y)
-     * }
-     */
-    public static MethodHandle __fmax$handle() {
-        return __fmax.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __fmax(double __x, double __y)
-     * }
-     */
-    public static MemorySegment __fmax$address() {
-        return __fmax.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __fmax(double __x, double __y)
-     * }
-     */
-    public static double __fmax(double __x, double __y) {
-        var mh$ = __fmax.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__fmax", __x, __y);
-            }
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class fmin {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_DOUBLE,
@@ -6198,65 +5848,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("fmin", __x, __y);
-            }
-            return (double)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __fmin {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE,
-            FFmpeg.C_DOUBLE
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__fmin");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern double __fmin(double __x, double __y)
-     * }
-     */
-    public static FunctionDescriptor __fmin$descriptor() {
-        return __fmin.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern double __fmin(double __x, double __y)
-     * }
-     */
-    public static MethodHandle __fmin$handle() {
-        return __fmin.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern double __fmin(double __x, double __y)
-     * }
-     */
-    public static MemorySegment __fmin$address() {
-        return __fmin.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern double __fmin(double __x, double __y)
-     * }
-     */
-    public static double __fmin(double __x, double __y) {
-        var mh$ = __fmin.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__fmin", __x, __y);
             }
             return (double)mh$.invokeExact(__x, __y);
         } catch (Throwable ex$) {
@@ -10227,64 +9818,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __ceilf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__ceilf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __ceilf(float __x)
-     * }
-     */
-    public static FunctionDescriptor __ceilf$descriptor() {
-        return __ceilf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __ceilf(float __x)
-     * }
-     */
-    public static MethodHandle __ceilf$handle() {
-        return __ceilf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __ceilf(float __x)
-     * }
-     */
-    public static MemorySegment __ceilf$address() {
-        return __ceilf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __ceilf(float __x)
-     * }
-     */
-    public static float __ceilf(float __x) {
-        var mh$ = __ceilf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__ceilf", __x);
-            }
-            return (float)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class fabsf {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_FLOAT,
@@ -10343,64 +9876,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __fabsf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__fabsf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __fabsf(float __x)
-     * }
-     */
-    public static FunctionDescriptor __fabsf$descriptor() {
-        return __fabsf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __fabsf(float __x)
-     * }
-     */
-    public static MethodHandle __fabsf$handle() {
-        return __fabsf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __fabsf(float __x)
-     * }
-     */
-    public static MemorySegment __fabsf$address() {
-        return __fabsf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __fabsf(float __x)
-     * }
-     */
-    public static float __fabsf(float __x) {
-        var mh$ = __fabsf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__fabsf", __x);
-            }
-            return (float)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class floorf {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_FLOAT,
@@ -10452,64 +9927,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("floorf", __x);
-            }
-            return (float)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __floorf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__floorf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __floorf(float __x)
-     * }
-     */
-    public static FunctionDescriptor __floorf$descriptor() {
-        return __floorf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __floorf(float __x)
-     * }
-     */
-    public static MethodHandle __floorf$handle() {
-        return __floorf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __floorf(float __x)
-     * }
-     */
-    public static MemorySegment __floorf$address() {
-        return __floorf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __floorf(float __x)
-     * }
-     */
-    public static float __floorf(float __x) {
-        var mh$ = __floorf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__floorf", __x);
             }
             return (float)mh$.invokeExact(__x);
         } catch (Throwable ex$) {
@@ -11037,65 +10454,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("copysignf", __x, __y);
-            }
-            return (float)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __copysignf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__copysignf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __copysignf(float __x, float __y)
-     * }
-     */
-    public static FunctionDescriptor __copysignf$descriptor() {
-        return __copysignf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __copysignf(float __x, float __y)
-     * }
-     */
-    public static MethodHandle __copysignf$handle() {
-        return __copysignf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __copysignf(float __x, float __y)
-     * }
-     */
-    public static MemorySegment __copysignf$address() {
-        return __copysignf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __copysignf(float __x, float __y)
-     * }
-     */
-    public static float __copysignf(float __x, float __y) {
-        var mh$ = __copysignf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__copysignf", __x, __y);
             }
             return (float)mh$.invokeExact(__x, __y);
         } catch (Throwable ex$) {
@@ -13553,64 +12911,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __roundf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__roundf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __roundf(float __x)
-     * }
-     */
-    public static FunctionDescriptor __roundf$descriptor() {
-        return __roundf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __roundf(float __x)
-     * }
-     */
-    public static MethodHandle __roundf$handle() {
-        return __roundf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __roundf(float __x)
-     * }
-     */
-    public static MemorySegment __roundf$address() {
-        return __roundf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __roundf(float __x)
-     * }
-     */
-    public static float __roundf(float __x) {
-        var mh$ = __roundf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__roundf", __x);
-            }
-            return (float)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class truncf {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_FLOAT,
@@ -13662,64 +12962,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("truncf", __x);
-            }
-            return (float)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __truncf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__truncf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __truncf(float __x)
-     * }
-     */
-    public static FunctionDescriptor __truncf$descriptor() {
-        return __truncf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __truncf(float __x)
-     * }
-     */
-    public static MethodHandle __truncf$handle() {
-        return __truncf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __truncf(float __x)
-     * }
-     */
-    public static MemorySegment __truncf$address() {
-        return __truncf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __truncf(float __x)
-     * }
-     */
-    public static float __truncf(float __x) {
-        var mh$ = __truncf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__truncf", __x);
             }
             return (float)mh$.invokeExact(__x);
         } catch (Throwable ex$) {
@@ -14488,65 +13730,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         }
     }
 
-    private static class __fmaxf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__fmaxf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __fmaxf(float __x, float __y)
-     * }
-     */
-    public static FunctionDescriptor __fmaxf$descriptor() {
-        return __fmaxf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __fmaxf(float __x, float __y)
-     * }
-     */
-    public static MethodHandle __fmaxf$handle() {
-        return __fmaxf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __fmaxf(float __x, float __y)
-     * }
-     */
-    public static MemorySegment __fmaxf$address() {
-        return __fmaxf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __fmaxf(float __x, float __y)
-     * }
-     */
-    public static float __fmaxf(float __x, float __y) {
-        var mh$ = __fmaxf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__fmaxf", __x, __y);
-            }
-            return (float)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class fminf {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_FLOAT,
@@ -14599,65 +13782,6 @@ public class FFmpeg_2 extends FFmpeg_3 {
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("fminf", __x, __y);
-            }
-            return (float)mh$.invokeExact(__x, __y);
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class __fminf {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT,
-            FFmpeg.C_FLOAT
-        );
-
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("__fminf");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * extern float __fminf(float __x, float __y)
-     * }
-     */
-    public static FunctionDescriptor __fminf$descriptor() {
-        return __fminf.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * extern float __fminf(float __x, float __y)
-     * }
-     */
-    public static MethodHandle __fminf$handle() {
-        return __fminf.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * extern float __fminf(float __x, float __y)
-     * }
-     */
-    public static MemorySegment __fminf$address() {
-        return __fminf.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * extern float __fminf(float __x, float __y)
-     * }
-     */
-    public static float __fminf(float __x, float __y) {
-        var mh$ = __fminf.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("__fminf", __x, __y);
             }
             return (float)mh$.invokeExact(__x, __y);
         } catch (Throwable ex$) {
@@ -37900,6 +37024,292 @@ public class FFmpeg_2 extends FFmpeg_3 {
      */
     public static int AV_CHANNEL_ORDER_UNSPEC() {
         return AV_CHANNEL_ORDER_UNSPEC;
+    }
+    private static final int AV_CHANNEL_ORDER_NATIVE = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannelOrder.AV_CHANNEL_ORDER_NATIVE = 1
+     * }
+     */
+    public static int AV_CHANNEL_ORDER_NATIVE() {
+        return AV_CHANNEL_ORDER_NATIVE;
+    }
+    private static final int AV_CHANNEL_ORDER_CUSTOM = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannelOrder.AV_CHANNEL_ORDER_CUSTOM = 2
+     * }
+     */
+    public static int AV_CHANNEL_ORDER_CUSTOM() {
+        return AV_CHANNEL_ORDER_CUSTOM;
+    }
+    private static final int AV_CHANNEL_ORDER_AMBISONIC = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannelOrder.AV_CHANNEL_ORDER_AMBISONIC = 3
+     * }
+     */
+    public static int AV_CHANNEL_ORDER_AMBISONIC() {
+        return AV_CHANNEL_ORDER_AMBISONIC;
+    }
+    private static final int FF_CHANNEL_ORDER_NB = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum AVChannelOrder.FF_CHANNEL_ORDER_NB = 4
+     * }
+     */
+    public static int FF_CHANNEL_ORDER_NB() {
+        return FF_CHANNEL_ORDER_NB;
+    }
+    private static final int AV_MATRIX_ENCODING_NONE = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_NONE = 0
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_NONE() {
+        return AV_MATRIX_ENCODING_NONE;
+    }
+    private static final int AV_MATRIX_ENCODING_DOLBY = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DOLBY = 1
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_DOLBY() {
+        return AV_MATRIX_ENCODING_DOLBY;
+    }
+    private static final int AV_MATRIX_ENCODING_DPLII = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DPLII = 2
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_DPLII() {
+        return AV_MATRIX_ENCODING_DPLII;
+    }
+    private static final int AV_MATRIX_ENCODING_DPLIIX = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DPLIIX = 3
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_DPLIIX() {
+        return AV_MATRIX_ENCODING_DPLIIX;
+    }
+    private static final int AV_MATRIX_ENCODING_DPLIIZ = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DPLIIZ = 4
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_DPLIIZ() {
+        return AV_MATRIX_ENCODING_DPLIIZ;
+    }
+    private static final int AV_MATRIX_ENCODING_DOLBYEX = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DOLBYEX = 5
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_DOLBYEX() {
+        return AV_MATRIX_ENCODING_DOLBYEX;
+    }
+    private static final int AV_MATRIX_ENCODING_DOLBYHEADPHONE = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_DOLBYHEADPHONE = 6
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_DOLBYHEADPHONE() {
+        return AV_MATRIX_ENCODING_DOLBYHEADPHONE;
+    }
+    private static final int AV_MATRIX_ENCODING_NB = (int)7L;
+    /**
+     * {@snippet lang=c :
+     * enum AVMatrixEncoding.AV_MATRIX_ENCODING_NB = 7
+     * }
+     */
+    public static int AV_MATRIX_ENCODING_NB() {
+        return AV_MATRIX_ENCODING_NB;
+    }
+
+    private static class av_channel_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_LONG,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_channel_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_channel_name(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static FunctionDescriptor av_channel_name$descriptor() {
+        return av_channel_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_channel_name(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static MethodHandle av_channel_name$handle() {
+        return av_channel_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_channel_name(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static MemorySegment av_channel_name$address() {
+        return av_channel_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_channel_name(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static int av_channel_name(MemorySegment buf, long buf_size, int channel) {
+        var mh$ = av_channel_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_channel_name", buf, buf_size, channel);
+            }
+            return (int)mh$.invokeExact(buf, buf_size, channel);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_channel_name_bprint {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_channel_name_bprint");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void av_channel_name_bprint(struct AVBPrint *bp, enum AVChannel channel_id)
+     * }
+     */
+    public static FunctionDescriptor av_channel_name_bprint$descriptor() {
+        return av_channel_name_bprint.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void av_channel_name_bprint(struct AVBPrint *bp, enum AVChannel channel_id)
+     * }
+     */
+    public static MethodHandle av_channel_name_bprint$handle() {
+        return av_channel_name_bprint.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_channel_name_bprint(struct AVBPrint *bp, enum AVChannel channel_id)
+     * }
+     */
+    public static MemorySegment av_channel_name_bprint$address() {
+        return av_channel_name_bprint.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void av_channel_name_bprint(struct AVBPrint *bp, enum AVChannel channel_id)
+     * }
+     */
+    public static void av_channel_name_bprint(MemorySegment bp, int channel_id) {
+        var mh$ = av_channel_name_bprint.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_channel_name_bprint", bp, channel_id);
+            }
+            mh$.invokeExact(bp, channel_id);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_channel_description {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_LONG,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_channel_description");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_channel_description(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static FunctionDescriptor av_channel_description$descriptor() {
+        return av_channel_description.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_channel_description(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static MethodHandle av_channel_description$handle() {
+        return av_channel_description.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_channel_description(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static MemorySegment av_channel_description$address() {
+        return av_channel_description.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_channel_description(char *buf, size_t buf_size, enum AVChannel channel)
+     * }
+     */
+    public static int av_channel_description(MemorySegment buf, long buf_size, int channel) {
+        var mh$ = av_channel_description.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_channel_description", buf, buf_size, channel);
+            }
+            return (int)mh$.invokeExact(buf, buf_size, channel);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
     }
 }
 

@@ -27,7 +27,7 @@ public class __once_flag {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         FFmpeg.C_INT.withName("__data")
-    ).withName("$anon$108:9");
+    ).withName("$anon$109:9");
 
     /**
      * The layout of this struct
