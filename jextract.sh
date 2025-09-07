@@ -15,12 +15,11 @@ if [ -z "${BINDINGS}" ]; then
 	exit 1
 fi
 
-FFMPEG_SRC="./ffmpeg-${FFMPEG_VERSION}"
 BINDINGS_SRC="${BINDINGS}/src/main/java"
 
 echo "Generating bindings for FFmpeg ${FFMPEG_VERSION} in ${BINDINGS_SRC}"
 
-wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
+#wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
 tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz
 rm -rf ${BINDINGS_SRC}
 jextract \
@@ -28,8 +27,7 @@ jextract \
   --library avcodec --library avformat --library avutil --library swscale \
   --output ${BINDINGS_SRC} --target-package io.github.chrisribble.${BINDINGS} \
   --header-class-name FFmpeg \
-  ${FFMPEG_SRC}/libavcodec/avcodec.h \
-  ${FFMPEG_SRC}/libavformat/avformat.h \
-  ${FFMPEG_SRC}/libavutil/imgutils.h \
-  ${FFMPEG_SRC}/libswscale/swscale.h
-```
+  "<libavcodec/avcodec.h>" \
+  "<libavformat/avformat.h>" \
+  "<libavutil/imgutils.h>" \
+  "<libswscale/swscale.h>"
