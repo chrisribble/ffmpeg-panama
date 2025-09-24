@@ -22,11 +22,11 @@ subprojects {
 	apply plugin: 'se.solrike.sonarlint'
 
 	java {
-		sourceCompatibility = 22
-		targetCompatibility = 22
+		sourceCompatibility = 25
+		targetCompatibility = 25
 
 		toolchain {
-			languageVersion = JavaLanguageVersion.of(24)
+			languageVersion = JavaLanguageVersion.of(25)
 		}
 	}
 
