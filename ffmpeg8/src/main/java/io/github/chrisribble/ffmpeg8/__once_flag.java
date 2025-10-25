@@ -48,7 +48,7 @@ public class __once_flag {
         return __data$LAYOUT;
     }
 
-    private static final long __data$OFFSET = 0;
+    private static final long __data$OFFSET = $LAYOUT.byteOffset(groupElement("__data"));
 
     /**
      * Offset for field:

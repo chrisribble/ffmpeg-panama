@@ -118,7 +118,7 @@ public class AVCodecParserContext {
         return priv_data$LAYOUT;
     }
 
-    private static final long priv_data$OFFSET = 0;
+    private static final long priv_data$OFFSET = $LAYOUT.byteOffset(groupElement("priv_data"));
 
     /**
      * Offset for field:
@@ -162,7 +162,7 @@ public class AVCodecParserContext {
         return parser$LAYOUT;
     }
 
-    private static final long parser$OFFSET = 8;
+    private static final long parser$OFFSET = $LAYOUT.byteOffset(groupElement("parser"));
 
     /**
      * Offset for field:
@@ -206,7 +206,7 @@ public class AVCodecParserContext {
         return frame_offset$LAYOUT;
     }
 
-    private static final long frame_offset$OFFSET = 16;
+    private static final long frame_offset$OFFSET = $LAYOUT.byteOffset(groupElement("frame_offset"));
 
     /**
      * Offset for field:
@@ -250,7 +250,7 @@ public class AVCodecParserContext {
         return cur_offset$LAYOUT;
     }
 
-    private static final long cur_offset$OFFSET = 24;
+    private static final long cur_offset$OFFSET = $LAYOUT.byteOffset(groupElement("cur_offset"));
 
     /**
      * Offset for field:
@@ -294,7 +294,7 @@ public class AVCodecParserContext {
         return next_frame_offset$LAYOUT;
     }
 
-    private static final long next_frame_offset$OFFSET = 32;
+    private static final long next_frame_offset$OFFSET = $LAYOUT.byteOffset(groupElement("next_frame_offset"));
 
     /**
      * Offset for field:
@@ -338,7 +338,7 @@ public class AVCodecParserContext {
         return pict_type$LAYOUT;
     }
 
-    private static final long pict_type$OFFSET = 40;
+    private static final long pict_type$OFFSET = $LAYOUT.byteOffset(groupElement("pict_type"));
 
     /**
      * Offset for field:
@@ -382,7 +382,7 @@ public class AVCodecParserContext {
         return repeat_pict$LAYOUT;
     }
 
-    private static final long repeat_pict$OFFSET = 44;
+    private static final long repeat_pict$OFFSET = $LAYOUT.byteOffset(groupElement("repeat_pict"));
 
     /**
      * Offset for field:
@@ -426,7 +426,7 @@ public class AVCodecParserContext {
         return pts$LAYOUT;
     }
 
-    private static final long pts$OFFSET = 48;
+    private static final long pts$OFFSET = $LAYOUT.byteOffset(groupElement("pts"));
 
     /**
      * Offset for field:
@@ -470,7 +470,7 @@ public class AVCodecParserContext {
         return dts$LAYOUT;
     }
 
-    private static final long dts$OFFSET = 56;
+    private static final long dts$OFFSET = $LAYOUT.byteOffset(groupElement("dts"));
 
     /**
      * Offset for field:
@@ -514,7 +514,7 @@ public class AVCodecParserContext {
         return last_pts$LAYOUT;
     }
 
-    private static final long last_pts$OFFSET = 64;
+    private static final long last_pts$OFFSET = $LAYOUT.byteOffset(groupElement("last_pts"));
 
     /**
      * Offset for field:
@@ -558,7 +558,7 @@ public class AVCodecParserContext {
         return last_dts$LAYOUT;
     }
 
-    private static final long last_dts$OFFSET = 72;
+    private static final long last_dts$OFFSET = $LAYOUT.byteOffset(groupElement("last_dts"));
 
     /**
      * Offset for field:
@@ -602,7 +602,7 @@ public class AVCodecParserContext {
         return fetch_timestamp$LAYOUT;
     }
 
-    private static final long fetch_timestamp$OFFSET = 80;
+    private static final long fetch_timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("fetch_timestamp"));
 
     /**
      * Offset for field:
@@ -646,7 +646,7 @@ public class AVCodecParserContext {
         return cur_frame_start_index$LAYOUT;
     }
 
-    private static final long cur_frame_start_index$OFFSET = 84;
+    private static final long cur_frame_start_index$OFFSET = $LAYOUT.byteOffset(groupElement("cur_frame_start_index"));
 
     /**
      * Offset for field:
@@ -690,7 +690,7 @@ public class AVCodecParserContext {
         return cur_frame_offset$LAYOUT;
     }
 
-    private static final long cur_frame_offset$OFFSET = 88;
+    private static final long cur_frame_offset$OFFSET = $LAYOUT.byteOffset(groupElement("cur_frame_offset"));
 
     /**
      * Offset for field:
@@ -767,7 +767,7 @@ public class AVCodecParserContext {
         return cur_frame_pts$LAYOUT;
     }
 
-    private static final long cur_frame_pts$OFFSET = 120;
+    private static final long cur_frame_pts$OFFSET = $LAYOUT.byteOffset(groupElement("cur_frame_pts"));
 
     /**
      * Offset for field:
@@ -844,7 +844,7 @@ public class AVCodecParserContext {
         return cur_frame_dts$LAYOUT;
     }
 
-    private static final long cur_frame_dts$OFFSET = 152;
+    private static final long cur_frame_dts$OFFSET = $LAYOUT.byteOffset(groupElement("cur_frame_dts"));
 
     /**
      * Offset for field:
@@ -921,7 +921,7 @@ public class AVCodecParserContext {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 184;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:
@@ -965,7 +965,7 @@ public class AVCodecParserContext {
         return offset$LAYOUT;
     }
 
-    private static final long offset$OFFSET = 192;
+    private static final long offset$OFFSET = $LAYOUT.byteOffset(groupElement("offset"));
 
     /**
      * Offset for field:
@@ -1009,7 +1009,7 @@ public class AVCodecParserContext {
         return cur_frame_end$LAYOUT;
     }
 
-    private static final long cur_frame_end$OFFSET = 200;
+    private static final long cur_frame_end$OFFSET = $LAYOUT.byteOffset(groupElement("cur_frame_end"));
 
     /**
      * Offset for field:
@@ -1086,7 +1086,7 @@ public class AVCodecParserContext {
         return key_frame$LAYOUT;
     }
 
-    private static final long key_frame$OFFSET = 232;
+    private static final long key_frame$OFFSET = $LAYOUT.byteOffset(groupElement("key_frame"));
 
     /**
      * Offset for field:
@@ -1130,7 +1130,7 @@ public class AVCodecParserContext {
         return dts_sync_point$LAYOUT;
     }
 
-    private static final long dts_sync_point$OFFSET = 236;
+    private static final long dts_sync_point$OFFSET = $LAYOUT.byteOffset(groupElement("dts_sync_point"));
 
     /**
      * Offset for field:
@@ -1174,7 +1174,7 @@ public class AVCodecParserContext {
         return dts_ref_dts_delta$LAYOUT;
     }
 
-    private static final long dts_ref_dts_delta$OFFSET = 240;
+    private static final long dts_ref_dts_delta$OFFSET = $LAYOUT.byteOffset(groupElement("dts_ref_dts_delta"));
 
     /**
      * Offset for field:
@@ -1218,7 +1218,7 @@ public class AVCodecParserContext {
         return pts_dts_delta$LAYOUT;
     }
 
-    private static final long pts_dts_delta$OFFSET = 244;
+    private static final long pts_dts_delta$OFFSET = $LAYOUT.byteOffset(groupElement("pts_dts_delta"));
 
     /**
      * Offset for field:
@@ -1262,7 +1262,7 @@ public class AVCodecParserContext {
         return cur_frame_pos$LAYOUT;
     }
 
-    private static final long cur_frame_pos$OFFSET = 248;
+    private static final long cur_frame_pos$OFFSET = $LAYOUT.byteOffset(groupElement("cur_frame_pos"));
 
     /**
      * Offset for field:
@@ -1339,7 +1339,7 @@ public class AVCodecParserContext {
         return pos$LAYOUT;
     }
 
-    private static final long pos$OFFSET = 280;
+    private static final long pos$OFFSET = $LAYOUT.byteOffset(groupElement("pos"));
 
     /**
      * Offset for field:
@@ -1383,7 +1383,7 @@ public class AVCodecParserContext {
         return last_pos$LAYOUT;
     }
 
-    private static final long last_pos$OFFSET = 288;
+    private static final long last_pos$OFFSET = $LAYOUT.byteOffset(groupElement("last_pos"));
 
     /**
      * Offset for field:
@@ -1427,7 +1427,7 @@ public class AVCodecParserContext {
         return duration$LAYOUT;
     }
 
-    private static final long duration$OFFSET = 296;
+    private static final long duration$OFFSET = $LAYOUT.byteOffset(groupElement("duration"));
 
     /**
      * Offset for field:
@@ -1471,7 +1471,7 @@ public class AVCodecParserContext {
         return field_order$LAYOUT;
     }
 
-    private static final long field_order$OFFSET = 300;
+    private static final long field_order$OFFSET = $LAYOUT.byteOffset(groupElement("field_order"));
 
     /**
      * Offset for field:
@@ -1515,7 +1515,7 @@ public class AVCodecParserContext {
         return picture_structure$LAYOUT;
     }
 
-    private static final long picture_structure$OFFSET = 304;
+    private static final long picture_structure$OFFSET = $LAYOUT.byteOffset(groupElement("picture_structure"));
 
     /**
      * Offset for field:
@@ -1559,7 +1559,7 @@ public class AVCodecParserContext {
         return output_picture_number$LAYOUT;
     }
 
-    private static final long output_picture_number$OFFSET = 308;
+    private static final long output_picture_number$OFFSET = $LAYOUT.byteOffset(groupElement("output_picture_number"));
 
     /**
      * Offset for field:
@@ -1603,7 +1603,7 @@ public class AVCodecParserContext {
         return width$LAYOUT;
     }
 
-    private static final long width$OFFSET = 312;
+    private static final long width$OFFSET = $LAYOUT.byteOffset(groupElement("width"));
 
     /**
      * Offset for field:
@@ -1647,7 +1647,7 @@ public class AVCodecParserContext {
         return height$LAYOUT;
     }
 
-    private static final long height$OFFSET = 316;
+    private static final long height$OFFSET = $LAYOUT.byteOffset(groupElement("height"));
 
     /**
      * Offset for field:
@@ -1691,7 +1691,7 @@ public class AVCodecParserContext {
         return coded_width$LAYOUT;
     }
 
-    private static final long coded_width$OFFSET = 320;
+    private static final long coded_width$OFFSET = $LAYOUT.byteOffset(groupElement("coded_width"));
 
     /**
      * Offset for field:
@@ -1735,7 +1735,7 @@ public class AVCodecParserContext {
         return coded_height$LAYOUT;
     }
 
-    private static final long coded_height$OFFSET = 324;
+    private static final long coded_height$OFFSET = $LAYOUT.byteOffset(groupElement("coded_height"));
 
     /**
      * Offset for field:
@@ -1779,7 +1779,7 @@ public class AVCodecParserContext {
         return format$LAYOUT;
     }
 
-    private static final long format$OFFSET = 328;
+    private static final long format$OFFSET = $LAYOUT.byteOffset(groupElement("format"));
 
     /**
      * Offset for field:

@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * typedef int (cookie_seek_function_t)(void *, __off64_t *, int)
  * }
  */
-public class cookie_seek_function_t {
+public final class cookie_seek_function_t {
 
-    cookie_seek_function_t() {
+    private cookie_seek_function_t() {
         // Should not be called directly
     }
 
@@ -59,9 +59,11 @@ public class cookie_seek_function_t {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment __cookie, MemorySegment __pos, int __w) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment __cookie, MemorySegment __pos, int __w) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, __cookie, __pos, __w);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

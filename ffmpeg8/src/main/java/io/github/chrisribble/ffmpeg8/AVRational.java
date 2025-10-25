@@ -50,7 +50,7 @@ public class AVRational {
         return num$LAYOUT;
     }
 
-    private static final long num$OFFSET = 0;
+    private static final long num$OFFSET = $LAYOUT.byteOffset(groupElement("num"));
 
     /**
      * Offset for field:
@@ -94,7 +94,7 @@ public class AVRational {
         return den$LAYOUT;
     }
 
-    private static final long den$OFFSET = 4;
+    private static final long den$OFFSET = $LAYOUT.byteOffset(groupElement("den"));
 
     /**
      * Offset for field:

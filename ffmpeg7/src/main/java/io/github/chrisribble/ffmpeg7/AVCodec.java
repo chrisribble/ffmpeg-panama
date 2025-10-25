@@ -75,7 +75,7 @@ public class AVCodec {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 0;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -119,7 +119,7 @@ public class AVCodec {
         return long_name$LAYOUT;
     }
 
-    private static final long long_name$OFFSET = 8;
+    private static final long long_name$OFFSET = $LAYOUT.byteOffset(groupElement("long_name"));
 
     /**
      * Offset for field:
@@ -163,7 +163,7 @@ public class AVCodec {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 16;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -207,7 +207,7 @@ public class AVCodec {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 20;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -251,7 +251,7 @@ public class AVCodec {
         return capabilities$LAYOUT;
     }
 
-    private static final long capabilities$OFFSET = 24;
+    private static final long capabilities$OFFSET = $LAYOUT.byteOffset(groupElement("capabilities"));
 
     /**
      * Offset for field:
@@ -295,7 +295,7 @@ public class AVCodec {
         return max_lowres$LAYOUT;
     }
 
-    private static final long max_lowres$OFFSET = 28;
+    private static final long max_lowres$OFFSET = $LAYOUT.byteOffset(groupElement("max_lowres"));
 
     /**
      * Offset for field:
@@ -339,7 +339,7 @@ public class AVCodec {
         return supported_framerates$LAYOUT;
     }
 
-    private static final long supported_framerates$OFFSET = 32;
+    private static final long supported_framerates$OFFSET = $LAYOUT.byteOffset(groupElement("supported_framerates"));
 
     /**
      * Offset for field:
@@ -383,7 +383,7 @@ public class AVCodec {
         return pix_fmts$LAYOUT;
     }
 
-    private static final long pix_fmts$OFFSET = 40;
+    private static final long pix_fmts$OFFSET = $LAYOUT.byteOffset(groupElement("pix_fmts"));
 
     /**
      * Offset for field:
@@ -427,7 +427,7 @@ public class AVCodec {
         return supported_samplerates$LAYOUT;
     }
 
-    private static final long supported_samplerates$OFFSET = 48;
+    private static final long supported_samplerates$OFFSET = $LAYOUT.byteOffset(groupElement("supported_samplerates"));
 
     /**
      * Offset for field:
@@ -471,7 +471,7 @@ public class AVCodec {
         return sample_fmts$LAYOUT;
     }
 
-    private static final long sample_fmts$OFFSET = 56;
+    private static final long sample_fmts$OFFSET = $LAYOUT.byteOffset(groupElement("sample_fmts"));
 
     /**
      * Offset for field:
@@ -515,7 +515,7 @@ public class AVCodec {
         return priv_class$LAYOUT;
     }
 
-    private static final long priv_class$OFFSET = 64;
+    private static final long priv_class$OFFSET = $LAYOUT.byteOffset(groupElement("priv_class"));
 
     /**
      * Offset for field:
@@ -559,7 +559,7 @@ public class AVCodec {
         return profiles$LAYOUT;
     }
 
-    private static final long profiles$OFFSET = 72;
+    private static final long profiles$OFFSET = $LAYOUT.byteOffset(groupElement("profiles"));
 
     /**
      * Offset for field:
@@ -603,7 +603,7 @@ public class AVCodec {
         return wrapper_name$LAYOUT;
     }
 
-    private static final long wrapper_name$OFFSET = 80;
+    private static final long wrapper_name$OFFSET = $LAYOUT.byteOffset(groupElement("wrapper_name"));
 
     /**
      * Offset for field:
@@ -647,7 +647,7 @@ public class AVCodec {
         return ch_layouts$LAYOUT;
     }
 
-    private static final long ch_layouts$OFFSET = 88;
+    private static final long ch_layouts$OFFSET = $LAYOUT.byteOffset(groupElement("ch_layouts"));
 
     /**
      * Offset for field:

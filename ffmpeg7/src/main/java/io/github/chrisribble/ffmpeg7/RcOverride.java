@@ -54,7 +54,7 @@ public class RcOverride {
         return start_frame$LAYOUT;
     }
 
-    private static final long start_frame$OFFSET = 0;
+    private static final long start_frame$OFFSET = $LAYOUT.byteOffset(groupElement("start_frame"));
 
     /**
      * Offset for field:
@@ -98,7 +98,7 @@ public class RcOverride {
         return end_frame$LAYOUT;
     }
 
-    private static final long end_frame$OFFSET = 4;
+    private static final long end_frame$OFFSET = $LAYOUT.byteOffset(groupElement("end_frame"));
 
     /**
      * Offset for field:
@@ -142,7 +142,7 @@ public class RcOverride {
         return qscale$LAYOUT;
     }
 
-    private static final long qscale$OFFSET = 8;
+    private static final long qscale$OFFSET = $LAYOUT.byteOffset(groupElement("qscale"));
 
     /**
      * Offset for field:
@@ -186,7 +186,7 @@ public class RcOverride {
         return quality_factor$LAYOUT;
     }
 
-    private static final long quality_factor$OFFSET = 12;
+    private static final long quality_factor$OFFSET = $LAYOUT.byteOffset(groupElement("quality_factor"));
 
     /**
      * Offset for field:

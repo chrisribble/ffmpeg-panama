@@ -90,7 +90,7 @@ public class SwsContext {
         return av_class$LAYOUT;
     }
 
-    private static final long av_class$OFFSET = 0;
+    private static final long av_class$OFFSET = $LAYOUT.byteOffset(groupElement("av_class"));
 
     /**
      * Offset for field:
@@ -134,7 +134,7 @@ public class SwsContext {
         return opaque$LAYOUT;
     }
 
-    private static final long opaque$OFFSET = 8;
+    private static final long opaque$OFFSET = $LAYOUT.byteOffset(groupElement("opaque"));
 
     /**
      * Offset for field:
@@ -178,7 +178,7 @@ public class SwsContext {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 16;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:
@@ -222,7 +222,7 @@ public class SwsContext {
         return scaler_params$LAYOUT;
     }
 
-    private static final long scaler_params$OFFSET = 24;
+    private static final long scaler_params$OFFSET = $LAYOUT.byteOffset(groupElement("scaler_params"));
 
     /**
      * Offset for field:
@@ -299,7 +299,7 @@ public class SwsContext {
         return threads$LAYOUT;
     }
 
-    private static final long threads$OFFSET = 40;
+    private static final long threads$OFFSET = $LAYOUT.byteOffset(groupElement("threads"));
 
     /**
      * Offset for field:
@@ -343,7 +343,7 @@ public class SwsContext {
         return dither$LAYOUT;
     }
 
-    private static final long dither$OFFSET = 44;
+    private static final long dither$OFFSET = $LAYOUT.byteOffset(groupElement("dither"));
 
     /**
      * Offset for field:
@@ -387,7 +387,7 @@ public class SwsContext {
         return alpha_blend$LAYOUT;
     }
 
-    private static final long alpha_blend$OFFSET = 48;
+    private static final long alpha_blend$OFFSET = $LAYOUT.byteOffset(groupElement("alpha_blend"));
 
     /**
      * Offset for field:
@@ -431,7 +431,7 @@ public class SwsContext {
         return gamma_flag$LAYOUT;
     }
 
-    private static final long gamma_flag$OFFSET = 52;
+    private static final long gamma_flag$OFFSET = $LAYOUT.byteOffset(groupElement("gamma_flag"));
 
     /**
      * Offset for field:
@@ -475,7 +475,7 @@ public class SwsContext {
         return src_w$LAYOUT;
     }
 
-    private static final long src_w$OFFSET = 56;
+    private static final long src_w$OFFSET = $LAYOUT.byteOffset(groupElement("src_w"));
 
     /**
      * Offset for field:
@@ -519,7 +519,7 @@ public class SwsContext {
         return src_h$LAYOUT;
     }
 
-    private static final long src_h$OFFSET = 60;
+    private static final long src_h$OFFSET = $LAYOUT.byteOffset(groupElement("src_h"));
 
     /**
      * Offset for field:
@@ -563,7 +563,7 @@ public class SwsContext {
         return dst_w$LAYOUT;
     }
 
-    private static final long dst_w$OFFSET = 64;
+    private static final long dst_w$OFFSET = $LAYOUT.byteOffset(groupElement("dst_w"));
 
     /**
      * Offset for field:
@@ -607,7 +607,7 @@ public class SwsContext {
         return dst_h$LAYOUT;
     }
 
-    private static final long dst_h$OFFSET = 68;
+    private static final long dst_h$OFFSET = $LAYOUT.byteOffset(groupElement("dst_h"));
 
     /**
      * Offset for field:
@@ -651,7 +651,7 @@ public class SwsContext {
         return src_format$LAYOUT;
     }
 
-    private static final long src_format$OFFSET = 72;
+    private static final long src_format$OFFSET = $LAYOUT.byteOffset(groupElement("src_format"));
 
     /**
      * Offset for field:
@@ -695,7 +695,7 @@ public class SwsContext {
         return dst_format$LAYOUT;
     }
 
-    private static final long dst_format$OFFSET = 76;
+    private static final long dst_format$OFFSET = $LAYOUT.byteOffset(groupElement("dst_format"));
 
     /**
      * Offset for field:
@@ -739,7 +739,7 @@ public class SwsContext {
         return src_range$LAYOUT;
     }
 
-    private static final long src_range$OFFSET = 80;
+    private static final long src_range$OFFSET = $LAYOUT.byteOffset(groupElement("src_range"));
 
     /**
      * Offset for field:
@@ -783,7 +783,7 @@ public class SwsContext {
         return dst_range$LAYOUT;
     }
 
-    private static final long dst_range$OFFSET = 84;
+    private static final long dst_range$OFFSET = $LAYOUT.byteOffset(groupElement("dst_range"));
 
     /**
      * Offset for field:
@@ -827,7 +827,7 @@ public class SwsContext {
         return src_v_chr_pos$LAYOUT;
     }
 
-    private static final long src_v_chr_pos$OFFSET = 88;
+    private static final long src_v_chr_pos$OFFSET = $LAYOUT.byteOffset(groupElement("src_v_chr_pos"));
 
     /**
      * Offset for field:
@@ -871,7 +871,7 @@ public class SwsContext {
         return src_h_chr_pos$LAYOUT;
     }
 
-    private static final long src_h_chr_pos$OFFSET = 92;
+    private static final long src_h_chr_pos$OFFSET = $LAYOUT.byteOffset(groupElement("src_h_chr_pos"));
 
     /**
      * Offset for field:
@@ -915,7 +915,7 @@ public class SwsContext {
         return dst_v_chr_pos$LAYOUT;
     }
 
-    private static final long dst_v_chr_pos$OFFSET = 96;
+    private static final long dst_v_chr_pos$OFFSET = $LAYOUT.byteOffset(groupElement("dst_v_chr_pos"));
 
     /**
      * Offset for field:
@@ -959,7 +959,7 @@ public class SwsContext {
         return dst_h_chr_pos$LAYOUT;
     }
 
-    private static final long dst_h_chr_pos$OFFSET = 100;
+    private static final long dst_h_chr_pos$OFFSET = $LAYOUT.byteOffset(groupElement("dst_h_chr_pos"));
 
     /**
      * Offset for field:
@@ -1003,7 +1003,7 @@ public class SwsContext {
         return intent$LAYOUT;
     }
 
-    private static final long intent$OFFSET = 104;
+    private static final long intent$OFFSET = $LAYOUT.byteOffset(groupElement("intent"));
 
     /**
      * Offset for field:

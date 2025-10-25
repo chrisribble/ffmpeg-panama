@@ -69,7 +69,7 @@ public class AVSubtitleRect {
         return x$LAYOUT;
     }
 
-    private static final long x$OFFSET = 0;
+    private static final long x$OFFSET = $LAYOUT.byteOffset(groupElement("x"));
 
     /**
      * Offset for field:
@@ -113,7 +113,7 @@ public class AVSubtitleRect {
         return y$LAYOUT;
     }
 
-    private static final long y$OFFSET = 4;
+    private static final long y$OFFSET = $LAYOUT.byteOffset(groupElement("y"));
 
     /**
      * Offset for field:
@@ -157,7 +157,7 @@ public class AVSubtitleRect {
         return w$LAYOUT;
     }
 
-    private static final long w$OFFSET = 8;
+    private static final long w$OFFSET = $LAYOUT.byteOffset(groupElement("w"));
 
     /**
      * Offset for field:
@@ -201,7 +201,7 @@ public class AVSubtitleRect {
         return h$LAYOUT;
     }
 
-    private static final long h$OFFSET = 12;
+    private static final long h$OFFSET = $LAYOUT.byteOffset(groupElement("h"));
 
     /**
      * Offset for field:
@@ -245,7 +245,7 @@ public class AVSubtitleRect {
         return nb_colors$LAYOUT;
     }
 
-    private static final long nb_colors$OFFSET = 16;
+    private static final long nb_colors$OFFSET = $LAYOUT.byteOffset(groupElement("nb_colors"));
 
     /**
      * Offset for field:
@@ -289,7 +289,7 @@ public class AVSubtitleRect {
         return data$LAYOUT;
     }
 
-    private static final long data$OFFSET = 24;
+    private static final long data$OFFSET = $LAYOUT.byteOffset(groupElement("data"));
 
     /**
      * Offset for field:
@@ -366,7 +366,7 @@ public class AVSubtitleRect {
         return linesize$LAYOUT;
     }
 
-    private static final long linesize$OFFSET = 56;
+    private static final long linesize$OFFSET = $LAYOUT.byteOffset(groupElement("linesize"));
 
     /**
      * Offset for field:
@@ -443,7 +443,7 @@ public class AVSubtitleRect {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 72;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:
@@ -487,7 +487,7 @@ public class AVSubtitleRect {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 76;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -531,7 +531,7 @@ public class AVSubtitleRect {
         return text$LAYOUT;
     }
 
-    private static final long text$OFFSET = 80;
+    private static final long text$OFFSET = $LAYOUT.byteOffset(groupElement("text"));
 
     /**
      * Offset for field:
@@ -575,7 +575,7 @@ public class AVSubtitleRect {
         return ass$LAYOUT;
     }
 
-    private static final long ass$OFFSET = 88;
+    private static final long ass$OFFSET = $LAYOUT.byteOffset(groupElement("ass"));
 
     /**
      * Offset for field:

@@ -56,7 +56,7 @@ public class __locale_struct {
         return __locales$LAYOUT;
     }
 
-    private static final long __locales$OFFSET = 0;
+    private static final long __locales$OFFSET = $LAYOUT.byteOffset(groupElement("__locales"));
 
     /**
      * Offset for field:
@@ -133,7 +133,7 @@ public class __locale_struct {
         return __ctype_b$LAYOUT;
     }
 
-    private static final long __ctype_b$OFFSET = 104;
+    private static final long __ctype_b$OFFSET = $LAYOUT.byteOffset(groupElement("__ctype_b"));
 
     /**
      * Offset for field:
@@ -177,7 +177,7 @@ public class __locale_struct {
         return __ctype_tolower$LAYOUT;
     }
 
-    private static final long __ctype_tolower$OFFSET = 112;
+    private static final long __ctype_tolower$OFFSET = $LAYOUT.byteOffset(groupElement("__ctype_tolower"));
 
     /**
      * Offset for field:
@@ -221,7 +221,7 @@ public class __locale_struct {
         return __ctype_toupper$LAYOUT;
     }
 
-    private static final long __ctype_toupper$OFFSET = 120;
+    private static final long __ctype_toupper$OFFSET = $LAYOUT.byteOffset(groupElement("__ctype_toupper"));
 
     /**
      * Offset for field:
@@ -265,7 +265,7 @@ public class __locale_struct {
         return __names$LAYOUT;
     }
 
-    private static final long __names$OFFSET = 128;
+    private static final long __names$OFFSET = $LAYOUT.byteOffset(groupElement("__names"));
 
     /**
      * Offset for field:

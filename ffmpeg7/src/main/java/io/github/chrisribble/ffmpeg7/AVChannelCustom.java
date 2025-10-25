@@ -53,7 +53,7 @@ public class AVChannelCustom {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 0;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -97,7 +97,7 @@ public class AVChannelCustom {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 4;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -174,7 +174,7 @@ public class AVChannelCustom {
         return opaque$LAYOUT;
     }
 
-    private static final long opaque$OFFSET = 24;
+    private static final long opaque$OFFSET = $LAYOUT.byteOffset(groupElement("opaque"));
 
     /**
      * Offset for field:

@@ -52,7 +52,7 @@ public class AVCodecHWConfig {
         return pix_fmt$LAYOUT;
     }
 
-    private static final long pix_fmt$OFFSET = 0;
+    private static final long pix_fmt$OFFSET = $LAYOUT.byteOffset(groupElement("pix_fmt"));
 
     /**
      * Offset for field:
@@ -96,7 +96,7 @@ public class AVCodecHWConfig {
         return methods$LAYOUT;
     }
 
-    private static final long methods$OFFSET = 4;
+    private static final long methods$OFFSET = $LAYOUT.byteOffset(groupElement("methods"));
 
     /**
      * Offset for field:
@@ -140,7 +140,7 @@ public class AVCodecHWConfig {
         return device_type$LAYOUT;
     }
 
-    private static final long device_type$OFFSET = 8;
+    private static final long device_type$OFFSET = $LAYOUT.byteOffset(groupElement("device_type"));
 
     /**
      * Offset for field:

@@ -58,7 +58,7 @@ public class AVCodecParser {
         return codec_ids$LAYOUT;
     }
 
-    private static final long codec_ids$OFFSET = 0;
+    private static final long codec_ids$OFFSET = $LAYOUT.byteOffset(groupElement("codec_ids"));
 
     /**
      * Offset for field:
@@ -135,7 +135,7 @@ public class AVCodecParser {
         return priv_data_size$LAYOUT;
     }
 
-    private static final long priv_data_size$OFFSET = 28;
+    private static final long priv_data_size$OFFSET = $LAYOUT.byteOffset(groupElement("priv_data_size"));
 
     /**
      * Offset for field:
@@ -172,9 +172,9 @@ public class AVCodecParser {
      * int (*parser_init)(AVCodecParserContext *)
      * }
      */
-    public static class parser_init {
+    public final static class parser_init {
 
-        parser_init() {
+        private parser_init() {
             // Should not be called directly
         }
 
@@ -212,9 +212,11 @@ public class AVCodecParser {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -233,7 +235,7 @@ public class AVCodecParser {
         return parser_init$LAYOUT;
     }
 
-    private static final long parser_init$OFFSET = 32;
+    private static final long parser_init$OFFSET = $LAYOUT.byteOffset(groupElement("parser_init"));
 
     /**
      * Offset for field:
@@ -270,9 +272,9 @@ public class AVCodecParser {
      * int (*parser_parse)(AVCodecParserContext *, AVCodecContext *, const uint8_t **, int *, const uint8_t *, int)
      * }
      */
-    public static class parser_parse {
+    public final static class parser_parse {
 
-        parser_parse() {
+        private parser_parse() {
             // Should not be called directly
         }
 
@@ -315,9 +317,11 @@ public class AVCodecParser {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, MemorySegment _x2, MemorySegment _x3, MemorySegment _x4, int _x5) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, MemorySegment _x2, MemorySegment _x3, MemorySegment _x4, int _x5) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3, _x4, _x5);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -336,7 +340,7 @@ public class AVCodecParser {
         return parser_parse$LAYOUT;
     }
 
-    private static final long parser_parse$OFFSET = 40;
+    private static final long parser_parse$OFFSET = $LAYOUT.byteOffset(groupElement("parser_parse"));
 
     /**
      * Offset for field:
@@ -373,9 +377,9 @@ public class AVCodecParser {
      * void (*parser_close)(AVCodecParserContext *)
      * }
      */
-    public static class parser_close {
+    public final static class parser_close {
 
-        parser_close() {
+        private parser_close() {
             // Should not be called directly
         }
 
@@ -412,9 +416,11 @@ public class AVCodecParser {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static void invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static void invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                  DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -433,7 +439,7 @@ public class AVCodecParser {
         return parser_close$LAYOUT;
     }
 
-    private static final long parser_close$OFFSET = 48;
+    private static final long parser_close$OFFSET = $LAYOUT.byteOffset(groupElement("parser_close"));
 
     /**
      * Offset for field:
@@ -470,9 +476,9 @@ public class AVCodecParser {
      * int (*split)(AVCodecContext *, const uint8_t *, int)
      * }
      */
-    public static class split {
+    public final static class split {
 
-        split() {
+        private split() {
             // Should not be called directly
         }
 
@@ -512,9 +518,11 @@ public class AVCodecParser {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, int _x2) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -533,7 +541,7 @@ public class AVCodecParser {
         return split$LAYOUT;
     }
 
-    private static final long split$OFFSET = 56;
+    private static final long split$OFFSET = $LAYOUT.byteOffset(groupElement("split"));
 
     /**
      * Offset for field:

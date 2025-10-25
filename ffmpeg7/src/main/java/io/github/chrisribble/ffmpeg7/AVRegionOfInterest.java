@@ -58,7 +58,7 @@ public class AVRegionOfInterest {
         return self_size$LAYOUT;
     }
 
-    private static final long self_size$OFFSET = 0;
+    private static final long self_size$OFFSET = $LAYOUT.byteOffset(groupElement("self_size"));
 
     /**
      * Offset for field:
@@ -102,7 +102,7 @@ public class AVRegionOfInterest {
         return top$LAYOUT;
     }
 
-    private static final long top$OFFSET = 4;
+    private static final long top$OFFSET = $LAYOUT.byteOffset(groupElement("top"));
 
     /**
      * Offset for field:
@@ -146,7 +146,7 @@ public class AVRegionOfInterest {
         return bottom$LAYOUT;
     }
 
-    private static final long bottom$OFFSET = 8;
+    private static final long bottom$OFFSET = $LAYOUT.byteOffset(groupElement("bottom"));
 
     /**
      * Offset for field:
@@ -190,7 +190,7 @@ public class AVRegionOfInterest {
         return left$LAYOUT;
     }
 
-    private static final long left$OFFSET = 12;
+    private static final long left$OFFSET = $LAYOUT.byteOffset(groupElement("left"));
 
     /**
      * Offset for field:
@@ -234,7 +234,7 @@ public class AVRegionOfInterest {
         return right$LAYOUT;
     }
 
-    private static final long right$OFFSET = 16;
+    private static final long right$OFFSET = $LAYOUT.byteOffset(groupElement("right"));
 
     /**
      * Offset for field:
@@ -278,7 +278,7 @@ public class AVRegionOfInterest {
         return qoffset$LAYOUT;
     }
 
-    private static final long qoffset$OFFSET = 20;
+    private static final long qoffset$OFFSET = $LAYOUT.byteOffset(groupElement("qoffset"));
 
     /**
      * Offset for field:

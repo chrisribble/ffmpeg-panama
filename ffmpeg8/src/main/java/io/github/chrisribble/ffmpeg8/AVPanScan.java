@@ -54,7 +54,7 @@ public class AVPanScan {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 0;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -98,7 +98,7 @@ public class AVPanScan {
         return width$LAYOUT;
     }
 
-    private static final long width$OFFSET = 4;
+    private static final long width$OFFSET = $LAYOUT.byteOffset(groupElement("width"));
 
     /**
      * Offset for field:
@@ -142,7 +142,7 @@ public class AVPanScan {
         return height$LAYOUT;
     }
 
-    private static final long height$OFFSET = 8;
+    private static final long height$OFFSET = $LAYOUT.byteOffset(groupElement("height"));
 
     /**
      * Offset for field:
@@ -186,7 +186,7 @@ public class AVPanScan {
         return position$LAYOUT;
     }
 
-    private static final long position$OFFSET = 12;
+    private static final long position$OFFSET = $LAYOUT.byteOffset(groupElement("position"));
 
     /**
      * Offset for field:

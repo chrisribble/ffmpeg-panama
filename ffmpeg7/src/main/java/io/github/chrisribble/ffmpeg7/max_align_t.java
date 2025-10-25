@@ -50,7 +50,7 @@ public class max_align_t {
         return __clang_max_align_nonce1$LAYOUT;
     }
 
-    private static final long __clang_max_align_nonce1$OFFSET = 0;
+    private static final long __clang_max_align_nonce1$OFFSET = $LAYOUT.byteOffset(groupElement("__clang_max_align_nonce1"));
 
     /**
      * Offset for field:

@@ -43,9 +43,9 @@ public class AVIOInterruptCB {
      * int (*callback)(void *)
      * }
      */
-    public static class callback {
+    public final static class callback {
 
-        callback() {
+        private callback() {
             // Should not be called directly
         }
 
@@ -83,9 +83,11 @@ public class AVIOInterruptCB {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -104,7 +106,7 @@ public class AVIOInterruptCB {
         return callback$LAYOUT;
     }
 
-    private static final long callback$OFFSET = 0;
+    private static final long callback$OFFSET = $LAYOUT.byteOffset(groupElement("callback"));
 
     /**
      * Offset for field:
@@ -148,7 +150,7 @@ public class AVIOInterruptCB {
         return opaque$LAYOUT;
     }
 
-    private static final long opaque$OFFSET = 8;
+    private static final long opaque$OFFSET = $LAYOUT.byteOffset(groupElement("opaque"));
 
     /**
      * Offset for field:

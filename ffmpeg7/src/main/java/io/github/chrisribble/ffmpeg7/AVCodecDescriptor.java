@@ -61,7 +61,7 @@ public class AVCodecDescriptor {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 0;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -105,7 +105,7 @@ public class AVCodecDescriptor {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 4;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -149,7 +149,7 @@ public class AVCodecDescriptor {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 8;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -193,7 +193,7 @@ public class AVCodecDescriptor {
         return long_name$LAYOUT;
     }
 
-    private static final long long_name$OFFSET = 16;
+    private static final long long_name$OFFSET = $LAYOUT.byteOffset(groupElement("long_name"));
 
     /**
      * Offset for field:
@@ -237,7 +237,7 @@ public class AVCodecDescriptor {
         return props$LAYOUT;
     }
 
-    private static final long props$OFFSET = 24;
+    private static final long props$OFFSET = $LAYOUT.byteOffset(groupElement("props"));
 
     /**
      * Offset for field:
@@ -281,7 +281,7 @@ public class AVCodecDescriptor {
         return mime_types$LAYOUT;
     }
 
-    private static final long mime_types$OFFSET = 32;
+    private static final long mime_types$OFFSET = $LAYOUT.byteOffset(groupElement("mime_types"));
 
     /**
      * Offset for field:
@@ -325,7 +325,7 @@ public class AVCodecDescriptor {
         return profiles$LAYOUT;
     }
 
-    private static final long profiles$OFFSET = 40;
+    private static final long profiles$OFFSET = $LAYOUT.byteOffset(groupElement("profiles"));
 
     /**
      * Offset for field:

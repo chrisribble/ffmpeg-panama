@@ -55,7 +55,7 @@ public class AVIndexEntry {
         return pos$LAYOUT;
     }
 
-    private static final long pos$OFFSET = 0;
+    private static final long pos$OFFSET = $LAYOUT.byteOffset(groupElement("pos"));
 
     /**
      * Offset for field:
@@ -99,7 +99,7 @@ public class AVIndexEntry {
         return timestamp$LAYOUT;
     }
 
-    private static final long timestamp$OFFSET = 8;
+    private static final long timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("timestamp"));
 
     /**
      * Offset for field:
@@ -143,7 +143,7 @@ public class AVIndexEntry {
         return min_distance$LAYOUT;
     }
 
-    private static final long min_distance$OFFSET = 20;
+    private static final long min_distance$OFFSET = $LAYOUT.byteOffset(groupElement("min_distance"));
 
     /**
      * Offset for field:

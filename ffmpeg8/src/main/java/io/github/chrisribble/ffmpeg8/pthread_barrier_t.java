@@ -50,7 +50,7 @@ public class pthread_barrier_t {
         return __size$LAYOUT;
     }
 
-    private static final long __size$OFFSET = 0;
+    private static final long __size$OFFSET = $LAYOUT.byteOffset(groupElement("__size"));
 
     /**
      * Offset for field:
@@ -127,7 +127,7 @@ public class pthread_barrier_t {
         return __align$LAYOUT;
     }
 
-    private static final long __align$OFFSET = 0;
+    private static final long __align$OFFSET = $LAYOUT.byteOffset(groupElement("__align"));
 
     /**
      * Offset for field:

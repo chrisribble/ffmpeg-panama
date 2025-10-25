@@ -62,7 +62,7 @@ public class __pthread_mutex_s {
         return __lock$LAYOUT;
     }
 
-    private static final long __lock$OFFSET = 0;
+    private static final long __lock$OFFSET = $LAYOUT.byteOffset(groupElement("__lock"));
 
     /**
      * Offset for field:
@@ -106,7 +106,7 @@ public class __pthread_mutex_s {
         return __count$LAYOUT;
     }
 
-    private static final long __count$OFFSET = 4;
+    private static final long __count$OFFSET = $LAYOUT.byteOffset(groupElement("__count"));
 
     /**
      * Offset for field:
@@ -150,7 +150,7 @@ public class __pthread_mutex_s {
         return __owner$LAYOUT;
     }
 
-    private static final long __owner$OFFSET = 8;
+    private static final long __owner$OFFSET = $LAYOUT.byteOffset(groupElement("__owner"));
 
     /**
      * Offset for field:
@@ -194,7 +194,7 @@ public class __pthread_mutex_s {
         return __nusers$LAYOUT;
     }
 
-    private static final long __nusers$OFFSET = 12;
+    private static final long __nusers$OFFSET = $LAYOUT.byteOffset(groupElement("__nusers"));
 
     /**
      * Offset for field:
@@ -238,7 +238,7 @@ public class __pthread_mutex_s {
         return __kind$LAYOUT;
     }
 
-    private static final long __kind$OFFSET = 16;
+    private static final long __kind$OFFSET = $LAYOUT.byteOffset(groupElement("__kind"));
 
     /**
      * Offset for field:
@@ -282,7 +282,7 @@ public class __pthread_mutex_s {
         return __spins$LAYOUT;
     }
 
-    private static final long __spins$OFFSET = 20;
+    private static final long __spins$OFFSET = $LAYOUT.byteOffset(groupElement("__spins"));
 
     /**
      * Offset for field:
@@ -326,7 +326,7 @@ public class __pthread_mutex_s {
         return __elision$LAYOUT;
     }
 
-    private static final long __elision$OFFSET = 22;
+    private static final long __elision$OFFSET = $LAYOUT.byteOffset(groupElement("__elision"));
 
     /**
      * Offset for field:
@@ -370,7 +370,7 @@ public class __pthread_mutex_s {
         return __list$LAYOUT;
     }
 
-    private static final long __list$OFFSET = 24;
+    private static final long __list$OFFSET = $LAYOUT.byteOffset(groupElement("__list"));
 
     /**
      * Offset for field:

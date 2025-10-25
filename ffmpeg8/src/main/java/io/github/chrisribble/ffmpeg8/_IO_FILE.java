@@ -108,7 +108,7 @@ public class _IO_FILE {
         return _flags$LAYOUT;
     }
 
-    private static final long _flags$OFFSET = 0;
+    private static final long _flags$OFFSET = $LAYOUT.byteOffset(groupElement("_flags"));
 
     /**
      * Offset for field:
@@ -152,7 +152,7 @@ public class _IO_FILE {
         return _IO_read_ptr$LAYOUT;
     }
 
-    private static final long _IO_read_ptr$OFFSET = 8;
+    private static final long _IO_read_ptr$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_read_ptr"));
 
     /**
      * Offset for field:
@@ -196,7 +196,7 @@ public class _IO_FILE {
         return _IO_read_end$LAYOUT;
     }
 
-    private static final long _IO_read_end$OFFSET = 16;
+    private static final long _IO_read_end$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_read_end"));
 
     /**
      * Offset for field:
@@ -240,7 +240,7 @@ public class _IO_FILE {
         return _IO_read_base$LAYOUT;
     }
 
-    private static final long _IO_read_base$OFFSET = 24;
+    private static final long _IO_read_base$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_read_base"));
 
     /**
      * Offset for field:
@@ -284,7 +284,7 @@ public class _IO_FILE {
         return _IO_write_base$LAYOUT;
     }
 
-    private static final long _IO_write_base$OFFSET = 32;
+    private static final long _IO_write_base$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_write_base"));
 
     /**
      * Offset for field:
@@ -328,7 +328,7 @@ public class _IO_FILE {
         return _IO_write_ptr$LAYOUT;
     }
 
-    private static final long _IO_write_ptr$OFFSET = 40;
+    private static final long _IO_write_ptr$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_write_ptr"));
 
     /**
      * Offset for field:
@@ -372,7 +372,7 @@ public class _IO_FILE {
         return _IO_write_end$LAYOUT;
     }
 
-    private static final long _IO_write_end$OFFSET = 48;
+    private static final long _IO_write_end$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_write_end"));
 
     /**
      * Offset for field:
@@ -416,7 +416,7 @@ public class _IO_FILE {
         return _IO_buf_base$LAYOUT;
     }
 
-    private static final long _IO_buf_base$OFFSET = 56;
+    private static final long _IO_buf_base$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_buf_base"));
 
     /**
      * Offset for field:
@@ -460,7 +460,7 @@ public class _IO_FILE {
         return _IO_buf_end$LAYOUT;
     }
 
-    private static final long _IO_buf_end$OFFSET = 64;
+    private static final long _IO_buf_end$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_buf_end"));
 
     /**
      * Offset for field:
@@ -504,7 +504,7 @@ public class _IO_FILE {
         return _IO_save_base$LAYOUT;
     }
 
-    private static final long _IO_save_base$OFFSET = 72;
+    private static final long _IO_save_base$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_save_base"));
 
     /**
      * Offset for field:
@@ -548,7 +548,7 @@ public class _IO_FILE {
         return _IO_backup_base$LAYOUT;
     }
 
-    private static final long _IO_backup_base$OFFSET = 80;
+    private static final long _IO_backup_base$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_backup_base"));
 
     /**
      * Offset for field:
@@ -592,7 +592,7 @@ public class _IO_FILE {
         return _IO_save_end$LAYOUT;
     }
 
-    private static final long _IO_save_end$OFFSET = 88;
+    private static final long _IO_save_end$OFFSET = $LAYOUT.byteOffset(groupElement("_IO_save_end"));
 
     /**
      * Offset for field:
@@ -636,7 +636,7 @@ public class _IO_FILE {
         return _markers$LAYOUT;
     }
 
-    private static final long _markers$OFFSET = 96;
+    private static final long _markers$OFFSET = $LAYOUT.byteOffset(groupElement("_markers"));
 
     /**
      * Offset for field:
@@ -680,7 +680,7 @@ public class _IO_FILE {
         return _chain$LAYOUT;
     }
 
-    private static final long _chain$OFFSET = 104;
+    private static final long _chain$OFFSET = $LAYOUT.byteOffset(groupElement("_chain"));
 
     /**
      * Offset for field:
@@ -724,7 +724,7 @@ public class _IO_FILE {
         return _fileno$LAYOUT;
     }
 
-    private static final long _fileno$OFFSET = 112;
+    private static final long _fileno$OFFSET = $LAYOUT.byteOffset(groupElement("_fileno"));
 
     /**
      * Offset for field:
@@ -768,7 +768,7 @@ public class _IO_FILE {
         return _short_backupbuf$LAYOUT;
     }
 
-    private static final long _short_backupbuf$OFFSET = 119;
+    private static final long _short_backupbuf$OFFSET = $LAYOUT.byteOffset(groupElement("_short_backupbuf"));
 
     /**
      * Offset for field:
@@ -845,7 +845,7 @@ public class _IO_FILE {
         return _old_offset$LAYOUT;
     }
 
-    private static final long _old_offset$OFFSET = 120;
+    private static final long _old_offset$OFFSET = $LAYOUT.byteOffset(groupElement("_old_offset"));
 
     /**
      * Offset for field:
@@ -889,7 +889,7 @@ public class _IO_FILE {
         return _cur_column$LAYOUT;
     }
 
-    private static final long _cur_column$OFFSET = 128;
+    private static final long _cur_column$OFFSET = $LAYOUT.byteOffset(groupElement("_cur_column"));
 
     /**
      * Offset for field:
@@ -933,7 +933,7 @@ public class _IO_FILE {
         return _vtable_offset$LAYOUT;
     }
 
-    private static final long _vtable_offset$OFFSET = 130;
+    private static final long _vtable_offset$OFFSET = $LAYOUT.byteOffset(groupElement("_vtable_offset"));
 
     /**
      * Offset for field:
@@ -977,7 +977,7 @@ public class _IO_FILE {
         return _shortbuf$LAYOUT;
     }
 
-    private static final long _shortbuf$OFFSET = 131;
+    private static final long _shortbuf$OFFSET = $LAYOUT.byteOffset(groupElement("_shortbuf"));
 
     /**
      * Offset for field:
@@ -1054,7 +1054,7 @@ public class _IO_FILE {
         return _lock$LAYOUT;
     }
 
-    private static final long _lock$OFFSET = 136;
+    private static final long _lock$OFFSET = $LAYOUT.byteOffset(groupElement("_lock"));
 
     /**
      * Offset for field:
@@ -1098,7 +1098,7 @@ public class _IO_FILE {
         return _offset$LAYOUT;
     }
 
-    private static final long _offset$OFFSET = 144;
+    private static final long _offset$OFFSET = $LAYOUT.byteOffset(groupElement("_offset"));
 
     /**
      * Offset for field:
@@ -1142,7 +1142,7 @@ public class _IO_FILE {
         return _codecvt$LAYOUT;
     }
 
-    private static final long _codecvt$OFFSET = 152;
+    private static final long _codecvt$OFFSET = $LAYOUT.byteOffset(groupElement("_codecvt"));
 
     /**
      * Offset for field:
@@ -1186,7 +1186,7 @@ public class _IO_FILE {
         return _wide_data$LAYOUT;
     }
 
-    private static final long _wide_data$OFFSET = 160;
+    private static final long _wide_data$OFFSET = $LAYOUT.byteOffset(groupElement("_wide_data"));
 
     /**
      * Offset for field:
@@ -1230,7 +1230,7 @@ public class _IO_FILE {
         return _freeres_list$LAYOUT;
     }
 
-    private static final long _freeres_list$OFFSET = 168;
+    private static final long _freeres_list$OFFSET = $LAYOUT.byteOffset(groupElement("_freeres_list"));
 
     /**
      * Offset for field:
@@ -1274,7 +1274,7 @@ public class _IO_FILE {
         return _freeres_buf$LAYOUT;
     }
 
-    private static final long _freeres_buf$OFFSET = 176;
+    private static final long _freeres_buf$OFFSET = $LAYOUT.byteOffset(groupElement("_freeres_buf"));
 
     /**
      * Offset for field:
@@ -1318,7 +1318,7 @@ public class _IO_FILE {
         return _prevchain$LAYOUT;
     }
 
-    private static final long _prevchain$OFFSET = 184;
+    private static final long _prevchain$OFFSET = $LAYOUT.byteOffset(groupElement("_prevchain"));
 
     /**
      * Offset for field:
@@ -1362,7 +1362,7 @@ public class _IO_FILE {
         return _mode$LAYOUT;
     }
 
-    private static final long _mode$OFFSET = 192;
+    private static final long _mode$OFFSET = $LAYOUT.byteOffset(groupElement("_mode"));
 
     /**
      * Offset for field:
@@ -1406,7 +1406,7 @@ public class _IO_FILE {
         return _unused2$LAYOUT;
     }
 
-    private static final long _unused2$OFFSET = 196;
+    private static final long _unused2$OFFSET = $LAYOUT.byteOffset(groupElement("_unused2"));
 
     /**
      * Offset for field:

@@ -48,7 +48,7 @@ public class __pthread_internal_slist {
         return __next$LAYOUT;
     }
 
-    private static final long __next$OFFSET = 0;
+    private static final long __next$OFFSET = $LAYOUT.byteOffset(groupElement("__next"));
 
     /**
      * Offset for field:

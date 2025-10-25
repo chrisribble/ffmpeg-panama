@@ -55,7 +55,7 @@ public class AVProbeData {
         return filename$LAYOUT;
     }
 
-    private static final long filename$OFFSET = 0;
+    private static final long filename$OFFSET = $LAYOUT.byteOffset(groupElement("filename"));
 
     /**
      * Offset for field:
@@ -99,7 +99,7 @@ public class AVProbeData {
         return buf$LAYOUT;
     }
 
-    private static final long buf$OFFSET = 8;
+    private static final long buf$OFFSET = $LAYOUT.byteOffset(groupElement("buf"));
 
     /**
      * Offset for field:
@@ -143,7 +143,7 @@ public class AVProbeData {
         return buf_size$LAYOUT;
     }
 
-    private static final long buf_size$OFFSET = 16;
+    private static final long buf_size$OFFSET = $LAYOUT.byteOffset(groupElement("buf_size"));
 
     /**
      * Offset for field:
@@ -187,7 +187,7 @@ public class AVProbeData {
         return mime_type$LAYOUT;
     }
 
-    private static final long mime_type$OFFSET = 24;
+    private static final long mime_type$OFFSET = $LAYOUT.byteOffset(groupElement("mime_type"));
 
     /**
      * Offset for field:

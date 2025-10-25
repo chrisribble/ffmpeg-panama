@@ -57,7 +57,7 @@ public class AVChannelLayout {
         return order$LAYOUT;
     }
 
-    private static final long order$OFFSET = 0;
+    private static final long order$OFFSET = $LAYOUT.byteOffset(groupElement("order"));
 
     /**
      * Offset for field:
@@ -101,7 +101,7 @@ public class AVChannelLayout {
         return nb_channels$LAYOUT;
     }
 
-    private static final long nb_channels$OFFSET = 4;
+    private static final long nb_channels$OFFSET = $LAYOUT.byteOffset(groupElement("nb_channels"));
 
     /**
      * Offset for field:
@@ -171,7 +171,7 @@ public class AVChannelLayout {
             return mask$LAYOUT;
         }
 
-        private static final long mask$OFFSET = 0;
+        private static final long mask$OFFSET = $LAYOUT.byteOffset(groupElement("mask"));
 
         /**
          * Offset for field:
@@ -215,7 +215,7 @@ public class AVChannelLayout {
             return map$LAYOUT;
         }
 
-        private static final long map$OFFSET = 0;
+        private static final long map$OFFSET = $LAYOUT.byteOffset(groupElement("map"));
 
         /**
          * Offset for field:
@@ -307,7 +307,7 @@ public class AVChannelLayout {
         return u$LAYOUT;
     }
 
-    private static final long u$OFFSET = 8;
+    private static final long u$OFFSET = $LAYOUT.byteOffset(groupElement("u"));
 
     /**
      * Offset for field:
@@ -360,7 +360,7 @@ public class AVChannelLayout {
         return opaque$LAYOUT;
     }
 
-    private static final long opaque$OFFSET = 16;
+    private static final long opaque$OFFSET = $LAYOUT.byteOffset(groupElement("opaque"));
 
     /**
      * Offset for field:

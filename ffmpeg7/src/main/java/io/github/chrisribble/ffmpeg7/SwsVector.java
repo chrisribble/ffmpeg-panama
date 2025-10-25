@@ -51,7 +51,7 @@ public class SwsVector {
         return coeff$LAYOUT;
     }
 
-    private static final long coeff$OFFSET = 0;
+    private static final long coeff$OFFSET = $LAYOUT.byteOffset(groupElement("coeff"));
 
     /**
      * Offset for field:
@@ -95,7 +95,7 @@ public class SwsVector {
         return length$LAYOUT;
     }
 
-    private static final long length$OFFSET = 8;
+    private static final long length$OFFSET = $LAYOUT.byteOffset(groupElement("length"));
 
     /**
      * Offset for field:

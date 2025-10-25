@@ -92,9 +92,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * } *, int, void *, size_t)
  * }
  */
-public class av_format_control_message {
+public final class av_format_control_message {
 
-    av_format_control_message() {
+    private av_format_control_message() {
         // Should not be called directly
     }
 
@@ -135,9 +135,11 @@ public class av_format_control_message {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment s, int type, MemorySegment data, long data_size) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment s, int type, MemorySegment data, long data_size) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, s, type, data, data_size);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

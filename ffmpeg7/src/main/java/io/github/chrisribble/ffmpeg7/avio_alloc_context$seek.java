@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * int64_t (*seek)(void *, int64_t, int)
  * }
  */
-public class avio_alloc_context$seek {
+public final class avio_alloc_context$seek {
 
-    avio_alloc_context$seek() {
+    private avio_alloc_context$seek() {
         // Should not be called directly
     }
 
@@ -59,9 +59,11 @@ public class avio_alloc_context$seek {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static long invoke(MemorySegment funcPtr,MemorySegment _x0, long _x1, int _x2) {
+    public static long invoke(MemorySegment funcPtr, MemorySegment _x0, long _x1, int _x2) {
         try {
             return (long) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

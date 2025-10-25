@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * void (*__func)(int, void *)
  * }
  */
-public class on_exit$__func {
+public final class on_exit$__func {
 
-    on_exit$__func() {
+    private on_exit$__func() {
         // Should not be called directly
     }
 
@@ -57,9 +57,11 @@ public class on_exit$__func {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int _x0, MemorySegment _x1) {
+    public static void invoke(MemorySegment funcPtr, int _x0, MemorySegment _x1) {
         try {
              DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

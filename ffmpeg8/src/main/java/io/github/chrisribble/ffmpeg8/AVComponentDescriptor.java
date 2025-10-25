@@ -56,7 +56,7 @@ public class AVComponentDescriptor {
         return plane$LAYOUT;
     }
 
-    private static final long plane$OFFSET = 0;
+    private static final long plane$OFFSET = $LAYOUT.byteOffset(groupElement("plane"));
 
     /**
      * Offset for field:
@@ -100,7 +100,7 @@ public class AVComponentDescriptor {
         return step$LAYOUT;
     }
 
-    private static final long step$OFFSET = 4;
+    private static final long step$OFFSET = $LAYOUT.byteOffset(groupElement("step"));
 
     /**
      * Offset for field:
@@ -144,7 +144,7 @@ public class AVComponentDescriptor {
         return offset$LAYOUT;
     }
 
-    private static final long offset$OFFSET = 8;
+    private static final long offset$OFFSET = $LAYOUT.byteOffset(groupElement("offset"));
 
     /**
      * Offset for field:
@@ -188,7 +188,7 @@ public class AVComponentDescriptor {
         return shift$LAYOUT;
     }
 
-    private static final long shift$OFFSET = 12;
+    private static final long shift$OFFSET = $LAYOUT.byteOffset(groupElement("shift"));
 
     /**
      * Offset for field:
@@ -232,7 +232,7 @@ public class AVComponentDescriptor {
         return depth$LAYOUT;
     }
 
-    private static final long depth$OFFSET = 16;
+    private static final long depth$OFFSET = $LAYOUT.byteOffset(groupElement("depth"));
 
     /**
      * Offset for field:

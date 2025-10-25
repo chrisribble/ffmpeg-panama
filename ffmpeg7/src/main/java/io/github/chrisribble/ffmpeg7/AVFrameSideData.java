@@ -57,7 +57,7 @@ public class AVFrameSideData {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 0;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -101,7 +101,7 @@ public class AVFrameSideData {
         return data$LAYOUT;
     }
 
-    private static final long data$OFFSET = 8;
+    private static final long data$OFFSET = $LAYOUT.byteOffset(groupElement("data"));
 
     /**
      * Offset for field:
@@ -145,7 +145,7 @@ public class AVFrameSideData {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 16;
+    private static final long size$OFFSET = $LAYOUT.byteOffset(groupElement("size"));
 
     /**
      * Offset for field:
@@ -189,7 +189,7 @@ public class AVFrameSideData {
         return metadata$LAYOUT;
     }
 
-    private static final long metadata$OFFSET = 24;
+    private static final long metadata$OFFSET = $LAYOUT.byteOffset(groupElement("metadata"));
 
     /**
      * Offset for field:
@@ -233,7 +233,7 @@ public class AVFrameSideData {
         return buf$LAYOUT;
     }
 
-    private static final long buf$OFFSET = 32;
+    private static final long buf$OFFSET = $LAYOUT.byteOffset(groupElement("buf"));
 
     /**
      * Offset for field:

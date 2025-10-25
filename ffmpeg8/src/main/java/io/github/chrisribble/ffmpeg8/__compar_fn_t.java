@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * typedef int (*__compar_fn_t)(const void *, const void *)
  * }
  */
-public class __compar_fn_t {
+public final class __compar_fn_t {
 
-    __compar_fn_t() {
+    private __compar_fn_t() {
         // Should not be called directly
     }
 
@@ -58,9 +58,11 @@ public class __compar_fn_t {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -51,7 +51,7 @@ public class AVProfile {
         return profile$LAYOUT;
     }
 
-    private static final long profile$OFFSET = 0;
+    private static final long profile$OFFSET = $LAYOUT.byteOffset(groupElement("profile"));
 
     /**
      * Offset for field:
@@ -95,7 +95,7 @@ public class AVProfile {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 8;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:

@@ -107,7 +107,7 @@ public class AVIOContext {
         return av_class$LAYOUT;
     }
 
-    private static final long av_class$OFFSET = 0;
+    private static final long av_class$OFFSET = $LAYOUT.byteOffset(groupElement("av_class"));
 
     /**
      * Offset for field:
@@ -151,7 +151,7 @@ public class AVIOContext {
         return buffer$LAYOUT;
     }
 
-    private static final long buffer$OFFSET = 8;
+    private static final long buffer$OFFSET = $LAYOUT.byteOffset(groupElement("buffer"));
 
     /**
      * Offset for field:
@@ -195,7 +195,7 @@ public class AVIOContext {
         return buffer_size$LAYOUT;
     }
 
-    private static final long buffer_size$OFFSET = 16;
+    private static final long buffer_size$OFFSET = $LAYOUT.byteOffset(groupElement("buffer_size"));
 
     /**
      * Offset for field:
@@ -239,7 +239,7 @@ public class AVIOContext {
         return buf_ptr$LAYOUT;
     }
 
-    private static final long buf_ptr$OFFSET = 24;
+    private static final long buf_ptr$OFFSET = $LAYOUT.byteOffset(groupElement("buf_ptr"));
 
     /**
      * Offset for field:
@@ -283,7 +283,7 @@ public class AVIOContext {
         return buf_end$LAYOUT;
     }
 
-    private static final long buf_end$OFFSET = 32;
+    private static final long buf_end$OFFSET = $LAYOUT.byteOffset(groupElement("buf_end"));
 
     /**
      * Offset for field:
@@ -327,7 +327,7 @@ public class AVIOContext {
         return opaque$LAYOUT;
     }
 
-    private static final long opaque$OFFSET = 40;
+    private static final long opaque$OFFSET = $LAYOUT.byteOffset(groupElement("opaque"));
 
     /**
      * Offset for field:
@@ -364,9 +364,9 @@ public class AVIOContext {
      * int (*read_packet)(void *, uint8_t *, int)
      * }
      */
-    public static class read_packet {
+    public final static class read_packet {
 
-        read_packet() {
+        private read_packet() {
             // Should not be called directly
         }
 
@@ -406,9 +406,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, int _x2) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -427,7 +429,7 @@ public class AVIOContext {
         return read_packet$LAYOUT;
     }
 
-    private static final long read_packet$OFFSET = 48;
+    private static final long read_packet$OFFSET = $LAYOUT.byteOffset(groupElement("read_packet"));
 
     /**
      * Offset for field:
@@ -464,9 +466,9 @@ public class AVIOContext {
      * int (*write_packet)(void *, const uint8_t *, int)
      * }
      */
-    public static class write_packet {
+    public final static class write_packet {
 
-        write_packet() {
+        private write_packet() {
             // Should not be called directly
         }
 
@@ -506,9 +508,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, int _x2) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -527,7 +531,7 @@ public class AVIOContext {
         return write_packet$LAYOUT;
     }
 
-    private static final long write_packet$OFFSET = 56;
+    private static final long write_packet$OFFSET = $LAYOUT.byteOffset(groupElement("write_packet"));
 
     /**
      * Offset for field:
@@ -564,9 +568,9 @@ public class AVIOContext {
      * int64_t (*seek)(void *, int64_t, int)
      * }
      */
-    public static class seek {
+    public final static class seek {
 
-        seek() {
+        private seek() {
             // Should not be called directly
         }
 
@@ -606,9 +610,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static long invoke(MemorySegment funcPtr,MemorySegment _x0, long _x1, int _x2) {
+        public static long invoke(MemorySegment funcPtr, MemorySegment _x0, long _x1, int _x2) {
             try {
                 return (long) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -627,7 +633,7 @@ public class AVIOContext {
         return seek$LAYOUT;
     }
 
-    private static final long seek$OFFSET = 64;
+    private static final long seek$OFFSET = $LAYOUT.byteOffset(groupElement("seek"));
 
     /**
      * Offset for field:
@@ -671,7 +677,7 @@ public class AVIOContext {
         return pos$LAYOUT;
     }
 
-    private static final long pos$OFFSET = 72;
+    private static final long pos$OFFSET = $LAYOUT.byteOffset(groupElement("pos"));
 
     /**
      * Offset for field:
@@ -715,7 +721,7 @@ public class AVIOContext {
         return eof_reached$LAYOUT;
     }
 
-    private static final long eof_reached$OFFSET = 80;
+    private static final long eof_reached$OFFSET = $LAYOUT.byteOffset(groupElement("eof_reached"));
 
     /**
      * Offset for field:
@@ -759,7 +765,7 @@ public class AVIOContext {
         return error$LAYOUT;
     }
 
-    private static final long error$OFFSET = 84;
+    private static final long error$OFFSET = $LAYOUT.byteOffset(groupElement("error"));
 
     /**
      * Offset for field:
@@ -803,7 +809,7 @@ public class AVIOContext {
         return write_flag$LAYOUT;
     }
 
-    private static final long write_flag$OFFSET = 88;
+    private static final long write_flag$OFFSET = $LAYOUT.byteOffset(groupElement("write_flag"));
 
     /**
      * Offset for field:
@@ -847,7 +853,7 @@ public class AVIOContext {
         return max_packet_size$LAYOUT;
     }
 
-    private static final long max_packet_size$OFFSET = 92;
+    private static final long max_packet_size$OFFSET = $LAYOUT.byteOffset(groupElement("max_packet_size"));
 
     /**
      * Offset for field:
@@ -891,7 +897,7 @@ public class AVIOContext {
         return min_packet_size$LAYOUT;
     }
 
-    private static final long min_packet_size$OFFSET = 96;
+    private static final long min_packet_size$OFFSET = $LAYOUT.byteOffset(groupElement("min_packet_size"));
 
     /**
      * Offset for field:
@@ -935,7 +941,7 @@ public class AVIOContext {
         return checksum$LAYOUT;
     }
 
-    private static final long checksum$OFFSET = 104;
+    private static final long checksum$OFFSET = $LAYOUT.byteOffset(groupElement("checksum"));
 
     /**
      * Offset for field:
@@ -979,7 +985,7 @@ public class AVIOContext {
         return checksum_ptr$LAYOUT;
     }
 
-    private static final long checksum_ptr$OFFSET = 112;
+    private static final long checksum_ptr$OFFSET = $LAYOUT.byteOffset(groupElement("checksum_ptr"));
 
     /**
      * Offset for field:
@@ -1016,9 +1022,9 @@ public class AVIOContext {
      * unsigned long (*update_checksum)(unsigned long, const uint8_t *, unsigned int)
      * }
      */
-    public static class update_checksum {
+    public final static class update_checksum {
 
-        update_checksum() {
+        private update_checksum() {
             // Should not be called directly
         }
 
@@ -1058,9 +1064,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static long invoke(MemorySegment funcPtr,long _x0, MemorySegment _x1, int _x2) {
+        public static long invoke(MemorySegment funcPtr, long _x0, MemorySegment _x1, int _x2) {
             try {
                 return (long) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -1079,7 +1087,7 @@ public class AVIOContext {
         return update_checksum$LAYOUT;
     }
 
-    private static final long update_checksum$OFFSET = 120;
+    private static final long update_checksum$OFFSET = $LAYOUT.byteOffset(groupElement("update_checksum"));
 
     /**
      * Offset for field:
@@ -1116,9 +1124,9 @@ public class AVIOContext {
      * int (*read_pause)(void *, int)
      * }
      */
-    public static class read_pause {
+    public final static class read_pause {
 
-        read_pause() {
+        private read_pause() {
             // Should not be called directly
         }
 
@@ -1157,9 +1165,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, int _x1) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, int _x1) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -1178,7 +1188,7 @@ public class AVIOContext {
         return read_pause$LAYOUT;
     }
 
-    private static final long read_pause$OFFSET = 128;
+    private static final long read_pause$OFFSET = $LAYOUT.byteOffset(groupElement("read_pause"));
 
     /**
      * Offset for field:
@@ -1215,9 +1225,9 @@ public class AVIOContext {
      * int64_t (*read_seek)(void *, int, int64_t, int)
      * }
      */
-    public static class read_seek {
+    public final static class read_seek {
 
-        read_seek() {
+        private read_seek() {
             // Should not be called directly
         }
 
@@ -1258,9 +1268,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static long invoke(MemorySegment funcPtr,MemorySegment _x0, int _x1, long _x2, int _x3) {
+        public static long invoke(MemorySegment funcPtr, MemorySegment _x0, int _x1, long _x2, int _x3) {
             try {
                 return (long) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -1279,7 +1291,7 @@ public class AVIOContext {
         return read_seek$LAYOUT;
     }
 
-    private static final long read_seek$OFFSET = 136;
+    private static final long read_seek$OFFSET = $LAYOUT.byteOffset(groupElement("read_seek"));
 
     /**
      * Offset for field:
@@ -1323,7 +1335,7 @@ public class AVIOContext {
         return seekable$LAYOUT;
     }
 
-    private static final long seekable$OFFSET = 144;
+    private static final long seekable$OFFSET = $LAYOUT.byteOffset(groupElement("seekable"));
 
     /**
      * Offset for field:
@@ -1367,7 +1379,7 @@ public class AVIOContext {
         return direct$LAYOUT;
     }
 
-    private static final long direct$OFFSET = 148;
+    private static final long direct$OFFSET = $LAYOUT.byteOffset(groupElement("direct"));
 
     /**
      * Offset for field:
@@ -1411,7 +1423,7 @@ public class AVIOContext {
         return protocol_whitelist$LAYOUT;
     }
 
-    private static final long protocol_whitelist$OFFSET = 152;
+    private static final long protocol_whitelist$OFFSET = $LAYOUT.byteOffset(groupElement("protocol_whitelist"));
 
     /**
      * Offset for field:
@@ -1455,7 +1467,7 @@ public class AVIOContext {
         return protocol_blacklist$LAYOUT;
     }
 
-    private static final long protocol_blacklist$OFFSET = 160;
+    private static final long protocol_blacklist$OFFSET = $LAYOUT.byteOffset(groupElement("protocol_blacklist"));
 
     /**
      * Offset for field:
@@ -1492,9 +1504,9 @@ public class AVIOContext {
      * int (*write_data_type)(void *, const uint8_t *, int, enum AVIODataMarkerType, int64_t)
      * }
      */
-    public static class write_data_type {
+    public final static class write_data_type {
 
-        write_data_type() {
+        private write_data_type() {
             // Should not be called directly
         }
 
@@ -1536,9 +1548,11 @@ public class AVIOContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2, int _x3, long _x4) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, int _x2, int _x3, long _x4) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3, _x4);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -1557,7 +1571,7 @@ public class AVIOContext {
         return write_data_type$LAYOUT;
     }
 
-    private static final long write_data_type$OFFSET = 168;
+    private static final long write_data_type$OFFSET = $LAYOUT.byteOffset(groupElement("write_data_type"));
 
     /**
      * Offset for field:
@@ -1601,7 +1615,7 @@ public class AVIOContext {
         return ignore_boundary_point$LAYOUT;
     }
 
-    private static final long ignore_boundary_point$OFFSET = 176;
+    private static final long ignore_boundary_point$OFFSET = $LAYOUT.byteOffset(groupElement("ignore_boundary_point"));
 
     /**
      * Offset for field:
@@ -1645,7 +1659,7 @@ public class AVIOContext {
         return buf_ptr_max$LAYOUT;
     }
 
-    private static final long buf_ptr_max$OFFSET = 184;
+    private static final long buf_ptr_max$OFFSET = $LAYOUT.byteOffset(groupElement("buf_ptr_max"));
 
     /**
      * Offset for field:
@@ -1689,7 +1703,7 @@ public class AVIOContext {
         return bytes_read$LAYOUT;
     }
 
-    private static final long bytes_read$OFFSET = 192;
+    private static final long bytes_read$OFFSET = $LAYOUT.byteOffset(groupElement("bytes_read"));
 
     /**
      * Offset for field:
@@ -1733,7 +1747,7 @@ public class AVIOContext {
         return bytes_written$LAYOUT;
     }
 
-    private static final long bytes_written$OFFSET = 200;
+    private static final long bytes_written$OFFSET = $LAYOUT.byteOffset(groupElement("bytes_written"));
 
     /**
      * Offset for field:

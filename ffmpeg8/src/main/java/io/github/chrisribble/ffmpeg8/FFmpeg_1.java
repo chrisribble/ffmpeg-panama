@@ -12,7 +12,7 @@ import java.util.stream.*;
 import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
-public class FFmpeg_1 extends FFmpeg_2 {
+class FFmpeg_1 extends FFmpeg_2 {
 
     FFmpeg_1() {
         // Should not be called directly
@@ -76,7 +76,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -123,6 +123,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_alloc");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -133,7 +135,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -180,6 +182,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_free", frame);
             }
             mh$.invokeExact(frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -192,7 +196,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_ref");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_ref");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -239,6 +243,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_ref", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -251,7 +257,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_replace");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_replace");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -298,6 +304,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_replace", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -309,7 +317,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_clone");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_clone");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -356,6 +364,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_clone", src);
             }
             return (MemorySegment)mh$.invokeExact(src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -366,7 +376,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_unref");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_unref");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -413,6 +423,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_unref", frame);
             }
             mh$.invokeExact(frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -424,7 +436,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_move_ref");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_move_ref");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -471,6 +483,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_move_ref", dst, src);
             }
             mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -483,7 +497,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_get_buffer");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_get_buffer");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -530,6 +544,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_get_buffer", frame, align);
             }
             return (int)mh$.invokeExact(frame, align);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -541,7 +557,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_is_writable");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_is_writable");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -588,6 +604,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_is_writable", frame);
             }
             return (int)mh$.invokeExact(frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -599,7 +617,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_make_writable");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_make_writable");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -646,6 +664,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_make_writable", frame);
             }
             return (int)mh$.invokeExact(frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -658,7 +678,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_copy");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_copy");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -705,6 +725,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_copy", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -717,7 +739,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_copy_props");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_copy_props");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -764,6 +786,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_copy_props", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -776,7 +800,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_get_plane_buffer");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_get_plane_buffer");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -823,6 +847,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_get_plane_buffer", frame, plane);
             }
             return (MemorySegment)mh$.invokeExact(frame, plane);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -836,7 +862,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_new_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_new_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -883,6 +909,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_new_side_data", frame, type, size);
             }
             return (MemorySegment)mh$.invokeExact(frame, type, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -896,7 +924,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_new_side_data_from_buf");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_new_side_data_from_buf");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -943,6 +971,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_new_side_data_from_buf", frame, type, buf);
             }
             return (MemorySegment)mh$.invokeExact(frame, type, buf);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -955,7 +985,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_get_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_get_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1002,6 +1032,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_get_side_data", frame, type);
             }
             return (MemorySegment)mh$.invokeExact(frame, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1013,7 +1045,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_remove_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_remove_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1060,6 +1092,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_remove_side_data", frame, type);
             }
             mh$.invokeExact(frame, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1081,7 +1115,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_apply_cropping");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_apply_cropping");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1128,6 +1162,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_apply_cropping", frame, flags);
             }
             return (int)mh$.invokeExact(frame, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1139,7 +1175,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1186,6 +1222,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_name", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1197,7 +1235,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_desc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_desc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1244,6 +1282,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_desc", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1255,7 +1295,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1302,6 +1342,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_free", sd, nb_sd);
             }
             mh$.invokeExact(sd, nb_sd);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1317,7 +1359,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_new");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_new");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1364,6 +1406,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_new", sd, nb_sd, type, size, flags);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type, size, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1379,7 +1423,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_add");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_add");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1426,6 +1470,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_add", sd, nb_sd, type, buf, flags);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type, buf, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1440,7 +1486,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_clone");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_clone");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1487,6 +1533,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_clone", sd, nb_sd, src, flags);
             }
             return (int)mh$.invokeExact(sd, nb_sd, src, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1500,7 +1548,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_get_c");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_get_c");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1547,6 +1595,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_get_c", sd, nb_sd, type);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1559,7 +1609,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_remove");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_remove");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1606,6 +1656,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_remove", sd, nb_sd, type);
             }
             mh$.invokeExact(sd, nb_sd, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1618,7 +1670,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_frame_side_data_remove_by_props");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_remove_by_props");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1665,6 +1717,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_frame_side_data_remove_by_props", sd, nb_sd, props);
             }
             mh$.invokeExact(sd, nb_sd, props);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1811,7 +1865,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_find_type_by_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_find_type_by_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1858,6 +1912,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_find_type_by_name", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1869,7 +1925,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_get_type_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_get_type_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1916,6 +1972,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_get_type_name", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1927,7 +1985,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_iterate_types");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_iterate_types");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -1974,6 +2032,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_iterate_types", prev);
             }
             return (int)mh$.invokeExact(prev);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -1985,7 +2045,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_ctx_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2032,6 +2092,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_ctx_alloc", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2043,7 +2105,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_init");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_ctx_init");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2090,6 +2152,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_ctx_init", ref);
             }
             return (int)mh$.invokeExact(ref);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2105,7 +2169,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_create");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_ctx_create");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2152,6 +2216,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_ctx_create", device_ctx, type, device, opts, flags);
             }
             return (int)mh$.invokeExact(device_ctx, type, device, opts, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2166,7 +2232,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_create_derived");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_ctx_create_derived");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2213,6 +2279,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_ctx_create_derived", dst_ctx, type, src_ctx, flags);
             }
             return (int)mh$.invokeExact(dst_ctx, type, src_ctx, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2228,7 +2296,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_ctx_create_derived_opts");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_ctx_create_derived_opts");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2275,6 +2343,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_ctx_create_derived_opts", dst_ctx, type, src_ctx, options, flags);
             }
             return (int)mh$.invokeExact(dst_ctx, type, src_ctx, options, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2286,7 +2356,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_ctx_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_ctx_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2333,6 +2403,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_ctx_alloc", device_ctx);
             }
             return (MemorySegment)mh$.invokeExact(device_ctx);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2344,7 +2416,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_ctx_init");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_ctx_init");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2391,6 +2463,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_ctx_init", ref);
             }
             return (int)mh$.invokeExact(ref);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2404,7 +2478,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_get_buffer");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_get_buffer");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2451,6 +2525,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_get_buffer", hwframe_ctx, frame, flags);
             }
             return (int)mh$.invokeExact(hwframe_ctx, frame, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2464,7 +2540,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_transfer_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_transfer_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2511,6 +2587,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_transfer_data", dst, src, flags);
             }
             return (int)mh$.invokeExact(dst, src, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2543,7 +2621,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_transfer_get_formats");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_transfer_get_formats");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2590,6 +2668,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_transfer_get_formats", hwframe_ctx, dir, formats, flags);
             }
             return (int)mh$.invokeExact(hwframe_ctx, dir, formats, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2601,7 +2681,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_hwconfig_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_hwconfig_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2648,6 +2728,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_hwconfig_alloc", device_ctx);
             }
             return (MemorySegment)mh$.invokeExact(device_ctx);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2660,7 +2742,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwdevice_get_hwframe_constraints");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwdevice_get_hwframe_constraints");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2707,6 +2789,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwdevice_get_hwframe_constraints", ref, hwconfig);
             }
             return (MemorySegment)mh$.invokeExact(ref, hwconfig);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2717,7 +2801,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_constraints_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_constraints_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2764,6 +2848,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_constraints_free", constraints);
             }
             mh$.invokeExact(constraints);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2813,7 +2899,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_map");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_map");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2860,6 +2946,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_map", dst, src, flags);
             }
             return (int)mh$.invokeExact(dst, src, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -2875,7 +2963,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hwframe_ctx_create_derived");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hwframe_ctx_create_derived");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -2922,6 +3010,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hwframe_ctx_create_derived", derived_frame_ctx, format, derived_device_ctx, source_frame_ctx, flags);
             }
             return (int)mh$.invokeExact(derived_frame_ctx, format, derived_device_ctx, source_frame_ctx, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -7775,7 +7865,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_type");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_type");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -7822,6 +7912,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_type", codec_id);
             }
             return (int)mh$.invokeExact(codec_id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -7833,7 +7925,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -7880,6 +7972,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_name", id);
             }
             return (MemorySegment)mh$.invokeExact(id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -7891,7 +7985,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_bits_per_sample");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_bits_per_sample");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -7938,6 +8032,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_bits_per_sample", codec_id);
             }
             return (int)mh$.invokeExact(codec_id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -7949,7 +8045,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_exact_bits_per_sample");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_exact_bits_per_sample");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -7996,6 +8092,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_exact_bits_per_sample", codec_id);
             }
             return (int)mh$.invokeExact(codec_id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8008,7 +8106,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_profile_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_profile_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8055,6 +8153,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_profile_name", codec_id, profile);
             }
             return (MemorySegment)mh$.invokeExact(codec_id, profile);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8067,7 +8167,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pcm_codec");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pcm_codec");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8114,6 +8214,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_pcm_codec", fmt, be);
             }
             return (int)mh$.invokeExact(fmt, be);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8125,7 +8227,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_iterate");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_codec_iterate");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8172,6 +8274,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_codec_iterate", opaque);
             }
             return (MemorySegment)mh$.invokeExact(opaque);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8183,7 +8287,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_decoder");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_find_decoder");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8230,6 +8334,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_find_decoder", id);
             }
             return (MemorySegment)mh$.invokeExact(id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8241,7 +8347,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_decoder_by_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_find_decoder_by_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8288,6 +8394,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_find_decoder_by_name", name);
             }
             return (MemorySegment)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8299,7 +8407,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_encoder");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_find_encoder");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8346,6 +8454,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_find_encoder", id);
             }
             return (MemorySegment)mh$.invokeExact(id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8357,7 +8467,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_encoder_by_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_find_encoder_by_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8404,6 +8514,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_find_encoder_by_name", name);
             }
             return (MemorySegment)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8415,7 +8527,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_is_encoder");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_codec_is_encoder");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8462,6 +8574,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_codec_is_encoder", codec);
             }
             return (int)mh$.invokeExact(codec);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8473,7 +8587,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_is_decoder");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_codec_is_decoder");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8520,6 +8634,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_codec_is_decoder", codec);
             }
             return (int)mh$.invokeExact(codec);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8532,7 +8648,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_profile_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_profile_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8579,6 +8695,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_profile_name", codec, profile);
             }
             return (MemorySegment)mh$.invokeExact(codec, profile);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8627,7 +8745,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_hw_config");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_hw_config");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8674,6 +8792,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_hw_config", codec, index);
             }
             return (MemorySegment)mh$.invokeExact(codec, index);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8892,7 +9012,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_cpb_properties_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_cpb_properties_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8939,6 +9059,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_cpb_properties_alloc", size);
             }
             return (MemorySegment)mh$.invokeExact(size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8951,7 +9073,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_xiphlacing");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_xiphlacing");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8998,6 +9120,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_xiphlacing", s, v);
             }
             return (int)mh$.invokeExact(s, v);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9382,7 +9506,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_new");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_side_data_new");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9429,6 +9553,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_side_data_new", psd, pnb_sd, type, size, flags);
             }
             return (MemorySegment)mh$.invokeExact(psd, pnb_sd, type, size, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9445,7 +9571,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_add");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_side_data_add");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9492,6 +9618,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_side_data_add", sd, nb_sd, type, data, size, flags);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type, data, size, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9505,7 +9633,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_get");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_side_data_get");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9552,6 +9680,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_side_data_get", sd, nb_sd, type);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9564,7 +9694,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_remove");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_side_data_remove");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9611,6 +9741,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_side_data_remove", sd, nb_sd, type);
             }
             mh$.invokeExact(sd, nb_sd, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9622,7 +9754,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_side_data_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9669,6 +9801,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_side_data_free", sd, nb_sd);
             }
             mh$.invokeExact(sd, nb_sd);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9680,7 +9814,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_side_data_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_side_data_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9727,6 +9861,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_side_data_name", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9754,7 +9890,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9801,6 +9937,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_alloc");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9812,7 +9950,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_clone");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_clone");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9859,6 +9997,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_clone", src);
             }
             return (MemorySegment)mh$.invokeExact(src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9869,7 +10009,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9916,6 +10056,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_free", pkt);
             }
             mh$.invokeExact(pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9926,7 +10068,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_init_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_init_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9973,6 +10115,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_init_packet", pkt);
             }
             mh$.invokeExact(pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9985,7 +10129,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_new_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_new_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10032,6 +10176,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_new_packet", pkt, size);
             }
             return (int)mh$.invokeExact(pkt, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10043,7 +10189,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_shrink_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_shrink_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10090,6 +10236,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_shrink_packet", pkt, size);
             }
             mh$.invokeExact(pkt, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10102,7 +10250,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_grow_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_grow_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10149,6 +10297,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_grow_packet", pkt, grow_by);
             }
             return (int)mh$.invokeExact(pkt, grow_by);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10162,7 +10312,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_from_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_from_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10209,6 +10359,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_from_data", pkt, data, size);
             }
             return (int)mh$.invokeExact(pkt, data, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10222,7 +10374,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_new_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_new_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10269,6 +10421,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_new_side_data", pkt, type, size);
             }
             return (MemorySegment)mh$.invokeExact(pkt, type, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10283,7 +10437,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_add_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_add_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10330,6 +10484,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_add_side_data", pkt, type, data, size);
             }
             return (int)mh$.invokeExact(pkt, type, data, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10343,7 +10499,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_shrink_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_shrink_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10390,6 +10546,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_shrink_side_data", pkt, type, size);
             }
             return (int)mh$.invokeExact(pkt, type, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10403,7 +10561,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_get_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_get_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10450,6 +10608,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_get_side_data", pkt, type, size);
             }
             return (MemorySegment)mh$.invokeExact(pkt, type, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10462,7 +10622,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_pack_dictionary");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_pack_dictionary");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10509,6 +10669,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_pack_dictionary", dict, size);
             }
             return (MemorySegment)mh$.invokeExact(dict, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10522,7 +10684,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_unpack_dictionary");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_unpack_dictionary");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10569,6 +10731,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_unpack_dictionary", data, size, dict);
             }
             return (int)mh$.invokeExact(data, size, dict);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10579,7 +10743,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_free_side_data");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_free_side_data");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10626,6 +10790,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_free_side_data", pkt);
             }
             mh$.invokeExact(pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10638,7 +10804,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_ref");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_ref");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10685,6 +10851,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_ref", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10695,7 +10863,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_unref");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_unref");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10742,6 +10910,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_unref", pkt);
             }
             mh$.invokeExact(pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10753,7 +10923,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_move_ref");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_move_ref");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10800,6 +10970,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_move_ref", dst, src);
             }
             mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10812,7 +10984,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_copy_props");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_copy_props");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10859,6 +11031,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_copy_props", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10870,7 +11044,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_make_refcounted");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_make_refcounted");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10917,6 +11091,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_make_refcounted", pkt);
             }
             return (int)mh$.invokeExact(pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10928,7 +11104,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_make_writable");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_make_writable");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10975,6 +11151,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_make_writable", pkt);
             }
             return (int)mh$.invokeExact(pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10987,7 +11165,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             AVRational.layout()
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_packet_rescale_ts");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_packet_rescale_ts");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11034,6 +11212,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_packet_rescale_ts", pkt, tb_src, tb_dst);
             }
             mh$.invokeExact(pkt, tb_src, tb_dst);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11045,7 +11225,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_container_fifo_alloc_avpacket");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_container_fifo_alloc_avpacket");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11092,6 +11272,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_container_fifo_alloc_avpacket", flags);
             }
             return (MemorySegment)mh$.invokeExact(flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11103,7 +11285,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_descriptor_get");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_descriptor_get");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11150,6 +11332,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_descriptor_get", id);
             }
             return (MemorySegment)mh$.invokeExact(id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11161,7 +11345,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_descriptor_next");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_descriptor_next");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11208,6 +11392,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_descriptor_next", prev);
             }
             return (MemorySegment)mh$.invokeExact(prev);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11219,7 +11405,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_descriptor_get_by_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_descriptor_get_by_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11266,6 +11452,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_descriptor_get_by_name", name);
             }
             return (MemorySegment)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11275,7 +11463,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_parameters_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11322,6 +11510,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_parameters_alloc");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11332,7 +11522,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_parameters_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11379,6 +11569,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_parameters_free", par);
             }
             mh$.invokeExact(par);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11391,7 +11583,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_copy");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_parameters_copy");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11438,6 +11630,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_parameters_copy", dst, src);
             }
             return (int)mh$.invokeExact(dst, src);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11450,7 +11644,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_audio_frame_duration2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_audio_frame_duration2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11497,6 +11691,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_audio_frame_duration2", par, frame_bytes);
             }
             return (int)mh$.invokeExact(par, frame_bytes);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11542,7 +11738,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_version");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_version");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11589,6 +11785,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_version");
             }
             return (int)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11598,7 +11796,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_configuration");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_configuration");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11645,6 +11843,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_configuration");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11654,7 +11854,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_license");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_license");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11701,6 +11901,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_license");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11712,7 +11914,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_alloc_context3");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_alloc_context3");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11759,6 +11961,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_alloc_context3", codec);
             }
             return (MemorySegment)mh$.invokeExact(codec);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11769,7 +11973,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_free_context");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_free_context");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11816,6 +12020,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_free_context", avctx);
             }
             mh$.invokeExact(avctx);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11825,7 +12031,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_class");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_class");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11872,6 +12078,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_class");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11881,7 +12089,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_subtitle_rect_class");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_subtitle_rect_class");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11928,6 +12136,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_subtitle_rect_class");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11940,7 +12150,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_from_context");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_parameters_from_context");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11987,6 +12197,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_parameters_from_context", par, codec);
             }
             return (int)mh$.invokeExact(par, codec);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -11999,7 +12211,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_parameters_to_context");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_parameters_to_context");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12046,6 +12258,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_parameters_to_context", codec, par);
             }
             return (int)mh$.invokeExact(codec, par);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12059,7 +12273,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_open2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_open2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12106,6 +12320,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_open2", avctx, codec, options);
             }
             return (int)mh$.invokeExact(avctx, codec, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12116,7 +12332,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avsubtitle_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avsubtitle_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12163,6 +12379,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avsubtitle_free", sub);
             }
             mh$.invokeExact(sub);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12176,7 +12394,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_get_buffer2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_default_get_buffer2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12223,6 +12441,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_default_get_buffer2", s, frame, flags);
             }
             return (int)mh$.invokeExact(s, frame, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12236,7 +12456,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_get_encode_buffer");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_default_get_encode_buffer");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12283,6 +12503,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_default_get_encode_buffer", s, pkt, flags);
             }
             return (int)mh$.invokeExact(s, pkt, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12295,7 +12517,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_align_dimensions");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_align_dimensions");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12342,6 +12564,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_align_dimensions", s, width, height);
             }
             mh$.invokeExact(s, width, height);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12355,7 +12579,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_align_dimensions2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_align_dimensions2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12402,6 +12626,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_align_dimensions2", s, width, height, linesize_align);
             }
             mh$.invokeExact(s, width, height, linesize_align);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12416,7 +12642,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_decode_subtitle2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_decode_subtitle2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12463,6 +12689,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_decode_subtitle2", avctx, sub, got_sub_ptr, avpkt);
             }
             return (int)mh$.invokeExact(avctx, sub, got_sub_ptr, avpkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12475,7 +12703,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_send_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_send_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12522,6 +12750,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_send_packet", avctx, avpkt);
             }
             return (int)mh$.invokeExact(avctx, avpkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12534,7 +12764,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_receive_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_receive_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12581,6 +12811,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_receive_frame", avctx, frame);
             }
             return (int)mh$.invokeExact(avctx, frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12593,7 +12825,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_send_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_send_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12640,6 +12872,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_send_frame", avctx, frame);
             }
             return (int)mh$.invokeExact(avctx, frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12652,7 +12886,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_receive_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_receive_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12699,6 +12933,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_receive_packet", avctx, avpkt);
             }
             return (int)mh$.invokeExact(avctx, avpkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12713,7 +12949,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_hw_frames_parameters");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_hw_frames_parameters");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12760,6 +12996,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_hw_frames_parameters", avctx, device_ref, hw_pix_fmt, out_frames_ref);
             }
             return (int)mh$.invokeExact(avctx, device_ref, hw_pix_fmt, out_frames_ref);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12839,7 +13077,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_get_supported_config");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_supported_config");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12886,6 +13124,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_get_supported_config", avctx, codec, config, flags, out_configs, out_num_configs);
             }
             return (int)mh$.invokeExact(avctx, codec, config, flags, out_configs, out_num_configs);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12933,7 +13173,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_iterate");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_iterate");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -12980,6 +13220,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_parser_iterate", opaque);
             }
             return (MemorySegment)mh$.invokeExact(opaque);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -12991,7 +13233,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_init");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_init");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13038,6 +13280,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_parser_init", codec_id);
             }
             return (MemorySegment)mh$.invokeExact(codec_id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13057,7 +13301,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_parse2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_parse2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13104,6 +13348,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_parser_parse2", s, avctx, poutbuf, poutbuf_size, buf, buf_size, pts, dts, pos);
             }
             return (int)mh$.invokeExact(s, avctx, poutbuf, poutbuf_size, buf, buf_size, pts, dts, pos);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13114,7 +13360,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_parser_close");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_close");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13161,6 +13407,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_parser_close", s);
             }
             mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13175,7 +13423,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_encode_subtitle");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_encode_subtitle");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13222,6 +13470,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_encode_subtitle", avctx, buf, buf_size, sub);
             }
             return (int)mh$.invokeExact(avctx, buf, buf_size, sub);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13233,7 +13483,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_pix_fmt_to_codec_tag");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_pix_fmt_to_codec_tag");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13280,6 +13530,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_pix_fmt_to_codec_tag", pix_fmt);
             }
             return (int)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13294,7 +13546,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_find_best_pix_fmt_of_list");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_find_best_pix_fmt_of_list");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13341,6 +13593,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_find_best_pix_fmt_of_list", pix_fmt_list, src_pix_fmt, has_alpha, loss_ptr);
             }
             return (int)mh$.invokeExact(pix_fmt_list, src_pix_fmt, has_alpha, loss_ptr);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13353,7 +13607,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_get_format");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_default_get_format");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13400,6 +13654,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_default_get_format", s, fmt);
             }
             return (int)mh$.invokeExact(s, fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13413,7 +13669,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_string");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_string");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13460,6 +13716,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_string", buf, buf_size, enc, encode);
             }
             mh$.invokeExact(buf, buf_size, enc, encode);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13476,7 +13734,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_execute");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_default_execute");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13523,6 +13781,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_default_execute", c, func, arg, ret, count, size);
             }
             return (int)mh$.invokeExact(c, func, arg, ret, count, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13538,7 +13798,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_default_execute2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_default_execute2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13585,6 +13845,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_default_execute2", c, func, arg, ret, count);
             }
             return (int)mh$.invokeExact(c, func, arg, ret, count);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13601,7 +13863,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_fill_audio_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_fill_audio_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13648,6 +13910,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_fill_audio_frame", frame, nb_channels, sample_fmt, buf, buf_size, align);
             }
             return (int)mh$.invokeExact(frame, nb_channels, sample_fmt, buf, buf_size, align);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13658,7 +13922,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_flush_buffers");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_flush_buffers");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13705,6 +13969,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_flush_buffers", avctx);
             }
             mh$.invokeExact(avctx);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13717,7 +13983,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_audio_frame_duration");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_audio_frame_duration");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13764,6 +14030,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_audio_frame_duration", avctx, frame_bytes);
             }
             return (int)mh$.invokeExact(avctx, frame_bytes);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13776,7 +14044,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_fast_padded_malloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_fast_padded_malloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13823,6 +14091,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_fast_padded_malloc", ptr, size, min_size);
             }
             mh$.invokeExact(ptr, size, min_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13835,7 +14105,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_fast_padded_mallocz");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_fast_padded_mallocz");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13882,6 +14152,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_fast_padded_mallocz", ptr, size, min_size);
             }
             mh$.invokeExact(ptr, size, min_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13893,7 +14165,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avcodec_is_open");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_is_open");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13940,6 +14212,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avcodec_is_open", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14104,7 +14378,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_find_protocol_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_find_protocol_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14151,6 +14425,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_find_protocol_name", url);
             }
             return (MemorySegment)mh$.invokeExact(url);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14163,7 +14439,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_check");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_check");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14210,6 +14486,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_check", url, flags);
             }
             return (int)mh$.invokeExact(url, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14223,7 +14501,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open_dir");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_open_dir");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14270,6 +14548,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_open_dir", s, url, options);
             }
             return (int)mh$.invokeExact(s, url, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14282,7 +14562,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read_dir");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_read_dir");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14329,6 +14609,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_read_dir", s, next);
             }
             return (int)mh$.invokeExact(s, next);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14340,7 +14622,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_close_dir");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_close_dir");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14387,6 +14669,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_close_dir", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14397,7 +14681,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_free_directory_entry");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_free_directory_entry");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14444,6 +14728,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_free_directory_entry", entry);
             }
             mh$.invokeExact(entry);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14461,7 +14747,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_alloc_context");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_alloc_context");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14508,6 +14794,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_alloc_context", buffer, buffer_size, write_flag, opaque, read_packet, write_packet, seek);
             }
             return (MemorySegment)mh$.invokeExact(buffer, buffer_size, write_flag, opaque, read_packet, write_packet, seek);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14518,7 +14806,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_context_free");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_context_free");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14565,6 +14853,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_context_free", s);
             }
             mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14576,7 +14866,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_w8");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_w8");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14623,6 +14913,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_w8", s, b);
             }
             mh$.invokeExact(s, b);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14635,7 +14927,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_write");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_write");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14682,6 +14974,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_write", s, buf, size);
             }
             mh$.invokeExact(s, buf, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14693,7 +14987,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl64");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wl64");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14740,6 +15034,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wl64", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14751,7 +15047,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb64");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wb64");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14798,6 +15094,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wb64", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14809,7 +15107,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl32");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wl32");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14856,6 +15154,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wl32", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14867,7 +15167,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb32");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wb32");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14914,6 +15214,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wb32", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14925,7 +15227,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl24");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wl24");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14972,6 +15274,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wl24", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14983,7 +15287,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb24");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wb24");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15030,6 +15334,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wb24", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15041,7 +15347,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wl16");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wl16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15088,6 +15394,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wl16", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15099,7 +15407,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_wb16");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_wb16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15146,6 +15454,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_wb16", s, val);
             }
             mh$.invokeExact(s, val);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15158,7 +15468,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_put_str");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_put_str");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15205,6 +15515,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_put_str", s, str);
             }
             return (int)mh$.invokeExact(s, str);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15217,7 +15529,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_put_str16le");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_put_str16le");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15264,6 +15576,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_put_str16le", s, str);
             }
             return (int)mh$.invokeExact(s, str);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15276,7 +15590,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_put_str16be");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_put_str16be");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15323,6 +15637,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_put_str16be", s, str);
             }
             return (int)mh$.invokeExact(s, str);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15335,7 +15651,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_write_marker");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_write_marker");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15382,6 +15698,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_write_marker", s, time, type);
             }
             mh$.invokeExact(s, time, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15395,7 +15713,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_seek");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_seek");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15442,6 +15760,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_seek", s, offset, whence);
             }
             return (long)mh$.invokeExact(s, offset, whence);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15454,7 +15774,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_skip");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_skip");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15501,6 +15821,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_skip", s, offset);
             }
             return (long)mh$.invokeExact(s, offset);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15512,7 +15834,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_size");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_size");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15559,6 +15881,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_size", s);
             }
             return (long)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15570,7 +15894,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_feof");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_feof");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15617,6 +15941,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_feof", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15630,7 +15956,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_vprintf");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_vprintf");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15677,6 +16003,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_vprintf", s, fmt, ap);
             }
             return (int)mh$.invokeExact(s, fmt, ap);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15694,7 +16022,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 FFmpeg.C_POINTER,
                 FFmpeg.C_POINTER
             );
-        private static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_printf");
+        private static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_printf");
 
         private final MethodHandle handle;
         private final FunctionDescriptor descriptor;
@@ -15761,7 +16089,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_print_string_array");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_print_string_array");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15808,6 +16136,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_print_string_array", s, strings);
             }
             mh$.invokeExact(s, strings);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15818,7 +16148,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_flush");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_flush");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15865,6 +16195,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_flush", s);
             }
             mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15878,7 +16210,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_read");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15925,6 +16257,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_read", s, buf, size);
             }
             return (int)mh$.invokeExact(s, buf, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15938,7 +16272,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read_partial");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_read_partial");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15985,6 +16319,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_read_partial", s, buf, size);
             }
             return (int)mh$.invokeExact(s, buf, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15996,7 +16332,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_r8");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_r8");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16043,6 +16379,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_r8", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16054,7 +16392,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl16");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rl16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16101,6 +16439,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rl16", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16112,7 +16452,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl24");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rl24");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16159,6 +16499,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rl24", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16170,7 +16512,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl32");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rl32");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16217,6 +16559,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rl32", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16228,7 +16572,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rl64");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rl64");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16275,6 +16619,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rl64", s);
             }
             return (long)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16286,7 +16632,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb16");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rb16");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16333,6 +16679,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rb16", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16344,7 +16692,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb24");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rb24");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16391,6 +16739,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rb24", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16402,7 +16752,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb32");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rb32");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16449,6 +16799,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rb32", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16460,7 +16812,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_rb64");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_rb64");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16507,6 +16859,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_rb64", s);
             }
             return (long)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16521,7 +16875,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_str");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_get_str");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16568,6 +16922,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_get_str", pb, maxlen, buf, buflen);
             }
             return (int)mh$.invokeExact(pb, maxlen, buf, buflen);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16582,7 +16938,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_str16le");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_get_str16le");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16629,6 +16985,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_get_str16le", pb, maxlen, buf, buflen);
             }
             return (int)mh$.invokeExact(pb, maxlen, buf, buflen);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16643,7 +17001,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_str16be");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_get_str16be");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16690,6 +17048,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_get_str16be", pb, maxlen, buf, buflen);
             }
             return (int)mh$.invokeExact(pb, maxlen, buf, buflen);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16703,7 +17063,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_open");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16750,6 +17110,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_open", s, url, flags);
             }
             return (int)mh$.invokeExact(s, url, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16765,7 +17127,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_open2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16812,6 +17174,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_open2", s, url, flags, int_cb, options);
             }
             return (int)mh$.invokeExact(s, url, flags, int_cb, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16823,7 +17187,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_close");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_close");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16870,6 +17234,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_close", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16881,7 +17247,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_closep");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_closep");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16928,6 +17294,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_closep", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16939,7 +17307,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_open_dyn_buf");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_open_dyn_buf");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -16986,6 +17354,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_open_dyn_buf", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -16998,7 +17368,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_get_dyn_buf");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_get_dyn_buf");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17045,6 +17415,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_get_dyn_buf", s, pbuffer);
             }
             return (int)mh$.invokeExact(s, pbuffer);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17057,7 +17429,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_close_dyn_buf");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_close_dyn_buf");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17104,6 +17476,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_close_dyn_buf", s, pbuffer);
             }
             return (int)mh$.invokeExact(s, pbuffer);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17116,7 +17490,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_enum_protocols");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_enum_protocols");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17163,6 +17537,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_enum_protocols", opaque, output);
             }
             return (MemorySegment)mh$.invokeExact(opaque, output);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17174,7 +17550,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_protocol_get_class");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_protocol_get_class");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17221,6 +17597,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_protocol_get_class", name);
             }
             return (MemorySegment)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17233,7 +17611,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_pause");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_pause");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17280,6 +17658,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_pause", h, pause);
             }
             return (int)mh$.invokeExact(h, pause);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17294,7 +17674,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_seek_time");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_seek_time");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17341,6 +17721,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_seek_time", h, stream_index, timestamp, flags);
             }
             return (long)mh$.invokeExact(h, stream_index, timestamp, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17354,7 +17736,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_LONG
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_read_to_bprint");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_read_to_bprint");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17401,6 +17783,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_read_to_bprint", h, pb, max_size);
             }
             return (int)mh$.invokeExact(h, pb, max_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17413,7 +17797,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_accept");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_accept");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17460,6 +17844,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_accept", s, c);
             }
             return (int)mh$.invokeExact(s, c);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17471,7 +17857,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avio_handshake");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avio_handshake");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17518,6 +17904,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avio_handshake", c);
             }
             return (int)mh$.invokeExact(c);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17531,7 +17919,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17578,6 +17966,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_packet", s, pkt, size);
             }
             return (int)mh$.invokeExact(s, pkt, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17591,7 +17981,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_append_packet");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_append_packet");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17638,6 +18028,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_append_packet", s, pkt, size);
             }
             return (int)mh$.invokeExact(s, pkt, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17703,7 +18095,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_disposition_from_string");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_disposition_from_string");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17750,6 +18142,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_disposition_from_string", disp);
             }
             return (int)mh$.invokeExact(disp);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17761,7 +18155,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_disposition_to_string");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_disposition_to_string");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17808,6 +18202,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_disposition_to_string", disposition);
             }
             return (MemorySegment)mh$.invokeExact(disposition);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17864,7 +18260,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_parser");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_stream_get_parser");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17911,6 +18307,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_stream_get_parser", s);
             }
             return (MemorySegment)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -17947,7 +18345,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_version");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_version");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -17994,6 +18392,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_version");
             }
             return (int)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18003,7 +18403,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_configuration");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_configuration");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18050,6 +18450,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_configuration");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18059,7 +18461,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_license");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_license");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18106,6 +18508,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_license");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18115,7 +18519,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_network_init");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_network_init");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18162,6 +18566,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_network_init");
             }
             return (int)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18171,7 +18577,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_network_deinit");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_network_deinit");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18218,6 +18624,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_network_deinit");
             }
             return (int)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18229,7 +18637,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_muxer_iterate");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_muxer_iterate");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18276,6 +18684,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_muxer_iterate", opaque);
             }
             return (MemorySegment)mh$.invokeExact(opaque);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18287,7 +18697,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_demuxer_iterate");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_demuxer_iterate");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18334,6 +18744,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_demuxer_iterate", opaque);
             }
             return (MemorySegment)mh$.invokeExact(opaque);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18343,7 +18755,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_alloc_context");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_alloc_context");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18390,6 +18802,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_alloc_context");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18400,7 +18814,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_free_context");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_free_context");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18447,6 +18861,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_free_context", s);
             }
             mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18456,7 +18872,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_class");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_get_class");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18503,6 +18919,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_get_class");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18512,7 +18930,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_class");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_stream_get_class");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18559,6 +18977,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_stream_get_class");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18568,7 +18988,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_group_get_class");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_stream_group_get_class");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18615,6 +19035,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_stream_group_get_class");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18626,7 +19048,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_stream_group_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_stream_group_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18673,6 +19095,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_stream_group_name", type);
             }
             return (MemorySegment)mh$.invokeExact(type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18686,7 +19110,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_stream_group_create");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_stream_group_create");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18733,6 +19157,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_stream_group_create", s, type, options);
             }
             return (MemorySegment)mh$.invokeExact(s, type, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18745,7 +19171,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_new_stream");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_new_stream");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18792,6 +19218,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_new_stream", s, c);
             }
             return (MemorySegment)mh$.invokeExact(s, c);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18804,7 +19232,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_stream_group_add_stream");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_stream_group_add_stream");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18851,6 +19279,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_stream_group_add_stream", stg, st);
             }
             return (int)mh$.invokeExact(stg, st);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18863,7 +19293,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_new_program");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_new_program");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18910,6 +19340,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_new_program", s, id);
             }
             return (MemorySegment)mh$.invokeExact(s, id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18924,7 +19356,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_alloc_output_context2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_alloc_output_context2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -18971,6 +19403,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_alloc_output_context2", ctx, oformat, format_name, filename);
             }
             return (int)mh$.invokeExact(ctx, oformat, format_name, filename);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -18982,7 +19416,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_input_format");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_find_input_format");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19029,6 +19463,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_find_input_format", short_name);
             }
             return (MemorySegment)mh$.invokeExact(short_name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19041,7 +19477,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_format");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_probe_input_format");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19088,6 +19524,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_probe_input_format", pd, is_opened);
             }
             return (MemorySegment)mh$.invokeExact(pd, is_opened);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19101,7 +19539,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_format2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_probe_input_format2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19148,6 +19586,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_probe_input_format2", pd, is_opened, score_max);
             }
             return (MemorySegment)mh$.invokeExact(pd, is_opened, score_max);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19161,7 +19601,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_format3");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_probe_input_format3");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19208,6 +19648,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_probe_input_format3", pd, is_opened, score_ret);
             }
             return (MemorySegment)mh$.invokeExact(pd, is_opened, score_ret);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19224,7 +19666,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_buffer2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_probe_input_buffer2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19271,6 +19713,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_probe_input_buffer2", pb, fmt, url, logctx, offset, max_probe_size);
             }
             return (int)mh$.invokeExact(pb, fmt, url, logctx, offset, max_probe_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19287,7 +19731,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_probe_input_buffer");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_probe_input_buffer");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19334,6 +19778,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_probe_input_buffer", pb, fmt, url, logctx, offset, max_probe_size);
             }
             return (int)mh$.invokeExact(pb, fmt, url, logctx, offset, max_probe_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19348,7 +19794,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_open_input");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_open_input");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19395,6 +19841,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_open_input", ps, url, fmt, options);
             }
             return (int)mh$.invokeExact(ps, url, fmt, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19407,7 +19855,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_find_stream_info");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_find_stream_info");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19454,6 +19902,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_find_stream_info", ic, options);
             }
             return (int)mh$.invokeExact(ic, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19467,7 +19917,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_program_from_stream");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_find_program_from_stream");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19514,6 +19964,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_find_program_from_stream", ic, last, s);
             }
             return (MemorySegment)mh$.invokeExact(ic, last, s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19526,7 +19978,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_program_add_stream_index");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_program_add_stream_index");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19573,6 +20025,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_program_add_stream_index", ac, progid, idx);
             }
             mh$.invokeExact(ac, progid, idx);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19589,7 +20043,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_best_stream");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_find_best_stream");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19636,6 +20090,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_find_best_stream", ic, type, wanted_stream_nb, related_stream, decoder_ret, flags);
             }
             return (int)mh$.invokeExact(ic, type, wanted_stream_nb, related_stream, decoder_ret, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19648,7 +20104,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19695,6 +20151,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_read_frame", s, pkt);
             }
             return (int)mh$.invokeExact(s, pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19709,7 +20167,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_seek_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_seek_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19756,6 +20214,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_seek_frame", s, stream_index, timestamp, flags);
             }
             return (int)mh$.invokeExact(s, stream_index, timestamp, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19772,7 +20232,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_seek_file");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_seek_file");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19819,6 +20279,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_seek_file", s, stream_index, min_ts, ts, max_ts, flags);
             }
             return (int)mh$.invokeExact(s, stream_index, min_ts, ts, max_ts, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19830,7 +20292,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_flush");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_flush");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19877,6 +20339,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_flush", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19888,7 +20352,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_play");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_play");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19935,6 +20399,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_read_play", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -19946,7 +20412,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_pause");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_pause");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -19993,6 +20459,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_read_pause", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20003,7 +20471,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_close_input");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_close_input");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20050,6 +20518,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_close_input", s);
             }
             mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20062,7 +20532,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_write_header");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_write_header");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20109,6 +20579,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_write_header", s, options);
             }
             return (int)mh$.invokeExact(s, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20121,7 +20593,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_init_output");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_init_output");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20168,6 +20640,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_init_output", s, options);
             }
             return (int)mh$.invokeExact(s, options);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20180,7 +20654,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20227,6 +20701,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_write_frame", s, pkt);
             }
             return (int)mh$.invokeExact(s, pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20239,7 +20715,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_interleaved_write_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_interleaved_write_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20286,6 +20762,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_interleaved_write_frame", s, pkt);
             }
             return (int)mh$.invokeExact(s, pkt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20299,7 +20777,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_uncoded_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_uncoded_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20346,6 +20824,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_write_uncoded_frame", s, stream_index, frame);
             }
             return (int)mh$.invokeExact(s, stream_index, frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20359,7 +20839,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_interleaved_write_uncoded_frame");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_interleaved_write_uncoded_frame");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20406,6 +20886,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_interleaved_write_uncoded_frame", s, stream_index, frame);
             }
             return (int)mh$.invokeExact(s, stream_index, frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20418,7 +20900,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_uncoded_frame_query");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_uncoded_frame_query");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20465,6 +20947,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_write_uncoded_frame_query", s, stream_index);
             }
             return (int)mh$.invokeExact(s, stream_index);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20476,7 +20960,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_trailer");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_trailer");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20523,6 +21007,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_write_trailer", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20536,7 +21022,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_format");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_guess_format");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20583,6 +21069,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_guess_format", short_name, filename, mime_type);
             }
             return (MemorySegment)mh$.invokeExact(short_name, filename, mime_type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20598,7 +21086,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_codec");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_guess_codec");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20645,6 +21133,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_guess_codec", fmt, short_name, filename, mime_type, type);
             }
             return (int)mh$.invokeExact(fmt, short_name, filename, mime_type, type);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20659,7 +21149,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_output_timestamp");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_output_timestamp");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20706,6 +21196,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_output_timestamp", s, stream, dts, wall);
             }
             return (int)mh$.invokeExact(s, stream, dts, wall);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20718,7 +21210,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hex_dump");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hex_dump");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20765,6 +21257,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hex_dump", f, buf, size);
             }
             mh$.invokeExact(f, buf, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20778,7 +21272,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_hex_dump_log");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_hex_dump_log");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20825,6 +21319,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_hex_dump_log", avcl, level, buf, size);
             }
             mh$.invokeExact(avcl, level, buf, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20838,7 +21334,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pkt_dump2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pkt_dump2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20885,6 +21381,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pkt_dump2", f, pkt, dump_payload, st);
             }
             mh$.invokeExact(f, pkt, dump_payload, st);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20899,7 +21397,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pkt_dump_log2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pkt_dump_log2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -20946,6 +21444,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pkt_dump_log2", avcl, level, pkt, dump_payload, st);
             }
             mh$.invokeExact(avcl, level, pkt, dump_payload, st);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -20958,7 +21458,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_get_id");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_codec_get_id");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21005,6 +21505,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_codec_get_id", tags, tag);
             }
             return (int)mh$.invokeExact(tags, tag);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21017,7 +21519,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_get_tag");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_codec_get_tag");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21064,6 +21566,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_codec_get_tag", tags, id);
             }
             return (int)mh$.invokeExact(tags, id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21077,7 +21581,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_codec_get_tag2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_codec_get_tag2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21124,6 +21628,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_codec_get_tag2", tags, id, tag);
             }
             return (int)mh$.invokeExact(tags, id, tag);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21135,7 +21641,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_default_stream_index");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_find_default_stream_index");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21182,6 +21688,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_find_default_stream_index", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21195,7 +21703,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_index_search_timestamp");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_index_search_timestamp");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21242,6 +21750,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_index_search_timestamp", st, timestamp, flags);
             }
             return (int)mh$.invokeExact(st, timestamp, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21253,7 +21763,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_index_get_entries_count");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_index_get_entries_count");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21300,6 +21810,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_index_get_entries_count", st);
             }
             return (int)mh$.invokeExact(st);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21312,7 +21824,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_index_get_entry");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_index_get_entry");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21359,6 +21871,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_index_get_entry", st, idx);
             }
             return (MemorySegment)mh$.invokeExact(st, idx);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21372,7 +21886,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_index_get_entry_from_timestamp");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_index_get_entry_from_timestamp");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21419,6 +21933,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_index_get_entry_from_timestamp", st, wanted_timestamp, flags);
             }
             return (MemorySegment)mh$.invokeExact(st, wanted_timestamp, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21435,7 +21951,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_add_index_entry");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_add_index_entry");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21482,6 +21998,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_add_index_entry", st, pos, timestamp, size, distance, flags);
             }
             return (int)mh$.invokeExact(st, pos, timestamp, size, distance, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21501,7 +22019,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_url_split");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_url_split");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21548,6 +22066,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_url_split", proto, proto_size, authorization, authorization_size, hostname, hostname_size, port_ptr, path, path_size, url);
             }
             mh$.invokeExact(proto, proto_size, authorization, authorization_size, hostname, hostname_size, port_ptr, path, path_size, url);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21561,7 +22081,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_dump_format");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_dump_format");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21608,6 +22128,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_dump_format", ic, index, url, is_output);
             }
             mh$.invokeExact(ic, index, url, is_output);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21623,7 +22145,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_frame_filename2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_frame_filename2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21670,6 +22192,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_frame_filename2", buf, buf_size, path, number, flags);
             }
             return (int)mh$.invokeExact(buf, buf_size, path, number, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21684,7 +22208,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_frame_filename");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_frame_filename");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21731,6 +22255,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_frame_filename", buf, buf_size, path, number);
             }
             return (int)mh$.invokeExact(buf, buf_size, path, number);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21742,7 +22268,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_filename_number_test");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_filename_number_test");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21789,6 +22315,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_filename_number_test", filename);
             }
             return (int)mh$.invokeExact(filename);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21803,7 +22331,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_sdp_create");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_sdp_create");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21850,6 +22378,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_sdp_create", ac, n_files, buf, size);
             }
             return (int)mh$.invokeExact(ac, n_files, buf, size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21862,7 +22392,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_match_ext");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_match_ext");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21909,6 +22439,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_match_ext", filename, extensions);
             }
             return (int)mh$.invokeExact(filename, extensions);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21922,7 +22454,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_query_codec");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_query_codec");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -21969,6 +22501,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_query_codec", ofmt, codec_id, std_compliance);
             }
             return (int)mh$.invokeExact(ofmt, codec_id, std_compliance);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -21978,7 +22512,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_riff_video_tags");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_get_riff_video_tags");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22025,6 +22559,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_get_riff_video_tags");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22034,7 +22570,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_riff_audio_tags");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_get_riff_audio_tags");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22081,6 +22617,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_get_riff_audio_tags");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22090,7 +22628,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_mov_video_tags");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_get_mov_video_tags");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22137,6 +22675,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_get_mov_video_tags");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22146,7 +22686,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_get_mov_audio_tags");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_get_mov_audio_tags");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22193,6 +22733,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_get_mov_audio_tags");
             }
             return (MemorySegment)mh$.invokeExact();
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22206,7 +22748,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_sample_aspect_ratio");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_guess_sample_aspect_ratio");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22253,6 +22795,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_guess_sample_aspect_ratio", allocator, format, stream, frame);
             }
             return (MemorySegment)mh$.invokeExact(allocator, format, stream, frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22266,7 +22810,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_guess_frame_rate");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_guess_frame_rate");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22313,6 +22857,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_guess_frame_rate", allocator, ctx, stream, frame);
             }
             return (MemorySegment)mh$.invokeExact(allocator, ctx, stream, frame);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22326,7 +22872,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_match_stream_specifier");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_match_stream_specifier");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22373,6 +22919,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_match_stream_specifier", s, st, spec);
             }
             return (int)mh$.invokeExact(s, st, spec);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22384,7 +22932,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_queue_attached_pictures");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_queue_attached_pictures");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22431,6 +22979,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_queue_attached_pictures", s);
             }
             return (int)mh$.invokeExact(s);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22481,7 +23031,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("avformat_transfer_internal_stream_timing_info");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_transfer_internal_stream_timing_info");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22528,6 +23078,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("avformat_transfer_internal_stream_timing_info", ofmt, ost, ist, copy_tb);
             }
             return (int)mh$.invokeExact(ofmt, ost, ist, copy_tb);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22539,7 +23091,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_stream_get_codec_timebase");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_stream_get_codec_timebase");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22586,6 +23138,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_stream_get_codec_timebase", allocator, st);
             }
             return (MemorySegment)mh$.invokeExact(allocator, st);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22597,7 +23151,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_bits_per_pixel");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_bits_per_pixel");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22644,6 +23198,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_bits_per_pixel", pixdesc);
             }
             return (int)mh$.invokeExact(pixdesc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22655,7 +23211,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_padded_bits_per_pixel");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_padded_bits_per_pixel");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22702,6 +23258,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_padded_bits_per_pixel", pixdesc);
             }
             return (int)mh$.invokeExact(pixdesc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22713,7 +23271,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_get");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_get");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22760,6 +23318,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_desc_get", pix_fmt);
             }
             return (MemorySegment)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22771,7 +23331,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_next");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_next");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22818,6 +23378,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_desc_next", prev);
             }
             return (MemorySegment)mh$.invokeExact(prev);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22829,7 +23391,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_desc_get_id");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_get_id");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22876,6 +23438,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_desc_get_id", desc);
             }
             return (int)mh$.invokeExact(desc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22889,7 +23453,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_get_chroma_sub_sample");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_get_chroma_sub_sample");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22936,6 +23500,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_get_chroma_sub_sample", pix_fmt, h_shift, v_shift);
             }
             return (int)mh$.invokeExact(pix_fmt, h_shift, v_shift);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -22947,7 +23513,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_count_planes");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_count_planes");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -22994,6 +23560,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_count_planes", pix_fmt);
             }
             return (int)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23005,7 +23573,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_range_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_range_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23052,6 +23620,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_range_name", range);
             }
             return (MemorySegment)mh$.invokeExact(range);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23063,7 +23633,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_range_from_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_range_from_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23110,6 +23680,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_range_from_name", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23121,7 +23693,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_primaries_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_primaries_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23168,6 +23740,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_primaries_name", primaries);
             }
             return (MemorySegment)mh$.invokeExact(primaries);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23179,7 +23753,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_primaries_from_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_primaries_from_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23226,6 +23800,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_primaries_from_name", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23237,7 +23813,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_transfer_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_transfer_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23284,6 +23860,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_transfer_name", transfer);
             }
             return (MemorySegment)mh$.invokeExact(transfer);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23295,7 +23873,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_transfer_from_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_transfer_from_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23342,6 +23920,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_transfer_from_name", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23353,7 +23933,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_space_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_space_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23400,6 +23980,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_space_name", space);
             }
             return (MemorySegment)mh$.invokeExact(space);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23411,7 +23993,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_color_space_from_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_space_from_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23458,6 +24040,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_color_space_from_name", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23469,7 +24053,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_chroma_location_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23516,6 +24100,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_chroma_location_name", location);
             }
             return (MemorySegment)mh$.invokeExact(location);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23527,7 +24113,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_chroma_location_from_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_from_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23574,6 +24160,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_chroma_location_from_name", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23587,7 +24175,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_chroma_location_enum_to_pos");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_enum_to_pos");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23634,6 +24222,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_chroma_location_enum_to_pos", xpos, ypos, pos);
             }
             return (int)mh$.invokeExact(xpos, ypos, pos);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23646,7 +24236,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_chroma_location_pos_to_enum");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_pos_to_enum");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23693,6 +24283,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_chroma_location_pos_to_enum", xpos, ypos);
             }
             return (int)mh$.invokeExact(xpos, ypos);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23704,7 +24296,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23751,6 +24343,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_pix_fmt", name);
             }
             return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23762,7 +24356,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt_name");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_name");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23809,6 +24403,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_pix_fmt_name", pix_fmt);
             }
             return (MemorySegment)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23822,7 +24418,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt_string");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_string");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23869,6 +24465,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_pix_fmt_string", buf, buf_size, pix_fmt);
             }
             return (MemorySegment)mh$.invokeExact(buf, buf_size, pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23888,7 +24486,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_image_line2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_image_line2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -23935,6 +24533,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_read_image_line2", dst, data, linesize, desc, x, y, c, w, read_pal_component, dst_element_size);
             }
             mh$.invokeExact(dst, data, linesize, desc, x, y, c, w, read_pal_component, dst_element_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -23953,7 +24553,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_read_image_line");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_image_line");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24000,6 +24600,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_read_image_line", dst, data, linesize, desc, x, y, c, w, read_pal_component);
             }
             mh$.invokeExact(dst, data, linesize, desc, x, y, c, w, read_pal_component);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24018,7 +24620,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_image_line2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_image_line2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24065,6 +24667,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_write_image_line2", src, data, linesize, desc, x, y, c, w, src_element_size);
             }
             mh$.invokeExact(src, data, linesize, desc, x, y, c, w, src_element_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24082,7 +24686,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_write_image_line");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_image_line");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24129,6 +24733,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_write_image_line", src, data, linesize, desc, x, y, c, w);
             }
             mh$.invokeExact(src, data, linesize, desc, x, y, c, w);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24140,7 +24746,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_pix_fmt_swap_endianness");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_swap_endianness");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24187,6 +24793,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_pix_fmt_swap_endianness", pix_fmt);
             }
             return (int)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24200,7 +24808,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_get_pix_fmt_loss");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_loss");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24247,6 +24855,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_get_pix_fmt_loss", dst_pix_fmt, src_pix_fmt, has_alpha);
             }
             return (int)mh$.invokeExact(dst_pix_fmt, src_pix_fmt, has_alpha);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24262,7 +24872,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_find_best_pix_fmt_of_2");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_find_best_pix_fmt_of_2");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24309,6 +24919,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_find_best_pix_fmt_of_2", dst_pix_fmt1, dst_pix_fmt2, src_pix_fmt, has_alpha, loss_ptr);
             }
             return (int)mh$.invokeExact(dst_pix_fmt1, dst_pix_fmt2, src_pix_fmt, has_alpha, loss_ptr);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24321,7 +24933,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_max_pixsteps");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_fill_max_pixsteps");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24368,6 +24980,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_fill_max_pixsteps", max_pixsteps, max_pixstep_comps, pixdesc);
             }
             mh$.invokeExact(max_pixsteps, max_pixstep_comps, pixdesc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24381,7 +24995,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_get_linesize");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_get_linesize");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24428,6 +25042,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_get_linesize", pix_fmt, width, plane);
             }
             return (int)mh$.invokeExact(pix_fmt, width, plane);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24441,7 +25057,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_linesizes");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_fill_linesizes");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24488,6 +25104,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_fill_linesizes", linesizes, pix_fmt, width);
             }
             return (int)mh$.invokeExact(linesizes, pix_fmt, width);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24502,7 +25120,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_plane_sizes");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_fill_plane_sizes");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24549,6 +25167,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_fill_plane_sizes", size, pix_fmt, height, linesizes);
             }
             return (int)mh$.invokeExact(size, pix_fmt, height, linesizes);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24564,7 +25184,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_POINTER
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_fill_pointers");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_fill_pointers");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24611,6 +25231,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_fill_pointers", data, pix_fmt, height, ptr, linesizes);
             }
             return (int)mh$.invokeExact(data, pix_fmt, height, ptr, linesizes);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24627,7 +25249,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_alloc");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_alloc");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24674,6 +25296,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_alloc", pointers, linesizes, w, h, pix_fmt, align);
             }
             return (int)mh$.invokeExact(pointers, linesizes, w, h, pix_fmt, align);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -24689,7 +25313,7 @@ public class FFmpeg_1 extends FFmpeg_2 {
             FFmpeg.C_INT
         );
 
-        public static final MemorySegment ADDR = FFmpeg.findOrThrow("av_image_copy_plane");
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_image_copy_plane");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -24736,6 +25360,8 @@ public class FFmpeg_1 extends FFmpeg_2 {
                 traceDowncall("av_image_copy_plane", dst, dst_linesize, src, src_linesize, bytewidth, height);
             }
             mh$.invokeExact(dst, dst_linesize, src, src_linesize, bytewidth, height);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }

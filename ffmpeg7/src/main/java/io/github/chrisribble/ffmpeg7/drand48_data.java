@@ -56,7 +56,7 @@ public class drand48_data {
         return __x$LAYOUT;
     }
 
-    private static final long __x$OFFSET = 0;
+    private static final long __x$OFFSET = $LAYOUT.byteOffset(groupElement("__x"));
 
     /**
      * Offset for field:
@@ -133,7 +133,7 @@ public class drand48_data {
         return __old_x$LAYOUT;
     }
 
-    private static final long __old_x$OFFSET = 6;
+    private static final long __old_x$OFFSET = $LAYOUT.byteOffset(groupElement("__old_x"));
 
     /**
      * Offset for field:
@@ -210,7 +210,7 @@ public class drand48_data {
         return __c$LAYOUT;
     }
 
-    private static final long __c$OFFSET = 12;
+    private static final long __c$OFFSET = $LAYOUT.byteOffset(groupElement("__c"));
 
     /**
      * Offset for field:
@@ -254,7 +254,7 @@ public class drand48_data {
         return __init$LAYOUT;
     }
 
-    private static final long __init$OFFSET = 14;
+    private static final long __init$OFFSET = $LAYOUT.byteOffset(groupElement("__init"));
 
     /**
      * Offset for field:
@@ -298,7 +298,7 @@ public class drand48_data {
         return __a$LAYOUT;
     }
 
-    private static final long __a$OFFSET = 16;
+    private static final long __a$OFFSET = $LAYOUT.byteOffset(groupElement("__a"));
 
     /**
      * Offset for field:

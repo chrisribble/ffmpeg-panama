@@ -57,7 +57,7 @@ public class AVHWDeviceContext {
         return av_class$LAYOUT;
     }
 
-    private static final long av_class$OFFSET = 0;
+    private static final long av_class$OFFSET = $LAYOUT.byteOffset(groupElement("av_class"));
 
     /**
      * Offset for field:
@@ -101,7 +101,7 @@ public class AVHWDeviceContext {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 8;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -145,7 +145,7 @@ public class AVHWDeviceContext {
         return hwctx$LAYOUT;
     }
 
-    private static final long hwctx$OFFSET = 16;
+    private static final long hwctx$OFFSET = $LAYOUT.byteOffset(groupElement("hwctx"));
 
     /**
      * Offset for field:
@@ -182,9 +182,9 @@ public class AVHWDeviceContext {
      * void (*free)(struct AVHWDeviceContext *)
      * }
      */
-    public static class free {
+    public final static class free {
 
-        free() {
+        private free() {
             // Should not be called directly
         }
 
@@ -221,9 +221,11 @@ public class AVHWDeviceContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static void invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static void invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                  DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -242,7 +244,7 @@ public class AVHWDeviceContext {
         return free$LAYOUT;
     }
 
-    private static final long free$OFFSET = 24;
+    private static final long free$OFFSET = $LAYOUT.byteOffset(groupElement("free"));
 
     /**
      * Offset for field:
@@ -286,7 +288,7 @@ public class AVHWDeviceContext {
         return user_opaque$LAYOUT;
     }
 
-    private static final long user_opaque$OFFSET = 32;
+    private static final long user_opaque$OFFSET = $LAYOUT.byteOffset(groupElement("user_opaque"));
 
     /**
      * Offset for field:

@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * int (*write_packet)(void *, const uint8_t *, int)
  * }
  */
-public class avio_alloc_context$write_packet {
+public final class avio_alloc_context$write_packet {
 
-    avio_alloc_context$write_packet() {
+    private avio_alloc_context$write_packet() {
         // Should not be called directly
     }
 
@@ -59,9 +59,11 @@ public class avio_alloc_context$write_packet {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, int _x2) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, int _x2) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

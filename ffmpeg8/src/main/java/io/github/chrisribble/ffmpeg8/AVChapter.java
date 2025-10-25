@@ -56,7 +56,7 @@ public class AVChapter {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 0;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -100,7 +100,7 @@ public class AVChapter {
         return time_base$LAYOUT;
     }
 
-    private static final long time_base$OFFSET = 8;
+    private static final long time_base$OFFSET = $LAYOUT.byteOffset(groupElement("time_base"));
 
     /**
      * Offset for field:
@@ -144,7 +144,7 @@ public class AVChapter {
         return start$LAYOUT;
     }
 
-    private static final long start$OFFSET = 16;
+    private static final long start$OFFSET = $LAYOUT.byteOffset(groupElement("start"));
 
     /**
      * Offset for field:
@@ -188,7 +188,7 @@ public class AVChapter {
         return end$LAYOUT;
     }
 
-    private static final long end$OFFSET = 24;
+    private static final long end$OFFSET = $LAYOUT.byteOffset(groupElement("end"));
 
     /**
      * Offset for field:
@@ -232,7 +232,7 @@ public class AVChapter {
         return metadata$LAYOUT;
     }
 
-    private static final long metadata$OFFSET = 32;
+    private static final long metadata$OFFSET = $LAYOUT.byteOffset(groupElement("metadata"));
 
     /**
      * Offset for field:

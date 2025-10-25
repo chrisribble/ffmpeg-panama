@@ -52,7 +52,7 @@ public class pthread_mutex_t {
         return __data$LAYOUT;
     }
 
-    private static final long __data$OFFSET = 0;
+    private static final long __data$OFFSET = $LAYOUT.byteOffset(groupElement("__data"));
 
     /**
      * Offset for field:
@@ -96,7 +96,7 @@ public class pthread_mutex_t {
         return __size$LAYOUT;
     }
 
-    private static final long __size$OFFSET = 0;
+    private static final long __size$OFFSET = $LAYOUT.byteOffset(groupElement("__size"));
 
     /**
      * Offset for field:
@@ -173,7 +173,7 @@ public class pthread_mutex_t {
         return __align$LAYOUT;
     }
 
-    private static final long __align$OFFSET = 0;
+    private static final long __align$OFFSET = $LAYOUT.byteOffset(groupElement("__align"));
 
     /**
      * Offset for field:

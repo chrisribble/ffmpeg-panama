@@ -59,7 +59,7 @@ public class AVSubtitle {
         return format$LAYOUT;
     }
 
-    private static final long format$OFFSET = 0;
+    private static final long format$OFFSET = $LAYOUT.byteOffset(groupElement("format"));
 
     /**
      * Offset for field:
@@ -103,7 +103,7 @@ public class AVSubtitle {
         return start_display_time$LAYOUT;
     }
 
-    private static final long start_display_time$OFFSET = 4;
+    private static final long start_display_time$OFFSET = $LAYOUT.byteOffset(groupElement("start_display_time"));
 
     /**
      * Offset for field:
@@ -147,7 +147,7 @@ public class AVSubtitle {
         return end_display_time$LAYOUT;
     }
 
-    private static final long end_display_time$OFFSET = 8;
+    private static final long end_display_time$OFFSET = $LAYOUT.byteOffset(groupElement("end_display_time"));
 
     /**
      * Offset for field:
@@ -191,7 +191,7 @@ public class AVSubtitle {
         return num_rects$LAYOUT;
     }
 
-    private static final long num_rects$OFFSET = 12;
+    private static final long num_rects$OFFSET = $LAYOUT.byteOffset(groupElement("num_rects"));
 
     /**
      * Offset for field:
@@ -235,7 +235,7 @@ public class AVSubtitle {
         return rects$LAYOUT;
     }
 
-    private static final long rects$OFFSET = 16;
+    private static final long rects$OFFSET = $LAYOUT.byteOffset(groupElement("rects"));
 
     /**
      * Offset for field:
@@ -279,7 +279,7 @@ public class AVSubtitle {
         return pts$LAYOUT;
     }
 
-    private static final long pts$OFFSET = 24;
+    private static final long pts$OFFSET = $LAYOUT.byteOffset(groupElement("pts"));
 
     /**
      * Offset for field:

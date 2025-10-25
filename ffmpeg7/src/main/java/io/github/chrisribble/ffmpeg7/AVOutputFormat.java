@@ -66,7 +66,7 @@ public class AVOutputFormat {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 0;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -110,7 +110,7 @@ public class AVOutputFormat {
         return long_name$LAYOUT;
     }
 
-    private static final long long_name$OFFSET = 8;
+    private static final long long_name$OFFSET = $LAYOUT.byteOffset(groupElement("long_name"));
 
     /**
      * Offset for field:
@@ -154,7 +154,7 @@ public class AVOutputFormat {
         return mime_type$LAYOUT;
     }
 
-    private static final long mime_type$OFFSET = 16;
+    private static final long mime_type$OFFSET = $LAYOUT.byteOffset(groupElement("mime_type"));
 
     /**
      * Offset for field:
@@ -198,7 +198,7 @@ public class AVOutputFormat {
         return extensions$LAYOUT;
     }
 
-    private static final long extensions$OFFSET = 24;
+    private static final long extensions$OFFSET = $LAYOUT.byteOffset(groupElement("extensions"));
 
     /**
      * Offset for field:
@@ -242,7 +242,7 @@ public class AVOutputFormat {
         return audio_codec$LAYOUT;
     }
 
-    private static final long audio_codec$OFFSET = 32;
+    private static final long audio_codec$OFFSET = $LAYOUT.byteOffset(groupElement("audio_codec"));
 
     /**
      * Offset for field:
@@ -286,7 +286,7 @@ public class AVOutputFormat {
         return video_codec$LAYOUT;
     }
 
-    private static final long video_codec$OFFSET = 36;
+    private static final long video_codec$OFFSET = $LAYOUT.byteOffset(groupElement("video_codec"));
 
     /**
      * Offset for field:
@@ -330,7 +330,7 @@ public class AVOutputFormat {
         return subtitle_codec$LAYOUT;
     }
 
-    private static final long subtitle_codec$OFFSET = 40;
+    private static final long subtitle_codec$OFFSET = $LAYOUT.byteOffset(groupElement("subtitle_codec"));
 
     /**
      * Offset for field:
@@ -374,7 +374,7 @@ public class AVOutputFormat {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 44;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:
@@ -418,7 +418,7 @@ public class AVOutputFormat {
         return codec_tag$LAYOUT;
     }
 
-    private static final long codec_tag$OFFSET = 48;
+    private static final long codec_tag$OFFSET = $LAYOUT.byteOffset(groupElement("codec_tag"));
 
     /**
      * Offset for field:
@@ -462,7 +462,7 @@ public class AVOutputFormat {
         return priv_class$LAYOUT;
     }
 
-    private static final long priv_class$OFFSET = 56;
+    private static final long priv_class$OFFSET = $LAYOUT.byteOffset(groupElement("priv_class"));
 
     /**
      * Offset for field:

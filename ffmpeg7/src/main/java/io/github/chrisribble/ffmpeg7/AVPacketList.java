@@ -50,7 +50,7 @@ public class AVPacketList {
         return pkt$LAYOUT;
     }
 
-    private static final long pkt$OFFSET = 0;
+    private static final long pkt$OFFSET = $LAYOUT.byteOffset(groupElement("pkt"));
 
     /**
      * Offset for field:
@@ -94,7 +94,7 @@ public class AVPacketList {
         return next$LAYOUT;
     }
 
-    private static final long next$OFFSET = 104;
+    private static final long next$OFFSET = $LAYOUT.byteOffset(groupElement("next"));
 
     /**
      * Offset for field:

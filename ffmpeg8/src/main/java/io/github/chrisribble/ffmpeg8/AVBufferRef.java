@@ -52,7 +52,7 @@ public class AVBufferRef {
         return buffer$LAYOUT;
     }
 
-    private static final long buffer$OFFSET = 0;
+    private static final long buffer$OFFSET = $LAYOUT.byteOffset(groupElement("buffer"));
 
     /**
      * Offset for field:
@@ -96,7 +96,7 @@ public class AVBufferRef {
         return data$LAYOUT;
     }
 
-    private static final long data$OFFSET = 8;
+    private static final long data$OFFSET = $LAYOUT.byteOffset(groupElement("data"));
 
     /**
      * Offset for field:
@@ -140,7 +140,7 @@ public class AVBufferRef {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 16;
+    private static final long size$OFFSET = $LAYOUT.byteOffset(groupElement("size"));
 
     /**
      * Offset for field:

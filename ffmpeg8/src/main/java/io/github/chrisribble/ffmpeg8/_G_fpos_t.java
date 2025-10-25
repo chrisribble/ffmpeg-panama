@@ -50,7 +50,7 @@ public class _G_fpos_t {
         return __pos$LAYOUT;
     }
 
-    private static final long __pos$OFFSET = 0;
+    private static final long __pos$OFFSET = $LAYOUT.byteOffset(groupElement("__pos"));
 
     /**
      * Offset for field:
@@ -94,7 +94,7 @@ public class _G_fpos_t {
         return __state$LAYOUT;
     }
 
-    private static final long __state$OFFSET = 8;
+    private static final long __state$OFFSET = $LAYOUT.byteOffset(groupElement("__state"));
 
     /**
      * Offset for field:

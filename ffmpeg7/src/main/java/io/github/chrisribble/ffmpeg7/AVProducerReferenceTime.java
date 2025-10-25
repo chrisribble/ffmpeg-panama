@@ -51,7 +51,7 @@ public class AVProducerReferenceTime {
         return wallclock$LAYOUT;
     }
 
-    private static final long wallclock$OFFSET = 0;
+    private static final long wallclock$OFFSET = $LAYOUT.byteOffset(groupElement("wallclock"));
 
     /**
      * Offset for field:
@@ -95,7 +95,7 @@ public class AVProducerReferenceTime {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 8;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:

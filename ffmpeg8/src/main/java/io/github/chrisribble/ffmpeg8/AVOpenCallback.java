@@ -92,9 +92,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * } *, AVIOContext **, const char *, int, const AVIOInterruptCB *, AVDictionary **)
  * }
  */
-public class AVOpenCallback {
+public final class AVOpenCallback {
 
-    AVOpenCallback() {
+    private AVOpenCallback() {
         // Should not be called directly
     }
 
@@ -137,9 +137,11 @@ public class AVOpenCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment s, MemorySegment pb, MemorySegment url, int flags, MemorySegment int_cb, MemorySegment options) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment s, MemorySegment pb, MemorySegment url, int flags, MemorySegment int_cb, MemorySegment options) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, s, pb, url, flags, int_cb, options);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

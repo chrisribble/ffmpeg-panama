@@ -71,7 +71,7 @@ public class AVHWFramesContext {
         return av_class$LAYOUT;
     }
 
-    private static final long av_class$OFFSET = 0;
+    private static final long av_class$OFFSET = $LAYOUT.byteOffset(groupElement("av_class"));
 
     /**
      * Offset for field:
@@ -115,7 +115,7 @@ public class AVHWFramesContext {
         return device_ref$LAYOUT;
     }
 
-    private static final long device_ref$OFFSET = 8;
+    private static final long device_ref$OFFSET = $LAYOUT.byteOffset(groupElement("device_ref"));
 
     /**
      * Offset for field:
@@ -159,7 +159,7 @@ public class AVHWFramesContext {
         return device_ctx$LAYOUT;
     }
 
-    private static final long device_ctx$OFFSET = 16;
+    private static final long device_ctx$OFFSET = $LAYOUT.byteOffset(groupElement("device_ctx"));
 
     /**
      * Offset for field:
@@ -203,7 +203,7 @@ public class AVHWFramesContext {
         return hwctx$LAYOUT;
     }
 
-    private static final long hwctx$OFFSET = 24;
+    private static final long hwctx$OFFSET = $LAYOUT.byteOffset(groupElement("hwctx"));
 
     /**
      * Offset for field:
@@ -240,9 +240,9 @@ public class AVHWFramesContext {
      * void (*free)(struct AVHWFramesContext *)
      * }
      */
-    public static class free {
+    public final static class free {
 
-        free() {
+        private free() {
             // Should not be called directly
         }
 
@@ -279,9 +279,11 @@ public class AVHWFramesContext {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static void invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static void invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                  DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -300,7 +302,7 @@ public class AVHWFramesContext {
         return free$LAYOUT;
     }
 
-    private static final long free$OFFSET = 32;
+    private static final long free$OFFSET = $LAYOUT.byteOffset(groupElement("free"));
 
     /**
      * Offset for field:
@@ -344,7 +346,7 @@ public class AVHWFramesContext {
         return user_opaque$LAYOUT;
     }
 
-    private static final long user_opaque$OFFSET = 40;
+    private static final long user_opaque$OFFSET = $LAYOUT.byteOffset(groupElement("user_opaque"));
 
     /**
      * Offset for field:
@@ -388,7 +390,7 @@ public class AVHWFramesContext {
         return pool$LAYOUT;
     }
 
-    private static final long pool$OFFSET = 48;
+    private static final long pool$OFFSET = $LAYOUT.byteOffset(groupElement("pool"));
 
     /**
      * Offset for field:
@@ -432,7 +434,7 @@ public class AVHWFramesContext {
         return initial_pool_size$LAYOUT;
     }
 
-    private static final long initial_pool_size$OFFSET = 56;
+    private static final long initial_pool_size$OFFSET = $LAYOUT.byteOffset(groupElement("initial_pool_size"));
 
     /**
      * Offset for field:
@@ -476,7 +478,7 @@ public class AVHWFramesContext {
         return format$LAYOUT;
     }
 
-    private static final long format$OFFSET = 60;
+    private static final long format$OFFSET = $LAYOUT.byteOffset(groupElement("format"));
 
     /**
      * Offset for field:
@@ -520,7 +522,7 @@ public class AVHWFramesContext {
         return sw_format$LAYOUT;
     }
 
-    private static final long sw_format$OFFSET = 64;
+    private static final long sw_format$OFFSET = $LAYOUT.byteOffset(groupElement("sw_format"));
 
     /**
      * Offset for field:
@@ -564,7 +566,7 @@ public class AVHWFramesContext {
         return width$LAYOUT;
     }
 
-    private static final long width$OFFSET = 68;
+    private static final long width$OFFSET = $LAYOUT.byteOffset(groupElement("width"));
 
     /**
      * Offset for field:
@@ -608,7 +610,7 @@ public class AVHWFramesContext {
         return height$LAYOUT;
     }
 
-    private static final long height$OFFSET = 72;
+    private static final long height$OFFSET = $LAYOUT.byteOffset(groupElement("height"));
 
     /**
      * Offset for field:

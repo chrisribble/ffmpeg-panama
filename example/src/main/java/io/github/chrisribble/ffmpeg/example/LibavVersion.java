@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.chrisribble.ffmpeg7.FFmpeg;
-import io.github.chrisribble.ffmpeg7.FFmpeg_1;
-import io.github.chrisribble.ffmpeg7.FFmpeg_3;
 
 final class LibavVersion {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -48,7 +46,7 @@ final class LibavVersion {
 	}
 
 	public static String getVersionInfo() {
-		return FFmpeg_3.av_version_info().getString(0, StandardCharsets.UTF_8);
+		return FFmpeg.av_version_info().getString(0, StandardCharsets.UTF_8);
 	}
 
 	public boolean isCompatible() {
@@ -56,15 +54,15 @@ final class LibavVersion {
 	}
 
 	private static int getAvCodecVersion() {
-		return FFmpeg_1.avcodec_version();
+		return FFmpeg.avcodec_version();
 	}
 
 	private static int getAvFormatVersion() {
-		return FFmpeg_1.avformat_version();
+		return FFmpeg.avformat_version();
 	}
 
 	private static int getAvUtilVersion() {
-		return FFmpeg_3.avutil_version();
+		return FFmpeg.avutil_version();
 	}
 
 	private static int getSwScaleVersion() {

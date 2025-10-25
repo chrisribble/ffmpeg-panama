@@ -50,7 +50,7 @@ public class av_intfloat64 {
         return i$LAYOUT;
     }
 
-    private static final long i$OFFSET = 0;
+    private static final long i$OFFSET = $LAYOUT.byteOffset(groupElement("i"));
 
     /**
      * Offset for field:
@@ -94,7 +94,7 @@ public class av_intfloat64 {
         return f$LAYOUT;
     }
 
-    private static final long f$OFFSET = 0;
+    private static final long f$OFFSET = $LAYOUT.byteOffset(groupElement("f"));
 
     /**
      * Offset for field:

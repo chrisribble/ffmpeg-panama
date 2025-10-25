@@ -53,7 +53,7 @@ public class AVPacketSideData {
         return data$LAYOUT;
     }
 
-    private static final long data$OFFSET = 0;
+    private static final long data$OFFSET = $LAYOUT.byteOffset(groupElement("data"));
 
     /**
      * Offset for field:
@@ -97,7 +97,7 @@ public class AVPacketSideData {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 8;
+    private static final long size$OFFSET = $LAYOUT.byteOffset(groupElement("size"));
 
     /**
      * Offset for field:
@@ -141,7 +141,7 @@ public class AVPacketSideData {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 16;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:

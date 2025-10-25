@@ -54,7 +54,7 @@ public class SwsFilter {
         return lumH$LAYOUT;
     }
 
-    private static final long lumH$OFFSET = 0;
+    private static final long lumH$OFFSET = $LAYOUT.byteOffset(groupElement("lumH"));
 
     /**
      * Offset for field:
@@ -98,7 +98,7 @@ public class SwsFilter {
         return lumV$LAYOUT;
     }
 
-    private static final long lumV$OFFSET = 8;
+    private static final long lumV$OFFSET = $LAYOUT.byteOffset(groupElement("lumV"));
 
     /**
      * Offset for field:
@@ -142,7 +142,7 @@ public class SwsFilter {
         return chrH$LAYOUT;
     }
 
-    private static final long chrH$OFFSET = 16;
+    private static final long chrH$OFFSET = $LAYOUT.byteOffset(groupElement("chrH"));
 
     /**
      * Offset for field:
@@ -186,7 +186,7 @@ public class SwsFilter {
         return chrV$LAYOUT;
     }
 
-    private static final long chrV$OFFSET = 24;
+    private static final long chrV$OFFSET = $LAYOUT.byteOffset(groupElement("chrV"));
 
     /**
      * Offset for field:

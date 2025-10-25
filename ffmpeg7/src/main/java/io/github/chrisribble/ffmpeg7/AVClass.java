@@ -68,7 +68,7 @@ public class AVClass {
         return class_name$LAYOUT;
     }
 
-    private static final long class_name$OFFSET = 0;
+    private static final long class_name$OFFSET = $LAYOUT.byteOffset(groupElement("class_name"));
 
     /**
      * Offset for field:
@@ -105,9 +105,9 @@ public class AVClass {
      * const char *(*item_name)(void *)
      * }
      */
-    public static class item_name {
+    public final static class item_name {
 
-        item_name() {
+        private item_name() {
             // Should not be called directly
         }
 
@@ -145,9 +145,11 @@ public class AVClass {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                 return (MemorySegment) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -166,7 +168,7 @@ public class AVClass {
         return item_name$LAYOUT;
     }
 
-    private static final long item_name$OFFSET = 8;
+    private static final long item_name$OFFSET = $LAYOUT.byteOffset(groupElement("item_name"));
 
     /**
      * Offset for field:
@@ -210,7 +212,7 @@ public class AVClass {
         return option$LAYOUT;
     }
 
-    private static final long option$OFFSET = 16;
+    private static final long option$OFFSET = $LAYOUT.byteOffset(groupElement("option"));
 
     /**
      * Offset for field:
@@ -254,7 +256,7 @@ public class AVClass {
         return version$LAYOUT;
     }
 
-    private static final long version$OFFSET = 24;
+    private static final long version$OFFSET = $LAYOUT.byteOffset(groupElement("version"));
 
     /**
      * Offset for field:
@@ -298,7 +300,7 @@ public class AVClass {
         return log_level_offset_offset$LAYOUT;
     }
 
-    private static final long log_level_offset_offset$OFFSET = 28;
+    private static final long log_level_offset_offset$OFFSET = $LAYOUT.byteOffset(groupElement("log_level_offset_offset"));
 
     /**
      * Offset for field:
@@ -342,7 +344,7 @@ public class AVClass {
         return parent_log_context_offset$LAYOUT;
     }
 
-    private static final long parent_log_context_offset$OFFSET = 32;
+    private static final long parent_log_context_offset$OFFSET = $LAYOUT.byteOffset(groupElement("parent_log_context_offset"));
 
     /**
      * Offset for field:
@@ -386,7 +388,7 @@ public class AVClass {
         return category$LAYOUT;
     }
 
-    private static final long category$OFFSET = 36;
+    private static final long category$OFFSET = $LAYOUT.byteOffset(groupElement("category"));
 
     /**
      * Offset for field:
@@ -423,9 +425,9 @@ public class AVClass {
      * AVClassCategory (*get_category)(void *)
      * }
      */
-    public static class get_category {
+    public final static class get_category {
 
-        get_category() {
+        private get_category() {
             // Should not be called directly
         }
 
@@ -463,9 +465,11 @@ public class AVClass {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -484,7 +488,7 @@ public class AVClass {
         return get_category$LAYOUT;
     }
 
-    private static final long get_category$OFFSET = 40;
+    private static final long get_category$OFFSET = $LAYOUT.byteOffset(groupElement("get_category"));
 
     /**
      * Offset for field:
@@ -521,9 +525,9 @@ public class AVClass {
      * int (*query_ranges)(struct AVOptionRanges **, void *, const char *, int)
      * }
      */
-    public static class query_ranges {
+    public final static class query_ranges {
 
-        query_ranges() {
+        private query_ranges() {
             // Should not be called directly
         }
 
@@ -564,9 +568,11 @@ public class AVClass {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static int invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1, MemorySegment _x2, int _x3) {
+        public static int invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1, MemorySegment _x2, int _x3) {
             try {
                 return (int) DOWN$MH.invokeExact(funcPtr, _x0, _x1, _x2, _x3);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -585,7 +591,7 @@ public class AVClass {
         return query_ranges$LAYOUT;
     }
 
-    private static final long query_ranges$OFFSET = 48;
+    private static final long query_ranges$OFFSET = $LAYOUT.byteOffset(groupElement("query_ranges"));
 
     /**
      * Offset for field:
@@ -622,9 +628,9 @@ public class AVClass {
      * void *(*child_next)(void *, void *)
      * }
      */
-    public static class child_next {
+    public final static class child_next {
 
-        child_next() {
+        private child_next() {
             // Should not be called directly
         }
 
@@ -663,9 +669,11 @@ public class AVClass {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment _x0, MemorySegment _x1) {
+        public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment _x0, MemorySegment _x1) {
             try {
                 return (MemorySegment) DOWN$MH.invokeExact(funcPtr, _x0, _x1);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -684,7 +692,7 @@ public class AVClass {
         return child_next$LAYOUT;
     }
 
-    private static final long child_next$OFFSET = 56;
+    private static final long child_next$OFFSET = $LAYOUT.byteOffset(groupElement("child_next"));
 
     /**
      * Offset for field:
@@ -721,9 +729,9 @@ public class AVClass {
      * const struct AVClass *(*child_class_iterate)(void **)
      * }
      */
-    public static class child_class_iterate {
+    public final static class child_class_iterate {
 
-        child_class_iterate() {
+        private child_class_iterate() {
             // Should not be called directly
         }
 
@@ -761,9 +769,11 @@ public class AVClass {
         /**
          * Invoke the upcall stub {@code funcPtr}, with given parameters
          */
-        public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment _x0) {
+        public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment _x0) {
             try {
                 return (MemorySegment) DOWN$MH.invokeExact(funcPtr, _x0);
+            } catch (Error | RuntimeException ex) {
+                throw ex;
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
@@ -782,7 +792,7 @@ public class AVClass {
         return child_class_iterate$LAYOUT;
     }
 
-    private static final long child_class_iterate$OFFSET = 64;
+    private static final long child_class_iterate$OFFSET = $LAYOUT.byteOffset(groupElement("child_class_iterate"));
 
     /**
      * Offset for field:

@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * AVBufferRef *(*alloc)(size_t)
  * }
  */
-public class av_buffer_pool_init$alloc {
+public final class av_buffer_pool_init$alloc {
 
-    av_buffer_pool_init$alloc() {
+    private av_buffer_pool_init$alloc() {
         // Should not be called directly
     }
 
@@ -57,9 +57,11 @@ public class av_buffer_pool_init$alloc {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr,long _x0) {
+    public static MemorySegment invoke(MemorySegment funcPtr, long _x0) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, _x0);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

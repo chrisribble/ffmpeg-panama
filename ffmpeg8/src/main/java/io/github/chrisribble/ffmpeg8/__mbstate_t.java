@@ -53,7 +53,7 @@ public class __mbstate_t {
         return __count$LAYOUT;
     }
 
-    private static final long __count$OFFSET = 0;
+    private static final long __count$OFFSET = $LAYOUT.byteOffset(groupElement("__count"));
 
     /**
      * Offset for field:
@@ -123,7 +123,7 @@ public class __mbstate_t {
             return __wch$LAYOUT;
         }
 
-        private static final long __wch$OFFSET = 0;
+        private static final long __wch$OFFSET = $LAYOUT.byteOffset(groupElement("__wch"));
 
         /**
          * Offset for field:
@@ -167,7 +167,7 @@ public class __mbstate_t {
             return __wchb$LAYOUT;
         }
 
-        private static final long __wchb$OFFSET = 0;
+        private static final long __wchb$OFFSET = $LAYOUT.byteOffset(groupElement("__wchb"));
 
         /**
          * Offset for field:
@@ -292,7 +292,7 @@ public class __mbstate_t {
         return __value$LAYOUT;
     }
 
-    private static final long __value$OFFSET = 4;
+    private static final long __value$OFFSET = $LAYOUT.byteOffset(groupElement("__value"));
 
     /**
      * Offset for field:

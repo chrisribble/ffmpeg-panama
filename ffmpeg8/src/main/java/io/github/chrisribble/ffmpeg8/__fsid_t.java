@@ -48,7 +48,7 @@ public class __fsid_t {
         return __val$LAYOUT;
     }
 
-    private static final long __val$OFFSET = 0;
+    private static final long __val$OFFSET = $LAYOUT.byteOffset(groupElement("__val"));
 
     /**
      * Offset for field:

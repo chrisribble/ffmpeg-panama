@@ -56,7 +56,7 @@ public class AVCPBProperties {
         return max_bitrate$LAYOUT;
     }
 
-    private static final long max_bitrate$OFFSET = 0;
+    private static final long max_bitrate$OFFSET = $LAYOUT.byteOffset(groupElement("max_bitrate"));
 
     /**
      * Offset for field:
@@ -100,7 +100,7 @@ public class AVCPBProperties {
         return min_bitrate$LAYOUT;
     }
 
-    private static final long min_bitrate$OFFSET = 8;
+    private static final long min_bitrate$OFFSET = $LAYOUT.byteOffset(groupElement("min_bitrate"));
 
     /**
      * Offset for field:
@@ -144,7 +144,7 @@ public class AVCPBProperties {
         return avg_bitrate$LAYOUT;
     }
 
-    private static final long avg_bitrate$OFFSET = 16;
+    private static final long avg_bitrate$OFFSET = $LAYOUT.byteOffset(groupElement("avg_bitrate"));
 
     /**
      * Offset for field:
@@ -188,7 +188,7 @@ public class AVCPBProperties {
         return buffer_size$LAYOUT;
     }
 
-    private static final long buffer_size$OFFSET = 24;
+    private static final long buffer_size$OFFSET = $LAYOUT.byteOffset(groupElement("buffer_size"));
 
     /**
      * Offset for field:
@@ -232,7 +232,7 @@ public class AVCPBProperties {
         return vbv_delay$LAYOUT;
     }
 
-    private static final long vbv_delay$OFFSET = 32;
+    private static final long vbv_delay$OFFSET = $LAYOUT.byteOffset(groupElement("vbv_delay"));
 
     /**
      * Offset for field:

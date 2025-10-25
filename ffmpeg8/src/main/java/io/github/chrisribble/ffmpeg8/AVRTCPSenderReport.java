@@ -58,7 +58,7 @@ public class AVRTCPSenderReport {
         return ssrc$LAYOUT;
     }
 
-    private static final long ssrc$OFFSET = 0;
+    private static final long ssrc$OFFSET = $LAYOUT.byteOffset(groupElement("ssrc"));
 
     /**
      * Offset for field:
@@ -102,7 +102,7 @@ public class AVRTCPSenderReport {
         return ntp_timestamp$LAYOUT;
     }
 
-    private static final long ntp_timestamp$OFFSET = 8;
+    private static final long ntp_timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("ntp_timestamp"));
 
     /**
      * Offset for field:
@@ -146,7 +146,7 @@ public class AVRTCPSenderReport {
         return rtp_timestamp$LAYOUT;
     }
 
-    private static final long rtp_timestamp$OFFSET = 16;
+    private static final long rtp_timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("rtp_timestamp"));
 
     /**
      * Offset for field:
@@ -190,7 +190,7 @@ public class AVRTCPSenderReport {
         return sender_nb_packets$LAYOUT;
     }
 
-    private static final long sender_nb_packets$OFFSET = 20;
+    private static final long sender_nb_packets$OFFSET = $LAYOUT.byteOffset(groupElement("sender_nb_packets"));
 
     /**
      * Offset for field:
@@ -234,7 +234,7 @@ public class AVRTCPSenderReport {
         return sender_nb_bytes$LAYOUT;
     }
 
-    private static final long sender_nb_bytes$OFFSET = 24;
+    private static final long sender_nb_bytes$OFFSET = $LAYOUT.byteOffset(groupElement("sender_nb_bytes"));
 
     /**
      * Offset for field:

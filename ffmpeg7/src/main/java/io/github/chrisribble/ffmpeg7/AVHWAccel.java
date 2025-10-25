@@ -56,7 +56,7 @@ public class AVHWAccel {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 0;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -100,7 +100,7 @@ public class AVHWAccel {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 8;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -144,7 +144,7 @@ public class AVHWAccel {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 12;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -188,7 +188,7 @@ public class AVHWAccel {
         return pix_fmt$LAYOUT;
     }
 
-    private static final long pix_fmt$OFFSET = 16;
+    private static final long pix_fmt$OFFSET = $LAYOUT.byteOffset(groupElement("pix_fmt"));
 
     /**
      * Offset for field:
@@ -232,7 +232,7 @@ public class AVHWAccel {
         return capabilities$LAYOUT;
     }
 
-    private static final long capabilities$OFFSET = 20;
+    private static final long capabilities$OFFSET = $LAYOUT.byteOffset(groupElement("capabilities"));
 
     /**
      * Offset for field:

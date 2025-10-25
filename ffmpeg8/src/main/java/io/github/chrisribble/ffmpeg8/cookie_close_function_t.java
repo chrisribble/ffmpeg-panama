@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * typedef int (cookie_close_function_t)(void *)
  * }
  */
-public class cookie_close_function_t {
+public final class cookie_close_function_t {
 
-    cookie_close_function_t() {
+    private cookie_close_function_t() {
         // Should not be called directly
     }
 
@@ -57,9 +57,11 @@ public class cookie_close_function_t {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment __cookie) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment __cookie) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, __cookie);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

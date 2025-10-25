@@ -55,7 +55,7 @@ public class AVStreamGroupLCEVC {
         return av_class$LAYOUT;
     }
 
-    private static final long av_class$OFFSET = 0;
+    private static final long av_class$OFFSET = $LAYOUT.byteOffset(groupElement("av_class"));
 
     /**
      * Offset for field:
@@ -99,7 +99,7 @@ public class AVStreamGroupLCEVC {
         return lcevc_index$LAYOUT;
     }
 
-    private static final long lcevc_index$OFFSET = 8;
+    private static final long lcevc_index$OFFSET = $LAYOUT.byteOffset(groupElement("lcevc_index"));
 
     /**
      * Offset for field:
@@ -143,7 +143,7 @@ public class AVStreamGroupLCEVC {
         return width$LAYOUT;
     }
 
-    private static final long width$OFFSET = 12;
+    private static final long width$OFFSET = $LAYOUT.byteOffset(groupElement("width"));
 
     /**
      * Offset for field:
@@ -187,7 +187,7 @@ public class AVStreamGroupLCEVC {
         return height$LAYOUT;
     }
 
-    private static final long height$OFFSET = 16;
+    private static final long height$OFFSET = $LAYOUT.byteOffset(groupElement("height"));
 
     /**
      * Offset for field:

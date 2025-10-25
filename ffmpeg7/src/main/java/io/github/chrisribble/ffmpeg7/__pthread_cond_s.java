@@ -62,7 +62,7 @@ public class __pthread_cond_s {
         return __wseq$LAYOUT;
     }
 
-    private static final long __wseq$OFFSET = 0;
+    private static final long __wseq$OFFSET = $LAYOUT.byteOffset(groupElement("__wseq"));
 
     /**
      * Offset for field:
@@ -106,7 +106,7 @@ public class __pthread_cond_s {
         return __g1_start$LAYOUT;
     }
 
-    private static final long __g1_start$OFFSET = 8;
+    private static final long __g1_start$OFFSET = $LAYOUT.byteOffset(groupElement("__g1_start"));
 
     /**
      * Offset for field:
@@ -150,7 +150,7 @@ public class __pthread_cond_s {
         return __g_size$LAYOUT;
     }
 
-    private static final long __g_size$OFFSET = 16;
+    private static final long __g_size$OFFSET = $LAYOUT.byteOffset(groupElement("__g_size"));
 
     /**
      * Offset for field:
@@ -227,7 +227,7 @@ public class __pthread_cond_s {
         return __g1_orig_size$LAYOUT;
     }
 
-    private static final long __g1_orig_size$OFFSET = 24;
+    private static final long __g1_orig_size$OFFSET = $LAYOUT.byteOffset(groupElement("__g1_orig_size"));
 
     /**
      * Offset for field:
@@ -271,7 +271,7 @@ public class __pthread_cond_s {
         return __wrefs$LAYOUT;
     }
 
-    private static final long __wrefs$OFFSET = 28;
+    private static final long __wrefs$OFFSET = $LAYOUT.byteOffset(groupElement("__wrefs"));
 
     /**
      * Offset for field:
@@ -315,7 +315,7 @@ public class __pthread_cond_s {
         return __g_signals$LAYOUT;
     }
 
-    private static final long __g_signals$OFFSET = 32;
+    private static final long __g_signals$OFFSET = $LAYOUT.byteOffset(groupElement("__g_signals"));
 
     /**
      * Offset for field:
@@ -392,7 +392,7 @@ public class __pthread_cond_s {
         return __unused_initialized_1$LAYOUT;
     }
 
-    private static final long __unused_initialized_1$OFFSET = 40;
+    private static final long __unused_initialized_1$OFFSET = $LAYOUT.byteOffset(groupElement("__unused_initialized_1"));
 
     /**
      * Offset for field:
@@ -436,7 +436,7 @@ public class __pthread_cond_s {
         return __unused_initialized_2$LAYOUT;
     }
 
-    private static final long __unused_initialized_2$OFFSET = 44;
+    private static final long __unused_initialized_2$OFFSET = $LAYOUT.byteOffset(groupElement("__unused_initialized_2"));
 
     /**
      * Offset for field:

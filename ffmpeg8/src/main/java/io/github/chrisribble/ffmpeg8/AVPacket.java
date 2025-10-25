@@ -76,7 +76,7 @@ public class AVPacket {
         return buf$LAYOUT;
     }
 
-    private static final long buf$OFFSET = 0;
+    private static final long buf$OFFSET = $LAYOUT.byteOffset(groupElement("buf"));
 
     /**
      * Offset for field:
@@ -120,7 +120,7 @@ public class AVPacket {
         return pts$LAYOUT;
     }
 
-    private static final long pts$OFFSET = 8;
+    private static final long pts$OFFSET = $LAYOUT.byteOffset(groupElement("pts"));
 
     /**
      * Offset for field:
@@ -164,7 +164,7 @@ public class AVPacket {
         return dts$LAYOUT;
     }
 
-    private static final long dts$OFFSET = 16;
+    private static final long dts$OFFSET = $LAYOUT.byteOffset(groupElement("dts"));
 
     /**
      * Offset for field:
@@ -208,7 +208,7 @@ public class AVPacket {
         return data$LAYOUT;
     }
 
-    private static final long data$OFFSET = 24;
+    private static final long data$OFFSET = $LAYOUT.byteOffset(groupElement("data"));
 
     /**
      * Offset for field:
@@ -252,7 +252,7 @@ public class AVPacket {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 32;
+    private static final long size$OFFSET = $LAYOUT.byteOffset(groupElement("size"));
 
     /**
      * Offset for field:
@@ -296,7 +296,7 @@ public class AVPacket {
         return stream_index$LAYOUT;
     }
 
-    private static final long stream_index$OFFSET = 36;
+    private static final long stream_index$OFFSET = $LAYOUT.byteOffset(groupElement("stream_index"));
 
     /**
      * Offset for field:
@@ -340,7 +340,7 @@ public class AVPacket {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 40;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:
@@ -384,7 +384,7 @@ public class AVPacket {
         return side_data$LAYOUT;
     }
 
-    private static final long side_data$OFFSET = 48;
+    private static final long side_data$OFFSET = $LAYOUT.byteOffset(groupElement("side_data"));
 
     /**
      * Offset for field:
@@ -428,7 +428,7 @@ public class AVPacket {
         return side_data_elems$LAYOUT;
     }
 
-    private static final long side_data_elems$OFFSET = 56;
+    private static final long side_data_elems$OFFSET = $LAYOUT.byteOffset(groupElement("side_data_elems"));
 
     /**
      * Offset for field:
@@ -472,7 +472,7 @@ public class AVPacket {
         return duration$LAYOUT;
     }
 
-    private static final long duration$OFFSET = 64;
+    private static final long duration$OFFSET = $LAYOUT.byteOffset(groupElement("duration"));
 
     /**
      * Offset for field:
@@ -516,7 +516,7 @@ public class AVPacket {
         return pos$LAYOUT;
     }
 
-    private static final long pos$OFFSET = 72;
+    private static final long pos$OFFSET = $LAYOUT.byteOffset(groupElement("pos"));
 
     /**
      * Offset for field:
@@ -560,7 +560,7 @@ public class AVPacket {
         return opaque$LAYOUT;
     }
 
-    private static final long opaque$OFFSET = 80;
+    private static final long opaque$OFFSET = $LAYOUT.byteOffset(groupElement("opaque"));
 
     /**
      * Offset for field:
@@ -604,7 +604,7 @@ public class AVPacket {
         return opaque_ref$LAYOUT;
     }
 
-    private static final long opaque_ref$OFFSET = 88;
+    private static final long opaque_ref$OFFSET = $LAYOUT.byteOffset(groupElement("opaque_ref"));
 
     /**
      * Offset for field:
@@ -648,7 +648,7 @@ public class AVPacket {
         return time_base$LAYOUT;
     }
 
-    private static final long time_base$OFFSET = 96;
+    private static final long time_base$OFFSET = $LAYOUT.byteOffset(groupElement("time_base"));
 
     /**
      * Offset for field:

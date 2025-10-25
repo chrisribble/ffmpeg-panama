@@ -51,7 +51,7 @@ public class AVSideDataDescriptor {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 0;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -95,7 +95,7 @@ public class AVSideDataDescriptor {
         return props$LAYOUT;
     }
 
-    private static final long props$OFFSET = 8;
+    private static final long props$OFFSET = $LAYOUT.byteOffset(groupElement("props"));
 
     /**
      * Offset for field:

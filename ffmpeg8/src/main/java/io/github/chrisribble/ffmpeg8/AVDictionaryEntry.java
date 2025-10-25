@@ -50,7 +50,7 @@ public class AVDictionaryEntry {
         return key$LAYOUT;
     }
 
-    private static final long key$OFFSET = 0;
+    private static final long key$OFFSET = $LAYOUT.byteOffset(groupElement("key"));
 
     /**
      * Offset for field:
@@ -94,7 +94,7 @@ public class AVDictionaryEntry {
         return value$LAYOUT;
     }
 
-    private static final long value$OFFSET = 8;
+    private static final long value$OFFSET = $LAYOUT.byteOffset(groupElement("value"));
 
     /**
      * Offset for field:

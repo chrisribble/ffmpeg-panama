@@ -82,7 +82,7 @@ public class AVStream {
         return av_class$LAYOUT;
     }
 
-    private static final long av_class$OFFSET = 0;
+    private static final long av_class$OFFSET = $LAYOUT.byteOffset(groupElement("av_class"));
 
     /**
      * Offset for field:
@@ -126,7 +126,7 @@ public class AVStream {
         return index$LAYOUT;
     }
 
-    private static final long index$OFFSET = 8;
+    private static final long index$OFFSET = $LAYOUT.byteOffset(groupElement("index"));
 
     /**
      * Offset for field:
@@ -170,7 +170,7 @@ public class AVStream {
         return id$LAYOUT;
     }
 
-    private static final long id$OFFSET = 12;
+    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
 
     /**
      * Offset for field:
@@ -214,7 +214,7 @@ public class AVStream {
         return codecpar$LAYOUT;
     }
 
-    private static final long codecpar$OFFSET = 16;
+    private static final long codecpar$OFFSET = $LAYOUT.byteOffset(groupElement("codecpar"));
 
     /**
      * Offset for field:
@@ -258,7 +258,7 @@ public class AVStream {
         return priv_data$LAYOUT;
     }
 
-    private static final long priv_data$OFFSET = 24;
+    private static final long priv_data$OFFSET = $LAYOUT.byteOffset(groupElement("priv_data"));
 
     /**
      * Offset for field:
@@ -302,7 +302,7 @@ public class AVStream {
         return time_base$LAYOUT;
     }
 
-    private static final long time_base$OFFSET = 32;
+    private static final long time_base$OFFSET = $LAYOUT.byteOffset(groupElement("time_base"));
 
     /**
      * Offset for field:
@@ -346,7 +346,7 @@ public class AVStream {
         return start_time$LAYOUT;
     }
 
-    private static final long start_time$OFFSET = 40;
+    private static final long start_time$OFFSET = $LAYOUT.byteOffset(groupElement("start_time"));
 
     /**
      * Offset for field:
@@ -390,7 +390,7 @@ public class AVStream {
         return duration$LAYOUT;
     }
 
-    private static final long duration$OFFSET = 48;
+    private static final long duration$OFFSET = $LAYOUT.byteOffset(groupElement("duration"));
 
     /**
      * Offset for field:
@@ -434,7 +434,7 @@ public class AVStream {
         return nb_frames$LAYOUT;
     }
 
-    private static final long nb_frames$OFFSET = 56;
+    private static final long nb_frames$OFFSET = $LAYOUT.byteOffset(groupElement("nb_frames"));
 
     /**
      * Offset for field:
@@ -478,7 +478,7 @@ public class AVStream {
         return disposition$LAYOUT;
     }
 
-    private static final long disposition$OFFSET = 64;
+    private static final long disposition$OFFSET = $LAYOUT.byteOffset(groupElement("disposition"));
 
     /**
      * Offset for field:
@@ -522,7 +522,7 @@ public class AVStream {
         return discard$LAYOUT;
     }
 
-    private static final long discard$OFFSET = 68;
+    private static final long discard$OFFSET = $LAYOUT.byteOffset(groupElement("discard"));
 
     /**
      * Offset for field:
@@ -566,7 +566,7 @@ public class AVStream {
         return sample_aspect_ratio$LAYOUT;
     }
 
-    private static final long sample_aspect_ratio$OFFSET = 72;
+    private static final long sample_aspect_ratio$OFFSET = $LAYOUT.byteOffset(groupElement("sample_aspect_ratio"));
 
     /**
      * Offset for field:
@@ -610,7 +610,7 @@ public class AVStream {
         return metadata$LAYOUT;
     }
 
-    private static final long metadata$OFFSET = 80;
+    private static final long metadata$OFFSET = $LAYOUT.byteOffset(groupElement("metadata"));
 
     /**
      * Offset for field:
@@ -654,7 +654,7 @@ public class AVStream {
         return avg_frame_rate$LAYOUT;
     }
 
-    private static final long avg_frame_rate$OFFSET = 88;
+    private static final long avg_frame_rate$OFFSET = $LAYOUT.byteOffset(groupElement("avg_frame_rate"));
 
     /**
      * Offset for field:
@@ -698,7 +698,7 @@ public class AVStream {
         return attached_pic$LAYOUT;
     }
 
-    private static final long attached_pic$OFFSET = 96;
+    private static final long attached_pic$OFFSET = $LAYOUT.byteOffset(groupElement("attached_pic"));
 
     /**
      * Offset for field:
@@ -742,7 +742,7 @@ public class AVStream {
         return event_flags$LAYOUT;
     }
 
-    private static final long event_flags$OFFSET = 200;
+    private static final long event_flags$OFFSET = $LAYOUT.byteOffset(groupElement("event_flags"));
 
     /**
      * Offset for field:
@@ -786,7 +786,7 @@ public class AVStream {
         return r_frame_rate$LAYOUT;
     }
 
-    private static final long r_frame_rate$OFFSET = 204;
+    private static final long r_frame_rate$OFFSET = $LAYOUT.byteOffset(groupElement("r_frame_rate"));
 
     /**
      * Offset for field:
@@ -830,7 +830,7 @@ public class AVStream {
         return pts_wrap_bits$LAYOUT;
     }
 
-    private static final long pts_wrap_bits$OFFSET = 212;
+    private static final long pts_wrap_bits$OFFSET = $LAYOUT.byteOffset(groupElement("pts_wrap_bits"));
 
     /**
      * Offset for field:

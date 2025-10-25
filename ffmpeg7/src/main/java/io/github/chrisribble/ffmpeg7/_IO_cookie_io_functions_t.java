@@ -54,7 +54,7 @@ public class _IO_cookie_io_functions_t {
         return read$LAYOUT;
     }
 
-    private static final long read$OFFSET = 0;
+    private static final long read$OFFSET = $LAYOUT.byteOffset(groupElement("read"));
 
     /**
      * Offset for field:
@@ -98,7 +98,7 @@ public class _IO_cookie_io_functions_t {
         return write$LAYOUT;
     }
 
-    private static final long write$OFFSET = 8;
+    private static final long write$OFFSET = $LAYOUT.byteOffset(groupElement("write"));
 
     /**
      * Offset for field:
@@ -142,7 +142,7 @@ public class _IO_cookie_io_functions_t {
         return seek$LAYOUT;
     }
 
-    private static final long seek$OFFSET = 16;
+    private static final long seek$OFFSET = $LAYOUT.byteOffset(groupElement("seek"));
 
     /**
      * Offset for field:
@@ -186,7 +186,7 @@ public class _IO_cookie_io_functions_t {
         return close$LAYOUT;
     }
 
-    private static final long close$OFFSET = 24;
+    private static final long close$OFFSET = $LAYOUT.byteOffset(groupElement("close"));
 
     /**
      * Offset for field:

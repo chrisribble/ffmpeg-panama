@@ -66,7 +66,7 @@ public class AVIODirEntry {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 0;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -110,7 +110,7 @@ public class AVIODirEntry {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 8;
+    private static final long type$OFFSET = $LAYOUT.byteOffset(groupElement("type"));
 
     /**
      * Offset for field:
@@ -154,7 +154,7 @@ public class AVIODirEntry {
         return utf8$LAYOUT;
     }
 
-    private static final long utf8$OFFSET = 12;
+    private static final long utf8$OFFSET = $LAYOUT.byteOffset(groupElement("utf8"));
 
     /**
      * Offset for field:
@@ -198,7 +198,7 @@ public class AVIODirEntry {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 16;
+    private static final long size$OFFSET = $LAYOUT.byteOffset(groupElement("size"));
 
     /**
      * Offset for field:
@@ -242,7 +242,7 @@ public class AVIODirEntry {
         return modification_timestamp$LAYOUT;
     }
 
-    private static final long modification_timestamp$OFFSET = 24;
+    private static final long modification_timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("modification_timestamp"));
 
     /**
      * Offset for field:
@@ -286,7 +286,7 @@ public class AVIODirEntry {
         return access_timestamp$LAYOUT;
     }
 
-    private static final long access_timestamp$OFFSET = 32;
+    private static final long access_timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("access_timestamp"));
 
     /**
      * Offset for field:
@@ -330,7 +330,7 @@ public class AVIODirEntry {
         return status_change_timestamp$LAYOUT;
     }
 
-    private static final long status_change_timestamp$OFFSET = 40;
+    private static final long status_change_timestamp$OFFSET = $LAYOUT.byteOffset(groupElement("status_change_timestamp"));
 
     /**
      * Offset for field:
@@ -374,7 +374,7 @@ public class AVIODirEntry {
         return user_id$LAYOUT;
     }
 
-    private static final long user_id$OFFSET = 48;
+    private static final long user_id$OFFSET = $LAYOUT.byteOffset(groupElement("user_id"));
 
     /**
      * Offset for field:
@@ -418,7 +418,7 @@ public class AVIODirEntry {
         return group_id$LAYOUT;
     }
 
-    private static final long group_id$OFFSET = 56;
+    private static final long group_id$OFFSET = $LAYOUT.byteOffset(groupElement("group_id"));
 
     /**
      * Offset for field:
@@ -462,7 +462,7 @@ public class AVIODirEntry {
         return filemode$LAYOUT;
     }
 
-    private static final long filemode$OFFSET = 64;
+    private static final long filemode$OFFSET = $LAYOUT.byteOffset(groupElement("filemode"));
 
     /**
      * Offset for field:

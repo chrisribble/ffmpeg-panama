@@ -61,7 +61,7 @@ public class AVPixFmtDescriptor {
         return name$LAYOUT;
     }
 
-    private static final long name$OFFSET = 0;
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
 
     /**
      * Offset for field:
@@ -105,7 +105,7 @@ public class AVPixFmtDescriptor {
         return nb_components$LAYOUT;
     }
 
-    private static final long nb_components$OFFSET = 8;
+    private static final long nb_components$OFFSET = $LAYOUT.byteOffset(groupElement("nb_components"));
 
     /**
      * Offset for field:
@@ -149,7 +149,7 @@ public class AVPixFmtDescriptor {
         return log2_chroma_w$LAYOUT;
     }
 
-    private static final long log2_chroma_w$OFFSET = 9;
+    private static final long log2_chroma_w$OFFSET = $LAYOUT.byteOffset(groupElement("log2_chroma_w"));
 
     /**
      * Offset for field:
@@ -193,7 +193,7 @@ public class AVPixFmtDescriptor {
         return log2_chroma_h$LAYOUT;
     }
 
-    private static final long log2_chroma_h$OFFSET = 10;
+    private static final long log2_chroma_h$OFFSET = $LAYOUT.byteOffset(groupElement("log2_chroma_h"));
 
     /**
      * Offset for field:
@@ -237,7 +237,7 @@ public class AVPixFmtDescriptor {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 16;
+    private static final long flags$OFFSET = $LAYOUT.byteOffset(groupElement("flags"));
 
     /**
      * Offset for field:
@@ -281,7 +281,7 @@ public class AVPixFmtDescriptor {
         return comp$LAYOUT;
     }
 
-    private static final long comp$OFFSET = 24;
+    private static final long comp$OFFSET = $LAYOUT.byteOffset(groupElement("comp"));
 
     /**
      * Offset for field:
@@ -335,6 +335,8 @@ public class AVPixFmtDescriptor {
     public static MemorySegment comp(MemorySegment struct, long index0) {
         try {
             return (MemorySegment)comp$ELEM_HANDLE.invokeExact(struct, 0L, index0);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -362,7 +364,7 @@ public class AVPixFmtDescriptor {
         return alias$LAYOUT;
     }
 
-    private static final long alias$OFFSET = 104;
+    private static final long alias$OFFSET = $LAYOUT.byteOffset(groupElement("alias"));
 
     /**
      * Offset for field:

@@ -17,9 +17,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  * void (*pool_free)(void *)
  * }
  */
-public class av_buffer_pool_init2$pool_free {
+public final class av_buffer_pool_init2$pool_free {
 
-    av_buffer_pool_init2$pool_free() {
+    private av_buffer_pool_init2$pool_free() {
         // Should not be called directly
     }
 
@@ -56,9 +56,11 @@ public class av_buffer_pool_init2$pool_free {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment _x0) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment _x0) {
         try {
              DOWN$MH.invokeExact(funcPtr, _x0);
+        } catch (Error | RuntimeException ex) {
+            throw ex;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

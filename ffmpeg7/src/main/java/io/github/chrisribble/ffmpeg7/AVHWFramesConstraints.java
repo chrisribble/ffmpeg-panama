@@ -58,7 +58,7 @@ public class AVHWFramesConstraints {
         return valid_hw_formats$LAYOUT;
     }
 
-    private static final long valid_hw_formats$OFFSET = 0;
+    private static final long valid_hw_formats$OFFSET = $LAYOUT.byteOffset(groupElement("valid_hw_formats"));
 
     /**
      * Offset for field:
@@ -102,7 +102,7 @@ public class AVHWFramesConstraints {
         return valid_sw_formats$LAYOUT;
     }
 
-    private static final long valid_sw_formats$OFFSET = 8;
+    private static final long valid_sw_formats$OFFSET = $LAYOUT.byteOffset(groupElement("valid_sw_formats"));
 
     /**
      * Offset for field:
@@ -146,7 +146,7 @@ public class AVHWFramesConstraints {
         return min_width$LAYOUT;
     }
 
-    private static final long min_width$OFFSET = 16;
+    private static final long min_width$OFFSET = $LAYOUT.byteOffset(groupElement("min_width"));
 
     /**
      * Offset for field:
@@ -190,7 +190,7 @@ public class AVHWFramesConstraints {
         return min_height$LAYOUT;
     }
 
-    private static final long min_height$OFFSET = 20;
+    private static final long min_height$OFFSET = $LAYOUT.byteOffset(groupElement("min_height"));
 
     /**
      * Offset for field:
@@ -234,7 +234,7 @@ public class AVHWFramesConstraints {
         return max_width$LAYOUT;
     }
 
-    private static final long max_width$OFFSET = 24;
+    private static final long max_width$OFFSET = $LAYOUT.byteOffset(groupElement("max_width"));
 
     /**
      * Offset for field:
@@ -278,7 +278,7 @@ public class AVHWFramesConstraints {
         return max_height$LAYOUT;
     }
 
-    private static final long max_height$OFFSET = 28;
+    private static final long max_height$OFFSET = $LAYOUT.byteOffset(groupElement("max_height"));
 
     /**
      * Offset for field:
