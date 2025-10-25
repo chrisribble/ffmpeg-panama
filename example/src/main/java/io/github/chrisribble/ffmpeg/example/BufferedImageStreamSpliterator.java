@@ -1,9 +1,6 @@
 package io.github.chrisribble.ffmpeg.example;
 
 import static io.github.chrisribble.ffmpeg.example.Macros.AVERROR;
-import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_CHAR;
-import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_INT;
-import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.AVERROR_EOF;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.SWS_BILINEAR;
@@ -20,7 +17,7 @@ import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_find_decoder;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_free_context;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_open2;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_parameters_to_context;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_receive_frame; 
+import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_receive_frame;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_send_packet;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.avformat_close_input;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.avformat_find_stream_info;
@@ -28,6 +25,9 @@ import static io.github.chrisribble.ffmpeg7.FFmpeg.avformat_open_input;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.sws_freeContext;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.sws_getContext;
 import static io.github.chrisribble.ffmpeg7.FFmpeg.sws_scale;
+import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_CHAR;
+import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_INT;
+import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.awt.Point;

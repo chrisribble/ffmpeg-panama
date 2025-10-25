@@ -28,6 +28,7 @@ rm -rf ${BINDINGS_SRC}
 jextract \
   --include-dir ./ffmpeg-${FFMPEG_VERSION} \
   --library avcodec --library avformat --library avutil --library swscale \
+  @includes.txt \
   --output ${BINDINGS_SRC} --target-package io.github.chrisribble.${BINDINGS} \
   --header-class-name FFmpeg \
   "<libavcodec/avcodec.h>" \
