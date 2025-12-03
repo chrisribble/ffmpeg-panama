@@ -5464,7 +5464,7 @@ public class AVCodecContext {
      * }
      */
     public static long error(MemorySegment struct, long index0) {
-        return (long)error$ELEM_HANDLE.get(struct, 0L, index0);
+        return (long)error$ELEM_HANDLE.get(struct, error$OFFSET, index0);
     }
 
     /**
@@ -5474,7 +5474,7 @@ public class AVCodecContext {
      * }
      */
     public static void error(MemorySegment struct, long index0, long fieldValue) {
-        error$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        error$ELEM_HANDLE.set(struct, error$OFFSET, index0, fieldValue);
     }
 
     private static final OfInt dct_algo$LAYOUT = (OfInt)$LAYOUT.select(groupElement("dct_algo"));

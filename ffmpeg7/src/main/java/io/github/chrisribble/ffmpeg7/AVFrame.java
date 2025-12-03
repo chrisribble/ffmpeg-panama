@@ -192,7 +192,7 @@ public class AVFrame {
      * }
      */
     public static MemorySegment data(MemorySegment struct, long index0) {
-        return (MemorySegment)data$ELEM_HANDLE.get(struct, 0L, index0);
+        return (MemorySegment)data$ELEM_HANDLE.get(struct, data$OFFSET, index0);
     }
 
     /**
@@ -202,7 +202,7 @@ public class AVFrame {
      * }
      */
     public static void data(MemorySegment struct, long index0, MemorySegment fieldValue) {
-        data$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        data$ELEM_HANDLE.set(struct, data$OFFSET, index0, fieldValue);
     }
 
     private static final SequenceLayout linesize$LAYOUT = (SequenceLayout)$LAYOUT.select(groupElement("linesize"));
@@ -269,7 +269,7 @@ public class AVFrame {
      * }
      */
     public static int linesize(MemorySegment struct, long index0) {
-        return (int)linesize$ELEM_HANDLE.get(struct, 0L, index0);
+        return (int)linesize$ELEM_HANDLE.get(struct, linesize$OFFSET, index0);
     }
 
     /**
@@ -279,7 +279,7 @@ public class AVFrame {
      * }
      */
     public static void linesize(MemorySegment struct, long index0, int fieldValue) {
-        linesize$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        linesize$ELEM_HANDLE.set(struct, linesize$OFFSET, index0, fieldValue);
     }
 
     private static final AddressLayout extended_data$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("extended_data"));
@@ -1138,7 +1138,7 @@ public class AVFrame {
      * }
      */
     public static MemorySegment buf(MemorySegment struct, long index0) {
-        return (MemorySegment)buf$ELEM_HANDLE.get(struct, 0L, index0);
+        return (MemorySegment)buf$ELEM_HANDLE.get(struct, buf$OFFSET, index0);
     }
 
     /**
@@ -1148,7 +1148,7 @@ public class AVFrame {
      * }
      */
     public static void buf(MemorySegment struct, long index0, MemorySegment fieldValue) {
-        buf$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        buf$ELEM_HANDLE.set(struct, buf$OFFSET, index0, fieldValue);
     }
 
     private static final AddressLayout extended_buf$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("extended_buf"));

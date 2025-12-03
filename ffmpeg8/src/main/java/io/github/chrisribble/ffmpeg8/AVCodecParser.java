@@ -110,7 +110,7 @@ public class AVCodecParser {
      * }
      */
     public static int codec_ids(MemorySegment struct, long index0) {
-        return (int)codec_ids$ELEM_HANDLE.get(struct, 0L, index0);
+        return (int)codec_ids$ELEM_HANDLE.get(struct, codec_ids$OFFSET, index0);
     }
 
     /**
@@ -120,7 +120,7 @@ public class AVCodecParser {
      * }
      */
     public static void codec_ids(MemorySegment struct, long index0, int fieldValue) {
-        codec_ids$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        codec_ids$ELEM_HANDLE.set(struct, codec_ids$OFFSET, index0, fieldValue);
     }
 
     private static final OfInt priv_data_size$LAYOUT = (OfInt)$LAYOUT.select(groupElement("priv_data_size"));

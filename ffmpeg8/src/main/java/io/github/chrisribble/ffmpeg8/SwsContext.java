@@ -274,7 +274,7 @@ public class SwsContext {
      * }
      */
     public static double scaler_params(MemorySegment struct, long index0) {
-        return (double)scaler_params$ELEM_HANDLE.get(struct, 0L, index0);
+        return (double)scaler_params$ELEM_HANDLE.get(struct, scaler_params$OFFSET, index0);
     }
 
     /**
@@ -284,7 +284,7 @@ public class SwsContext {
      * }
      */
     public static void scaler_params(MemorySegment struct, long index0, double fieldValue) {
-        scaler_params$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        scaler_params$ELEM_HANDLE.set(struct, scaler_params$OFFSET, index0, fieldValue);
     }
 
     private static final OfInt threads$LAYOUT = (OfInt)$LAYOUT.select(groupElement("threads"));

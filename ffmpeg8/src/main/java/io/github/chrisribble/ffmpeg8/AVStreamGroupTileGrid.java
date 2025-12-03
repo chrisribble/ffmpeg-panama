@@ -570,7 +570,7 @@ public class AVStreamGroupTileGrid {
      * }
      */
     public static byte background(MemorySegment struct, long index0) {
-        return (byte)background$ELEM_HANDLE.get(struct, 0L, index0);
+        return (byte)background$ELEM_HANDLE.get(struct, background$OFFSET, index0);
     }
 
     /**
@@ -580,7 +580,7 @@ public class AVStreamGroupTileGrid {
      * }
      */
     public static void background(MemorySegment struct, long index0, byte fieldValue) {
-        background$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        background$ELEM_HANDLE.set(struct, background$OFFSET, index0, fieldValue);
     }
 
     private static final OfInt horizontal_offset$LAYOUT = (OfInt)$LAYOUT.select(groupElement("horizontal_offset"));

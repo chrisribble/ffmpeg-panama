@@ -742,7 +742,7 @@ public class AVCodecParserContext {
      * }
      */
     public static long cur_frame_offset(MemorySegment struct, long index0) {
-        return (long)cur_frame_offset$ELEM_HANDLE.get(struct, 0L, index0);
+        return (long)cur_frame_offset$ELEM_HANDLE.get(struct, cur_frame_offset$OFFSET, index0);
     }
 
     /**
@@ -752,7 +752,7 @@ public class AVCodecParserContext {
      * }
      */
     public static void cur_frame_offset(MemorySegment struct, long index0, long fieldValue) {
-        cur_frame_offset$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        cur_frame_offset$ELEM_HANDLE.set(struct, cur_frame_offset$OFFSET, index0, fieldValue);
     }
 
     private static final SequenceLayout cur_frame_pts$LAYOUT = (SequenceLayout)$LAYOUT.select(groupElement("cur_frame_pts"));
@@ -819,7 +819,7 @@ public class AVCodecParserContext {
      * }
      */
     public static long cur_frame_pts(MemorySegment struct, long index0) {
-        return (long)cur_frame_pts$ELEM_HANDLE.get(struct, 0L, index0);
+        return (long)cur_frame_pts$ELEM_HANDLE.get(struct, cur_frame_pts$OFFSET, index0);
     }
 
     /**
@@ -829,7 +829,7 @@ public class AVCodecParserContext {
      * }
      */
     public static void cur_frame_pts(MemorySegment struct, long index0, long fieldValue) {
-        cur_frame_pts$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        cur_frame_pts$ELEM_HANDLE.set(struct, cur_frame_pts$OFFSET, index0, fieldValue);
     }
 
     private static final SequenceLayout cur_frame_dts$LAYOUT = (SequenceLayout)$LAYOUT.select(groupElement("cur_frame_dts"));
@@ -896,7 +896,7 @@ public class AVCodecParserContext {
      * }
      */
     public static long cur_frame_dts(MemorySegment struct, long index0) {
-        return (long)cur_frame_dts$ELEM_HANDLE.get(struct, 0L, index0);
+        return (long)cur_frame_dts$ELEM_HANDLE.get(struct, cur_frame_dts$OFFSET, index0);
     }
 
     /**
@@ -906,7 +906,7 @@ public class AVCodecParserContext {
      * }
      */
     public static void cur_frame_dts(MemorySegment struct, long index0, long fieldValue) {
-        cur_frame_dts$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        cur_frame_dts$ELEM_HANDLE.set(struct, cur_frame_dts$OFFSET, index0, fieldValue);
     }
 
     private static final OfInt flags$LAYOUT = (OfInt)$LAYOUT.select(groupElement("flags"));
@@ -1061,7 +1061,7 @@ public class AVCodecParserContext {
      * }
      */
     public static long cur_frame_end(MemorySegment struct, long index0) {
-        return (long)cur_frame_end$ELEM_HANDLE.get(struct, 0L, index0);
+        return (long)cur_frame_end$ELEM_HANDLE.get(struct, cur_frame_end$OFFSET, index0);
     }
 
     /**
@@ -1071,7 +1071,7 @@ public class AVCodecParserContext {
      * }
      */
     public static void cur_frame_end(MemorySegment struct, long index0, long fieldValue) {
-        cur_frame_end$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        cur_frame_end$ELEM_HANDLE.set(struct, cur_frame_end$OFFSET, index0, fieldValue);
     }
 
     private static final OfInt key_frame$LAYOUT = (OfInt)$LAYOUT.select(groupElement("key_frame"));
@@ -1314,7 +1314,7 @@ public class AVCodecParserContext {
      * }
      */
     public static long cur_frame_pos(MemorySegment struct, long index0) {
-        return (long)cur_frame_pos$ELEM_HANDLE.get(struct, 0L, index0);
+        return (long)cur_frame_pos$ELEM_HANDLE.get(struct, cur_frame_pos$OFFSET, index0);
     }
 
     /**
@@ -1324,7 +1324,7 @@ public class AVCodecParserContext {
      * }
      */
     public static void cur_frame_pos(MemorySegment struct, long index0, long fieldValue) {
-        cur_frame_pos$ELEM_HANDLE.set(struct, 0L, index0, fieldValue);
+        cur_frame_pos$ELEM_HANDLE.set(struct, cur_frame_pos$OFFSET, index0, fieldValue);
     }
 
     private static final OfLong pos$LAYOUT = (OfLong)$LAYOUT.select(groupElement("pos"));
