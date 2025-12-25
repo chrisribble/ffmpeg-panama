@@ -1,7 +1,7 @@
 plugins {
-	id 'com.github.ben-manes.versions' version '0.52.0'
+	id 'com.github.ben-manes.versions' version '0.53.0'
 	id 'se.solrike.sonarlint' version '2.2.0' apply false
-	id 'com.github.spotbugs' version '6.1.11' apply false
+	id 'com.github.spotbugs' version '6.4.8' apply false
 }
 
 

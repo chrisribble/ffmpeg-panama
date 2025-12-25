@@ -90,11 +90,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	private boolean opened;
 	private boolean closed;
 
-	private BufferedImageStreamSpliterator(final Builder builder) throws FileNotFoundException {
-		if (!Files.exists(builder.mp4)) {
-			throw new FileNotFoundException("File " + builder.mp4 + " does not exist");
-		}
-
+	private BufferedImageStreamSpliterator(final Builder builder) {
 		arena = builder.arena;
 		mp4 = builder.mp4;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
@@ -524,6 +520,9 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			}
 			if (mp4 == null) {
 				throw new IllegalArgumentException("mp4 must be non-null");
+			}
+			if (!Files.exists(mp4)) {
+				throw new FileNotFoundException("File " + mp4 + " does not exist");
 			}
 			if (pixelFormat == null) {
 				throw new IllegalArgumentException("pixelFormat must be non-null");
