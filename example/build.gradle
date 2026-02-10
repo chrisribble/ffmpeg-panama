@@ -2,7 +2,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'com.github.spotbugs'
 
 dependencies {
-	implementation project(':ffmpeg7')
+	implementation project(':ffmpeg8')
 	implementation libs.slf4j.api
 
 	runtimeOnly libs.slf4j.simple

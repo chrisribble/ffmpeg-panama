@@ -39,7 +39,7 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 		arena = Arena.ofConfined();
 		try {
 			splitr = BufferedImageStreamSpliterator.builder()
-					.mp4(builder.mp4)
+					.inputs(builder.inputs)
 					.modFrames(builder.modFrames)
 					.limit(builder.limit)
 					.pixelFormat(builder.pixelFormat)
@@ -294,7 +294,7 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 	}
 
 	public static final class Builder {
-		private Path mp4;
+		private List<Path> inputs;
 		private Integer modFrames;
 		private Integer limit;
 		private PixelFormat pixelFormat;
@@ -302,8 +302,13 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 
 		private Builder() {}
 
-		public Builder mp4(final Path mp4) {
-			this.mp4 = mp4;
+		public Builder input(final Path input) {
+			inputs = List.of(input);
+			return this;
+		}
+
+		public Builder inputs(final List<Path> inputs) {
+			this.inputs = List.copyOf(inputs);
 			return this;
 		}
 
@@ -328,8 +333,11 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 		}
 
 		public BufferedImageStream build() throws FileNotFoundException {
-			if (mp4 == null) {
-				throw new IllegalArgumentException("mp4 must be non-null");
+			if (inputs == null) {
+				throw new IllegalArgumentException("inputs must be non-null");
+			}
+			if (inputs.isEmpty()) {
+				throw new IllegalArgumentException("inputs must be non-empty");
 			}
 			if (pixelFormat == null) {
 				throw new IllegalArgumentException("palette must be non-null");

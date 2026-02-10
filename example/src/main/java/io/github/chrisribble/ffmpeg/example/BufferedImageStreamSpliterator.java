@@ -1,33 +1,33 @@
 package io.github.chrisribble.ffmpeg.example;
 
 import static io.github.chrisribble.ffmpeg.example.Macros.AVERROR;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.AVERROR_EOF;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.AVMEDIA_TYPE_VIDEO;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.SWS_BILINEAR;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_dump_format;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_frame_alloc;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_free;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_image_fill_arrays;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_image_get_buffer_size;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_malloc;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_packet_unref;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_read_frame;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_alloc_context3;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_find_decoder;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_free_context;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_open2;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_parameters_to_context;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_receive_frame;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avcodec_send_packet;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avformat_close_input;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avformat_find_stream_info;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.avformat_open_input;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.sws_freeContext;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.sws_getContext;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.sws_scale;
-import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_CHAR;
-import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_INT;
-import static io.github.chrisribble.ffmpeg7.FFmpeg$shared.C_POINTER;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AVERROR_EOF;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AVMEDIA_TYPE_VIDEO;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.SWS_BILINEAR;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_dump_format;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_frame_alloc;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_free;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_image_fill_arrays;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_image_get_buffer_size;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_malloc;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_packet_unref;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_read_frame;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_alloc_context3;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_find_decoder;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_free_context;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_open2;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_parameters_to_context;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_receive_frame;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_send_packet;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avformat_close_input;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avformat_find_stream_info;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.avformat_open_input;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.sws_freeContext;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.sws_getContext;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.sws_scale;
+import static io.github.chrisribble.ffmpeg8.FFmpeg$shared.C_CHAR;
+import static io.github.chrisribble.ffmpeg8.FFmpeg$shared.C_INT;
+import static io.github.chrisribble.ffmpeg8.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.awt.Point;
@@ -42,6 +42,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
@@ -51,13 +53,13 @@ import org.slf4j.LoggerFactory;
 import io.github.chrisribble.ffmpeg.example.exception.AVAllocateException;
 import io.github.chrisribble.ffmpeg.example.exception.AVException;
 import io.github.chrisribble.ffmpeg.example.exception.AVIOException;
-import io.github.chrisribble.ffmpeg7.AVCodec;
-import io.github.chrisribble.ffmpeg7.AVCodecContext;
-import io.github.chrisribble.ffmpeg7.AVCodecParameters;
-import io.github.chrisribble.ffmpeg7.AVFormatContext;
-import io.github.chrisribble.ffmpeg7.AVFrame;
-import io.github.chrisribble.ffmpeg7.AVPacket;
-import io.github.chrisribble.ffmpeg7.AVStream;
+import io.github.chrisribble.ffmpeg8.AVCodec;
+import io.github.chrisribble.ffmpeg8.AVCodecContext;
+import io.github.chrisribble.ffmpeg8.AVCodecParameters;
+import io.github.chrisribble.ffmpeg8.AVFormatContext;
+import io.github.chrisribble.ffmpeg8.AVFrame;
+import io.github.chrisribble.ffmpeg8.AVPacket;
+import io.github.chrisribble.ffmpeg8.AVStream;
 
 public final class BufferedImageStreamSpliterator implements Spliterator<BufferedImage>, AutoCloseable {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -65,7 +67,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	private static final int SIMD_ALIGN_BYTES = 32;
 
 	private final Arena arena;
-	private final Path mp4;
+	private final Path[] inputs;
 	private final int modFrames;
 	private final Integer limit;
 	private final PixelFormat pixelFormat;
@@ -92,7 +94,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 
 	private BufferedImageStreamSpliterator(final Builder builder) {
 		arena = builder.arena;
-		mp4 = builder.mp4;
+		inputs = builder.inputs;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
 		limit = builder.limit;
 		pixelFormat = builder.pixelFormat;
@@ -238,7 +240,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		ppFormatCtx = arena.allocate(C_POINTER);
 
 		// AVFormatContext*
-		pFormatCtx = openFile(ppFormatCtx, mp4.toString());
+		pFormatCtx = openInput(ppFormatCtx, inputs);
 
 		// Initialize decoder context
 		var decoderContext = getVideoDecoderContext(pFormatCtx);
@@ -312,20 +314,24 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		return image;
 	}
 
-	private MemorySegment openFile(final MemorySegment ppFormatCtx, final String file) {
+	private MemorySegment openInput(final MemorySegment ppFormatCtx, final Path... inputs) {
+		String input = inputs.length == 1
+				? inputs[0].toString()
+				: "concat:" + String.join("|", Arrays.stream(inputs).map(Path::toString).toList());
+
 		// char* fileName;
-		var fileName = arena.allocateFrom(file, StandardCharsets.UTF_8);
+		var fileName = arena.allocateFrom(input, StandardCharsets.UTF_8);
 		if (avformat_open_input(ppFormatCtx, fileName, NULL, NULL) != 0) {
-			if (!Files.exists(Paths.get(file))) {
-				throw new AVIOException("File '" + file + "' does not exist");
+			if (!Files.exists(Paths.get(input))) {
+				throw new AVIOException("File '" + input + "' does not exist");
 			}
-			throw new AVIOException("Cannot open file: " + file);
+			throw new AVIOException("Cannot open file: " + input);
 		}
 
 		// AVFormatContext*
 		var ctx = ppFormatCtx.get(C_POINTER, 0);
 		if (avformat_find_stream_info(ctx, NULL) < 0) {
-			throw new AVException("No streams detected in file: " + file);
+			throw new AVException("No streams detected in file: " + input);
 		}
 
 		// Dump AV format info to STDERR
@@ -477,7 +483,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		private static final LibavVersion LIBAV_VERSION = LibavVersion.getInstance();
 
 		private Arena arena;
-		private Path mp4;
+		private Path[] inputs;
 		private Integer modFrames;
 		private Integer limit;
 		private PixelFormat pixelFormat;
@@ -489,8 +495,13 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			}
 		}
 
-		public Builder mp4(final Path mp4) {
-			this.mp4 = mp4;
+		public Builder input(final Path input) {
+			inputs = new Path[] { input };
+			return this;
+		}
+
+		public Builder inputs(final List<Path> inputs) {
+			this.inputs = inputs.toArray(Path[]::new);
 			return this;
 		}
 
@@ -518,11 +529,16 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			if (arena == null) {
 				throw new IllegalArgumentException("arena must be non-null");
 			}
-			if (mp4 == null) {
-				throw new IllegalArgumentException("mp4 must be non-null");
+			if (inputs == null) {
+				throw new IllegalArgumentException("inputs must be non-null");
 			}
-			if (!Files.exists(mp4)) {
-				throw new FileNotFoundException("File " + mp4 + " does not exist");
+			for (Path input : inputs) {
+				if (input == null) {
+					throw new IllegalArgumentException("input must be non-null");
+				}
+				if (!Files.exists(input)) {
+					throw new FileNotFoundException("File " + input + " does not exist");
+				}
 			}
 			if (pixelFormat == null) {
 				throw new IllegalArgumentException("pixelFormat must be non-null");

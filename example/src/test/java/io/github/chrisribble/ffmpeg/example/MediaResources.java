@@ -8,6 +8,9 @@ public class MediaResources {
 
 	public static final TestFile LAVFI_TEST_SRC = new TestFile(RESOURCES_BASE, "testsrc.mp4");
 
+	public static final TestFile LAVFI_TEST_SRC_INIT = new TestFile(RESOURCES_BASE, "init-stream0.m4s");
+	public static final TestFile LAVFI_TEST_SRC_CHUNK = new TestFile(RESOURCES_BASE, "chunk-stream0-00001.m4s");
+
 	private MediaResources() {}
 
 	public record TestFile(String resources, String file) {

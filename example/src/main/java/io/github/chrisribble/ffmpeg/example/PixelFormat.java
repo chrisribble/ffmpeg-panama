@@ -1,15 +1,15 @@
 package io.github.chrisribble.ffmpeg.example;
 
-import static io.github.chrisribble.ffmpeg7.FFmpeg.AV_PIX_FMT_BGR24;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.AV_PIX_FMT_GRAY8;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.AV_PIX_FMT_RGB24;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AV_PIX_FMT_BGR24;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AV_PIX_FMT_GRAY8;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AV_PIX_FMT_RGB24;
 
 import java.awt.image.BufferedImage;
 
 public enum PixelFormat {
 	RGB(3, AV_PIX_FMT_RGB24(), BufferedImage.TYPE_3BYTE_BGR),
 	BGR(3, AV_PIX_FMT_BGR24(), BufferedImage.TYPE_3BYTE_BGR),
-	GRAY(1, AV_PIX_FMT_GRAY8(), BufferedImage.TYPE_BYTE_GRAY); 
+	GRAY(1, AV_PIX_FMT_GRAY8(), BufferedImage.TYPE_BYTE_GRAY);
 
 	private final int bytesPerPixel;
 	private final int ffmpegType;

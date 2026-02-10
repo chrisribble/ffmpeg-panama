@@ -1,7 +1,7 @@
 package io.github.chrisribble.ffmpeg.example;
 
-import static io.github.chrisribble.ffmpeg7.FFmpeg.AV_LOG_WARNING;
-import static io.github.chrisribble.ffmpeg7.FFmpeg.av_log_set_level;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AV_LOG_WARNING;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_log_set_level;
 import static org.testng.Assert.assertEquals;
 
 import java.awt.image.BufferedImage;
@@ -41,7 +41,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(MOD_FRAMES)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
@@ -66,7 +66,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(MOD_FRAMES)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
@@ -91,7 +91,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(MOD_FRAMES)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
@@ -117,7 +117,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(MOD_FRAMES)
 				.limit(limit)
 				.pixelFormat(format)
@@ -144,7 +144,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(MOD_FRAMES)
 				.limit(limit)
 				.pixelFormat(format)
@@ -171,7 +171,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.modFrames(MOD_FRAMES)
 				.limit(limit)
 				.pixelFormat(format)
@@ -198,7 +198,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.limit(limit)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
@@ -224,7 +224,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.limit(limit)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
@@ -250,7 +250,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.limit(limit)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
@@ -276,7 +276,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
@@ -302,7 +302,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
@@ -328,7 +328,7 @@ public class BufferedImageStreamTest {
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.mp4(MediaResources.LAVFI_TEST_SRC.getPath())
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.build()) {
@@ -336,6 +336,31 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.limit(limit)
 					.toList();
 			assertEquals(images.size(), limit);
+
+			// TODO: Assert on some more stuff
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test
+	public void testIsoBmffSegments() throws IOException {
+		var format = PixelFormat.BGR;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.inputs(List.of(MediaResources.LAVFI_TEST_SRC_INIT.getPath(), MediaResources.LAVFI_TEST_SRC_CHUNK.getPath()))
+				.modFrames(MOD_FRAMES)
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 5);
 
 			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);

@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.chrisribble.ffmpeg7.FFmpeg;
+import io.github.chrisribble.ffmpeg8.FFmpeg;
 
 final class LibavVersion {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
