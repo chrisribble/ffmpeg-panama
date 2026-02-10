@@ -107,23 +107,6 @@ public class BufferedImageStreamTest {
 		}
 	}
 
-	@Test
-	public void testGlobalArena() throws IOException {
-		var format = PixelFormat.GRAY;
-
-		Arena arena = Arena.global();
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
-				.input(MediaResources.LAVFI_TEST_SRC.getPath())
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.limit(2)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), 2);
-		}
-	}
-
 	@Test(expectedExceptions = FileNotFoundException.class)
 	public void testFileNotFoundException() throws IOException {
 		var format = PixelFormat.BGR;
