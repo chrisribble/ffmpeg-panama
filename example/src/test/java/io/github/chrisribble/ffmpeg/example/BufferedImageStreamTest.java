@@ -7,6 +7,7 @@ import static org.testng.Assert.assertEquals;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.foreign.Arena;
 import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,7 +31,94 @@ public class BufferedImageStreamTest {
 
 	static {
 		//av_log_set_level(AV_LOG_TRACE());
+		//av_log_set_level(AV_LOG_DEBUG());
+		//av_log_set_level(AV_LOG_VERBOSE());
+		//av_log_set_level(AV_LOG_INFO());
 		av_log_set_level(AV_LOG_WARNING());
+	}
+
+	@Test
+	public void testManagedArena() throws IOException {
+		var format = PixelFormat.GRAY;
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.limit(2)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 2);
+		}
+	}
+
+	@Test
+	public void testConfinedArena() throws IOException {
+		var format = PixelFormat.GRAY;
+
+		try (Arena arena = Arena.ofConfined();
+				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
+						.input(MediaResources.LAVFI_TEST_SRC.getPath())
+						.pixelFormat(format)
+						.resolution(OUTPUT_RESOLUTION)
+						.limit(2)
+						.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 2);
+		}
+	}
+
+	@Test
+	public void testSharedArena() throws IOException {
+		var format = PixelFormat.GRAY;
+
+		try (Arena arena = Arena.ofShared();
+				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
+						.input(MediaResources.LAVFI_TEST_SRC.getPath())
+						.pixelFormat(format)
+						.resolution(OUTPUT_RESOLUTION)
+						.limit(2)
+						.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 2);
+		}
+	}
+
+	@Test
+	public void testAutoArena() throws IOException {
+		var format = PixelFormat.GRAY;
+
+		Arena arena = Arena.ofAuto();
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.limit(2)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 2);
+		}
+	}
+
+	@Test
+	public void testGlobalArena() throws IOException {
+		var format = PixelFormat.GRAY;
+
+		Arena arena = Arena.global();
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
+				.input(MediaResources.LAVFI_TEST_SRC.getPath())
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.limit(2)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), 2);
+		}
 	}
 
 	@Test
@@ -50,7 +138,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 5);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -75,7 +162,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 5);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -100,7 +186,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 5);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -127,7 +212,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -154,7 +238,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -181,7 +264,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -207,7 +289,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -233,7 +314,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -259,7 +339,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -285,7 +364,6 @@ public class BufferedImageStreamTest {
 					.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -311,7 +389,6 @@ public class BufferedImageStreamTest {
 					.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -337,7 +414,6 @@ public class BufferedImageStreamTest {
 					.toList();
 			assertEquals(images.size(), limit);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
@@ -362,7 +438,6 @@ public class BufferedImageStreamTest {
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 5);
 
-			// TODO: Assert on some more stuff
 			writeImages(tmpDir, images);
 			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {

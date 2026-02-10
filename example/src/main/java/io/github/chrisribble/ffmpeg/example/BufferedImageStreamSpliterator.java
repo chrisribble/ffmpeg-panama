@@ -69,6 +69,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	private static final int SIMD_ALIGN_BYTES = 32;
 
 	private final Arena arena;
+
 	private final Path[] inputs;
 	private final int modFrames;
 	private final Integer limit;
@@ -103,8 +104,17 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		dstResolution = builder.resolution;
 	}
 
-	public static Builder builder() {
-		return new Builder();
+	/**
+	 * Create a new builder using the specified Arena which the caller manages
+	 *
+	 * @param arena
+	 *            to use for native memory allocations; must be managed in calling scope.
+	 * @return Builder instance configured with specified Arena
+	 *
+	 * @see https://cr.openjdk.org/~mcimadamore/panama/scoped_arenas.html
+	 */
+	public static Builder builder(final Arena arena) {
+		return new Builder(arena);
 	}
 
 	@Override
@@ -492,17 +502,22 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	public static final class Builder {
 		private static final LibavVersion LIBAV_VERSION = LibavVersion.getInstance();
 
-		private Arena arena;
+		private final Arena arena;
+
 		private Path[] inputs;
 		private Integer modFrames;
 		private Integer limit;
 		private PixelFormat pixelFormat;
 		private Resolution resolution;
 
-		private Builder() {
+		private Builder(final Arena arena) {
 			if (!LIBAV_VERSION.isCompatible()) {
 				throw new UnsupportedOperationException("Runtime FFmpeg version (" + LibavVersion.getVersionInfo() + ") is not compatible with bindings");
 			}
+			if (arena == null) {
+				throw new IllegalArgumentException("arena must be non-null");
+			}
+			this.arena = arena;
 		}
 
 		public Builder input(final Path input) {
@@ -535,10 +550,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			return this;
 		}
 
-		public BufferedImageStreamSpliterator build(final Arena arena) throws FileNotFoundException {
-			if (arena == null) {
-				throw new IllegalArgumentException("arena must be non-null");
-			}
+		public BufferedImageStreamSpliterator build() throws FileNotFoundException {
 			if (inputs == null) {
 				throw new IllegalArgumentException("inputs must be non-null");
 			}
@@ -553,7 +565,6 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			if (pixelFormat == null) {
 				throw new IllegalArgumentException("pixelFormat must be non-null");
 			}
-			this.arena = arena;
 			return new BufferedImageStreamSpliterator(this);
 		}
 	}

@@ -31,30 +31,41 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public final class BufferedImageStream implements Stream<BufferedImage> {
-	private final Arena arena;
+	private final Arena managedArena;
 	private final BufferedImageStreamSpliterator splitr;
 	private final Stream<BufferedImage> delegate;
 
 	private BufferedImageStream(final Builder builder) throws FileNotFoundException {
-		arena = Arena.ofConfined();
+		Arena arena;
+		if (builder.arena != null) {
+			// Allow callers to control memory Arena (i.e. Arena.ofConfined() for maximum single-threaded performance)
+			managedArena = null;
+			arena = builder.arena;
+		} else {
+			// Arena.ofShared() trades single-threaded throughput for access from any thread
+			managedArena = Arena.ofShared();
+			arena = managedArena;
+		}
 		try {
-			splitr = BufferedImageStreamSpliterator.builder()
+			splitr = BufferedImageStreamSpliterator.builder(arena)
 					.inputs(builder.inputs)
 					.modFrames(builder.modFrames)
 					.limit(builder.limit)
 					.pixelFormat(builder.pixelFormat)
 					.resolution(builder.resolution)
-					.build(arena);
+					.build();
 			delegate = StreamSupport.stream(splitr, false);
 		} catch (FileNotFoundException | RuntimeException e) {
-			arena.close();
+			if (managedArena != null) {
+				managedArena.close();
+			}
 			throw e;
 		}
 	}
 
 	@Override
 	public void close() {
-		try (arena; delegate; splitr) {
+		try (managedArena; delegate; splitr) {
 			// automatically-managed, reverse-order close
 		}
 	}
@@ -289,18 +300,44 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 		return delegate.findAny();
 	}
 
+	/**
+	 * Create a new builder with {@link java.lang.foreign.Arena#ofShared() Arena.ofShared()} automatic native memory management
+	 *
+	 * @return
+	 */
 	public static Builder builder() {
 		return new Builder();
 	}
 
+	/**
+	 * Create a new builder using the specified Arena which the caller manages
+	 *
+	 * @param arena
+	 *            to use for native memory allocations; must be managed in calling scope.
+	 * @return Builder instance configured with specified Arena
+	 *
+	 * @see https://cr.openjdk.org/~mcimadamore/panama/scoped_arenas.html
+	 */
+	public static Builder builder(final Arena arena) {
+		return new Builder(arena);
+	}
+
 	public static final class Builder {
+		private final Arena arena;
+
 		private List<Path> inputs;
 		private Integer modFrames;
 		private Integer limit;
 		private PixelFormat pixelFormat;
 		private Resolution resolution;
 
-		private Builder() {}
+		private Builder() {
+			arena = null;
+		}
+
+		private Builder(final Arena arena) {
+			this.arena = arena;
+		}
 
 		public Builder input(final Path input) {
 			inputs = List.of(input);
