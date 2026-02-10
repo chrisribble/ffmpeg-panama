@@ -150,7 +150,7 @@ public class AVChannelLayout {
         private static final GroupLayout $LAYOUT = MemoryLayout.unionLayout(
             FFmpeg.C_LONG.withName("mask"),
             FFmpeg.C_POINTER.withName("map")
-        ).withName("$anon$328:5");
+        ).withName("$anon$320:5");
 
         /**
          * The layout of this union

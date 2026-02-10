@@ -7,7 +7,7 @@ FFMPEG_VERSION="${1}"
 BINDINGS="${2}"
 
 if [ -z "${FFMPEG_VERSION}" ]; then
-	echo "FFmpeg version is required. Ex: 7.1.1"
+	echo "FFmpeg version is required. Ex: 8.0.1"
 	exit 1
 fi
 if [ -z "${BINDINGS}" ]; then

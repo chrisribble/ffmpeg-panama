@@ -5842,66 +5842,6 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
-    private static class av_frame_side_data_desc {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_desc");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * const AVSideDataDescriptor *av_frame_side_data_desc(enum AVFrameSideDataType type)
-     * }
-     */
-    public static FunctionDescriptor av_frame_side_data_desc$descriptor() {
-        return av_frame_side_data_desc.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * const AVSideDataDescriptor *av_frame_side_data_desc(enum AVFrameSideDataType type)
-     * }
-     */
-    public static MethodHandle av_frame_side_data_desc$handle() {
-        return av_frame_side_data_desc.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * const AVSideDataDescriptor *av_frame_side_data_desc(enum AVFrameSideDataType type)
-     * }
-     */
-    public static MemorySegment av_frame_side_data_desc$address() {
-        return av_frame_side_data_desc.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * const AVSideDataDescriptor *av_frame_side_data_desc(enum AVFrameSideDataType type)
-     * }
-     */
-    public static MemorySegment av_frame_side_data_desc(int type) {
-        var mh$ = av_frame_side_data_desc.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_frame_side_data_desc", type);
-            }
-            return (MemorySegment)mh$.invokeExact(type);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class av_frame_side_data_free {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             FFmpeg.C_POINTER,
@@ -6019,70 +5959,6 @@ public class FFmpeg extends FFmpeg$shared {
                 traceDowncall("av_frame_side_data_new", sd, nb_sd, type, size, flags);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type, size, flags);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class av_frame_side_data_add {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_add");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * AVFrameSideData *av_frame_side_data_add(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type, AVBufferRef **buf, unsigned int flags)
-     * }
-     */
-    public static FunctionDescriptor av_frame_side_data_add$descriptor() {
-        return av_frame_side_data_add.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * AVFrameSideData *av_frame_side_data_add(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type, AVBufferRef **buf, unsigned int flags)
-     * }
-     */
-    public static MethodHandle av_frame_side_data_add$handle() {
-        return av_frame_side_data_add.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * AVFrameSideData *av_frame_side_data_add(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type, AVBufferRef **buf, unsigned int flags)
-     * }
-     */
-    public static MemorySegment av_frame_side_data_add$address() {
-        return av_frame_side_data_add.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * AVFrameSideData *av_frame_side_data_add(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type, AVBufferRef **buf, unsigned int flags)
-     * }
-     */
-    public static MemorySegment av_frame_side_data_add(MemorySegment sd, MemorySegment nb_sd, int type, MemorySegment buf, int flags) {
-        var mh$ = av_frame_side_data_add.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_frame_side_data_add", sd, nb_sd, type, buf, flags);
-            }
-            return (MemorySegment)mh$.invokeExact(sd, nb_sd, type, buf, flags);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {
@@ -6208,67 +6084,6 @@ public class FFmpeg extends FFmpeg$shared {
                 traceDowncall("av_frame_side_data_get_c", sd, nb_sd, type);
             }
             return (MemorySegment)mh$.invokeExact(sd, nb_sd, type);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class av_frame_side_data_remove {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_frame_side_data_remove");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * void av_frame_side_data_remove(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type)
-     * }
-     */
-    public static FunctionDescriptor av_frame_side_data_remove$descriptor() {
-        return av_frame_side_data_remove.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * void av_frame_side_data_remove(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type)
-     * }
-     */
-    public static MethodHandle av_frame_side_data_remove$handle() {
-        return av_frame_side_data_remove.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * void av_frame_side_data_remove(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type)
-     * }
-     */
-    public static MemorySegment av_frame_side_data_remove$address() {
-        return av_frame_side_data_remove.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * void av_frame_side_data_remove(AVFrameSideData ***sd, int *nb_sd, enum AVFrameSideDataType type)
-     * }
-     */
-    public static void av_frame_side_data_remove(MemorySegment sd, MemorySegment nb_sd, int type) {
-        var mh$ = av_frame_side_data_remove.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_frame_side_data_remove", sd, nb_sd, type);
-            }
-            mh$.invokeExact(sd, nb_sd, type);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {
@@ -10084,71 +9899,6 @@ public class FFmpeg extends FFmpeg$shared {
                 traceDowncall("avcodec_get_hw_frames_parameters", avctx, device_ref, hw_pix_fmt, out_frames_ref);
             }
             return (int)mh$.invokeExact(avctx, device_ref, hw_pix_fmt, out_frames_ref);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class avcodec_get_supported_config {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_INT,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT,
-            FFmpeg.C_INT,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_supported_config");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * int avcodec_get_supported_config(const AVCodecContext *avctx, const AVCodec *codec, enum AVCodecConfig config, unsigned int flags, const void **out_configs, int *out_num_configs)
-     * }
-     */
-    public static FunctionDescriptor avcodec_get_supported_config$descriptor() {
-        return avcodec_get_supported_config.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * int avcodec_get_supported_config(const AVCodecContext *avctx, const AVCodec *codec, enum AVCodecConfig config, unsigned int flags, const void **out_configs, int *out_num_configs)
-     * }
-     */
-    public static MethodHandle avcodec_get_supported_config$handle() {
-        return avcodec_get_supported_config.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * int avcodec_get_supported_config(const AVCodecContext *avctx, const AVCodec *codec, enum AVCodecConfig config, unsigned int flags, const void **out_configs, int *out_num_configs)
-     * }
-     */
-    public static MemorySegment avcodec_get_supported_config$address() {
-        return avcodec_get_supported_config.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * int avcodec_get_supported_config(const AVCodecContext *avctx, const AVCodec *codec, enum AVCodecConfig config, unsigned int flags, const void **out_configs, int *out_num_configs)
-     * }
-     */
-    public static int avcodec_get_supported_config(MemorySegment avctx, MemorySegment codec, int config, int flags, MemorySegment out_configs, MemorySegment out_num_configs) {
-        var mh$ = avcodec_get_supported_config.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("avcodec_get_supported_config", avctx, codec, config, flags, out_configs, out_num_configs);
-            }
-            return (int)mh$.invokeExact(avctx, codec, config, flags, out_configs, out_num_configs);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {
@@ -19877,15 +19627,6 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AVERROR_HTTP_NOT_FOUND() {
         return AVERROR_HTTP_NOT_FOUND;
     }
-    private static final int AVERROR_HTTP_TOO_MANY_REQUESTS = (int)-959591672L;
-    /**
-     * {@snippet lang=c :
-     * #define AVERROR_HTTP_TOO_MANY_REQUESTS -959591672
-     * }
-     */
-    public static int AVERROR_HTTP_TOO_MANY_REQUESTS() {
-        return AVERROR_HTTP_TOO_MANY_REQUESTS;
-    }
     private static final int AVERROR_HTTP_OTHER_4XX = (int)-1482175736L;
     /**
      * {@snippet lang=c :
@@ -19904,10 +19645,10 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AVERROR_HTTP_SERVER_ERROR() {
         return AVERROR_HTTP_SERVER_ERROR;
     }
-    private static final int LIBAVUTIL_VERSION_INT = (int)3876708L;
+    private static final int LIBAVUTIL_VERSION_INT = (int)3868772L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVUTIL_VERSION_INT 3876708
+     * #define LIBAVUTIL_VERSION_INT 3868772
      * }
      */
     public static int LIBAVUTIL_VERSION_INT() {
@@ -20714,28 +20455,28 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_PIX_FMT_RGBAF32() {
         return AV_PIX_FMT_RGBAF32;
     }
-    private static final int LIBAVCODEC_VERSION_INT = (int)4002661L;
+    private static final int LIBAVCODEC_VERSION_INT = (int)3998564L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVCODEC_VERSION_INT 4002661
+     * #define LIBAVCODEC_VERSION_INT 3998564
      * }
      */
     public static int LIBAVCODEC_VERSION_INT() {
         return LIBAVCODEC_VERSION_INT;
     }
-    private static final int LIBAVFORMAT_VERSION_INT = (int)3999588L;
+    private static final int LIBAVFORMAT_VERSION_INT = (int)3998052L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVFORMAT_VERSION_INT 3999588
+     * #define LIBAVFORMAT_VERSION_INT 3998052
      * }
      */
     public static int LIBAVFORMAT_VERSION_INT() {
         return LIBAVFORMAT_VERSION_INT;
     }
-    private static final int LIBSWSCALE_VERSION_INT = (int)525156L;
+    private static final int LIBSWSCALE_VERSION_INT = (int)524644L;
     /**
      * {@snippet lang=c :
-     * #define LIBSWSCALE_VERSION_INT 525156
+     * #define LIBSWSCALE_VERSION_INT 524644
      * }
      */
     public static int LIBSWSCALE_VERSION_INT() {

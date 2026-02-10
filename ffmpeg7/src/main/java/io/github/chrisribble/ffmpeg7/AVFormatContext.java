@@ -88,7 +88,6 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     uint8_t *dump_separator;
  *     int (*io_open)(struct AVFormatContext *, AVIOContext **, const char *, int, AVDictionary **);
  *     int (*io_close2)(struct AVFormatContext *, AVIOContext *);
- *     int64_t duration_probesize;
  * }
  * }
  */
@@ -177,8 +176,7 @@ public class AVFormatContext {
         FFmpeg.C_LONG.withName("output_ts_offset"),
         FFmpeg.C_POINTER.withName("dump_separator"),
         FFmpeg.C_POINTER.withName("io_open"),
-        FFmpeg.C_POINTER.withName("io_close2"),
-        FFmpeg.C_LONG.withName("duration_probesize")
+        FFmpeg.C_POINTER.withName("io_close2")
     ).withName("AVFormatContext");
 
     /**
@@ -3515,50 +3513,6 @@ public class AVFormatContext {
      */
     public static void io_close2(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(io_close2$LAYOUT, io_close2$OFFSET, fieldValue);
-    }
-
-    private static final OfLong duration_probesize$LAYOUT = (OfLong)$LAYOUT.select(groupElement("duration_probesize"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * int64_t duration_probesize
-     * }
-     */
-    public static final OfLong duration_probesize$layout() {
-        return duration_probesize$LAYOUT;
-    }
-
-    private static final long duration_probesize$OFFSET = $LAYOUT.byteOffset(groupElement("duration_probesize"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * int64_t duration_probesize
-     * }
-     */
-    public static final long duration_probesize$offset() {
-        return duration_probesize$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * int64_t duration_probesize
-     * }
-     */
-    public static long duration_probesize(MemorySegment struct) {
-        return struct.get(duration_probesize$LAYOUT, duration_probesize$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * int64_t duration_probesize
-     * }
-     */
-    public static void duration_probesize(MemorySegment struct, long fieldValue) {
-        struct.set(duration_probesize$LAYOUT, duration_probesize$OFFSET, fieldValue);
     }
 
     /**

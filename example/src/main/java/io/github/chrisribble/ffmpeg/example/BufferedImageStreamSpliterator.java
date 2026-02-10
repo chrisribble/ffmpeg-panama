@@ -10,6 +10,8 @@ import static io.github.chrisribble.ffmpeg8.FFmpeg.av_free;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_image_fill_arrays;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_image_get_buffer_size;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_malloc;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_packet_alloc;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_packet_free;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_read_frame;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_alloc_context3;
@@ -146,6 +148,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			avFreeNonNull(buffer);
 			avFreeNonNull(outputFrame);
 			avFreeNonNull(decodedFrame);
+			avPacketFreeNonNull(packet);
 			swsFreeNonNull(pSwScaleCtx);
 			avCodecFreeContextNonNull(pAvCodecCtx);
 			avFormatCloseNonNull(ppFormatCtx);
@@ -268,7 +271,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		pSwScaleCtx = getSwScaleContext(decoderContext.pAvCodecContext(), dstResolution);
 
 		// AVPacket*
-		packet = AVPacket.allocate(arena);
+		packet = av_packet_alloc();
 
 		opened = true;
 	}
@@ -448,6 +451,13 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			return;
 		}
 		av_free(allocated);
+	}
+
+	private void avPacketFreeNonNull(final MemorySegment pAvPacket) {
+		if (pAvPacket == null) {
+			return;
+		}
+		av_packet_free(pAvPacket);
 	}
 
 	private void swsFreeNonNull(final MemorySegment swScaleCtx) {

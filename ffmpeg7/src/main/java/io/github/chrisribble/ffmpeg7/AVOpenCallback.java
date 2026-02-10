@@ -88,7 +88,6 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     uint8_t *dump_separator;
  *     int (*io_open)(struct AVFormatContext *, AVIOContext **, const char *, int, AVDictionary **);
  *     int (*io_close2)(struct AVFormatContext *, AVIOContext *);
- *     int64_t duration_probesize;
  * } *, AVIOContext **, const char *, int, const AVIOInterruptCB *, AVDictionary **)
  * }
  */
