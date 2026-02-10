@@ -128,8 +128,6 @@ public class BufferedImageStreamTest {
 	public void testFileNotFoundException() throws IOException {
 		var format = PixelFormat.BGR;
 
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.input(INVALID_PATH)
 				.modFrames(MOD_FRAMES)
@@ -138,16 +136,12 @@ public class BufferedImageStreamTest {
 				.build()) {
 			// should throw before calling toList
 			stream.toList();
-		} finally {
-			delete(tmpDir);
 		}
 	}
 
 	@Test(expectedExceptions = FileNotFoundException.class)
 	public void testUnmanagedFileNotFoundException() throws IOException {
 		var format = PixelFormat.BGR;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 
 		try (Arena arena = Arena.ofConfined();
 				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
@@ -158,8 +152,6 @@ public class BufferedImageStreamTest {
 						.build()) {
 			// should throw before calling toList
 			stream.toList();
-		} finally {
-			delete(tmpDir);
 		}
 	}
 
