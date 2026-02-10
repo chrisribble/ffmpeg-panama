@@ -6,6 +6,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.invoke.MethodHandles;
@@ -28,6 +29,8 @@ public class BufferedImageStreamTest {
 
 	private static final Resolution OUTPUT_RESOLUTION = new Resolution(960, 540);
 	private static final int MOD_FRAMES = 50;
+
+	private static final Path INVALID_PATH = Path.of("does/not/exist");
 
 	static {
 		//av_log_set_level(AV_LOG_TRACE());
@@ -118,6 +121,45 @@ public class BufferedImageStreamTest {
 
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 2);
+		}
+	}
+
+	@Test(expectedExceptions = FileNotFoundException.class)
+	public void testFileNotFoundException() throws IOException {
+		var format = PixelFormat.BGR;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.input(INVALID_PATH)
+				.modFrames(MOD_FRAMES)
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.build()) {
+			// should throw before calling toList
+			stream.toList();
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test(expectedExceptions = FileNotFoundException.class)
+	public void testUnmanagedFileNotFoundException() throws IOException {
+		var format = PixelFormat.BGR;
+
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+
+		try (Arena arena = Arena.ofConfined();
+				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
+						.input(INVALID_PATH)
+						.modFrames(MOD_FRAMES)
+						.pixelFormat(format)
+						.resolution(OUTPUT_RESOLUTION)
+						.build()) {
+			// should throw before calling toList
+			stream.toList();
+		} finally {
+			delete(tmpDir);
 		}
 	}
 

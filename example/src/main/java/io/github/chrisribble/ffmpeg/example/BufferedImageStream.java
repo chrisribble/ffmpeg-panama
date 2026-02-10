@@ -377,7 +377,7 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 				throw new IllegalArgumentException("inputs must be non-empty");
 			}
 			if (pixelFormat == null) {
-				throw new IllegalArgumentException("palette must be non-null");
+				throw new IllegalArgumentException("pixelFormat must be non-null");
 			}
 			return new BufferedImageStream(this);
 		}
