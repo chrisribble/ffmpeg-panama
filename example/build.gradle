@@ -18,6 +18,9 @@ tasks.named('test') {
 	}
 	jvmArgs(['--enable-native-access=ALL-UNNAMED'])
 	systemProperty 'java.library.path', '/usr/lib64:/usr/lib:/usr/local/lib'
+
+	// Allow loading homebrew FFmpeg libs
+	environment 'DYLD_LIBRARY_PATH', '/opt/homebrew/lib'
 }
 
 /*
