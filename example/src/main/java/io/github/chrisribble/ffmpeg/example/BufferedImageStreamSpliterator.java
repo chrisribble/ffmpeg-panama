@@ -71,11 +71,17 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	private final Integer limit;
 	private final PixelFormat pixelFormat;
 
+	// AVFormatContext*
 	private MemorySegment pFormatCtx;
+	// AVCodecContext*
 	private MemorySegment pAvCodecCtx;
+	// SwsContext*
 	private MemorySegment pSwScaleCtx;
+	// AVFrame*
 	private MemorySegment decodedFrame;
+	// AVFrame*
 	private MemorySegment outputFrame;
+	// AVPacket*
 	private MemorySegment packet;
 
 	private VideoStream videoStream;
@@ -156,11 +162,11 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			return;
 		}
 
-		// AVFormatContext*
 		pFormatCtx = openInput(inputs);
 
 		// Initialize decoder context
 		var decoderContext = getVideoDecoderContext(pFormatCtx);
+
 		pAvCodecCtx = decoderContext.pAvCodecContext();
 		videoStream = decoderContext.videoStream();
 
@@ -169,10 +175,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			dstResolution = srcResolution;
 		}
 
-		// Determine required buffer size and allocate
 		var buffer = allocateBuffer(srcResolution);
-
-		// Allocate input/output AVFrame*
 		decodedFrame = allocateFrame();
 		outputFrame = allocateFrame();
 
@@ -184,7 +187,6 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		// initialize SWS context for software scaling
 		pSwScaleCtx = getSwScaleContext(decoderContext.pAvCodecContext(), dstResolution);
 
-		// AVPacket*
 		packet = allocatePacket();
 
 		opened = true;
@@ -313,7 +315,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 				? inputs[0].toString()
 				: "concat:" + String.join("|", Arrays.stream(inputs).map(Path::toString).toList());
 
-		// char* fileName;
+		// char*
 		var fileName = arena.allocateFrom(input, StandardCharsets.UTF_8);
 
 		// AVFormatContext**
@@ -325,7 +327,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			throw new AVIOException("Cannot open file: " + input);
 		}
 
-		ppFormatCtx.reinterpret(arena, FFmpeg::avformat_close_input);
+		ppFormatCtx = ppFormatCtx.reinterpret(arena, FFmpeg::avformat_close_input);
 
 		// AVFormatContext*
 		var ctx = ppFormatCtx.get(C_POINTER, 0);
@@ -347,14 +349,17 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 		LOG.debug("Found video stream (index: {})", stream.index());
 
+		// const AVCodec*
 		var pCodec = getAVCodec(stream);
+
+		// AVCodecContext*
 		var pDecoderCtx = avcodec_alloc_context3(pCodec);
 
 		// Register cleanup
 		pointer(pDecoderCtx)
 				.reinterpret(arena, FFmpeg::avcodec_free_context);
 
-		// Copy codec params to AVCodecContext*
+		// Copy codec params to AVCodecContext
 		if (avcodec_parameters_to_context(pDecoderCtx, stream.avCodecParams()) != 0) {
 			throw new AVException("Failed to create decoder context from video stream codec parameters");
 		}
@@ -368,16 +373,16 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	}
 
 	private static VideoStream getFirstVideoStream(final MemorySegment pFormatCtx) {
-		// Find the first video stream
-		int streams = AVFormatContext.nb_streams(pFormatCtx);
+		// AVStream**
 		var pStreams = AVFormatContext.streams(pFormatCtx);
 
+		int streams = AVFormatContext.nb_streams(pFormatCtx);
 		LOG.debug("Found {} streams", streams);
 
 		for (int i = 0; i < streams; i++) {
-			// AVStream*;
+			// AVStream*
 			var pStream = pStreams.getAtIndex(C_POINTER, i);
-			// AVCodecParameters*;
+			// AVCodecParameters*
 			var pCodecParams = AVStream.codecpar(pStream);
 			if (AVCodecParameters.codec_type(pCodecParams) == AVMEDIA_TYPE_VIDEO()) {
 				return new VideoStream(i, pCodecParams);
@@ -389,6 +394,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution) {
 		int pixFmt = AVCodecContext.pix_fmt(avCodecContext);
 
+		// SwsContext*
 		var context = sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt,
 				dstResolution.width(), dstResolution.height(), pixelFormat.ffmpegType(),
 				SWS_BILINEAR(), NULL, NULL, NULL);
@@ -410,6 +416,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 
 		int bufferBytes = av_image_get_buffer_size(pixelFormat.ffmpegType(), width, height, SIMD_ALIGN_BYTES);
 
+		// void*
 		var buf = av_malloc(bufferBytes * C_CHAR.byteSize());
 		return buf.reinterpret(arena, FFmpeg::av_free);
 	}
@@ -437,7 +444,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		// Find the AVCodec* decoder for the video stream
 		int codecId = AVCodecParameters.codec_id(videoStream.avCodecParams());
 
-		// AVCodec*
+		// const AVCodec*
 		var pCodec = avcodec_find_decoder(codecId);
 		requireNonNull(pCodec, "No decoder found for codec id: " + codecId);
 
