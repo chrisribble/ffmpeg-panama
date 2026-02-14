@@ -144,6 +144,15 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_FOURCC_MAX_STRING_SIZE() {
         return AV_FOURCC_MAX_STRING_SIZE;
     }
+    private static final int AV_PKT_FLAG_KEY = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PKT_FLAG_KEY 1
+     * }
+     */
+    public static int AV_PKT_FLAG_KEY() {
+        return AV_PKT_FLAG_KEY;
+    }
     private static final int SWS_FAST_BILINEAR = (int)1L;
     /**
      * {@snippet lang=c :

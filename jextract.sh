@@ -25,6 +25,8 @@ fi
 
 tar xzvf ${FFMPEG_TARBALL}
 rm -rf ${BINDINGS_SRC}
+
+# Note: Run with --dump-includes <out> instead of @includes.txt to see all bindings
 jextract \
   --include-dir ./ffmpeg-${FFMPEG_VERSION} \
   --library avcodec --library avformat --library avutil --library swscale \
