@@ -57,12 +57,13 @@ public class MediaAnalyzer {
 				LOG.info("{}", micros / (double) MICROS_PER_S);
 			}
 
-			LOG.info("avg_frame_rate: {} FPS", Math.round(videoStream.getAvgFrameRate() * 1000) / 1000.0);
-			LOG.info("r_frame_rate: {} FPS", videoStream.getRFrameRate());
 			LOG.info("Found {} keyframes and timescale={}", keyframes.size(), timescale);
 
-			// TODO: Stub
-			return null;
+			return new MediaInfo(
+					videoStream.getAvgFrameRate(),
+					videoStream.getRFrameRate(),
+					videoStream.getRationalRFrameRate(),
+					null);
 		}
 	}
 
@@ -95,5 +96,9 @@ public class MediaAnalyzer {
 		return p.reinterpret(arena, FFmpeg::av_packet_free);
 	}
 
-	public record MediaInfo() {}
+	public record MediaInfo(
+			double avgFrameRate,
+			double rFrameRate,
+			String rationalRFrameRate,
+			Double gopSeconds) {}
 }

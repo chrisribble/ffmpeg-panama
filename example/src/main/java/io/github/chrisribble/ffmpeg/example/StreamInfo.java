@@ -47,6 +47,18 @@ record StreamInfo(
 		return q2d(AVStream.avg_frame_rate(avStream));
 	}
 
+	public String getRationalRFrameRate() {
+		var rFrameRate = AVStream.r_frame_rate(avStream);
+
+		int num = AVRational.num(rFrameRate);
+		int den = AVRational.den(rFrameRate);
+
+		if (den == 1) {
+			return Integer.toString(num);
+		}
+		return num + "/" + den;
+	}
+
 	public double getRFrameRate() {
 		return q2d(AVStream.r_frame_rate(avStream));
 	}
