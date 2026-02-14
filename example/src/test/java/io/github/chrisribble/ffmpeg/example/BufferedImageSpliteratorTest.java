@@ -18,7 +18,7 @@ public class BufferedImageSpliteratorTest {
 
 		try (Arena arena = Arena.ofConfined()) {
 			Spliterator<BufferedImage> splitr = BufferedImageStreamSpliterator.builder(arena)
-					.input(MediaResources.LAVFI_TEST_SRC.getPath())
+					.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
 					.pixelFormat(format)
 					.build();
 

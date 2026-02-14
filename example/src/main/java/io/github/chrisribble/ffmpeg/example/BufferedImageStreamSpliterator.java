@@ -478,12 +478,28 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			this.arena = arena;
 		}
 
-		public Builder input(final Path input) {
-			inputs = new Path[] { input };
+		public Builder inputs(final Path... inputs) {
+			if (inputs == null) {
+				throw new IllegalArgumentException("inputs must be non-null");
+			}
+			if (inputs.length == 0) {
+				throw new IllegalArgumentException("inputs must be non-empty");
+			}
+
+			this.inputs = new Path[inputs.length];
+			System.arraycopy(inputs, 0, this.inputs, 0, inputs.length);
+
 			return this;
 		}
 
 		public Builder inputs(final List<Path> inputs) {
+			if (inputs == null) {
+				throw new IllegalArgumentException("inputs must be non-null");
+			}
+			if (inputs.isEmpty()) {
+				throw new IllegalArgumentException("inputs must be non-empty");
+			}
+
 			this.inputs = inputs.toArray(Path[]::new);
 			return this;
 		}
@@ -509,9 +525,6 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 
 		public BufferedImageStreamSpliterator build() throws FileNotFoundException {
-			if (inputs == null) {
-				throw new IllegalArgumentException("inputs must be non-null");
-			}
 			for (Path input : inputs) {
 				if (input == null) {
 					throw new IllegalArgumentException("input must be non-null");
