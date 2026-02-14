@@ -59,10 +59,4 @@ public class MediaAnalyzerTest {
 	private String formatFrameRate(final double value) {
 		return String.format("%.3f", value);
 	}
-
-	private double round(final double value, final int decimals) {
-		int multiplier = Math.powExact(10, decimals);
-		long rounded = Math.round(value * multiplier);
-		return rounded / (double) multiplier;
-	}
 }
