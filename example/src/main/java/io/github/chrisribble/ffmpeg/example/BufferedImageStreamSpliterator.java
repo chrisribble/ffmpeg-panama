@@ -4,7 +4,6 @@ import static io.github.chrisribble.ffmpeg.example.Macros.AVERROR;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.AVERROR_EOF;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.SWS_BILINEAR;
-import static io.github.chrisribble.ffmpeg8.FFmpeg.av_dump_format;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_frame_alloc;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_image_fill_arrays;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_image_get_buffer_size;
@@ -18,8 +17,6 @@ import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_open2;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_parameters_to_context;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_receive_frame;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.avcodec_send_packet;
-import static io.github.chrisribble.ffmpeg8.FFmpeg.avformat_find_stream_info;
-import static io.github.chrisribble.ffmpeg8.FFmpeg.avformat_open_input;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.sws_getContext;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.sws_scale;
 import static io.github.chrisribble.ffmpeg8.FFmpeg$shared.C_CHAR;
@@ -35,11 +32,8 @@ import java.io.FileNotFoundException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
@@ -49,14 +43,10 @@ import org.slf4j.LoggerFactory;
 
 import io.github.chrisribble.ffmpeg.example.exception.AVAllocateException;
 import io.github.chrisribble.ffmpeg.example.exception.AVException;
-import io.github.chrisribble.ffmpeg.example.exception.AVIOException;
 import io.github.chrisribble.ffmpeg8.AVCodec;
 import io.github.chrisribble.ffmpeg8.AVCodecContext;
-import io.github.chrisribble.ffmpeg8.AVCodecParameters;
-import io.github.chrisribble.ffmpeg8.AVFormatContext;
 import io.github.chrisribble.ffmpeg8.AVFrame;
 import io.github.chrisribble.ffmpeg8.AVPacket;
-import io.github.chrisribble.ffmpeg8.AVStream;
 import io.github.chrisribble.ffmpeg8.FFmpeg;
 
 public final class BufferedImageStreamSpliterator implements Spliterator<BufferedImage>, AutoCloseable {
@@ -84,7 +74,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	// AVPacket*
 	private MemorySegment packet;
 
-	private VideoStream videoStream;
+	private StreamInfo videoStream;
 
 	private Resolution srcResolution;
 	private Resolution dstResolution;
@@ -162,7 +152,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			return;
 		}
 
-		pFormatCtx = openInput(inputs);
+		pFormatCtx = AVFormatContextUtil.open(arena, inputs);
 
 		// Initialize decoder context
 		var decoderContext = getVideoDecoderContext(pFormatCtx);
@@ -310,43 +300,14 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		return image;
 	}
 
-	private MemorySegment openInput(final Path... inputs) {
-		String input = inputs.length == 1
-				? inputs[0].toString()
-				: "concat:" + String.join("|", Arrays.stream(inputs).map(Path::toString).toList());
-
-		// char*
-		var fileName = arena.allocateFrom(input, StandardCharsets.UTF_8);
-
-		// AVFormatContext**
-		var ppFormatCtx = arena.allocate(C_POINTER);
-		if (avformat_open_input(ppFormatCtx, fileName, NULL, NULL) != 0) {
-			if (!Files.exists(Paths.get(input))) {
-				throw new AVIOException("File '" + input + "' does not exist");
-			}
-			throw new AVIOException("Cannot open file: " + input);
-		}
-
-		ppFormatCtx = ppFormatCtx.reinterpret(arena, FFmpeg::avformat_close_input);
-
-		// AVFormatContext*
-		var ctx = ppFormatCtx.get(C_POINTER, 0);
-		if (avformat_find_stream_info(ctx, NULL) < 0) {
-			throw new AVException("No streams detected in file: " + input);
-		}
-
-		// Dump AV format info to STDERR
-		av_dump_format(ctx, 0, fileName, 0);
-
-		return ctx;
-	}
-
 	private DecoderContext getVideoDecoderContext(final MemorySegment avFormatContext) {
 		// Find the first video stream
-		VideoStream stream = getFirstVideoStream(avFormatContext);
-		if (stream == null) {
+		List<StreamInfo> videoStreams = AVStreamUtil.getStreams(avFormatContext, AVMEDIA_TYPE_VIDEO());
+		if (videoStreams.isEmpty()) {
 			throw new AVException("No video streams found in file");
 		}
+
+		StreamInfo stream = videoStreams.getFirst();
 		LOG.debug("Found video stream (index: {})", stream.index());
 
 		// const AVCodec*
@@ -370,25 +331,6 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		}
 
 		return new DecoderContext(stream, pDecoderCtx);
-	}
-
-	private static VideoStream getFirstVideoStream(final MemorySegment pFormatCtx) {
-		// AVStream**
-		var pStreams = AVFormatContext.streams(pFormatCtx);
-
-		int streams = AVFormatContext.nb_streams(pFormatCtx);
-		LOG.debug("Found {} streams", streams);
-
-		for (int i = 0; i < streams; i++) {
-			// AVStream*
-			var pStream = pStreams.getAtIndex(C_POINTER, i);
-			// AVCodecParameters*
-			var pCodecParams = AVStream.codecpar(pStream);
-			if (AVCodecParameters.codec_type(pCodecParams) == AVMEDIA_TYPE_VIDEO()) {
-				return new VideoStream(i, pCodecParams);
-			}
-		}
-		return null;
 	}
 
 	private MemorySegment getSwScaleContext(final MemorySegment avCodecContext, final Resolution dstResolution) {
@@ -440,9 +382,8 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	 * @return MemorySegment which contains an AVCodec*
 	 * @throws AVAllocateException
 	 */
-	private static MemorySegment getAVCodec(final VideoStream videoStream) throws AVAllocateException {
-		// Find the AVCodec* decoder for the video stream
-		int codecId = AVCodecParameters.codec_id(videoStream.avCodecParams());
+	private static MemorySegment getAVCodec(final StreamInfo videoStream) throws AVAllocateException {
+		int codecId = videoStream.getCodecId();
 
 		// const AVCodec*
 		var pCodec = avcodec_find_decoder(codecId);
