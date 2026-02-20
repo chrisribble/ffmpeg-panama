@@ -6,7 +6,7 @@
 	<module name="TreeWalker">
 		<!-- Work around https://github.com/checkstyle/checkstyle/issues/17052 -->
 		<property name="skipFileOnJavaParseException" value="true"/>
-	   <property name="javaParseExceptionSeverity" value="ignore"/>
+		<property name="javaParseExceptionSeverity" value="ignore"/>
 
 		<module name="ConstantName"/>
 		<module name="EmptyBlock">
