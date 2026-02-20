@@ -27,14 +27,16 @@ import static io.github.chrisribble.ffmpeg8.FFmpeg$shared.C_INT;
 import static io.github.chrisribble.ffmpeg8.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
-import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
 import java.awt.image.DataBufferByte;
 import java.awt.image.Raster;
+import java.awt.image.SampleModel;
 import java.io.FileNotFoundException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
+import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -88,6 +90,8 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 
 	private Resolution srcResolution;
 	private Resolution dstResolution;
+	private byte[] lineBuffer;
+	private BufferedImage templateImage;
 
 	private int frameNumber;
 	private int images;
@@ -174,6 +178,8 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		if (dstResolution == null) {
 			dstResolution = srcResolution;
 		}
+		lineBuffer = new byte[dstResolution.width() * pixelFormat.bytesPerPixel()];
+		templateImage = new BufferedImage(dstResolution.width(), dstResolution.height(), pixelFormat.bufferedImageType());
 
 		var buffer = allocateBuffer(srcResolution);
 		decodedFrame = allocateFrame();
@@ -272,22 +278,24 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 	private BufferedImage getBufferedImage(final MemorySegment frame, final Resolution resolution) {
 		int width = resolution.width();
 		int height = resolution.height();
-
 		int bytesPerPixel = pixelFormat.bytesPerPixel();
-		byte[] pixelBuf = new byte[width * height * bytesPerPixel];
 
+		// uint8_t *data[8]
 		var data = AVFrame.data(frame);
 		// frame.data[0]
 		var pdata = data.get(C_POINTER, 0);
 		// frame.linespace[0]
 		var linesize = AVFrame.linesize(frame).get(C_INT, 0);
 
+		byte[] imageBuffer = new byte[width * height * bytesPerPixel];
+
 		// Copy pixel data
 		for (int y = 0; y < height; y++) {
 			var pixelArray = pdata.asSlice((long) y * linesize)
 					.reinterpret((long) width * bytesPerPixel, arena, null);
+			ByteBuffer buffer = pixelArray.asByteBuffer();
+			buffer.get(lineBuffer);
 
-			byte[] linePixelBytes = pixelArray.toArray(C_CHAR);
 			if (pixelFormat == PixelFormat.RGB) {
 				/*
 				 * FFmpeg supports RGB24, but BufferedImage only supports:
@@ -296,15 +304,19 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 				 * Simple/naive solution is to just swap B <-> R.
 				 * There is likely a more elegant way to do this.
 				 */
-				PixelFormatConverter.rgbToBgr(linePixelBytes);
+				PixelFormatConverter.rgbToBgr(lineBuffer);
 			}
 
-			System.arraycopy(linePixelBytes, 0, pixelBuf, y * width * bytesPerPixel, linePixelBytes.length);
+			System.arraycopy(lineBuffer, 0, imageBuffer, y * width * bytesPerPixel, lineBuffer.length);
 		}
 
-		var image = new BufferedImage(width, height, pixelFormat.bufferedImageType());
-		var dataBuffer = new DataBufferByte(pixelBuf, pixelBuf.length);
-		image.setData(Raster.createRaster(image.getSampleModel(), dataBuffer, new Point()));
+		SampleModel sampleMode = templateImage.getSampleModel();
+		ColorModel colorModel = templateImage.getColorModel();
+		boolean alphaPremultiplied = templateImage.isAlphaPremultiplied();
+
+		var dataBuffer = new DataBufferByte(imageBuffer, imageBuffer.length);
+		var raster = Raster.createWritableRaster(sampleMode, dataBuffer, null);
+		var image = new BufferedImage(colorModel, raster, alphaPremultiplied, null);
 
 		++images;
 		return image;
