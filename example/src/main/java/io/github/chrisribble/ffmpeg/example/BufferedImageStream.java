@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.lang.foreign.Arena;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -37,30 +38,34 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 
 	private BufferedImageStream(final Builder builder) throws FileNotFoundException {
 		Arena arena;
+		Arena closeableArena;
 		if (builder.arena != null) {
 			// Allow callers to control memory Arena (i.e. Arena.ofConfined() for maximum single-threaded performance)
-			managedArena = null;
 			arena = builder.arena;
+			closeableArena = null;
 		} else {
 			// Arena.ofShared() trades single-threaded throughput for access from any thread
-			managedArena = Arena.ofShared();
-			arena = managedArena;
+			arena = Arena.ofShared();
+			closeableArena = arena;
 		}
+		managedArena = closeableArena;
 		try {
-			splitr = BufferedImageStreamSpliterator.builder(arena)
+			var s = BufferedImageStreamSpliterator.builder(arena)
 					.inputs(builder.inputs)
 					.modFrames(builder.modFrames)
 					.limit(builder.limit)
 					.pixelFormat(builder.pixelFormat)
 					.resolution(builder.resolution)
 					.build();
-			delegate = StreamSupport.stream(splitr, false);
+			splitr = s;
+			delegate = StreamSupport.stream(s, false);
 		} catch (FileNotFoundException | RuntimeException e) {
-			if (managedArena != null) {
-				managedArena.close();
+			if (closeableArena != null) {
+				closeableArena.close();
 			}
 			throw e;
 		}
+		super();
 	}
 
 	@Override
@@ -347,9 +352,7 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 				throw new IllegalArgumentException("inputs must be non-empty");
 			}
 
-			this.inputs = new Path[inputs.length];
-			System.arraycopy(inputs, 0, this.inputs, 0, inputs.length);
-
+			this.inputs = Arrays.copyOf(inputs, inputs.length);
 			return this;
 		}
 
@@ -386,9 +389,6 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 		}
 
 		public BufferedImageStream build() throws FileNotFoundException {
-			if (pixelFormat == null) {
-				throw new IllegalArgumentException("pixelFormat must be non-null");
-			}
 			return new BufferedImageStream(this);
 		}
 	}

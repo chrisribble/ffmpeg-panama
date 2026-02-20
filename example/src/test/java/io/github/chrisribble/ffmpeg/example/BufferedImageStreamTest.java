@@ -13,6 +13,7 @@ import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +23,7 @@ import javax.imageio.ImageIO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class BufferedImageStreamTest {
@@ -40,13 +42,17 @@ public class BufferedImageStreamTest {
 		av_log_set_level(AV_LOG_WARNING());
 	}
 
+	@DataProvider(name = "pixelFormat")
+	public PixelFormat[] pixelFormats() {
+		Stream<PixelFormat> formats = Arrays.stream(PixelFormat.values());
+		return Stream.concat(formats, Stream.of((PixelFormat) null))
+				.toArray(PixelFormat[]::new);
+	}
+
 	@Test
 	public void testManagedArena() throws IOException {
-		var format = PixelFormat.GRAY;
-
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.limit(2)
 				.build()) {
@@ -58,12 +64,9 @@ public class BufferedImageStreamTest {
 
 	@Test
 	public void testConfinedArena() throws IOException {
-		var format = PixelFormat.GRAY;
-
 		try (Arena arena = Arena.ofConfined();
 				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
 						.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-						.pixelFormat(format)
 						.resolution(OUTPUT_RESOLUTION)
 						.limit(2)
 						.build()) {
@@ -75,12 +78,9 @@ public class BufferedImageStreamTest {
 
 	@Test
 	public void testSharedArena() throws IOException {
-		var format = PixelFormat.GRAY;
-
 		try (Arena arena = Arena.ofShared();
 				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
 						.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-						.pixelFormat(format)
 						.resolution(OUTPUT_RESOLUTION)
 						.limit(2)
 						.build()) {
@@ -92,12 +92,9 @@ public class BufferedImageStreamTest {
 
 	@Test
 	public void testAutoArena() throws IOException {
-		var format = PixelFormat.GRAY;
-
 		Arena arena = Arena.ofAuto();
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
 				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
 				.limit(2)
 				.build()) {
@@ -109,13 +106,10 @@ public class BufferedImageStreamTest {
 
 	@Test(expectedExceptions = FileNotFoundException.class)
 	public void testFileNotFoundException() throws IOException {
-		var format = PixelFormat.BGR;
-
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(INVALID_PATH)
-				.modFrames(MOD_FRAMES)
-				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
+				.modFrames(MOD_FRAMES)
 				.build()) {
 			// should throw before calling toList
 			stream.toList();
@@ -124,32 +118,51 @@ public class BufferedImageStreamTest {
 
 	@Test(expectedExceptions = FileNotFoundException.class)
 	public void testUnmanagedFileNotFoundException() throws IOException {
-		var format = PixelFormat.BGR;
-
 		try (Arena arena = Arena.ofConfined();
 				Stream<BufferedImage> stream = BufferedImageStream.builder(arena)
 						.inputs(INVALID_PATH)
-						.modFrames(MOD_FRAMES)
-						.pixelFormat(format)
 						.resolution(OUTPUT_RESOLUTION)
+						.modFrames(MOD_FRAMES)
 						.build()) {
 			// should throw before calling toList
 			stream.toList();
 		}
 	}
 
-	@Test
-	public void testStreamModFramesBgr() throws IOException {
-		var format = PixelFormat.BGR;
+	@Test(dataProvider = "pixelFormat")
+	public void testStreamPixelFormat(final PixelFormat format) throws IOException {
+		int limit = 3;
 
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(MOD_FRAMES)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
+				.limit(limit)
+				.build()) {
+
+			List<BufferedImage> images = stream.toList();
+			assertEquals(images.size(), limit);
+
+			writeImages(tmpDir, images);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
+		} finally {
+			delete(tmpDir);
+		}
+	}
+
+	@Test(dataProvider = "pixelFormat")
+	public void testStreamModFrames(final PixelFormat format) throws IOException {
+		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
+		long startNanos = System.nanoTime();
+
+		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
+				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
+				.pixelFormat(format)
+				.resolution(OUTPUT_RESOLUTION)
+				.modFrames(MOD_FRAMES)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
@@ -162,57 +175,8 @@ public class BufferedImageStreamTest {
 		}
 	}
 
-	@Test
-	public void testStreamModFramesRgb() throws IOException {
-		var format = PixelFormat.RGB;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(MOD_FRAMES)
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), 5);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamModFramesGray() throws IOException {
-		var format = PixelFormat.GRAY;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(MOD_FRAMES)
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), 5);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamModFramesLimitBgr() throws IOException {
-		var format = PixelFormat.BGR;
+	@Test(dataProvider = "pixelFormat")
+	public void testStreamModFramesLimit(final PixelFormat format) throws IOException {
 		int limit = 2;
 
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
@@ -220,77 +184,24 @@ public class BufferedImageStreamTest {
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(MOD_FRAMES)
-				.limit(limit)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
+				.modFrames(MOD_FRAMES)
+				.limit(limit)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
 	}
 
-	@Test
-	public void testStreamModFramesLimitRgb() throws IOException {
-		var format = PixelFormat.RGB;
-		int limit = 2;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(MOD_FRAMES)
-				.limit(limit)
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), limit);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamModFramesLimitGray() throws IOException {
-		var format = PixelFormat.GRAY;
-		int limit = 2;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.modFrames(MOD_FRAMES)
-				.limit(limit)
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), limit);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamLimitBgr() throws IOException {
-		var format = PixelFormat.BGR;
+	@Test(dataProvider = "pixelFormat")
+	public void testStreamLimit(final PixelFormat format) throws IOException {
 		int limit = 1;
 
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
@@ -298,74 +209,23 @@ public class BufferedImageStreamTest {
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.limit(limit)
 				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
+				.limit(limit)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
 	}
 
-	@Test
-	public void testStreamLimitRgb() throws IOException {
-		var format = PixelFormat.RGB;
-		int limit = 1;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.limit(limit)
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), limit);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamLimitGray() throws IOException {
-		var format = PixelFormat.GRAY;
-		int limit = 1;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.limit(limit)
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.toList();
-			assertEquals(images.size(), limit);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamNativeLimitBgr() throws IOException {
-		var format = PixelFormat.BGR;
+	@Test(dataProvider = "pixelFormat")
+	public void testStreamNativeLimit(final PixelFormat format) throws IOException {
 		int limit = 1;
 
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
@@ -382,57 +242,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamNativeLimitRgb() throws IOException {
-		var format = PixelFormat.RGB;
-		int limit = 1;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.limit(limit)
-					.toList();
-			assertEquals(images.size(), limit);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
-		} finally {
-			delete(tmpDir);
-		}
-	}
-
-	@Test
-	public void testStreamNativeLimitGray() throws IOException {
-		var format = PixelFormat.GRAY;
-		int limit = 1;
-
-		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
-		long startNanos = System.nanoTime();
-
-		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
-				.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-				.pixelFormat(format)
-				.resolution(OUTPUT_RESOLUTION)
-				.build()) {
-
-			List<BufferedImage> images = stream.limit(limit)
-					.toList();
-			assertEquals(images.size(), limit);
-
-			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -440,23 +250,20 @@ public class BufferedImageStreamTest {
 
 	@Test
 	public void testIsoBmffSegmentsList() throws IOException {
-		var format = PixelFormat.BGR;
-
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(List.of(MediaResources.LAVFI_TEST_SRC_INIT.getPath(), MediaResources.LAVFI_TEST_SRC_CHUNK.getPath()))
-				.modFrames(MOD_FRAMES)
-				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
+				.modFrames(MOD_FRAMES)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 5);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -464,23 +271,20 @@ public class BufferedImageStreamTest {
 
 	@Test
 	public void testIsoBmffSegmentsVarArgs() throws IOException {
-		var format = PixelFormat.BGR;
-
 		Path tmpDir = Files.createTempDirectory(MethodHandles.lookup().lookupClass().getSimpleName());
 		long startNanos = System.nanoTime();
 
 		try (Stream<BufferedImage> stream = BufferedImageStream.builder()
 				.inputs(MediaResources.LAVFI_TEST_SRC_INIT.getPath(), MediaResources.LAVFI_TEST_SRC_CHUNK.getPath())
-				.modFrames(MOD_FRAMES)
-				.pixelFormat(format)
 				.resolution(OUTPUT_RESOLUTION)
+				.modFrames(MOD_FRAMES)
 				.build()) {
 
 			List<BufferedImage> images = stream.toList();
 			assertEquals(images.size(), 5);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), format, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}

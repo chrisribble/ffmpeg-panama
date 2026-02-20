@@ -14,12 +14,9 @@ import org.testng.annotations.Test;
 public class BufferedImageSpliteratorTest {
 	@Test
 	public void testProperties() throws FileNotFoundException {
-		var format = PixelFormat.GRAY;
-
 		try (Arena arena = Arena.ofConfined()) {
 			Spliterator<BufferedImage> splitr = BufferedImageStreamSpliterator.builder(arena)
 					.inputs(MediaResources.LAVFI_TEST_SRC.getPath())
-					.pixelFormat(format)
 					.build();
 
 			assertNull(splitr.trySplit(), "trySplit should return null indicating that splitting is not possible");

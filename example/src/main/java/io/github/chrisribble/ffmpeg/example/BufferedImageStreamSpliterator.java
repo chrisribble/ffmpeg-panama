@@ -104,7 +104,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		inputs = builder.inputs;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
 		limit = builder.limit;
-		pixelFormat = builder.pixelFormat;
+		pixelFormat = builder.pixelFormat != null ? builder.pixelFormat : PixelFormat.BGR;
 		dstResolution = builder.resolution;
 	}
 
@@ -498,9 +498,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 				throw new IllegalArgumentException("inputs must be non-empty");
 			}
 
-			this.inputs = new Path[inputs.length];
-			System.arraycopy(inputs, 0, this.inputs, 0, inputs.length);
-
+			this.inputs = Arrays.copyOf(inputs, inputs.length);
 			return this;
 		}
 
@@ -544,9 +542,6 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 				if (!Files.exists(input)) {
 					throw new FileNotFoundException("File " + input + " does not exist");
 				}
-			}
-			if (pixelFormat == null) {
-				throw new IllegalArgumentException("pixelFormat must be non-null");
 			}
 			return new BufferedImageStreamSpliterator(this);
 		}
