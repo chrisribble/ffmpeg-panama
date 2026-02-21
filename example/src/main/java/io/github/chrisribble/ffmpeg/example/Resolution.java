@@ -4,7 +4,7 @@ import java.lang.foreign.MemorySegment;
 
 import io.github.chrisribble.ffmpeg8.AVCodecContext;
 
-record Resolution(int width, int height) {
+public record Resolution(int width, int height) {
 	Resolution(final DecoderContext context) {
 		this(context.pAvCodecContext());
 	}
