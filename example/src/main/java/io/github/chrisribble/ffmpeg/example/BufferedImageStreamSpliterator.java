@@ -179,7 +179,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			dstResolution = srcResolution;
 		}
 		lineBuffer = new byte[dstResolution.width() * pixelFormat.bytesPerPixel()];
-		templateImage = new BufferedImage(dstResolution.width(), dstResolution.height(), pixelFormat.bufferedImageType());
+		templateImage = new BufferedImage(1, 1, pixelFormat.bufferedImageType());
 
 		var buffer = allocateBuffer(srcResolution);
 		decodedFrame = allocateFrame();
@@ -310,12 +310,12 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 			System.arraycopy(lineBuffer, 0, imageBuffer, y * width * bytesPerPixel, lineBuffer.length);
 		}
 
-		SampleModel sampleMode = templateImage.getSampleModel();
 		ColorModel colorModel = templateImage.getColorModel();
+		SampleModel sampleModel = templateImage.getSampleModel().createCompatibleSampleModel(width, height);
 		boolean alphaPremultiplied = templateImage.isAlphaPremultiplied();
 
 		var dataBuffer = new DataBufferByte(imageBuffer, imageBuffer.length);
-		var raster = Raster.createWritableRaster(sampleMode, dataBuffer, null);
+		var raster = Raster.createWritableRaster(sampleModel, dataBuffer, null);
 		var image = new BufferedImage(colorModel, raster, alphaPremultiplied, null);
 
 		++images;
