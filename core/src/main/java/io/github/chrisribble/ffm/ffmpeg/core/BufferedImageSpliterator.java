@@ -396,7 +396,7 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 	 * @throws AVAllocateException
 	 */
 	private static MemorySegment getAVCodec(final StreamInfo videoStream) throws AVAllocateException {
-		int codecId = videoStream.getCodecId();
+		int codecId = videoStream.codecId();
 
 		// const AVCodec*
 		var pCodec = avcodec_find_decoder(codecId);

@@ -1,25 +1,37 @@
 package io.github.chrisribble.ffm.ffmpeg.core;
 
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.AVMEDIA_TYPE_VIDEO;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.AV_NOPTS_VALUE;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.AV_PKT_FLAG_KEY;
+import static io.github.chrisribble.ffmpeg8.FFmpeg.av_fourcc_make_string;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffmpeg8.FFmpeg.av_read_frame;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import io.github.chrisribble.ffm.ffmpeg.core.MediaAnalyzer.MediaInfo.FrameRateMode;
+import io.github.chrisribble.ffm.ffmpeg.core.MediaAnalyzer.VideoInfo.FrameRateMode;
+import io.github.chrisribble.ffmpeg8.AVCodecParameters;
+import io.github.chrisribble.ffmpeg8.AVFormatContext;
 import io.github.chrisribble.ffmpeg8.AVPacket;
+import io.github.chrisribble.ffmpeg8.AVRational;
+import io.github.chrisribble.ffmpeg8.AVStream;
 import io.github.chrisribble.ffmpeg8.FFmpeg;
 
 public final class MediaAnalyzer {
 	private static final double EPSILON = 1 / (double) TimeUnit.SECONDS.toNanos(1);
+	private static final long MICROS_PER_S = TimeUnit.SECONDS.toMicros(1);
+	private static final int CODEC_TAG_BUFFER_SIZE = 32;
 
 	private final Path[] inputs;
 
@@ -43,24 +55,95 @@ public final class MediaAnalyzer {
 		try (Arena arena = Arena.ofConfined()) {
 			var pFormatCtx = AVFormatContextUtil.open(arena, inputs);
 
-			List<StreamInfo> videoStreams = AVStreamUtil.getStreams(pFormatCtx, AVMEDIA_TYPE_VIDEO());
-			StreamInfo videoStream = videoStreams.getFirst();
+			List<StreamInfo> streams = AVStreamUtil.getStreams(pFormatCtx);
 
-			FrameRateMode mode = getFrameRateMode(videoStream);
+			StreamInfo videoStream = streams.stream()
+					.filter(stream -> stream.codecType() == AVMEDIA_TYPE_VIDEO())
+					.findFirst()
+					.orElse(null);
 
-			Long gopDuration = analyzePackets && mode == FrameRateMode.CONSTANT
-					? getGopDuration(arena, pFormatCtx, videoStream)
-					: null;
-			Double gopSeconds = gopDuration != null
-					? gopDuration * videoStream.getTimeBase()
-					: null;
+			StreamInfo audioStream = streams.stream()
+					.filter(stream -> stream.codecType() == AVMEDIA_TYPE_AUDIO())
+					.findFirst()
+					.orElse(null);
 
-			return new MediaInfo(
-					mode,
-					videoStream.getAvgFrameRate(),
-					videoStream.getRFrameRate(),
-					gopSeconds);
+			ContainerInfo container = getContainerInfo(pFormatCtx);
+			VideoInfo video = getVideoInfo(videoStream, pFormatCtx, arena, analyzePackets);
+			AudioInfo audio = getAudioInfo(audioStream);
+
+			return new MediaInfo(container, video, audio);
 		}
+	}
+
+	private ContainerInfo getContainerInfo(final MemorySegment pFormatCtx) {
+		Duration duration = getContainerDuration(pFormatCtx);
+		return new ContainerInfo(duration);
+	}
+
+	private VideoInfo getVideoInfo(final StreamInfo videoStream, final MemorySegment pFormatCtx, final Arena arena, final boolean analyzePackets) {
+		if (videoStream == null) {
+			return null;
+		}
+
+		String codecTag = getCodecTag(videoStream.codecTag());
+
+		Duration duration = getStreamDuration(videoStream.avStream());
+		Resolution resolution = getResolution(videoStream);
+
+		FrameRateMode frameRateMode = getFrameRateMode(videoStream);
+
+		Long gopDuration = analyzePackets && frameRateMode == FrameRateMode.CONSTANT
+				? getGopDuration(arena, pFormatCtx, videoStream)
+				: null;
+		Double gopSeconds = gopDuration != null
+				? gopDuration * videoStream.getTimeBase()
+				: null;
+
+		return new VideoInfo(
+				videoStream.id(),
+				codecTag,
+				duration,
+				resolution,
+				frameRateMode,
+				videoStream.getAvgFrameRate(),
+				videoStream.getRFrameRate(),
+				gopSeconds);
+	}
+
+	private AudioInfo getAudioInfo(final StreamInfo audioStream) {
+		if (audioStream == null) {
+			return null;
+		}
+
+		String codecTag = getCodecTag(audioStream.codecTag());
+		Duration duration = getStreamDuration(audioStream.avStream());
+		return new AudioInfo(
+				audioStream.id(),
+				codecTag,
+				duration);
+	}
+
+	private static Duration getStreamDuration(final MemorySegment pStream) {
+		long duration = AVStream.duration(pStream);
+		if (duration == AV_NOPTS_VALUE()) {
+			return null;
+		}
+		return getDuration(duration, AVStream.time_base(pStream));
+	}
+
+	private static Duration getContainerDuration(final MemorySegment pFormatCtx) {
+		long duration = AVFormatContext.duration(pFormatCtx);
+		if (duration == AV_NOPTS_VALUE()) {
+			return null;
+		}
+		return Duration.of(duration, ChronoUnit.MICROS);
+	}
+
+	private static Duration getDuration(final long duration, final MemorySegment pAvRationalTimeBase) {
+		double timeBaseMicros = MICROS_PER_S * AVRational.num(pAvRationalTimeBase) /
+				(double) AVRational.den(pAvRationalTimeBase);
+		long micros = (long) (timeBaseMicros * duration);
+		return Duration.of(micros, ChronoUnit.MICROS);
 	}
 
 	private Long getGopDuration(final Arena arena, final MemorySegment pFormatCtx, final StreamInfo videoStream) {
@@ -129,6 +212,24 @@ public final class MediaAnalyzer {
 		return keyframes;
 	}
 
+	public String getCodecTag(final int tag) {
+		try (Arena arena = Arena.ofConfined()) {
+			// char*
+			var buf = arena.allocate(CODEC_TAG_BUFFER_SIZE);
+			av_fourcc_make_string(buf, tag);
+
+			return buf.getString(0, StandardCharsets.UTF_8);
+		}
+	}
+
+	private static Resolution getResolution(final StreamInfo streamInfo) {
+		var pCodecParams = streamInfo.avCodecParams();
+		int width = AVCodecParameters.width(pCodecParams);
+		int height = AVCodecParameters.height(pCodecParams);
+
+		return new Resolution(width, height);
+	}
+
 	private MemorySegment allocatePacket(final Arena arena) {
 		// AVPacket*
 		var p = av_packet_alloc();
@@ -148,11 +249,28 @@ public final class MediaAnalyzer {
 		return Math.abs(a - b) <= EPSILON;
 	}
 
-	public record MediaInfo(
+	public record MediaInfo(ContainerInfo container, VideoInfo video, AudioInfo audio) {}
+
+	public record ContainerInfo(
+			Duration duration) {}
+
+	public interface TrackInfo {
+		int id();
+
+		String codecTag();
+
+		Duration duration();
+	}
+
+	public record VideoInfo(
+			int id,
+			String codecTag,
+			Duration duration,
+			Resolution resolution,
 			FrameRateMode frameRateMode,
 			Rational avgFrameRate,
 			Rational rFrameRate,
-			Double gopSeconds) {
+			Double gopSeconds) implements TrackInfo {
 
 		public enum FrameRateMode {
 			CONSTANT("Constant"),
@@ -170,7 +288,10 @@ public final class MediaAnalyzer {
 			}
 		}
 
-		public MediaInfo {
+		public VideoInfo {
+			if (resolution == null) {
+				throw new IllegalArgumentException("resolution must be non-null");
+			}
 			if (frameRateMode == null) {
 				throw new IllegalArgumentException("frameRateMode must be non-null");
 			}
@@ -189,4 +310,9 @@ public final class MediaAnalyzer {
 			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
 		}
 	}
+
+	public record AudioInfo(
+			int id,
+			String codecTag,
+			Duration duration) implements TrackInfo {}
 }

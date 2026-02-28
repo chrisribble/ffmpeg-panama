@@ -17,6 +17,10 @@ public final class AVStreamUtil {
 
 	private AVStreamUtil() {}
 
+	public static List<StreamInfo> getStreams(final MemorySegment pFormatCtx) {
+		return getStreams(pFormatCtx, null);
+	}
+
 	public static List<StreamInfo> getStreams(final MemorySegment pFormatCtx, final Integer codecType) {
 		// AVStream*[]
 		var pStreams = AVFormatContext.streams(pFormatCtx);
@@ -35,7 +39,7 @@ public final class AVStreamUtil {
 			var streamInfo = new StreamInfo(i, pStream);
 
 			// Filter streams as requested
-			if (codecType != null && streamInfo.getCodecType() != codecType) {
+			if (codecType != null && streamInfo.codecType() != codecType) {
 				continue;
 			}
 

@@ -13,7 +13,7 @@ record StreamInfo(
 		// AVCodecParameters*
 		MemorySegment avCodecParams) {
 
-	public StreamInfo {
+	StreamInfo {
 		if (index < 0) {
 			throw new IllegalArgumentException("index must be non-negative");
 		}
@@ -35,12 +35,20 @@ record StreamInfo(
 		this(index, avStream, AVStream.codecpar(avStream));
 	}
 
-	public int getCodecType() {
+	public int id() {
+		return AVStream.id(avStream);
+	}
+
+	public int codecType() {
 		return AVCodecParameters.codec_type(avCodecParams);
 	}
 
-	public int getCodecId() {
+	public int codecId() {
 		return AVCodecParameters.codec_id(avCodecParams);
+	}
+
+	public int codecTag() {
+		return AVCodecParameters.codec_tag(avCodecParams);
 	}
 
 	public Rational getAvgFrameRate() {
