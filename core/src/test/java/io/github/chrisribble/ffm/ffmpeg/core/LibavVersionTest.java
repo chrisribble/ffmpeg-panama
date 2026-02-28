@@ -6,6 +6,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
+import io.github.chrisribble.ffm.ffmpeg.core.internal.LibavVersion;
+
 public class LibavVersionTest {
 	@Test
 	public void getVersionInfo() {

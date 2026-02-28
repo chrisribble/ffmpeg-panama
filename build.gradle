@@ -28,6 +28,8 @@ subprojects {
 		toolchain {
 			languageVersion = JavaLanguageVersion.of(25)
 		}
+
+		modularity.inferModulePath = true
 	}
 
 	repositories {

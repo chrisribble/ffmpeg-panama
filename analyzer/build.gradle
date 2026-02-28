@@ -2,17 +2,13 @@ apply plugin: 'checkstyle'
 apply plugin: 'com.github.spotbugs'
 
 dependencies {
+	implementation project(':core')
 	implementation project(':ffmpeg8')
 	implementation libs.slf4j.api
 
 	runtimeOnly libs.slf4j.simple
 
 	testImplementation libs.testng
-}
-
-// Suppress "module not found" compilation warnings
-tasks.withType(JavaCompile).configureEach {
-	options.compilerArgs += ['-Xlint:-module']
 }
 
 tasks.named('test') {
