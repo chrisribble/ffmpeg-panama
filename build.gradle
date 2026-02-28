@@ -65,4 +65,18 @@ subprojects {
 			'java:S6548',	// Singleton
 		]
 	}
+
+	// Force disable JPMS in Eclipse since Buildship doesn't support a proper mechanism for src/test/java
+	// TODO: Do something more sane here
+	eclipse {
+		classpath {
+			file {
+				whenMerged { classpath ->
+					classpath.entries.findAll { it instanceof org.gradle.plugins.ide.eclipse.model.SourceFolder }.each { folder ->
+						folder.excludes = ['module-info.java']
+					}
+				}
+			}
+		}
+	}
 }
