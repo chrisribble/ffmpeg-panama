@@ -1,8 +1,8 @@
 apply from: "${rootDir}/local-publish.gradle"
 
 dependencies {
+	implementation project(':bindings')
 	implementation project(':core')
-	implementation project(':ffmpeg8')
 	implementation libs.slf4j.api
 
 	runtimeOnly libs.slf4j.simple
