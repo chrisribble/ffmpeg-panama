@@ -5,8 +5,8 @@ plugins {
 }
 
 
-group = 'io.github.chrisribble.ffmpeg'
-version = '0.1-SNAPSHOT'
+group = 'io.github.chrisribble.ffm.ffmpeg'
+version = '0.1.0'
 
 wrapper {
 	gradleVersion = '9.3'
@@ -18,7 +18,8 @@ subprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 	apply plugin: 'jacoco'
-	apply plugin: 'maven-publish'
+	apply plugin: 'checkstyle'
+	apply plugin: 'com.github.spotbugs'
 	apply plugin: 'se.solrike.sonarlint'
 
 	java {

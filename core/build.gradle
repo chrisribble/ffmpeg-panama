@@ -1,5 +1,4 @@
-apply plugin: 'checkstyle'
-apply plugin: 'com.github.spotbugs'
+apply from: "${rootDir}/local-publish.gradle"
 
 dependencies {
 	implementation project(':ffmpeg8')
