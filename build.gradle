@@ -5,7 +5,7 @@ plugins {
 }
 
 
-group = 'io.github.chrisribble.ffm.ffmpeg'
+group = 'io.github.chrisribble'
 version = '0.1.0'
 
 wrapper {

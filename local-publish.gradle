@@ -15,7 +15,7 @@ publishing {
 		mavenJava(MavenPublication) {
 			from components.java
 			groupId = rootProject.group
-			artifactId = project.name
+			artifactId = 'ffm-ffmpeg-' + project.name
 			version = rootProject.version
 			artifact sourcesJar
 			artifact javadocJar
