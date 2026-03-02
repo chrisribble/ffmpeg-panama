@@ -24,7 +24,9 @@ if [ ! -f "${FFMPEG_TARBALL}" ]; then
 fi
 
 tar xzvf ${FFMPEG_TARBALL}
-rm -rf ${BINDINGS_SRC}/main/java/io
+
+# Remove existing generated files
+find ${BINDINGS_SRC}/src/main/java -mindepth 1 -type d -exec rm -rf {} +
 
 # Note: Run with --dump-includes <out> instead of @includes.txt to see all bindings
 jextract \
