@@ -319,11 +319,12 @@ public final class BufferedImageStream implements Stream<BufferedImage> {
 	/**
 	 * Create a new builder using the specified Arena which the caller manages
 	 *
+	 * @see <a href="https://cr.openjdk.org/~mcimadamore/panama/scoped_arenas.html">Scoped Arenas</a>
+	 *
 	 * @param arena
 	 *            to use for native memory allocations; must be managed in calling scope.
 	 * @return Builder instance configured with specified Arena
 	 *
-	 * @see https://cr.openjdk.org/~mcimadamore/panama/scoped_arenas.html
 	 */
 	public static Builder builder(final Arena arena) {
 		return new Builder(arena);
