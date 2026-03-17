@@ -181,7 +181,10 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		lineBuffer = new byte[dstResolution.width() * pixelFormat.bytesPerPixel()];
 		templateImage = new BufferedImage(1, 1, pixelFormat.bufferedImageType());
 
-		var buffer = allocateBuffer(srcResolution);
+		int srcPixels = srcResolution.width() * srcResolution.height();
+		int destPixels = dstResolution.width() * dstResolution.height();
+
+		var buffer = allocateBuffer(srcPixels > destPixels ? srcResolution : dstResolution);
 		decodedFrame = allocateFrame();
 		outputFrame = allocateFrame();
 
