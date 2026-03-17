@@ -5,8 +5,8 @@ plugins {
 }
 
 
-group = 'io.github.chrisribble.ffmpeg'
-version = '0.1-SNAPSHOT'
+group = 'io.github.chrisribble'
+version = '0.1.0'
 
 wrapper {
 	gradleVersion = '9.3'
@@ -18,7 +18,8 @@ subprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 	apply plugin: 'jacoco'
-	apply plugin: 'maven-publish'
+	apply plugin: 'checkstyle'
+	apply plugin: 'com.github.spotbugs'
 	apply plugin: 'se.solrike.sonarlint'
 
 	java {
@@ -28,6 +29,8 @@ subprojects {
 		toolchain {
 			languageVersion = JavaLanguageVersion.of(25)
 		}
+
+		modularity.inferModulePath = true
 	}
 
 	repositories {
@@ -62,5 +65,19 @@ subprojects {
 			'java:S3864',  // peek in Stream delegate
 			'java:S6548',	// Singleton
 		]
+	}
+
+	// Force disable JPMS in Eclipse since Buildship doesn't support a proper mechanism for src/test/java
+	// TODO: Do something more sane here
+	eclipse {
+		classpath {
+			file {
+				whenMerged { classpath ->
+					classpath.entries.findAll { it instanceof org.gradle.plugins.ide.eclipse.model.SourceFolder }.each { folder ->
+						folder.excludes = ['module-info.java']
+					}
+				}
+			}
+		}
 	}
 }
