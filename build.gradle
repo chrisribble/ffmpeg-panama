@@ -5,11 +5,11 @@ plugins {
 }
 
 
-group = 'io.github.chrisribble.ffmpeg'
-version = '0.1-SNAPSHOT'
+group = 'io.github.chrisribble'
+version = '0.8-SNAPSHOT'
 
 wrapper {
-	gradleVersion = '9.3'
+	gradleVersion = '9.4'
 }
 
 subprojects {
