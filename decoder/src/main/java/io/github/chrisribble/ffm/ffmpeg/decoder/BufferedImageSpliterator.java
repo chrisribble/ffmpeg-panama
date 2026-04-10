@@ -87,7 +87,6 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 
 	private Resolution srcResolution;
 	private Resolution dstResolution;
-	private byte[] lineBuffer;
 	private BufferedImage templateImage;
 
 	private int frameNumber;
@@ -175,7 +174,6 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 		if (dstResolution == null) {
 			dstResolution = srcResolution;
 		}
-		lineBuffer = new byte[dstResolution.width() * pixelFormat.bytesPerPixel()];
 		templateImage = new BufferedImage(1, 1, pixelFormat.bufferedImageType());
 
 		int srcPixels = srcResolution.width() * srcResolution.height();
@@ -278,7 +276,6 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 	private BufferedImage getBufferedImage(final MemorySegment frame, final Resolution resolution) {
 		int width = resolution.width();
 		int height = resolution.height();
-		int bytesPerPixel = pixelFormat.bytesPerPixel();
 
 		// uint8_t *data[8]
 		var data = AVFrame.data(frame);
@@ -287,26 +284,23 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 		// frame.linespace[0]
 		int linesize = AVFrame.linesize(frame).get(C_INT, 0);
 
-		var pixelArray = pdata.reinterpret((long) linesize * height, arena, null);
+		int imageBytes = linesize * height;
+
+		var pixelArray = pdata.reinterpret(imageBytes, arena, null);
 		ByteBuffer buffer = pixelArray.asByteBuffer();
-		byte[] imageBuffer = new byte[width * height * bytesPerPixel];
 
-		// Copy pixel data
-		for (int y = 0; y < height; y++) {
-			buffer.get(lineBuffer);
+		byte[] imageBuffer = new byte[imageBytes];
+		buffer.get(imageBuffer);
 
-			if (pixelFormat == PixelFormat.RGB) {
-				/*
-				 * FFmpeg supports RGB24, but BufferedImage only supports:
-				 * - TYPE_3BYTE_BGR (blue and red bytes are swapped)
-				 * - TYPE_INT_RGB (4-byte integer encoding with alpha)
-				 * Simple/naive solution is to just swap B <-> R.
-				 * There is likely a more elegant way to do this.
-				 */
-				PixelFormatConverter.rgbToBgr(lineBuffer);
-			}
-
-			System.arraycopy(lineBuffer, 0, imageBuffer, y * linesize, lineBuffer.length);
+		if (pixelFormat == PixelFormat.RGB) {
+			/*
+			 * FFmpeg supports RGB24, but BufferedImage only supports:
+			 * - TYPE_3BYTE_BGR (blue and red bytes are swapped)
+			 * - TYPE_INT_RGB (4-byte integer encoding with alpha)
+			 * Simple/naive solution is to just swap B <-> R.
+			 * There is likely a more elegant way to do this.
+			 */
+			PixelFormatConverter.rgbToBgr(imageBuffer);
 		}
 
 		ColorModel colorModel = templateImage.getColorModel();
