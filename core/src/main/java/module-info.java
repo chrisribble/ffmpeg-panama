@@ -1,7 +1,7 @@
 module io.github.chrisribble.ffm.ffmpeg.core {
 	requires org.slf4j;
 
-	requires transitive io.github.chrisribble.ffm.ffmpeg.bindings;
+	requires io.github.chrisribble.ffm.ffmpeg.bindings;
 
 	exports io.github.chrisribble.ffm.ffmpeg.core;
 	exports io.github.chrisribble.ffm.ffmpeg.core.exception;
