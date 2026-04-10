@@ -285,15 +285,14 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 		// frame.data[0]
 		var pdata = data.get(C_POINTER, 0);
 		// frame.linespace[0]
-		var linesize = AVFrame.linesize(frame).get(C_INT, 0);
+		int linesize = AVFrame.linesize(frame).get(C_INT, 0);
 
+		var pixelArray = pdata.reinterpret((long) linesize * height, arena, null);
+		ByteBuffer buffer = pixelArray.asByteBuffer();
 		byte[] imageBuffer = new byte[width * height * bytesPerPixel];
 
 		// Copy pixel data
 		for (int y = 0; y < height; y++) {
-			var pixelArray = pdata.asSlice((long) y * linesize)
-					.reinterpret((long) width * bytesPerPixel, arena, null);
-			ByteBuffer buffer = pixelArray.asByteBuffer();
 			buffer.get(lineBuffer);
 
 			if (pixelFormat == PixelFormat.RGB) {
@@ -307,7 +306,7 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 				PixelFormatConverter.rgbToBgr(lineBuffer);
 			}
 
-			System.arraycopy(lineBuffer, 0, imageBuffer, y * width * bytesPerPixel, lineBuffer.length);
+			System.arraycopy(lineBuffer, 0, imageBuffer, y * linesize, lineBuffer.length);
 		}
 
 		ColorModel colorModel = templateImage.getColorModel();
