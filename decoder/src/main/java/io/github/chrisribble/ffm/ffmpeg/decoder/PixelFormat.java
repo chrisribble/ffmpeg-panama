@@ -1,15 +1,17 @@
 package io.github.chrisribble.ffm.ffmpeg.decoder;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PIX_FMT_0BGR;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PIX_FMT_0RGB;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PIX_FMT_BGR24;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PIX_FMT_GRAY8;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PIX_FMT_RGB24;
 
 import java.awt.image.BufferedImage;
 
 public enum PixelFormat {
-	RGB(3, AV_PIX_FMT_RGB24(), BufferedImage.TYPE_3BYTE_BGR),
-	BGR(3, AV_PIX_FMT_BGR24(), BufferedImage.TYPE_3BYTE_BGR),
-	GRAY(1, AV_PIX_FMT_GRAY8(), BufferedImage.TYPE_BYTE_GRAY);
+	RGB32(4, AV_PIX_FMT_0RGB(), BufferedImage.TYPE_INT_RGB),
+	BGR32(4, AV_PIX_FMT_0BGR(), BufferedImage.TYPE_INT_BGR),
+	BGR24(3, AV_PIX_FMT_BGR24(), BufferedImage.TYPE_3BYTE_BGR),
+	GRAY8(1, AV_PIX_FMT_GRAY8(), BufferedImage.TYPE_BYTE_GRAY);
 
 	private final int bytesPerPixel;
 	private final int ffmpegType;
