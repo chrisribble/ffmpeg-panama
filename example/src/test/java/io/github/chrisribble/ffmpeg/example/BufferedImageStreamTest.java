@@ -194,7 +194,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -218,7 +218,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -242,7 +242,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -263,7 +263,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), 5);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -284,7 +284,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), 5);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR, System.nanoTime() - startNanos);
+			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}

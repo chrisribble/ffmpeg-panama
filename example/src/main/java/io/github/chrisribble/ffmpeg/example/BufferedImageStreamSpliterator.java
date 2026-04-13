@@ -29,14 +29,15 @@ import static java.lang.foreign.MemorySegment.NULL;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
+import java.awt.image.DataBuffer;
 import java.awt.image.DataBufferByte;
+import java.awt.image.DataBufferInt;
 import java.awt.image.Raster;
 import java.awt.image.SampleModel;
 import java.io.FileNotFoundException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
-import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -103,7 +104,7 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		inputs = builder.inputs;
 		modFrames = builder.modFrames != null ? builder.modFrames : 1;
 		limit = builder.limit;
-		pixelFormat = builder.pixelFormat != null ? builder.pixelFormat : PixelFormat.BGR;
+		pixelFormat = builder.pixelFormat != null ? builder.pixelFormat : PixelFormat.RGB32;
 		dstResolution = builder.resolution;
 	}
 
@@ -288,29 +289,25 @@ public final class BufferedImageStreamSpliterator implements Spliterator<Buffere
 		int linesize = AVFrame.linesize(frame).get(C_INT, 0);
 
 		int imageBytes = linesize * height;
-
 		var pixelArray = pdata.reinterpret(imageBytes, arena, null);
-		ByteBuffer buffer = pixelArray.asByteBuffer();
 
-		byte[] imageBuffer = new byte[imageBytes];
-		buffer.get(imageBuffer);
-
-		if (pixelFormat == PixelFormat.RGB) {
-			/*
-			 * FFmpeg supports RGB24, but BufferedImage only supports:
-			 * - TYPE_3BYTE_BGR (blue and red bytes are swapped)
-			 * - TYPE_INT_RGB (4-byte integer encoding with alpha)
-			 * Simple/naive solution is to just swap B <-> R.
-			 * There is likely a more elegant way to do this.
-			 */
-			PixelFormatConverter.rgbToBgr(imageBuffer);
-		}
+		DataBuffer dataBuffer = switch (pixelFormat) {
+			case BGR24, GRAY8 -> {
+				byte[] pixelByteBuffer = new byte[imageBytes];
+				pixelArray.asByteBuffer().get(pixelByteBuffer);
+				yield new DataBufferByte(pixelByteBuffer, pixelByteBuffer.length);
+			}
+			case RGB32, BGR32 -> {
+				int[] pixelIntBuffer = new int[width * height];
+				pixelArray.asByteBuffer().asIntBuffer().get(pixelIntBuffer);
+				yield new DataBufferInt(pixelIntBuffer, pixelIntBuffer.length);
+			}
+		};
 
 		ColorModel colorModel = templateImage.getColorModel();
 		SampleModel sampleModel = templateImage.getSampleModel().createCompatibleSampleModel(width, height);
 		boolean alphaPremultiplied = templateImage.isAlphaPremultiplied();
 
-		var dataBuffer = new DataBufferByte(imageBuffer, imageBuffer.length);
 		var raster = Raster.createWritableRaster(sampleModel, dataBuffer, null);
 		var image = new BufferedImage(colorModel, raster, alphaPremultiplied, null);
 
