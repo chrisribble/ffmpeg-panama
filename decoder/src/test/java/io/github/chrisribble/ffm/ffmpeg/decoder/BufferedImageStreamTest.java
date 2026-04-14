@@ -196,7 +196,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -220,7 +220,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
@@ -244,7 +244,7 @@ public class BufferedImageStreamTest {
 			assertEquals(images.size(), limit);
 
 			writeImages(tmpDir, images);
-			logSampled(images.size(), PixelFormat.BGR32, System.nanoTime() - startNanos);
+			logSampled(images.size(), format, System.nanoTime() - startNanos);
 		} finally {
 			delete(tmpDir);
 		}
