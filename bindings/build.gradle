@@ -1,0 +1,11 @@
+apply from: "${rootDir}/local-publish.gradle"
+
+checkstyleMain {
+	enabled = false
+}
+sonarlintMain {
+	enabled = false
+}
+spotbugsMain {
+	enabled = false
+}

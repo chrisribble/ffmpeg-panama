@@ -1,0 +1,24 @@
+apply from: "${rootDir}/local-publish.gradle"
+
+dependencies {
+	implementation project(':bindings')
+	implementation project(':core')
+	implementation libs.slf4j.api
+
+	runtimeOnly libs.slf4j.simple
+
+	testImplementation libs.testng
+}
+
+tasks.named('test') {
+	useTestNG()
+	testLogging {
+		showStandardStreams = true
+		exceptionFormat = 'full'
+	}
+	jvmArgs(['--enable-native-access=ALL-UNNAMED'])
+	systemProperty 'java.library.path', '/usr/lib64:/usr/lib:/usr/local/lib'
+
+	// Allow loading local/homebrew FFmpeg libs on OSX
+	environment 'DYLD_LIBRARY_PATH', '/usr/local/lib:/opt/homebrew/lib'
+}

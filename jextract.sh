@@ -24,14 +24,16 @@ if [ ! -f "${FFMPEG_TARBALL}" ]; then
 fi
 
 tar xzvf ${FFMPEG_TARBALL}
-rm -rf ${BINDINGS_SRC}
+
+# Remove existing generated files
+find ${BINDINGS_SRC}/src/main/java -mindepth 1 -type d -exec rm -rf {} +
 
 # Note: Run with --dump-includes <out> instead of @includes.txt to see all bindings
 jextract \
   --include-dir ./ffmpeg-${FFMPEG_VERSION} \
   --library avcodec --library avformat --library avutil --library swscale \
   @includes.txt \
-  --output ${BINDINGS_SRC} --target-package io.github.chrisribble.${BINDINGS} \
+  --output ${BINDINGS_SRC} --target-package io.github.chrisribble.ffm.ffmpeg.bindings \
   --header-class-name FFmpeg \
   "<libavcodec/avcodec.h>" \
   "<libavformat/avformat.h>" \

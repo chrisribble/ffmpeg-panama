@@ -1,0 +1,24 @@
+apply plugin: 'maven-publish'
+
+task sourcesJar(type: Jar) {
+	from sourceSets.main.allJava
+	archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+	from javadoc
+	archiveClassifier = 'javadoc'
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			groupId = rootProject.group
+			artifactId = 'ffm-ffmpeg-' + project.name
+			version = rootProject.version
+			artifact sourcesJar
+			artifact javadocJar
+		}
+	}
+}
