@@ -10,13 +10,9 @@ FFmpeg Java (Panama) bindings
 ** Assumes you've installed 25-jextract+2-4 at /usr/local/jextract/bin or elsewhere on your path **
 
 ```
-./jextract.sh 7.0.3 bindings
-```
-
-```
-./jextract.sh 8.0.1 bindings
+./jextract.sh 8.0.2 bindings
 ```
 
 Notes:
-* For broader compatibility, generate bindings against MAJOR.0.PATCH releases like 7.0.3 or 8.0.1
+* For broader compatibility, generate bindings against MAJOR.0.PATCH releases like 8.0.x
 * FFmpeg public ABI/API is stable across minor releases
