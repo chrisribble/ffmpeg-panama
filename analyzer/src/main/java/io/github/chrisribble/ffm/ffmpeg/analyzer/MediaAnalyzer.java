@@ -8,6 +8,8 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_fourcc_make_st
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
+import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -28,6 +30,7 @@ import io.github.chrisribble.ffm.ffmpeg.bindings.AVStream;
 import io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg;
 import io.github.chrisribble.ffm.ffmpeg.core.Rational;
 import io.github.chrisribble.ffm.ffmpeg.core.Resolution;
+import io.github.chrisribble.ffm.ffmpeg.core.exception.AVAllocateException;
 import io.github.chrisribble.ffm.ffmpeg.core.internal.AVFormatContextUtil;
 import io.github.chrisribble.ffm.ffmpeg.core.internal.AVStreamUtil;
 import io.github.chrisribble.ffm.ffmpeg.core.internal.LibavVersion;
@@ -242,7 +245,16 @@ public final class MediaAnalyzer {
 	private MemorySegment allocatePacket(final Arena arena) {
 		// AVPacket*
 		var p = av_packet_alloc();
-		return p.reinterpret(arena, FFmpeg::av_packet_free);
+		requireNonNull(p, "av_packet_alloc failed");
+
+		pointer(arena, p).reinterpret(arena, FFmpeg::av_packet_free);
+		return p;
+	}
+
+	private MemorySegment pointer(final Arena arena, final MemorySegment segment) {
+		var pointer = arena.allocate(C_POINTER);
+		pointer.set(C_POINTER, 0, MemorySegment.ofAddress(segment.address()));
+		return pointer;
 	}
 
 	private FrameRateMode getFrameRateMode(final StreamInfo videoStream) {
@@ -256,6 +268,15 @@ public final class MediaAnalyzer {
 
 	private boolean doubleEquals(final double a, final double b) {
 		return Math.abs(a - b) <= EPSILON;
+	}
+
+	private static void requireNonNull(final MemorySegment segment, final String message) throws AVAllocateException {
+		if (segment == null) {
+			throw new IllegalArgumentException("segment must be non-null");
+		}
+		if (segment.equals(NULL)) {
+			throw new AVAllocateException(message);
+		}
 	}
 
 	public record MediaInfo(ContainerInfo container, VideoInfo video, AudioInfo audio) {}
