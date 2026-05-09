@@ -327,6 +327,7 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 
 		// AVCodecContext*
 		var pDecoderCtx = avcodec_alloc_context3(pCodec);
+		requireNonNull(pDecoderCtx, "codec context allocation failed");
 
 		// Register cleanup
 		pointer(pDecoderCtx)
@@ -352,16 +353,9 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 		var context = sws_getContext(srcResolution.width(), srcResolution.height(), pixFmt,
 				dstResolution.width(), dstResolution.height(), pixelFormat.ffmpegType(),
 				SWS_BILINEAR(), NULL, NULL, NULL);
-		return context.reinterpret(arena, FFmpeg::sws_freeContext);
-	}
+		requireNonNull(context, "sws_getContext lookup failed");
 
-	private static void requireNonNull(final MemorySegment segment, final String message) throws AVAllocateException {
-		if (segment == null) {
-			throw new IllegalArgumentException("segment must be non-null");
-		}
-		if (segment.equals(NULL)) {
-			throw new AVAllocateException(message);
-		}
+		return context.reinterpret(arena, FFmpeg::sws_freeContext);
 	}
 
 	private MemorySegment allocateBuffer(final Resolution resolution) {
@@ -372,19 +366,27 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 
 		// void*
 		var buf = av_malloc(bufferBytes * C_CHAR.byteSize());
+		requireNonNull(buf, "av_malloc failed");
+
 		return buf.reinterpret(arena, FFmpeg::av_free);
 	}
 
 	private MemorySegment allocateFrame() {
 		// AVFrame*
-		var frame = av_frame_alloc();
-		return frame.reinterpret(arena, FFmpeg::av_free);
+		var f = av_frame_alloc();
+		requireNonNull(f, "av_frame_alloc failed");
+
+		pointer(f).reinterpret(arena, FFmpeg::av_frame_free);
+		return f;
 	}
 
 	private MemorySegment allocatePacket() {
 		// AVPacket*
 		var p = av_packet_alloc();
-		return p.reinterpret(arena, FFmpeg::av_packet_free);
+		requireNonNull(p, "av_packet_alloc failed");
+
+		pointer(p).reinterpret(arena, FFmpeg::av_packet_free);
+		return p;
 	}
 
 	/**
@@ -408,6 +410,15 @@ public final class BufferedImageSpliterator implements Spliterator<BufferedImage
 		var pointer = arena.allocate(C_POINTER);
 		pointer.set(C_POINTER, 0, MemorySegment.ofAddress(segment.address()));
 		return pointer;
+	}
+
+	private static void requireNonNull(final MemorySegment segment, final String message) throws AVAllocateException {
+		if (segment == null) {
+			throw new IllegalArgumentException("segment must be non-null");
+		}
+		if (segment.equals(NULL)) {
+			throw new AVAllocateException(message);
+		}
 	}
 
 	public static final class Builder {

@@ -1,5 +1,7 @@
 package io.github.chrisribble.ffm.ffmpeg.core.internal;
 
+import static java.lang.foreign.MemorySegment.NULL;
+
 import java.lang.foreign.MemorySegment;
 
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
@@ -27,13 +29,13 @@ public final class StreamInfo {
 		if (avStream == null) {
 			throw new IllegalArgumentException("avStream must be non-null");
 		}
-		if (avStream == MemorySegment.NULL) {
+		if (avStream.equals(NULL)) {
 			throw new IllegalArgumentException("avStream must be a non-NULL pointer");
 		}
 		if (avCodecParams == null) {
 			throw new IllegalArgumentException("avCodecParams must be non-null");
 		}
-		if (avCodecParams == MemorySegment.NULL) {
+		if (avCodecParams.equals(NULL)) {
 			throw new IllegalArgumentException("avCodecParams must be a non-NULL pointer");
 		}
 
