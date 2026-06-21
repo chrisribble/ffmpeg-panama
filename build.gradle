@@ -9,7 +9,7 @@ group = 'io.github.chrisribble'
 version = '0.8.0'
 
 wrapper {
-	gradleVersion = '9.5'
+	gradleVersion = '9.6'
 }
 
 subprojects {
