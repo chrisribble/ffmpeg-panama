@@ -22,3 +22,4 @@ def list = []
 rootProject.name = 'ffmpeg-panama'
 include discoverSubprojects()
 
+enableFeaturePreview('NO_IMPLICIT_LOOKUP_IN_PARENT_PROJECTS')
