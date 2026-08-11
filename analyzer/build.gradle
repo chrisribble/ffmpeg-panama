@@ -1,13 +1,22 @@
-apply from: "${rootDir}/local-publish.gradle"
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
+
+description = 'Media file analysis built on the FFmpeg Panama bindings'
+
+apply from: "${rootDir}/publish.gradle"
+
+mavenPublishing {
+	configure(new JavaLibrary(new JavadocJar.Javadoc(), new SourcesJar.Sources()))
+}
 
 dependencies {
 	implementation project(':bindings')
 	implementation project(':core')
 	implementation libs.slf4j.api
 
-	runtimeOnly libs.slf4j.simple
-
 	testImplementation libs.testng
+	testRuntimeOnly libs.slf4j.simple
 }
 
 tasks.named('test') {

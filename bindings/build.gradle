@@ -1,4 +1,15 @@
-apply from: "${rootDir}/local-publish.gradle"
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
+
+description = 'jextract-generated Java (Panama) bindings for the FFmpeg C API'
+
+apply from: "${rootDir}/publish.gradle"
+
+mavenPublishing {
+	// Note: javadoc disabled for generated bindings surface
+	configure(new JavaLibrary(new JavadocJar.Empty(), new SourcesJar.Sources()))
+}
 
 checkstyleMain {
 	enabled = false

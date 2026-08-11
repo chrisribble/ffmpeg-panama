@@ -19547,10 +19547,10 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AVERROR_HTTP_SERVER_ERROR() {
         return AVERROR_HTTP_SERVER_ERROR;
     }
-    private static final int LIBAVUTIL_VERSION_INT = (int)3934308L;
+    private static final int LIBAVUTIL_VERSION_INT = (int)3934311L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVUTIL_VERSION_INT 3934308
+     * #define LIBAVUTIL_VERSION_INT 3934311
      * }
      */
     public static int LIBAVUTIL_VERSION_INT() {
@@ -20357,28 +20357,28 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_PIX_FMT_RGBAF32() {
         return AV_PIX_FMT_RGBAF32;
     }
-    private static final int LIBAVCODEC_VERSION_INT = (int)4066148L;
+    private static final int LIBAVCODEC_VERSION_INT = (int)4066151L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVCODEC_VERSION_INT 4066148
+     * #define LIBAVCODEC_VERSION_INT 4066151
      * }
      */
     public static int LIBAVCODEC_VERSION_INT() {
         return LIBAVCODEC_VERSION_INT;
     }
-    private static final int LIBAVFORMAT_VERSION_INT = (int)4064100L;
+    private static final int LIBAVFORMAT_VERSION_INT = (int)4064103L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVFORMAT_VERSION_INT 4064100
+     * #define LIBAVFORMAT_VERSION_INT 4064103
      * }
      */
     public static int LIBAVFORMAT_VERSION_INT() {
         return LIBAVFORMAT_VERSION_INT;
     }
-    private static final int LIBSWSCALE_VERSION_INT = (int)590180L;
+    private static final int LIBSWSCALE_VERSION_INT = (int)590183L;
     /**
      * {@snippet lang=c :
-     * #define LIBSWSCALE_VERSION_INT 590180
+     * #define LIBSWSCALE_VERSION_INT 590183
      * }
      */
     public static int LIBSWSCALE_VERSION_INT() {

@@ -1,0 +1,58 @@
+apply plugin: 'com.vanniktech.maven.publish.base'
+
+boolean signPublications = providers.gradleProperty('signAllPublications').getOrElse('false').toBoolean()
+
+mavenPublishing {
+	coordinates(rootProject.group.toString(), "ffm-ffmpeg-${project.name}".toString(), rootProject.version.toString())
+
+	pom {
+		name = "ffm-ffmpeg-${project.name}"
+		description = project.description
+		inceptionYear = '2023'
+		url = 'https://github.com/chrisribble/ffmpeg-panama'
+
+		licenses {
+			license {
+				name = 'GNU Lesser General Public License, Version 2.1'
+				url = 'https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html'
+				distribution = 'repo'
+			}
+		}
+
+		developers {
+			developer {
+				id = 'chrisribble'
+				name = 'Chris Ribble'
+				url = 'https://github.com/chrisribble'
+			}
+		}
+
+		scm {
+			url = 'https://github.com/chrisribble/ffmpeg-panama'
+			connection = 'scm:git:git://github.com/chrisribble/ffmpeg-panama.git'
+			developerConnection = 'scm:git:ssh://git@github.com/chrisribble/ffmpeg-panama.git'
+		}
+	}
+
+	// The base plugin deliberately ignores the mavenCentralPublishing/signAllPublications
+	// properties, so both destinations have to be requested explicitly
+	publishToMavenCentral()
+
+	if (signPublications) {
+		signAllPublications()
+	}
+}
+
+// signAllPublications() registers the sign*Publication tasks unconditionally but only configures
+// a signatory when the signingInMemoryKey property is set. Without it the build dies with
+// "no configured signatory", so fall back to the local gpg agent/keyring — which is what the
+// manual release process in RELEASING.md actually uses. An in-memory key still wins when present,
+// keeping CI publishing possible without further changes.
+//
+// NB: this has to live outside the mavenPublishing block, where 'signing' would resolve to the
+// plugin extension's own Property<Boolean> rather than the project's SigningExtension.
+if (signPublications && !providers.gradleProperty('signingInMemoryKey').isPresent()) {
+	signing {
+		useGpgCmd()
+	}
+}
