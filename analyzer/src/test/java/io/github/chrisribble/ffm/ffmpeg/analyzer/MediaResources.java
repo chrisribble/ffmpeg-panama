@@ -3,6 +3,8 @@ package io.github.chrisribble.ffm.ffmpeg.analyzer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.testng.annotations.Test;
+
 public class MediaResources {
 	private static final String RESOURCES_BASE = "src/test/resources";
 
@@ -10,6 +12,7 @@ public class MediaResources {
 
 	public static final TestFile LAVFI_TEST_SRC_INIT = new TestFile(RESOURCES_BASE, "init-stream0.m4s");
 	public static final TestFile LAVFI_TEST_SRC_CHUNK = new TestFile(RESOURCES_BASE, "chunk-stream0-00001.m4s");
+	public static final TestFile HDR_TEST = new TestFile(RESOURCES_BASE, "hdr-test.mp4");
 
 	private MediaResources() {}
 

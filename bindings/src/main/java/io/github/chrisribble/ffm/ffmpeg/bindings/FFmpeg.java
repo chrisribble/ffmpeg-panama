@@ -153,6 +153,78 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_PKT_FLAG_KEY() {
         return AV_PKT_FLAG_KEY;
     }
+    private static final int FF_LOSS_RESOLUTION = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_RESOLUTION 1
+     * }
+     */
+    public static int FF_LOSS_RESOLUTION() {
+        return FF_LOSS_RESOLUTION;
+    }
+    private static final int FF_LOSS_DEPTH = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_DEPTH 2
+     * }
+     */
+    public static int FF_LOSS_DEPTH() {
+        return FF_LOSS_DEPTH;
+    }
+    private static final int FF_LOSS_COLORSPACE = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_COLORSPACE 4
+     * }
+     */
+    public static int FF_LOSS_COLORSPACE() {
+        return FF_LOSS_COLORSPACE;
+    }
+    private static final int FF_LOSS_ALPHA = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_ALPHA 8
+     * }
+     */
+    public static int FF_LOSS_ALPHA() {
+        return FF_LOSS_ALPHA;
+    }
+    private static final int FF_LOSS_COLORQUANT = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_COLORQUANT 16
+     * }
+     */
+    public static int FF_LOSS_COLORQUANT() {
+        return FF_LOSS_COLORQUANT;
+    }
+    private static final int FF_LOSS_CHROMA = (int)32L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_CHROMA 32
+     * }
+     */
+    public static int FF_LOSS_CHROMA() {
+        return FF_LOSS_CHROMA;
+    }
+    private static final int FF_LOSS_EXCESS_RESOLUTION = (int)64L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_EXCESS_RESOLUTION 64
+     * }
+     */
+    public static int FF_LOSS_EXCESS_RESOLUTION() {
+        return FF_LOSS_EXCESS_RESOLUTION;
+    }
+    private static final int FF_LOSS_EXCESS_DEPTH = (int)128L;
+    /**
+     * {@snippet lang=c :
+     * #define FF_LOSS_EXCESS_DEPTH 128
+     * }
+     */
+    public static int FF_LOSS_EXCESS_DEPTH() {
+        return FF_LOSS_EXCESS_DEPTH;
+    }
     private static final int SWS_SRC_V_CHR_DROP_MASK = (int)196608L;
     /**
      * {@snippet lang=c :
@@ -4365,7 +4437,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG
+            FFmpeg.C_LONG_LONG
         );
 
         public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_int_list_length_for_size");
@@ -10072,9 +10144,9 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_POINTER,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG
         );
 
         public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_parse2");
@@ -13121,7 +13193,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -13184,9 +13256,9 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -14657,7 +14729,7 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -14840,7 +14912,7 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -14902,8 +14974,8 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_INT
@@ -16067,6 +16139,1787 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
+    private static class av_get_bits_per_pixel {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_bits_per_pixel");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static FunctionDescriptor av_get_bits_per_pixel$descriptor() {
+        return av_get_bits_per_pixel.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MethodHandle av_get_bits_per_pixel$handle() {
+        return av_get_bits_per_pixel.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MemorySegment av_get_bits_per_pixel$address() {
+        return av_get_bits_per_pixel.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_get_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static int av_get_bits_per_pixel(MemorySegment pixdesc) {
+        var mh$ = av_get_bits_per_pixel.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_bits_per_pixel", pixdesc);
+            }
+            return (int)mh$.invokeExact(pixdesc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_get_padded_bits_per_pixel {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_padded_bits_per_pixel");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static FunctionDescriptor av_get_padded_bits_per_pixel$descriptor() {
+        return av_get_padded_bits_per_pixel.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MethodHandle av_get_padded_bits_per_pixel$handle() {
+        return av_get_padded_bits_per_pixel.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static MemorySegment av_get_padded_bits_per_pixel$address() {
+        return av_get_padded_bits_per_pixel.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor *pixdesc)
+     * }
+     */
+    public static int av_get_padded_bits_per_pixel(MemorySegment pixdesc) {
+        var mh$ = av_get_padded_bits_per_pixel.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_padded_bits_per_pixel", pixdesc);
+            }
+            return (int)mh$.invokeExact(pixdesc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_desc_get {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_desc_get$descriptor() {
+        return av_pix_fmt_desc_get.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_desc_get$handle() {
+        return av_pix_fmt_desc_get.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get$address() {
+        return av_pix_fmt_desc_get.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get(int pix_fmt) {
+        var mh$ = av_pix_fmt_desc_get.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_desc_get", pix_fmt);
+            }
+            return (MemorySegment)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_desc_next {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_next");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_desc_next$descriptor() {
+        return av_pix_fmt_desc_next.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_desc_next$handle() {
+        return av_pix_fmt_desc_next.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_next$address() {
+        return av_pix_fmt_desc_next.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_next(const AVPixFmtDescriptor *prev)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_next(MemorySegment prev) {
+        var mh$ = av_pix_fmt_desc_next.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_desc_next", prev);
+            }
+            return (MemorySegment)mh$.invokeExact(prev);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_desc_get_id {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_get_id");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_desc_get_id$descriptor() {
+        return av_pix_fmt_desc_get_id.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_desc_get_id$handle() {
+        return av_pix_fmt_desc_get_id.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get_id$address() {
+        return av_pix_fmt_desc_get_id.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc)
+     * }
+     */
+    public static int av_pix_fmt_desc_get_id(MemorySegment desc) {
+        var mh$ = av_pix_fmt_desc_get_id.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_desc_get_id", desc);
+            }
+            return (int)mh$.invokeExact(desc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_get_chroma_sub_sample {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_get_chroma_sub_sample");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_get_chroma_sub_sample$descriptor() {
+        return av_pix_fmt_get_chroma_sub_sample.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_get_chroma_sub_sample$handle() {
+        return av_pix_fmt_get_chroma_sub_sample.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_get_chroma_sub_sample$address() {
+        return av_pix_fmt_get_chroma_sub_sample.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift)
+     * }
+     */
+    public static int av_pix_fmt_get_chroma_sub_sample(int pix_fmt, MemorySegment h_shift, MemorySegment v_shift) {
+        var mh$ = av_pix_fmt_get_chroma_sub_sample.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_get_chroma_sub_sample", pix_fmt, h_shift, v_shift);
+            }
+            return (int)mh$.invokeExact(pix_fmt, h_shift, v_shift);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_count_planes {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_count_planes");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_count_planes$descriptor() {
+        return av_pix_fmt_count_planes.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_count_planes$handle() {
+        return av_pix_fmt_count_planes.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_count_planes$address() {
+        return av_pix_fmt_count_planes.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_pix_fmt_count_planes(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static int av_pix_fmt_count_planes(int pix_fmt) {
+        var mh$ = av_pix_fmt_count_planes.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_count_planes", pix_fmt);
+            }
+            return (int)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_range_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_range_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static FunctionDescriptor av_color_range_name$descriptor() {
+        return av_color_range_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MethodHandle av_color_range_name$handle() {
+        return av_color_range_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MemorySegment av_color_range_name$address() {
+        return av_color_range_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MemorySegment av_color_range_name(int range) {
+        var mh$ = av_color_range_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_range_name", range);
+            }
+            return (MemorySegment)mh$.invokeExact(range);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_range_from_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_range_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_color_range_from_name(const char *name)
+     * }
+     */
+    public static FunctionDescriptor av_color_range_from_name$descriptor() {
+        return av_color_range_from_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_color_range_from_name(const char *name)
+     * }
+     */
+    public static MethodHandle av_color_range_from_name$handle() {
+        return av_color_range_from_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_range_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_range_from_name$address() {
+        return av_color_range_from_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_color_range_from_name(const char *name)
+     * }
+     */
+    public static int av_color_range_from_name(MemorySegment name) {
+        var mh$ = av_color_range_from_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_range_from_name", name);
+            }
+            return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_primaries_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_primaries_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static FunctionDescriptor av_color_primaries_name$descriptor() {
+        return av_color_primaries_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MethodHandle av_color_primaries_name$handle() {
+        return av_color_primaries_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MemorySegment av_color_primaries_name$address() {
+        return av_color_primaries_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MemorySegment av_color_primaries_name(int primaries) {
+        var mh$ = av_color_primaries_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_primaries_name", primaries);
+            }
+            return (MemorySegment)mh$.invokeExact(primaries);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_primaries_from_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_primaries_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_color_primaries_from_name(const char *name)
+     * }
+     */
+    public static FunctionDescriptor av_color_primaries_from_name$descriptor() {
+        return av_color_primaries_from_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_color_primaries_from_name(const char *name)
+     * }
+     */
+    public static MethodHandle av_color_primaries_from_name$handle() {
+        return av_color_primaries_from_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_primaries_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_primaries_from_name$address() {
+        return av_color_primaries_from_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_color_primaries_from_name(const char *name)
+     * }
+     */
+    public static int av_color_primaries_from_name(MemorySegment name) {
+        var mh$ = av_color_primaries_from_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_primaries_from_name", name);
+            }
+            return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_transfer_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_transfer_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static FunctionDescriptor av_color_transfer_name$descriptor() {
+        return av_color_transfer_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MethodHandle av_color_transfer_name$handle() {
+        return av_color_transfer_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MemorySegment av_color_transfer_name$address() {
+        return av_color_transfer_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MemorySegment av_color_transfer_name(int transfer) {
+        var mh$ = av_color_transfer_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_transfer_name", transfer);
+            }
+            return (MemorySegment)mh$.invokeExact(transfer);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_transfer_from_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_transfer_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_color_transfer_from_name(const char *name)
+     * }
+     */
+    public static FunctionDescriptor av_color_transfer_from_name$descriptor() {
+        return av_color_transfer_from_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_color_transfer_from_name(const char *name)
+     * }
+     */
+    public static MethodHandle av_color_transfer_from_name$handle() {
+        return av_color_transfer_from_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_transfer_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_transfer_from_name$address() {
+        return av_color_transfer_from_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_color_transfer_from_name(const char *name)
+     * }
+     */
+    public static int av_color_transfer_from_name(MemorySegment name) {
+        var mh$ = av_color_transfer_from_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_transfer_from_name", name);
+            }
+            return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_space_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_space_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static FunctionDescriptor av_color_space_name$descriptor() {
+        return av_color_space_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MethodHandle av_color_space_name$handle() {
+        return av_color_space_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MemorySegment av_color_space_name$address() {
+        return av_color_space_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MemorySegment av_color_space_name(int space) {
+        var mh$ = av_color_space_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_space_name", space);
+            }
+            return (MemorySegment)mh$.invokeExact(space);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_space_from_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_space_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_color_space_from_name(const char *name)
+     * }
+     */
+    public static FunctionDescriptor av_color_space_from_name$descriptor() {
+        return av_color_space_from_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_color_space_from_name(const char *name)
+     * }
+     */
+    public static MethodHandle av_color_space_from_name$handle() {
+        return av_color_space_from_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_color_space_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_color_space_from_name$address() {
+        return av_color_space_from_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_color_space_from_name(const char *name)
+     * }
+     */
+    public static int av_color_space_from_name(MemorySegment name) {
+        var mh$ = av_color_space_from_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_space_from_name", name);
+            }
+            return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_chroma_location_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_chroma_location_name(enum AVChromaLocation location)
+     * }
+     */
+    public static FunctionDescriptor av_chroma_location_name$descriptor() {
+        return av_chroma_location_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_chroma_location_name(enum AVChromaLocation location)
+     * }
+     */
+    public static MethodHandle av_chroma_location_name$handle() {
+        return av_chroma_location_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_chroma_location_name(enum AVChromaLocation location)
+     * }
+     */
+    public static MemorySegment av_chroma_location_name$address() {
+        return av_chroma_location_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_chroma_location_name(enum AVChromaLocation location)
+     * }
+     */
+    public static MemorySegment av_chroma_location_name(int location) {
+        var mh$ = av_chroma_location_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_chroma_location_name", location);
+            }
+            return (MemorySegment)mh$.invokeExact(location);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_chroma_location_from_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_from_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_chroma_location_from_name(const char *name)
+     * }
+     */
+    public static FunctionDescriptor av_chroma_location_from_name$descriptor() {
+        return av_chroma_location_from_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_chroma_location_from_name(const char *name)
+     * }
+     */
+    public static MethodHandle av_chroma_location_from_name$handle() {
+        return av_chroma_location_from_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_chroma_location_from_name(const char *name)
+     * }
+     */
+    public static MemorySegment av_chroma_location_from_name$address() {
+        return av_chroma_location_from_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_chroma_location_from_name(const char *name)
+     * }
+     */
+    public static int av_chroma_location_from_name(MemorySegment name) {
+        var mh$ = av_chroma_location_from_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_chroma_location_from_name", name);
+            }
+            return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_chroma_location_enum_to_pos {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_enum_to_pos");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos)
+     * }
+     */
+    public static FunctionDescriptor av_chroma_location_enum_to_pos$descriptor() {
+        return av_chroma_location_enum_to_pos.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos)
+     * }
+     */
+    public static MethodHandle av_chroma_location_enum_to_pos$handle() {
+        return av_chroma_location_enum_to_pos.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos)
+     * }
+     */
+    public static MemorySegment av_chroma_location_enum_to_pos$address() {
+        return av_chroma_location_enum_to_pos.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_chroma_location_enum_to_pos(int *xpos, int *ypos, enum AVChromaLocation pos)
+     * }
+     */
+    public static int av_chroma_location_enum_to_pos(MemorySegment xpos, MemorySegment ypos, int pos) {
+        var mh$ = av_chroma_location_enum_to_pos.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_chroma_location_enum_to_pos", xpos, ypos, pos);
+            }
+            return (int)mh$.invokeExact(xpos, ypos, pos);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_chroma_location_pos_to_enum {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_chroma_location_pos_to_enum");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos)
+     * }
+     */
+    public static FunctionDescriptor av_chroma_location_pos_to_enum$descriptor() {
+        return av_chroma_location_pos_to_enum.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos)
+     * }
+     */
+    public static MethodHandle av_chroma_location_pos_to_enum$handle() {
+        return av_chroma_location_pos_to_enum.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos)
+     * }
+     */
+    public static MemorySegment av_chroma_location_pos_to_enum$address() {
+        return av_chroma_location_pos_to_enum.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVChromaLocation av_chroma_location_pos_to_enum(int xpos, int ypos)
+     * }
+     */
+    public static int av_chroma_location_pos_to_enum(int xpos, int ypos) {
+        var mh$ = av_chroma_location_pos_to_enum.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_chroma_location_pos_to_enum", xpos, ypos);
+            }
+            return (int)mh$.invokeExact(xpos, ypos);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_get_pix_fmt {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_get_pix_fmt(const char *name)
+     * }
+     */
+    public static FunctionDescriptor av_get_pix_fmt$descriptor() {
+        return av_get_pix_fmt.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_get_pix_fmt(const char *name)
+     * }
+     */
+    public static MethodHandle av_get_pix_fmt$handle() {
+        return av_get_pix_fmt.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_get_pix_fmt(const char *name)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt$address() {
+        return av_get_pix_fmt.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_get_pix_fmt(const char *name)
+     * }
+     */
+    public static int av_get_pix_fmt(MemorySegment name) {
+        var mh$ = av_get_pix_fmt.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_pix_fmt", name);
+            }
+            return (int)mh$.invokeExact(name);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_get_pix_fmt_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_get_pix_fmt_name$descriptor() {
+        return av_get_pix_fmt_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_get_pix_fmt_name$handle() {
+        return av_get_pix_fmt_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_name$address() {
+        return av_get_pix_fmt_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_name(int pix_fmt) {
+        var mh$ = av_get_pix_fmt_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_pix_fmt_name", pix_fmt);
+            }
+            return (MemorySegment)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_get_pix_fmt_string {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_string");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * char *av_get_pix_fmt_string(char *buf, int buf_size, enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_get_pix_fmt_string$descriptor() {
+        return av_get_pix_fmt_string.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * char *av_get_pix_fmt_string(char *buf, int buf_size, enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_get_pix_fmt_string$handle() {
+        return av_get_pix_fmt_string.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * char *av_get_pix_fmt_string(char *buf, int buf_size, enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_string$address() {
+        return av_get_pix_fmt_string.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * char *av_get_pix_fmt_string(char *buf, int buf_size, enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_string(MemorySegment buf, int buf_size, int pix_fmt) {
+        var mh$ = av_get_pix_fmt_string.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_pix_fmt_string", buf, buf_size, pix_fmt);
+            }
+            return (MemorySegment)mh$.invokeExact(buf, buf_size, pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_read_image_line2 {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_image_line2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void av_read_image_line2(void *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size)
+     * }
+     */
+    public static FunctionDescriptor av_read_image_line2$descriptor() {
+        return av_read_image_line2.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void av_read_image_line2(void *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size)
+     * }
+     */
+    public static MethodHandle av_read_image_line2$handle() {
+        return av_read_image_line2.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_read_image_line2(void *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size)
+     * }
+     */
+    public static MemorySegment av_read_image_line2$address() {
+        return av_read_image_line2.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void av_read_image_line2(void *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size)
+     * }
+     */
+    public static void av_read_image_line2(MemorySegment dst, MemorySegment data, MemorySegment linesize, MemorySegment desc, int x, int y, int c, int w, int read_pal_component, int dst_element_size) {
+        var mh$ = av_read_image_line2.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_read_image_line2", dst, data, linesize, desc, x, y, c, w, read_pal_component, dst_element_size);
+            }
+            mh$.invokeExact(dst, data, linesize, desc, x, y, c, w, read_pal_component, dst_element_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_read_image_line {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_read_image_line");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void av_read_image_line(uint16_t *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component)
+     * }
+     */
+    public static FunctionDescriptor av_read_image_line$descriptor() {
+        return av_read_image_line.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void av_read_image_line(uint16_t *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component)
+     * }
+     */
+    public static MethodHandle av_read_image_line$handle() {
+        return av_read_image_line.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_read_image_line(uint16_t *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component)
+     * }
+     */
+    public static MemorySegment av_read_image_line$address() {
+        return av_read_image_line.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void av_read_image_line(uint16_t *dst, const uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int read_pal_component)
+     * }
+     */
+    public static void av_read_image_line(MemorySegment dst, MemorySegment data, MemorySegment linesize, MemorySegment desc, int x, int y, int c, int w, int read_pal_component) {
+        var mh$ = av_read_image_line.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_read_image_line", dst, data, linesize, desc, x, y, c, w, read_pal_component);
+            }
+            mh$.invokeExact(dst, data, linesize, desc, x, y, c, w, read_pal_component);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_write_image_line2 {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_image_line2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void av_write_image_line2(const void *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int src_element_size)
+     * }
+     */
+    public static FunctionDescriptor av_write_image_line2$descriptor() {
+        return av_write_image_line2.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void av_write_image_line2(const void *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int src_element_size)
+     * }
+     */
+    public static MethodHandle av_write_image_line2$handle() {
+        return av_write_image_line2.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_write_image_line2(const void *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int src_element_size)
+     * }
+     */
+    public static MemorySegment av_write_image_line2$address() {
+        return av_write_image_line2.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void av_write_image_line2(const void *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w, int src_element_size)
+     * }
+     */
+    public static void av_write_image_line2(MemorySegment src, MemorySegment data, MemorySegment linesize, MemorySegment desc, int x, int y, int c, int w, int src_element_size) {
+        var mh$ = av_write_image_line2.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_write_image_line2", src, data, linesize, desc, x, y, c, w, src_element_size);
+            }
+            mh$.invokeExact(src, data, linesize, desc, x, y, c, w, src_element_size);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_write_image_line {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_write_image_line");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void av_write_image_line(const uint16_t *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w)
+     * }
+     */
+    public static FunctionDescriptor av_write_image_line$descriptor() {
+        return av_write_image_line.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void av_write_image_line(const uint16_t *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w)
+     * }
+     */
+    public static MethodHandle av_write_image_line$handle() {
+        return av_write_image_line.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void av_write_image_line(const uint16_t *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w)
+     * }
+     */
+    public static MemorySegment av_write_image_line$address() {
+        return av_write_image_line.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void av_write_image_line(const uint16_t *src, uint8_t *data[4], const int linesize[4], const AVPixFmtDescriptor *desc, int x, int y, int c, int w)
+     * }
+     */
+    public static void av_write_image_line(MemorySegment src, MemorySegment data, MemorySegment linesize, MemorySegment desc, int x, int y, int c, int w) {
+        var mh$ = av_write_image_line.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_write_image_line", src, data, linesize, desc, x, y, c, w);
+            }
+            mh$.invokeExact(src, data, linesize, desc, x, y, c, w);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_swap_endianness {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_swap_endianness");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_swap_endianness$descriptor() {
+        return av_pix_fmt_swap_endianness.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_swap_endianness$handle() {
+        return av_pix_fmt_swap_endianness.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_swap_endianness$address() {
+        return av_pix_fmt_swap_endianness.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static int av_pix_fmt_swap_endianness(int pix_fmt) {
+        var mh$ = av_pix_fmt_swap_endianness.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_swap_endianness", pix_fmt);
+            }
+            return (int)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_get_pix_fmt_loss {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_loss");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt, int has_alpha)
+     * }
+     */
+    public static FunctionDescriptor av_get_pix_fmt_loss$descriptor() {
+        return av_get_pix_fmt_loss.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt, int has_alpha)
+     * }
+     */
+    public static MethodHandle av_get_pix_fmt_loss$handle() {
+        return av_get_pix_fmt_loss.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt, int has_alpha)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_loss$address() {
+        return av_get_pix_fmt_loss.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt, int has_alpha)
+     * }
+     */
+    public static int av_get_pix_fmt_loss(int dst_pix_fmt, int src_pix_fmt, int has_alpha) {
+        var mh$ = av_get_pix_fmt_loss.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_pix_fmt_loss", dst_pix_fmt, src_pix_fmt, has_alpha);
+            }
+            return (int)mh$.invokeExact(dst_pix_fmt, src_pix_fmt, has_alpha);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_find_best_pix_fmt_of_2 {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_find_best_pix_fmt_of_2");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
+     * }
+     */
+    public static FunctionDescriptor av_find_best_pix_fmt_of_2$descriptor() {
+        return av_find_best_pix_fmt_of_2.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
+     * }
+     */
+    public static MethodHandle av_find_best_pix_fmt_of_2$handle() {
+        return av_find_best_pix_fmt_of_2.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
+     * }
+     */
+    public static MemorySegment av_find_best_pix_fmt_of_2$address() {
+        return av_find_best_pix_fmt_of_2.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2, enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
+     * }
+     */
+    public static int av_find_best_pix_fmt_of_2(int dst_pix_fmt1, int dst_pix_fmt2, int src_pix_fmt, int has_alpha, MemorySegment loss_ptr) {
+        var mh$ = av_find_best_pix_fmt_of_2.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_find_best_pix_fmt_of_2", dst_pix_fmt1, dst_pix_fmt2, src_pix_fmt, has_alpha, loss_ptr);
+            }
+            return (int)mh$.invokeExact(dst_pix_fmt1, dst_pix_fmt2, src_pix_fmt, has_alpha, loss_ptr);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_image_fill_max_pixsteps {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             FFmpeg.C_POINTER,
@@ -16966,7 +18819,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_POINTER
@@ -20374,6 +22227,96 @@ public class FFmpeg extends FFmpeg$shared {
      */
     public static int LIBAVFORMAT_VERSION_INT() {
         return LIBAVFORMAT_VERSION_INT;
+    }
+    private static final int AV_PIX_FMT_FLAG_BE = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_BE 1
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_BE() {
+        return AV_PIX_FMT_FLAG_BE;
+    }
+    private static final int AV_PIX_FMT_FLAG_PAL = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_PAL 2
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_PAL() {
+        return AV_PIX_FMT_FLAG_PAL;
+    }
+    private static final int AV_PIX_FMT_FLAG_BITSTREAM = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_BITSTREAM 4
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_BITSTREAM() {
+        return AV_PIX_FMT_FLAG_BITSTREAM;
+    }
+    private static final int AV_PIX_FMT_FLAG_HWACCEL = (int)8L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_HWACCEL 8
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_HWACCEL() {
+        return AV_PIX_FMT_FLAG_HWACCEL;
+    }
+    private static final int AV_PIX_FMT_FLAG_PLANAR = (int)16L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_PLANAR 16
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_PLANAR() {
+        return AV_PIX_FMT_FLAG_PLANAR;
+    }
+    private static final int AV_PIX_FMT_FLAG_RGB = (int)32L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_RGB 32
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_RGB() {
+        return AV_PIX_FMT_FLAG_RGB;
+    }
+    private static final int AV_PIX_FMT_FLAG_ALPHA = (int)128L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_ALPHA 128
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_ALPHA() {
+        return AV_PIX_FMT_FLAG_ALPHA;
+    }
+    private static final int AV_PIX_FMT_FLAG_BAYER = (int)256L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_BAYER 256
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_BAYER() {
+        return AV_PIX_FMT_FLAG_BAYER;
+    }
+    private static final int AV_PIX_FMT_FLAG_FLOAT = (int)512L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_FLOAT 512
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_FLOAT() {
+        return AV_PIX_FMT_FLAG_FLOAT;
+    }
+    private static final int AV_PIX_FMT_FLAG_XYZ = (int)1024L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_PIX_FMT_FLAG_XYZ 1024
+     * }
+     */
+    public static int AV_PIX_FMT_FLAG_XYZ() {
+        return AV_PIX_FMT_FLAG_XYZ;
     }
     private static final int LIBSWSCALE_VERSION_INT = (int)590183L;
     /**

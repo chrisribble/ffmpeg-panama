@@ -14,28 +14,28 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * struct AVChapter {
- *     int64_t id;
- *     AVRational time_base;
- *     int64_t start;
- *     int64_t end;
- *     AVDictionary *metadata;
+ * struct AVComponentDescriptor {
+ *     int plane;
+ *     int step;
+ *     int offset;
+ *     int shift;
+ *     int depth;
  * }
  * }
  */
-public class AVChapter {
+public class AVComponentDescriptor {
 
-    AVChapter() {
+    AVComponentDescriptor() {
         // Should not be called directly
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        FFmpeg.C_LONG_LONG.withName("id"),
-        AVRational.layout().withName("time_base"),
-        FFmpeg.C_LONG_LONG.withName("start"),
-        FFmpeg.C_LONG_LONG.withName("end"),
-        FFmpeg.C_POINTER.withName("metadata")
-    ).withName("AVChapter");
+        FFmpeg.C_INT.withName("plane"),
+        FFmpeg.C_INT.withName("step"),
+        FFmpeg.C_INT.withName("offset"),
+        FFmpeg.C_INT.withName("shift"),
+        FFmpeg.C_INT.withName("depth")
+    ).withName("AVComponentDescriptor");
 
     /**
      * The layout of this struct
@@ -44,224 +44,224 @@ public class AVChapter {
         return $LAYOUT;
     }
 
-    private static final OfLong id$LAYOUT = (OfLong)$LAYOUT.select(groupElement("id"));
+    private static final OfInt plane$LAYOUT = (OfInt)$LAYOUT.select(groupElement("plane"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * int64_t id
+     * int plane
      * }
      */
-    public static final OfLong id$layout() {
-        return id$LAYOUT;
+    public static final OfInt plane$layout() {
+        return plane$LAYOUT;
     }
 
-    private static final long id$OFFSET = $LAYOUT.byteOffset(groupElement("id"));
+    private static final long plane$OFFSET = $LAYOUT.byteOffset(groupElement("plane"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * int64_t id
+     * int plane
      * }
      */
-    public static final long id$offset() {
-        return id$OFFSET;
+    public static final long plane$offset() {
+        return plane$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * int64_t id
+     * int plane
      * }
      */
-    public static long id(MemorySegment struct) {
-        return struct.get(id$LAYOUT, id$OFFSET);
+    public static int plane(MemorySegment struct) {
+        return struct.get(plane$LAYOUT, plane$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * int64_t id
+     * int plane
      * }
      */
-    public static void id(MemorySegment struct, long fieldValue) {
-        struct.set(id$LAYOUT, id$OFFSET, fieldValue);
+    public static void plane(MemorySegment struct, int fieldValue) {
+        struct.set(plane$LAYOUT, plane$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout time_base$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("time_base"));
+    private static final OfInt step$LAYOUT = (OfInt)$LAYOUT.select(groupElement("step"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * AVRational time_base
+     * int step
      * }
      */
-    public static final GroupLayout time_base$layout() {
-        return time_base$LAYOUT;
+    public static final OfInt step$layout() {
+        return step$LAYOUT;
     }
 
-    private static final long time_base$OFFSET = $LAYOUT.byteOffset(groupElement("time_base"));
+    private static final long step$OFFSET = $LAYOUT.byteOffset(groupElement("step"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * AVRational time_base
+     * int step
      * }
      */
-    public static final long time_base$offset() {
-        return time_base$OFFSET;
+    public static final long step$offset() {
+        return step$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * AVRational time_base
+     * int step
      * }
      */
-    public static MemorySegment time_base(MemorySegment struct) {
-        return struct.asSlice(time_base$OFFSET, time_base$LAYOUT.byteSize());
+    public static int step(MemorySegment struct) {
+        return struct.get(step$LAYOUT, step$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * AVRational time_base
+     * int step
      * }
      */
-    public static void time_base(MemorySegment struct, MemorySegment fieldValue) {
-        MemorySegment.copy(fieldValue, 0L, struct, time_base$OFFSET, time_base$LAYOUT.byteSize());
+    public static void step(MemorySegment struct, int fieldValue) {
+        struct.set(step$LAYOUT, step$OFFSET, fieldValue);
     }
 
-    private static final OfLong start$LAYOUT = (OfLong)$LAYOUT.select(groupElement("start"));
+    private static final OfInt offset$LAYOUT = (OfInt)$LAYOUT.select(groupElement("offset"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * int64_t start
+     * int offset
      * }
      */
-    public static final OfLong start$layout() {
-        return start$LAYOUT;
+    public static final OfInt offset$layout() {
+        return offset$LAYOUT;
     }
 
-    private static final long start$OFFSET = $LAYOUT.byteOffset(groupElement("start"));
+    private static final long offset$OFFSET = $LAYOUT.byteOffset(groupElement("offset"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * int64_t start
+     * int offset
      * }
      */
-    public static final long start$offset() {
-        return start$OFFSET;
+    public static final long offset$offset() {
+        return offset$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * int64_t start
+     * int offset
      * }
      */
-    public static long start(MemorySegment struct) {
-        return struct.get(start$LAYOUT, start$OFFSET);
+    public static int offset(MemorySegment struct) {
+        return struct.get(offset$LAYOUT, offset$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * int64_t start
+     * int offset
      * }
      */
-    public static void start(MemorySegment struct, long fieldValue) {
-        struct.set(start$LAYOUT, start$OFFSET, fieldValue);
+    public static void offset(MemorySegment struct, int fieldValue) {
+        struct.set(offset$LAYOUT, offset$OFFSET, fieldValue);
     }
 
-    private static final OfLong end$LAYOUT = (OfLong)$LAYOUT.select(groupElement("end"));
+    private static final OfInt shift$LAYOUT = (OfInt)$LAYOUT.select(groupElement("shift"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * int64_t end
+     * int shift
      * }
      */
-    public static final OfLong end$layout() {
-        return end$LAYOUT;
+    public static final OfInt shift$layout() {
+        return shift$LAYOUT;
     }
 
-    private static final long end$OFFSET = $LAYOUT.byteOffset(groupElement("end"));
+    private static final long shift$OFFSET = $LAYOUT.byteOffset(groupElement("shift"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * int64_t end
+     * int shift
      * }
      */
-    public static final long end$offset() {
-        return end$OFFSET;
+    public static final long shift$offset() {
+        return shift$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * int64_t end
+     * int shift
      * }
      */
-    public static long end(MemorySegment struct) {
-        return struct.get(end$LAYOUT, end$OFFSET);
+    public static int shift(MemorySegment struct) {
+        return struct.get(shift$LAYOUT, shift$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * int64_t end
+     * int shift
      * }
      */
-    public static void end(MemorySegment struct, long fieldValue) {
-        struct.set(end$LAYOUT, end$OFFSET, fieldValue);
+    public static void shift(MemorySegment struct, int fieldValue) {
+        struct.set(shift$LAYOUT, shift$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout metadata$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("metadata"));
+    private static final OfInt depth$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depth"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * AVDictionary *metadata
+     * int depth
      * }
      */
-    public static final AddressLayout metadata$layout() {
-        return metadata$LAYOUT;
+    public static final OfInt depth$layout() {
+        return depth$LAYOUT;
     }
 
-    private static final long metadata$OFFSET = $LAYOUT.byteOffset(groupElement("metadata"));
+    private static final long depth$OFFSET = $LAYOUT.byteOffset(groupElement("depth"));
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * AVDictionary *metadata
+     * int depth
      * }
      */
-    public static final long metadata$offset() {
-        return metadata$OFFSET;
+    public static final long depth$offset() {
+        return depth$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * AVDictionary *metadata
+     * int depth
      * }
      */
-    public static MemorySegment metadata(MemorySegment struct) {
-        return struct.get(metadata$LAYOUT, metadata$OFFSET);
+    public static int depth(MemorySegment struct) {
+        return struct.get(depth$LAYOUT, depth$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * AVDictionary *metadata
+     * int depth
      * }
      */
-    public static void metadata(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(metadata$LAYOUT, metadata$OFFSET, fieldValue);
+    public static void depth(MemorySegment struct, int fieldValue) {
+        struct.set(depth$LAYOUT, depth$OFFSET, fieldValue);
     }
 
     /**

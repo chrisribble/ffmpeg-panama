@@ -51,9 +51,9 @@ public class AVProgram {
         FFmpeg.C_INT.withName("pmt_pid"),
         FFmpeg.C_INT.withName("pcr_pid"),
         FFmpeg.C_INT.withName("pmt_version"),
-        FFmpeg.C_LONG.withName("start_time"),
-        FFmpeg.C_LONG.withName("end_time"),
-        FFmpeg.C_LONG.withName("pts_wrap_reference"),
+        FFmpeg.C_LONG_LONG.withName("start_time"),
+        FFmpeg.C_LONG_LONG.withName("end_time"),
+        FFmpeg.C_LONG_LONG.withName("pts_wrap_reference"),
         FFmpeg.C_INT.withName("pts_wrap_behavior"),
         MemoryLayout.paddingLayout(4)
     ).withName("AVProgram");

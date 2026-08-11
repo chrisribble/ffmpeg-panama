@@ -66,7 +66,7 @@ public class AVCodecParameters {
         FFmpeg.C_POINTER.withName("coded_side_data"),
         FFmpeg.C_INT.withName("nb_coded_side_data"),
         FFmpeg.C_INT.withName("format"),
-        FFmpeg.C_LONG.withName("bit_rate"),
+        FFmpeg.C_LONG_LONG.withName("bit_rate"),
         FFmpeg.C_INT.withName("bits_per_coded_sample"),
         FFmpeg.C_INT.withName("bits_per_raw_sample"),
         FFmpeg.C_INT.withName("profile"),

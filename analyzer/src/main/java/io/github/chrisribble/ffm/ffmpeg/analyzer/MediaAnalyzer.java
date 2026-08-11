@@ -1,10 +1,12 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.*;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_NOPTS_VALUE;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PKT_FLAG_KEY;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_fourcc_make_string;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
@@ -111,6 +113,12 @@ public final class MediaAnalyzer {
 				? gopDuration * videoStream.getTimeBase()
 				: null;
 
+		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(videoStream.avCodecParams())).getString(0);
+		String colorRange = av_color_range_name(AVCodecParameters.color_range(videoStream.avCodecParams())).getString(0);
+		String colorSpace = av_color_space_name(AVCodecParameters.color_space(videoStream.avCodecParams())).getString(0);
+		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(videoStream.avCodecParams())).getString(0);
+		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(videoStream.avCodecParams())).getString(0);
+
 		return new VideoInfo(
 				videoStream.id(),
 				codecTag,
@@ -119,7 +127,12 @@ public final class MediaAnalyzer {
 				frameRateMode,
 				videoStream.getAvgFrameRate(),
 				videoStream.getRFrameRate(),
-				gopSeconds);
+				gopSeconds,
+				pixelFormat,
+				colorRange,
+				colorSpace,
+				colorPrimaries,
+				colorTransfer);
 	}
 
 	private AudioInfo getAudioInfo(final StreamInfo audioStream) {
@@ -300,7 +313,12 @@ public final class MediaAnalyzer {
 			FrameRateMode frameRateMode,
 			Rational avgFrameRate,
 			Rational rFrameRate,
-			Double gopSeconds) implements TrackInfo {
+			Double gopSeconds,
+			String pixelFormat,
+			String colorRange,
+			String colorSpace,
+			String colorPrimaries,
+			String colorTransfer) implements TrackInfo {
 
 		public enum FrameRateMode {
 			CONSTANT("Constant"),
