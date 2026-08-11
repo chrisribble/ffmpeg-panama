@@ -2,6 +2,7 @@ plugins {
 	id 'io.github.ben-manes.versions' version '0.61.0'
 	id 'se.solrike.sonarlint' version '2.2.0' apply false
 	id 'com.github.spotbugs' version '6.5.10' apply false
+	id 'com.vanniktech.maven.publish.base' version '0.37.0' apply false
 }
 
 
