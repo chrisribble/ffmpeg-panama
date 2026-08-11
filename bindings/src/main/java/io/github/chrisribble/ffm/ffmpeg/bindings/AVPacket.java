@@ -40,8 +40,8 @@ public class AVPacket {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         FFmpeg.C_POINTER.withName("buf"),
-        FFmpeg.C_LONG_LONG.withName("pts"),
-        FFmpeg.C_LONG_LONG.withName("dts"),
+        FFmpeg.C_LONG.withName("pts"),
+        FFmpeg.C_LONG.withName("dts"),
         FFmpeg.C_POINTER.withName("data"),
         FFmpeg.C_INT.withName("size"),
         FFmpeg.C_INT.withName("stream_index"),
@@ -50,8 +50,8 @@ public class AVPacket {
         FFmpeg.C_POINTER.withName("side_data"),
         FFmpeg.C_INT.withName("side_data_elems"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG_LONG.withName("duration"),
-        FFmpeg.C_LONG_LONG.withName("pos"),
+        FFmpeg.C_LONG.withName("duration"),
+        FFmpeg.C_LONG.withName("pos"),
         FFmpeg.C_POINTER.withName("opaque"),
         FFmpeg.C_POINTER.withName("opaque_ref"),
         AVRational.layout().withName("time_base")

@@ -30,10 +30,10 @@ public class AVChapter {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        FFmpeg.C_LONG_LONG.withName("id"),
+        FFmpeg.C_LONG.withName("id"),
         AVRational.layout().withName("time_base"),
-        FFmpeg.C_LONG_LONG.withName("start"),
-        FFmpeg.C_LONG_LONG.withName("end"),
+        FFmpeg.C_LONG.withName("start"),
+        FFmpeg.C_LONG.withName("end"),
         FFmpeg.C_POINTER.withName("metadata")
     ).withName("AVChapter");
 

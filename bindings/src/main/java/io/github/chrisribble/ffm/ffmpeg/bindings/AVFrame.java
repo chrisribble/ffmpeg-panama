@@ -74,8 +74,8 @@ public class AVFrame {
         FFmpeg.C_INT.withName("pict_type"),
         AVRational.layout().withName("sample_aspect_ratio"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG_LONG.withName("pts"),
-        FFmpeg.C_LONG_LONG.withName("pkt_dts"),
+        FFmpeg.C_LONG.withName("pts"),
+        FFmpeg.C_LONG.withName("pkt_dts"),
         AVRational.layout().withName("time_base"),
         FFmpeg.C_INT.withName("quality"),
         MemoryLayout.paddingLayout(4),
@@ -95,7 +95,7 @@ public class AVFrame {
         FFmpeg.C_INT.withName("colorspace"),
         FFmpeg.C_INT.withName("chroma_location"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG_LONG.withName("best_effort_timestamp"),
+        FFmpeg.C_LONG.withName("best_effort_timestamp"),
         FFmpeg.C_POINTER.withName("metadata"),
         FFmpeg.C_INT.withName("decode_error_flags"),
         MemoryLayout.paddingLayout(4),
@@ -107,7 +107,7 @@ public class AVFrame {
         FFmpeg.C_LONG.withName("crop_right"),
         FFmpeg.C_POINTER.withName("private_ref"),
         AVChannelLayout.layout().withName("ch_layout"),
-        FFmpeg.C_LONG_LONG.withName("duration")
+        FFmpeg.C_LONG.withName("duration")
     ).withName("AVFrame");
 
     /**

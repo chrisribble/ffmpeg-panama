@@ -44,7 +44,7 @@ public class AVStreamGroup {
         FFmpeg.C_POINTER.withName("priv_data"),
         FFmpeg.C_INT.withName("index"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG_LONG.withName("id"),
+        FFmpeg.C_LONG.withName("id"),
         FFmpeg.C_INT.withName("type"),
         MemoryLayout.paddingLayout(4),
         AVStreamGroup.params.layout().withName("params"),

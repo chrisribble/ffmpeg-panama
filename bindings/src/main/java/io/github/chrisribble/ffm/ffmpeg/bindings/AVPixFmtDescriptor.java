@@ -37,7 +37,7 @@ public class AVPixFmtDescriptor {
         FFmpeg.C_CHAR.withName("log2_chroma_w"),
         FFmpeg.C_CHAR.withName("log2_chroma_h"),
         MemoryLayout.paddingLayout(5),
-        FFmpeg.C_LONG_LONG.withName("flags"),
+        FFmpeg.C_LONG.withName("flags"),
         MemoryLayout.sequenceLayout(4, AVComponentDescriptor.layout()).withName("comp"),
         FFmpeg.C_POINTER.withName("alias")
     ).withName("AVPixFmtDescriptor");

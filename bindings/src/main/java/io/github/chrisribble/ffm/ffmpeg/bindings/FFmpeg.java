@@ -4437,7 +4437,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG_LONG
+            FFmpeg.C_LONG
         );
 
         public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_int_list_length_for_size");
@@ -10144,9 +10144,9 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_POINTER,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG_LONG,
-            FFmpeg.C_LONG_LONG,
-            FFmpeg.C_LONG_LONG
+            FFmpeg.C_LONG,
+            FFmpeg.C_LONG,
+            FFmpeg.C_LONG
         );
 
         public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_parse2");
@@ -13193,7 +13193,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG,
             FFmpeg.C_INT
         );
 
@@ -13256,9 +13256,9 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG_LONG,
-            FFmpeg.C_LONG_LONG,
-            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG,
+            FFmpeg.C_LONG,
+            FFmpeg.C_LONG,
             FFmpeg.C_INT
         );
 
@@ -14729,7 +14729,7 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG,
             FFmpeg.C_INT
         );
 
@@ -14912,7 +14912,7 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG,
             FFmpeg.C_INT
         );
 
@@ -14974,8 +14974,8 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG_LONG,
-            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG,
+            FFmpeg.C_LONG,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_INT
@@ -18819,7 +18819,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_POINTER

@@ -37,7 +37,7 @@ public class AVSubtitle {
         FFmpeg.C_INT.withName("end_display_time"),
         FFmpeg.C_INT.withName("num_rects"),
         FFmpeg.C_POINTER.withName("rects"),
-        FFmpeg.C_LONG_LONG.withName("pts")
+        FFmpeg.C_LONG.withName("pts")
     ).withName("AVSubtitle");
 
     /**

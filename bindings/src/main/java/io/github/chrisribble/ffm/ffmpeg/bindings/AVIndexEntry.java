@@ -30,8 +30,8 @@ public class AVIndexEntry {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        FFmpeg.C_LONG_LONG.withName("pos"),
-        FFmpeg.C_LONG_LONG.withName("timestamp"),
+        FFmpeg.C_LONG.withName("pos"),
+        FFmpeg.C_LONG.withName("timestamp"),
         MemoryLayout.paddingLayout(4),
         FFmpeg.C_INT.withName("min_distance")
     ).withName("AVIndexEntry");
