@@ -3,8 +3,6 @@ package io.github.chrisribble.ffm.ffmpeg.analyzer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.testng.annotations.Test;
-
 public class MediaResources {
 	private static final String RESOURCES_BASE = "src/test/resources";
 
