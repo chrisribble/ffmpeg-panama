@@ -1,6 +1,7 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 import java.lang.invoke.MethodHandles;
 import java.time.Duration;
@@ -20,6 +21,32 @@ public class MediaAnalyzerTest {
 
 	@Test
 	public void testGetMediaInfo() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.codecTag(), "hvc1");
+		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
+		assertEquals(videoInfo.resolution().width(), 1920);
+		assertEquals(videoInfo.resolution().height(), 1080);
+		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
+		assertEquals(getFrameRate(videoInfo), "30");
+		assertEquals(videoInfo.colorInfo().pixelFormat(), "yuv420p10le");
+		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
+		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
+		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
+		assertEquals(videoInfo.colorInfo().colorTransfer(), "smpte2084");
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.codecTag(), "mp4a");
+		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
+	}
+
+	public static void main(final String[] args) {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
 		long startNanos = System.nanoTime();
@@ -66,24 +93,9 @@ public class MediaAnalyzerTest {
 			System.out.println("Duration                                 : " + audioInfo.duration());
 			System.out.println();
 		}
-
-		assertEquals(videoInfo.codecTag(), "hvc1");
-		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
-		assertEquals(videoInfo.resolution().width(), 1920);
-		assertEquals(videoInfo.resolution().height(), 1080);
-		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
-		assertEquals(getFrameRate(videoInfo), "30");
-		assertEquals(videoInfo.colorInfo().pixelFormat(), "yuv420p10le");
-		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
-		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
-		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
-		assertEquals(videoInfo.colorInfo().colorTransfer(), "smpte2084");
-
-		assertEquals(audioInfo.codecTag(), "mp4a");
-		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
 	}
 
-	private String getFrameRate(final VideoInfo videoInfo) {
+	private static String getFrameRate(final VideoInfo videoInfo) {
 		return switch (videoInfo.frameRateMode()) {
 			case CONSTANT -> videoInfo.rFrameRate().den() == 1
 					? videoInfo.rFrameRate().toString()
@@ -92,7 +104,7 @@ public class MediaAnalyzerTest {
 		};
 	}
 
-	private String formatFrameRate(final double value) {
+	private static String formatFrameRate(final double value) {
 		return String.format("%.3f", value);
 	}
 }
