@@ -50,11 +50,11 @@ public class MediaAnalyzerTest {
 				Integer gopFrames = videoInfo.gopFrames();
 				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + gopSeconds + "s");
 			}
-			System.out.println("Pixel Format                             : " + videoInfo.pixelFormat());
-			System.out.println("Color Range                              : " + videoInfo.colorRange());
-			System.out.println("Color Space                              : " + videoInfo.colorSpace());
-			System.out.println("Color Primaries                          : " + videoInfo.colorPrimaries());
-			System.out.println("Color Transfer                           : " + videoInfo.colorTransfer());
+			System.out.println("Pixel Format                             : " + videoInfo.colorInfo().pixelFormat());
+			System.out.println("Color Range                              : " + videoInfo.colorInfo().colorRange());
+			System.out.println("Color Space                              : " + videoInfo.colorInfo().colorSpace());
+			System.out.println("Color Primaries                          : " + videoInfo.colorInfo().colorPrimaries());
+			System.out.println("Color Transfer                           : " + videoInfo.colorInfo().colorTransfer());
 			System.out.println();
 		}
 
@@ -73,11 +73,11 @@ public class MediaAnalyzerTest {
 		assertEquals(videoInfo.resolution().height(), 1080);
 		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
 		assertEquals(getFrameRate(videoInfo), "30");
-		assertEquals(videoInfo.pixelFormat(), "yuv420p10le");
-		assertEquals(videoInfo.colorRange(), "tv");
-		assertEquals(videoInfo.colorSpace(), "bt2020nc");
-		assertEquals(videoInfo.colorPrimaries(), "bt2020");
-		assertEquals(videoInfo.colorTransfer(), "smpte2084");
+		assertEquals(videoInfo.colorInfo().pixelFormat(), "yuv420p10le");
+		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
+		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
+		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
+		assertEquals(videoInfo.colorInfo().colorTransfer(), "smpte2084");
 
 		assertEquals(audioInfo.codecTag(), "mp4a");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));

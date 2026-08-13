@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.ColorInfo;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVFormatContext;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacket;
@@ -116,11 +117,7 @@ public final class MediaAnalyzer {
 				? gopDuration * videoStream.getTimeBase()
 				: null;
 
-		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(videoStream.avCodecParams())).getString(0);
-		String colorRange = av_color_range_name(AVCodecParameters.color_range(videoStream.avCodecParams())).getString(0);
-		String colorSpace = av_color_space_name(AVCodecParameters.color_space(videoStream.avCodecParams())).getString(0);
-		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(videoStream.avCodecParams())).getString(0);
-		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(videoStream.avCodecParams())).getString(0);
+		ColorInfo colorInfo = getColorInfo(videoStream);
 
 		return new VideoInfo(
 				videoStream.id(),
@@ -131,11 +128,18 @@ public final class MediaAnalyzer {
 				videoStream.getAvgFrameRate(),
 				videoStream.getRFrameRate(),
 				gopSeconds,
-				pixelFormat,
-				colorRange,
-				colorSpace,
-				colorPrimaries,
-				colorTransfer);
+				colorInfo);
+	}
+
+	private ColorInfo getColorInfo(final StreamInfo videoStream) {
+		var avCodecParams = videoStream.avCodecParams();
+		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(avCodecParams)).getString(0);
+		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
+		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
+		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
+		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(avCodecParams)).getString(0);
+
+		return new ColorInfo(pixelFormat, colorRange, colorSpace, colorPrimaries, colorTransfer);
 	}
 
 	private AudioInfo getAudioInfo(final StreamInfo audioStream) {
@@ -317,11 +321,14 @@ public final class MediaAnalyzer {
 			Rational avgFrameRate,
 			Rational rFrameRate,
 			Double gopSeconds,
-			String pixelFormat,
-			String colorRange,
-			String colorSpace,
-			String colorPrimaries,
-			String colorTransfer) implements TrackInfo {
+			ColorInfo colorInfo) implements TrackInfo {
+
+		public record ColorInfo(
+				String pixelFormat,
+				String colorRange,
+				String colorSpace,
+				String colorPrimaries,
+				String colorTransfer) {}
 
 		public enum FrameRateMode {
 			CONSTANT("Constant"),
