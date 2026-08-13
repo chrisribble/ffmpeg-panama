@@ -777,3 +777,12 @@
 --include-struct AVChannelLayout       # header: ./ffmpeg-8.0.1/libavutil/channel_layout.h
 --include-struct AVIOInterruptCB       # header: ././ffmpeg-8.0.1/libavformat/avio.h
 
+#### Extracted from: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+
+--include-function av_color_primaries_name          # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+--include-function av_color_range_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+--include-function av_color_space_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+--include-function av_color_transfer_name           # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+--include-function av_get_pix_fmt_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+--include-struct AVPixFmtDescriptor                 # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+--include-struct AVComponentDescriptor              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h

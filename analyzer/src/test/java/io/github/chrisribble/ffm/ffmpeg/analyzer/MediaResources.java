@@ -10,6 +10,7 @@ public class MediaResources {
 
 	public static final TestFile LAVFI_TEST_SRC_INIT = new TestFile(RESOURCES_BASE, "init-stream0.m4s");
 	public static final TestFile LAVFI_TEST_SRC_CHUNK = new TestFile(RESOURCES_BASE, "chunk-stream0-00001.m4s");
+	public static final TestFile HDR_TEST = new TestFile(RESOURCES_BASE, "hdr-test.mp4");
 
 	private MediaResources() {}
 

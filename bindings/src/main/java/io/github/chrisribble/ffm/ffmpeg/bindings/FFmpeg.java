@@ -16067,6 +16067,306 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
+    private static class av_color_range_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_range_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static FunctionDescriptor av_color_range_name$descriptor() {
+        return av_color_range_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MethodHandle av_color_range_name$handle() {
+        return av_color_range_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MemorySegment av_color_range_name$address() {
+        return av_color_range_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_range_name(enum AVColorRange range)
+     * }
+     */
+    public static MemorySegment av_color_range_name(int range) {
+        var mh$ = av_color_range_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_range_name", range);
+            }
+            return (MemorySegment)mh$.invokeExact(range);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_primaries_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_primaries_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static FunctionDescriptor av_color_primaries_name$descriptor() {
+        return av_color_primaries_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MethodHandle av_color_primaries_name$handle() {
+        return av_color_primaries_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MemorySegment av_color_primaries_name$address() {
+        return av_color_primaries_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_primaries_name(enum AVColorPrimaries primaries)
+     * }
+     */
+    public static MemorySegment av_color_primaries_name(int primaries) {
+        var mh$ = av_color_primaries_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_primaries_name", primaries);
+            }
+            return (MemorySegment)mh$.invokeExact(primaries);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_transfer_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_transfer_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static FunctionDescriptor av_color_transfer_name$descriptor() {
+        return av_color_transfer_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MethodHandle av_color_transfer_name$handle() {
+        return av_color_transfer_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MemorySegment av_color_transfer_name$address() {
+        return av_color_transfer_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_transfer_name(enum AVColorTransferCharacteristic transfer)
+     * }
+     */
+    public static MemorySegment av_color_transfer_name(int transfer) {
+        var mh$ = av_color_transfer_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_transfer_name", transfer);
+            }
+            return (MemorySegment)mh$.invokeExact(transfer);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_color_space_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_color_space_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static FunctionDescriptor av_color_space_name$descriptor() {
+        return av_color_space_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MethodHandle av_color_space_name$handle() {
+        return av_color_space_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MemorySegment av_color_space_name$address() {
+        return av_color_space_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_color_space_name(enum AVColorSpace space)
+     * }
+     */
+    public static MemorySegment av_color_space_name(int space) {
+        var mh$ = av_color_space_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_color_space_name", space);
+            }
+            return (MemorySegment)mh$.invokeExact(space);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_get_pix_fmt_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_get_pix_fmt_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_get_pix_fmt_name$descriptor() {
+        return av_get_pix_fmt_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_get_pix_fmt_name$handle() {
+        return av_get_pix_fmt_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_name$address() {
+        return av_get_pix_fmt_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_get_pix_fmt_name(int pix_fmt) {
+        var mh$ = av_get_pix_fmt_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_get_pix_fmt_name", pix_fmt);
+            }
+            return (MemorySegment)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_image_fill_max_pixsteps {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             FFmpeg.C_POINTER,
