@@ -139,7 +139,12 @@ public final class MediaAnalyzer {
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
 		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(avCodecParams)).getString(0);
 
-		return new ColorInfo(pixelFormat, colorRange, colorSpace, colorPrimaries, colorTransfer);
+		return new ColorInfo(
+				pixelFormat,
+				colorRange,
+				colorSpace,
+				colorPrimaries,
+				colorTransfer);
 	}
 
 	private AudioInfo getAudioInfo(final StreamInfo audioStream) {
