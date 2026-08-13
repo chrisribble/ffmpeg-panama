@@ -1,6 +1,6 @@
 <!DOCTYPE module PUBLIC
-  "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
-  "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+		"-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+		"https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
 	<module name="TreeWalker">
@@ -8,19 +8,76 @@
 		<property name="skipFileOnJavaParseException" value="true"/>
 		<property name="javaParseExceptionSeverity" value="ignore"/>
 
+		<module name="AnnotationLocation"/>
+		<module name="AnnotationUseStyle">
+			<property name="elementStyle" value="compact"/>
+			<property name="trailingArrayComma" value="ignore"/>
+		</module>
+		<module name="AnonInnerLength"/>
+		<module name="ArrayTypeStyle"/>
+		<module name="AvoidDoubleBraceInitialization"/>
+		<module name="AvoidEscapedUnicodeCharacters">
+			<property name="allowEscapesForControlCharacters" value="true"/>
+			<property name="allowNonPrintableEscapes" value="true"/>
+		</module>
+		<module name="CatchParameterName"/>
+		<module name="CommentsIndentation"/>
 		<module name="ConstantName"/>
+		<module name="ConstructorsDeclarationGrouping"/>
+		<module name="ClassTypeParameterName"/>
+		<module name="DeclarationOrder">
+			<!-- Don't consider private/protected/public for ordering; allows Logger to be at the top of class -->
+			<property name="ignoreModifiers" value="true"/>
+		</module>
 		<module name="EmptyBlock">
 			<property name="tokens" value="LITERAL_FINALLY, LITERAL_DO, LITERAL_IF, LITERAL_ELSE, LITERAL_FOR, INSTANCE_INIT, STATIC_INIT, LITERAL_SWITCH, LITERAL_SYNCHRONIZED"/>
 		</module>
-		<module name="AvoidStarImport"/>
-		<module name="UnusedImports"/>
+		<module name="EmptyStatement"/>
+		<module name="EqualsAvoidNull"/>
+		<module name="ExplicitInitialization"/>
+		<module name="FallThrough"/>
+		<module name="FinalClass"/>
 		<module name="FinalParameters"/>
+		<module name="HexLiteralCase"/>
+		<module name="IllegalCatch">
+			<property name="illegalClassNames" value="Error, Exception, NullPointerException, Throwable, java.lang.Error, java.lang.Exception, java.lang.NullPointerException, java.lang.Throwable"/>
+		</module>
+		<module name="IllegalThrows"/>
+		<module name="IllegalType"/>
+		<module name="InnerAssignment"/>
+		<module name="InnerTypeLast"/>
+		<module name="InterfaceIsType"/>
+		<module name="LambdaParameterName"/>
+		<module name="MissingNullCaseInSwitch"/>
+		<module name="NoCodeInFile"/>
+		<module name="OneTopLevelClass"/>
+		<module name="PackageDeclaration"/>
+		<module name="RedundantModifier"/>
+		<module name="StaticVariableName"/>
+		<module name="StringLiteralEquality"/>
+		<module name="UnnecessaryNullCheckWithInstanceOf"/>
+		<module name="UpperEll"/>
+		<module name="VisibilityModifier"/>
+
+		<module name="AvoidStarImport"/>
 		<module name="ImportOrder">
 			<property name="groups" value="/^java\./,javax,org,com"/>
 			<property name="ordered" value="true"/>
 			<property name="separated" value="true"/>
 			<property name="option" value="top"/>
 		</module>
+		<module name="IllegalImport">
+			<property name="illegalPkgs" value="org.testng.AssertJUnit, org.apache.commons.lang, org.apache.commons.collections, javax.inject"/>
+		</module>
+		<module name="RedundantImport"/>
+		<module name="UnusedImports"/>
+		<module name="UnusedImports"/>
+		<!-- Enable when we move to Java 22+
+		<module name="UnusedCatchParameterShouldBeUnnamed"/>
+		<module name="UnusedLambdaParameterShouldBeUnnamed"/>
+		<module name="UnusedTryResourceShouldBeUnnamed"/>
+		-->
+
 		<module name="WhitespaceAround">
 			<property name="allowEmptyConstructors" value="true"/>
 			<property name="allowEmptyLambdas" value="true"/>
@@ -28,5 +85,20 @@
 			<property name="allowEmptyMethods" value="true"/>
 			<property name="allowEmptyTypes" value="true"/>
 		</module>
+
+		<!-- Ban Mockito.mockStatic -->
+		<module name="MatchXpath">
+			<property name="query" value="//METHOD_CALL//DOT[.//IDENT[@text = 'mockStatic']]"/>
+			<message key="matchxpath.match" value="Avoid using 'Mockito.mockStatic'"/>
+		</module>
+		<module name="MatchXpath">
+			<property name="query" value="//METHOD_CALL//IDENT[@text = 'mockStatic']"/>
+			<message key="matchxpath.match" value="Avoid using 'Mockito.mockStatic' (statically imported)"/>
+		</module>
+
+		<!-- Uncomment to enable @SuppressWarnings to disable violations; do not do this lightly -->
+		<!-- <module name="SuppressWarningsHolder"/> -->
 	</module>
+	<!-- Uncomment to enable @SuppressWarnings to disable violations; do not do this lightly -->
+	<!-- <module name="SuppressWarningsFilter"/> -->
 </module>

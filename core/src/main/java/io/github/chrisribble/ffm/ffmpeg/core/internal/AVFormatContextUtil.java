@@ -1,10 +1,10 @@
 package io.github.chrisribble.ffm.ffmpeg.core.internal;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_dump_format;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avformat_find_stream_info;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avformat_open_input;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
-import static java.lang.foreign.MemorySegment.NULL;
+import static java.lang.foreign.MemorySegment.NULL; 
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;

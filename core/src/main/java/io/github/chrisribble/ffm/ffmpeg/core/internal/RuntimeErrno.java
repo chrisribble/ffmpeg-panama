@@ -12,7 +12,7 @@ public final class RuntimeErrno {
 
 	// TODO: Map other POSIX error codes that do not match across *nix systems
 
-	private static class ErrnoDetector {
+	private static final class ErrnoDetector {
 		private static final String BSD = "bsd";
 		private static final String LINUX = "linux";
 		private static final String MAC = "mac";
@@ -40,14 +40,14 @@ public final class RuntimeErrno {
 		}
 	}
 
-	private static class Linux implements Errno {
+	private static final class Linux implements Errno {
 		@Override
 		public int EAGAIN() {
 			return 11;
 		}
 	}
 
-	private static class MacOSX extends BSD {}
+	private static final class MacOSX extends BSD {}
 
 	private static class BSD implements Errno {
 		@Override
@@ -56,7 +56,7 @@ public final class RuntimeErrno {
 		}
 	}
 
-	private static class Windows implements Errno {
+	private static final class Windows implements Errno {
 		@Override
 		public int EAGAIN() {
 			return 11;

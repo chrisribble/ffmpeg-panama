@@ -1,6 +1,5 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_NOPTS_VALUE;
@@ -14,6 +13,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -328,6 +328,28 @@ public final class MediaAnalyzer {
 			Double gopSeconds,
 			ColorInfo colorInfo) implements TrackInfo {
 
+		public VideoInfo {
+			if (resolution == null) {
+				throw new IllegalArgumentException("resolution must be non-null");
+			}
+			if (frameRateMode == null) {
+				throw new IllegalArgumentException("frameRateMode must be non-null");
+			}
+			if (avgFrameRate == null) {
+				throw new IllegalArgumentException("avgFrameRate must be non-null");
+			}
+			if (rFrameRate == null) {
+				throw new IllegalArgumentException("rFrameRate must be non-null");
+			}
+		}
+
+		public Integer gopFrames() {
+			if (frameRateMode != FrameRateMode.CONSTANT || gopSeconds() == null) {
+				return null;
+			}
+			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
+		}
+
 		public record ColorInfo(
 				String pixelFormat,
 				String colorRange,
@@ -349,28 +371,6 @@ public final class MediaAnalyzer {
 			public String toString() {
 				return value;
 			}
-		}
-
-		public VideoInfo {
-			if (resolution == null) {
-				throw new IllegalArgumentException("resolution must be non-null");
-			}
-			if (frameRateMode == null) {
-				throw new IllegalArgumentException("frameRateMode must be non-null");
-			}
-			if (avgFrameRate == null) {
-				throw new IllegalArgumentException("avgFrameRate must be non-null");
-			}
-			if (rFrameRate == null) {
-				throw new IllegalArgumentException("rFrameRate must be non-null");
-			}
-		}
-
-		public Integer gopFrames() {
-			if (frameRateMode != FrameRateMode.CONSTANT || gopSeconds() == null) {
-				return null;
-			}
-			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
 		}
 	}
 

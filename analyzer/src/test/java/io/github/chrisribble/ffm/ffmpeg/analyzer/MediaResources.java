@@ -3,7 +3,7 @@ package io.github.chrisribble.ffm.ffmpeg.analyzer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class MediaResources {
+public final class MediaResources {
 	private static final String RESOURCES_BASE = "src/test/resources";
 
 	public static final TestFile LAVFI_TEST_SRC = new TestFile(RESOURCES_BASE, "testsrc.mp4");

@@ -37,10 +37,6 @@ public final class LibavVersion {
 		compatible = avCodecMatches && avFormatMatches && avUtilMatches && swScaleMatches;
 	}
 
-	private static final class LazyHolder {
-		static final LibavVersion INSTANCE = new LibavVersion();
-	}
-
 	public static LibavVersion getInstance() {
 		return LazyHolder.INSTANCE;
 	}
@@ -113,5 +109,9 @@ public final class LibavVersion {
 
 	private static int getMicroVersion(final int version) {
 		return version & 0xFF;
+	}
+
+	private static final class LazyHolder {
+		static final LibavVersion INSTANCE = new LibavVersion();
 	}
 }

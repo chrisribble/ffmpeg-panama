@@ -58,6 +58,10 @@ subprojects {
 		}
 	}
 
+	checkstyle {
+		toolVersion = '13.10.0'
+	}
+
 	sonarlint {
 		excludeRules = [
 			'java:S100',   // Method name pattern for C type congruence
