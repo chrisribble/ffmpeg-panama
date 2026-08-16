@@ -12,7 +12,7 @@ High-level Java library which exposes media analysis/decode capabilities
 
 A typical use case is build the `Stream` with samples every Nth frame, stopping after M frame samples. Then use the `Stream` to lazily process each frame sample via a downstream computer vision library (i.e. [ONNX Java](https://github.com/microsoft/onnxruntime)).
 
-Builder API makes configuring the `Stream` simple.
+Builder API makes configuring the `Stream` simple. See tests for examples.
 
 The API exposed by this module should be considered stable.
 ## analyzer
