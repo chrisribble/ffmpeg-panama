@@ -43,7 +43,7 @@ dependencies {
 
 Requirements:
 * Java 25+
-* FFmpeg 8.0.x shared libraries (`avcodec`, `avformat`, `avutil`, `swscale`) discoverable via
+* FFmpeg 8.x shared libraries (`avcodec`, `avformat`, `avutil`, `swscale`) discoverable via
   `java.library.path`
 * `--enable-native-access` for the modules that call into FFmpeg
 
