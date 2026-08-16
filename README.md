@@ -1,9 +1,31 @@
-# ffmpeg-panama
-FFmpeg Java (Panama) bindings
+# Summary
+High-level Java library which exposes media analysis/decode capabilities
+- Uses `libav` via Java's FFM API
+- Absolutely no shelling out to `ffmpeg`/`ffprobe`
+- Accepts single input files (`input.mp4`)
+- Accepts multiple input files to feed `libav` `concat` input muxer, i.e. ISOBMFF parts (`init-stream0.m4s`,`chunk-stream0-00001.m4s`)
 
-# Using
+# Modules
+## decoder
+### Lazily/efficiently decode `Stream<BufferedImage>` from input(s)
+`BufferedImageStream` has been carefully optimized for low latency. Decoding is done lazily (one frame at a time) as the `Stream` is consumed, avoiding extra memory/disk usage that would otherwise be required to dump the frames to disk. `BufferedImageStream` also supports processing every Nth frame (note: requires decoding intermediate frames) and limiting the number of frames to produce (note: decoding stops once the frame limit is reached, avoiding extra resource usage).
 
-Published to Maven Central under `io.github.chrisribble`:
+A typical use case is build the `Stream` with samples every Nth frame, stopping after M frame samples. Then use the `Stream` to lazily process each frame sample via a downstream computer vision library (i.e. [ONNX Java](https://github.com/microsoft/onnxruntime)).
+
+Builder API makes configuring the `Stream` simple.
+
+The API exposed by this module should be considered stable.
+## analyzer
+### Read audio/video metadata from input(s)
+This is still rudimentary and does not handle "edge" cases like multiple video tracks, multiple audio tracks, etc.
+
+It also currently lacks support for various bits of interesting metadata that are available in the `libav` API and as such the exposed API should be considered unstable. It will likely receive API-breaking changes periodically until the structure of the most useful set of information emerges.
+
+## Warranty/License
+
+This library has no warranty (expressed or implied). It is [licensed under the terms of the LGPL version 2.1](LICENSE)
+
+# Usage
 
 | Artifact | Contents |
 | --- | --- |
