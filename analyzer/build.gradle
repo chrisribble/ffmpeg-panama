@@ -7,7 +7,7 @@ description = 'Media file analysis built on the FFmpeg Panama bindings'
 apply from: "${rootDir}/publish.gradle"
 
 mavenPublishing {
-	configure(new JavaLibrary(new JavadocJar.Javadoc(), new SourcesJar.Sources()))
+	configure(new JavaLibrary(new JavadocJar.Empty(), new SourcesJar.Sources()))
 }
 
 dependencies {
