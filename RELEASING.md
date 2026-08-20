@@ -92,7 +92,7 @@ is a hard error rather than a skip.
 4. Tag and push:
 
    ```
-   git tag -a v<version> -m 'Release <version>'
+   git tag -a <version>
    git push origin master --tags
    ```
 
