@@ -44,6 +44,7 @@ public class MediaAnalyzerTest {
 		assertNotNull(audioInfo);
 		assertEquals(audioInfo.codecTag(), "mp4a");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
+		assertEquals(audioInfo.sampleRate(), 48000);
 	}
 
 	public static void main(final String[] args) {
@@ -91,6 +92,7 @@ public class MediaAnalyzerTest {
 			System.out.println("ID                                       : " + audioInfo.id());
 			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
 			System.out.println("Duration                                 : " + audioInfo.duration());
+			System.out.println("Sample rate                              : " + audioInfo.sampleRate());
 			System.out.println();
 		}
 	}

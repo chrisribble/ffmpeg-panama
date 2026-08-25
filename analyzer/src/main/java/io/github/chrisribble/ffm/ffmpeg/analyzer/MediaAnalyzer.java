@@ -154,10 +154,12 @@ public final class MediaAnalyzer {
 
 		String codecTag = getCodecTag(audioStream.codecTag());
 		Duration duration = getStreamDuration(audioStream.avStream());
+		int sampleRate = AVCodecParameters.sample_rate(audioStream.avCodecParams());
 		return new AudioInfo(
 				audioStream.id(),
 				codecTag,
-				duration);
+				duration,
+				sampleRate);
 	}
 
 	private static Duration getStreamDuration(final MemorySegment pStream) {
@@ -377,5 +379,6 @@ public final class MediaAnalyzer {
 	public record AudioInfo(
 			int id,
 			String codecTag,
-			Duration duration) implements TrackInfo {}
+			Duration duration,
+			int sampleRate) implements TrackInfo {}
 }
