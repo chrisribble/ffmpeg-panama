@@ -30,6 +30,7 @@ public class MediaAnalyzerTest {
 
 		assertNotNull(videoInfo);
 		assertEquals(videoInfo.codecTag(), "hvc1");
+		assertEquals(videoInfo.codecName(), "hevc");
 		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
 		assertEquals(videoInfo.resolution().width(), 1920);
 		assertEquals(videoInfo.resolution().height(), 1080);
@@ -43,6 +44,7 @@ public class MediaAnalyzerTest {
 
 		assertNotNull(audioInfo);
 		assertEquals(audioInfo.codecTag(), "mp4a");
+		assertEquals(audioInfo.codecName(), "aac");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
 		assertEquals(audioInfo.sampleRate(), 48000);
 	}
@@ -68,6 +70,7 @@ public class MediaAnalyzerTest {
 			System.out.println("Video");
 			System.out.println("ID                                       : " + videoInfo.id());
 			System.out.println("Codec ID                                 : " + videoInfo.codecTag());
+			System.out.println("Codec name                               : " + videoInfo.codecName());
 			System.out.println("Duration                                 : " + videoInfo.duration());
 			System.out.println("Width                                    : " + videoInfo.resolution().width());
 			System.out.println("Height                                   : " + videoInfo.resolution().height());
@@ -91,6 +94,7 @@ public class MediaAnalyzerTest {
 			System.out.println("Audio");
 			System.out.println("ID                                       : " + audioInfo.id());
 			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
+			System.out.println("Codec name                               : " + audioInfo.codecName());
 			System.out.println("Duration                                 : " + audioInfo.duration());
 			System.out.println("Sample rate                              : " + audioInfo.sampleRate());
 			System.out.println();

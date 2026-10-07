@@ -786,3 +786,6 @@
 --include-function av_get_pix_fmt_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-struct AVPixFmtDescriptor                 # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-struct AVComponentDescriptor              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+
+#### Extracted from: ./ffmpeg-8.0.3/libavcodec/codec_id.h
+--include-function avcodec_get_name               # header: ./ffmpeg-8.0.3/libavcodec/codec_id.h

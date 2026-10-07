@@ -104,6 +104,7 @@ public final class MediaAnalyzer {
 		}
 
 		String codecTag = getCodecTag(videoStream.codecTag());
+		String codecName = getCodecName(videoStream.codecId());
 
 		Duration duration = getStreamDuration(videoStream.avStream());
 		Resolution resolution = getResolution(videoStream);
@@ -122,6 +123,7 @@ public final class MediaAnalyzer {
 		return new VideoInfo(
 				videoStream.id(),
 				codecTag,
+				codecName,
 				duration,
 				resolution,
 				frameRateMode,
@@ -153,11 +155,13 @@ public final class MediaAnalyzer {
 		}
 
 		String codecTag = getCodecTag(audioStream.codecTag());
+		String codecName = getCodecName(audioStream.codecId());
 		Duration duration = getStreamDuration(audioStream.avStream());
 		int sampleRate = AVCodecParameters.sample_rate(audioStream.avCodecParams());
 		return new AudioInfo(
 				audioStream.id(),
 				codecTag,
+				codecName,
 				duration,
 				sampleRate);
 	}
@@ -261,6 +265,10 @@ public final class MediaAnalyzer {
 		}
 	}
 
+	private String getCodecName(final int codecId) {
+		return FFmpeg.avcodec_get_name(codecId).getString(0);
+	}
+
 	private static Resolution getResolution(final StreamInfo streamInfo) {
 		var pCodecParams = streamInfo.avCodecParams();
 		int width = AVCodecParameters.width(pCodecParams);
@@ -322,6 +330,7 @@ public final class MediaAnalyzer {
 	public record VideoInfo(
 			int id,
 			String codecTag,
+			String codecName,
 			Duration duration,
 			Resolution resolution,
 			FrameRateMode frameRateMode,
@@ -379,6 +388,7 @@ public final class MediaAnalyzer {
 	public record AudioInfo(
 			int id,
 			String codecTag,
+			String codecName,
 			Duration duration,
 			int sampleRate) implements TrackInfo {}
 }
