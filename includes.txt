@@ -446,7 +446,6 @@
 --include-function avcodec_parameters_copy      # header: ./ffmpeg-8.0.1/libavcodec/codec_par.h
 --include-function avcodec_parameters_free      # header: ./ffmpeg-8.0.1/libavcodec/codec_par.h
 
-
 #### Extracted from: ./ffmpeg-8.0.1/libavutil/pixfmt.h
 
 --include-constant AV_PIX_FMT_0BGR              # header: ./ffmpeg-8.0.1/libavutil/pixfmt.h
