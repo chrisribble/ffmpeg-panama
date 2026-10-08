@@ -435,6 +435,9 @@
 --include-function avcodec_find_encoder_by_name            # header: ./ffmpeg-8.0.1/libavcodec/codec.h
 --include-function avcodec_get_hw_config                   # header: ./ffmpeg-8.0.1/libavcodec/codec.h
 
+#### Extracted from: ./ffmpeg-8.0.3/libavcodec/codec_id.h
+--include-function avcodec_get_name               # header: ./ffmpeg-8.0.3/libavcodec/codec_id.h
+
 #### Extracted from: ./ffmpeg-8.0.1/libavcodec/codec_par.h
 
 --include-struct AVCodecParameters              # header: ./ffmpeg-8.0.1/libavcodec/codec_par.h

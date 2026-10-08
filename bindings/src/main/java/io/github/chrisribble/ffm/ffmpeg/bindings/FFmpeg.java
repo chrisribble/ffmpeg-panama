@@ -6123,6 +6123,66 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
+    private static class avcodec_get_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_get_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *avcodec_get_name(enum AVCodecID id)
+     * }
+     */
+    public static FunctionDescriptor avcodec_get_name$descriptor() {
+        return avcodec_get_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *avcodec_get_name(enum AVCodecID id)
+     * }
+     */
+    public static MethodHandle avcodec_get_name$handle() {
+        return avcodec_get_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avcodec_get_name(enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment avcodec_get_name$address() {
+        return avcodec_get_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *avcodec_get_name(enum AVCodecID id)
+     * }
+     */
+    public static MemorySegment avcodec_get_name(int id) {
+        var mh$ = avcodec_get_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("avcodec_get_name", id);
+            }
+            return (MemorySegment)mh$.invokeExact(id);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_codec_iterate {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER,
