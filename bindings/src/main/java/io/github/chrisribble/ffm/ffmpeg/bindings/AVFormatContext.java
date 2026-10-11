@@ -89,6 +89,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     int (*io_open)(struct AVFormatContext *, AVIOContext **, const char *, int, AVDictionary **);
  *     int (*io_close2)(struct AVFormatContext *, AVIOContext *);
  *     int64_t duration_probesize;
+ *     char *name;
  * }
  * }
  */
@@ -114,15 +115,15 @@ public class AVFormatContext {
         MemoryLayout.paddingLayout(4),
         FFmpeg.C_POINTER.withName("chapters"),
         FFmpeg.C_POINTER.withName("url"),
-        FFmpeg.C_LONG.withName("start_time"),
-        FFmpeg.C_LONG.withName("duration"),
-        FFmpeg.C_LONG.withName("bit_rate"),
+        FFmpeg.C_LONG_LONG.withName("start_time"),
+        FFmpeg.C_LONG_LONG.withName("duration"),
+        FFmpeg.C_LONG_LONG.withName("bit_rate"),
         FFmpeg.C_INT.withName("packet_size"),
         FFmpeg.C_INT.withName("max_delay"),
         FFmpeg.C_INT.withName("flags"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG.withName("probesize"),
-        FFmpeg.C_LONG.withName("max_analyze_duration"),
+        FFmpeg.C_LONG_LONG.withName("probesize"),
+        FFmpeg.C_LONG_LONG.withName("max_analyze_duration"),
         FFmpeg.C_POINTER.withName("key"),
         FFmpeg.C_INT.withName("keylen"),
         FFmpeg.C_INT.withName("nb_programs"),
@@ -132,7 +133,7 @@ public class AVFormatContext {
         FFmpeg.C_INT.withName("subtitle_codec_id"),
         FFmpeg.C_INT.withName("data_codec_id"),
         FFmpeg.C_POINTER.withName("metadata"),
-        FFmpeg.C_LONG.withName("start_time_realtime"),
+        FFmpeg.C_LONG_LONG.withName("start_time_realtime"),
         FFmpeg.C_INT.withName("fps_probe_size"),
         FFmpeg.C_INT.withName("error_recognition"),
         AVIOInterruptCB.layout().withName("interrupt_callback"),
@@ -140,7 +141,7 @@ public class AVFormatContext {
         FFmpeg.C_INT.withName("max_streams"),
         FFmpeg.C_INT.withName("max_index_size"),
         FFmpeg.C_INT.withName("max_picture_buffer"),
-        FFmpeg.C_LONG.withName("max_interleave_delta"),
+        FFmpeg.C_LONG_LONG.withName("max_interleave_delta"),
         FFmpeg.C_INT.withName("max_ts_probe"),
         FFmpeg.C_INT.withName("max_chunk_duration"),
         FFmpeg.C_INT.withName("max_chunk_size"),
@@ -153,7 +154,7 @@ public class AVFormatContext {
         FFmpeg.C_INT.withName("skip_estimate_duration_from_pts"),
         FFmpeg.C_INT.withName("avio_flags"),
         FFmpeg.C_INT.withName("duration_estimation_method"),
-        FFmpeg.C_LONG.withName("skip_initial_bytes"),
+        FFmpeg.C_LONG_LONG.withName("skip_initial_bytes"),
         FFmpeg.C_INT.withName("correct_ts_overflow"),
         FFmpeg.C_INT.withName("seek2any"),
         FFmpeg.C_INT.withName("flush_packets"),
@@ -174,11 +175,12 @@ public class AVFormatContext {
         MemoryLayout.paddingLayout(4),
         FFmpeg.C_POINTER.withName("opaque"),
         FFmpeg.C_POINTER.withName("control_message_cb"),
-        FFmpeg.C_LONG.withName("output_ts_offset"),
+        FFmpeg.C_LONG_LONG.withName("output_ts_offset"),
         FFmpeg.C_POINTER.withName("dump_separator"),
         FFmpeg.C_POINTER.withName("io_open"),
         FFmpeg.C_POINTER.withName("io_close2"),
-        FFmpeg.C_LONG.withName("duration_probesize")
+        FFmpeg.C_LONG_LONG.withName("duration_probesize"),
+        FFmpeg.C_POINTER.withName("name")
     ).withName("AVFormatContext");
 
     /**
@@ -3559,6 +3561,50 @@ public class AVFormatContext {
      */
     public static void duration_probesize(MemorySegment struct, long fieldValue) {
         struct.set(duration_probesize$LAYOUT, duration_probesize$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout name$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("name"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * char *name
+     * }
+     */
+    public static final AddressLayout name$layout() {
+        return name$LAYOUT;
+    }
+
+    private static final long name$OFFSET = $LAYOUT.byteOffset(groupElement("name"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * char *name
+     * }
+     */
+    public static final long name$offset() {
+        return name$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * char *name
+     * }
+     */
+    public static MemorySegment name(MemorySegment struct) {
+        return struct.get(name$LAYOUT, name$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * char *name
+     * }
+     */
+    public static void name(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(name$LAYOUT, name$OFFSET, fieldValue);
     }
 
     /**

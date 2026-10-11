@@ -36,6 +36,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     int dst_v_chr_pos;
  *     int dst_h_chr_pos;
  *     int intent;
+ *     SwsScaler scaler;
+ *     SwsScaler scaler_sub;
+ *     SwsBackend backends;
  * }
  * }
  */
@@ -68,7 +71,9 @@ public class SwsContext {
         FFmpeg.C_INT.withName("dst_v_chr_pos"),
         FFmpeg.C_INT.withName("dst_h_chr_pos"),
         FFmpeg.C_INT.withName("intent"),
-        MemoryLayout.paddingLayout(4)
+        FFmpeg.C_INT.withName("scaler"),
+        FFmpeg.C_INT.withName("scaler_sub"),
+        FFmpeg.C_INT.withName("backends")
     ).withName("SwsContext");
 
     /**
@@ -1033,6 +1038,138 @@ public class SwsContext {
      */
     public static void intent(MemorySegment struct, int fieldValue) {
         struct.set(intent$LAYOUT, intent$OFFSET, fieldValue);
+    }
+
+    private static final OfInt scaler$LAYOUT = (OfInt)$LAYOUT.select(groupElement("scaler"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler
+     * }
+     */
+    public static final OfInt scaler$layout() {
+        return scaler$LAYOUT;
+    }
+
+    private static final long scaler$OFFSET = $LAYOUT.byteOffset(groupElement("scaler"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler
+     * }
+     */
+    public static final long scaler$offset() {
+        return scaler$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler
+     * }
+     */
+    public static int scaler(MemorySegment struct) {
+        return struct.get(scaler$LAYOUT, scaler$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler
+     * }
+     */
+    public static void scaler(MemorySegment struct, int fieldValue) {
+        struct.set(scaler$LAYOUT, scaler$OFFSET, fieldValue);
+    }
+
+    private static final OfInt scaler_sub$LAYOUT = (OfInt)$LAYOUT.select(groupElement("scaler_sub"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler_sub
+     * }
+     */
+    public static final OfInt scaler_sub$layout() {
+        return scaler_sub$LAYOUT;
+    }
+
+    private static final long scaler_sub$OFFSET = $LAYOUT.byteOffset(groupElement("scaler_sub"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler_sub
+     * }
+     */
+    public static final long scaler_sub$offset() {
+        return scaler_sub$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler_sub
+     * }
+     */
+    public static int scaler_sub(MemorySegment struct) {
+        return struct.get(scaler_sub$LAYOUT, scaler_sub$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsScaler scaler_sub
+     * }
+     */
+    public static void scaler_sub(MemorySegment struct, int fieldValue) {
+        struct.set(scaler_sub$LAYOUT, scaler_sub$OFFSET, fieldValue);
+    }
+
+    private static final OfInt backends$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backends"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * SwsBackend backends
+     * }
+     */
+    public static final OfInt backends$layout() {
+        return backends$LAYOUT;
+    }
+
+    private static final long backends$OFFSET = $LAYOUT.byteOffset(groupElement("backends"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * SwsBackend backends
+     * }
+     */
+    public static final long backends$offset() {
+        return backends$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * SwsBackend backends
+     * }
+     */
+    public static int backends(MemorySegment struct) {
+        return struct.get(backends$LAYOUT, backends$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * SwsBackend backends
+     * }
+     */
+    public static void backends(MemorySegment struct, int fieldValue) {
+        struct.set(backends$LAYOUT, backends$OFFSET, fieldValue);
     }
 
     /**

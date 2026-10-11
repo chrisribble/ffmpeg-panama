@@ -54,6 +54,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     void *private_ref;
  *     AVChannelLayout ch_layout;
  *     int64_t duration;
+ *     enum AVAlphaMode alpha_mode;
  * }
  * }
  */
@@ -74,8 +75,8 @@ public class AVFrame {
         FFmpeg.C_INT.withName("pict_type"),
         AVRational.layout().withName("sample_aspect_ratio"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG.withName("pts"),
-        FFmpeg.C_LONG.withName("pkt_dts"),
+        FFmpeg.C_LONG_LONG.withName("pts"),
+        FFmpeg.C_LONG_LONG.withName("pkt_dts"),
         AVRational.layout().withName("time_base"),
         FFmpeg.C_INT.withName("quality"),
         MemoryLayout.paddingLayout(4),
@@ -95,7 +96,7 @@ public class AVFrame {
         FFmpeg.C_INT.withName("colorspace"),
         FFmpeg.C_INT.withName("chroma_location"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG.withName("best_effort_timestamp"),
+        FFmpeg.C_LONG_LONG.withName("best_effort_timestamp"),
         FFmpeg.C_POINTER.withName("metadata"),
         FFmpeg.C_INT.withName("decode_error_flags"),
         MemoryLayout.paddingLayout(4),
@@ -107,7 +108,9 @@ public class AVFrame {
         FFmpeg.C_LONG.withName("crop_right"),
         FFmpeg.C_POINTER.withName("private_ref"),
         AVChannelLayout.layout().withName("ch_layout"),
-        FFmpeg.C_LONG.withName("duration")
+        FFmpeg.C_LONG_LONG.withName("duration"),
+        FFmpeg.C_INT.withName("alpha_mode"),
+        MemoryLayout.paddingLayout(4)
     ).withName("AVFrame");
 
     /**
@@ -1930,6 +1933,50 @@ public class AVFrame {
      */
     public static void duration(MemorySegment struct, long fieldValue) {
         struct.set(duration$LAYOUT, duration$OFFSET, fieldValue);
+    }
+
+    private static final OfInt alpha_mode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("alpha_mode"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static final OfInt alpha_mode$layout() {
+        return alpha_mode$LAYOUT;
+    }
+
+    private static final long alpha_mode$OFFSET = $LAYOUT.byteOffset(groupElement("alpha_mode"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static final long alpha_mode$offset() {
+        return alpha_mode$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static int alpha_mode(MemorySegment struct) {
+        return struct.get(alpha_mode$LAYOUT, alpha_mode$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static void alpha_mode(MemorySegment struct, int fieldValue) {
+        struct.set(alpha_mode$LAYOUT, alpha_mode$OFFSET, fieldValue);
     }
 
     /**

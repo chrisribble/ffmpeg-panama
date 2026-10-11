@@ -46,6 +46,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     int initial_padding;
  *     int trailing_padding;
  *     int seek_preroll;
+ *     enum AVAlphaMode alpha_mode;
  * }
  * }
  */
@@ -66,7 +67,7 @@ public class AVCodecParameters {
         FFmpeg.C_POINTER.withName("coded_side_data"),
         FFmpeg.C_INT.withName("nb_coded_side_data"),
         FFmpeg.C_INT.withName("format"),
-        FFmpeg.C_LONG.withName("bit_rate"),
+        FFmpeg.C_LONG_LONG.withName("bit_rate"),
         FFmpeg.C_INT.withName("bits_per_coded_sample"),
         FFmpeg.C_INT.withName("bits_per_raw_sample"),
         FFmpeg.C_INT.withName("profile"),
@@ -89,7 +90,9 @@ public class AVCodecParameters {
         FFmpeg.C_INT.withName("frame_size"),
         FFmpeg.C_INT.withName("initial_padding"),
         FFmpeg.C_INT.withName("trailing_padding"),
-        FFmpeg.C_INT.withName("seek_preroll")
+        FFmpeg.C_INT.withName("seek_preroll"),
+        FFmpeg.C_INT.withName("alpha_mode"),
+        MemoryLayout.paddingLayout(4)
     ).withName("AVCodecParameters");
 
     /**
@@ -1461,6 +1464,50 @@ public class AVCodecParameters {
      */
     public static void seek_preroll(MemorySegment struct, int fieldValue) {
         struct.set(seek_preroll$LAYOUT, seek_preroll$OFFSET, fieldValue);
+    }
+
+    private static final OfInt alpha_mode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("alpha_mode"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static final OfInt alpha_mode$layout() {
+        return alpha_mode$LAYOUT;
+    }
+
+    private static final long alpha_mode$OFFSET = $LAYOUT.byteOffset(groupElement("alpha_mode"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static final long alpha_mode$offset() {
+        return alpha_mode$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static int alpha_mode(MemorySegment struct) {
+        return struct.get(alpha_mode$LAYOUT, alpha_mode$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static void alpha_mode(MemorySegment struct, int fieldValue) {
+        struct.set(alpha_mode$LAYOUT, alpha_mode$OFFSET, fieldValue);
     }
 
     /**

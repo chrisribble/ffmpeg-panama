@@ -138,7 +138,6 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     int (*execute2)(struct AVCodecContext *, int (*)(struct AVCodecContext *, void *, int, int), void *, int *, int);
  *     int profile;
  *     int level;
- *     unsigned int properties;
  *     enum AVDiscard skip_loop_filter;
  *     enum AVDiscard skip_idct;
  *     enum AVDiscard skip_frame;
@@ -166,6 +165,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     unsigned int nb_side_data_prefer_packet;
  *     AVFrameSideData **decoded_side_data;
  *     int nb_decoded_side_data;
+ *     enum AVAlphaMode alpha_mode;
  * }
  * }
  */
@@ -185,7 +185,7 @@ public class AVCodecContext {
         FFmpeg.C_POINTER.withName("priv_data"),
         FFmpeg.C_POINTER.withName("internal"),
         FFmpeg.C_POINTER.withName("opaque"),
-        FFmpeg.C_LONG.withName("bit_rate"),
+        FFmpeg.C_LONG_LONG.withName("bit_rate"),
         FFmpeg.C_INT.withName("flags"),
         FFmpeg.C_INT.withName("flags2"),
         FFmpeg.C_POINTER.withName("extradata"),
@@ -269,8 +269,8 @@ public class AVCodecContext {
         FFmpeg.C_INT.withName("rc_buffer_size"),
         FFmpeg.C_INT.withName("rc_override_count"),
         FFmpeg.C_POINTER.withName("rc_override"),
-        FFmpeg.C_LONG.withName("rc_max_rate"),
-        FFmpeg.C_LONG.withName("rc_min_rate"),
+        FFmpeg.C_LONG_LONG.withName("rc_max_rate"),
+        FFmpeg.C_LONG_LONG.withName("rc_min_rate"),
         FFmpeg.C_FLOAT.withName("rc_max_available_vbv_use"),
         FFmpeg.C_FLOAT.withName("rc_min_vbv_overflow_use"),
         FFmpeg.C_INT.withName("rc_initial_buffer_occupancy"),
@@ -289,7 +289,7 @@ public class AVCodecContext {
         FFmpeg.C_POINTER.withName("hw_device_ctx"),
         FFmpeg.C_INT.withName("hwaccel_flags"),
         FFmpeg.C_INT.withName("extra_hw_frames"),
-        MemoryLayout.sequenceLayout(8, FFmpeg.C_LONG).withName("error"),
+        MemoryLayout.sequenceLayout(8, FFmpeg.C_LONG_LONG).withName("error"),
         FFmpeg.C_INT.withName("dct_algo"),
         FFmpeg.C_INT.withName("idct_algo"),
         FFmpeg.C_INT.withName("bits_per_coded_sample"),
@@ -302,7 +302,6 @@ public class AVCodecContext {
         FFmpeg.C_POINTER.withName("execute2"),
         FFmpeg.C_INT.withName("profile"),
         FFmpeg.C_INT.withName("level"),
-        FFmpeg.C_INT.withName("properties"),
         FFmpeg.C_INT.withName("skip_loop_filter"),
         FFmpeg.C_INT.withName("skip_idct"),
         FFmpeg.C_INT.withName("skip_frame"),
@@ -310,6 +309,7 @@ public class AVCodecContext {
         FFmpeg.C_INT.withName("skip_top"),
         FFmpeg.C_INT.withName("skip_bottom"),
         FFmpeg.C_INT.withName("lowres"),
+        MemoryLayout.paddingLayout(4),
         FFmpeg.C_POINTER.withName("codec_descriptor"),
         FFmpeg.C_POINTER.withName("sub_charenc"),
         FFmpeg.C_INT.withName("sub_charenc_mode"),
@@ -320,18 +320,18 @@ public class AVCodecContext {
         FFmpeg.C_POINTER.withName("coded_side_data"),
         FFmpeg.C_INT.withName("nb_coded_side_data"),
         FFmpeg.C_INT.withName("export_side_data"),
-        FFmpeg.C_LONG.withName("max_pixels"),
+        FFmpeg.C_LONG_LONG.withName("max_pixels"),
         FFmpeg.C_INT.withName("apply_cropping"),
         FFmpeg.C_INT.withName("discard_damaged_percentage"),
-        FFmpeg.C_LONG.withName("max_samples"),
+        FFmpeg.C_LONG_LONG.withName("max_samples"),
         FFmpeg.C_POINTER.withName("get_encode_buffer"),
-        FFmpeg.C_LONG.withName("frame_num"),
+        FFmpeg.C_LONG_LONG.withName("frame_num"),
         FFmpeg.C_POINTER.withName("side_data_prefer_packet"),
         FFmpeg.C_INT.withName("nb_side_data_prefer_packet"),
         MemoryLayout.paddingLayout(4),
         FFmpeg.C_POINTER.withName("decoded_side_data"),
         FFmpeg.C_INT.withName("nb_decoded_side_data"),
-        MemoryLayout.paddingLayout(4)
+        FFmpeg.C_INT.withName("alpha_mode")
     ).withName("AVCodecContext");
 
     /**
@@ -6082,50 +6082,6 @@ public class AVCodecContext {
         struct.set(level$LAYOUT, level$OFFSET, fieldValue);
     }
 
-    private static final OfInt properties$LAYOUT = (OfInt)$LAYOUT.select(groupElement("properties"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * unsigned int properties
-     * }
-     */
-    public static final OfInt properties$layout() {
-        return properties$LAYOUT;
-    }
-
-    private static final long properties$OFFSET = $LAYOUT.byteOffset(groupElement("properties"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * unsigned int properties
-     * }
-     */
-    public static final long properties$offset() {
-        return properties$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * unsigned int properties
-     * }
-     */
-    public static int properties(MemorySegment struct) {
-        return struct.get(properties$LAYOUT, properties$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * unsigned int properties
-     * }
-     */
-    public static void properties(MemorySegment struct, int fieldValue) {
-        struct.set(properties$LAYOUT, properties$OFFSET, fieldValue);
-    }
-
     private static final OfInt skip_loop_filter$LAYOUT = (OfInt)$LAYOUT.select(groupElement("skip_loop_filter"));
 
     /**
@@ -7370,6 +7326,50 @@ public class AVCodecContext {
      */
     public static void nb_decoded_side_data(MemorySegment struct, int fieldValue) {
         struct.set(nb_decoded_side_data$LAYOUT, nb_decoded_side_data$OFFSET, fieldValue);
+    }
+
+    private static final OfInt alpha_mode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("alpha_mode"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static final OfInt alpha_mode$layout() {
+        return alpha_mode$LAYOUT;
+    }
+
+    private static final long alpha_mode$OFFSET = $LAYOUT.byteOffset(groupElement("alpha_mode"));
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static final long alpha_mode$offset() {
+        return alpha_mode$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static int alpha_mode(MemorySegment struct) {
+        return struct.get(alpha_mode$LAYOUT, alpha_mode$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * enum AVAlphaMode alpha_mode
+     * }
+     */
+    public static void alpha_mode(MemorySegment struct, int fieldValue) {
+        struct.set(alpha_mode$LAYOUT, alpha_mode$OFFSET, fieldValue);
     }
 
     /**

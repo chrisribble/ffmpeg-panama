@@ -21,14 +21,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     enum AVCodecID id;
  *     int capabilities;
  *     uint8_t max_lowres;
- *     const AVRational *supported_framerates;
- *     const enum AVPixelFormat *pix_fmts;
- *     const int *supported_samplerates;
- *     const enum AVSampleFormat *sample_fmts;
  *     const AVClass *priv_class;
  *     const AVProfile *profiles;
  *     const char *wrapper_name;
- *     const AVChannelLayout *ch_layouts;
  * }
  * }
  */
@@ -46,14 +41,9 @@ public class AVCodec {
         FFmpeg.C_INT.withName("capabilities"),
         FFmpeg.C_CHAR.withName("max_lowres"),
         MemoryLayout.paddingLayout(3),
-        FFmpeg.C_POINTER.withName("supported_framerates"),
-        FFmpeg.C_POINTER.withName("pix_fmts"),
-        FFmpeg.C_POINTER.withName("supported_samplerates"),
-        FFmpeg.C_POINTER.withName("sample_fmts"),
         FFmpeg.C_POINTER.withName("priv_class"),
         FFmpeg.C_POINTER.withName("profiles"),
-        FFmpeg.C_POINTER.withName("wrapper_name"),
-        FFmpeg.C_POINTER.withName("ch_layouts")
+        FFmpeg.C_POINTER.withName("wrapper_name")
     ).withName("AVCodec");
 
     /**
@@ -327,182 +317,6 @@ public class AVCodec {
         struct.set(max_lowres$LAYOUT, max_lowres$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout supported_framerates$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("supported_framerates"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * const AVRational *supported_framerates
-     * }
-     */
-    public static final AddressLayout supported_framerates$layout() {
-        return supported_framerates$LAYOUT;
-    }
-
-    private static final long supported_framerates$OFFSET = $LAYOUT.byteOffset(groupElement("supported_framerates"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * const AVRational *supported_framerates
-     * }
-     */
-    public static final long supported_framerates$offset() {
-        return supported_framerates$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * const AVRational *supported_framerates
-     * }
-     */
-    public static MemorySegment supported_framerates(MemorySegment struct) {
-        return struct.get(supported_framerates$LAYOUT, supported_framerates$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * const AVRational *supported_framerates
-     * }
-     */
-    public static void supported_framerates(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(supported_framerates$LAYOUT, supported_framerates$OFFSET, fieldValue);
-    }
-
-    private static final AddressLayout pix_fmts$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("pix_fmts"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * const enum AVPixelFormat *pix_fmts
-     * }
-     */
-    public static final AddressLayout pix_fmts$layout() {
-        return pix_fmts$LAYOUT;
-    }
-
-    private static final long pix_fmts$OFFSET = $LAYOUT.byteOffset(groupElement("pix_fmts"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * const enum AVPixelFormat *pix_fmts
-     * }
-     */
-    public static final long pix_fmts$offset() {
-        return pix_fmts$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * const enum AVPixelFormat *pix_fmts
-     * }
-     */
-    public static MemorySegment pix_fmts(MemorySegment struct) {
-        return struct.get(pix_fmts$LAYOUT, pix_fmts$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * const enum AVPixelFormat *pix_fmts
-     * }
-     */
-    public static void pix_fmts(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(pix_fmts$LAYOUT, pix_fmts$OFFSET, fieldValue);
-    }
-
-    private static final AddressLayout supported_samplerates$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("supported_samplerates"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * const int *supported_samplerates
-     * }
-     */
-    public static final AddressLayout supported_samplerates$layout() {
-        return supported_samplerates$LAYOUT;
-    }
-
-    private static final long supported_samplerates$OFFSET = $LAYOUT.byteOffset(groupElement("supported_samplerates"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * const int *supported_samplerates
-     * }
-     */
-    public static final long supported_samplerates$offset() {
-        return supported_samplerates$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * const int *supported_samplerates
-     * }
-     */
-    public static MemorySegment supported_samplerates(MemorySegment struct) {
-        return struct.get(supported_samplerates$LAYOUT, supported_samplerates$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * const int *supported_samplerates
-     * }
-     */
-    public static void supported_samplerates(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(supported_samplerates$LAYOUT, supported_samplerates$OFFSET, fieldValue);
-    }
-
-    private static final AddressLayout sample_fmts$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("sample_fmts"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * const enum AVSampleFormat *sample_fmts
-     * }
-     */
-    public static final AddressLayout sample_fmts$layout() {
-        return sample_fmts$LAYOUT;
-    }
-
-    private static final long sample_fmts$OFFSET = $LAYOUT.byteOffset(groupElement("sample_fmts"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * const enum AVSampleFormat *sample_fmts
-     * }
-     */
-    public static final long sample_fmts$offset() {
-        return sample_fmts$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * const enum AVSampleFormat *sample_fmts
-     * }
-     */
-    public static MemorySegment sample_fmts(MemorySegment struct) {
-        return struct.get(sample_fmts$LAYOUT, sample_fmts$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * const enum AVSampleFormat *sample_fmts
-     * }
-     */
-    public static void sample_fmts(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(sample_fmts$LAYOUT, sample_fmts$OFFSET, fieldValue);
-    }
-
     private static final AddressLayout priv_class$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("priv_class"));
 
     /**
@@ -633,50 +447,6 @@ public class AVCodec {
      */
     public static void wrapper_name(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(wrapper_name$LAYOUT, wrapper_name$OFFSET, fieldValue);
-    }
-
-    private static final AddressLayout ch_layouts$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("ch_layouts"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * const AVChannelLayout *ch_layouts
-     * }
-     */
-    public static final AddressLayout ch_layouts$layout() {
-        return ch_layouts$LAYOUT;
-    }
-
-    private static final long ch_layouts$OFFSET = $LAYOUT.byteOffset(groupElement("ch_layouts"));
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * const AVChannelLayout *ch_layouts
-     * }
-     */
-    public static final long ch_layouts$offset() {
-        return ch_layouts$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * const AVChannelLayout *ch_layouts
-     * }
-     */
-    public static MemorySegment ch_layouts(MemorySegment struct) {
-        return struct.get(ch_layouts$LAYOUT, ch_layouts$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * const AVChannelLayout *ch_layouts
-     * }
-     */
-    public static void ch_layouts(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(ch_layouts$LAYOUT, ch_layouts$OFFSET, fieldValue);
     }
 
     /**

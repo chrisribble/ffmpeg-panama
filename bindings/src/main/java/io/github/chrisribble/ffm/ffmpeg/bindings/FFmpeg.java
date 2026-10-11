@@ -4360,68 +4360,6 @@ public class FFmpeg extends FFmpeg$shared {
         return AV_PIX_FMT_NB;
     }
 
-    private static class av_int_list_length_for_size {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_INT,
-            FFmpeg.C_INT,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_LONG
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_int_list_length_for_size");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * unsigned int av_int_list_length_for_size(unsigned int elsize, const void *list, uint64_t term)
-     * }
-     */
-    public static FunctionDescriptor av_int_list_length_for_size$descriptor() {
-        return av_int_list_length_for_size.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * unsigned int av_int_list_length_for_size(unsigned int elsize, const void *list, uint64_t term)
-     * }
-     */
-    public static MethodHandle av_int_list_length_for_size$handle() {
-        return av_int_list_length_for_size.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * unsigned int av_int_list_length_for_size(unsigned int elsize, const void *list, uint64_t term)
-     * }
-     */
-    public static MemorySegment av_int_list_length_for_size$address() {
-        return av_int_list_length_for_size.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * unsigned int av_int_list_length_for_size(unsigned int elsize, const void *list, uint64_t term)
-     * }
-     */
-    public static int av_int_list_length_for_size(int elsize, MemorySegment list, long term) {
-        var mh$ = av_int_list_length_for_size.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_int_list_length_for_size", elsize, list, term);
-            }
-            return (int)mh$.invokeExact(elsize, list, term);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
     private static class av_get_time_base_q {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             AVRational.layout()    );
@@ -7781,7 +7719,7 @@ public class FFmpeg extends FFmpeg$shared {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size)
+     * uint8_t *av_packet_pack_dictionary(const AVDictionary *dict, size_t *size)
      * }
      */
     public static FunctionDescriptor av_packet_pack_dictionary$descriptor() {
@@ -7791,7 +7729,7 @@ public class FFmpeg extends FFmpeg$shared {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size)
+     * uint8_t *av_packet_pack_dictionary(const AVDictionary *dict, size_t *size)
      * }
      */
     public static MethodHandle av_packet_pack_dictionary$handle() {
@@ -7801,7 +7739,7 @@ public class FFmpeg extends FFmpeg$shared {
     /**
      * Address for:
      * {@snippet lang=c :
-     * uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size)
+     * uint8_t *av_packet_pack_dictionary(const AVDictionary *dict, size_t *size)
      * }
      */
     public static MemorySegment av_packet_pack_dictionary$address() {
@@ -7810,7 +7748,7 @@ public class FFmpeg extends FFmpeg$shared {
 
     /**
      * {@snippet lang=c :
-     * uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size)
+     * uint8_t *av_packet_pack_dictionary(const AVDictionary *dict, size_t *size)
      * }
      */
     public static MemorySegment av_packet_pack_dictionary(MemorySegment dict, MemorySegment size) {
@@ -10017,7 +9955,7 @@ public class FFmpeg extends FFmpeg$shared {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * AVCodecParserContext *av_parser_init(int codec_id)
+     * AVCodecParserContext *av_parser_init(enum AVCodecID codec_id)
      * }
      */
     public static FunctionDescriptor av_parser_init$descriptor() {
@@ -10027,7 +9965,7 @@ public class FFmpeg extends FFmpeg$shared {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * AVCodecParserContext *av_parser_init(int codec_id)
+     * AVCodecParserContext *av_parser_init(enum AVCodecID codec_id)
      * }
      */
     public static MethodHandle av_parser_init$handle() {
@@ -10037,7 +9975,7 @@ public class FFmpeg extends FFmpeg$shared {
     /**
      * Address for:
      * {@snippet lang=c :
-     * AVCodecParserContext *av_parser_init(int codec_id)
+     * AVCodecParserContext *av_parser_init(enum AVCodecID codec_id)
      * }
      */
     public static MemorySegment av_parser_init$address() {
@@ -10046,7 +9984,7 @@ public class FFmpeg extends FFmpeg$shared {
 
     /**
      * {@snippet lang=c :
-     * AVCodecParserContext *av_parser_init(int codec_id)
+     * AVCodecParserContext *av_parser_init(enum AVCodecID codec_id)
      * }
      */
     public static MemorySegment av_parser_init(int codec_id) {
@@ -10072,9 +10010,9 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_POINTER,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG
         );
 
         public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_parser_parse2");
@@ -13121,7 +13059,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -13184,9 +13122,9 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -14657,7 +14595,7 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -14840,7 +14778,7 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT
         );
 
@@ -14902,8 +14840,8 @@ public class FFmpeg extends FFmpeg$shared {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_INT,
             FFmpeg.C_POINTER,
-            FFmpeg.C_LONG,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_INT
@@ -15937,129 +15875,6 @@ public class FFmpeg extends FFmpeg$shared {
                 traceDowncall("avformat_queue_attached_pictures", s);
             }
             return (int)mh$.invokeExact(s);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class avformat_transfer_internal_stream_timing_info {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_INT,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avformat_transfer_internal_stream_timing_info");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt, AVStream *ost, const AVStream *ist, enum AVTimebaseSource copy_tb)
-     * }
-     */
-    public static FunctionDescriptor avformat_transfer_internal_stream_timing_info$descriptor() {
-        return avformat_transfer_internal_stream_timing_info.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt, AVStream *ost, const AVStream *ist, enum AVTimebaseSource copy_tb)
-     * }
-     */
-    public static MethodHandle avformat_transfer_internal_stream_timing_info$handle() {
-        return avformat_transfer_internal_stream_timing_info.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt, AVStream *ost, const AVStream *ist, enum AVTimebaseSource copy_tb)
-     * }
-     */
-    public static MemorySegment avformat_transfer_internal_stream_timing_info$address() {
-        return avformat_transfer_internal_stream_timing_info.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt, AVStream *ost, const AVStream *ist, enum AVTimebaseSource copy_tb)
-     * }
-     */
-    public static int avformat_transfer_internal_stream_timing_info(MemorySegment ofmt, MemorySegment ost, MemorySegment ist, int copy_tb) {
-        var mh$ = avformat_transfer_internal_stream_timing_info.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("avformat_transfer_internal_stream_timing_info", ofmt, ost, ist, copy_tb);
-            }
-            return (int)mh$.invokeExact(ofmt, ost, ist, copy_tb);
-        } catch (Error | RuntimeException ex) {
-           throw ex;
-        } catch (Throwable ex$) {
-           throw new AssertionError("should not reach here", ex$);
-        }
-    }
-
-    private static class av_stream_get_codec_timebase {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            AVRational.layout(),
-            FFmpeg.C_POINTER
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_stream_get_codec_timebase");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
-    }
-
-    /**
-     * Function descriptor for:
-     * {@snippet lang=c :
-     * AVRational av_stream_get_codec_timebase(const AVStream *st)
-     * }
-     */
-    public static FunctionDescriptor av_stream_get_codec_timebase$descriptor() {
-        return av_stream_get_codec_timebase.DESC;
-    }
-
-    /**
-     * Downcall method handle for:
-     * {@snippet lang=c :
-     * AVRational av_stream_get_codec_timebase(const AVStream *st)
-     * }
-     */
-    public static MethodHandle av_stream_get_codec_timebase$handle() {
-        return av_stream_get_codec_timebase.HANDLE;
-    }
-
-    /**
-     * Address for:
-     * {@snippet lang=c :
-     * AVRational av_stream_get_codec_timebase(const AVStream *st)
-     * }
-     */
-    public static MemorySegment av_stream_get_codec_timebase$address() {
-        return av_stream_get_codec_timebase.ADDR;
-    }
-
-    /**
-     * {@snippet lang=c :
-     * AVRational av_stream_get_codec_timebase(const AVStream *st)
-     * }
-     */
-    public static MemorySegment av_stream_get_codec_timebase(SegmentAllocator allocator, MemorySegment st) {
-        var mh$ = av_stream_get_codec_timebase.HANDLE;
-        try {
-            if (TRACE_DOWNCALLS) {
-                traceDowncall("av_stream_get_codec_timebase", allocator, st);
-            }
-            return (MemorySegment)mh$.invokeExact(allocator, st);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {
@@ -17266,7 +17081,7 @@ public class FFmpeg extends FFmpeg$shared {
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
-            FFmpeg.C_LONG,
+            FFmpeg.C_LONG_LONG,
             FFmpeg.C_INT,
             FFmpeg.C_INT,
             FFmpeg.C_POINTER
@@ -17750,6 +17565,69 @@ public class FFmpeg extends FFmpeg$shared {
            throw new AssertionError("should not reach here", ex$);
         }
     }
+    private static final int SWS_PRINT_INFO = (int)4096L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_PRINT_INFO = 4096
+     * }
+     */
+    public static int SWS_PRINT_INFO() {
+        return SWS_PRINT_INFO;
+    }
+    private static final int SWS_FULL_CHR_H_INT = (int)8192L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_FULL_CHR_H_INT = 8192
+     * }
+     */
+    public static int SWS_FULL_CHR_H_INT() {
+        return SWS_FULL_CHR_H_INT;
+    }
+    private static final int SWS_FULL_CHR_H_INP = (int)16384L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_FULL_CHR_H_INP = 16384
+     * }
+     */
+    public static int SWS_FULL_CHR_H_INP() {
+        return SWS_FULL_CHR_H_INP;
+    }
+    private static final int SWS_ACCURATE_RND = (int)262144L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_ACCURATE_RND = 262144
+     * }
+     */
+    public static int SWS_ACCURATE_RND() {
+        return SWS_ACCURATE_RND;
+    }
+    private static final int SWS_BITEXACT = (int)524288L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_BITEXACT = 524288
+     * }
+     */
+    public static int SWS_BITEXACT() {
+        return SWS_BITEXACT;
+    }
+    private static final int SWS_DIRECT_BGR = (int)32768L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_DIRECT_BGR = 32768
+     * }
+     */
+    public static int SWS_DIRECT_BGR() {
+        return SWS_DIRECT_BGR;
+    }
+    private static final int SWS_ERROR_DIFFUSION = (int)8388608L;
+    /**
+     * {@snippet lang=c :
+     * enum SwsFlags.SWS_ERROR_DIFFUSION = 8388608
+     * }
+     */
+    public static int SWS_ERROR_DIFFUSION() {
+        return SWS_ERROR_DIFFUSION;
+    }
     private static final int SWS_FAST_BILINEAR = (int)1L;
     /**
      * {@snippet lang=c :
@@ -17848,69 +17726,6 @@ public class FFmpeg extends FFmpeg$shared {
      */
     public static int SWS_SPLINE() {
         return SWS_SPLINE;
-    }
-    private static final int SWS_PRINT_INFO = (int)4096L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_PRINT_INFO = 4096
-     * }
-     */
-    public static int SWS_PRINT_INFO() {
-        return SWS_PRINT_INFO;
-    }
-    private static final int SWS_FULL_CHR_H_INT = (int)8192L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_FULL_CHR_H_INT = 8192
-     * }
-     */
-    public static int SWS_FULL_CHR_H_INT() {
-        return SWS_FULL_CHR_H_INT;
-    }
-    private static final int SWS_FULL_CHR_H_INP = (int)16384L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_FULL_CHR_H_INP = 16384
-     * }
-     */
-    public static int SWS_FULL_CHR_H_INP() {
-        return SWS_FULL_CHR_H_INP;
-    }
-    private static final int SWS_ACCURATE_RND = (int)262144L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_ACCURATE_RND = 262144
-     * }
-     */
-    public static int SWS_ACCURATE_RND() {
-        return SWS_ACCURATE_RND;
-    }
-    private static final int SWS_BITEXACT = (int)524288L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_BITEXACT = 524288
-     * }
-     */
-    public static int SWS_BITEXACT() {
-        return SWS_BITEXACT;
-    }
-    private static final int SWS_DIRECT_BGR = (int)32768L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_DIRECT_BGR = 32768
-     * }
-     */
-    public static int SWS_DIRECT_BGR() {
-        return SWS_DIRECT_BGR;
-    }
-    private static final int SWS_ERROR_DIFFUSION = (int)8388608L;
-    /**
-     * {@snippet lang=c :
-     * enum SwsFlags.SWS_ERROR_DIFFUSION = 8388608
-     * }
-     */
-    public static int SWS_ERROR_DIFFUSION() {
-        return SWS_ERROR_DIFFUSION;
     }
 
     private static class sws_alloc_context {
@@ -19847,10 +19662,10 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AVERROR_HTTP_SERVER_ERROR() {
         return AVERROR_HTTP_SERVER_ERROR;
     }
-    private static final int LIBAVUTIL_VERSION_INT = (int)3934311L;
+    private static final int LIBAVUTIL_VERSION_INT = (int)3998054L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVUTIL_VERSION_INT 3934311
+     * #define LIBAVUTIL_VERSION_INT 3998054
      * }
      */
     public static int LIBAVUTIL_VERSION_INT() {
@@ -20657,28 +20472,28 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_PIX_FMT_RGBAF32() {
         return AV_PIX_FMT_RGBAF32;
     }
-    private static final int LIBAVCODEC_VERSION_INT = (int)4066151L;
+    private static final int LIBAVCODEC_VERSION_INT = (int)4129126L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVCODEC_VERSION_INT 4066151
+     * #define LIBAVCODEC_VERSION_INT 4129126
      * }
      */
     public static int LIBAVCODEC_VERSION_INT() {
         return LIBAVCODEC_VERSION_INT;
     }
-    private static final int LIBAVFORMAT_VERSION_INT = (int)4064103L;
+    private static final int LIBAVFORMAT_VERSION_INT = (int)4129126L;
     /**
      * {@snippet lang=c :
-     * #define LIBAVFORMAT_VERSION_INT 4064103
+     * #define LIBAVFORMAT_VERSION_INT 4129126
      * }
      */
     public static int LIBAVFORMAT_VERSION_INT() {
         return LIBAVFORMAT_VERSION_INT;
     }
-    private static final int LIBSWSCALE_VERSION_INT = (int)590183L;
+    private static final int LIBSWSCALE_VERSION_INT = (int)655718L;
     /**
      * {@snippet lang=c :
-     * #define LIBSWSCALE_VERSION_INT 590183
+     * #define LIBSWSCALE_VERSION_INT 655718
      * }
      */
     public static int LIBSWSCALE_VERSION_INT() {

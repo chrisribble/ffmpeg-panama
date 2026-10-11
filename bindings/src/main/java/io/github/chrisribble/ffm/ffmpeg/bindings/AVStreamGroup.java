@@ -24,7 +24,9 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *         struct AVIAMFAudioElement *iamf_audio_element;
  *         struct AVIAMFMixPresentation *iamf_mix_presentation;
  *         struct AVStreamGroupTileGrid *tile_grid;
- *         struct AVStreamGroupLCEVC *lcevc;
+ *         struct AVStreamGroupLayeredVideo *layered_video;
+ *         struct AVStreamGroupLayeredVideo *lcevc;
+ *         struct AVStreamGroupTREF *tref;
  *     } params;
  *     AVDictionary *metadata;
  *     unsigned int nb_streams;
@@ -44,7 +46,7 @@ public class AVStreamGroup {
         FFmpeg.C_POINTER.withName("priv_data"),
         FFmpeg.C_INT.withName("index"),
         MemoryLayout.paddingLayout(4),
-        FFmpeg.C_LONG.withName("id"),
+        FFmpeg.C_LONG_LONG.withName("id"),
         FFmpeg.C_INT.withName("type"),
         MemoryLayout.paddingLayout(4),
         AVStreamGroup.params.layout().withName("params"),
@@ -289,7 +291,9 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
-     *     struct AVStreamGroupLCEVC *lcevc;
+     *     struct AVStreamGroupLayeredVideo *layered_video;
+     *     struct AVStreamGroupLayeredVideo *lcevc;
+     *     struct AVStreamGroupTREF *tref;
      * }
      * }
      */
@@ -303,8 +307,10 @@ public class AVStreamGroup {
             FFmpeg.C_POINTER.withName("iamf_audio_element"),
             FFmpeg.C_POINTER.withName("iamf_mix_presentation"),
             FFmpeg.C_POINTER.withName("tile_grid"),
-            FFmpeg.C_POINTER.withName("lcevc")
-        ).withName("$anon$1132:5");
+            FFmpeg.C_POINTER.withName("layered_video"),
+            FFmpeg.C_POINTER.withName("lcevc"),
+            FFmpeg.C_POINTER.withName("tref")
+        ).withName("$anon$1174:5");
 
         /**
          * The layout of this union
@@ -445,12 +451,56 @@ public class AVStreamGroup {
             union.set(tile_grid$LAYOUT, tile_grid$OFFSET, fieldValue);
         }
 
+        private static final AddressLayout layered_video$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("layered_video"));
+
+        /**
+         * Layout for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLayeredVideo *layered_video
+         * }
+         */
+        public static final AddressLayout layered_video$layout() {
+            return layered_video$LAYOUT;
+        }
+
+        private static final long layered_video$OFFSET = $LAYOUT.byteOffset(groupElement("layered_video"));
+
+        /**
+         * Offset for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLayeredVideo *layered_video
+         * }
+         */
+        public static final long layered_video$offset() {
+            return layered_video$OFFSET;
+        }
+
+        /**
+         * Getter for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLayeredVideo *layered_video
+         * }
+         */
+        public static MemorySegment layered_video(MemorySegment union) {
+            return union.get(layered_video$LAYOUT, layered_video$OFFSET);
+        }
+
+        /**
+         * Setter for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupLayeredVideo *layered_video
+         * }
+         */
+        public static void layered_video(MemorySegment union, MemorySegment fieldValue) {
+            union.set(layered_video$LAYOUT, layered_video$OFFSET, fieldValue);
+        }
+
         private static final AddressLayout lcevc$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("lcevc"));
 
         /**
          * Layout for field:
          * {@snippet lang=c :
-         * struct AVStreamGroupLCEVC *lcevc
+         * struct AVStreamGroupLayeredVideo *lcevc
          * }
          */
         public static final AddressLayout lcevc$layout() {
@@ -462,7 +512,7 @@ public class AVStreamGroup {
         /**
          * Offset for field:
          * {@snippet lang=c :
-         * struct AVStreamGroupLCEVC *lcevc
+         * struct AVStreamGroupLayeredVideo *lcevc
          * }
          */
         public static final long lcevc$offset() {
@@ -472,7 +522,7 @@ public class AVStreamGroup {
         /**
          * Getter for field:
          * {@snippet lang=c :
-         * struct AVStreamGroupLCEVC *lcevc
+         * struct AVStreamGroupLayeredVideo *lcevc
          * }
          */
         public static MemorySegment lcevc(MemorySegment union) {
@@ -482,11 +532,55 @@ public class AVStreamGroup {
         /**
          * Setter for field:
          * {@snippet lang=c :
-         * struct AVStreamGroupLCEVC *lcevc
+         * struct AVStreamGroupLayeredVideo *lcevc
          * }
          */
         public static void lcevc(MemorySegment union, MemorySegment fieldValue) {
             union.set(lcevc$LAYOUT, lcevc$OFFSET, fieldValue);
+        }
+
+        private static final AddressLayout tref$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("tref"));
+
+        /**
+         * Layout for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupTREF *tref
+         * }
+         */
+        public static final AddressLayout tref$layout() {
+            return tref$LAYOUT;
+        }
+
+        private static final long tref$OFFSET = $LAYOUT.byteOffset(groupElement("tref"));
+
+        /**
+         * Offset for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupTREF *tref
+         * }
+         */
+        public static final long tref$offset() {
+            return tref$OFFSET;
+        }
+
+        /**
+         * Getter for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupTREF *tref
+         * }
+         */
+        public static MemorySegment tref(MemorySegment union) {
+            return union.get(tref$LAYOUT, tref$OFFSET);
+        }
+
+        /**
+         * Setter for field:
+         * {@snippet lang=c :
+         * struct AVStreamGroupTREF *tref
+         * }
+         */
+        public static void tref(MemorySegment union, MemorySegment fieldValue) {
+            union.set(tref$LAYOUT, tref$OFFSET, fieldValue);
         }
 
         /**
@@ -543,7 +637,9 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
-     *     struct AVStreamGroupLCEVC *lcevc;
+     *     struct AVStreamGroupLayeredVideo *layered_video;
+     *     struct AVStreamGroupLayeredVideo *lcevc;
+     *     struct AVStreamGroupTREF *tref;
      * } params
      * }
      */
@@ -560,7 +656,9 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
-     *     struct AVStreamGroupLCEVC *lcevc;
+     *     struct AVStreamGroupLayeredVideo *layered_video;
+     *     struct AVStreamGroupLayeredVideo *lcevc;
+     *     struct AVStreamGroupTREF *tref;
      * } params
      * }
      */
@@ -575,7 +673,9 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
-     *     struct AVStreamGroupLCEVC *lcevc;
+     *     struct AVStreamGroupLayeredVideo *layered_video;
+     *     struct AVStreamGroupLayeredVideo *lcevc;
+     *     struct AVStreamGroupTREF *tref;
      * } params
      * }
      */
@@ -590,7 +690,9 @@ public class AVStreamGroup {
      *     struct AVIAMFAudioElement *iamf_audio_element;
      *     struct AVIAMFMixPresentation *iamf_mix_presentation;
      *     struct AVStreamGroupTileGrid *tile_grid;
-     *     struct AVStreamGroupLCEVC *lcevc;
+     *     struct AVStreamGroupLayeredVideo *layered_video;
+     *     struct AVStreamGroupLayeredVideo *lcevc;
+     *     struct AVStreamGroupTREF *tref;
      * } params
      * }
      */

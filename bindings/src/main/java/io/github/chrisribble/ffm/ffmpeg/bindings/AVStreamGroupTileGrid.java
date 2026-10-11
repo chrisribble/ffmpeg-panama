@@ -260,7 +260,7 @@ public class AVStreamGroupTileGrid {
             FFmpeg.C_INT.withName("idx"),
             FFmpeg.C_INT.withName("horizontal"),
             FFmpeg.C_INT.withName("vertical")
-        ).withName("$anon$986:5");
+        ).withName("$anon$989:5");
 
         /**
          * The layout of this struct
