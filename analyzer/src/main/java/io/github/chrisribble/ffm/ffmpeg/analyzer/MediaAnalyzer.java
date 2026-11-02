@@ -347,6 +347,17 @@ public final class MediaAnalyzer {
 		String codecTag();
 
 		Duration duration();
+
+		Long sizeBytes();
+
+		default Long bitrateKbps() {
+			Long sizeBytes = sizeBytes();
+			if (sizeBytes == null) {
+				return null;
+			}
+
+			return sizeBytes * BITS_PER_BYTE / duration().toSeconds() / BPS_TO_KBPS;
+		}
 	}
 
 	public record VideoInfo(
@@ -384,14 +395,6 @@ public final class MediaAnalyzer {
 			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
 		}
 
-		public Long bitrateKbps() {
-			if (sizeBytes == null) {
-				return null;
-			}
-
-			return sizeBytes * BITS_PER_BYTE / duration.toSeconds() / BPS_TO_KBPS;
-		}
-
 		public record ColorInfo(
 				String pixelFormat,
 				String colorRange,
@@ -422,16 +425,7 @@ public final class MediaAnalyzer {
 			String codecName,
 			Duration duration,
 			int sampleRate,
-			Long sizeBytes) implements TrackInfo {
-
-		public Long bitrateKbps() {
-			if (sizeBytes == null) {
-				return null;
-			}
-
-			return sizeBytes * BITS_PER_BYTE / duration.toSeconds() / BPS_TO_KBPS;
-		}
-	}
+			Long sizeBytes) implements TrackInfo {}
 
 	private record PacketAnalysis(List<Long> keyframes, List<Long> streamSizes) {}
 }
