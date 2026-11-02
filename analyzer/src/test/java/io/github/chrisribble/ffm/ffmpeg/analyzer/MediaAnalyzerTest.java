@@ -36,6 +36,8 @@ public class MediaAnalyzerTest {
 		assertEquals(videoInfo.resolution().height(), 1080);
 		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
 		assertEquals(getFrameRate(videoInfo), "30");
+		assertEquals(videoInfo.sizeBytes(), 40348);
+		assertEquals(videoInfo.bitrateKbps(), 32);
 		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
 		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
 		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
@@ -47,6 +49,8 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.codecName(), "aac");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
 		assertEquals(audioInfo.sampleRate(), 48000);
+		assertEquals(audioInfo.sizeBytes(), 190832);
+		assertEquals(audioInfo.bitrateKbps(), 152);
 	}
 
 	public static void main(final String[] args) {
@@ -72,6 +76,7 @@ public class MediaAnalyzerTest {
 			System.out.println("Codec ID                                 : " + videoInfo.codecTag());
 			System.out.println("Codec name                               : " + videoInfo.codecName());
 			System.out.println("Duration                                 : " + videoInfo.duration());
+			System.out.println("Bit rate                                 : " + videoInfo.bitrateKbps() + " kb/s");
 			System.out.println("Width                                    : " + videoInfo.resolution().width());
 			System.out.println("Height                                   : " + videoInfo.resolution().height());
 			System.out.println("Frame rate mode                          : " + videoInfo.frameRateMode());
@@ -81,6 +86,7 @@ public class MediaAnalyzerTest {
 				Integer gopFrames = videoInfo.gopFrames();
 				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + gopSeconds + "s");
 			}
+			System.out.println("Stream size bytes                        : " + videoInfo.sizeBytes());
 			System.out.println("Color space                              : " + videoInfo.colorInfo().colorSpace());
 			System.out.println("Color range                              : " + videoInfo.colorInfo().colorRange());
 			System.out.println("Color primaries                          : " + videoInfo.colorInfo().colorPrimaries());
@@ -96,7 +102,9 @@ public class MediaAnalyzerTest {
 			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
 			System.out.println("Codec name                               : " + audioInfo.codecName());
 			System.out.println("Duration                                 : " + audioInfo.duration());
+			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
 			System.out.println("Sample rate                              : " + audioInfo.sampleRate());
+			System.out.println("Stream size bytes                        : " + audioInfo.sizeBytes());
 			System.out.println();
 		}
 	}

@@ -1,5 +1,6 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_NOPTS_VALUE;
@@ -13,7 +14,6 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -46,6 +46,8 @@ public final class MediaAnalyzer {
 	private static final double EPSILON = 1 / (double) TimeUnit.SECONDS.toNanos(1);
 	private static final long MICROS_PER_S = TimeUnit.SECONDS.toMicros(1);
 	private static final int CODEC_TAG_BUFFER_SIZE = 32;
+	private static final long BITS_PER_BYTE = 8;
+	private static final long BPS_TO_KBPS = 1000;
 
 	private final Path[] inputs;
 
@@ -85,9 +87,14 @@ public final class MediaAnalyzer {
 					.findFirst()
 					.orElse(null);
 
+			PacketAnalysis packetAnalysis = null;
+			if (analyzePackets) {
+				packetAnalysis = getPacketAnalysis(arena, pFormatCtx, videoStream != null ? videoStream.index() : -1);
+			}
+
 			ContainerInfo container = getContainerInfo(pFormatCtx);
-			VideoInfo video = getVideoInfo(videoStream, pFormatCtx, arena, analyzePackets);
-			AudioInfo audio = getAudioInfo(audioStream);
+			VideoInfo video = getVideoInfo(videoStream, packetAnalysis);
+			AudioInfo audio = getAudioInfo(audioStream, packetAnalysis);
 
 			return new MediaInfo(container, video, audio);
 		}
@@ -98,7 +105,7 @@ public final class MediaAnalyzer {
 		return new ContainerInfo(duration);
 	}
 
-	private VideoInfo getVideoInfo(final StreamInfo videoStream, final MemorySegment pFormatCtx, final Arena arena, final boolean analyzePackets) {
+	private VideoInfo getVideoInfo(final StreamInfo videoStream, final PacketAnalysis packetAnalysis) {
 		if (videoStream == null) {
 			return null;
 		}
@@ -111,12 +118,17 @@ public final class MediaAnalyzer {
 
 		FrameRateMode frameRateMode = getFrameRateMode(videoStream);
 
-		Long gopDuration = analyzePackets && frameRateMode == FrameRateMode.CONSTANT
-				? getGopDuration(arena, pFormatCtx, videoStream)
-				: null;
+		Long gopDuration = null;
+
+		if (packetAnalysis != null && frameRateMode == FrameRateMode.CONSTANT) {
+			gopDuration = getGopDuration(packetAnalysis.keyframes());
+		}
+
 		Double gopSeconds = gopDuration != null
 				? gopDuration * videoStream.getTimeBase()
 				: null;
+
+		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(videoStream.index()) : null;
 
 		ColorInfo colorInfo = getColorInfo(videoStream);
 
@@ -130,6 +142,7 @@ public final class MediaAnalyzer {
 				videoStream.getAvgFrameRate(),
 				videoStream.getRFrameRate(),
 				gopSeconds,
+				streamSizeBytes,
 				colorInfo);
 	}
 
@@ -149,7 +162,7 @@ public final class MediaAnalyzer {
 				colorTransfer);
 	}
 
-	private AudioInfo getAudioInfo(final StreamInfo audioStream) {
+	private AudioInfo getAudioInfo(final StreamInfo audioStream, final PacketAnalysis packetAnalysis) {
 		if (audioStream == null) {
 			return null;
 		}
@@ -158,12 +171,15 @@ public final class MediaAnalyzer {
 		String codecName = getCodecName(audioStream.codecId());
 		Duration duration = getStreamDuration(audioStream.avStream());
 		int sampleRate = AVCodecParameters.sample_rate(audioStream.avCodecParams());
+		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
+
 		return new AudioInfo(
 				audioStream.id(),
 				codecTag,
 				codecName,
 				duration,
-				sampleRate);
+				sampleRate,
+				streamSizeBytes);
 	}
 
 	private static Duration getStreamDuration(final MemorySegment pStream) {
@@ -189,8 +205,7 @@ public final class MediaAnalyzer {
 		return Duration.of(micros, ChronoUnit.MICROS);
 	}
 
-	private Long getGopDuration(final Arena arena, final MemorySegment pFormatCtx, final StreamInfo videoStream) {
-		List<Long> keyframes = getKeyFrames(arena, pFormatCtx, videoStream.index());
+	private Long getGopDuration(final List<Long> keyframes) {
 		List<Long> intervals = new ArrayList<>(keyframes.size() - 1);
 
 		Long lastPts = null;
@@ -232,16 +247,23 @@ public final class MediaAnalyzer {
 		return longestInterval > 0 ? longestInterval : null;
 	}
 
-	private List<Long> getKeyFrames(final Arena arena, final MemorySegment pFormatCtx, final int filterStreamIndex) {
+
+	private PacketAnalysis getPacketAnalysis(final Arena arena, final MemorySegment pFormatCtx, final int keyFrameFilterStreamIndex) {
 		List<Long> keyframes = new ArrayList<>();
+
+		int numStreams = AVFormatContext.nb_streams(pFormatCtx);
+
+		long[] streamSizes = new long[numStreams];
 
 		var packet = allocatePacket(arena);
 		while (av_read_frame(pFormatCtx, packet) >= 0) {
 			int streamIndex = AVPacket.stream_index(packet);
 			int flags = AVPacket.flags(packet);
+			int packetSize = AVPacket.size(packet);
+			streamSizes[streamIndex] += packetSize;
 
 			// Ignore packets from streams we aren't interested in or which are not key frames
-			if (streamIndex != filterStreamIndex || (flags & AV_PKT_FLAG_KEY()) == 0) {
+			if (streamIndex != keyFrameFilterStreamIndex || (flags & AV_PKT_FLAG_KEY()) == 0) {
 				av_packet_unref(packet);
 				continue;
 			}
@@ -252,7 +274,7 @@ public final class MediaAnalyzer {
 			keyframes.add(pts);
 		}
 
-		return keyframes;
+		return new PacketAnalysis(keyframes, Arrays.stream(streamSizes).boxed().toList());
 	}
 
 	public String getCodecTag(final int tag) {
@@ -325,6 +347,17 @@ public final class MediaAnalyzer {
 		String codecTag();
 
 		Duration duration();
+
+		Long sizeBytes();
+
+		default Long bitrateKbps() {
+			Long sizeBytes = sizeBytes();
+			if (sizeBytes == null) {
+				return null;
+			}
+
+			return sizeBytes * BITS_PER_BYTE / duration().toSeconds() / BPS_TO_KBPS;
+		}
 	}
 
 	public record VideoInfo(
@@ -337,6 +370,7 @@ public final class MediaAnalyzer {
 			Rational avgFrameRate,
 			Rational rFrameRate,
 			Double gopSeconds,
+			Long sizeBytes,
 			ColorInfo colorInfo) implements TrackInfo {
 
 		public VideoInfo {
@@ -390,5 +424,8 @@ public final class MediaAnalyzer {
 			String codecTag,
 			String codecName,
 			Duration duration,
-			int sampleRate) implements TrackInfo {}
+			int sampleRate,
+			Long sizeBytes) implements TrackInfo {}
+
+	private record PacketAnalysis(List<Long> keyframes, List<Long> streamSizes) {}
 }
