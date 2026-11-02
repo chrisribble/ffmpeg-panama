@@ -88,8 +88,8 @@ public final class MediaAnalyzer {
 					.orElse(null);
 
 			PacketAnalysis packetAnalysis = null;
-			if (analyzePackets && videoStream != null) {
-				packetAnalysis = getPacketAnalysis(arena, pFormatCtx, videoStream.index());
+			if (analyzePackets) {
+				packetAnalysis = getPacketAnalysis(arena, pFormatCtx, videoStream != null ? videoStream.index() : -1);
 			}
 
 			ContainerInfo container = getContainerInfo(pFormatCtx);
@@ -274,13 +274,7 @@ public final class MediaAnalyzer {
 			keyframes.add(pts);
 		}
 
-		List<Long> streamSizeList = new ArrayList<>(numStreams);
-
-		for (long streamSize : streamSizes) {
-			streamSizeList.add(streamSize);
-		}
-
-		return new PacketAnalysis(keyframes, streamSizeList);
+		return new PacketAnalysis(keyframes, Arrays.stream(streamSizes).boxed().toList());
 	}
 
 	public String getCodecTag(final int tag) {
