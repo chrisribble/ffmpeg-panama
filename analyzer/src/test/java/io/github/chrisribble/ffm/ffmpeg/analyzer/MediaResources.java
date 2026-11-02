@@ -4,18 +4,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public final class MediaResources {
-//	private static final String RESOURCES_BASE = "src/test/resources";
-//	private static final String RESOURCES_BASE = "/Users/jackkaramanian/Code/ffmpeg-panama/analyzer/src/test/resources";
-	private static final String RESOURCES_BASE = "/Users/jackkaramanian/Code/container-format-testing";
+	private static final String RESOURCES_BASE = "src/test/resources";
 
 	public static final TestFile LAVFI_TEST_SRC = new TestFile(RESOURCES_BASE, "testsrc.mp4");
 
 	public static final TestFile LAVFI_TEST_SRC_INIT = new TestFile(RESOURCES_BASE, "init-stream0.m4s");
 	public static final TestFile LAVFI_TEST_SRC_CHUNK = new TestFile(RESOURCES_BASE, "chunk-stream0-00001.m4s");
 	public static final TestFile HDR_TEST = new TestFile(RESOURCES_BASE, "hdr-test.mp4");
-	public static final TestFile VP9_TEST = new TestFile(RESOURCES_BASE, "vp9.webm");
-	public static final TestFile VP8_TEST = new TestFile(RESOURCES_BASE, "vp8.webm");
-	public static final TestFile SPRING_TEST = new TestFile(RESOURCES_BASE, "spring1.mp4");
 
 	private MediaResources() {}
 
