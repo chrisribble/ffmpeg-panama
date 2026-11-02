@@ -1,5 +1,5 @@
 plugins {
-	id 'io.github.ben-manes.versions' version '0.66.0'
+	id 'io.github.ben-manes.versions' version '0.67.0'
 	id 'se.solrike.sonarlint' version '2.2.0' apply false
 	id 'com.github.spotbugs' version '6.5.13' apply false
 	id 'com.vanniktech.maven.publish.base' version '0.37.0' apply false
@@ -7,10 +7,10 @@ plugins {
 
 
 group = 'io.github.chrisribble'
-version = '0.8.3'
+version = '0.8.4'
 
 wrapper {
-	gradleVersion = '9.7'
+	gradleVersion = '9.8'
 }
 
 subprojects {
@@ -59,7 +59,7 @@ subprojects {
 	}
 
 	checkstyle {
-		toolVersion = '13.11.0'
+		toolVersion = '14.4.0'
 	}
 
 	sonarlint {
