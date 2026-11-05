@@ -4541,6 +4541,69 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
+    private static class av_dict_get {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_dict_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static FunctionDescriptor av_dict_get$descriptor() {
+        return av_dict_get.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static MethodHandle av_dict_get$handle() {
+        return av_dict_get.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static MemorySegment av_dict_get$address() {
+        return av_dict_get.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static MemorySegment av_dict_get(MemorySegment m, MemorySegment key, MemorySegment prev, int flags) {
+        var mh$ = av_dict_get.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_dict_get", m, key, prev, flags);
+            }
+            return (MemorySegment)mh$.invokeExact(m, key, prev, flags);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class av_frame_alloc {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER    );

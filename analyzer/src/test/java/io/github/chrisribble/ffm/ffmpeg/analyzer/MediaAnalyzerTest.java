@@ -61,6 +61,40 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.bitrateKbps(), 152);
 	}
 
+	@Test
+	public void testMkvStreamDurationMetadata() {
+		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.duration(), Duration.parse("PT10.00S"));
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.duration(), Duration.parse("PT10.021S"));
+	}
+
+	@Test
+	public void testMkvNoStreamDurationMetadata() {
+		var analyzer = new MediaAnalyzer(MediaResources.DURATION_NO_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		var containerDuration = Duration.parse("PT10.005333S");
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.duration(), containerDuration);
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.duration(), containerDuration);
+	}
+
 	public static void main(final String[] args) {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 

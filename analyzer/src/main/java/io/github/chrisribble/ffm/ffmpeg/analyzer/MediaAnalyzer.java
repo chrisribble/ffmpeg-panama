@@ -31,6 +31,7 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.ColorIn
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVDictionaryEntry;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVFormatContext;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacket;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVRational;
@@ -50,6 +51,8 @@ public final class MediaAnalyzer {
 	private static final int CODEC_TAG_BUFFER_SIZE = 32;
 	private static final long BITS_PER_BYTE = 8;
 	private static final long BPS_TO_KBPS = 1000;
+	private static final String DURATION_KEY = "DURATION";
+	private static final long NANOS_PER_SECOND = TimeUnit.SECONDS.toNanos(1L);
 
 	private final Path[] inputs;
 
@@ -95,8 +98,9 @@ public final class MediaAnalyzer {
 			}
 
 			ContainerInfo container = getContainerInfo(pFormatCtx);
-			VideoInfo video = getVideoInfo(videoStream, packetAnalysis);
-			AudioInfo audio = getAudioInfo(audioStream, packetAnalysis);
+			Duration containerDuration = container.duration();
+			VideoInfo video = getVideoInfo(arena, videoStream, packetAnalysis, containerDuration);
+			AudioInfo audio = getAudioInfo(arena, audioStream, packetAnalysis, containerDuration);
 
 			return new MediaInfo(container, video, audio);
 		}
@@ -107,7 +111,7 @@ public final class MediaAnalyzer {
 		return new ContainerInfo(duration);
 	}
 
-	private VideoInfo getVideoInfo(final StreamInfo videoStream, final PacketAnalysis packetAnalysis) {
+	private VideoInfo getVideoInfo(final Arena arena, final StreamInfo videoStream, final PacketAnalysis packetAnalysis, final Duration containerDuration) {
 		if (videoStream == null) {
 			return null;
 		}
@@ -115,7 +119,11 @@ public final class MediaAnalyzer {
 		String codecTag = getCodecTag(videoStream.codecTag());
 		String codecName = getCodecName(videoStream.codecId());
 
-		Duration duration = getStreamDuration(videoStream.avStream());
+		Duration duration = getStreamDuration(arena, videoStream.avStream());
+		if (duration == null) {
+			duration = containerDuration;
+		}
+
 		Resolution resolution = getResolution(videoStream);
 
 		FrameRateMode frameRateMode = getFrameRateMode(videoStream);
@@ -164,15 +172,21 @@ public final class MediaAnalyzer {
 				colorTransfer);
 	}
 
-	private AudioInfo getAudioInfo(final StreamInfo audioStream, final PacketAnalysis packetAnalysis) {
+	private AudioInfo getAudioInfo(final Arena arena, final StreamInfo audioStream, final PacketAnalysis packetAnalysis, final Duration containerDuration) {
 		if (audioStream == null) {
 			return null;
 		}
 
 		String codecTag = getCodecTag(audioStream.codecTag());
 		String codecName = getCodecName(audioStream.codecId());
-		Duration duration = getStreamDuration(audioStream.avStream());
+
+		Duration duration = getStreamDuration(arena, audioStream.avStream());
+		if (duration == null) {
+			duration = containerDuration;
+		}
+
 		ChannelLayout layout = getChannelLayout(audioStream.avCodecParams());
+
 		int sampleRate = AVCodecParameters.sample_rate(audioStream.avCodecParams());
 
 		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
@@ -193,12 +207,24 @@ public final class MediaAnalyzer {
 		return new ChannelLayout(channels);
 	}
 
-	private static Duration getStreamDuration(final MemorySegment pStream) {
+	private static Duration getStreamDuration(final Arena arena, final MemorySegment pStream) {
 		long duration = AVStream.duration(pStream);
-		if (duration == AV_NOPTS_VALUE()) {
+		if (duration != AV_NOPTS_VALUE()) {
+			return getDuration(duration, AVStream.time_base(pStream));
+		}
+
+		MemorySegment pMetadata = AVStream.metadata(pStream);
+		MemorySegment pDurationEntry = FFmpeg.av_dict_get(pMetadata, arena.allocateFrom(DURATION_KEY), MemorySegment.NULL, 0);
+
+		if (MemorySegment.NULL.equals(pDurationEntry)) {
 			return null;
 		}
-		return getDuration(duration, AVStream.time_base(pStream));
+
+		String streamDurationString = AVDictionaryEntry.value(pDurationEntry).getString(0);
+		String[] durationParts = streamDurationString.split(":");
+		return Duration.ofHours(Long.parseLong(durationParts[0]))
+				.plus(Duration.ofMinutes(Long.parseLong(durationParts[1])))
+				.plus(Duration.ofNanos((long)(Double.parseDouble(durationParts[2]) * NANOS_PER_SECOND)));
 	}
 
 	private static Duration getContainerDuration(final MemorySegment pFormatCtx) {
