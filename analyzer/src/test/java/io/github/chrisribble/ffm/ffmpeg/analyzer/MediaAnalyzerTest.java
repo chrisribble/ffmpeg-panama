@@ -2,6 +2,7 @@ package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 
 import java.lang.invoke.MethodHandles;
 import java.time.Duration;
@@ -38,6 +39,8 @@ public class MediaAnalyzerTest {
 		assertEquals(getFrameRate(videoInfo), "30");
 		assertEquals(videoInfo.sizeBytes(), 40348);
 		assertEquals(videoInfo.bitrateKbps(), 32);
+		// One complete GOP (pts 0 -> 128000 @ 1/15360 = 8.33s) of 31295 bytes = 30043 bps
+		assertEquals(videoInfo.peakGopBitrateKbps(), Long.valueOf(30));
 		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
 		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
 		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
@@ -51,6 +54,30 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.sampleRate(), 48000);
 		assertEquals(audioInfo.sizeBytes(), 190832);
 		assertEquals(audioInfo.bitrateKbps(), 152);
+	}
+
+	@Test
+	public void testPeakGopBitrateRequiresPacketAnalysis() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		VideoInfo videoInfo = analyzer.getMediaInfo(false).video();
+
+		assertNotNull(videoInfo);
+		assertNull(videoInfo.peakGopBitrateKbps());
+		assertNull(videoInfo.sizeBytes());
+	}
+
+	@Test
+	public void testPeakGopBitrateNullWithoutCompleteGop() {
+		var analyzer = new MediaAnalyzer(
+				MediaResources.LAVFI_TEST_SRC_INIT.getPath(),
+				MediaResources.LAVFI_TEST_SRC_CHUNK.getPath());
+
+		VideoInfo videoInfo = analyzer.getMediaInfo(true).video();
+
+		assertNotNull(videoInfo);
+		assertNotNull(videoInfo.sizeBytes());
+		assertNull(videoInfo.peakGopBitrateKbps());
 	}
 
 	public static void main(final String[] args) {
@@ -87,6 +114,7 @@ public class MediaAnalyzerTest {
 				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + gopSeconds + "s");
 			}
 			System.out.println("Stream size bytes                        : " + videoInfo.sizeBytes());
+			System.out.println("Peak GOP bit rate                        : " + videoInfo.peakGopBitrateKbps() + " kb/s");
 			System.out.println("Color space                              : " + videoInfo.colorInfo().colorSpace());
 			System.out.println("Color range                              : " + videoInfo.colorInfo().colorRange());
 			System.out.println("Color primaries                          : " + videoInfo.colorInfo().colorPrimaries());

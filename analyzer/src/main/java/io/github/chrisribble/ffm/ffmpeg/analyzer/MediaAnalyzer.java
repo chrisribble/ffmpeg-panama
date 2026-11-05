@@ -130,6 +130,10 @@ public final class MediaAnalyzer {
 
 		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(videoStream.index()) : null;
 
+		Long peakGopBitrateKbps = gopDuration != null
+				? getPeakGopBitrateKbps(packetAnalysis.keyframes(), packetAnalysis.gopSizes(), gopDuration, videoStream.getTimeBase())
+				: null;
+
 		ColorInfo colorInfo = getColorInfo(videoStream);
 
 		return new VideoInfo(
@@ -143,7 +147,33 @@ public final class MediaAnalyzer {
 				videoStream.getRFrameRate(),
 				gopSeconds,
 				streamSizeBytes,
+				peakGopBitrateKbps,
 				colorInfo);
+	}
+
+	private static Long getPeakGopBitrateKbps(final List<Long> keyframes, final List<Long> gopSizes, final long gopDuration,
+			final double timeBase) {
+		long maxGopBytes = -1;
+		long durationAccumulator = 0;
+		long bytesAccumulator = 0;
+
+		for (int i = 0; i < gopSizes.size(); i++) {
+			durationAccumulator += keyframes.get(i + 1) - keyframes.get(i);
+			bytesAccumulator += gopSizes.get(i);
+
+			if (durationAccumulator == gopDuration) {
+				maxGopBytes = Math.max(maxGopBytes, bytesAccumulator);
+				durationAccumulator = 0;
+				bytesAccumulator = 0;
+			}
+		}
+
+		if (maxGopBytes < 0) {
+			return null;
+		}
+
+		double gopSeconds = gopDuration * timeBase;
+		return Math.round(maxGopBytes * BITS_PER_BYTE / gopSeconds / BPS_TO_KBPS);
 	}
 
 	private ColorInfo getColorInfo(final StreamInfo videoStream) {
@@ -255,26 +285,40 @@ public final class MediaAnalyzer {
 
 		long[] streamSizes = new long[numStreams];
 
+		// Bytes per complete GOP; gopSizes[i] spans keyframes[i] to keyframes[i + 1]
+		List<Long> gopSizes = new ArrayList<>();
+		long currentGopBytes = 0;
+
 		var packet = allocatePacket(arena);
 		while (av_read_frame(pFormatCtx, packet) >= 0) {
 			int streamIndex = AVPacket.stream_index(packet);
 			int flags = AVPacket.flags(packet);
 			int packetSize = AVPacket.size(packet);
-			streamSizes[streamIndex] += packetSize;
-
-			// Ignore packets from streams we aren't interested in or which are not key frames
-			if (streamIndex != keyFrameFilterStreamIndex || (flags & AV_PKT_FLAG_KEY()) == 0) {
-				av_packet_unref(packet);
-				continue;
-			}
-
 			long pts = AVPacket.pts(packet);
 			av_packet_unref(packet);
 
-			keyframes.add(pts);
+			streamSizes[streamIndex] += packetSize;
+
+			// Ignore packets from streams we aren't interested in
+			if (streamIndex != keyFrameFilterStreamIndex) {
+				continue;
+			}
+
+			if ((flags & AV_PKT_FLAG_KEY()) != 0) {
+				if (!keyframes.isEmpty()) {
+					gopSizes.add(currentGopBytes);
+				}
+				currentGopBytes = 0;
+				keyframes.add(pts);
+			}
+
+			// Packets before the first keyframe don't belong to a complete GOP
+			if (!keyframes.isEmpty()) {
+				currentGopBytes += packetSize;
+			}
 		}
 
-		return new PacketAnalysis(keyframes, Arrays.stream(streamSizes).boxed().toList());
+		return new PacketAnalysis(keyframes, gopSizes, Arrays.stream(streamSizes).boxed().toList());
 	}
 
 	public String getCodecTag(final int tag) {
@@ -371,6 +415,7 @@ public final class MediaAnalyzer {
 			Rational rFrameRate,
 			Double gopSeconds,
 			Long sizeBytes,
+			Long peakGopBitrateKbps,
 			ColorInfo colorInfo) implements TrackInfo {
 
 		public VideoInfo {
@@ -427,5 +472,5 @@ public final class MediaAnalyzer {
 			int sampleRate,
 			Long sizeBytes) implements TrackInfo {}
 
-	private record PacketAnalysis(List<Long> keyframes, List<Long> streamSizes) {}
+	private record PacketAnalysis(List<Long> keyframes, List<Long> gopSizes, List<Long> streamSizes) {}
 }
