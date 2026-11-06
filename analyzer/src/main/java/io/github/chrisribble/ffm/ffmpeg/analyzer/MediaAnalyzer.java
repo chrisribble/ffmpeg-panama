@@ -51,7 +51,6 @@ public final class MediaAnalyzer {
 	private static final int CODEC_TAG_BUFFER_SIZE = 32;
 	private static final long BITS_PER_BYTE = 8;
 	private static final long BPS_TO_KBPS = 1000;
-	private static final String DURATION_KEY = "DURATION";
 	private static final long NANOS_PER_SECOND = TimeUnit.SECONDS.toNanos(1L);
 
 	private final Path[] inputs;
@@ -214,7 +213,7 @@ public final class MediaAnalyzer {
 		}
 
 		MemorySegment pMetadata = AVStream.metadata(pStream);
-		MemorySegment pDurationEntry = FFmpeg.av_dict_get(pMetadata, arena.allocateFrom(DURATION_KEY), MemorySegment.NULL, 0);
+		MemorySegment pDurationEntry = FFmpeg.av_dict_get(pMetadata, arena.allocateFrom(AVStreamMetadataKeys.DURATION), MemorySegment.NULL, 0);
 
 		if (MemorySegment.NULL.equals(pDurationEntry)) {
 			return null;
