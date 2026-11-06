@@ -1,6 +1,5 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_NOPTS_VALUE;
@@ -14,6 +13,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -26,8 +26,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.ColorInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVFormatContext;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacket;
@@ -170,7 +172,9 @@ public final class MediaAnalyzer {
 		String codecTag = getCodecTag(audioStream.codecTag());
 		String codecName = getCodecName(audioStream.codecId());
 		Duration duration = getStreamDuration(audioStream.avStream());
+		ChannelLayout layout = getChannelLayout(audioStream.avCodecParams());
 		int sampleRate = AVCodecParameters.sample_rate(audioStream.avCodecParams());
+
 		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
 
 		return new AudioInfo(
@@ -178,8 +182,15 @@ public final class MediaAnalyzer {
 				codecTag,
 				codecName,
 				duration,
+				layout,
 				sampleRate,
 				streamSizeBytes);
+	}
+
+	private ChannelLayout getChannelLayout(MemorySegment avCodecParams) {
+		MemorySegment chLayout = AVCodecParameters.ch_layout(avCodecParams);
+		int channels = AVChannelLayout.nb_channels(chLayout);
+		return new ChannelLayout(channels);
 	}
 
 	private static Duration getStreamDuration(final MemorySegment pStream) {
@@ -246,7 +257,6 @@ public final class MediaAnalyzer {
 
 		return longestInterval > 0 ? longestInterval : null;
 	}
-
 
 	private PacketAnalysis getPacketAnalysis(final Arena arena, final MemorySegment pFormatCtx, final int keyFrameFilterStreamIndex) {
 		List<Long> keyframes = new ArrayList<>();
@@ -424,8 +434,12 @@ public final class MediaAnalyzer {
 			String codecTag,
 			String codecName,
 			Duration duration,
+			ChannelLayout layout,
 			int sampleRate,
-			Long sizeBytes) implements TrackInfo {}
+			Long sizeBytes) implements TrackInfo {
+
+		public record ChannelLayout(int channels) {}
+	}
 
 	private record PacketAnalysis(List<Long> keyframes, List<Long> streamSizes) {}
 }
