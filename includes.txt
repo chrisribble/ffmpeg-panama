@@ -450,6 +450,7 @@
 
 --include-function av_dict_get             # header: ./ffmpeg-8.0.3/libavutil/dict.h
 --include-struct AVDictionaryEntry         # header: ./ffmpeg-8.0.3/libavutil/dict.h
+--include-constant AV_DICT_IGNORE_SUFFIX   # header: ./ffmpeg-8.0.3/libavutil/dict.h
 
 #### Extracted from: ./ffmpeg-8.0.1/libavutil/pixfmt.h
 

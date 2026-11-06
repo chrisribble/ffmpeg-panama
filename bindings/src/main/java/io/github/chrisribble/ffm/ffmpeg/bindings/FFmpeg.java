@@ -2,15 +2,13 @@
 
 package io.github.chrisribble.ffm.ffmpeg.bindings;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SymbolLookup;
+import java.lang.invoke.MethodHandle;
 
 public class FFmpeg extends FFmpeg$shared {
 
@@ -144,6 +142,17 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_FOURCC_MAX_STRING_SIZE() {
         return AV_FOURCC_MAX_STRING_SIZE;
     }
+
+	private static final int AV_DICT_IGNORE_SUFFIX = (int) 2L;
+
+	/**
+	 * {@snippet lang = c:
+	 * #define AV_DICT_IGNORE_SUFFIX 2
+	 *}
+	 */
+	public static int AV_DICT_IGNORE_SUFFIX() {
+		return AV_DICT_IGNORE_SUFFIX;
+	}
     private static final int AV_PKT_FLAG_KEY = (int)1L;
     /**
      * {@snippet lang=c :

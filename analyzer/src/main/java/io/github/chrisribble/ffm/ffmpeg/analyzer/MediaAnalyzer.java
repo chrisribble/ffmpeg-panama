@@ -1,23 +1,26 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_DICT_IGNORE_SUFFIX;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_NOPTS_VALUE;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PKT_FLAG_KEY;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_primaries_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_range_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_space_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_transfer_name;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_dict_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_fourcc_make_string;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -25,6 +28,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.ColorInfo;
@@ -46,6 +52,8 @@ import io.github.chrisribble.ffm.ffmpeg.core.internal.LibavVersion;
 import io.github.chrisribble.ffm.ffmpeg.core.internal.StreamInfo;
 
 public final class MediaAnalyzer {
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
 	private static final double EPSILON = 1 / (double) TimeUnit.SECONDS.toNanos(1);
 	private static final long MICROS_PER_S = TimeUnit.SECONDS.toMicros(1);
 	private static final int CODEC_TAG_BUFFER_SIZE = 32;
@@ -213,17 +221,30 @@ public final class MediaAnalyzer {
 		}
 
 		MemorySegment pMetadata = AVStream.metadata(pStream);
-		MemorySegment pDurationEntry = FFmpeg.av_dict_get(pMetadata, arena.allocateFrom(AVStreamMetadataKeys.DURATION), MemorySegment.NULL, 0);
+		MemorySegment pDurationEntry = av_dict_get(pMetadata, arena.allocateFrom(AVStreamMetadataKeys.DURATION), NULL, AV_DICT_IGNORE_SUFFIX());
 
-		if (MemorySegment.NULL.equals(pDurationEntry)) {
+		if (NULL.equals(pDurationEntry)) {
 			return null;
 		}
 
 		String streamDurationString = AVDictionaryEntry.value(pDurationEntry).getString(0);
-		String[] durationParts = streamDurationString.split(":");
-		return Duration.ofHours(Long.parseLong(durationParts[0]))
-				.plus(Duration.ofMinutes(Long.parseLong(durationParts[1])))
-				.plus(Duration.ofNanos((long)(Double.parseDouble(durationParts[2]) * NANOS_PER_SECOND)));
+		return parseMetadataDuration(streamDurationString);
+	}
+
+	private static Duration parseMetadataDuration(final String streamDurationString) {
+		try {
+			String[] durationParts = streamDurationString.split(":");
+			if (durationParts.length != 3) {
+				LOG.error("Invalid stream duration: {}", streamDurationString);
+				return null;
+			}
+			return Duration.ofHours(Long.parseLong(durationParts[0]))
+					.plus(Duration.ofMinutes(Long.parseLong(durationParts[1])))
+					.plus(Duration.ofNanos((long) (Double.parseDouble(durationParts[2]) * NANOS_PER_SECOND)));
+		} catch (RuntimeException e) {
+			LOG.error("Failed to parse duration: {}", streamDurationString, e);
+			return null;
+		}
 	}
 
 	private static Duration getContainerDuration(final MemorySegment pFormatCtx) {
@@ -391,6 +412,14 @@ public final class MediaAnalyzer {
 				return null;
 			}
 
+			if (duration() == null) {
+				return null;
+			}
+
+			if (duration().toMillis() < 1000L) {
+				throw new ArithmeticException("Duration must be >= 1 second");
+			}
+
 			return sizeBytes * BITS_PER_BYTE / duration().toSeconds() / BPS_TO_KBPS;
 		}
 	}
@@ -467,4 +496,10 @@ public final class MediaAnalyzer {
 	}
 
 	private record PacketAnalysis(List<Long> keyframes, List<Long> streamSizes) {}
+
+	private static final class AVStreamMetadataKeys {
+		public static final String DURATION = "DURATION";
+
+		private AVStreamMetadataKeys() {}
+	}
 }
