@@ -12,12 +12,16 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.ContainerInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.MediaInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo;
 
 public class MediaAnalyzerTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	private static final long BYTES_PER_KIB = 1024;
+	private static final String PREFIXES = "KMGTPEZYQ";
 
 	@Test
 	public void testGetMediaInfo() {
@@ -48,6 +52,10 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.codecTag(), "mp4a");
 		assertEquals(audioInfo.codecName(), "aac");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
+
+		assertNotNull(audioInfo.layout());
+		assertEquals(audioInfo.layout().channels(), 1);
+
 		assertEquals(audioInfo.sampleRate(), 48000);
 		assertEquals(audioInfo.sizeBytes(), 190832);
 		assertEquals(audioInfo.bitrateKbps(), 152);
@@ -86,7 +94,7 @@ public class MediaAnalyzerTest {
 				Integer gopFrames = videoInfo.gopFrames();
 				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + gopSeconds + "s");
 			}
-			System.out.println("Stream size bytes                        : " + videoInfo.sizeBytes());
+			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.sizeBytes()));
 			System.out.println("Color space                              : " + videoInfo.colorInfo().colorSpace());
 			System.out.println("Color range                              : " + videoInfo.colorInfo().colorRange());
 			System.out.println("Color primaries                          : " + videoInfo.colorInfo().colorPrimaries());
@@ -97,14 +105,17 @@ public class MediaAnalyzerTest {
 
 		AudioInfo audioInfo = mediaInfo.audio();
 		if (audioInfo != null) {
+			ChannelLayout layout = audioInfo.layout();
+
 			System.out.println("Audio");
 			System.out.println("ID                                       : " + audioInfo.id());
 			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
 			System.out.println("Codec name                               : " + audioInfo.codecName());
 			System.out.println("Duration                                 : " + audioInfo.duration());
 			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
-			System.out.println("Sample rate                              : " + audioInfo.sampleRate());
-			System.out.println("Stream size bytes                        : " + audioInfo.sizeBytes());
+			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));
+			System.out.println("Sampling rate                            : " + audioInfo.sampleRate());
+			System.out.println("Stream size                              : " + toHumanReadable(audioInfo.sizeBytes()));
 			System.out.println();
 		}
 	}
@@ -120,5 +131,21 @@ public class MediaAnalyzerTest {
 
 	private static String formatFrameRate(final double value) {
 		return String.format("%.3f", value);
+	}
+
+	public static String toHumanReadable(final long bytes) {
+		if (bytes < BYTES_PER_KIB) {
+			return bytes + " B";
+		}
+
+		double value = bytes;
+		int index = 0;
+		for (int i = 0; i < PREFIXES.length() && value > BYTES_PER_KIB; ++i) {
+			value /= BYTES_PER_KIB;
+			index = i;
+		}
+
+		char prefix = PREFIXES.charAt(index);
+		return String.format("%.2f %siB", value, prefix);
 	}
 }
