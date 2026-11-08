@@ -2,6 +2,7 @@ package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 
 import java.lang.invoke.MethodHandles;
 import java.time.Duration;
@@ -9,13 +10,17 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.ContainerInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.MediaInfo;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.TrackInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo;
+import io.github.chrisribble.ffm.ffmpeg.core.Rational;
+import io.github.chrisribble.ffm.ffmpeg.core.Resolution;
 
 public class MediaAnalyzerTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -59,6 +64,66 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.sampleRate(), 48000);
 		assertEquals(audioInfo.sizeBytes(), 190832);
 		assertEquals(audioInfo.bitrateKbps(), 152);
+	}
+
+	@Test
+	public void testMkvStreamDurationMetadata() {
+		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.duration(), Duration.parse("PT10.00S"));
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.duration(), Duration.parse("PT10.021S"));
+	}
+
+	@Test
+	public void testMkvNoStreamDurationMetadata() {
+		var analyzer = new MediaAnalyzer(MediaResources.DURATION_NO_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		var containerDuration = Duration.parse("PT10.005333S");
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.duration(), containerDuration);
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.duration(), containerDuration);
+	}
+
+	@DataProvider(name = "nullDurationTrackInfos")
+	public Object[][] getNullDurationTrackInfos() {
+		return new Object[][] {
+				{ new VideoInfo(0, null, null, null, new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1), null, 1000L, null) },
+				{ new AudioInfo(0, null, null, null, 48000, 1000L) }
+		};
+	}
+
+	@Test(dataProvider = "nullDurationTrackInfos")
+	public void testTrackInfoNullDurationReturnsNull(final TrackInfo trackInfo) {
+		assertNull(trackInfo.bitrateKbps());
+	}
+
+	@DataProvider(name = "lessThanOneSecondDurationTrackInfos")
+	public Object[][] getLessThanOneSecondDurationTrackInfos() {
+		return new Object[][] {
+				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1), null, 1000L, null) },
+				{ new AudioInfo(0, null, null, Duration.ofMillis(999L), 48000, 1000L) }
+		};
+	}
+
+	@Test(dataProvider = "lessThanOneSecondDurationTrackInfos", expectedExceptions = ArithmeticException.class, expectedExceptionsMessageRegExp = "Duration must be >= 1 second")
+	public void testStreamInfoDurationLessThanOneSecond(final TrackInfo trackInfo) {
+		trackInfo.bitrateKbps();
 	}
 
 	public static void main(final String[] args) {

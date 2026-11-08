@@ -2,15 +2,13 @@
 
 package io.github.chrisribble.ffm.ffmpeg.bindings;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SymbolLookup;
+import java.lang.invoke.MethodHandle;
 
 public class FFmpeg extends FFmpeg$shared {
 
@@ -144,6 +142,17 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_FOURCC_MAX_STRING_SIZE() {
         return AV_FOURCC_MAX_STRING_SIZE;
     }
+
+	private static final int AV_DICT_IGNORE_SUFFIX = (int) 2L;
+
+	/**
+	 * {@snippet lang = c:
+	 * #define AV_DICT_IGNORE_SUFFIX 2
+	 *}
+	 */
+	public static int AV_DICT_IGNORE_SUFFIX() {
+		return AV_DICT_IGNORE_SUFFIX;
+	}
     private static final int AV_PKT_FLAG_KEY = (int)1L;
     /**
      * {@snippet lang=c :
@@ -4534,6 +4543,69 @@ public class FFmpeg extends FFmpeg$shared {
                 traceDowncall("av_fourcc_make_string", buf, fourcc);
             }
             return (MemorySegment)mh$.invokeExact(buf, fourcc);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_dict_get {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_dict_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static FunctionDescriptor av_dict_get$descriptor() {
+        return av_dict_get.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static MethodHandle av_dict_get$handle() {
+        return av_dict_get.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static MemorySegment av_dict_get$address() {
+        return av_dict_get.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key, const AVDictionaryEntry *prev, int flags)
+     * }
+     */
+    public static MemorySegment av_dict_get(MemorySegment m, MemorySegment key, MemorySegment prev, int flags) {
+        var mh$ = av_dict_get.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_dict_get", m, key, prev, flags);
+            }
+            return (MemorySegment)mh$.invokeExact(m, key, prev, flags);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {
