@@ -28,106 +28,6 @@ public class MediaAnalyzerTest {
 	private static final long BYTES_PER_KIB = 1024;
 	private static final String PREFIXES = "KMGTPEZYQ";
 
-	@Test
-	public void testGetMediaInfo() {
-		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
-
-		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
-		VideoInfo videoInfo = mediaInfo.video();
-		AudioInfo audioInfo = mediaInfo.audio();
-
-		assertNotNull(videoInfo);
-		assertEquals(videoInfo.codecTag(), "hvc1");
-		assertEquals(videoInfo.codecName(), "hevc");
-		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
-		assertEquals(videoInfo.resolution().width(), 1920);
-		assertEquals(videoInfo.resolution().height(), 1080);
-		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
-		assertEquals(getFrameRate(videoInfo), "30");
-		assertEquals(videoInfo.sizeBytes(), 40348);
-		assertEquals(videoInfo.bitrateKbps(), 32);
-		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
-		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
-		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
-		assertEquals(videoInfo.colorInfo().colorTransfer(), "smpte2084");
-		assertEquals(videoInfo.colorInfo().pixelFormat(), "yuv420p10le");
-
-		assertNotNull(audioInfo);
-		assertEquals(audioInfo.codecTag(), "mp4a");
-		assertEquals(audioInfo.codecName(), "aac");
-		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
-
-		assertNotNull(audioInfo.layout());
-		assertEquals(audioInfo.layout().channels(), 1);
-
-		assertEquals(audioInfo.sampleRate(), 48000);
-		assertEquals(audioInfo.sizeBytes(), 190832);
-		assertEquals(audioInfo.bitrateKbps(), 152);
-	}
-
-	@Test
-	public void testMkvStreamDurationMetadata() {
-		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
-
-		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
-		VideoInfo videoInfo = mediaInfo.video();
-		AudioInfo audioInfo = mediaInfo.audio();
-
-		assertNotNull(videoInfo);
-		assertEquals(videoInfo.duration(), Duration.parse("PT10.00S"));
-
-		assertNotNull(audioInfo);
-		assertEquals(audioInfo.duration(), Duration.parse("PT10.021S"));
-	}
-
-	@Test
-	public void testMkvNoStreamDurationMetadata() {
-		var analyzer = new MediaAnalyzer(MediaResources.DURATION_NO_METADATA_TEST.getPath());
-
-		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
-		VideoInfo videoInfo = mediaInfo.video();
-		AudioInfo audioInfo = mediaInfo.audio();
-
-		var containerDuration = Duration.parse("PT10.005333S");
-
-		assertNotNull(videoInfo);
-		assertEquals(videoInfo.duration(), containerDuration);
-
-		assertNotNull(audioInfo);
-		assertEquals(audioInfo.duration(), containerDuration);
-	}
-
-	@DataProvider(name = "nullDurationTrackInfos")
-	public Object[][] getNullDurationTrackInfos() {
-		return new Object[][] {
-				{ new VideoInfo(0, null, null, null, new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
-						null, 1000L, null) },
-				{ new AudioInfo(0, null, null, null, null, 48000, 1000L) }
-		};
-	}
-
-	@Test(dataProvider = "nullDurationTrackInfos")
-	public void testTrackInfoNullDurationReturnsNull(final TrackInfo trackInfo) {
-		assertNull(trackInfo.bitrateKbps());
-	}
-
-	@DataProvider(name = "lessThanOneSecondDurationTrackInfos")
-	public Object[][] getLessThanOneSecondDurationTrackInfos() {
-		return new Object[][] {
-				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1),
-						new Rational(30, 1), null, 1000L, null) },
-				{ new AudioInfo(0, null, null, Duration.ofMillis(999L), null, 48000, 1000L) }
-		};
-	}
-
-	@Test(dataProvider = "lessThanOneSecondDurationTrackInfos", expectedExceptions = ArithmeticException.class, expectedExceptionsMessageRegExp = "Duration must be >= 1 second")
-	public void testStreamInfoDurationLessThanOneSecond(final TrackInfo trackInfo) {
-		trackInfo.bitrateKbps();
-	}
-
 	public static void main(final String[] args) {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
@@ -178,6 +78,7 @@ public class MediaAnalyzerTest {
 			System.out.println("ID                                       : " + audioInfo.id());
 			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
 			System.out.println("Codec name                               : " + audioInfo.codecName());
+			System.out.println("Codec profile                            : " + audioInfo.codecProfile());
 			System.out.println("Duration                                 : " + audioInfo.duration());
 			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
 			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));
@@ -185,6 +86,107 @@ public class MediaAnalyzerTest {
 			System.out.println("Stream size                              : " + toHumanReadable(audioInfo.sizeBytes()));
 			System.out.println();
 		}
+	}
+
+	@Test
+	public void testMkvStreamDurationMetadata() {
+		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.duration(), Duration.parse("PT10.00S"));
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.duration(), Duration.parse("PT10.021S"));
+	}
+
+	@Test
+	public void testMkvNoStreamDurationMetadata() {
+		var analyzer = new MediaAnalyzer(MediaResources.DURATION_NO_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		var containerDuration = Duration.parse("PT10.005333S");
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.duration(), containerDuration);
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.duration(), containerDuration);
+	}
+
+	@Test
+	public void testGetMediaInfo() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+		AudioInfo audioInfo = mediaInfo.audio();
+
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.codecTag(), "hvc1");
+		assertEquals(videoInfo.codecName(), "hevc");
+		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
+		assertEquals(videoInfo.resolution().width(), 1920);
+		assertEquals(videoInfo.resolution().height(), 1080);
+		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
+		assertEquals(getFrameRate(videoInfo), "30");
+		assertEquals(videoInfo.sizeBytes(), 40348);
+		assertEquals(videoInfo.bitrateKbps(), 32);
+		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
+		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
+		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
+		assertEquals(videoInfo.colorInfo().colorTransfer(), "smpte2084");
+		assertEquals(videoInfo.colorInfo().pixelFormat(), "yuv420p10le");
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.codecTag(), "mp4a");
+		assertEquals(audioInfo.codecName(), "aac");
+		assertEquals(audioInfo.codecProfile(), "LC");
+		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
+
+		assertNotNull(audioInfo.layout());
+		assertEquals(audioInfo.layout().channels(), 1);
+
+		assertEquals(audioInfo.sampleRate(), 48000);
+		assertEquals(audioInfo.sizeBytes(), 190832);
+		assertEquals(audioInfo.bitrateKbps(), 152);
+	}
+
+	@Test(dataProvider = "nullDurationTrackInfos")
+	public void testTrackInfoNullDurationReturnsNull(final TrackInfo trackInfo) {
+		assertNull(trackInfo.bitrateKbps());
+	}
+
+	@DataProvider(name = "nullDurationTrackInfos")
+	public Object[][] getNullDurationTrackInfos() {
+		return new Object[][] {
+				{ new VideoInfo(0, null, null, null, new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
+						null, 1000L, null) },
+				{ new AudioInfo(0, null, null, null, null, null, 48000, 1000L) }
+		};
+	}
+
+	@Test(dataProvider = "lessThanOneSecondDurationTrackInfos", expectedExceptions = ArithmeticException.class, expectedExceptionsMessageRegExp = "Duration must be >= 1 second")
+	public void testStreamInfoDurationLessThanOneSecond(final TrackInfo trackInfo) {
+		trackInfo.bitrateKbps();
+	}
+
+	@DataProvider(name = "lessThanOneSecondDurationTrackInfos")
+	public Object[][] getLessThanOneSecondDurationTrackInfos() {
+		return new Object[][] {
+				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1),
+						new Rational(30, 1), null, 1000L, null) },
+				{ new AudioInfo(0, null, null, null, Duration.ofMillis(999L), null, 48000, 1000L) }
+		};
 	}
 
 	private static String getFrameRate(final VideoInfo videoInfo) {

@@ -1,5 +1,6 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_DICT_IGNORE_SUFFIX;
@@ -15,7 +16,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avcodec_profile_name;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -198,10 +199,18 @@ public final class MediaAnalyzer {
 
 		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
 
+		String codecProfile = null;
+		MemorySegment pCodecProfile = avcodec_profile_name(audioStream.codecId(), AVCodecParameters.profile(audioStream.avCodecParams()));
+
+		if (!NULL.equals(pCodecProfile)) {
+			codecProfile = pCodecProfile.getString(0);
+		}
+
 		return new AudioInfo(
 				audioStream.id(),
 				codecTag,
 				codecName,
+				codecProfile,
 				duration,
 				layout,
 				sampleRate,
@@ -487,6 +496,7 @@ public final class MediaAnalyzer {
 			int id,
 			String codecTag,
 			String codecName,
+			String codecProfile,
 			Duration duration,
 			ChannelLayout layout,
 			int sampleRate,
