@@ -1,6 +1,5 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_DICT_IGNORE_SUFFIX;
@@ -16,6 +15,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -208,7 +208,7 @@ public final class MediaAnalyzer {
 				streamSizeBytes);
 	}
 
-	private ChannelLayout getChannelLayout(MemorySegment avCodecParams) {
+	private ChannelLayout getChannelLayout(final MemorySegment avCodecParams) {
 		MemorySegment chLayout = AVCodecParameters.ch_layout(avCodecParams);
 		int channels = AVChannelLayout.nb_channels(chLayout);
 		return new ChannelLayout(channels);

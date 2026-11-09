@@ -7,10 +7,10 @@ plugins {
 
 
 group = 'io.github.chrisribble'
-version = '0.8.4'
+version = '0.8.5'
 
 wrapper {
-	gradleVersion = '9.8'
+	gradleVersion = '9.9'
 }
 
 subprojects {
