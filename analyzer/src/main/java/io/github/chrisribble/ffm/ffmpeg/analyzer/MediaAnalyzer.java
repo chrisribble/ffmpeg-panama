@@ -1,5 +1,6 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_DICT_IGNORE_SUFFIX;
@@ -15,7 +16,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avcodec_profile_name;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -186,6 +187,7 @@ public final class MediaAnalyzer {
 
 		String codecTag = getCodecTag(audioStream.codecTag());
 		String codecName = getCodecName(audioStream.codecId());
+		String codecProfile = getCodecProfile(audioStream);
 
 		Duration duration = getStreamDuration(arena, audioStream.avStream());
 		if (duration == null) {
@@ -202,10 +204,21 @@ public final class MediaAnalyzer {
 				audioStream.id(),
 				codecTag,
 				codecName,
+				codecProfile,
 				duration,
 				layout,
 				sampleRate,
 				streamSizeBytes);
+	}
+
+	private String getCodecProfile(final StreamInfo streamInfo) {
+		MemorySegment pCodecProfile = avcodec_profile_name(streamInfo.codecId(), streamInfo.codecProfile());
+
+		if (NULL.equals(pCodecProfile)) {
+			return null;
+		}
+
+		return pCodecProfile.getString(0);
 	}
 
 	private ChannelLayout getChannelLayout(final MemorySegment avCodecParams) {
@@ -487,6 +500,7 @@ public final class MediaAnalyzer {
 			int id,
 			String codecTag,
 			String codecName,
+			String codecProfile,
 			Duration duration,
 			ChannelLayout layout,
 			int sampleRate,

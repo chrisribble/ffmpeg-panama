@@ -56,6 +56,7 @@ public class MediaAnalyzerTest {
 		assertNotNull(audioInfo);
 		assertEquals(audioInfo.codecTag(), "mp4a");
 		assertEquals(audioInfo.codecName(), "aac");
+		assertEquals(audioInfo.codecProfile(), "LC");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
 
 		assertNotNull(audioInfo.layout());
@@ -105,7 +106,7 @@ public class MediaAnalyzerTest {
 		return new Object[][] {
 				{ new VideoInfo(0, null, null, null, new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
 						null, 1000L, null) },
-				{ new AudioInfo(0, null, null, null, null, 48000, 1000L) }
+				{ new AudioInfo(0, null, null, null, null, null, 48000, 1000L) }
 		};
 	}
 
@@ -119,7 +120,7 @@ public class MediaAnalyzerTest {
 		return new Object[][] {
 				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1),
 						new Rational(30, 1), null, 1000L, null) },
-				{ new AudioInfo(0, null, null, Duration.ofMillis(999L), null, 48000, 1000L) }
+				{ new AudioInfo(0, null, null, null, Duration.ofMillis(999L), null, 48000, 1000L) }
 		};
 	}
 
@@ -178,6 +179,7 @@ public class MediaAnalyzerTest {
 			System.out.println("ID                                       : " + audioInfo.id());
 			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
 			System.out.println("Codec name                               : " + audioInfo.codecName());
+			System.out.println("Codec profile                            : " + audioInfo.codecProfile());
 			System.out.println("Duration                                 : " + audioInfo.duration());
 			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
 			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));

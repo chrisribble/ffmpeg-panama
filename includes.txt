@@ -437,6 +437,7 @@
 
 #### Extracted from: ./ffmpeg-8.0.3/libavcodec/codec_id.h
 --include-function avcodec_get_name               # header: ./ffmpeg-8.0.3/libavcodec/codec_id.h
+--include-function avcodec_profile_name           # header: ./ffmpeg-8.0.3/libavcodec/codec_id.h
 
 #### Extracted from: ./ffmpeg-8.0.1/libavcodec/codec_par.h
 
