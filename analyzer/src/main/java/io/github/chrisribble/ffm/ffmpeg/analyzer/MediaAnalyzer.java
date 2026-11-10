@@ -151,6 +151,8 @@ public final class MediaAnalyzer {
 		Long maxGopBytes = getMaxGopBytes(packetAnalysis, gopDuration);
 		ColorInfo colorInfo = getColorInfo(videoStream);
 
+		var gopInfo = new GopInfo(gopSeconds, maxGopBytes);
+
 		return new VideoInfo(
 				videoStream.id(),
 				codecTag,
@@ -160,9 +162,8 @@ public final class MediaAnalyzer {
 				frameRateMode,
 				videoStream.getAvgFrameRate(),
 				videoStream.getRFrameRate(),
-				gopSeconds,
 				streamSizeBytes,
-				maxGopBytes,
+				gopInfo,
 				colorInfo);
 	}
 
@@ -173,31 +174,19 @@ public final class MediaAnalyzer {
 
 		long currentGopElapsed = 0;
 		long currentGopBytes = 0;
-		long largestGopBytes = 0;
+		long maxGopBytes = 0;
 
-		var keyframes = packetAnalysis.keyframes();
-		for (int i = 0; i < keyframes.size(); i++) {
-			Keyframe keyframe = keyframes.get(i);
-			Keyframe nextKeyframe = i < keyframes.size() - 1 ? keyframes.get(i + 1) : null;
-			Keyframe prevKeyFrame = i > 0 ? keyframes.get(i - 1) : null;
-
-			// calculate keyframe duration from pts delta of either next or last keyframe
-			long currentDuration = 0;
-			if (nextKeyframe != null) {
-				currentDuration = nextKeyframe.pts() - keyframe.pts();
-			} else if (prevKeyFrame != null) {
-				currentDuration = keyframe.pts() - prevKeyFrame.pts();
-			}
-
+		for (Keyframe keyframe : packetAnalysis.keyframes()) {
 			currentGopBytes += keyframe.bytes();
-			currentGopElapsed += currentDuration;
+			currentGopElapsed += keyframe.duration();
+
 			if (currentGopElapsed >= gopDuration) {
-				largestGopBytes = Math.max(largestGopBytes, currentGopBytes);
+				maxGopBytes = Math.max(maxGopBytes, currentGopBytes);
 				currentGopElapsed = 0;
 				currentGopBytes = 0;
 			}
 		}
-		return Math.max(largestGopBytes, currentGopBytes);
+		return Math.max(maxGopBytes, currentGopBytes);
 	}
 
 	private ColorInfo getColorInfo(final StreamInfo videoStream) {
@@ -360,7 +349,8 @@ public final class MediaAnalyzer {
 		long[] streamSizes = new long[numStreams];
 
 		long videoIntervalBytes = 0;
-		Long lastPts = null;
+		Long lastKeyframePts = null;
+		long lastKeyframeDuration = 0L;
 
 		var packet = allocatePacket(arena);
 		while (av_read_frame(pFormatCtx, packet) >= 0) {
@@ -369,25 +359,26 @@ public final class MediaAnalyzer {
 			int packetSize = AVPacket.size(packet);
 			streamSizes[streamIndex] += packetSize;
 
-			boolean isKeyframe = (flags & AV_PKT_FLAG_KEY()) != 0;
-			boolean isVideoStream = streamIndex == videoStreamIndex;
-
-			// Ignore packets from non-video streams
-			if (isKeyframe && isVideoStream) {
-				if (lastPts != null) {
-					var keyframe = new Keyframe(lastPts, videoIntervalBytes);
-					keyframes.add(keyframe);
-					videoIntervalBytes = 0;
+			// Ignore packets from non-video streams for keyframe interval bytes analysis
+			if (streamIndex == videoStreamIndex) {
+				boolean isKeyframe = (flags & AV_PKT_FLAG_KEY()) != 0;
+				if (isKeyframe) {
+					if (lastKeyframePts != null) {
+						var keyframe = new Keyframe(lastKeyframePts, lastKeyframeDuration, videoIntervalBytes);
+						keyframes.add(keyframe);
+						videoIntervalBytes = 0;
+						lastKeyframeDuration = 0L;
+					}
+					lastKeyframePts = AVPacket.pts(packet);
 				}
-				lastPts = AVPacket.pts(packet);
-			}
-			if (isVideoStream) {
+
 				videoIntervalBytes += packetSize;
+				lastKeyframeDuration += AVPacket.duration(packet);
 			}
 			av_packet_unref(packet);
 		}
-		if (lastPts != null) {
-			var keyframe = new Keyframe(lastPts, videoIntervalBytes);
+		if (lastKeyframePts != null) {
+			var keyframe = new Keyframe(lastKeyframePts, lastKeyframeDuration, videoIntervalBytes);
 			keyframes.add(keyframe);
 		}
 		return new PacketAnalysis(keyframes, Arrays.stream(streamSizes).boxed().toList());
@@ -493,9 +484,8 @@ public final class MediaAnalyzer {
 			FrameRateMode frameRateMode,
 			Rational avgFrameRate,
 			Rational rFrameRate,
-			Double gopSeconds,
 			Long sizeBytes,
-			Long maxGopBytes,
+			GopInfo gopInfo,
 			ColorInfo colorInfo) implements TrackInfo {
 
 		public VideoInfo {
@@ -511,10 +501,14 @@ public final class MediaAnalyzer {
 			if (rFrameRate == null) {
 				throw new IllegalArgumentException("rFrameRate must be non-null");
 			}
+			if (gopInfo == null) {
+				throw new IllegalArgumentException("gopInfo must be non-null");
+			}
 		}
 
 		public Integer gopFrames() {
-			if (frameRateMode != FrameRateMode.CONSTANT || gopSeconds() == null) {
+			Double gopSeconds = gopInfo.gopSeconds();
+			if (frameRateMode != FrameRateMode.CONSTANT || gopSeconds == null) {
 				return null;
 			}
 			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
@@ -557,7 +551,9 @@ public final class MediaAnalyzer {
 		public record ChannelLayout(int channels) {}
 	}
 
-	private record Keyframe(long pts, long bytes) {}
+	public record GopInfo(Double gopSeconds, Long maxGopBytes) {}
+
+	private record Keyframe(long pts, long duration, long bytes) {}
 
 	private record PacketAnalysis(List<Keyframe> keyframes, List<Long> streamSizes) {}
 
