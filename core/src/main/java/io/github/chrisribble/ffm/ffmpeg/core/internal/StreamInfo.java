@@ -72,7 +72,11 @@ public final class StreamInfo {
 		return AVCodecParameters.codec_tag(avCodecParams);
 	}
 
-	public int sampleRate() {
+	public int codecProfile() {
+		return AVCodecParameters.profile(avCodecParams);
+	}
+
+ 	public int sampleRate() {
 		return AVCodecParameters.sample_rate(avCodecParams);
 	}
 

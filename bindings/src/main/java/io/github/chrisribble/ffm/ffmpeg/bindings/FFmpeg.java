@@ -2,13 +2,15 @@
 
 package io.github.chrisribble.ffm.ffmpeg.bindings;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SymbolLookup;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 public class FFmpeg extends FFmpeg$shared {
 
@@ -142,17 +144,15 @@ public class FFmpeg extends FFmpeg$shared {
     public static int AV_FOURCC_MAX_STRING_SIZE() {
         return AV_FOURCC_MAX_STRING_SIZE;
     }
-
-	private static final int AV_DICT_IGNORE_SUFFIX = (int) 2L;
-
-	/**
-	 * {@snippet lang = c:
-	 * #define AV_DICT_IGNORE_SUFFIX 2
-	 *}
-	 */
-	public static int AV_DICT_IGNORE_SUFFIX() {
-		return AV_DICT_IGNORE_SUFFIX;
-	}
+    private static final int AV_DICT_IGNORE_SUFFIX = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * #define AV_DICT_IGNORE_SUFFIX 2
+     * }
+     */
+    public static int AV_DICT_IGNORE_SUFFIX() {
+        return AV_DICT_IGNORE_SUFFIX;
+    }
     private static final int AV_PKT_FLAG_KEY = (int)1L;
     /**
      * {@snippet lang=c :
@@ -6253,6 +6253,67 @@ public class FFmpeg extends FFmpeg$shared {
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const char *avcodec_profile_name(enum AVCodecID codec_id, int profile)
+     * }
+     */
+    public static FunctionDescriptor avcodec_profile_name$descriptor() {
+        return avcodec_profile_name.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const char *avcodec_profile_name(enum AVCodecID codec_id, int profile)
+     * }
+     */
+    public static MethodHandle avcodec_profile_name$handle() {
+        return avcodec_profile_name.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const char *avcodec_profile_name(enum AVCodecID codec_id, int profile)
+     * }
+     */
+    public static MemorySegment avcodec_profile_name$address() {
+        return avcodec_profile_name.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const char *avcodec_profile_name(enum AVCodecID codec_id, int profile)
+     * }
+     */
+    public static MemorySegment avcodec_profile_name(int codec_id, int profile) {
+        var mh$ = avcodec_profile_name.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("avcodec_profile_name", codec_id, profile);
+            }
+            return (MemorySegment)mh$.invokeExact(codec_id, profile);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class avcodec_profile_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_profile_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     private static class av_codec_iterate {
