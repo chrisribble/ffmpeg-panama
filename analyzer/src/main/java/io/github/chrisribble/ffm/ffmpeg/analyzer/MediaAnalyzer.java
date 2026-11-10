@@ -195,8 +195,7 @@ public final class MediaAnalyzer {
 		}
 
 		ChannelLayout layout = getChannelLayout(audioStream.avCodecParams());
-
-		int sampleRate = AVCodecParameters.sample_rate(audioStream.avCodecParams());
+		int sampleRate = audioStream.sampleRate();
 
 		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
 
