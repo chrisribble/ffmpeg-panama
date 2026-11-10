@@ -187,6 +187,7 @@ public final class MediaAnalyzer {
 
 		String codecTag = getCodecTag(audioStream.codecTag());
 		String codecName = getCodecName(audioStream.codecId());
+		String codecProfile = getCodecProfile(audioStream);
 
 		Duration duration = getStreamDuration(arena, audioStream.avStream());
 		if (duration == null) {
@@ -199,13 +200,6 @@ public final class MediaAnalyzer {
 
 		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
 
-		String codecProfile = null;
-		MemorySegment pCodecProfile = avcodec_profile_name(audioStream.codecId(), AVCodecParameters.profile(audioStream.avCodecParams()));
-
-		if (!NULL.equals(pCodecProfile)) {
-			codecProfile = pCodecProfile.getString(0);
-		}
-
 		return new AudioInfo(
 				audioStream.id(),
 				codecTag,
@@ -215,6 +209,16 @@ public final class MediaAnalyzer {
 				layout,
 				sampleRate,
 				streamSizeBytes);
+	}
+
+	private String getCodecProfile(final StreamInfo streamInfo) {
+		MemorySegment pCodecProfile = avcodec_profile_name(streamInfo.codecId(), streamInfo.codecProfile());
+
+		if (NULL.equals(pCodecProfile)) {
+			return null;
+		}
+
+		return pCodecProfile.getString(0);
 	}
 
 	private ChannelLayout getChannelLayout(final MemorySegment avCodecParams) {
