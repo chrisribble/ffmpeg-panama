@@ -72,6 +72,10 @@ public final class StreamInfo {
 		return AVCodecParameters.codec_tag(avCodecParams);
 	}
 
+	public int sampleRate() {
+		return AVCodecParameters.sample_rate(avCodecParams);
+	}
+
 	public Rational getAvgFrameRate() {
 		return rational(AVStream.avg_frame_rate(avStream));
 	}
