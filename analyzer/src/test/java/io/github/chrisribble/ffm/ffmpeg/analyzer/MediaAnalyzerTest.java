@@ -78,7 +78,7 @@ public class MediaAnalyzerTest {
 		VideoInfo videoInfo = mediaInfo.video();
 
 		assertNotNull(videoInfo);
-		assertEquals(videoInfo.gopInfo().maxGopBytes(), 40348);
+		assertEquals(videoInfo.gopInfo().maxGopBytes(), 31295);
 		assertTrue(videoInfo.gopInfo().maxGopBytes() <= videoInfo.sizeBytes());
 	}
 
