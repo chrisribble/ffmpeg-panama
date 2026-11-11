@@ -302,23 +302,17 @@ public final class MediaAnalyzer {
 	private Long getGopDuration(final List<GopCandidate> gopCandidates) {
 		List<Long> intervals = new ArrayList<>(gopCandidates.size() - 1);
 
-		Long lastPts = null;
 		// candidate for GOP
 		long longestInterval = 0;
 
 		for (GopCandidate gopCandidate : gopCandidates) {
-			// First frame is always an I-frame, so interval duration must be zero
-			long pts = gopCandidate.pts();
-			long interval = lastPts != null ? pts - lastPts : 0;
-			lastPts = pts;
+			long interval = gopCandidate.duration();
 
 			// Do not track zero-sized intervals (first I-frame)
 			if (interval == 0) {
 				continue;
 			}
-			if (interval > longestInterval) {
-				longestInterval = interval;
-			}
+			longestInterval = Math.max(longestInterval, interval);
 			intervals.add(interval);
 		}
 
@@ -365,7 +359,7 @@ public final class MediaAnalyzer {
 				boolean isKeyframe = (flags & AV_PKT_FLAG_KEY()) != 0;
 				if (isKeyframe) {
 					if (lastKeyframePts != null) {
-						var keyframe = new GopCandidate(lastKeyframePts, pts - lastKeyframePts, intervalBytes);
+						var keyframe = new GopCandidate(pts - lastKeyframePts, intervalBytes);
 						gopCandidates.add(keyframe);
 						intervalBytes = 0;
 					}
@@ -380,7 +374,7 @@ public final class MediaAnalyzer {
 			av_packet_unref(packet);
 		}
 		if (lastKeyframePts != null) {
-			var gopCandidate = new GopCandidate(lastKeyframePts, maxEndPts - lastKeyframePts, intervalBytes);
+			var gopCandidate = new GopCandidate(maxEndPts - lastKeyframePts, intervalBytes);
 			gopCandidates.add(gopCandidate);
 		}
 		return new PacketAnalysis(gopCandidates, Arrays.stream(streamSizes).boxed().toList());
@@ -555,7 +549,7 @@ public final class MediaAnalyzer {
 
 	public record GopInfo(Double gopSeconds, Long maxGopBytes) {}
 
-	private record GopCandidate(long pts, long duration, long bytes) {}
+	private record GopCandidate(long duration, long bytes) {}
 
 	private record PacketAnalysis(List<GopCandidate> gopCandidates, List<Long> streamSizes) {}
 
