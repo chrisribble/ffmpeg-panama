@@ -356,6 +356,12 @@ public final class MediaAnalyzer {
 
 			// Ignore packets from non-video streams for keyframe interval bytes analysis
 			if (streamIndex == videoStreamIndex) {
+				if (pts == AV_NOPTS_VALUE()) {
+					LOG.warn("A packet on video stream {} is missing pts; cancelling packet analysis", videoStreamIndex);
+					av_packet_unref(packet);
+					return null;
+				}
+
 				boolean isKeyframe = (flags & AV_PKT_FLAG_KEY()) != 0;
 				if (isKeyframe) {
 					if (lastKeyframePts != null) {
