@@ -28,6 +28,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -138,8 +139,8 @@ public final class MediaAnalyzer {
 
 		Long gopDuration = null;
 
-		if (packetAnalysis != null && !packetAnalysis.gopCandidates().isEmpty() && frameRateMode == FrameRateMode.CONSTANT) {
-			gopDuration = getGopDuration(packetAnalysis.gopCandidates());
+		if (frameRateMode == FrameRateMode.CONSTANT) {
+			gopDuration = getGopDuration(packetAnalysis);
 		}
 
 		Double gopSeconds = gopDuration != null
@@ -151,7 +152,9 @@ public final class MediaAnalyzer {
 		Long maxGopBytes = getMaxGopBytes(packetAnalysis, gopDuration);
 		ColorInfo colorInfo = getColorInfo(videoStream);
 
-		var gopInfo = new GopInfo(gopSeconds, maxGopBytes);
+		Optional<GopInfo> gopInfo = gopSeconds != null && maxGopBytes != null
+				? Optional.of(new GopInfo(gopSeconds, maxGopBytes))
+				: Optional.empty();
 
 		return new VideoInfo(
 				videoStream.id(),
@@ -299,7 +302,15 @@ public final class MediaAnalyzer {
 		return Duration.of(micros, ChronoUnit.MICROS);
 	}
 
-	private Long getGopDuration(final List<GopCandidate> gopCandidates) {
+	private Long getGopDuration(final PacketAnalysis packetAnalysis) {
+		if (packetAnalysis == null) {
+			return null;
+		}
+		List<GopCandidate> gopCandidates = packetAnalysis.gopCandidates();
+		if (gopCandidates.isEmpty()) {
+			return null;
+		}
+
 		List<Long> intervals = new ArrayList<>(gopCandidates.size() - 1);
 
 		// candidate for GOP
@@ -338,7 +349,7 @@ public final class MediaAnalyzer {
 
 	private PacketAnalysis getPacketAnalysis(final Arena arena, final MemorySegment pFormatCtx, final int videoStreamIndex) {
 		long[] streamSizes = new long[AVFormatContext.nb_streams(pFormatCtx)];
-		var gop = new GopAccumulator(videoStreamIndex);
+		var accumulator = new GopAccumulator(videoStreamIndex);
 
 		var packet = allocatePacket(arena);
 		while (av_read_frame(pFormatCtx, packet) >= 0) {
@@ -349,12 +360,12 @@ public final class MediaAnalyzer {
 			// Ignore packets from non-video streams for keyframe interval bytes analysis
 			if (streamIndex == videoStreamIndex) {
 				boolean isKeyframe = (AVPacket.flags(packet) & AV_PKT_FLAG_KEY()) != 0;
-				gop.accept(AVPacket.pts(packet), AVPacket.duration(packet), packetSize, isKeyframe);
+				accumulator.accept(AVPacket.pts(packet), AVPacket.duration(packet), packetSize, isKeyframe);
 			}
 			av_packet_unref(packet);
 		}
 
-		return new PacketAnalysis(gop.finish(), Arrays.stream(streamSizes).boxed().toList());
+		return new PacketAnalysis(accumulator.finish(), Arrays.stream(streamSizes).boxed().toList());
 	}
 
 	public String getCodecTag(final int tag) {
@@ -458,7 +469,7 @@ public final class MediaAnalyzer {
 			Rational avgFrameRate,
 			Rational rFrameRate,
 			Long sizeBytes,
-			GopInfo gopInfo,
+			Optional<GopInfo> gopInfo,
 			ColorInfo colorInfo) implements TrackInfo {
 
 		public VideoInfo {
@@ -474,16 +485,13 @@ public final class MediaAnalyzer {
 			if (rFrameRate == null) {
 				throw new IllegalArgumentException("rFrameRate must be non-null");
 			}
-			if (gopInfo == null) {
-				throw new IllegalArgumentException("gopInfo must be non-null");
-			}
 		}
 
 		public Integer gopFrames() {
-			Double gopSeconds = gopInfo.gopSeconds();
-			if (frameRateMode != FrameRateMode.CONSTANT || gopSeconds == null) {
+			if (frameRateMode != FrameRateMode.CONSTANT || gopInfo.isEmpty()) {
 				return null;
 			}
+			double gopSeconds = gopInfo.get().gopSeconds();
 			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
 		}
 
@@ -524,7 +532,7 @@ public final class MediaAnalyzer {
 		public record ChannelLayout(int channels) {}
 	}
 
-	public record GopInfo(Double gopSeconds, Long maxGopBytes) {}
+	public record GopInfo(double gopSeconds, long maxGopBytes) {}
 
 	private record GopCandidate(long duration, long bytes) {}
 
@@ -532,7 +540,7 @@ public final class MediaAnalyzer {
 
 	private static final class GopAccumulator {
 		private final int videoStreamIndex;
-		private final List<GopCandidate> candidates = new ArrayList<>();
+		private final List<GopCandidate> candidates;
 		private boolean aborted;
 		private Long lastKeyframePts;
 		private long intervalBytes;
@@ -540,6 +548,7 @@ public final class MediaAnalyzer {
 
 		GopAccumulator(final int videoStreamIndex) {
 			this.videoStreamIndex = videoStreamIndex;
+			candidates = new ArrayList<>();
 		}
 
 		void accept(final long pts, final long duration, final int size, final boolean isKeyframe) {
@@ -547,7 +556,7 @@ public final class MediaAnalyzer {
 				return;
 			}
 			if (pts == AV_NOPTS_VALUE()) {
-				LOG.warn("A packet on video stream {} is missing pts; cancelling gop packet analysis", videoStreamIndex);
+				LOG.warn("A packet on video stream {} is missing pts; aborting GOP packet analysis", videoStreamIndex);
 				aborted = true;
 				return;
 			}
