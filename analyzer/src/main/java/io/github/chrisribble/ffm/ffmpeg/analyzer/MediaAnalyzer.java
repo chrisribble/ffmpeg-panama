@@ -133,13 +133,13 @@ public final class MediaAnalyzer {
 			duration = containerDuration;
 		}
 
+		Long streamBytes = getStreamBytes(packetAnalysis, videoStream.index());
 		Resolution resolution = getResolution(videoStream);
 		FrameRateMode frameRateMode = getFrameRateMode(videoStream);
 
 		ColorInfo colorInfo = getColorInfo(videoStream);
 		Optional<GopInfo> gopInfo = getGopInfo(frameRateMode, videoStream.getTimeBase(), packetAnalysis);
 
-		Long streamBytes = getStreamBytes(packetAnalysis, videoStream.index());
 
 		return new VideoInfo(
 				videoStream.id(),
@@ -169,10 +169,9 @@ public final class MediaAnalyzer {
 			duration = containerDuration;
 		}
 
+		Long streamBytes = getStreamBytes(packetAnalysis,audioStream.index());
 		ChannelLayout layout = getChannelLayout(audioStream.avCodecParams());
 		int sampleRate = audioStream.sampleRate();
-
-		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
 
 		return new AudioInfo(
 				audioStream.id(),
@@ -180,38 +179,38 @@ public final class MediaAnalyzer {
 				codecName,
 				codecProfile,
 				duration,
+				streamBytes,
 				layout,
-				sampleRate,
-				streamSizeBytes);
+				sampleRate);
 	}
 
-	private Optional<GopInfo> getGopInfo(FrameRateMode frameRateMode, double timebase, PacketAnalysis packetAnalysis) {
+	private Optional<GopInfo> getGopInfo(final FrameRateMode frameRateMode, final double timebase, final PacketAnalysis packetAnalysis) {
 		if (packetAnalysis == null) {
 			return Optional.empty();
 		}
-		Long gopTicks = null;
-		if (frameRateMode == FrameRateMode.CONSTANT) {
-			gopTicks = getGopDuration(packetAnalysis);
+		if (frameRateMode != FrameRateMode.CONSTANT) {
+			return Optional.empty();
 		}
-		Double gopSeconds = gopTicks != null
-				? gopTicks * timebase
-				: null;
-		Long maxGopBytes = getMaxGopBytes(packetAnalysis, gopTicks);
-		return gopSeconds != null && maxGopBytes != null
-				? Optional.of(new GopInfo(gopSeconds, maxGopBytes))
+
+		Optional<Long> gopTicks = getGopDuration(packetAnalysis);
+		Optional<Double> gopSeconds = gopTicks.map(ticks -> ticks * timebase);
+		Optional<Long> maxGopBytes = gopTicks.flatMap(ticks -> getMaxGopBytes(packetAnalysis, ticks));
+
+		return gopSeconds.isPresent() && maxGopBytes.isPresent()
+				? Optional.of(new GopInfo(gopSeconds.get(), maxGopBytes.get()))
 				: Optional.empty();
 	}
 
-	private Long getStreamBytes(PacketAnalysis packetAnalysis, int index) {
+	private Long getStreamBytes(final PacketAnalysis packetAnalysis, final int index) {
 		if (packetAnalysis == null) {
 			return null;
 		}
 		return packetAnalysis.streamSizes().get(index);
 	}
 
-	private Long getMaxGopBytes(final PacketAnalysis packetAnalysis, final Long gopDuration) {
+	private Optional<Long> getMaxGopBytes(final PacketAnalysis packetAnalysis, final Long gopDuration) {
 		if (packetAnalysis == null || packetAnalysis.gopCandidates().isEmpty() || gopDuration == null) {
-			return null;
+			return Optional.empty();
 		}
 
 		long currentGopElapsed = 0;
@@ -228,7 +227,7 @@ public final class MediaAnalyzer {
 				currentGopBytes = 0;
 			}
 		}
-		return Math.max(maxGopBytes, currentGopBytes);
+		return Optional.of(Math.max(maxGopBytes, currentGopBytes));
 	}
 
 	private ColorInfo getColorInfo(final StreamInfo videoStream) {
@@ -311,13 +310,13 @@ public final class MediaAnalyzer {
 		return Duration.of(micros, ChronoUnit.MICROS);
 	}
 
-	private Long getGopDuration(final PacketAnalysis packetAnalysis) {
+	private Optional<Long> getGopDuration(final PacketAnalysis packetAnalysis) {
 		if (packetAnalysis == null) {
-			return null;
+			return Optional.empty();
 		}
 		List<GopCandidate> gopCandidates = packetAnalysis.gopCandidates();
 		if (gopCandidates.isEmpty()) {
-			return null;
+			return Optional.empty();
 		}
 
 		List<Long> intervals = new ArrayList<>(gopCandidates.size() - 1);
@@ -344,7 +343,7 @@ public final class MediaAnalyzer {
 			long delta = intervalAccumulator - longestInterval;
 			if (delta > 0) {
 				// Inconsistent GOP
-				return null;
+				return Optional.empty();
 			}
 			if (delta == 0) {
 				// Interval is exactly candidate GOP; reset accumulator
@@ -353,7 +352,9 @@ public final class MediaAnalyzer {
 			// Interval is less than candidate GOP (potential scene change); keep accumulating
 		}
 
-		return longestInterval > 0 ? longestInterval : null;
+		return longestInterval > 0
+				? Optional.of(longestInterval)
+				: Optional.empty();
 	}
 
 	private PacketAnalysis getPacketAnalysis(final Arena arena, final MemorySegment pFormatCtx, final int videoStreamIndex) {
@@ -534,9 +535,9 @@ public final class MediaAnalyzer {
 			String codecName,
 			String codecProfile,
 			Duration duration,
+			Long sizeBytes,
 			ChannelLayout layout,
-			int sampleRate,
-			Long sizeBytes) implements TrackInfo {
+			int sampleRate) implements TrackInfo {
 
 		public record ChannelLayout(int channels) {}
 	}
