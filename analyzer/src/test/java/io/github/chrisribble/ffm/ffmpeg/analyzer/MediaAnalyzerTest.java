@@ -132,9 +132,10 @@ public class MediaAnalyzerTest {
 	@DataProvider(name = "nullDurationTrackInfos")
 	public Object[][] getNullDurationTrackInfos() {
 		return new Object[][] {
-				{ new VideoInfo(0, null, null, null, new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
-						1000L, Optional.empty(), null) },
-				{ new AudioInfo(0, null, null, null, null, null, 48000, 1000L) }
+				{ new VideoInfo(0, null, null, null, 1000L, new Resolution(1920, 1080),
+						VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
+						Optional.empty(), null) },
+				{ new AudioInfo(0, null, null, null, null, 1000L, null, 48000) }
 		};
 	}
 
@@ -146,9 +147,9 @@ public class MediaAnalyzerTest {
 	@DataProvider(name = "lessThanOneSecondDurationTrackInfos")
 	public Object[][] getLessThanOneSecondDurationTrackInfos() {
 		return new Object[][] {
-				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1),
-						new Rational(30, 1), 1000L, Optional.empty(), null) },
-				{ new AudioInfo(0, null, null, null, Duration.ofMillis(999L), null, 48000, 1000L) }
+				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), 1000L, new Resolution(1920, 1080),
+						VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1), Optional.empty(), null) },
+				{ new AudioInfo(0, null, null, null, Duration.ofMillis(999L), 1000L, null, 48000) }
 		};
 	}
 

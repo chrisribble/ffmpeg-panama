@@ -1,6 +1,5 @@
 package io.github.chrisribble.ffm.ffmpeg.analyzer;
 
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDIO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_DICT_IGNORE_SUFFIX;
@@ -17,6 +16,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avcodec_profile_name;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
 import static java.lang.foreign.MemorySegment.NULL;
 
 import java.lang.foreign.Arena;
@@ -133,79 +133,26 @@ public final class MediaAnalyzer {
 			duration = containerDuration;
 		}
 
+		Long streamBytes = getStreamBytes(packetAnalysis, videoStream.index());
 		Resolution resolution = getResolution(videoStream);
-
 		FrameRateMode frameRateMode = getFrameRateMode(videoStream);
 
-		Long gopDuration = null;
-
-		if (frameRateMode == FrameRateMode.CONSTANT) {
-			gopDuration = getGopDuration(packetAnalysis);
-		}
-
-		Double gopSeconds = gopDuration != null
-				? gopDuration * videoStream.getTimeBase()
-				: null;
-
-		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(videoStream.index()) : null;
-
-		Long maxGopBytes = getMaxGopBytes(packetAnalysis, gopDuration);
 		ColorInfo colorInfo = getColorInfo(videoStream);
+		Optional<GopInfo> gopInfo = getGopInfo(frameRateMode, videoStream.getTimeBase(), packetAnalysis);
 
-		Optional<GopInfo> gopInfo = gopSeconds != null && maxGopBytes != null
-				? Optional.of(new GopInfo(gopSeconds, maxGopBytes))
-				: Optional.empty();
 
 		return new VideoInfo(
 				videoStream.id(),
 				codecTag,
 				codecName,
 				duration,
+				streamBytes,
 				resolution,
 				frameRateMode,
 				videoStream.getAvgFrameRate(),
 				videoStream.getRFrameRate(),
-				streamSizeBytes,
 				gopInfo,
 				colorInfo);
-	}
-
-	private Long getMaxGopBytes(final PacketAnalysis packetAnalysis, final Long gopDuration) {
-		if (packetAnalysis == null || packetAnalysis.gopCandidates().isEmpty() || gopDuration == null) {
-			return null;
-		}
-
-		long currentGopElapsed = 0;
-		long currentGopBytes = 0;
-		long maxGopBytes = 0;
-
-		for (GopCandidate gopCandidate : packetAnalysis.gopCandidates()) {
-			currentGopBytes += gopCandidate.bytes();
-			currentGopElapsed += gopCandidate.duration();
-
-			if (currentGopElapsed >= gopDuration) {
-				maxGopBytes = Math.max(maxGopBytes, currentGopBytes);
-				currentGopElapsed = 0;
-				currentGopBytes = 0;
-			}
-		}
-		return Math.max(maxGopBytes, currentGopBytes);
-	}
-
-	private ColorInfo getColorInfo(final StreamInfo videoStream) {
-		var avCodecParams = videoStream.avCodecParams();
-		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(avCodecParams)).getString(0);
-		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
-		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
-		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
-		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(avCodecParams)).getString(0);
-
-		return new ColorInfo(
-				pixelFormat,
-				colorRange,
-				colorSpace,
-				colorPrimaries,
-				colorTransfer);
 	}
 
 	private AudioInfo getAudioInfo(final Arena arena, final StreamInfo audioStream, final PacketAnalysis packetAnalysis, final Duration containerDuration) {
@@ -222,10 +169,9 @@ public final class MediaAnalyzer {
 			duration = containerDuration;
 		}
 
+		Long streamBytes = getStreamBytes(packetAnalysis,audioStream.index());
 		ChannelLayout layout = getChannelLayout(audioStream.avCodecParams());
 		int sampleRate = audioStream.sampleRate();
-
-		Long streamSizeBytes = packetAnalysis != null ? packetAnalysis.streamSizes().get(audioStream.index()) : null;
 
 		return new AudioInfo(
 				audioStream.id(),
@@ -233,9 +179,71 @@ public final class MediaAnalyzer {
 				codecName,
 				codecProfile,
 				duration,
+				streamBytes,
 				layout,
-				sampleRate,
-				streamSizeBytes);
+				sampleRate);
+	}
+
+	private Optional<GopInfo> getGopInfo(final FrameRateMode frameRateMode, final double timebase, final PacketAnalysis packetAnalysis) {
+		if (packetAnalysis == null) {
+			return Optional.empty();
+		}
+		if (frameRateMode != FrameRateMode.CONSTANT) {
+			return Optional.empty();
+		}
+
+		Optional<Long> gopTicks = getGopDuration(packetAnalysis);
+		Optional<Double> gopSeconds = gopTicks.map(ticks -> ticks * timebase);
+		Optional<Long> maxGopBytes = gopTicks.flatMap(ticks -> getMaxGopBytes(packetAnalysis, ticks));
+
+		return gopSeconds.isPresent() && maxGopBytes.isPresent()
+				? Optional.of(new GopInfo(gopSeconds.get(), maxGopBytes.get()))
+				: Optional.empty();
+	}
+
+	private Long getStreamBytes(final PacketAnalysis packetAnalysis, final int index) {
+		if (packetAnalysis == null) {
+			return null;
+		}
+		return packetAnalysis.streamSizes().get(index);
+	}
+
+	private Optional<Long> getMaxGopBytes(final PacketAnalysis packetAnalysis, final Long gopDuration) {
+		if (packetAnalysis == null || packetAnalysis.gopCandidates().isEmpty() || gopDuration == null) {
+			return Optional.empty();
+		}
+
+		long currentGopElapsed = 0;
+		long currentGopBytes = 0;
+		long maxGopBytes = 0;
+
+		for (GopCandidate gopCandidate : packetAnalysis.gopCandidates()) {
+			currentGopBytes += gopCandidate.bytes();
+			currentGopElapsed += gopCandidate.duration();
+
+			if (currentGopElapsed >= gopDuration) {
+				maxGopBytes = Math.max(maxGopBytes, currentGopBytes);
+				currentGopElapsed = 0;
+				currentGopBytes = 0;
+			}
+		}
+		return Optional.of(Math.max(maxGopBytes, currentGopBytes));
+	}
+
+	private ColorInfo getColorInfo(final StreamInfo videoStream) {
+		var avCodecParams = videoStream.avCodecParams();
+		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(avCodecParams)).getString(0);
+		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
+		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
+		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
+		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(avCodecParams)).getString(0);
+
+		return new ColorInfo(
+				pixelFormat,
+				colorRange,
+				colorSpace,
+				colorPrimaries,
+				colorTransfer);
 	}
 
 	private String getCodecProfile(final StreamInfo streamInfo) {
@@ -302,13 +310,13 @@ public final class MediaAnalyzer {
 		return Duration.of(micros, ChronoUnit.MICROS);
 	}
 
-	private Long getGopDuration(final PacketAnalysis packetAnalysis) {
+	private Optional<Long> getGopDuration(final PacketAnalysis packetAnalysis) {
 		if (packetAnalysis == null) {
-			return null;
+			return Optional.empty();
 		}
 		List<GopCandidate> gopCandidates = packetAnalysis.gopCandidates();
 		if (gopCandidates.isEmpty()) {
-			return null;
+			return Optional.empty();
 		}
 
 		List<Long> intervals = new ArrayList<>(gopCandidates.size() - 1);
@@ -335,7 +343,7 @@ public final class MediaAnalyzer {
 			long delta = intervalAccumulator - longestInterval;
 			if (delta > 0) {
 				// Inconsistent GOP
-				return null;
+				return Optional.empty();
 			}
 			if (delta == 0) {
 				// Interval is exactly candidate GOP; reset accumulator
@@ -344,7 +352,9 @@ public final class MediaAnalyzer {
 			// Interval is less than candidate GOP (potential scene change); keep accumulating
 		}
 
-		return longestInterval > 0 ? longestInterval : null;
+		return longestInterval > 0
+				? Optional.of(longestInterval)
+				: Optional.empty();
 	}
 
 	private PacketAnalysis getPacketAnalysis(final Arena arena, final MemorySegment pFormatCtx, final int videoStreamIndex) {
@@ -464,11 +474,11 @@ public final class MediaAnalyzer {
 			String codecTag,
 			String codecName,
 			Duration duration,
+			Long sizeBytes,
 			Resolution resolution,
 			FrameRateMode frameRateMode,
 			Rational avgFrameRate,
 			Rational rFrameRate,
-			Long sizeBytes,
 			Optional<GopInfo> gopInfo,
 			ColorInfo colorInfo) implements TrackInfo {
 
@@ -525,9 +535,9 @@ public final class MediaAnalyzer {
 			String codecName,
 			String codecProfile,
 			Duration duration,
+			Long sizeBytes,
 			ChannelLayout layout,
-			int sampleRate,
-			Long sizeBytes) implements TrackInfo {
+			int sampleRate) implements TrackInfo {
 
 		public record ChannelLayout(int channels) {}
 	}
