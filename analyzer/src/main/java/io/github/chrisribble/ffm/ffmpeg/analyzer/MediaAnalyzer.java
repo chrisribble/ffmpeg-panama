@@ -28,6 +28,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -138,7 +139,7 @@ public final class MediaAnalyzer {
 
 		Long gopDuration = null;
 
-		if (packetAnalysis != null && frameRateMode == FrameRateMode.CONSTANT) {
+		if (packetAnalysis != null && packetAnalysis.gopCandidates() != null && frameRateMode == FrameRateMode.CONSTANT) {
 			gopDuration = getGopDuration(packetAnalysis.gopCandidates());
 		}
 
@@ -168,7 +169,7 @@ public final class MediaAnalyzer {
 	}
 
 	private Long getMaxGopBytes(final PacketAnalysis packetAnalysis, final Long gopDuration) {
-		if (packetAnalysis == null || packetAnalysis.gopCandidates().isEmpty() || gopDuration == null) {
+		if (packetAnalysis == null || packetAnalysis.gopCandidates() == null || packetAnalysis.gopCandidates().isEmpty() || gopDuration == null) {
 			return null;
 		}
 
@@ -344,7 +345,7 @@ public final class MediaAnalyzer {
 
 		long intervalBytes = 0;
 		Long lastKeyframePts = null;
-		long maxEndPts = 0;
+		Long maxEndPts = null;
 
 		var packet = allocatePacket(arena);
 		while (av_read_frame(pFormatCtx, packet) >= 0) {
@@ -355,15 +356,15 @@ public final class MediaAnalyzer {
 			streamSizes[streamIndex] += packetSize;
 
 			// Ignore packets from non-video streams for keyframe interval bytes analysis
-			if (streamIndex == videoStreamIndex) {
-				if (pts == AV_NOPTS_VALUE()) {
-					LOG.warn("A packet on video stream {} is missing pts; cancelling packet analysis", videoStreamIndex);
-					av_packet_unref(packet);
-					return null;
-				}
-
+			if (streamIndex == videoStreamIndex && gopCandidates != null) {
 				boolean isKeyframe = (flags & AV_PKT_FLAG_KEY()) != 0;
 				if (isKeyframe) {
+					if (pts == AV_NOPTS_VALUE()) {
+						LOG.warn("A packet on video stream {} is missing pts; cancelling gop packet analysis", videoStreamIndex);
+						gopCandidates = null;
+						av_packet_unref(packet);
+						continue;
+					}
 					if (lastKeyframePts != null) {
 						var keyframe = new GopCandidate(pts - lastKeyframePts, intervalBytes);
 						gopCandidates.add(keyframe);
@@ -375,11 +376,20 @@ public final class MediaAnalyzer {
 				intervalBytes += packetSize;
 
 				// compute furthest from last keyframe to get last keyframe delta after loop
-				maxEndPts = Math.max(pts + AVPacket.duration(packet), maxEndPts);
+				if (pts == AV_NOPTS_VALUE()) {
+					// we only care about maxEndPts for last keyframe, so make maxEndPts null and try again until
+					maxEndPts = null;
+				} else {
+					var nextMaxEndPts = Objects.requireNonNullElse(maxEndPts, 0L);
+					maxEndPts = Math.max(pts + AVPacket.duration(packet), nextMaxEndPts);
+				}
 			}
 			av_packet_unref(packet);
 		}
-		if (lastKeyframePts != null) {
+
+		if (maxEndPts == null) {
+			LOG.warn("A packet on final keyframe of video stream {} is missing pts; cancelling gop packet analysis", videoStreamIndex);
+		} else if (lastKeyframePts != null && gopCandidates != null) {
 			var gopCandidate = new GopCandidate(maxEndPts - lastKeyframePts, intervalBytes);
 			gopCandidates.add(gopCandidate);
 		}
