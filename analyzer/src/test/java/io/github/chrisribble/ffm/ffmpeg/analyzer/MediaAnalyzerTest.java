@@ -3,9 +3,11 @@ package io.github.chrisribble.ffm.ffmpeg.analyzer;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
+import static org.testng.Assert.assertTrue;
 
 import java.lang.invoke.MethodHandles;
 import java.time.Duration;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -68,6 +70,32 @@ public class MediaAnalyzerTest {
 	}
 
 	@Test
+	public void testMaxGopBytes() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		VideoInfo videoInfo = mediaInfo.video();
+
+		assertNotNull(videoInfo);
+		assertTrue(videoInfo.gopInfo().isPresent());
+		assertEquals(videoInfo.gopInfo().get().maxGopBytes(), 31295);
+		assertTrue(videoInfo.gopInfo().get().maxGopBytes() <= videoInfo.sizeBytes());
+	}
+
+	@Test
+	public void testGopInfoEmptyWithoutPacketAnalysis() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(false);
+
+		VideoInfo videoInfo = mediaInfo.video();
+
+		assertNotNull(videoInfo);
+		assertTrue(videoInfo.gopInfo().isEmpty());
+	}
+
+	@Test
 	public void testMkvStreamDurationMetadata() {
 		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
 
@@ -105,7 +133,7 @@ public class MediaAnalyzerTest {
 	public Object[][] getNullDurationTrackInfos() {
 		return new Object[][] {
 				{ new VideoInfo(0, null, null, null, new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
-						null, 1000L, null) },
+						1000L, Optional.empty(), null) },
 				{ new AudioInfo(0, null, null, null, null, null, 48000, 1000L) }
 		};
 	}
@@ -119,7 +147,7 @@ public class MediaAnalyzerTest {
 	public Object[][] getLessThanOneSecondDurationTrackInfos() {
 		return new Object[][] {
 				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), new Resolution(1920, 1080), VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1),
-						new Rational(30, 1), null, 1000L, null) },
+						new Rational(30, 1), 1000L, Optional.empty(), null) },
 				{ new AudioInfo(0, null, null, null, Duration.ofMillis(999L), null, 48000, 1000L) }
 		};
 	}
@@ -157,11 +185,10 @@ public class MediaAnalyzerTest {
 			System.out.println("Height                                   : " + videoInfo.resolution().height());
 			System.out.println("Frame rate mode                          : " + videoInfo.frameRateMode());
 			System.out.println("Frame rate                               : " + getFrameRate(videoInfo) + " FPS");
-			Double gopSeconds = videoInfo.gopSeconds();
-			if (gopSeconds != null) {
+			videoInfo.gopInfo().ifPresent(info -> {
 				Integer gopFrames = videoInfo.gopFrames();
-				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + gopSeconds + "s");
-			}
+				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + info.gopSeconds() + "s");
+			});
 			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.sizeBytes()));
 			System.out.println("Color space                              : " + videoInfo.colorInfo().colorSpace());
 			System.out.println("Color range                              : " + videoInfo.colorInfo().colorRange());
