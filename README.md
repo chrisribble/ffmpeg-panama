@@ -36,16 +36,21 @@ This library has no warranty (expressed or implied). It is [licensed under the t
 
 ```groovy
 dependencies {
-	implementation 'io.github.chrisribble:ffm-ffmpeg-core:0.8.0'
-	implementation 'io.github.chrisribble:ffm-ffmpeg-decoder:0.8.0'
+	implementation 'io.github.chrisribble:ffm-ffmpeg-core:0.8.7'
+	implementation 'io.github.chrisribble:ffm-ffmpeg-decoder:0.8.7'
 }
 ```
 
 Requirements:
 * Java 25+
-* FFmpeg 8.x shared libraries (`avcodec`, `avformat`, `avutil`, `swscale`) discoverable via
+* FFmpeg shared libraries (`avcodec`, `avformat`, `avutil`, `swscale`) discoverable via
   `java.library.path`
 * `--enable-native-access` for the modules that call into FFmpeg
+
+Compatibility:
+| Version | FFmpeg shared library version |
+| --- | --- |
+| 0.8.x | 8.x.x |
 
 See [RELEASING.md](RELEASING.md) for how releases are published.
 
