@@ -18,6 +18,7 @@ import org.testng.annotations.Test;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.ContainerInfo;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.GopInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.MediaInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.TrackInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo;
@@ -35,7 +36,6 @@ public class MediaAnalyzerTest {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
 		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
 		VideoInfo videoInfo = mediaInfo.video();
 		AudioInfo audioInfo = mediaInfo.audio();
 
@@ -74,13 +74,32 @@ public class MediaAnalyzerTest {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
 		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
 		VideoInfo videoInfo = mediaInfo.video();
 
 		assertNotNull(videoInfo);
-		assertTrue(videoInfo.gopInfo().isPresent());
-		assertEquals(videoInfo.gopInfo().get().maxGopBytes(), 31295);
-		assertTrue(videoInfo.gopInfo().get().maxGopBytes() <= videoInfo.sizeBytes());
+
+		Optional<GopInfo> maybeGopInfo = videoInfo.gopInfo();
+		assertTrue(maybeGopInfo.isPresent());
+
+		GopInfo gopInfo = maybeGopInfo.get();
+		assertEquals(gopInfo.maxGopBytes(), 31295);
+		assertTrue(gopInfo.maxGopBytes() <= videoInfo.sizeBytes());
+	}
+
+	@Test
+	public void testMaxGopKbps() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+		VideoInfo videoInfo = mediaInfo.video();
+
+		assertNotNull(videoInfo);
+
+		Optional<GopInfo> maybeGopInfo = videoInfo.gopInfo();
+		assertTrue(maybeGopInfo.isPresent());
+
+		GopInfo gopInfo = maybeGopInfo.get();
+		assertEquals(gopInfo.maxGopKbps(), 31);
 	}
 
 	@Test
@@ -88,7 +107,6 @@ public class MediaAnalyzerTest {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
 		MediaInfo mediaInfo = analyzer.getMediaInfo(false);
-
 		VideoInfo videoInfo = mediaInfo.video();
 
 		assertNotNull(videoInfo);
@@ -100,7 +118,6 @@ public class MediaAnalyzerTest {
 		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
 
 		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
 		VideoInfo videoInfo = mediaInfo.video();
 		AudioInfo audioInfo = mediaInfo.audio();
 
@@ -116,7 +133,6 @@ public class MediaAnalyzerTest {
 		var analyzer = new MediaAnalyzer(MediaResources.DURATION_NO_METADATA_TEST.getPath());
 
 		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
 		VideoInfo videoInfo = mediaInfo.video();
 		AudioInfo audioInfo = mediaInfo.audio();
 
