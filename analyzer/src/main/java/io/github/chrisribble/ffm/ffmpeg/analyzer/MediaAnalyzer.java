@@ -512,7 +512,7 @@ public final class MediaAnalyzer {
 					throw new IllegalArgumentException("average must be non-null");
 				}
 				if (timeBaseRate == null) {
-					throw new IllegalArgumentException("real must be non-null");
+					throw new IllegalArgumentException("timeBaseRate must be non-null");
 				}
 			}
 		}
