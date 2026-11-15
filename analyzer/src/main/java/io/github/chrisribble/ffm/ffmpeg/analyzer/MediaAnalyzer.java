@@ -35,8 +35,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
-import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.ColorInfo;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Color;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVDictionaryEntry;
@@ -125,9 +127,6 @@ public final class MediaAnalyzer {
 			return null;
 		}
 
-		String codecTag = getCodecTag(videoStream.codecTag());
-		String codecName = getCodecName(videoStream.codecId());
-
 		Duration duration = getStreamDuration(arena, videoStream.avStream());
 		if (duration == null) {
 			duration = containerDuration;
@@ -135,24 +134,21 @@ public final class MediaAnalyzer {
 
 		Long streamBytes = getStreamBytes(packetAnalysis, videoStream.index());
 		Resolution resolution = getResolution(videoStream);
-		FrameRateMode frameRateMode = getFrameRateMode(videoStream);
+		FrameRate frameRate = getFrameRate(videoStream);
 
-		ColorInfo colorInfo = getColorInfo(videoStream);
-		Optional<GopInfo> gopInfo = getGopInfo(frameRateMode, videoStream.getTimeBase(), packetAnalysis);
-
+		Codec codec = getCodec(videoStream);
+		Color color = getColor(videoStream);
+		Optional<Gop> gop = getGop(frameRate.mode(), videoStream.getTimeBase(), packetAnalysis);
 
 		return new VideoInfo(
 				videoStream.id(),
-				codecTag,
-				codecName,
 				duration,
 				streamBytes,
 				resolution,
-				frameRateMode,
-				videoStream.getAvgFrameRate(),
-				videoStream.getRFrameRate(),
-				gopInfo,
-				colorInfo);
+				frameRate,
+				codec,
+				color,
+				gop);
 	}
 
 	private AudioInfo getAudioInfo(final Arena arena, final StreamInfo audioStream, final PacketAnalysis packetAnalysis, final Duration containerDuration) {
@@ -160,31 +156,27 @@ public final class MediaAnalyzer {
 			return null;
 		}
 
-		String codecTag = getCodecTag(audioStream.codecTag());
-		String codecName = getCodecName(audioStream.codecId());
-		String codecProfile = getCodecProfile(audioStream);
-
 		Duration duration = getStreamDuration(arena, audioStream.avStream());
 		if (duration == null) {
 			duration = containerDuration;
 		}
 
-		Long streamBytes = getStreamBytes(packetAnalysis,audioStream.index());
+		Long streamBytes = getStreamBytes(packetAnalysis, audioStream.index());
+
+		Codec codec = getCodec(audioStream);
 		ChannelLayout layout = getChannelLayout(audioStream.avCodecParams());
 		int sampleRate = audioStream.sampleRate();
 
 		return new AudioInfo(
 				audioStream.id(),
-				codecTag,
-				codecName,
-				codecProfile,
 				duration,
 				streamBytes,
+				codec,
 				layout,
 				sampleRate);
 	}
 
-	private Optional<GopInfo> getGopInfo(final FrameRateMode frameRateMode, final double timebase, final PacketAnalysis packetAnalysis) {
+	private Optional<Gop> getGop(final FrameRateMode frameRateMode, final double timebase, final PacketAnalysis packetAnalysis) {
 		if (packetAnalysis == null) {
 			return Optional.empty();
 		}
@@ -197,7 +189,7 @@ public final class MediaAnalyzer {
 		Optional<Long> maxGopBytes = gopTicks.flatMap(ticks -> getMaxGopBytes(packetAnalysis, ticks));
 
 		return gopSeconds.isPresent() && maxGopBytes.isPresent()
-				? Optional.of(new GopInfo(gopSeconds.get(), maxGopBytes.get()))
+				? Optional.of(new Gop(gopSeconds.get(), maxGopBytes.get()))
 				: Optional.empty();
 	}
 
@@ -230,7 +222,7 @@ public final class MediaAnalyzer {
 		return Optional.of(Math.max(maxGopBytes, currentGopBytes));
 	}
 
-	private ColorInfo getColorInfo(final StreamInfo videoStream) {
+	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
 		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(avCodecParams)).getString(0);
 		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
@@ -238,12 +230,20 @@ public final class MediaAnalyzer {
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
 		String colorTransfer = av_color_transfer_name(AVCodecParameters.color_trc(avCodecParams)).getString(0);
 
-		return new ColorInfo(
+		return new Color(
 				pixelFormat,
 				colorRange,
 				colorSpace,
 				colorPrimaries,
 				colorTransfer);
+	}
+
+	private Codec getCodec(final StreamInfo streamInfo) {
+		String tag = getCodecTag(streamInfo.codecTag());
+		String name = getCodecName(streamInfo.codecId());
+		String profile = getCodecProfile(streamInfo);
+
+		return new Codec(tag, name, profile);
 	}
 
 	private String getCodecProfile(final StreamInfo streamInfo) {
@@ -392,14 +392,6 @@ public final class MediaAnalyzer {
 		return FFmpeg.avcodec_get_name(codecId).getString(0);
 	}
 
-	private static Resolution getResolution(final StreamInfo streamInfo) {
-		var pCodecParams = streamInfo.avCodecParams();
-		int width = AVCodecParameters.width(pCodecParams);
-		int height = AVCodecParameters.height(pCodecParams);
-
-		return new Resolution(width, height);
-	}
-
 	private MemorySegment allocatePacket(final Arena arena) {
 		// AVPacket*
 		var p = av_packet_alloc();
@@ -415,7 +407,20 @@ public final class MediaAnalyzer {
 		return pointer;
 	}
 
-	private FrameRateMode getFrameRateMode(final StreamInfo videoStream) {
+	private static Resolution getResolution(final StreamInfo streamInfo) {
+		var pCodecParams = streamInfo.avCodecParams();
+		int width = AVCodecParameters.width(pCodecParams);
+		int height = AVCodecParameters.height(pCodecParams);
+
+		return new Resolution(width, height);
+	}
+
+	private static FrameRate getFrameRate(final StreamInfo videoStream) {
+		FrameRateMode mode = getFrameRateMode(videoStream);
+		return new FrameRate(mode, videoStream.getAvgFrameRate(), videoStream.getRFrameRate());
+	}
+
+	private static FrameRateMode getFrameRateMode(final StreamInfo videoStream) {
 		Rational avgFrameRate = videoStream.getAvgFrameRate();
 		Rational rFrameRate = videoStream.getRFrameRate();
 
@@ -424,7 +429,7 @@ public final class MediaAnalyzer {
 				: FrameRateMode.VARIABLE;
 	}
 
-	private boolean doubleEquals(final double a, final double b) {
+	private static boolean doubleEquals(final double a, final double b) {
 		return Math.abs(a - b) <= EPSILON;
 	}
 
@@ -439,13 +444,12 @@ public final class MediaAnalyzer {
 
 	public record MediaInfo(ContainerInfo container, VideoInfo video, AudioInfo audio) {}
 
-	public record ContainerInfo(
-			Duration duration) {}
+	public record ContainerInfo(Duration duration) {}
 
 	public interface TrackInfo {
 		int id();
 
-		String codecTag();
+		Codec codec();
 
 		Duration duration();
 
@@ -471,46 +475,64 @@ public final class MediaAnalyzer {
 
 	public record VideoInfo(
 			int id,
-			String codecTag,
-			String codecName,
 			Duration duration,
 			Long sizeBytes,
 			Resolution resolution,
-			FrameRateMode frameRateMode,
-			Rational avgFrameRate,
-			Rational rFrameRate,
-			Optional<GopInfo> gopInfo,
-			ColorInfo colorInfo) implements TrackInfo {
+			FrameRate frameRate,
+			Codec codec,
+			Color color,
+			Optional<Gop> gop) implements TrackInfo {
 
 		public VideoInfo {
 			if (resolution == null) {
 				throw new IllegalArgumentException("resolution must be non-null");
 			}
-			if (frameRateMode == null) {
-				throw new IllegalArgumentException("frameRateMode must be non-null");
-			}
-			if (avgFrameRate == null) {
-				throw new IllegalArgumentException("avgFrameRate must be non-null");
-			}
-			if (rFrameRate == null) {
-				throw new IllegalArgumentException("rFrameRate must be non-null");
+			if (frameRate == null) {
+				throw new IllegalArgumentException("frameRate must be non-null");
 			}
 		}
 
 		public Integer gopFrames() {
-			if (frameRateMode != FrameRateMode.CONSTANT || gopInfo.isEmpty()) {
+			if (frameRate.mode() != FrameRateMode.CONSTANT || gop.isEmpty()) {
 				return null;
 			}
-			double gopSeconds = gopInfo.get().gopSeconds();
-			return Math.toIntExact(Math.round(gopSeconds * rFrameRate.doubleValue()));
+			double gopSeconds = gop.get().gopSeconds();
+			return Math.toIntExact(Math.round(gopSeconds * frameRate.timeBaseRate().doubleValue()));
 		}
 
-		public record ColorInfo(
+		public record FrameRate(
+				FrameRateMode mode,
+				Rational average,
+				Rational timeBaseRate) {
+			public FrameRate {
+				if (mode == null) {
+					throw new IllegalArgumentException("mode must be non-null");
+				}
+				if (average == null) {
+					throw new IllegalArgumentException("average must be non-null");
+				}
+				if (timeBaseRate == null) {
+					throw new IllegalArgumentException("real must be non-null");
+				}
+			}
+		}
+
+		public record Color(
 				String pixelFormat,
 				String colorRange,
 				String colorSpace,
 				String colorPrimaries,
 				String colorTransfer) {}
+
+		public record Gop(double gopSeconds, long maxGopBytes) {
+			private static final long BITS_PER_BYTE = 8;
+			private static final long BPS_TO_KBPS = 1000;
+
+			public long maxGopKbps() {
+				double maxKbps = maxGopBytes * BITS_PER_BYTE / gopSeconds / BPS_TO_KBPS;
+				return (long) Math.ceil(maxKbps);
+			}
+		}
 
 		public enum FrameRateMode {
 			CONSTANT("Constant"),
@@ -531,26 +553,19 @@ public final class MediaAnalyzer {
 
 	public record AudioInfo(
 			int id,
-			String codecTag,
-			String codecName,
-			String codecProfile,
 			Duration duration,
 			Long sizeBytes,
+			Codec codec,
 			ChannelLayout layout,
 			int sampleRate) implements TrackInfo {
 
 		public record ChannelLayout(int channels) {}
 	}
 
-	public record GopInfo(double gopSeconds, long maxGopBytes) {
-		private static final long BITS_PER_BYTE = 8;
-		private static final long BPS_TO_KBPS = 1000;
-
-		public long maxGopKbps() {
-			double maxKbps = maxGopBytes * BITS_PER_BYTE / gopSeconds / BPS_TO_KBPS;
-			return (long) Math.ceil(maxKbps);
-		}
-	}
+	public record Codec(
+			String tag,
+			String name,
+			String profile) {}
 
 	private record GopCandidate(long duration, long bytes) {}
 

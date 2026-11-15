@@ -18,10 +18,11 @@ import org.testng.annotations.Test;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.ContainerInfo;
-import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.GopInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.MediaInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.TrackInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
 import io.github.chrisribble.ffm.ffmpeg.core.Rational;
 import io.github.chrisribble.ffm.ffmpeg.core.Resolution;
 
@@ -40,25 +41,25 @@ public class MediaAnalyzerTest {
 		AudioInfo audioInfo = mediaInfo.audio();
 
 		assertNotNull(videoInfo);
-		assertEquals(videoInfo.codecTag(), "hvc1");
-		assertEquals(videoInfo.codecName(), "hevc");
+		assertEquals(videoInfo.codec().tag(), "hvc1");
+		assertEquals(videoInfo.codec().name(), "hevc");
 		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
 		assertEquals(videoInfo.resolution().width(), 1920);
 		assertEquals(videoInfo.resolution().height(), 1080);
-		assertEquals(videoInfo.frameRateMode(), VideoInfo.FrameRateMode.CONSTANT);
+		assertEquals(videoInfo.frameRate().mode(), VideoInfo.FrameRateMode.CONSTANT);
 		assertEquals(getFrameRate(videoInfo), "30");
 		assertEquals(videoInfo.sizeBytes(), 40348);
 		assertEquals(videoInfo.bitrateKbps(), 32);
-		assertEquals(videoInfo.colorInfo().colorSpace(), "bt2020nc");
-		assertEquals(videoInfo.colorInfo().colorRange(), "tv");
-		assertEquals(videoInfo.colorInfo().colorPrimaries(), "bt2020");
-		assertEquals(videoInfo.colorInfo().colorTransfer(), "smpte2084");
-		assertEquals(videoInfo.colorInfo().pixelFormat(), "yuv420p10le");
+		assertEquals(videoInfo.color().colorSpace(), "bt2020nc");
+		assertEquals(videoInfo.color().colorRange(), "tv");
+		assertEquals(videoInfo.color().colorPrimaries(), "bt2020");
+		assertEquals(videoInfo.color().colorTransfer(), "smpte2084");
+		assertEquals(videoInfo.color().pixelFormat(), "yuv420p10le");
 
 		assertNotNull(audioInfo);
-		assertEquals(audioInfo.codecTag(), "mp4a");
-		assertEquals(audioInfo.codecName(), "aac");
-		assertEquals(audioInfo.codecProfile(), "LC");
+		assertEquals(audioInfo.codec().tag(), "mp4a");
+		assertEquals(audioInfo.codec().name(), "aac");
+		assertEquals(audioInfo.codec().profile(), "LC");
 		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
 
 		assertNotNull(audioInfo.layout());
@@ -78,10 +79,10 @@ public class MediaAnalyzerTest {
 
 		assertNotNull(videoInfo);
 
-		Optional<GopInfo> maybeGopInfo = videoInfo.gopInfo();
+		Optional<Gop> maybeGopInfo = videoInfo.gop();
 		assertTrue(maybeGopInfo.isPresent());
 
-		GopInfo gopInfo = maybeGopInfo.get();
+		Gop gopInfo = maybeGopInfo.get();
 		assertEquals(gopInfo.maxGopBytes(), 31295);
 		assertTrue(gopInfo.maxGopBytes() <= videoInfo.sizeBytes());
 	}
@@ -95,10 +96,10 @@ public class MediaAnalyzerTest {
 
 		assertNotNull(videoInfo);
 
-		Optional<GopInfo> maybeGopInfo = videoInfo.gopInfo();
+		Optional<Gop> maybeGopInfo = videoInfo.gop();
 		assertTrue(maybeGopInfo.isPresent());
 
-		GopInfo gopInfo = maybeGopInfo.get();
+		Gop gopInfo = maybeGopInfo.get();
 		assertEquals(gopInfo.maxGopKbps(), 31);
 	}
 
@@ -110,7 +111,7 @@ public class MediaAnalyzerTest {
 		VideoInfo videoInfo = mediaInfo.video();
 
 		assertNotNull(videoInfo);
-		assertTrue(videoInfo.gopInfo().isEmpty());
+		assertTrue(videoInfo.gop().isEmpty());
 	}
 
 	@Test
@@ -148,10 +149,10 @@ public class MediaAnalyzerTest {
 	@DataProvider(name = "nullDurationTrackInfos")
 	public Object[][] getNullDurationTrackInfos() {
 		return new Object[][] {
-				{ new VideoInfo(0, null, null, null, 1000L, new Resolution(1920, 1080),
-						VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1),
-						Optional.empty(), null) },
-				{ new AudioInfo(0, null, null, null, null, 1000L, null, 48000) }
+				{ new VideoInfo(0, null, 1000L, new Resolution(1920, 1080),
+						new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
+						null, null, Optional.empty()) },
+				{ new AudioInfo(0, null, 1000L, null, null, 48000) }
 		};
 	}
 
@@ -163,9 +164,10 @@ public class MediaAnalyzerTest {
 	@DataProvider(name = "lessThanOneSecondDurationTrackInfos")
 	public Object[][] getLessThanOneSecondDurationTrackInfos() {
 		return new Object[][] {
-				{ new VideoInfo(0, null, null, Duration.ofMillis(999L), 1000L, new Resolution(1920, 1080),
-						VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1), Optional.empty(), null) },
-				{ new AudioInfo(0, null, null, null, Duration.ofMillis(999L), 1000L, null, 48000) }
+				{ new VideoInfo(0, Duration.ofMillis(999L), 1000L, new Resolution(1920, 1080),
+						new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
+						null, null, Optional.empty()) },
+				{ new AudioInfo(0, Duration.ofMillis(999L), 1000L, null, null, 48000) }
 		};
 	}
 
@@ -194,24 +196,25 @@ public class MediaAnalyzerTest {
 		if (videoInfo != null) {
 			System.out.println("Video");
 			System.out.println("ID                                       : " + videoInfo.id());
-			System.out.println("Codec ID                                 : " + videoInfo.codecTag());
-			System.out.println("Codec name                               : " + videoInfo.codecName());
+			System.out.println("Codec ID                                 : " + videoInfo.codec().tag());
+			System.out.println("Codec name                               : " + videoInfo.codec().name());
+			System.out.println("Codec profile                            : " + videoInfo.codec().profile());
 			System.out.println("Duration                                 : " + videoInfo.duration());
 			System.out.println("Bit rate                                 : " + videoInfo.bitrateKbps() + " kb/s");
 			System.out.println("Width                                    : " + videoInfo.resolution().width());
 			System.out.println("Height                                   : " + videoInfo.resolution().height());
-			System.out.println("Frame rate mode                          : " + videoInfo.frameRateMode());
+			System.out.println("Frame rate mode                          : " + videoInfo.frameRate().mode());
 			System.out.println("Frame rate                               : " + getFrameRate(videoInfo) + " FPS");
-			videoInfo.gopInfo().ifPresent(info -> {
+			videoInfo.gop().ifPresent(info -> {
 				Integer gopFrames = videoInfo.gopFrames();
 				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + info.gopSeconds() + "s");
 			});
 			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.sizeBytes()));
-			System.out.println("Color space                              : " + videoInfo.colorInfo().colorSpace());
-			System.out.println("Color range                              : " + videoInfo.colorInfo().colorRange());
-			System.out.println("Color primaries                          : " + videoInfo.colorInfo().colorPrimaries());
-			System.out.println("Color transfer                           : " + videoInfo.colorInfo().colorTransfer());
-			System.out.println("Pixel format                             : " + videoInfo.colorInfo().pixelFormat());
+			System.out.println("Color space                              : " + videoInfo.color().colorSpace());
+			System.out.println("Color range                              : " + videoInfo.color().colorRange());
+			System.out.println("Color primaries                          : " + videoInfo.color().colorPrimaries());
+			System.out.println("Color transfer                           : " + videoInfo.color().colorTransfer());
+			System.out.println("Pixel format                             : " + videoInfo.color().pixelFormat());
 			System.out.println();
 		}
 
@@ -221,9 +224,9 @@ public class MediaAnalyzerTest {
 
 			System.out.println("Audio");
 			System.out.println("ID                                       : " + audioInfo.id());
-			System.out.println("Codec ID                                 : " + audioInfo.codecTag());
-			System.out.println("Codec name                               : " + audioInfo.codecName());
-			System.out.println("Codec profile                            : " + audioInfo.codecProfile());
+			System.out.println("Codec ID                                 : " + audioInfo.codec().tag());
+			System.out.println("Codec name                               : " + audioInfo.codec().name());
+			System.out.println("Codec profile                            : " + audioInfo.codec().profile());
 			System.out.println("Duration                                 : " + audioInfo.duration());
 			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
 			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));
@@ -234,11 +237,12 @@ public class MediaAnalyzerTest {
 	}
 
 	private static String getFrameRate(final VideoInfo videoInfo) {
-		return switch (videoInfo.frameRateMode()) {
-			case CONSTANT -> videoInfo.rFrameRate().den() == 1
-					? videoInfo.rFrameRate().toString()
-					: formatFrameRate(videoInfo.avgFrameRate().doubleValue()) + " (" + videoInfo.rFrameRate() + ")";
-			case VARIABLE -> formatFrameRate(videoInfo.avgFrameRate().doubleValue());
+		FrameRate frameRate = videoInfo.frameRate();
+		return switch (frameRate.mode()) {
+			case CONSTANT -> frameRate.timeBaseRate().den() == 1
+					? frameRate.timeBaseRate().toString()
+					: formatFrameRate(frameRate.average().doubleValue()) + " (" + frameRate.timeBaseRate() + ")";
+			case VARIABLE -> formatFrameRate(frameRate.average().doubleValue());
 		};
 	}
 
