@@ -48,7 +48,7 @@ public class MediaAnalyzerTest {
 		assertEquals(videoInfo.resolution().height(), 1080);
 		assertEquals(videoInfo.frameRate().mode(), VideoInfo.FrameRateMode.CONSTANT);
 		assertEquals(getFrameRate(videoInfo), "30");
-		assertEquals(videoInfo.sizeBytes(), 40348);
+		assertEquals(videoInfo.bytes(), 40348);
 		assertEquals(videoInfo.bitrateKbps(), 32);
 		assertEquals(videoInfo.color().colorSpace(), "bt2020nc");
 		assertEquals(videoInfo.color().colorRange(), "tv");
@@ -66,7 +66,7 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.layout().channels(), 1);
 
 		assertEquals(audioInfo.sampleRate(), 48000);
-		assertEquals(audioInfo.sizeBytes(), 190832);
+		assertEquals(audioInfo.bytes(), 190832);
 		assertEquals(audioInfo.bitrateKbps(), 152);
 	}
 
@@ -84,7 +84,7 @@ public class MediaAnalyzerTest {
 
 		Gop gopInfo = maybeGopInfo.get();
 		assertEquals(gopInfo.maxGopBytes(), 31295);
-		assertTrue(gopInfo.maxGopBytes() <= videoInfo.sizeBytes());
+		assertTrue(gopInfo.maxGopBytes() <= videoInfo.bytes());
 	}
 
 	@Test
@@ -209,7 +209,7 @@ public class MediaAnalyzerTest {
 				Integer gopFrames = videoInfo.gopFrames();
 				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + info.gopSeconds() + "s");
 			});
-			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.sizeBytes()));
+			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.bytes()));
 			System.out.println("Color space                              : " + videoInfo.color().colorSpace());
 			System.out.println("Color range                              : " + videoInfo.color().colorRange());
 			System.out.println("Color primaries                          : " + videoInfo.color().colorPrimaries());
@@ -231,7 +231,7 @@ public class MediaAnalyzerTest {
 			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
 			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));
 			System.out.println("Sampling rate                            : " + audioInfo.sampleRate());
-			System.out.println("Stream size                              : " + toHumanReadable(audioInfo.sizeBytes()));
+			System.out.println("Stream size                              : " + toHumanReadable(audioInfo.bytes()));
 			System.out.println();
 		}
 	}

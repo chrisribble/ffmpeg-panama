@@ -453,10 +453,10 @@ public final class MediaAnalyzer {
 
 		Duration duration();
 
-		Long sizeBytes();
+		Long bytes();
 
 		default Long bitrateKbps() {
-			Long sizeBytes = sizeBytes();
+			Long sizeBytes = bytes();
 			if (sizeBytes == null) {
 				return null;
 			}
@@ -476,7 +476,7 @@ public final class MediaAnalyzer {
 	public record VideoInfo(
 			int id,
 			Duration duration,
-			Long sizeBytes,
+			Long bytes,
 			Resolution resolution,
 			FrameRate frameRate,
 			Codec codec,
@@ -551,7 +551,7 @@ public final class MediaAnalyzer {
 	public record AudioInfo(
 			int id,
 			Duration duration,
-			Long sizeBytes,
+			Long bytes,
 			Codec codec,
 			ChannelLayout layout,
 			int sampleRate) implements TrackInfo {
