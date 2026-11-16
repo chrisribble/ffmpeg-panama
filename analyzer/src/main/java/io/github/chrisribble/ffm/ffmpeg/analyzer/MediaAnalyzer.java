@@ -103,10 +103,10 @@ public final class MediaAnalyzer {
 					.findFirst()
 					.orElse(null);
 
-			PacketAnalysis packetAnalysis = null;
-			if (analyzePackets) {
-				packetAnalysis = getPacketAnalysis(arena, pFormatCtx, videoStream != null ? videoStream.index() : -1);
-			}
+			int videoStreamIndex = videoStream != null ? videoStream.index() : -1;
+			PacketAnalysis packetAnalysis = analyzePackets
+					? getPacketAnalysis(arena, pFormatCtx, videoStreamIndex)
+					: null;
 
 			ContainerInfo container = getContainerInfo(pFormatCtx);
 			Duration containerDuration = container.duration();
