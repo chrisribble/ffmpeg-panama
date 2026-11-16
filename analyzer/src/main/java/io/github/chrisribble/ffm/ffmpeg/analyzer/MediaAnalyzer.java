@@ -525,9 +525,6 @@ public final class MediaAnalyzer {
 				String colorTransfer) {}
 
 		public record Gop(double gopSeconds, long maxGopBytes) {
-			private static final long BITS_PER_BYTE = 8;
-			private static final long BPS_TO_KBPS = 1000;
-
 			public long maxGopKbps() {
 				double maxKbps = maxGopBytes * BITS_PER_BYTE / gopSeconds / BPS_TO_KBPS;
 				return (long) Math.ceil(maxKbps);
