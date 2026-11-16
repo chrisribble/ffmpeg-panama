@@ -248,7 +248,6 @@ public final class MediaAnalyzer {
 
 	private String getCodecProfile(final StreamInfo streamInfo) {
 		MemorySegment pCodecProfile = avcodec_profile_name(streamInfo.codecId(), streamInfo.codecProfile());
-
 		if (NULL.equals(pCodecProfile)) {
 			return null;
 		}
