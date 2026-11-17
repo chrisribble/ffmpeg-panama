@@ -36,8 +36,8 @@ This library has no warranty (expressed or implied). It is [licensed under the t
 
 ```groovy
 dependencies {
-	implementation 'io.github.chrisribble:ffm-ffmpeg-core:0.8.7'
-	implementation 'io.github.chrisribble:ffm-ffmpeg-decoder:0.8.7'
+	implementation 'io.github.chrisribble:ffm-ffmpeg-core:0.8.8'
+	implementation 'io.github.chrisribble:ffm-ffmpeg-decoder:0.8.8'
 }
 ```
 
