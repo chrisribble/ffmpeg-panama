@@ -464,11 +464,13 @@ public final class MediaAnalyzer {
 				return null;
 			}
 
-			if (duration().toMillis() < 1000L) {
-				throw new ArithmeticException("Duration must be >= 1 second");
+			long ms = duration().toMillis();
+			if (ms < 1) {
+				LOG.warn("Cannot determine bitrate; duration too short ({} bytes / {})", sizeBytes, duration());
+				return null;
 			}
 
-			return sizeBytes * BITS_PER_BYTE / duration().toSeconds() / BPS_TO_KBPS;
+			return sizeBytes * BITS_PER_BYTE / ms;
 		}
 	}
 
@@ -524,6 +526,15 @@ public final class MediaAnalyzer {
 				String colorTransfer) {}
 
 		public record Gop(double gopSeconds, long maxGopBytes) {
+			public Gop {
+				if (gopSeconds <= 0) {
+					throw new IllegalArgumentException("gopSeconds must be positive");
+				}
+				if (maxGopBytes < 0) {
+					throw new IllegalArgumentException("maxGopBytes must be non-negative");
+				}
+			}
+
 			public long maxGopKbps() {
 				double maxKbps = maxGopBytes * BITS_PER_BYTE / gopSeconds / BPS_TO_KBPS;
 				return (long) Math.ceil(maxKbps);

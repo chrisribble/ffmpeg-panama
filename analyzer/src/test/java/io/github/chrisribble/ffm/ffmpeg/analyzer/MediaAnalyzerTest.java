@@ -12,14 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.AudioInfo.ChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.ContainerInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.MediaInfo;
-import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.TrackInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
@@ -146,34 +144,37 @@ public class MediaAnalyzerTest {
 		assertEquals(audioInfo.duration(), containerDuration);
 	}
 
-	@DataProvider(name = "nullDurationTrackInfos")
-	public Object[][] getNullDurationTrackInfos() {
-		return new Object[][] {
-				{ new VideoInfo(0, null, 1000L, new Resolution(1920, 1080),
-						new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
-						null, null, Optional.empty()) },
-				{ new AudioInfo(0, null, 1000L, null, null, 48000) }
-		};
+	@Test
+	public void testTrackInfoNullDurationReturnsNull() {
+		var video = new VideoInfo(0, null, 1000L, new Resolution(1920, 1080),
+				new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
+				null, null, Optional.empty());
+		var audio = new AudioInfo(0, null, 1000L, null, null, 48000);
+
+		assertNull(video.bitrateKbps());
+		assertNull(audio.bitrateKbps());
 	}
 
-	@Test(dataProvider = "nullDurationTrackInfos")
-	public void testTrackInfoNullDurationReturnsNull(final TrackInfo trackInfo) {
-		assertNull(trackInfo.bitrateKbps());
+	@Test
+	public void testTrackInfoDurationLessThanOneSecondNotNull() {
+		var video = new VideoInfo(0, Duration.ofMillis(100L), 12_500L, new Resolution(1920, 1080),
+				new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
+				null, null, Optional.empty());
+		var audio = new AudioInfo(0, Duration.ofMillis(100L), 800L, null, null, 48000);
+
+		assertEquals(video.bitrateKbps(), 1_000L);
+		assertEquals(audio.bitrateKbps(), 64L);
 	}
 
-	@DataProvider(name = "lessThanOneSecondDurationTrackInfos")
-	public Object[][] getLessThanOneSecondDurationTrackInfos() {
-		return new Object[][] {
-				{ new VideoInfo(0, Duration.ofMillis(999L), 1000L, new Resolution(1920, 1080),
-						new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
-						null, null, Optional.empty()) },
-				{ new AudioInfo(0, Duration.ofMillis(999L), 1000L, null, null, 48000) }
-		};
-	}
+	@Test
+	public void testTrackInfoDurationLessThanOneMilliSecondNull() {
+		var video = new VideoInfo(0, Duration.ofNanos(999999L), 12_500L, new Resolution(1920, 1080),
+				new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
+				null, null, Optional.empty());
+		var audio = new AudioInfo(0, Duration.ofNanos(999999L), 800L, null, null, 48000);
 
-	@Test(dataProvider = "lessThanOneSecondDurationTrackInfos", expectedExceptions = ArithmeticException.class, expectedExceptionsMessageRegExp = "Duration must be >= 1 second")
-	public void testStreamInfoDurationLessThanOneSecond(final TrackInfo trackInfo) {
-		trackInfo.bitrateKbps();
+		assertNull(video.bitrateKbps(), "bitrate should not be computed for durations less than 1ms");
+		assertNull(audio.bitrateKbps(), "bitrate should not be computed for durations less than 1ms");
 	}
 
 	public static void main(final String[] args) {
