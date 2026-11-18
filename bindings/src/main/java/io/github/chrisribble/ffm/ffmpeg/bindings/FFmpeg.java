@@ -6255,6 +6255,18 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
+    private static class avcodec_profile_name {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_profile_name");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
     /**
      * Function descriptor for:
      * {@snippet lang=c :
@@ -6302,18 +6314,6 @@ public class FFmpeg extends FFmpeg$shared {
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
-    }
-
-    private static class avcodec_profile_name {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            FFmpeg.C_POINTER,
-            FFmpeg.C_INT,
-            FFmpeg.C_INT
-        );
-
-        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("avcodec_profile_name");
-
-        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
 
     private static class av_codec_iterate {
@@ -6856,6 +6856,15 @@ public class FFmpeg extends FFmpeg$shared {
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
+    }
+    private static final int AV_PKT_DATA_DISPLAYMATRIX = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum AVPacketSideDataType.AV_PKT_DATA_DISPLAYMATRIX = 5
+     * }
+     */
+    public static int AV_PKT_DATA_DISPLAYMATRIX() {
+        return AV_PKT_DATA_DISPLAYMATRIX;
     }
 
     private static class av_packet_side_data_new {
@@ -16253,6 +16262,66 @@ public class FFmpeg extends FFmpeg$shared {
                 traceDowncall("av_stream_get_codec_timebase", allocator, st);
             }
             return (MemorySegment)mh$.invokeExact(allocator, st);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_display_rotation_get {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_DOUBLE,
+            FFmpeg.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_display_rotation_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * double av_display_rotation_get(const int32_t matrix[9])
+     * }
+     */
+    public static FunctionDescriptor av_display_rotation_get$descriptor() {
+        return av_display_rotation_get.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * double av_display_rotation_get(const int32_t matrix[9])
+     * }
+     */
+    public static MethodHandle av_display_rotation_get$handle() {
+        return av_display_rotation_get.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * double av_display_rotation_get(const int32_t matrix[9])
+     * }
+     */
+    public static MemorySegment av_display_rotation_get$address() {
+        return av_display_rotation_get.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * double av_display_rotation_get(const int32_t matrix[9])
+     * }
+     */
+    public static double av_display_rotation_get(MemorySegment matrix) {
+        var mh$ = av_display_rotation_get.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_display_rotation_get", matrix);
+            }
+            return (double)mh$.invokeExact(matrix);
         } catch (Error | RuntimeException ex) {
            throw ex;
         } catch (Throwable ex$) {
