@@ -70,7 +70,7 @@ public final class MediaAnalyzer {
 	private static final long BITS_PER_BYTE = 8;
 	private static final long BPS_TO_KBPS = 1000;
 	private static final long NANOS_PER_SECOND = TimeUnit.SECONDS.toNanos(1L);
-	// see const int32_t matrix[9] parameter in https://www.ffmpeg.org/doxygen/2.4/display_8h.html
+	// see const int32_t matrix[9] parameter in https://www.ffmpeg.org/doxygen/8.0/display_8h.html
 	private static final long DISPLAY_MATRIX_BYTES = 9L * Integer.BYTES;
 
 	private final Path[] inputs;
