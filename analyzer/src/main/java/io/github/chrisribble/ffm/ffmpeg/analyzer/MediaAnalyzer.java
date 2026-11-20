@@ -43,7 +43,7 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRa
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotation;
-import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotation.Direction;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.RotationImpl;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVDictionaryEntry;
@@ -206,7 +206,7 @@ public final class MediaAnalyzer {
 		if (Double.isNaN(ccwDegrees)) {
 			return Optional.empty();
 		}
-		var rotation = new Rotation(Direction.COUNTER_CLOCKWISE, Math.toIntExact(Math.round(ccwDegrees)));
+		var rotation = new RotationImpl(Math.toIntExact(Math.round(ccwDegrees)));
 		return Optional.of(rotation);
 	}
 
@@ -560,16 +560,38 @@ public final class MediaAnalyzer {
 				String colorPrimaries,
 				String colorTransfer) {}
 
-		public record Rotation(Direction direction, int degrees) {
-			public Rotation {
+		/**
+		 * The rotation a player should apply to decoded frames to display them upright.
+		 *
+		 * <p>
+		 * This comes from the stream's display matrix side data. FFmpeg defines that matrix as the
+		 * affine transformation "that should be applied to video frames for correct presentation".
+		 * So this value describes the <em>correction</em>, not the orientation. Negate it to get how
+		 * the stored frames are turned.
+		 *
+		 * @see <a href="https://www.ffmpeg.org/doxygen/8.0/group__lavu__video__display.html">FFmpeg
+		 *      display transformation matrix</a>
+		 */
+		public interface Rotation {
+			/**
+			 * How far to rotate the frame counter-clockwise to display it correctly, in degrees,
+			 * from {@code -180} to {@code 180} inclusive. A negative value means a clockwise
+			 * rotation.
+			 *
+			 * <p>
+			 * For example, if the stored frames are turned 90° counter-clockwise (to the left),
+			 * this returns {@code -90}: rotate them 90° clockwise to make them upright.
+			 *
+			 * @return the counter-clockwise rotation, in degrees, that corrects the frame
+			 */
+			int degrees();
+		}
+
+		record RotationImpl(int degrees) implements Rotation {
+			RotationImpl {
 				if (degrees < -180 || degrees > 180) {
 					throw new IllegalArgumentException("degrees must be between -180 and 180");
 				}
-			}
-
-			public enum Direction {
-				CLOCKWISE,
-				COUNTER_CLOCKWISE
 			}
 		}
 
