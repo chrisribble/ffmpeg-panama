@@ -21,6 +21,7 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.MediaInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotation;
 import io.github.chrisribble.ffm.ffmpeg.core.Rational;
 import io.github.chrisribble.ffm.ffmpeg.core.Resolution;
 
@@ -113,6 +114,31 @@ public class MediaAnalyzerTest {
 	}
 
 	@Test
+	public void testRotation() {
+		var analyzer = new MediaAnalyzer(MediaResources.ROTATION_METADATA_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+		VideoInfo videoInfo = mediaInfo.video();
+
+		assertNotNull(videoInfo);
+
+		Optional<Rotation> maybeRotation = videoInfo.rotation();
+		assertTrue(maybeRotation.isPresent());
+		assertEquals(maybeRotation.get().degrees(), -90);
+	}
+
+	@Test
+	public void testRotationEmptyWithoutDisplayMatrix() {
+		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
+
+		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+		VideoInfo videoInfo = mediaInfo.video();
+
+		assertNotNull(videoInfo);
+		assertTrue(videoInfo.rotation().isEmpty());
+	}
+
+	@Test
 	public void testMkvStreamDurationMetadata() {
 		var analyzer = new MediaAnalyzer(MediaResources.DURATION_METADATA_TEST.getPath());
 
@@ -148,7 +174,7 @@ public class MediaAnalyzerTest {
 	public void testTrackInfoNullDurationReturnsNull() {
 		var video = new VideoInfo(0, null, 1000L, new Resolution(1920, 1080),
 				new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
-				null, null, Optional.empty());
+				null, null, Optional.empty(), Optional.empty());
 		var audio = new AudioInfo(0, null, 1000L, null, null, 48000);
 
 		assertNull(video.bitrateKbps());
@@ -159,7 +185,7 @@ public class MediaAnalyzerTest {
 	public void testTrackInfoDurationLessThanOneSecondNotNull() {
 		var video = new VideoInfo(0, Duration.ofMillis(100L), 12_500L, new Resolution(1920, 1080),
 				new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
-				null, null, Optional.empty());
+				null, null, Optional.empty(), Optional.empty());
 		var audio = new AudioInfo(0, Duration.ofMillis(100L), 800L, null, null, 48000);
 
 		assertEquals(video.bitrateKbps(), 1_000L);
@@ -170,7 +196,7 @@ public class MediaAnalyzerTest {
 	public void testTrackInfoDurationLessThanOneMilliSecondNull() {
 		var video = new VideoInfo(0, Duration.ofNanos(999999L), 12_500L, new Resolution(1920, 1080),
 				new FrameRate(VideoInfo.FrameRateMode.CONSTANT, new Rational(30, 1), new Rational(30, 1)),
-				null, null, Optional.empty());
+				null, null, Optional.empty(), Optional.empty());
 		var audio = new AudioInfo(0, Duration.ofNanos(999999L), 800L, null, null, 48000);
 
 		assertNull(video.bitrateKbps(), "bitrate should not be computed for durations less than 1ms");

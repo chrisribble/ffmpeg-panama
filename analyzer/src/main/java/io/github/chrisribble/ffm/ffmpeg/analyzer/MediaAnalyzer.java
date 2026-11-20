@@ -4,15 +4,18 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_AUDI
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AVMEDIA_TYPE_VIDEO;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_DICT_IGNORE_SUFFIX;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_NOPTS_VALUE;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PKT_DATA_DISPLAYMATRIX;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.AV_PKT_FLAG_KEY;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_primaries_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_range_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_space_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_transfer_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_dict_get;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_display_rotation_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_fourcc_make_string;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_side_data_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avcodec_profile_name;
@@ -39,11 +42,14 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Color;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotation;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.RotationImpl;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVDictionaryEntry;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVFormatContext;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacket;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacketSideData;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVRational;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVStream;
 import io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg;
@@ -64,6 +70,8 @@ public final class MediaAnalyzer {
 	private static final long BITS_PER_BYTE = 8;
 	private static final long BPS_TO_KBPS = 1000;
 	private static final long NANOS_PER_SECOND = TimeUnit.SECONDS.toNanos(1L);
+	// see const int32_t matrix[9] parameter in https://www.ffmpeg.org/doxygen/8.0/display_8h.html
+	private static final long DISPLAY_MATRIX_BYTES = 9L * Integer.BYTES;
 
 	private final Path[] inputs;
 
@@ -139,6 +147,7 @@ public final class MediaAnalyzer {
 		Codec codec = getCodec(videoStream);
 		Color color = getColor(videoStream);
 		Optional<Gop> gop = getGop(frameRate.mode(), videoStream.getTimeBase(), packetAnalysis);
+		Optional<Rotation> rotation = getRotation(videoStream);
 
 		return new VideoInfo(
 				videoStream.id(),
@@ -148,7 +157,8 @@ public final class MediaAnalyzer {
 				frameRate,
 				codec,
 				color,
-				gop);
+				gop,
+				rotation);
 	}
 
 	private AudioInfo getAudioInfo(final Arena arena, final StreamInfo audioStream, final PacketAnalysis packetAnalysis, final Duration containerDuration) {
@@ -174,6 +184,30 @@ public final class MediaAnalyzer {
 				codec,
 				layout,
 				sampleRate);
+	}
+
+	private Optional<Rotation> getRotation(final StreamInfo videoStream) {
+		// AVCodecParameters*
+		MemorySegment pCodecPar = AVStream.codecpar(videoStream.avStream());
+		// AVPacketSideData*
+		MemorySegment pCodedSideData = AVCodecParameters.coded_side_data(pCodecPar);
+		int nbCodedSideData = AVCodecParameters.nb_coded_side_data(pCodecPar);
+
+		// const AVPacketSideData*
+		MemorySegment pDisplayMatrixSideData = av_packet_side_data_get(pCodedSideData, nbCodedSideData, AV_PKT_DATA_DISPLAYMATRIX())
+				.reinterpret(AVPacketSideData.sizeof());
+		if (NULL.equals(pDisplayMatrixSideData) || AVPacketSideData.size(pDisplayMatrixSideData) < DISPLAY_MATRIX_BYTES) {
+			return Optional.empty();
+		}
+		// uint8_t* (points to const int32_t[9])
+		MemorySegment pDisplayMatrix = AVPacketSideData.data(pDisplayMatrixSideData).reinterpret(DISPLAY_MATRIX_BYTES);
+
+		double ccwDegrees = av_display_rotation_get(pDisplayMatrix); // [-180, 180]
+		if (Double.isNaN(ccwDegrees)) {
+			return Optional.empty();
+		}
+		var rotation = new RotationImpl(Math.toIntExact(Math.round(ccwDegrees)));
+		return Optional.of(rotation);
 	}
 
 	private Optional<Gop> getGop(final FrameRateMode frameRateMode, final double timebase, final PacketAnalysis packetAnalysis) {
@@ -482,7 +516,8 @@ public final class MediaAnalyzer {
 			FrameRate frameRate,
 			Codec codec,
 			Color color,
-			Optional<Gop> gop) implements TrackInfo {
+			Optional<Gop> gop,
+			Optional<Rotation> rotation) implements TrackInfo {
 
 		public VideoInfo {
 			if (resolution == null) {
@@ -524,6 +559,41 @@ public final class MediaAnalyzer {
 				String colorSpace,
 				String colorPrimaries,
 				String colorTransfer) {}
+
+		/**
+		 * The rotation a player should apply to decoded frames to display them upright.
+		 *
+		 * <p>
+		 * This comes from the stream's display matrix side data. FFmpeg defines that matrix as the
+		 * affine transformation "that should be applied to video frames for correct presentation".
+		 * So this value describes the <em>correction</em>, not the orientation. Negate it to get how
+		 * the stored frames are turned.
+		 *
+		 * @see <a href="https://www.ffmpeg.org/doxygen/8.0/group__lavu__video__display.html">FFmpeg
+		 *      display transformation matrix</a>
+		 */
+		public interface Rotation {
+			/**
+			 * How far to rotate the frame counter-clockwise to display it correctly, in degrees,
+			 * from {@code -180} to {@code 180} inclusive. A negative value means a clockwise
+			 * rotation.
+			 *
+			 * <p>
+			 * For example, if the stored frames are turned 90° counter-clockwise (to the left),
+			 * this returns {@code -90}: rotate them 90° clockwise to make them upright.
+			 *
+			 * @return the counter-clockwise rotation, in degrees, that corrects the frame
+			 */
+			int degrees();
+		}
+
+		record RotationImpl(int degrees) implements Rotation {
+			RotationImpl {
+				if (degrees < -180 || degrees > 180) {
+					throw new IllegalArgumentException("degrees must be between -180 and 180");
+				}
+			}
+		}
 
 		public record Gop(double gopSeconds, long maxGopBytes) {
 			public Gop {

@@ -44,6 +44,7 @@ jextract \
   --header-class-name FFmpeg \
   "<libavcodec/avcodec.h>" \
   "<libavformat/avformat.h>" \
+  "<libavutil/display.h>" \
   "<libavutil/imgutils.h>" \
   "<libavutil/pixdesc.h>" \
   "<libswscale/swscale.h>"
