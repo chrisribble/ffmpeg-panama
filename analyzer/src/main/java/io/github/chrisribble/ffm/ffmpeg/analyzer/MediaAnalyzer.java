@@ -592,6 +592,8 @@ public final class MediaAnalyzer {
 
 		record RotationImpl(int degrees) implements Rotation {
 			RotationImpl {
+				// ffmpeg provides a range from -180 to 180
+				// https://www.ffmpeg.org/doxygen/8.0/group__lavu__video__display.html#gaac2ea94d3f66496c758349450b5b0217
 				if (degrees < -180 || degrees > 180) {
 					throw new IllegalArgumentException("degrees must be between -180 and 180");
 				}
