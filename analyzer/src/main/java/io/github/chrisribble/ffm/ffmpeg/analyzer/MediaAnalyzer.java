@@ -206,8 +206,11 @@ public final class MediaAnalyzer {
 		if (Double.isNaN(ccwDegrees)) {
 			return Optional.empty();
 		}
-		var rotation = new RotationImpl(Math.toIntExact(Math.round(ccwDegrees)));
-		return Optional.of(rotation);
+		int roundedDegrees = Math.toIntExact(Math.round(ccwDegrees));
+		if (roundedDegrees == 0) {
+			return Optional.empty();
+		}
+		return Optional.of(new RotationImpl(roundedDegrees));
 	}
 
 	private Optional<Gop> getGop(final FrameRateMode frameRateMode, final double timebase, final PacketAnalysis packetAnalysis) {
