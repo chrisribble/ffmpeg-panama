@@ -564,13 +564,7 @@ public final class MediaAnalyzer {
 				String colorTransfer) {}
 
 		/**
-		 * The rotation a player should apply to decoded frames to display them upright.
-		 *
-		 * <p>
-		 * This comes from the stream's display matrix side data. FFmpeg defines that matrix as the
-		 * affine transformation "that should be applied to video frames for correct presentation".
-		 * So this value describes the <em>correction</em>, not the orientation. Negate it to get how
-		 * the stored frames are turned.
+		 * The rotation a video pipeline should apply to display frames in the correct orientation.
 		 *
 		 * @see <a href="https://www.ffmpeg.org/doxygen/8.0/group__lavu__video__display.html">FFmpeg
 		 *      display transformation matrix</a>
@@ -582,8 +576,9 @@ public final class MediaAnalyzer {
 			 * rotation.
 			 *
 			 * <p>
-			 * For example, if the stored frames are turned 90° counter-clockwise (to the left),
-			 * this returns {@code -90}: rotate them 90° clockwise to make them upright.
+			 * For example, if the stored frames are rotated 90° counter-clockwise (common in
+			 * videos captured on mobile devices) this returns {@code -90}, which indicates that
+			 * they should be rotated 90° clockwise.
 			 *
 			 * @return the counter-clockwise rotation, in degrees, that corrects the frame
 			 */
@@ -592,7 +587,6 @@ public final class MediaAnalyzer {
 
 		record RotationImpl(int degrees) implements Rotation {
 			RotationImpl {
-				// ffmpeg provides a range from -180 to 180
 				// https://www.ffmpeg.org/doxygen/8.0/group__lavu__video__display.html#gaac2ea94d3f66496c758349450b5b0217
 				if (degrees < -180 || degrees > 180) {
 					throw new IllegalArgumentException("degrees must be between -180 and 180");
