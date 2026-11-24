@@ -337,6 +337,7 @@
 --include-function av_image_get_linesize       # header: ././ffmpeg-8.0.1/libavutil/imgutils.h
 
 #### Extracted from: ./ffmpeg-8.0.1/libavcodec/packet.h
+--include-constant AV_PKT_DATA_DISPLAYMATRIX               # header: ./ffmpeg-8.0.1/libavcodec/packet.h
 --include-constant AV_PKT_FLAG_KEY                         # header: ./ffmpeg-8.0.1/libavcodec/packet.h
 --include-struct AVPacket                                  # header: ./ffmpeg-8.0.1/libavcodec/packet.h
 --include-struct AVPacketList                              # header: ./ffmpeg-8.0.1/libavcodec/packet.h
@@ -796,3 +797,7 @@
 --include-function av_get_pix_fmt_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-struct AVPixFmtDescriptor                 # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-struct AVComponentDescriptor              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
+
+#### Extracted from: ./ffmpeg-8.0.3/libavutil/display.h
+
+--include-function av_display_rotation_get          # header: ./ffmpeg-8.0.3/libavutil/display.h
