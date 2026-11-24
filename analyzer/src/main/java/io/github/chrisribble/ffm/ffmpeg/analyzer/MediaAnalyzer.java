@@ -13,7 +13,6 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_transfer
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_dict_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_display_rotation_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_fourcc_make_string;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_side_data_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
@@ -264,9 +263,7 @@ public final class MediaAnalyzer {
 
 	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
-		int pixelFormatId = AVCodecParameters.format(avCodecParams);
-		String pixelFormat = av_get_pix_fmt_name(pixelFormatId).getString(0);
-		Integer bitDepth = getBitDepth(pixelFormatId);
+		VideoInfo.PixelFormat pixelFormat = getPixelFormat(AVCodecParameters.format(avCodecParams));
 		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
 		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
@@ -274,7 +271,6 @@ public final class MediaAnalyzer {
 
 		return new Color(
 				pixelFormat,
-				bitDepth,
 				colorRange,
 				colorSpace,
 				colorPrimaries,
@@ -449,18 +445,14 @@ public final class MediaAnalyzer {
 		return pointer;
 	}
 
-	private static Integer getBitDepth(final int pixelFormatId) {
+	private static VideoInfo.PixelFormat getPixelFormat(final int pixelFormatId) {
 		// const AVPixFmtDescriptor*
 		MemorySegment pPixelFormatDesc = av_pix_fmt_desc_get(pixelFormatId);
 		if (NULL.equals(pPixelFormatDesc)) {
 			return null;
 		}
-		pPixelFormatDesc = pPixelFormatDesc.reinterpret(AVPixFmtDescriptor.sizeof());
 
 		int nbComponents = Byte.toUnsignedInt(AVPixFmtDescriptor.nb_components(pPixelFormatDesc));
-		if (nbComponents == 0) {
-			return null;
-		}
 
 		// AVComponentDescriptor[4]
 		MemorySegment pComponentDescriptors = AVPixFmtDescriptor.comp(pPixelFormatDesc);
@@ -470,7 +462,10 @@ public final class MediaAnalyzer {
 			MemorySegment pComponent = AVComponentDescriptor.asSlice(pComponentDescriptors, i);
 			bitDepth = Math.max(bitDepth, AVComponentDescriptor.depth(pComponent));
 		}
-		return bitDepth;
+
+		String name = AVPixFmtDescriptor.name(pPixelFormatDesc).getString(0);
+
+		return new VideoInfo.PixelFormat(name, bitDepth);
 	}
 
 	private static Resolution getResolution(final StreamInfo streamInfo) {
@@ -587,12 +582,13 @@ public final class MediaAnalyzer {
 		}
 
 		public record Color(
-				String pixelFormat,
-				Integer bitDepth,
+				PixelFormat pixelFormat,
 				String colorRange,
 				String colorSpace,
 				String colorPrimaries,
 				String colorTransfer) {}
+
+		public record PixelFormat(String name, int bitDepth) {}
 
 		/**
 		 * The rotation a video pipeline should apply to display frames in the correct orientation.

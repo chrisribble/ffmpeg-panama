@@ -53,8 +53,9 @@ public class MediaAnalyzerTest {
 		assertEquals(videoInfo.color().colorRange(), "tv");
 		assertEquals(videoInfo.color().colorPrimaries(), "bt2020");
 		assertEquals(videoInfo.color().colorTransfer(), "smpte2084");
-		assertEquals(videoInfo.color().pixelFormat(), "yuv420p10le");
-		assertEquals(videoInfo.color().bitDepth(), 10);
+		assertNotNull(videoInfo.color().pixelFormat());
+		assertEquals(videoInfo.color().pixelFormat().name(), "yuv420p10le");
+		assertEquals(videoInfo.color().pixelFormat().bitDepth(), 10);
 
 		assertNotNull(audioInfo);
 		assertEquals(audioInfo.codec().tag(), "mp4a");
@@ -242,8 +243,13 @@ public class MediaAnalyzerTest {
 			System.out.println("Color range                              : " + videoInfo.color().colorRange());
 			System.out.println("Color primaries                          : " + videoInfo.color().colorPrimaries());
 			System.out.println("Color transfer                           : " + videoInfo.color().colorTransfer());
-			System.out.println("Pixel format                             : " + videoInfo.color().pixelFormat());
-			System.out.println("Bit depth                                : " + videoInfo.color().bitDepth());
+			if (videoInfo.color().pixelFormat() != null) {
+				System.out.println("Pixel format                             : " + videoInfo.color().pixelFormat().name());
+				System.out.println("Bit depth                                : " + videoInfo.color().pixelFormat().bitDepth());
+			} else {
+				System.out.println("Pixel format                             : null");
+				System.out.println("Bit depth                                : null");
+			}
 			System.out.println();
 		}
 

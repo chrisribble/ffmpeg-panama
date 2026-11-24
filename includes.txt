@@ -794,7 +794,6 @@
 --include-function av_color_range_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-function av_color_space_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-function av_color_transfer_name           # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
---include-function av_get_pix_fmt_name              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-function av_pix_fmt_desc_get              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-struct AVPixFmtDescriptor                 # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
 --include-struct AVComponentDescriptor              # header: ./ffmpeg-8.0.3/libavutil/pixdesc.h
