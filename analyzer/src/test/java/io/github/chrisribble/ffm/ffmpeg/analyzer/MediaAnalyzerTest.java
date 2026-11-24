@@ -31,65 +31,43 @@ public class MediaAnalyzerTest {
 	private static final long BYTES_PER_KIB = 1024;
 	private static final String PREFIXES = "KMGTPEZYQ";
 
-	public static void main(final String[] args) {
+	@Test
+	public void testGetMediaInfo() {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
-		long startNanos = System.nanoTime();
-
 		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
-
-		long totalNanos = System.nanoTime() - startNanos;
-		LOG.debug("Time: {}ms", TimeUnit.NANOSECONDS.toMillis(totalNanos));
-		System.out.println();
-
-		ContainerInfo containerInfo = mediaInfo.container();
-		System.out.println("General");
-		System.out.println("Duration                                 : " + containerInfo.duration());
-		System.out.println();
-
 		VideoInfo videoInfo = mediaInfo.video();
-		if (videoInfo != null) {
-			System.out.println("Video");
-			System.out.println("ID                                       : " + videoInfo.id());
-			System.out.println("Codec ID                                 : " + videoInfo.codec().tag());
-			System.out.println("Codec name                               : " + videoInfo.codec().name());
-			System.out.println("Codec profile                            : " + videoInfo.codec().profile());
-			System.out.println("Duration                                 : " + videoInfo.duration());
-			System.out.println("Bit rate                                 : " + videoInfo.bitrateKbps() + " kb/s");
-			System.out.println("Width                                    : " + videoInfo.resolution().width());
-			System.out.println("Height                                   : " + videoInfo.resolution().height());
-			System.out.println("Frame rate mode                          : " + videoInfo.frameRate().mode());
-			System.out.println("Frame rate                               : " + getFrameRate(videoInfo) + " FPS");
-			videoInfo.gop().ifPresent(info -> {
-				Integer gopFrames = videoInfo.gopFrames();
-				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + info.gopSeconds() + "s");
-			});
-			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.bytes()));
-			System.out.println("Color space                              : " + videoInfo.color().colorSpace());
-			System.out.println("Color range                              : " + videoInfo.color().colorRange());
-			System.out.println("Color primaries                          : " + videoInfo.color().colorPrimaries());
-			System.out.println("Color transfer                           : " + videoInfo.color().colorTransfer());
-			System.out.println("Pixel format                             : " + videoInfo.color().pixelFormat());
-			System.out.println("Bit depth                                : " + videoInfo.color().bitDepth());
-			System.out.println();
-		}
-
 		AudioInfo audioInfo = mediaInfo.audio();
-		if (audioInfo != null) {
-			ChannelLayout layout = audioInfo.layout();
 
-			System.out.println("Audio");
-			System.out.println("ID                                       : " + audioInfo.id());
-			System.out.println("Codec ID                                 : " + audioInfo.codec().tag());
-			System.out.println("Codec name                               : " + audioInfo.codec().name());
-			System.out.println("Codec profile                            : " + audioInfo.codec().profile());
-			System.out.println("Duration                                 : " + audioInfo.duration());
-			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
-			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));
-			System.out.println("Sampling rate                            : " + audioInfo.sampleRate());
-			System.out.println("Stream size                              : " + toHumanReadable(audioInfo.bytes()));
-			System.out.println();
-		}
+		assertNotNull(videoInfo);
+		assertEquals(videoInfo.codec().tag(), "hvc1");
+		assertEquals(videoInfo.codec().name(), "hevc");
+		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
+		assertEquals(videoInfo.resolution().width(), 1920);
+		assertEquals(videoInfo.resolution().height(), 1080);
+		assertEquals(videoInfo.frameRate().mode(), VideoInfo.FrameRateMode.CONSTANT);
+		assertEquals(getFrameRate(videoInfo), "30");
+		assertEquals(videoInfo.bytes(), 40348);
+		assertEquals(videoInfo.bitrateKbps(), 32);
+		assertEquals(videoInfo.color().colorSpace(), "bt2020nc");
+		assertEquals(videoInfo.color().colorRange(), "tv");
+		assertEquals(videoInfo.color().colorPrimaries(), "bt2020");
+		assertEquals(videoInfo.color().colorTransfer(), "smpte2084");
+		assertEquals(videoInfo.color().pixelFormat(), "yuv420p10le");
+		assertEquals(videoInfo.color().bitDepth(), 10);
+
+		assertNotNull(audioInfo);
+		assertEquals(audioInfo.codec().tag(), "mp4a");
+		assertEquals(audioInfo.codec().name(), "aac");
+		assertEquals(audioInfo.codec().profile(), "LC");
+		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
+
+		assertNotNull(audioInfo.layout());
+		assertEquals(audioInfo.layout().channels(), 1);
+
+		assertEquals(audioInfo.sampleRate(), 48000);
+		assertEquals(audioInfo.bytes(), 190832);
+		assertEquals(audioInfo.bitrateKbps(), 152);
 	}
 
 	@Test
@@ -226,43 +204,65 @@ public class MediaAnalyzerTest {
 		assertNull(audio.bitrateKbps(), "bitrate should not be computed for durations less than 1ms");
 	}
 
-	@Test
-	public void testGetMediaInfo() {
+	public static void main(final String[] args) {
 		var analyzer = new MediaAnalyzer(MediaResources.HDR_TEST.getPath());
 
+		long startNanos = System.nanoTime();
+
 		MediaInfo mediaInfo = analyzer.getMediaInfo(true);
+
+		long totalNanos = System.nanoTime() - startNanos;
+		LOG.debug("Time: {}ms", TimeUnit.NANOSECONDS.toMillis(totalNanos));
+		System.out.println();
+
+		ContainerInfo containerInfo = mediaInfo.container();
+		System.out.println("General");
+		System.out.println("Duration                                 : " + containerInfo.duration());
+		System.out.println();
+
 		VideoInfo videoInfo = mediaInfo.video();
+		if (videoInfo != null) {
+			System.out.println("Video");
+			System.out.println("ID                                       : " + videoInfo.id());
+			System.out.println("Codec ID                                 : " + videoInfo.codec().tag());
+			System.out.println("Codec name                               : " + videoInfo.codec().name());
+			System.out.println("Codec profile                            : " + videoInfo.codec().profile());
+			System.out.println("Duration                                 : " + videoInfo.duration());
+			System.out.println("Bit rate                                 : " + videoInfo.bitrateKbps() + " kb/s");
+			System.out.println("Width                                    : " + videoInfo.resolution().width());
+			System.out.println("Height                                   : " + videoInfo.resolution().height());
+			System.out.println("Frame rate mode                          : " + videoInfo.frameRate().mode());
+			System.out.println("Frame rate                               : " + getFrameRate(videoInfo) + " FPS");
+			videoInfo.gop().ifPresent(info -> {
+				Integer gopFrames = videoInfo.gopFrames();
+				System.out.println("Format settings, GOP                     : N=" + gopFrames + ", " + info.gopSeconds() + "s");
+			});
+			System.out.println("Stream size                              : " + toHumanReadable(videoInfo.bytes()));
+			System.out.println("Color space                              : " + videoInfo.color().colorSpace());
+			System.out.println("Color range                              : " + videoInfo.color().colorRange());
+			System.out.println("Color primaries                          : " + videoInfo.color().colorPrimaries());
+			System.out.println("Color transfer                           : " + videoInfo.color().colorTransfer());
+			System.out.println("Pixel format                             : " + videoInfo.color().pixelFormat());
+			System.out.println("Bit depth                                : " + videoInfo.color().bitDepth());
+			System.out.println();
+		}
+
 		AudioInfo audioInfo = mediaInfo.audio();
+		if (audioInfo != null) {
+			ChannelLayout layout = audioInfo.layout();
 
-		assertNotNull(videoInfo);
-		assertEquals(videoInfo.codec().tag(), "hvc1");
-		assertEquals(videoInfo.codec().name(), "hevc");
-		assertEquals(videoInfo.duration(), Duration.ofSeconds(10L));
-		assertEquals(videoInfo.resolution().width(), 1920);
-		assertEquals(videoInfo.resolution().height(), 1080);
-		assertEquals(videoInfo.frameRate().mode(), VideoInfo.FrameRateMode.CONSTANT);
-		assertEquals(getFrameRate(videoInfo), "30");
-		assertEquals(videoInfo.bytes(), 40348);
-		assertEquals(videoInfo.bitrateKbps(), 32);
-		assertEquals(videoInfo.color().colorSpace(), "bt2020nc");
-		assertEquals(videoInfo.color().colorRange(), "tv");
-		assertEquals(videoInfo.color().colorPrimaries(), "bt2020");
-		assertEquals(videoInfo.color().colorTransfer(), "smpte2084");
-		assertEquals(videoInfo.color().pixelFormat(), "yuv420p10le");
-		assertEquals(videoInfo.color().bitDepth(), 10);
-
-		assertNotNull(audioInfo);
-		assertEquals(audioInfo.codec().tag(), "mp4a");
-		assertEquals(audioInfo.codec().name(), "aac");
-		assertEquals(audioInfo.codec().profile(), "LC");
-		assertEquals(audioInfo.duration(), Duration.ofSeconds(10L));
-
-		assertNotNull(audioInfo.layout());
-		assertEquals(audioInfo.layout().channels(), 1);
-
-		assertEquals(audioInfo.sampleRate(), 48000);
-		assertEquals(audioInfo.bytes(), 190832);
-		assertEquals(audioInfo.bitrateKbps(), 152);
+			System.out.println("Audio");
+			System.out.println("ID                                       : " + audioInfo.id());
+			System.out.println("Codec ID                                 : " + audioInfo.codec().tag());
+			System.out.println("Codec name                               : " + audioInfo.codec().name());
+			System.out.println("Codec profile                            : " + audioInfo.codec().profile());
+			System.out.println("Duration                                 : " + audioInfo.duration());
+			System.out.println("Bit rate                                 : " + audioInfo.bitrateKbps() + " kb/s");
+			System.out.println("Channel(s)                               : " + layout.channels() + " channel" + (layout.channels() > 1 ? "s" : ""));
+			System.out.println("Sampling rate                            : " + audioInfo.sampleRate());
+			System.out.println("Stream size                              : " + toHumanReadable(audioInfo.bytes()));
+			System.out.println();
+		}
 	}
 
 	private static String getFrameRate(final VideoInfo videoInfo) {
