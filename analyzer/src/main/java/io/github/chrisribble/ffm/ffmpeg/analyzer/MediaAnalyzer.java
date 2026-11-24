@@ -262,30 +262,6 @@ public final class MediaAnalyzer {
 		return Optional.of(Math.max(maxGopBytes, currentGopBytes));
 	}
 
-	private static Integer getBitDepth(final int pixelFormatId) {
-		// const AVPixFmtDescriptor*
-		MemorySegment pPixelFormatDesc = av_pix_fmt_desc_get(pixelFormatId);
-		if (NULL.equals(pPixelFormatDesc)) {
-			return null;
-		}
-		pPixelFormatDesc = pPixelFormatDesc.reinterpret(AVPixFmtDescriptor.sizeof());
-
-		int nbComponents = Byte.toUnsignedInt(AVPixFmtDescriptor.nb_components(pPixelFormatDesc));
-		if (nbComponents == 0) {
-			return null;
-		}
-
-		// AVComponentDescriptor[4]
-		MemorySegment pComponentDescriptors = AVPixFmtDescriptor.comp(pPixelFormatDesc);
-		int bitDepth = 0;
-		for (int i = 0; i < nbComponents; i++) {
-			// AVComponentDescriptor*
-			MemorySegment pComponent = AVComponentDescriptor.asSlice(pComponentDescriptors, i);
-			bitDepth = Math.max(bitDepth, AVComponentDescriptor.depth(pComponent));
-		}
-		return bitDepth;
-	}
-
 	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
 		int pixelFormatId = AVCodecParameters.format(avCodecParams);
@@ -471,6 +447,30 @@ public final class MediaAnalyzer {
 		var pointer = arena.allocate(C_POINTER);
 		pointer.set(C_POINTER, 0, MemorySegment.ofAddress(segment.address()));
 		return pointer;
+	}
+
+	private static Integer getBitDepth(final int pixelFormatId) {
+		// const AVPixFmtDescriptor*
+		MemorySegment pPixelFormatDesc = av_pix_fmt_desc_get(pixelFormatId);
+		if (NULL.equals(pPixelFormatDesc)) {
+			return null;
+		}
+		pPixelFormatDesc = pPixelFormatDesc.reinterpret(AVPixFmtDescriptor.sizeof());
+
+		int nbComponents = Byte.toUnsignedInt(AVPixFmtDescriptor.nb_components(pPixelFormatDesc));
+		if (nbComponents == 0) {
+			return null;
+		}
+
+		// AVComponentDescriptor[4]
+		MemorySegment pComponentDescriptors = AVPixFmtDescriptor.comp(pPixelFormatDesc);
+		int bitDepth = 0;
+		for (int i = 0; i < nbComponents; i++) {
+			// AVComponentDescriptor*
+			MemorySegment pComponent = AVComponentDescriptor.asSlice(pComponentDescriptors, i);
+			bitDepth = Math.max(bitDepth, AVComponentDescriptor.depth(pComponent));
+		}
+		return bitDepth;
 	}
 
 	private static Resolution getResolution(final StreamInfo streamInfo) {
