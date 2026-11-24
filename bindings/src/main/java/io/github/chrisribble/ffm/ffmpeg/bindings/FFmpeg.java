@@ -16329,6 +16329,66 @@ public class FFmpeg extends FFmpeg$shared {
         }
     }
 
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static FunctionDescriptor av_pix_fmt_desc_get$descriptor() {
+        return av_pix_fmt_desc_get.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MethodHandle av_pix_fmt_desc_get$handle() {
+        return av_pix_fmt_desc_get.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get$address() {
+        return av_pix_fmt_desc_get.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * const AVPixFmtDescriptor *av_pix_fmt_desc_get(enum AVPixelFormat pix_fmt)
+     * }
+     */
+    public static MemorySegment av_pix_fmt_desc_get(int pix_fmt) {
+        var mh$ = av_pix_fmt_desc_get.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("av_pix_fmt_desc_get", pix_fmt);
+            }
+            return (MemorySegment)mh$.invokeExact(pix_fmt);
+        } catch (Error | RuntimeException ex) {
+           throw ex;
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class av_pix_fmt_desc_get {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            FFmpeg.C_POINTER,
+            FFmpeg.C_INT
+        );
+
+        public static final MemorySegment ADDR = SYMBOL_LOOKUP.findOrThrow("av_pix_fmt_desc_get");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
     private static class av_color_range_name {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             FFmpeg.C_POINTER,

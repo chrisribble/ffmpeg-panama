@@ -17,6 +17,7 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_na
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_side_data_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_pix_fmt_desc_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avcodec_profile_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
@@ -46,10 +47,12 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotatio
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.RotationImpl;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVComponentDescriptor;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVDictionaryEntry;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVFormatContext;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacket;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacketSideData;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVPixFmtDescriptor;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVRational;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVStream;
 import io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg;
@@ -259,9 +262,35 @@ public final class MediaAnalyzer {
 		return Optional.of(Math.max(maxGopBytes, currentGopBytes));
 	}
 
+	private static Integer getBitDepth(final int pixelFormatId) {
+		// const AVPixFmtDescriptor*
+		MemorySegment pPixelFormatDesc = av_pix_fmt_desc_get(pixelFormatId);
+		if (NULL.equals(pPixelFormatDesc)) {
+			return null;
+		}
+		pPixelFormatDesc = pPixelFormatDesc.reinterpret(AVPixFmtDescriptor.sizeof());
+
+		int nbComponents = Byte.toUnsignedInt(AVPixFmtDescriptor.nb_components(pPixelFormatDesc));
+		if (nbComponents == 0) {
+			return null;
+		}
+
+		// AVComponentDescriptor[4]
+		MemorySegment pComponentDescriptors = AVPixFmtDescriptor.comp(pPixelFormatDesc);
+		int bitDepth = 0;
+		for (int i = 0; i < nbComponents; i++) {
+			// AVComponentDescriptor*
+			MemorySegment pComponent = AVComponentDescriptor.asSlice(pComponentDescriptors, i);
+			bitDepth = Math.max(bitDepth, AVComponentDescriptor.depth(pComponent));
+		}
+		return bitDepth;
+	}
+
 	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
-		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(avCodecParams)).getString(0);
+		int pixelFormatId = AVCodecParameters.format(avCodecParams);
+		Integer bitDepth = getBitDepth(pixelFormatId);
+		String pixelFormat = av_get_pix_fmt_name(pixelFormatId).getString(0);
 		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
 		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
@@ -269,6 +298,7 @@ public final class MediaAnalyzer {
 
 		return new Color(
 				pixelFormat,
+				bitDepth,
 				colorRange,
 				colorSpace,
 				colorPrimaries,
@@ -558,6 +588,7 @@ public final class MediaAnalyzer {
 
 		public record Color(
 				String pixelFormat,
+				Integer bitDepth,
 				String colorRange,
 				String colorSpace,
 				String colorPrimaries,
