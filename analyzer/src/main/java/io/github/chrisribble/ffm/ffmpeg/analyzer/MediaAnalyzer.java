@@ -289,8 +289,8 @@ public final class MediaAnalyzer {
 	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
 		int pixelFormatId = AVCodecParameters.format(avCodecParams);
-		Integer bitDepth = getBitDepth(pixelFormatId);
 		String pixelFormat = av_get_pix_fmt_name(pixelFormatId).getString(0);
+		Integer bitDepth = getBitDepth(pixelFormatId);
 		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
 		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
