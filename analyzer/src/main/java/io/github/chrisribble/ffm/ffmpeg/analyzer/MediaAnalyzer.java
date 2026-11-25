@@ -42,6 +42,7 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Color;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.PixelFormat;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotation;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.RotationImpl;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
@@ -263,7 +264,7 @@ public final class MediaAnalyzer {
 
 	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
-		VideoInfo.PixelFormat pixelFormat = getPixelFormat(AVCodecParameters.format(avCodecParams));
+		PixelFormat pixelFormat = getPixelFormat(AVCodecParameters.format(avCodecParams));
 		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
 		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
@@ -445,10 +446,11 @@ public final class MediaAnalyzer {
 		return pointer;
 	}
 
-	private static VideoInfo.PixelFormat getPixelFormat(final int pixelFormatId) {
+	private static PixelFormat getPixelFormat(final int pixelFormatId) {
 		// const AVPixFmtDescriptor*
 		MemorySegment pPixelFormatDesc = av_pix_fmt_desc_get(pixelFormatId);
 		if (NULL.equals(pPixelFormatDesc)) {
+			// av_pix_fmt_desc_get() can return null if the pixel format is unknown
 			return null;
 		}
 
@@ -465,7 +467,7 @@ public final class MediaAnalyzer {
 
 		String name = AVPixFmtDescriptor.name(pPixelFormatDesc).getString(0);
 
-		return new VideoInfo.PixelFormat(name, bitDepth);
+		return new PixelFormat(name, bitDepth);
 	}
 
 	private static Resolution getResolution(final StreamInfo streamInfo) {
