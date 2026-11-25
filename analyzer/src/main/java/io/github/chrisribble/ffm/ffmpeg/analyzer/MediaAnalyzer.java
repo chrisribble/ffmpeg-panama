@@ -13,10 +13,10 @@ import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_color_transfer
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_dict_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_display_rotation_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_fourcc_make_string;
-import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_get_pix_fmt_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_alloc;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_side_data_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_packet_unref;
+import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_pix_fmt_desc_get;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.av_read_frame;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg.avcodec_profile_name;
 import static io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg$shared.C_POINTER;
@@ -42,14 +42,17 @@ import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Color;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRate;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.FrameRateMode;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Gop;
+import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.PixelFormat;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.Rotation;
 import io.github.chrisribble.ffm.ffmpeg.analyzer.MediaAnalyzer.VideoInfo.RotationImpl;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVChannelLayout;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVCodecParameters;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVComponentDescriptor;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVDictionaryEntry;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVFormatContext;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacket;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVPacketSideData;
+import io.github.chrisribble.ffm.ffmpeg.bindings.AVPixFmtDescriptor;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVRational;
 import io.github.chrisribble.ffm.ffmpeg.bindings.AVStream;
 import io.github.chrisribble.ffm.ffmpeg.bindings.FFmpeg;
@@ -261,7 +264,7 @@ public final class MediaAnalyzer {
 
 	private Color getColor(final StreamInfo videoStream) {
 		var avCodecParams = videoStream.avCodecParams();
-		String pixelFormat = av_get_pix_fmt_name(AVCodecParameters.format(avCodecParams)).getString(0);
+		PixelFormat pixelFormat = getPixelFormat(AVCodecParameters.format(avCodecParams));
 		String colorRange = av_color_range_name(AVCodecParameters.color_range(avCodecParams)).getString(0);
 		String colorSpace = av_color_space_name(AVCodecParameters.color_space(avCodecParams)).getString(0);
 		String colorPrimaries = av_color_primaries_name(AVCodecParameters.color_primaries(avCodecParams)).getString(0);
@@ -443,6 +446,30 @@ public final class MediaAnalyzer {
 		return pointer;
 	}
 
+	private static PixelFormat getPixelFormat(final int pixelFormatId) {
+		// const AVPixFmtDescriptor*
+		MemorySegment pPixelFormatDesc = av_pix_fmt_desc_get(pixelFormatId);
+		if (NULL.equals(pPixelFormatDesc)) {
+			// av_pix_fmt_desc_get() can return null if the pixel format is unknown
+			return null;
+		}
+
+		int nbComponents = Byte.toUnsignedInt(AVPixFmtDescriptor.nb_components(pPixelFormatDesc));
+
+		// AVComponentDescriptor[4]
+		MemorySegment pComponentDescriptors = AVPixFmtDescriptor.comp(pPixelFormatDesc);
+		int bitDepth = 0;
+		for (int i = 0; i < nbComponents; i++) {
+			// AVComponentDescriptor*
+			MemorySegment pComponent = AVComponentDescriptor.asSlice(pComponentDescriptors, i);
+			bitDepth = Math.max(bitDepth, AVComponentDescriptor.depth(pComponent));
+		}
+
+		String name = AVPixFmtDescriptor.name(pPixelFormatDesc).getString(0);
+
+		return new PixelFormat(name, bitDepth);
+	}
+
 	private static Resolution getResolution(final StreamInfo streamInfo) {
 		var pCodecParams = streamInfo.avCodecParams();
 		int width = AVCodecParameters.width(pCodecParams);
@@ -557,11 +584,13 @@ public final class MediaAnalyzer {
 		}
 
 		public record Color(
-				String pixelFormat,
+				PixelFormat pixelFormat,
 				String colorRange,
 				String colorSpace,
 				String colorPrimaries,
 				String colorTransfer) {}
+
+		public record PixelFormat(String name, int bitDepth) {}
 
 		/**
 		 * The rotation a video pipeline should apply to display frames in the correct orientation.
